@@ -25,6 +25,10 @@
       delay: 2
       fx: EffectRCDDeconstruct2
     # ADT-RPD-End
+    # Ganimed-Add-Start
+    - type: ChildBlockVision
+      enabled: false
+    # Ganimed-Add-End
 
 - type: entity
   parent: [GasUnaryBase, AirSensorBase]

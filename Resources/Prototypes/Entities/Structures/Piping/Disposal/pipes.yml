@@ -76,6 +76,7 @@
     sprintModifier: 0.5
   - type: MultiHandedItem
   # ADT-UPD-End
+  - type: ChildBlockVision # Ganimed-Add
 
 - type: entity
   id: DisposalHolder
@@ -86,6 +87,7 @@
   - type: ContainerContainer
     containers:
       DisposalHolderComponent: !type:Container
+  - type: ChildBlockVision # Ganimed-Add
 
 # Pipes
 
@@ -102,6 +104,10 @@
   - type: Construction
     graph: DisposalPipe
     node: broken
+  # Ganimed-Add-Start
+  - type: ChildBlockVision
+    enabled: false
+  # Ganimed-Add-End
 
 - type: entity
   id: DisposalPipe
@@ -237,6 +243,10 @@
     node: trunk
     containers:
     - DisposalEntry
+  # Ganimed-Add-Start
+  - type: ChildBlockVision
+    enabled: false
+  # Ganimed-Add-End
 
 - type: entity
   id: DisposalRouter
