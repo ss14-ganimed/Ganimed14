@@ -73,8 +73,8 @@
 
 - type: entity
   id: ActionToggleSandevistan
-  name: action-sandevistan-name
-  description: action-sandevistan-desc
+  name: sandevistan
+  description: Switches the Sandevistan implant between active and inactive states. Chum, what kind of chrome are you wearing?
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
