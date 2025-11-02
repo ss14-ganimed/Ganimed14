@@ -63,7 +63,7 @@
   - type: StorageFill
     contents:
       - id: DrinkBeerCan
-        amount: 6
+        amount: 2
   - type: ItemCounter
     count:
       tags: [ADTBeerCan]

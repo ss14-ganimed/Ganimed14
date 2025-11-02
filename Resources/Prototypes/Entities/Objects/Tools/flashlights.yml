@@ -11,6 +11,7 @@
     addPrefix: false
     blinkingBehaviourId: blinking
     radiatingBehaviourId: radiating
+    toggleAction: ActionToggleLight # Ganimed-edit
   - type: LightBehaviour
     behaviours:
       - !type:FadeBehaviour
