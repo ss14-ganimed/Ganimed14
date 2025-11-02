@@ -692,6 +692,7 @@
     sprite: Objects/Consumable/Drinks/beer_can.rsi
   - type: Item
     sprite: Objects/Consumable/Drinks/beer_can.rsi
+    size: Small
   - type: Tag
     tags:
     - Beer
