@@ -10,5 +10,8 @@ ent-ActionToggleMuscles = Мускулы
 ent-ActionMusclesJump = Прыжок
     .desc = Прыгните в указанную точку.
 
-ent-ActionToggleCompStealth = Хамелеон
-    .desc = Переключите собственную видимость. Звуки шагов в сделку не входили.
+action-stealth = Хамелеон
+action-stealth-desc = Переключите собственную видимость. Звуки шагов в сделку не входили.
+
+action-sandevistan-name = Сандевистан
+action-sandevistan-desc = Переключает имплант "Сандевистан" между активным и неактивным состоянием. Чум, это что за хром у тебя?
