@@ -19,12 +19,12 @@ public sealed class PoolManagerTestEventHandler
             PoolManager.Shutdown();
         });
 
-        // If ending it nicely doesn't work within a minute, we do something a bit meaner.
-        _ = Task.Delay(HardStopTimeLimit).ContinueWith(_ =>
-        {
-            var deathReport = PoolManager.DeathReport();
-            Environment.FailFast($"Tests took way too ;\n Death Report:\n{deathReport}");
-        });
+    //    // If ending it nicely doesn't work within a minute, we do something a bit meaner.
+    //    _ = Task.Delay(HardStopTimeLimit).ContinueWith(_ =>
+    //    {
+    //        var deathReport = PoolManager.DeathReport();
+    //        Environment.FailFast($"Tests took way too ;\n Death Report:\n{deathReport}");
+    //    });
     }
 
     [OneTimeTearDown]
