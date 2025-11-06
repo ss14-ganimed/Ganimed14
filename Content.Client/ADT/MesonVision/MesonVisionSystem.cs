@@ -8,12 +8,15 @@ namespace Content.Client.ADT.MesonVision;
 public sealed class MesonVisionSystem : SharedMesonVisionSystem
 {
     [Dependency] private readonly ILightManager _light = default!;
-    [Dependency] private readonly IOverlayManager _overlay = default!;
+    [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
+    private MesonVisionOverlay _overlay = default!;
 
     public override void Initialize()
     {
         base.Initialize();
+
+        _overlay = new MesonVisionOverlay();
 
         SubscribeLocalEvent<MesonVisionComponent, LocalPlayerAttachedEvent>(OnMesonVisionAttached);
         SubscribeLocalEvent<MesonVisionComponent, LocalPlayerDetachedEvent>(OnMesonVisionDetached);
@@ -40,7 +43,7 @@ public sealed class MesonVisionSystem : SharedMesonVisionSystem
                 Off();
                 break;
             case MesonVisionState.Full:
-                Full(ent);
+                Full();
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -57,11 +60,11 @@ public sealed class MesonVisionSystem : SharedMesonVisionSystem
 
     private void Off()
     {
-        _overlay.RemoveOverlay(new MesonVisionOverlay());
+        _overlayMan.RemoveOverlay(_overlay);
     }
 
-    private void Full(Entity<MesonVisionComponent> ent)
+    private void Full()
     {
-        _overlay.AddOverlay(new MesonVisionOverlay());
+        _overlayMan.AddOverlay(_overlay);
     }
 }
