@@ -100,7 +100,7 @@
 
 - type: entity
   id: AltarChaos
-  parent: BaseStructure
+  parent: AltarBase
   name: chaos altar
   components:
   - type: Sprite
@@ -174,7 +174,7 @@
 
 - type: entity
   id: AltarDruid
-  parent: BaseStructure
+  parent: AltarBase
   name: druid altar
   components:
   - type: Sprite
@@ -206,13 +206,13 @@
         effectProto: ADTEffectKudzu
         powerCost: 3
         soundPath: /Audio/Voice/Diona/diona_scream.ogg
-      - requiredTag: OreGold
+      - requiredTag: IngotGold1 # Ganimed edit
         requiredAmount: 5
         resultProto: MobSpawnGoldCrabFriendly
         effectProto: ADTEffectKudzu
         powerCost: 3
         soundPath: /Audio/Voice/Diona/diona_scream.ogg
-      - requiredTag: OreSilver
+      - requiredTag: IngotSilver1 # Ganimed edit
         requiredAmount: 5
         resultProto: MobSpawnSilverCrabFriendly
         effectProto: ADTEffectKudzu
@@ -274,7 +274,7 @@
 
 - type: entity
   id: AltarToolbox
-  parent: BaseStructure
+  parent: AltarBase
   name: toolbox altar
   components:
   - type: Sprite
@@ -319,7 +319,7 @@
 
 - type: entity
   id: AltarSpaceChristian
-  parent: BaseStructure
+  parent: AltarBase
   name: space-Christian altar
   components:
   - type: Sprite
@@ -366,7 +366,7 @@
 
 - type: entity
   id: AltarSatana
-  parent: BaseStructure
+  parent: AltarBase
   name: satanic altar
   components:
   - type: Sprite
@@ -418,7 +418,7 @@
 
 - type: entity
   id: AltarTechnology
-  parent: BaseStructure
+  parent: AltarBase
   name: technology altar
   components:
   - type: Sprite
@@ -456,7 +456,12 @@
         effectProto: EffectRCDConstruct0
         soundPath: /Audio/Items/Mining/fultext_launch.ogg
         powerCost: 3
-### End ADT Tweak
+      - requiredTag: ADTToolboxRedSacrifice
+        resultProto: ClothingBeltUtility
+        effectProto: EffectRCDConstruct0
+        soundPath: /Audio/Items/Mining/fultext_launch.ogg
+        powerCost: 1
+      ### End ADT Tweak
 
 - type: entity
   id: AltarConvertFestival

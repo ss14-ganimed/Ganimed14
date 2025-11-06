@@ -50,7 +50,7 @@
   - type: Butcherable
     spawned:
     - id: FoodMeatSpider
-      amount: 2
+      amount: 1 # Ganimed edit
   - type: CombatMode
   - type: MobThresholds
     thresholds:
