@@ -282,9 +282,9 @@
   id: HoPBackpack
   name: loadout-group-hop-backpack
   loadouts:
-  - CommonBackpack
-  - CommonSatchel
-  - CommonDuffel
+  - HoPBackpack
+  - HoPSatchel
+  - HoPDuffel
   - HoPBackpackIan
   - LeatherSatchel # Ganimed-Loadouts
 
@@ -847,18 +847,18 @@
   name: loadout-group-quartermaster-shoes
   loadouts:
   - BrownShoes
-  - BlackShoes
+  - BlackShoes # Ganimed-Loadouts
   - CargoWinterBoots
   # - SalvageBoots # Ganimed-Loadouts
   - LeatherShoesWhitelisted # Ganimed-Loadouts
-  # ADT tweak start
+  # ADT tweak, Ganimed-Loadouts start
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
   # - ADTFootWrapsHighBr
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
-  # ADT tweak end
+  # ADT tweak, Ganimed-Loadouts end
 
 - type: loadoutGroup
   id: CargoTechnicianHead
@@ -891,7 +891,7 @@
   - CargoTechnicianBackpack
   - CargoTechnicianSatchel
   - CargoTechnicianDuffel
-  - ADTClothingBackpackSatchelLeather # ADT tweak
+  - LeatherSatchel # Ganimed-Loadouts
 
 - type: loadoutGroup
   id: CargoTechnicianOuterClothing
@@ -907,14 +907,14 @@
   - BlackShoes
   # - BrownShoes # Ganimed-Loadouts
   - CargoWinterBoots
-  # ADT tweak start
+  # ADT tweak, Ganimed-Loadouts start
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
   # - ADTFootWrapsHighBr
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
-  # ADT tweak end
+  # ADT tweak, Ganimed-Loadouts end
 
 - type: loadoutGroup
   id: SalvageSpecialistBackpack
@@ -939,14 +939,14 @@
   loadouts:
   - SalvageBoots
   - CargoWinterBoots
-  # ADT tweak start
+  # ADT tweak, Ganimed-Loadouts start
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
   # - ADTFootWrapsHighBr
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
-  # ADT tweak end
+  # ADT tweak, Ganimed-Loadouts end
 
 # Engineering
 
@@ -1004,14 +1004,14 @@
   - EngineeringWinterBoots
   - WorkBoots # Ganimed-Loadouts
   - LeatherShoesWhitelisted # Ganimed-Loadouts
-  # ADT tweak start
+  # ADT tweak, Ganimed-Loadouts start
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
   # - ADTFootWrapsHighBr
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
-  # ADT tweak end
+  # ADT tweak, Ganimed-Loadouts end
 
 - type: loadoutGroup
   id: TechnicalAssistantJumpsuit
@@ -1079,14 +1079,14 @@
   - OrangeShoes
   - EngineeringMagBoots
   # Ganimed-Loadouts-End
-  # ADT tweak start
+  # ADT tweak, Ganimed-Loadouts start
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
   # - ADTFootWrapsHighBr
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
-  # ADT tweak end
+  # ADT tweak, Ganimed-Loadouts end
 
 - type: loadoutGroup
   id: StationEngineerID
@@ -1136,14 +1136,14 @@
   - WorkBoots
   # Ganimed-Loadouts-End
   - EngineeringWinterBoots
-  # ADT tweak start
+  # ADT tweak, Ganimed-Loadouts start
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
   # - ADTFootWrapsHighBr
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
-  # ADT tweak end
+  # ADT tweak, Ganimed-Loadouts end
 
 - type: loadoutGroup
   id: SurvivalExtended
@@ -1215,14 +1215,14 @@
   - LeatherShoesWhitelisted
   - ScienceMagBoots
   # Ganimed-Loadouts-End
-  # ADT tweak start
+  # ADT tweak, Ganimed-Loadouts start
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
   # - ADTFootWrapsHighBr
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
-  # ADT tweak end
+  # ADT tweak, Ganimed-Loadouts end
 
 - type: loadoutGroup
   id: ScientistHead
@@ -1269,7 +1269,7 @@
   - ScientistBackpack
   - ScientistSatchel
   - ScientistDuffel
-  - ADTClothingBackpackSatchelLeather # ADT tweak
+  - LeatherSatchel # Ganimed-Loadouts
 
 - type: loadoutGroup
   id: ScientistOuterClothing
@@ -1290,14 +1290,14 @@
   - PurpleShoes # ADT tweak
   - MonochromeShoes # Ganimed-Loadouts
   - ScienceWinterBoots
-  # ADT tweak start
+  # ADT tweak, Ganimed-Loadouts start
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
   # - ADTFootWrapsHighBr
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
-  # ADT tweak end
+  # ADT tweak, Ganimed-Loadouts end
 
 - type: loadoutGroup
   id: ScientistGloves
@@ -1493,14 +1493,14 @@
   - SecurityWinterBoots
   - BlackCowboyBoots # Ganimed-Loadouts
   - HighheelBoots # Ganimed-Loadouts
-  # ADT tweak start
+  # ADT tweak, Ganimed-Loadouts start
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
   # - ADTFootWrapsHighBr
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
-  # ADT tweak end
+  # ADT tweak, Ganimed-Loadouts end
 
 - type: loadoutGroup
   id: SecurityPDA
@@ -1549,7 +1549,7 @@
   # Ganimed-Loadouts-Start
   - AltGrayDetectiveJumpsuit
   - AltGrayDetectiveJumpskirt
-  - SecurityUniformBlueShirt
+  - ADTClothingUniformJumpsuitSecBlue # SecurityUniformBlueShirt
   - SuperstarCopJumpsuit
   # Ganimed-Loadouts-End
   - ADTSecurityOfficerMogesBrown
@@ -1668,14 +1668,14 @@
   # Ganimed-Loadouts-End
   - MedicalWinterBoots
   - ADTCMOHighBoots # ADT tweak
-  # ADT tweak start
+  # ADT tweak, Ganimed-Loadouts start
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
   # - ADTFootWrapsHighBr
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
-  # ADT tweak end
+  # ADT tweak, Ganimed-Loadouts end
 
 - type: loadoutGroup
   id: MedicalDoctorHead
@@ -1739,7 +1739,7 @@
   - MedicalDoctorBackpack
   - MedicalDoctorSatchel
   - MedicalDoctorDuffel
-  - ADTClothingBackpackSatchelLeather # ADT tweak
+  - LeatherSatchel # Ganimed-Loadouts
 
 - type: loadoutGroup
   id: MedicalShoes
@@ -1748,14 +1748,14 @@
   - WhiteShoes
   - BlueShoes # Ganimed-Loadouts
   - MedicalWinterBoots
-  # ADT tweak start
+  # ADT tweak, Ganimed-Loadouts start
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
   # - ADTFootWrapsHighBr
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
-  # ADT tweak end
+  # ADT tweak, Ganimed-Loadouts end
 
 - type: loadoutGroup
   id: MedicalDoctorPDA
@@ -1853,14 +1853,14 @@
   - BlueShoes
   - WhiteShoes
   - MedicalWinterBoots
-  # ADT tweak start
+  # ADT tweak, Ganimed-Loadouts start
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
   # - ADTFootWrapsHighBr
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
-  # ADT tweak end
+  # ADT tweak, Ganimed-Loadouts end
 
 - type: loadoutGroup
   id: MedicalEyewear

@@ -38,6 +38,11 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitSalvageSpecialistAlt
 
+- type: loadout
+  id: ExplorersJumpsuit
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitKringeClothing
+
 # Neck
 - type: loadout # TODO: Whitelist restriction
   id: MinerCloak

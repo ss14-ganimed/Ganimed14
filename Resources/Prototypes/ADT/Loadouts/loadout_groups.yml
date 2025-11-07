@@ -69,7 +69,7 @@
   maxLimit: 1
   loadouts:
   - ADTClothingHeadsetCargo
-  - ADTClothingHeadsetMining
+  - HeadsetMining # Ganimed-Loadouts
 
 # MAGISTRATE
 
@@ -295,7 +295,7 @@
   minLimit: 0
   loadouts:
   - SeniorPhysicianLabCoat
-  - SeniorPhysicianWintercoat # Ganimed
+  - SeniorPhysicianWintercoat # Ganimed-Loadouts
 
 # ROBOTICIST
 
@@ -547,6 +547,13 @@
   - ADTUniformJumpskirtBrigmedic
   - ADTUniformBrigmedicJumpsuitTurtleneck
   - ADTUniformSkirtBrigmedicJumpskirtTurtleneck
+  # Ganimed-Loadouts-Start
+  - OriginalBrigmedicJumpsuit
+  - OriginalBrigmedicJumpskirt
+  - BlackBrigmedicJumpsuit
+  - BlackBrigmedicJumpskirt
+  - JumpskirtOfLife
+  # Ganimed-Loadouts-End
 
   #head
 - type: loadoutGroup
@@ -556,7 +563,10 @@
   maxLimit: 1
   loadouts:
   - ADTHeadHatBeretBrigmedic
+  - BrigmedicSecurityHat # Ganimed-Loadouts
+  - BrigmedicHat # Ganimed-Loadouts
   - ADTHeadHelmetSecurityMedic
+  - CorpsmanHelmet # Ganimed-Loadouts
 
   #neck
 - type: loadoutGroup
@@ -622,9 +632,12 @@
   minLimit: 0
   maxLimit: 1
   loadouts:
+  - BrigmedicCoatAMG # Ganimed-Loadouts
+  - ADTOuterCoatLabSecurityMedic
   - ADTOuterCoatBrigmedicWB
   - ADTOuterVestSecurityMedic
-  - ADTOuterCoatLabSecurityMedic
+  - BrigmedicVestArmor # Ganimed-Loadouts
+  - SecurityBioSuit # Ganimed-Loadouts
 
 ## повар
 
@@ -686,8 +699,9 @@
   maxLimit: 1
   loadouts:
   - ADTClothingUniformJumpsuitSalvageSpecialist
-  - ADTUniformJumpsuitExplorer
   - GrimySalvageJumpsuit # Ganimed-Loadouts
+  - ADTUniformJumpsuitExplorer # Ganimed-Loadouts
+  - ExplorersJumpsuit # Ganimed-Loadouts
 
 # ШАХТЁР
 - type: loadoutGroup

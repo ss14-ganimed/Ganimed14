@@ -78,12 +78,6 @@
   equipment:
     eyes: ClothingEyesEyepatchHudSecurity
 
-# Jumpsuit
-- type: loadout
-  id: SecurityUniformBlueShirt
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitSecBlue
-
 # Belt
 - type: loadout
   id: AssaultBelt
@@ -175,6 +169,40 @@
     shoes: ClothingShoesHighheelBootsFilled
   effects:
   - !type:SponsorLoadoutEffect
+
+# Self defense weapons
+- type: loadout
+  id: Flash
+  storage:
+    back:
+    - Flash
+
+- type: loadout
+  id: TelescopicBaton
+  storage:
+    back:
+    - ADTtelescopicBaton
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Command
+
+- type: loadout
+  id: WeaponDisabler
+  storage:
+    back:
+    - WeaponDisabler
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+- type: loadout
+  id: WeaponTaser
+  storage:
+    back:
+    - WeaponTaser
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
 
 # Weapon
 - type: loadout

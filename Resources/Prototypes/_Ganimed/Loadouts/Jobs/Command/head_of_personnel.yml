@@ -49,3 +49,19 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: TenOverall
+
+# Back
+- type: loadout
+  id: HoPBackpack
+  equipment:
+    back: ClothingBackpackHop
+
+- type: loadout
+  id: HoPSatchel
+  equipment:
+    back: ClothingBackpackSatchelHop
+
+- type: loadout
+  id: HoPDuffel
+  equipment:
+    back: ClothingBackpackDuffelHop

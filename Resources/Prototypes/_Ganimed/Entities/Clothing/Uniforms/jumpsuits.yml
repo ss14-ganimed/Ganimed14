@@ -445,7 +445,7 @@
       coefficients:
         Caustic: 0.9
     staminaModifier: 0.9
-        
+
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitERTLeaderOriginal
@@ -509,3 +509,14 @@
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/original_capformal.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/original_capformal.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitDarkLight
+  name: dark and light suit
+  description: Light trousers and a black shirt flip the classic style upside-down.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/black-white.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/black-white.rsi

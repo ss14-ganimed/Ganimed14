@@ -936,6 +936,15 @@
     proto: Security
 
 - type: loadout
+  id: SpareDarkLightSuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitDarkLight
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout
   id: SpareBarberSuit
   storage:
     back:
@@ -1377,6 +1386,15 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Security
+
+- type: loadout
+  id: SpareBowTie
+  storage:
+    back:
+    - ClothingNeckBowTieBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
 
 - type: loadout
   id: SpareBlackScarf

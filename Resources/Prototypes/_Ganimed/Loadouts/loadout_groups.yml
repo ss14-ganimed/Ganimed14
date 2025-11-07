@@ -133,6 +133,7 @@
   - SpareHardWornSuit
   - SpareHardWornSuitskirt
   - SpareBlueSecShirt
+  - SpareDarkLightSuit
   - SpareOldGreySuit
   - SpareOldBrownSuit
   - SpareBarberSuit
@@ -189,8 +190,9 @@
   - SpareNeckGaiter
   # Neck
   - SpareRedTie
-  - SpareDetTie
   - SpareBlueTie
+  - SpareDetTie
+  - SpareBowTie
   - SpareBlackScarf
   - SpareBrownScarf
   - SpareRedScarf
@@ -450,12 +452,11 @@
   - SecurityBelt
 
 - type: loadoutGroup
-  id: NonLethalWeapons
+  id: NonLethalWeaponsSecurity
   name: loadout-group-self-defense-weapons
   loadouts:
-  - Flash
-  - TelescopicBaton
   - WeaponDisabler
+  - WeaponTaser
 
 - type: loadoutGroup
   id: NonLethalWeaponsCommand
@@ -917,40 +918,11 @@
   # - WeaponRevolverRebota
 
 - type: loadoutGroup
-  id: PilotHead
-  name: loadout-group-pilot-head
-  minLimit: 0
-  loadouts:
-  - SecurityBeret
-  - SecurityFlightCap
-  - SecurityHelmet
-  - PilotHelmet
-
-- type: loadoutGroup
-  id: PilotJumpsuit
-  name: loadout-group-pilot-jumpsuit
-  loadouts:
-  - SecurityJumpsuit
-  - SecurityJumpskirt
-  - SecurityUniformBlueShirt
-  - AerostaticSuit
-
-- type: loadoutGroup
   id: PilotGloves
   name: loadout-group-pilot-gloves
   minLimit: 0
   loadouts:
   - AerostaticGloves
-
-- type: loadoutGroup
-  id: PilotOuterClothing
-  name: loadout-group-pilot-outerclothing
-  loadouts:
-  - BomberCoat
-  - ArmorVest
-  - ArmorVestSlim
-  - SecurityOfficerWintercoat
-  - AerostaticBomberJacket
 
 - type: loadoutGroup
   id: PilotShoes
@@ -961,6 +933,24 @@
   - CombatBoots
   - SecurityWinterBoots
   - AerostaticShoes
+
+- type: loadoutGroup
+  id: BrigmedicMask
+  name: loadout-group-brigmedic-mask
+  minLimit: 0
+  loadouts:
+  - SterileMask
+  - MedicalBreathMask
+  - BrigmedicMedicalSecurity
+  - BrigmedicGasSecurity
+
+- type: loadoutGroup
+  id: BrigmedicShoes
+  name: loadout-group-brigmedic-shoes
+  loadouts:
+  - JackSecBoots
+  - SecurityWinterBoots
+  - RedShoes
 
 # Medical
 - type: loadoutGroup

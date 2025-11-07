@@ -192,11 +192,11 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   # Bridmed spec outfit:
-  - BrigmedicHead
+  - ADTBrigmedicHead
   - ADTBrigmedicNeck
-  - BrigmedicJumpsuit
-  - BrigmedicOuterClothing
-  - BrigmedicBackpack
+  - ADTBrigmedicJumpsuit
+  - ADTBrigmedicOuterWear
+  - ADTBrigmedicBack
   # Another stuffs
   - BrigmedicMask # Ganimed-Loadouts
   - ADTBrigmedicBelts # Ganimed-Loadouts

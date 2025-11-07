@@ -23,6 +23,7 @@
       - id: Brutepack
         amount: 2
       - id: Ointment
+      - id: ADTAntibioticOintment
       - id: Bloodpack
       - id: Gauze
       - id: EmergencyMedipen

@@ -151,28 +151,3 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: MasterHoS
-
-# Self defense weapons
-- type: loadout
-  id: Flash
-  storage:
-    back:
-    - Flash
-
-- type: loadout
-  id: TelescopicBaton
-  storage:
-    back:
-    - ADTtelescopicBaton
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: Command
-
-- type: loadout
-  id: WeaponDisabler
-  storage:
-    back:
-    - WeaponDisabler
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: Security
