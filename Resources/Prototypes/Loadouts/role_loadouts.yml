@@ -99,6 +99,7 @@
   - BartenderHead
   - BartenderJumpsuit
   - CommonBackpack
+  - ADTBartenderGloves #ADT-tweak
   - BartenderOuterClothing
   - BartenderBelt # Ganimed-Loadouts
   - BartenderGlasses # Ganimed-Loadouts
@@ -118,10 +119,12 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
-  - ServiceWorkerJumpsuit # Ganimed-Loadouts
+  - ADTServiceWorkerJumpsuit #ADT-tweak
   - CommonBackpack
+  - ADTServiceWorkerGloves #ADT-tweak
   - Glasses
   - CommonBelt # Ganimed-Loadouts
+  - ADTServiceWorkerPDA # ADT tweak
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
@@ -138,14 +141,18 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - ChefHead
+  - ADTChefNeck # ADT-Tweak
   - ChefMask
   - ChefJumpsuit
   - CommonBackpack
+  - ADTChefGloves # ADT-Tweak
   - ChefOuterClothing
   - ChefGlasses # Ganimed-Loadouts
   - ChefShoes # Ganimed-Loadouts
-  - ADTChefPocket1 #ADT tweak
-  - ADTChefPDA # ADT tweak
+  # ADT-Tweak-Start
+  - ADTChefPocket1
+  - ADTChefPDA
+  # ADT-Tweak-End
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
@@ -280,11 +287,15 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - ClownHead
+  - ADTClownMask #ADT-tweak
   - ClownJumpsuit
   - ClownBackpack
   - ClownOuterClothing
+  - ADTClownGloves #ADT-tweak
   - ClownShoes
   - Glasses
+  - ADTClownPocket1 #ADT-tweak
+  - ADTClownPocket2 #ADT-tweak
   - ADTClownPDA # ADT tweak
   # ADT underwear tweak start
   - ADTTop
@@ -326,8 +337,10 @@
   - GroupTankHarness
   - MusicianJumpsuit
   - CommonBackpack
+  - ADTMusicianGloves # ADT-tweak
   - MusicianOuterClothing
   - GlassesWithSunglasses # Ganimed-Loadouts
+  - ADTMusicianPDA # ADT-tweak
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
@@ -842,6 +855,7 @@
   - ReporterJumpsuit
   - CommonBackpack
   - Glasses
+  - ADTReporterPDA #ADT-tweak
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
@@ -876,12 +890,14 @@
   id: JobBoxer
   groups:
   - Inventory # Corvax-Loadouts
+  - ADTBoxerHead #ADT-tweak
   - GroupTankHarness
   - BoxerHead # Ganimed-Loadouts
   - BoxerJumpsuit
   - BoxerGloves
   - CommonBackpack
   - Glasses
+  - ADTBoxerPDA #ADT-tweak
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
