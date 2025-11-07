@@ -943,6 +943,8 @@
   minLimit: 0
   maxLimit: 1
   loadouts:
+  - TacticalHeadband # Ganimed-Loadouts
+  - Casa # Ganimed-Loadouts
   - ADTClothingHeadHatGladiator
 
 # Alts PDA start

@@ -21,17 +21,6 @@
   equipment:
     head: ClothingHeadHatCasa
 
-- type: loadout
-  id: GladiatorHelmet
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobBoxer
-      time: 36000 # 10hr
-  equipment:
-    head: ClothingHeadHatGladiator
-
 # Jumpsuit
 - type: loadout
   id: Kimono
@@ -43,17 +32,6 @@
       time: 36000 # 10hr
   equipment:
     jumpsuit: ClothingUniformJumpsuitKimono
-
-- type: loadout
-  id: Gladiator
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobBoxer
-      time: 36000 # 10hr
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitGladiator
 
 # Gloves
 #- type: loadout

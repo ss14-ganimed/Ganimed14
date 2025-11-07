@@ -51,6 +51,12 @@
   id: ADTClothingUniformJumpsuitGladiator
   equipment:
     jumpsuit: ClothingUniformJumpsuitGladiator
+  effects: # Ganimed-Loadouts
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBoxer
+      time: 36000 # 10hr
 
 # Head
 
@@ -58,3 +64,9 @@
   id: ADTClothingHeadHatGladiator
   equipment:
     head: ClothingHeadHatGladiator
+  effects: # Ganimed-Loadouts
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBoxer
+      time: 36000 # 10hr
