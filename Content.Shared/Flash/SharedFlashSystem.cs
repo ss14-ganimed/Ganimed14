@@ -259,7 +259,7 @@ public abstract class SharedFlashSystem : EntitySystem
     {
         // Ganimed edit start
         if (TryComp<MaskComponent>(ent, out var mask) && mask.IsToggled)
-        return;
+            return;
         // Ganimed edit end
 
         if (ent.Comp.Enabled)
