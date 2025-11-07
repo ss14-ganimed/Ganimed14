@@ -256,6 +256,11 @@ public abstract class SharedFlashSystem : EntitySystem
 
     private void OnFlashImmunityFlashAttempt(Entity<FlashImmunityComponent> ent, ref FlashAttemptEvent args)
     {
+        // Ganimed edit start
+        if (TryComp<MaskComponent>(ent, out var mask) && mask.IsToggled)
+        return;
+        // Ganimed edit end
+
         if (ent.Comp.Enabled)
             args.Cancelled = true;
     }

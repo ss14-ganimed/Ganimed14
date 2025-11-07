@@ -24,11 +24,21 @@ namespace Content.Shared.Eye.Blinding.Systems
         private void OnGetRelayedProtection(EntityUid uid, EyeProtectionComponent component,
             InventoryRelayedEvent<GetEyeProtectionEvent> args)
         {
+            // Ganimed edit start
+            if (TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
+               return;
+            // Ganimed edit end
+
             OnGetProtection(uid, component, args.Args);
         }
 
         private void OnGetProtection(EntityUid uid, EyeProtectionComponent component, GetEyeProtectionEvent args)
         {
+            // Ganimed edit start
+            if (TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
+                return;
+            // Ganimed edit end
+
             args.Protection += component.ProtectionTime;
         }
 
