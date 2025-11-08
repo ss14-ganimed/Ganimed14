@@ -1,7 +1,6 @@
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Examine;
-using Content.Shared.Clothing.Components; // Ganimed edit
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Flash.Components;
 using Content.Shared.IdentityManagement;
@@ -257,11 +256,6 @@ public abstract class SharedFlashSystem : EntitySystem
 
     private void OnFlashImmunityFlashAttempt(Entity<FlashImmunityComponent> ent, ref FlashAttemptEvent args)
     {
-        // Ganimed edit start
-        if (TryComp<MaskComponent>(ent, out var mask) && mask.IsToggled)
-            return;
-        // Ganimed edit end
-
         if (ent.Comp.Enabled)
             args.Cancelled = true;
     }

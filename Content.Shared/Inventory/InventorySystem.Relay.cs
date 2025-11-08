@@ -131,6 +131,12 @@ public partial class InventorySystem
         var enumerator = new InventorySlotEnumerator(inventory, args.TargetSlots);
         while (enumerator.NextItem(out var item))
         {
+            // Ganimed edit start
+            // Если маска опущена, то не передаёт никакие эффекты (Броня, худы и прочее)
+            if (TryComp<MaskComponent>(item, out var mask) && mask.IsToggled)
+                continue;
+            // Ganimed edit end
+                
             RaiseLocalEvent(item, ev);
         }
 
@@ -147,6 +153,12 @@ public partial class InventorySystem
         var enumerator = new InventorySlotEnumerator(inventory, args.TargetSlots);
         while (enumerator.NextItem(out var item))
         {
+            // Ganimed edit start
+            // Если маска опущена, то не передаёт никакие эффекты (Броня, худы и прочее)
+            if (TryComp<MaskComponent>(item, out var mask) && mask.IsToggled)
+                continue;
+            // Ganimed edit end
+                
             RaiseLocalEvent(item, ev);
         }
     }

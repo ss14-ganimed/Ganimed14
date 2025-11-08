@@ -1,6 +1,5 @@
 using Content.Shared.StatusEffect;
 using Content.Shared.Inventory;
-using Content.Shared.Clothing.Components; // Ganimed edit
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Tools.Components;
 using Content.Shared.Item.ItemToggle.Components;
@@ -25,21 +24,11 @@ namespace Content.Shared.Eye.Blinding.Systems
         private void OnGetRelayedProtection(EntityUid uid, EyeProtectionComponent component,
             InventoryRelayedEvent<GetEyeProtectionEvent> args)
         {
-            // Ganimed edit start
-            if (TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
-               return;
-            // Ganimed edit end
-
             OnGetProtection(uid, component, args.Args);
         }
 
         private void OnGetProtection(EntityUid uid, EyeProtectionComponent component, GetEyeProtectionEvent args)
         {
-            // Ganimed edit start
-            if (TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
-                return;
-            // Ganimed edit end
-
             args.Protection += component.ProtectionTime;
         }
 
