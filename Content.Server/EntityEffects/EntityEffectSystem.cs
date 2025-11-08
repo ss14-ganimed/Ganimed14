@@ -767,8 +767,18 @@ public sealed class EntityEffectSystem : EntitySystem
         // We call this before the mind check to allow things like player-controlled mice to be able to benefit from the effect
         RemComp<ReplacementAccentComponent>(uid);
         RemComp<MonkeyAccentComponent>(uid);
-
         // Ganimed edit start
+        if (TryComp(uid, out GhostRoleComponent? existingGhostRole))
+        {
+            return;
+        }
+
+        // Stops from adding a ghost role to things like people who already have a mind
+        if (TryComp<MindContainerComponent>(uid, out var mindContainer) && mindContainer.HasMind)
+        {
+            return;
+        }
+
         if (TryComp<NpcFactionMemberComponent>(uid, out var factionComp))
         {
             var hostileFactions = new List<string>
@@ -787,21 +797,9 @@ public sealed class EntityEffectSystem : EntitySystem
 
             _faction.AddFaction((uid, factionComp), "Passive");
         }
+
+        var ghostRole = AddComp<GhostRoleComponent>(uid);
         // Ganimed edit end
-
-        // Stops from adding a ghost role to things like people who already have a mind
-        if (TryComp<MindContainerComponent>(uid, out var mindContainer) && mindContainer.HasMind)
-        {
-            return;
-        }
-
-        // Don't add a ghost role to things that already have ghost roles
-        if (TryComp(uid, out GhostRoleComponent? ghostRole))
-        {
-            return;
-        }
-
-        ghostRole = AddComp<GhostRoleComponent>(uid);
         EnsureComp<GhostTakeoverAvailableComponent>(uid);
 
         var entityData = Comp<MetaDataComponent>(uid);
