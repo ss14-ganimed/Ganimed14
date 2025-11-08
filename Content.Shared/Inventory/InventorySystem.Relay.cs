@@ -1,6 +1,7 @@
 using Content.Shared.Armor;
 using Content.Shared.Atmos;
 using Content.Shared.Chat;
+using Content.Shared.Clothing.Components; // Ganime edit
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Hypospray.Events;
 using Content.Shared.Climbing.Events;
