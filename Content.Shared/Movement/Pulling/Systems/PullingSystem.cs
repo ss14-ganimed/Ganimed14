@@ -462,6 +462,11 @@ public abstract partial class PullingSystem : EntitySystem    // ADT Grab tweak:
 
     public bool CanPull(EntityUid puller, EntityUid pullableUid, PullerComponent? pullerComp = null)
     {
+        if (puller == pullableUid) // Ganimed edit - Гонка условий, самозахват проверяется сразу, до любых других операций
+        {
+            return false;
+        }
+
         if (!Resolve(puller, ref pullerComp, false))
         {
             return false;
