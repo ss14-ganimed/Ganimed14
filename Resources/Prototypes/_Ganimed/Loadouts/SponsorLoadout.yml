@@ -28,7 +28,7 @@
     - !type:SponsorLoadoutEffect
       tier: 3
     - !type:JobRestrictedLoadoutEffect
-      whitelistJobs: HeadOfSecurity
+      whitelistJobs: [ HeadOfSecurity ]
 
 - type: loadout
   id: SafnoHoSMaskLoadout
@@ -38,7 +38,7 @@
     - !type:SponsorLoadoutEffect
       tier: 3
     - !type:JobRestrictedLoadoutEffect
-      whitelistJobs: HeadOfSecurity
+      whitelistJobs: [ HeadOfSecurity ]
 
 - type: loadout
   id: SafnoHoSMantleLoadout
@@ -48,7 +48,7 @@
     - !type:SponsorLoadoutEffect
       tier: 3
     - !type:JobRestrictedLoadoutEffect
-      whitelistJobs: HeadOfSecurity
+      whitelistJobs: [ HeadOfSecurity ]
 
 - type: loadout
   id: SafnoHoSJumpsuitLoadout
@@ -58,7 +58,7 @@
     - !type:SponsorLoadoutEffect
       tier: 3
     - !type:JobRestrictedLoadoutEffect
-      whitelistJobs: HeadOfSecurity
+      whitelistJobs: [ HeadOfSecurity ]
 
 - type: loadout
   id: SafnoHoSArmorLoadout
@@ -68,7 +68,7 @@
     - !type:SponsorLoadoutEffect
       tier: 3
     - !type:JobRestrictedLoadoutEffect
-      whitelistJobs: HeadOfSecurity
+      whitelistJobs: [ HeadOfSecurity ]
 
 - type: loadout
   id: SafnoHoSBeltLoadout
@@ -78,4 +78,4 @@
     - !type:SponsorLoadoutEffect
       tier: 3
     - !type:JobRestrictedLoadoutEffect
-      whitelistJobs: HeadOfSecurity
+      whitelistJobs: [ HeadOfSecurity ]
