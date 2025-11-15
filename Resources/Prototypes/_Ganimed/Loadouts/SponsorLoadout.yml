@@ -19,3 +19,63 @@
       tier: 3
     - !type:JobRestrictedLoadoutEffect
       whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden ]
+
+- type: loadout
+  id: SafnoHoSBeretLoadout
+  equipment:
+    head: ClothingHeadHatBeretHoSSafno
+  effects:
+    - !type:SponsorLoadoutEffect
+      tier: 3
+    - !type:JobRestrictedLoadoutEffect
+      whitelistJobs: HeadOfSecurity
+
+- type: loadout
+  id: SafnoHoSMaskLoadout
+  equipment:
+    mask: ClothingMaskGasHoSSafno
+  effects:
+    - !type:SponsorLoadoutEffect
+      tier: 3
+    - !type:JobRestrictedLoadoutEffect
+      whitelistJobs: HeadOfSecurity
+
+- type: loadout
+  id: SafnoHoSMantleLoadout
+  equipment:
+    neck: ClothingNeckMantleHoSSafno
+  effects:
+    - !type:SponsorLoadoutEffect
+      tier: 3
+    - !type:JobRestrictedLoadoutEffect
+      whitelistJobs: HeadOfSecurity
+
+- type: loadout
+  id: SafnoHoSJumpsuitLoadout
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSSafno
+  effects:
+    - !type:SponsorLoadoutEffect
+      tier: 3
+    - !type:JobRestrictedLoadoutEffect
+      whitelistJobs: HeadOfSecurity
+
+- type: loadout
+  id: SafnoHoSArmorLoadout
+  equipment:
+    otherClothing: ClothingOuterArmorHoSSafno
+  effects:
+    - !type:SponsorLoadoutEffect
+      tier: 3
+    - !type:JobRestrictedLoadoutEffect
+      whitelistJobs: HeadOfSecurity
+
+- type: loadout
+  id: SafnoHoSBeltLoadout
+  equipment:
+    belt: ClothingBeltHoSSafno
+  effects:
+    - !type:SponsorLoadoutEffect
+      tier: 3
+    - !type:JobRestrictedLoadoutEffect
+      whitelistJobs: HeadOfSecurity
