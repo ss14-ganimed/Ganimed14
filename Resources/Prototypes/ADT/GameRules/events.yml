@@ -53,9 +53,11 @@
   parent: BaseGameRule
   components:
   - type: StationEvent
+    startAudio: # Ganimed-Edit
+      path: /Audio/Corvax/Announcements/centcomm.ogg
     earliestStart: 30
     weight: 2 # Ganimed-Tweak (3 to 2)
-    reoccurrenceDelay: 60 # Ganimed-Tweak (30 to 60)
+    reoccurrenceDelay: 90 # Ganimed-Tweak (30 to 90)
   - type: CentComRandomEvent
 
 - type: entity
