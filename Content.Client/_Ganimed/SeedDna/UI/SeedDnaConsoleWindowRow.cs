@@ -80,7 +80,7 @@ public sealed class SeedDnaConsoleWindowRow
         var seedChemQuantityDto = _getterChemSeedValue!();
         var dnaDiskChemQuantityDto = _getterChemDnaDiskValue!();
 
-        container.AddChild(CreateTitleLabel($"  - {Loc.GetString("seed-dna-chemicalProp-Min")}"));
+        container.AddChild(CreateTitleLabel($"  - {Loc.GetString("seed-dna-chemicalProp-Mix")}"));
         container.AddChild(SetLabelValue(CreateValueLabel(), seedChemQuantityDto?.Min));
         container.AddChild(SetLabelValue(CreateValueLabel(), dnaDiskChemQuantityDto?.Min));
         container.AddChild(new Control());
@@ -149,7 +149,11 @@ public sealed class SeedDnaConsoleWindowRow
 
         var action = () =>
         {
-            setter(getter());
+            var value = getter();
+            if (value == null)
+                return;
+
+            setter(value);
             SetLabelValue(setupLabel, getupLabel.Text);
             _extractButton!.Disabled = true;
             _replaceButton!.Disabled = true;
