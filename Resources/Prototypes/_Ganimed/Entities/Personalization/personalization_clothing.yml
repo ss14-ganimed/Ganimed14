@@ -7,9 +7,9 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/safno-hos-beret.rsi
+    sprite: _Ganimed/Personalization/Clothing/safno_hos_beret.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/safno-hos-beret.rsi
+    sprite: _Ganimed/Personalization/Clothing/safno_hos_beret.rsi
   - type: StaticPrice
     price: 90
 
@@ -21,9 +21,9 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/safno-hos-mask.rsi
+    sprite: _Ganimed/Personalization/Clothing/safno_hos_mask.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/safno-hos-mask.rsi
+    sprite: _Ganimed/Personalization/Clothing/safno_hos_mask.rsi
   # - type: FlashImmunity # TODO: implement sec glasses functionality. Currently bugged, works even when the mask is pulled down.
   # - type: EyeProtection
   #   protectionTime: 5
@@ -45,9 +45,9 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/safno-hos-mantle.rsi
+    sprite: _Ganimed/Personalization/Clothing/safno_hos_mantle.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/safno-hos-mantle.rsi
+    sprite: _Ganimed/Personalization/Clothing/safno_hos_mantle.rsi
   - type: StaticPrice
     price: 85
 
@@ -59,9 +59,9 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/safno-hos-jumpsuit.rsi
+    sprite: _Ganimed/Personalization/Clothing/safno_hos_jumpsuit.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/safno-hos-jumpsuit.rsi
+    sprite: _Ganimed/Personalization/Clothing/safno_hos_jumpsuit.rsi
   - type: StaticPrice
     price: 85
 
@@ -73,9 +73,9 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/safno-hos-armor.rsi
+    sprite: _Ganimed/Personalization/Clothing/safno_hos_armor.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/safno-hos-armor.rsi
+    sprite: _Ganimed/Personalization/Clothing/safno_hos_armor.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -94,9 +94,9 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/safno-hos-belt.rsi
+    sprite: _Ganimed/Personalization/Clothing/safno_hos_belt.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/safno-hos-belt.rsi
+    sprite: _Ganimed/Personalization/Clothing/safno_hos_belt.rsi
   - type: ContainerContainer
     containers:
       katana: !type:ContainerSlot

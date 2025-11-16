@@ -73,7 +73,7 @@
     - CombatKnife
     - Knife
   - type: Sprite
-    sprite: _Ganimed/Personalization/Objects/Ship_knife.rsi
+    sprite: _Ganimed/Personalization/Objects/ship_knife.rsi
     state: icon
   - type: MeleeWeapon
     wideAnimationRotation: -135
@@ -92,7 +92,7 @@
         Slash: 5
         Piercing: 15
   - type: Item
-    sprite: _Ganimed/Personalization/Objects/Ship_knife.rsi
+    sprite: _Ganimed/Personalization/Objects/ship_knife.rsi
   - type: ThrowingAngle
     angle: 225
   - type: Clothing
@@ -109,12 +109,12 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Objects/safno-d-katana.rsi
+    sprite: _Ganimed/Personalization/Objects/safno_shock_katana.rsi
   - type: MeleeWeapon
     wideAnimationRotation: 90
     swingLeft: true
   - type: Clothing
-    sprite: _Ganimed/Personalization/Objects/safno-d-katana.rsi
+    sprite: _Ganimed/Personalization/Objects/safno_shock_katana.rsi
   - type: Item
     storedRotation: -90
     shape:
@@ -133,22 +133,22 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Objects/safno-s-katana.rsi
+    sprite: _Ganimed/Personalization/Objects/safno_resistant_katana.rsi
   - type: MeleeWeapon
     wideAnimationRotation: 90
     swingLeft: true
   - type: Clothing
-    sprite: _Ganimed/Personalization/Objects/safno-s-katana.rsi
+    sprite: _Ganimed/Personalization/Objects/safno_resistant_katana.rsi
     quickEquip: false
     slots:
     - Belt
     - Suitstorage
   - type: Item
-    sprite: _Ganimed/Personalization/Objects/safno-s-katana.rsi
+    sprite: _Ganimed/Personalization/Objects/safno_resistant_katana.rsi
     storedRotation: -90
     storedSprite:
       state: icon
-      sprite: _Ganimed/Personalization/Objects/safno-s-katana.rsi
+      sprite: _Ganimed/Personalization/Objects/safno_resistant_katana.rsi
     size: Normal
     shape:
     - 0,0,0,3

@@ -1,5 +1,6 @@
+# Agzamov
 - type: loadout
-  id: Agzamovstunbatonloadout
+  id: SponsorLoadoutAgzamovStunbaton
   storage:
     back:
     - StunbatonAgzamov
@@ -9,8 +10,9 @@
     - !type:JobRestrictedLoadoutEffect
       whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden ]
 
+# As04ka
 - type: loadout
-  id: AsukaShipKnifeloadout
+  id: SponsorLoadoutAsukaShipKnife
   storage:
     back:
     - ShipKnife
@@ -20,8 +22,9 @@
     - !type:JobRestrictedLoadoutEffect
       whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden ]
 
+# Safno_S
 - type: loadout
-  id: SafnoHoSBeretLoadout
+  id: SponsorLoadoutSafnoHoSBeret
   equipment:
     head: ClothingHeadHatBeretHoSSafno
   effects:
@@ -31,7 +34,7 @@
       whitelistJobs: [ HeadOfSecurity ]
 
 - type: loadout
-  id: SafnoHoSMaskLoadout
+  id: SponsorLoadoutSafnoHoSMask
   equipment:
     mask: ClothingMaskGasHoSSafno
   effects:
@@ -41,7 +44,7 @@
       whitelistJobs: [ HeadOfSecurity ]
 
 - type: loadout
-  id: SafnoHoSMantleLoadout
+  id: SponsorLoadoutSafnoHoSMantle
   equipment:
     neck: ClothingNeckMantleHoSSafno
   effects:
@@ -51,7 +54,7 @@
       whitelistJobs: [ HeadOfSecurity ]
 
 - type: loadout
-  id: SafnoHoSJumpsuitLoadout
+  id: SponsorLoadoutSafnoHoSJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitHoSSafno
   effects:
@@ -61,7 +64,7 @@
       whitelistJobs: [ HeadOfSecurity ]
 
 - type: loadout
-  id: SafnoHoSArmorLoadout
+  id: SponsorLoadoutSafnoHoSArmor
   equipment:
     otherClothing: ClothingOuterArmorHoSSafno
   effects:
@@ -71,7 +74,7 @@
       whitelistJobs: [ HeadOfSecurity ]
 
 - type: loadout
-  id: SafnoHoSBeltLoadout
+  id: SponsorLoadoutSafnoHoSBelt
   equipment:
     belt: ClothingBeltHoSSafno
   effects:
