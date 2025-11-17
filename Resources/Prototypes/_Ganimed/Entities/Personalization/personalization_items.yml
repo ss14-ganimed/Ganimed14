@@ -109,12 +109,12 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Objects/safno_shock_katana.rsi
+    sprite: _Ganimed/Personalization/Objects/safno_stun_katana.rsi
   - type: MeleeWeapon
     wideAnimationRotation: 90
     swingLeft: true
   - type: Clothing
-    sprite: _Ganimed/Personalization/Objects/safno_shock_katana.rsi
+    sprite: _Ganimed/Personalization/Objects/safno_stun_katana.rsi
   - type: Item
     storedRotation: -90
     shape:
@@ -133,22 +133,22 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Objects/safno_resistant_katana.rsi
+    sprite: _Ganimed/Personalization/Objects/safno_lethal_katana.rsi
   - type: MeleeWeapon
     wideAnimationRotation: 90
     swingLeft: true
   - type: Clothing
-    sprite: _Ganimed/Personalization/Objects/safno_resistant_katana.rsi
+    sprite: _Ganimed/Personalization/Objects/safno_lethal_katana.rsi
     quickEquip: false
     slots:
     - Belt
     - Suitstorage
   - type: Item
-    sprite: _Ganimed/Personalization/Objects/safno_resistant_katana.rsi
+    sprite: _Ganimed/Personalization/Objects/safno_lethal_katana.rsi
     storedRotation: -90
     storedSprite:
       state: icon
-      sprite: _Ganimed/Personalization/Objects/safno_resistant_katana.rsi
+      sprite: _Ganimed/Personalization/Objects/safno_lethal_katana.rsi
     size: Normal
     shape:
     - 0,0,0,3

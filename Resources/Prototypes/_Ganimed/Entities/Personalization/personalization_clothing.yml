@@ -83,8 +83,8 @@
         Slash: 0.55
         Piercing: 0.55
         Heat: 0.7
-#  - type: ExplosionResistance
-#    damageCoefficient: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.75
 
 - type: entity
   parent: ClothingBeltSecurityFilled
