@@ -87,7 +87,7 @@
     damageCoefficient: 0.75
 
 - type: entity
-  parent: ClothingBeltSecurityFilled
+  parent: ClothingBeltSecurity
   id: ClothingBeltHoSSafno
   name: head of security's tactical belt with sheaths
   description: A unique belt for head of security, designed for security gear and equipment. It has integrated sheaths to hold katana and wakizashi swords.
@@ -123,5 +123,12 @@
       #   whitelist:
       #     tags:
       #     - Katana
+  # - type: ItemMapper # TODO: Make katana visuals that do not conflift with sec belt visuals
+  #   mapLayers:
+  #     katana:
+  #       whitelist:
+  #         tags:
+  #         - Katana
+  #   sprite: _Ganimed/Clothing/Belt/belt_overlay.rsi
   - type: StaticPrice
     price: 70

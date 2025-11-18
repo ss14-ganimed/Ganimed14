@@ -24,58 +24,14 @@
 
 # Safno_S
 - type: loadout
-  id: SponsorLoadoutSafnoHoSBeret
+  id: SponsorLoadoutSafnoHoSClothing
+  dummyEntity: ClothingMaskGasHoSSafno
   equipment:
     head: ClothingHeadHatBeretHoSSafno
-  effects:
-    - !type:SponsorLoadoutEffect
-      tier: 3
-    - !type:JobRestrictedLoadoutEffect
-      whitelistJobs: [ HeadOfSecurity ]
-
-- type: loadout
-  id: SponsorLoadoutSafnoHoSMask
-  equipment:
     mask: ClothingMaskGasHoSSafno
-  effects:
-    - !type:SponsorLoadoutEffect
-      tier: 3
-    - !type:JobRestrictedLoadoutEffect
-      whitelistJobs: [ HeadOfSecurity ]
-
-- type: loadout
-  id: SponsorLoadoutSafnoHoSMantle
-  equipment:
     neck: ClothingNeckMantleHoSSafno
-  effects:
-    - !type:SponsorLoadoutEffect
-      tier: 3
-    - !type:JobRestrictedLoadoutEffect
-      whitelistJobs: [ HeadOfSecurity ]
-
-- type: loadout
-  id: SponsorLoadoutSafnoHoSJumpsuit
-  equipment:
     jumpsuit: ClothingUniformJumpsuitHoSSafno
-  effects:
-    - !type:SponsorLoadoutEffect
-      tier: 3
-    - !type:JobRestrictedLoadoutEffect
-      whitelistJobs: [ HeadOfSecurity ]
-
-- type: loadout
-  id: SponsorLoadoutSafnoHoSArmor
-  equipment:
-    otherClothing: ClothingOuterArmorHoSSafno
-  effects:
-    - !type:SponsorLoadoutEffect
-      tier: 3
-    - !type:JobRestrictedLoadoutEffect
-      whitelistJobs: [ HeadOfSecurity ]
-
-- type: loadout
-  id: SponsorLoadoutSafnoHoSBelt
-  equipment:
+    outerClothing: ClothingOuterArmorHoSSafno
     belt: ClothingBeltHoSSafno
   effects:
     - !type:SponsorLoadoutEffect
