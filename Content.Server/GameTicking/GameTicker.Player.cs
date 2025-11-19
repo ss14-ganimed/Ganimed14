@@ -36,11 +36,8 @@ namespace Content.Server.GameTicking
             {
                 if (args.NewStatus != SessionStatus.Disconnected)
                 {
-                    mind.Session = session;
                     _pvsOverride.AddSessionOverride(mindId.Value, session);
                 }
-
-                DebugTools.Assert(mind.Session == session);
             }
 
             DebugTools.Assert(session.GetMind() == mindId);
@@ -84,13 +81,11 @@ namespace Content.Server.GameTicking
                         }
 
                         _chatManager.SendAdminAnnouncementColor(
-                            "\nВНИМАНИЕ!!!\n" +
-                            $"Зашёл НОВИЧОК {args.Session.Name} первый заход: {firstSeenTime}.\n" +
-                            $"Дата создания аккаунта: {creationDate}\n" +
-                            "Администрации быть внимательней :0, у данного игрока меньше 10ч на нашем сервере.\n" +
-                            "ВНИМАНИЕ!!!",
+                            $"Внимание! Зашёл новичок {args.Session.Name}\n" +
+                            $"Первый заход: {firstSeenTime}, Дата создания аккаунта: {creationDate}\n" +
+                            "Администрации быть внимательней, у данного игрока меньше 10ч на нашем сервере.",
                             colorOverrid: Color.White
-                        );
+                        ); // Ganimed-edit-AdminAnnouncement
 
                         // Получаем всех администраторов
                         var clients = _adminManager.ActiveAdmins
@@ -199,10 +194,9 @@ namespace Content.Server.GameTicking
                 case SessionStatus.Disconnected:
                 {
                     _chatManager.SendAdminAnnouncement(Loc.GetString("player-leave-message", ("name", args.Session.Name)));
-                    if (mind != null)
+                    if (mindId != null)
                     {
-                        _pvsOverride.ClearOverride(GetNetEntity(mindId!.Value));
-                        mind.Session = null;
+                        _pvsOverride.RemoveSessionOverride(mindId.Value, session);
                     }
 
                     if (_playerGameStatuses.ContainsKey(args.Session.UserId)) // Corvax-Queue: Delete data only if player was in game
@@ -256,7 +250,7 @@ namespace Content.Server.GameTicking
 
         public HumanoidCharacterProfile GetPlayerProfile(ICommonSession p)
         {
-            return (HumanoidCharacterProfile) _prefsManager.GetPreferences(p.UserId).SelectedCharacter;
+            return (HumanoidCharacterProfile)_prefsManager.GetPreferences(p.UserId).SelectedCharacter;
         }
 
         public void PlayerJoinGame(ICommonSession session, bool silent = false)

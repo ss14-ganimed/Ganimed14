@@ -3,9 +3,9 @@
   name: job-name-cargotech
   description: job-description-cargotech
   playTimeTracker: JobCargoTechnician
-  requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 14400 # ADT-PlaytimeRequirement = 4 hrs
+#  requirements: # Ganimed-Tweak
+#    - !type:OverallPlaytimeRequirement
+#      time: 14400 # ADT-PlaytimeRequirement = 4 hrs
   startingGear: CargoTechGear
   icon: "JobIconCargoTechnician"
   supervisors: job-supervisors-qm
@@ -28,3 +28,14 @@
   #storage:
     #back:
     #- Stuff
+
+- type: chameleonOutfit
+  id: CargoTechnicianChameleonOutfit
+  job: CargoTechnician
+  equipment:
+    head: ClothingHeadHatCargosoft
+    eyes: ClothingEyesGlassesCheapSunglasses
+    mask: ClothingMaskBreath
+    outerClothing: ClothingOuterWinterCargo
+    neck: ClothingNeckScarfStripedBrown
+    gloves: ClothingHandsGlovesFingerless

@@ -56,6 +56,12 @@ ent-ADTStudentIDCard = ID карта студента
 ent-ADTMixologistIDCard = ID карта миксолога
     .desc = ID карта миксолога.
 
+ent-ADTTavernkeepIDCard = ID карта трактирщика
+    .desc = ID карта трактирщика.
+
+ent-ADTBaristaIDCard = ID карта баристы
+    .desc = ID карта баристы.
+
 ent-ADTBakerIDCard = ID карта пекаря
     .desc = ID карта пекаря.
 
@@ -64,6 +70,12 @@ ent-ADTButcherIDCard = ID карта мясника
 
 ent-ADTPizzaioloIDCard = ID карта пиццайоло
     .desc = ID карта пиццайоло.
+
+ent-ADTConfectionerIDCard = ID карта кондитера
+    .desc = ID карта кондитера.
+
+ent-ADTWaiterIDCard = ID карта официанта
+    .desc = ID карта официанта.
 
 ent-ADTPracticalNurseIDCard = ID карта фельдшера
     .desc = ID карта фельдшера.
@@ -92,7 +104,7 @@ ent-ADTPostmanIDCard = ID карта почтальона
 ent-ADTInventoryAssociateIDCard = ID карта кладовщика
     .desc = ID карта кладовщика.
 
-ent-ADTExcavatorIDCard = ID карта шахтёра
+ent-ADTMinerIDCard = ID карта шахтёра
     .desc = ID карта шахтёра.
 
 ent-ADTLabTechIDCard = ID карта аналитика
@@ -109,6 +121,48 @@ ent-ADTJesterIDCard = ID карта шута
 
 ent-ADTFoolIDCard = ID карта дурака
     .desc = ID карта дурака.
+
+ent-ADTPerformerIDCard = ID карта исполнителя
+    .desc = ID карта исполнителя.
+
+ent-ADTConcertmasterIDCard = ID карта концертмейстера
+    .desc = ID карта концертмейстера.
+
+ent-ADTComposerIDCard = ID карта композитора
+    .desc = ID карта композитора.
+
+ent-ADTBardIDCard = ID карта барда
+    .desc = ID карта барда.
+
+ent-ADTDJIDCard = ID карта диджея
+    .desc = ID карта диджея.
+
+ent-ADTJournalistIDCard = ID карта журналиста
+    .desc = ID карта журналиста.
+
+ent-ADTKaratekaIDCard = ID карта каратиста
+    .desc = ID карта каратиста.
+
+ent-ADTKickboxerIDCard = ID карта кикбоксера
+    .desc = ID карта кикбоксера.
+
+ent-ADTSavatistIDCard = ID карта саватиста
+    .desc = ID карта саватиста.
+
+ent-ADTHandToHandCombatMasterIDCard = ID карта мастера рукопашного боя
+    .desc = ID карта мастера рукопашного боя.
+
+ent-ADTMMAFighterIDCard = ID карта бойца ММА
+    .desc = ID карта бойца ММА.
+
+ent-ADTJudoistIDCard = ID карта дзюдоиста
+    .desc = ID карта дзюдоиста.
+
+ent-ADTCoachIDCard = ID карта тренера
+    .desc = ID карта тренера.
+
+ent-ADTGladiatorIDCard = ID карта гладиатора
+    .desc = ID карта гладиатора.
 
 ent-ADTInvestigatorIDCard = ID карта следователя
     .desc = ID карта следователя.
@@ -175,3 +229,6 @@ ent-ADTCMOIDCard = ID карта старшего медицинского оф�
 
 ent-ADTTraumatologistIDCard = ID карта травматолога
     .desc = ID карта травматолога.
+
+ent-ADTintendantIDCard = ID карта интенданта
+    .desc = ID карта интенданта

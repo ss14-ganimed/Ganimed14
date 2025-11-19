@@ -17,9 +17,10 @@
         Piercing: 0.50
         Heat: 0.50
         Caustic: 0.50
-    staminaModifier: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.25
+  - type: StaminaResistance
+    damageCoefficient: 0.5
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodHeretic
     slot: head
@@ -27,3 +28,6 @@
     modifiers:
       Hard: 1.75
       Choke: 1.5
+  - type: ClothingGrantComponent
+    component:
+    - type: GrabProtection

@@ -50,6 +50,7 @@ namespace Content.Server.Revenant.EntitySystems;
 
 public sealed partial class RevenantSystem
 {
+    [Dependency] private readonly EmagSystem _emagSystem = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
@@ -66,6 +67,7 @@ public sealed partial class RevenantSystem
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+    [Dependency] private readonly ISharedPlayerManager _player = default!; // ADT-Tweak
 
     private static readonly ProtoId<TagPrototype> WindowTag = "Window";
 
@@ -380,12 +382,7 @@ public sealed partial class RevenantSystem
                 _whitelistSystem.IsBlacklistPass(component.MalfunctionBlacklist, ent))
                 continue;
 
-            var ev = new GotEmaggedEvent(uid, EmagType.Interaction | EmagType.Access);
-            RaiseLocalEvent(ent, ref ev);
-            // ADT Revenant malfunction for IPC
-            if (_status.TryAddStatusEffect<SeeingStaticComponent>(ent, "SeeingStatic", TimeSpan.FromSeconds(15), true))
-                _status.TryAddStatusEffect<SlowedDownComponent>(ent, "SlowedDown", TimeSpan.FromSeconds(15), true);
-            _audio.PlayPvs(component.MalfSound, uid);
+            _emagSystem.TryEmagEffect(uid, uid, ent);
         }
     }
 
@@ -404,9 +401,9 @@ public sealed partial class RevenantSystem
         {
             _status.TryAddStatusEffect<TemporaryBlindnessComponent>(ent, TemporaryBlindnessSystem.BlindingStatusEffect, TimeSpan.FromSeconds(3), true);
             _hallucinations.StartHallucinations(ent, "ADTHallucinations", component.HysteriaDuration, true, component.HysteriaProto);
-            if (!_mind.TryGetMind(ent, out var mindId, out var mind) || mind.Session == null)
+            if (!_mind.TryGetMind(ent, out var mindId, out var mind) || !_player.TryGetSessionById(mind.UserId, out var session))
                 continue;
-            _audio.PlayGlobal(component.HysteriaSound, Filter.SinglePlayer(mind.Session), false);
+            _audio.PlayGlobal(component.HysteriaSound, Filter.SinglePlayer(session), false);
         }
     }
 

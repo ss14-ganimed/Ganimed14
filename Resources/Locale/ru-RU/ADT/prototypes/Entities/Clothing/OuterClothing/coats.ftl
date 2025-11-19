@@ -15,8 +15,8 @@ ent-ADTClothingOuterCoatLabPathologistOpened_alt = чёрный лаборато
 ent-ADTClothingOuterApronPathologist = фартук патологоанатома
     .desc = Фартук для работы с трупами.
 
-ent-ADTClothingKadet = шинель для Кадетов Службы безопасности
-    .desc = шинель, сшитая для новобранцев службы безопасности. Она очень похожа на шинели младших чинов РИА
+ent-ADTClothingKadet = шинель кадета службы безопасности
+    .desc = Легкобронированная кожаная шинель, предназначенная для повседневного ношения кадетами службы безопасности. Имеет логотип компании NanoTrasen Security.
 
 ent-ADTClothingOuterGraySweatshirtTop = серая толстовка-топка
     .desc = Стильная белая толстовка-топка. Производства компании "Modeling Agency Dar-Vaxed".
@@ -48,22 +48,12 @@ ent-ADTClothingOuterCoatTrader = бомбер торговца
     .desc = Куртка-бомбер торговцев ТСФ
     .suffix = { "ТСФ" }
 
-ent-ADTJasonBomber = куртка маньяка-убийцы
-    .suffix = Хеллоуин
-    .desc = Ходят слухи, что эта куртка принадлежит маньяку в хоккейной маске!
-
-ent-ADTStudentBomber = университетская куртка-бомбер
-    .suffix = Хеллоуин
-    .desc = Удобная студенческая куртка-бомбер с нашитой на ней большой английской буквой В. Довольно популярна среди студентов различных учебных заведений ТСФ.
-
 ent-ADTClothingOuterCoatLabcoatCMOHike = походный халат Главного врача
     .desc = Частично открытый халат. Не сковывает движения.
 
 ent-ADTClothingOuterCoatLabcoatCMOHikeOpened = походный халат Главного врача
     .desc = Частично открытый халат. Не сковывает движения.
     .suffix = {"Раскрытый"}
-
-
 
 ent-ADTClothingOuterLeatherJacket = кожаная куртка
     .desc = Причёска «Помпадур» в комплект не входит.
@@ -92,6 +82,9 @@ ent-ADTClothingOuterLettermanNanoTrasen = корпоративно-синяя ж
 ent-ADTClothingOuterLettermanSyndie = кроваво-красная жилетка
     .desc = Кроваво-красная жилетка с огромной буквой "S" на спине. Ничего подозрительного.
 
+ent-ADTClothingOuterLettermanBlack = чёрная жилетка
+    .desc = Обычная чёрная жилетка.
+
 
 
 ent-ADTClothingOuterCoatDetectiveLoadoutOld = старый тренч
@@ -100,9 +93,28 @@ ent-ADTClothingOuterCoatDetectiveLoadoutOld = старый тренч
 ent-ADTClothingOuterCoatXCoat = икс-ключительное облачение
     .desc = Кажется, это облачение заигравшегося творца.
 
-ent-ADTClothingOuterCoatRadioDemon = фрак радио-демона
-    .desc = А теперь... Не переключайтесь.
-    .suffix = {"Хеллоуин"}
 
 ent-ADTClothingOuterExplorerBomber = бомбер исследователя
     .desc = Вперёд навстречу новым исследованиям и приключениям!.. Как жаль, что на Лаваленде многие приключения ведут к смерти... От него пахнет... Пеплом?
+
+
+ent-ADTClothingCoatMonkRobe = роба монаха
+    .desc = Нет ничего на свете лучше, чем просто уйти от всего и быть последователем креста.
+
+ent-ADTClothingCoatReligionLeader = роба религиозного лидера
+    .desc = По-королевски религиозная одежда, которая покажет вашим апостолам своё место.
+
+ent-ADTClothingCoatClockworkRobe = заводная роба
+    .desc = Йэа ефдн унжчаачгп дфтн рнсфмыцръ яйърхпчяфф-х-рщцх (Что-то на ратваровском).
+
+ent-ADTClothingOuterSpiderRobe = зловещая паучья роба
+    .desc = Роба, популярная среди паучьих сект. Выглядит крайне знакомо...
+
+ent-ADTClothingOuterTechpriestRobe = роба техно-жреца
+    .desc = С мгновения того, как понял я слабость своей плоти, я был отвращён.
+
+ent-ADTClothingOuterDavidsJacket = куртка парамедика
+    .desc = Ярко-желтая сигнальная куртка, которую обожают парамедики конца XXI века.
+
+ent-ADTClothingOuterDavidsJacketValid = куртка эджраннера
+    .desc = Ты на самой грани. Покажи им, что ты готов на всё.

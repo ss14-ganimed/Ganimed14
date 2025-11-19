@@ -8,6 +8,7 @@
     - ADTUplinkERTWeapon
     - ADTUplinkERTMisc
     - ADTUplinkERTAttachments
+    - ADTUplinkERTAmmo
     currencyWhitelist:
     - Productunit
 
@@ -66,7 +67,7 @@
 
 - type: stack
   id: Productunit
-  name: Product unit
+  name: stack-name-product-unit
   icon: ADT/Objects/Specific/tradeunit.rsi
   spawn: Productunit1
 

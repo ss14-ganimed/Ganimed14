@@ -6,20 +6,25 @@
     - type: RandomHumanoidAppearance
       randomizeName: false
     - type: GhostTakeoverAvailable
+    - type: IdBind
 
 - type: randomHumanoidSettings
   id: EventHumanoidMindShielded
   parent: EventHumanoid
   components:
-    - type: MindShield
+    - type: AutoImplant
+      implants:
+      - MindShieldImplant
     - type: AntagImmune
 
 - type: randomHumanoidSettings
   id: EventHumanoidCentcomm
   parent: EventHumanoidMindShielded
+  randomizeName: false
   components:
   - type: AutoImplant
     implants:
+    - MindShieldImplant
     - DeathRattleImplantCentcomm
 
 ## Death Squad
@@ -34,8 +39,9 @@
       state: icon
     - type: RandomMetadata
       nameSegments:
-        - NamesFirstMilitaryLeader
-        - NamesLastMilitary
+      - NamesFirstDeadSquad
+      - NamesLastDeadSquadCallsign
+      nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
       settings: DeathSquad
 
@@ -70,8 +76,9 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 270000 # 75h # adt tweak
+      - !type:DepartmentTimeRequirement
+        department: Security
+        time: 36000 # 10 hrs Ganimed-RoleTime
       mindRoles:
       - MindRoleGhostRoleFamiliar
     - type: Loadout
@@ -79,8 +86,9 @@
       roleLoadout: [ RoleSurvivalEVA ]
     - type: RandomMetadata
       nameSegments:
-        - NamesFirstMilitaryLeader
-        - NamesLastMilitary
+      - NamesFirstDeadSquad
+      - NamesLastDeadSquadCallsign
+      nameFormat: name-format-standard
 
 
 # ## ERT Leader
@@ -546,12 +554,17 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h # ADT-tweak
+      - !type:DepartmentTimeRequirement
+        department: Medical
+        time: 18000 # 5 hrs Ganimed-RoleTime
+      - !type:DepartmentTimeRequirement
+        department: Security
+        time: 18000 # 5 hrs Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
       - ADTNamesFirstMilitaryRXBZZ # ADT Tweak
-      - NamesLastMilitary
+      - NamesLastERTCallsign
+      nameFormat: name-format-standard
 
 ## Central Command
 
@@ -594,6 +607,10 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: default
+      requirements:
+      - !type:DepartmentTimeRequirement
+        department: Command
+        time: 90000 # 25 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ CentcomGear ]
       roleLoadout: [ RoleSurvivalStandard ]
@@ -652,6 +669,7 @@
       nameSegments:
       - NamesFirst
       - NamesLast
+      nameFormat: name-format-standard
 
 - type: randomHumanoidSettings
   id: Cluwne

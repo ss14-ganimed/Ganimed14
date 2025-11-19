@@ -5,6 +5,7 @@
   abstract: true
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
+  - type: VentCrawler # ADT tweak
   - type: Sprite
     drawdepth: Mobs
     sprite: ADT/Mobs/Aliens/slimes.rsi
@@ -31,9 +32,7 @@
     baseSprintSpeed: 4
   - type: FootstepModifier
     footstepSoundCollection:
-      path: /Audio/Effects/Footsteps/slime1.ogg
-      params:
-        volume: 3
+      collection: FootstepSlime
   - type: Tag
     tags:
     - FootstepSound
@@ -123,6 +122,7 @@
     useSound:
       path: /Audio/Items/crowbar.ogg
   - type: SupermatterIgnore # ADT-Tweak
+  - type: GrabProtection
   # ADT tweak end
 
 - type: entity

@@ -12,6 +12,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Stacks;
+using Content.Server.ADT.Objectives.Systems; // ADT-Tweak
 
 namespace Content.Server.Objectives.Systems;
 
@@ -24,6 +25,7 @@ public sealed class StealConditionSystem : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly SharedObjectivesSystem _objectives = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly CheckSupermatterSystem _supermatter = default!; // ADT-Tweak
 
     private EntityQuery<ContainerManagerComponent> _containerQuery;
 
@@ -44,6 +46,14 @@ public sealed class StealConditionSystem : EntitySystem
     /// start checks of target acceptability, and generation of start values.
     private void OnAssigned(Entity<StealConditionComponent> condition, ref ObjectiveAssignedEvent args)
     {
+        // ADT-Tweak
+        if (condition.Comp.Supermatter && !_supermatter.SupermatterCheck())
+        {
+            args.Cancelled = true;
+            return;
+        }
+        // ADT-Tweak
+
         List<StealTargetComponent?> targetList = new();
 
         var query = AllEntityQuery<StealTargetComponent>();
@@ -79,7 +89,7 @@ public sealed class StealConditionSystem : EntitySystem
         var group = _proto.Index(condition.Comp.StealGroup);
         string localizedName = Loc.GetString(group.Name);
 
-        var title =condition.Comp.OwnerText == null
+        var title = condition.Comp.OwnerText == null
             ? Loc.GetString(condition.Comp.ObjectiveNoOwnerText, ("itemName", localizedName))
             : Loc.GetString(condition.Comp.ObjectiveText, ("owner", Loc.GetString(condition.Comp.OwnerText)), ("itemName", localizedName));
 
@@ -93,12 +103,12 @@ public sealed class StealConditionSystem : EntitySystem
     }
     private void OnGetProgress(Entity<StealConditionComponent> condition, ref ObjectiveGetProgressEvent args)
     {
-        args.Progress = GetProgress(args.Mind, condition);
+        args.Progress = GetProgress((args.MindId, args.Mind), condition);
     }
 
-    private float GetProgress(MindComponent mind, StealConditionComponent condition)
+    private float GetProgress(Entity<MindComponent> mind, StealConditionComponent condition)
     {
-        if (!_containerQuery.TryGetComponent(mind.OwnedEntity, out var currentManager))
+        if (!_containerQuery.TryGetComponent(mind.Comp.OwnedEntity, out var currentManager))
             return 0;
 
         var containerStack = new Stack<ContainerManagerComponent>();
@@ -128,7 +138,7 @@ public sealed class StealConditionSystem : EntitySystem
         }
 
         //check pulling object
-        if (TryComp<PullerComponent>(mind.OwnedEntity, out var pull)) //TO DO: to make the code prettier? don't like the repetition
+        if (TryComp<PullerComponent>(mind.Comp.OwnedEntity, out var pull)) //TO DO: to make the code prettier? don't like the repetition
         {
             var pulledEntity = pull.Pulling;
             if (pulledEntity != null)
@@ -155,7 +165,7 @@ public sealed class StealConditionSystem : EntitySystem
             }
         } while (containerStack.TryPop(out currentManager));
 
-        var result = count / (float) condition.CollectionSize;
+        var result = count / (float)condition.CollectionSize;
         result = Math.Clamp(result, 0, 1);
         return result;
     }

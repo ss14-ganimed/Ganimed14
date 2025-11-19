@@ -2,8 +2,11 @@
   id: Lavaland
   biome: LavaLand
   mapName: shuttle-destination-lavaland
-  mapLight: "#1F0E11"
+  mapLight: "#1a0005"
   addedComponents:
+  - type: RestrictedRange
+    range: 250
+    texturepath: "/Textures/ADT/Effects/weather.rsi/ashfal_lvery_light.png"
   - type: SpawnInRange
     protosToSpawn:
       - LavaDungeonRoomMarker
@@ -15,16 +18,27 @@
       - LavaDungeonRoomMarker
       - LavaDungeonRoomMarker
       - LavaDungeonRoomMarker
-      # - BloodMinerDungeMarker
-    minX: -200
-    maxX: 200
-    minY: -200
-    maxY: 200
+      - LavaDungeonRoomMarker
+      - LavaDungeonRoomMarker
+      - LavaDungeonRoomMarker
+      - LavaDungeonRoomMarker
+      - BloodMinerDungeMarker
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+    minX: -250
+    maxX: 250
+    minY: -250
+    maxY: 250
   - type: FTLDestination
-    whitelist:
-      components:
-      - MiningShuttleGuest
-      - MiningShuttle
   - type: WeatherScheduler # Regular ash storms
     stages:
     - duration: # 5-10 minutes of calm
@@ -61,6 +75,11 @@
   - OreUranium
   - OreDiamond
   - OreArtifactFragment
+  - ADTOreBS
+  - OreCopper
+  - OreZinc
+  - OreLead
+  - OreGibtonit
 
 - type: planet
   id: GlacierSurface
@@ -89,3 +108,7 @@
   - OreUranium
   - OreDiamond
   - OreArtifactFragment
+  - ADTOreBS
+  - OreCopper
+  - OreZinc
+  - OreLead

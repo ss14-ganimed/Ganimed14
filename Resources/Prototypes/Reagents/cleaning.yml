@@ -48,6 +48,9 @@
   recognizable: true
   boilingPoint: 100.0
   meltingPoint: 60.0
+  slipData:
+    requiredSlipSpeed: 3.5
+  friction: 0.3 # Slightly less friction than water, but not as bad as space lube
   metabolisms:
     # Start ADT tweak
     Narcotic:
@@ -104,7 +107,10 @@
   id: SpaceLube
   name: reagent-name-space-lube
   desc: reagent-desc-space-lube
-  slippery: true
+  evaporationSpeed: 0.1
+  slipData:
+    requiredSlipSpeed: 1
+    superSlippery: true
   physicalDesc: reagent-physical-desc-shiny
   flavor: funny
   color: "#77b58e"
@@ -112,9 +118,8 @@
   boilingPoint: 290.0 # Glycerin
   meltingPoint: 18.2
   tileReactions:
-    - !type:SpillTileReaction
-      requiredSlipSpeed: 1
-      superSlippery: true
+  - !type:SpillTileReaction
+  friction: 0.05
 
 - type: reagent
   id: SpaceGlue
@@ -125,9 +130,9 @@
   color: "#ffffff"
   boilingPoint: 250.0
   meltingPoint: 380.0
-  viscosity: 0.5
   tileReactions:
-    - !type:SpillTileReaction
+  - !type:SpillTileReaction
+  viscosity: 0.5
   reactiveEffects:
     Acidic:
       methods: [ Touch ]
@@ -138,11 +143,10 @@
   metabolisms:
     Narcotic:
       effects:
-      - !type:GenericStatusEffect
-        key: SeeingRainbows
-        component: SeeingRainbows
-        type: Add
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectSeeingRainbow
         time: 5
+        type: Add
         refresh: false
     Drink:
       effects:
@@ -153,6 +157,4 @@
         time: 5
         refresh: false
   footstepSound:
-    collection: FootstepSticky
-    params:
-      volume: 6
+    collection: FootstepSlime

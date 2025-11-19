@@ -1,19 +1,4 @@
 - type: technology
-  id: AdvantedEnergy
-  name: research-avanted-energy
-  icon:
-    sprite: ADT/Structures/Power/industrial_smes.rsi
-    state: smes
-  discipline: Industrial
-  tier: 3
-  cost: 15000
-  recipeUnlocks:
-  - ADTIndustrialSMESMachineCircuitboard
-  position: 3,-2
-  requiredTech:
-  - AtmosphericTech
-
-- type: technology
   id: ADTCompactTechnologies
   name: research-technology-compact-technologies
   icon:
@@ -24,10 +9,9 @@
   cost: 10000
   recipeUnlocks:
     - RPD
-    - RPDAmmo
     - RCD
     - RCDAmmo
-  position: 3,-4
+  position: 3,-3
   requiredTech:
   - AdvancedToolsTechnology
 
@@ -89,22 +73,89 @@
   cost: 10000
   recipeUnlocks:
     - ADTWeaponCutterAdv
-  position: 4,1
+  position: 5,1
   requiredTech:
-  - SalvageEquipment
+  - ADTSalvageWeapon
 
 - type: technology
-  id: ExperimentalPKA
-  name: research-technology-experimental-pka
+  id: ADTSalvageWeapon
+  name: research-technology-salvage-weapon
   icon:
-    sprite: ADT/Objects/Weapons/Guns/PKAs/experimental_pka.rsi
+    sprite: ADT/Objects/Weapons/Guns/Battery/cutter.rsi
     state: icon
   discipline: Industrial
   tier: 2
-  cost: 8500
+  cost: 7500
   recipeUnlocks:
-    - ADTWeaponExperimentalProtoKineticAcelleratorRecipe
-  position: 5,1
+    - ADTWeaponCutter
+  position: 4,1
   requiredTech:
-  - AdvSalvageWeapons
+  - SalvageEquipment
   # Fuck you new RnD console
+
+- type: technology
+  id: ADTAdvancedEnergy
+  name: research-technology-advanced-energy
+  icon:
+    sprite: Objects/Power/power_cells.rsi
+    state: hyper
+  discipline: Industrial
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+    - ADTPowerCellHyperRecipe
+    - ADTIndustrialChargerCircuitboard
+  position: 0,-2
+  requiredTech:
+  - AdvancedPowercells
+  # Fuck you new RnD console
+
+- type: technology
+  id: ADTAdvancedThruster
+  name: research-technology-advanced-thruster
+  icon:
+    sprite: ADT/Structures/Machines/Thrusters/big_thruster.rsi
+    state: icon
+  discipline: Industrial
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+    - ADTMachineMediumThrusterCircuitboard
+    - ADTMachineBigThrusterCircuitboard
+    - ADTMachineMediumLongThrusterCircuitboard
+  position: 4,2
+  requiredTech:
+  - Shuttlecraft
+
+- type: technology
+  id: ADTMegaCells
+  name: research-technology-basemegacells
+  icon:
+    sprite: ADT/Objects/Devices/megacells.rsi
+    state: megacell
+  discipline: Industrial
+  tier: 3
+  cost: 25000
+  recipeUnlocks:
+    - ADTMegaCellRechargerCircuitboardRecipe
+    - ADTMegaCellSmallRecipe
+    - ADTMegaCellMediumRecipe
+  position: 0,-3
+  requiredTech:
+  - ADTAdvancedEnergy
+
+- type: technology
+  id: ADTMegaCellsAdvanced
+  name: research-technology-advancedmegacells
+  icon:
+    sprite: ADT/Objects/Devices/megacells.rsi
+    state: hyp_megacell
+  discipline: Industrial
+  tier: 3
+  cost: 35000
+  recipeUnlocks:
+    - ADTMegaCellHighRecipe
+    - ADTMegaCellHyperRecipe
+  position: 0,-4
+  requiredTech:
+  - ADTMegaCells

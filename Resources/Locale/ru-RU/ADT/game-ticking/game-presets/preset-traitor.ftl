@@ -1,9 +1,16 @@
-traitorlight-title = Предатели (облегченный)
-traitorlight-description = Среди нас есть предатели...
-traitorlight-not-enough-ready-players = Недостаточно игроков готовы к игре! Из { $minimumPlayers } необходимых игроков готовы { $readyPlayersCount }. Нельзя запустить пресет Предатели.
-traitorlight-no-one-ready = Нет готовых игроков! Нельзя запустить пресет Предатели.
+brother-lead-role-greeting =
+    Вы — кровный брат.
+    Вместо полноценного аплинка, вам выдали вспышку, умение гипноза и дополнительные цели.
 
-antagtrio-title = Трио
-antagtrio-description = Кажется, на станции есть предатели, генокрады и еретики..
-antagtrio-not-enough-ready-players = Недостаточно игроков готовы к игре! Из { $minimumPlayers } необходимых игроков готовы { $readyPlayersCount }. Нельзя запустить пресет Трио.
-antagtrio-no-one-ready = Нет готовых игроков! Нельзя запустить пресет Трио.
+brother-lead-briefing =
+    Выполните ваши цели, собрав команду из самых лучших злодеев на станции!
+    Вы умеете гипнотизировать путём ослепления кого-то вспышкой в лицо.
+
+brother-briefing =
+    Выполняйте приказы старшего брата, используя свои навыки для его целей.
+    Не забывайте общаться с остальными братьями.
+
+
+role-subtype-brother = Кровный Брат
+role-subtype-brother-lead = Кровный Старший Брат
+admin-verb-make-brother = Сделать кровным братом

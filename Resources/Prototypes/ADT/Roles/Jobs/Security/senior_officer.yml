@@ -6,24 +6,25 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobWarden
-      time: 28800 #8 hrs #ADT-RoleTime
+      time: 28800 #8 hrs
     - !type:RoleTimeRequirement
       role: JobDetective
-      time: 14400 #4 hrs #ADT-RoleTime
+      time: 14400 #4 hrs
     - !type:RoleTimeRequirement
       role: JobSecurityOfficer
-      time: 28800 #8 hrs #ADT-RoleTime
+      time: 28800 #8 hrs
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 234000 # 65 hrs #ADT-RoleTime
-    # ADT Restrict Start
+      time: 234000 # 65 hrs
     - !type:SpeciesRequirement
       inverted: true
       species:
       - Resomi
       - Vox
-      - Shadekin
+#      - Shadekin
   # ADT RESTRICT End
+    - !type:AgeRequirement # Ganimed-MRP
+      requiredAge: 21
   startingGear: SeniorOfficerGear
   icon: "JobIconSeniorOfficer"
   supervisors: job-supervisors-hos
@@ -35,6 +36,8 @@
   - Service
   - External
   - Cryogenics
+  extendedAccess: # Ganimed-Tweak
+  - Detective
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -47,3 +50,11 @@
     ears: ClothingHeadsetSecurity
     pocket1: WeaponRevolverDeckard
     pocket2: SpeedLoaderMagnum
+
+- type: chameleonOutfit
+  id: ADTSeniorOfficerChameleonOutfit
+  job: ADTSeniorOfficer
+  hasMindShield: true
+  equipment:
+    eyes: ClothingEyesGlassesSecurity
+    ears: ClothingHeadsetSecurity

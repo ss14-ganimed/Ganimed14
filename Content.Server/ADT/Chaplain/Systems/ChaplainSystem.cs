@@ -1,43 +1,30 @@
-using Content.Server.Bible.Components;
-using Content.Server.Ghost.Roles.Components;
-using Content.Server.Ghost.Roles.Events;
 using Content.Server.Popups;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
-using Content.Shared.Bible;
 using Content.Shared.Bible.Components;
 using Content.Shared.Damage;
 using Content.Shared.IdentityManagement;
-using Content.Shared.Interaction;
 using Content.Shared.Inventory;
-using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Timing;
-using Content.Shared.Verbs;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Content.Shared.FixedPoint;
 using Content.Shared.Alert;
 using Content.Shared.DoAfter;
-using Content.Shared.Chemistry;
-using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Server.Chemistry.Containers.EntitySystems;
-using Content.Server.Chemistry.ReagentEffects;
-using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Prototypes;
 using Content.Shared.ADT.Phantom.Components;
 using Content.Shared.Revenant.Components;
 using Content.Shared.Body.Components;
-using Content.Shared.Body.Part;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Humanoid;
 using Content.Server.EUI;
 using Content.Shared.Mind;
 using Content.Server.Chaplain;
+using Robust.Shared.Player;
 
 namespace Content.Server.Bible;
 
@@ -59,6 +46,7 @@ public sealed class ChaplainSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly EuiManager _euiManager = null!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
+    [Dependency] private readonly ISharedPlayerManager _player = default!;
 
     public override void Initialize()
     {
@@ -89,7 +77,7 @@ public sealed class ChaplainSystem : EntitySystem
                 comp.Accumulator = 0f;
                 continue;
             }
-                
+
 
             comp.Accumulator += frameTime;
 
@@ -135,7 +123,7 @@ public sealed class ChaplainSystem : EntitySystem
 
         component.Power += amount;
 
-        FixedPoint2.Min(component.Power, component.PowerRegenCap);
+        component.Power = FixedPoint2.Min(component.Power, component.PowerRegenCap);
 
         _alerts.ShowAlert(uid, _proto.Index(component.Alert), (short) Math.Clamp(Math.Round(component.Power.Float()), 0, 5));
 
@@ -216,8 +204,8 @@ public sealed class ChaplainSystem : EntitySystem
 
         args.Handled = true;
         var target = args.Args.Target.Value;
-        if (_mindSystem.TryGetMind(target, out var mindId, out var mind) && mind.Session != null)
-            _euiManager.OpenEui(new AcceptReligionEui(uid, target, component, this), mind.Session);
+        if (_mindSystem.TryGetMind(target, out var mindId, out var mind) && _player.TryGetSessionById(mind.UserId, out var session))
+            _euiManager.OpenEui(new AcceptReligionEui(uid, target, component, this), session);
     }
 
     public void MakeBeliever(EntityUid uid, EntityUid target, ChaplainComponent component)
@@ -317,8 +305,40 @@ public sealed class ChaplainSystem : EntitySystem
 
         args.Handled = true;
 
-        if (!TryUseAbility(uid, component, component.HolyWaterCost))
+        if (component.Power < component.HolyWaterCost)
+        {
+            _popupSystem.PopupEntity(Loc.GetString("chaplain-not-enough-power"), uid, uid);
             return;
+        }
+
+        if (TryComp<MetaDataComponent>(target, out var metaData) && metaData.EntityPrototype != null)
+        {
+            var entityId = metaData.EntityPrototype.ID;
+
+            if (entityId.Contains("Candle") && !entityId.EndsWith("Infinite"))
+            {
+                var newPrototypeId = entityId + "Infinite";
+                if (!_proto.HasIndex<EntityPrototype>(newPrototypeId))
+                {
+                    _popupSystem.PopupEntity(
+                        Loc.GetString("chaplain-holy-touch-fail-self", ("target", Identity.Entity(target, EntityManager))),
+                        uid,
+                        uid);
+                    return;
+                }
+                var transform = Transform(target);
+                var newCandle = Spawn(newPrototypeId, transform.Coordinates);
+
+                var newTransform = Transform(newCandle);
+                newTransform.LocalRotation = transform.LocalRotation;
+
+                Del(target);
+                ChangePowerAmount(uid, -component.HolyWaterCost, component);
+                _popupSystem.PopupEntity(Loc.GetString("chaplain-candle-transform-success", ("target", Identity.Entity(newCandle, EntityManager))), uid, uid);
+                _audio.PlayPvs(component.HolyWaterSoundPath, uid);
+                return;
+            }
+        }
 
         if (TryComp<SolutionContainerManagerComponent>(target, out var solutionContainer) && solutionContainer.Containers != null && !HasComp<BodyComponent>(target))
         {
@@ -349,17 +369,15 @@ public sealed class ChaplainSystem : EntitySystem
 
             if (success)
             {
-
+                ChangePowerAmount(uid, -component.HolyWaterCost, component);
                 _popupSystem.PopupEntity(Loc.GetString("chaplain-holy-water-success", ("target", Identity.Entity(target, EntityManager))), uid, uid);
                 _audio.PlayPvs(component.HolyWaterSoundPath, uid);
             }
-
             else
             {
-                ChangePowerAmount(uid, component.HolyWaterCost, component);
                 _popupSystem.PopupEntity(Loc.GetString("chaplain-holy-water-nothing", ("target", Identity.Entity(target, EntityManager))), uid, uid);
-                return;
             }
+            return;
         }
 
         if (HasComp<PhantomComponent>(target) || HasComp<RevenantComponent>(target))

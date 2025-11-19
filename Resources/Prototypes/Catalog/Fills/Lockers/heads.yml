@@ -7,9 +7,9 @@
     - id: CargoBountyComputerCircuitboard
     - id: CargoRequestComputerCircuitboard
     - id: CargoSaleComputerCircuitboard
-    - id: CargoShuttleComputerCircuitboard
     - id: CargoShuttleConsoleCircuitboard
     - id: SalvageMagnetMachineCircuitboard
+    - id: SalvageJobBoardComputerCircuitboard
     - id: CigPackGreen
       prob: 0.50
     - id: ClothingHeadsetAltCargo
@@ -19,12 +19,13 @@
     - id: RubberStampDenied
     - id: RubberStampQm
     - id: AstroNavCartridge
+    - id: ClothingHandsKnuckleDustersQM
     - id: MailTeleporterMachineCircuitboard
     - id: PrinterDocFlatpack # Corvax-Printer
-    # ADT-Economy-Start
-    - id: ADTCommandBudgetCard
-    - id: ADTCommandBudgetPinPaper
-    # ADT-Economy-End
+    # # ADT-Economy-Start
+    # - id: ADTCommandBudgetCard
+    # - id: ADTCommandBudgetPinPaper
+    # # ADT-Economy-End
     # ADT-WikiBooks-Start
     - id: ADTBookSRPcmd
     - id: ADTBookSRPcrg
@@ -57,7 +58,7 @@
     - id: ClothingHeadsetAltCommand
     - id: ClothingOuterArmorCaptainCarapace
     - id: CommsComputerCircuitboard
-    - id: DoorRemoteCommand
+    - id: DoorRemoteCustom
     - id: MedalCase
     - id: NukeDisk
     - id: PinpointerNuclear
@@ -67,6 +68,10 @@
     - id: SpaceCash1000
     - id: WeaponDisabler
     - id: ClothingEyesGlassesCommand
+    - id: HeadSkeleton # A skull to accompany your skeleton crew
+      conditions:
+      - !type:PlayerCountCondition
+        max: 15
     # Corvax-Resprite-Start
     - id: ClothingHeadCaptainHat
     - id: ClothingOuterCoatCaptain
@@ -86,7 +91,7 @@
   id: FillCaptainHardsuit
   table: !type:AllSelector
     children:
-    - id: ClothingModsuitBackMagnate
+    - id: ADTClothingModsuitBackCaptain # ADT tweak ClothingOuterHardsuitCap
     - id: ClothingMaskGasCaptain
     - id: JetpackCaptainFilled
     - id: OxygenTankFilled
@@ -149,6 +154,8 @@
     - id: DoorRemoteService
     - id: HoPIDCard
     - id: IDComputerCircuitboard
+    - id: FundingAllocationComputerCircuitboard
+    - id: CargoRequestServiceComputerCircuitboard
     - id: RubberStampApproved
     - id: RubberStampDenied
     - id: RubberStampHop
@@ -182,9 +189,13 @@
     - id: ClothingHandsGlovesColorYellow
     - id: ClothingHeadsetAltEngineering
     - id: DoorRemoteEngineering
+    - id: CargoRequestEngineeringComputerCircuitboard
     - id: RCD
     - id: RCDAmmo
+      amount: !type:RangeNumberSelector
+        range: 1, 3
     - id: RubberStampCE
+    - id: MetalFoamGrenade
     # Start-ADT Tweak
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
@@ -193,7 +204,6 @@
     - id: ADTClothingMaskGasCE
     - id: ADTUniversalPipeDispenserCircuitboard
     - id: ADTRPD
-    - id: ADTRPDAmmo
     # End-ADT Tweak
     # ADT-WikiBooks-Start
     - id: ADTBookSRPcmd
@@ -208,7 +218,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskGasAtmos
-    - id: ADTClothingModsuitBackAdvanced #ADT tweak
+    - id: ADTClothingModsuitBackAdvanced #ADT-tweak
     - id: ClothingShoesBootsMagAdv
     - id: JetpackVoidFilled
     - id: OxygenTankFilled
@@ -256,6 +266,7 @@
     - id: HandheldCrewMonitor
     - id: Hypospray
     - id: MedicalTechFabCircuitboard
+    - id: CargoRequestMedicalComputerCircuitboard
     - id: MedkitFilled
     - id: RubberStampCMO
     - id: MedTekCartridge
@@ -278,7 +289,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskBreathMedical
-    - id: ClothingModsuitBackCMO
+    - id: ADTClothingModsuitBackCMO #ADT-Tweak ClothingOuterHardsuitMedical
     - id: OxygenTankFilled
 
 # No hardsuit locker
@@ -322,6 +333,7 @@
     - id: HandTeleporter
     - id: ProtolatheMachineCircuitboard
     - id: ResearchComputerCircuitboard
+    - id: CargoRequestScienceComputerCircuitboard
     - id: RubberStampRd
     # ADT-WikiBooks-Start
     - id: ADTBookSRPcmd
@@ -371,9 +383,9 @@
   id: LockerFillHeadOfSecurityNoHardsuit
   table: !type:AllSelector
     children:
-    - id: ADTWeaponPistolX01 # ADT tweak Мультифаза для гсб
+    - id: ADTHosVoucher # ADT tweak
 #    - id: WeaponEnergyShotgun ADT tweak Дробовик для смотрителя
-    - id: BookSpaceLaw
+    - id: ADTBookSpaceLaw #ADT-WikiBooks
     - id: BoxEncryptionKeySecurity
     - id: CigarGoldCase
       prob: 0.50
@@ -388,6 +400,7 @@
     - id: HoloprojectorSecurity
     - id: RubberStampHos
     - id: SecurityTechFabCircuitboard
+    - id: CargoRequestSecurityComputerCircuitboard
     - id: WeaponDisabler
     - id: WantedListCartridge
     - id: DrinkHosFlask
@@ -395,7 +408,7 @@
       prob: 0.5
     - id: ClothingOuterCoatHoSGreatcoat # Corvax-Resprite
     - id: BookBusido # Corvax-Books
-    - id: ADTBookPTCR #ADT tweak
+    - id: ADTBookPTCR #ADT-tweak
     # ADT-WikiBooks-Start
     - id: ADTBookSRPcmd
     - id: ADTBookSRPsec
@@ -413,7 +426,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskGasSwat
-    - id: ADTClothingModsuitBackSafeguard #ADT tweak
+    - id: ADTClothingModsuitBackSafeguard #ADT-tweak
     - id: JetpackSecurityFilled
     - id: OxygenTankFilled
 
@@ -453,7 +466,6 @@
   - type: StorageFill
     contents:
     - id: WeaponRevolverDeckard
-    - id: ClothingOuterHardsuitBasic
     - id: JetpackBlue
     # - id: SpaceCash1000 # ADT-Economy
     - id: BeachBall

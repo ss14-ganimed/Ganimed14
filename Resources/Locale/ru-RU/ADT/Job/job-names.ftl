@@ -1,6 +1,9 @@
 job-name-ADTPathologist = патологоанатом
 JobADTPathologist = патологоанатом
 
+job-name-ADTMiner = шахтёр
+JobADTMiner = шахтёр
+
 JobRoboticist = робототехник
 
 job-name-magistrat = магистрат
@@ -18,8 +21,8 @@ JobADTSeniorEngineer = бригадир
 job-name-senior-officer = офицер-инструктор
 JobADTSeniorOfficer = офицер-инструктор
 
-job-name-ADTBlueShieldOfficer = офицер синего щита
-JobADTBlueShieldOfficer = офицер синего щита
+job-name-ADTBlueShieldOfficer = офицер синий щит
+JobADTBlueShieldOfficer = офицер синий щит
 
 job-name-ussp-army-private = Военнослужащий СССП
 job-name-ussp-army-officer = Офицер СССП
@@ -31,9 +34,6 @@ job-name-ADTSpaceSecOfficer = офицер SPACE SEC
 job-name-ADTSpaceSecPilot = пилот SPACE SEC
 job-name-ADTSpaceSecCommander = командир SPACE SEC
 job-name-ADTSpaceSecService = сотрудник SPACE SEC
-
-job-name-ADTSecBorg = киборг службы безопасности
-JobADTSecBorg = киборг службы безопасности
 
 job-name-guard-officer = надзиратель
 ADTGuardOfficer = надзиратель
@@ -48,8 +48,6 @@ trader-tsf = торговец
 
 job-name-ADTbarber = парикмахер
 
-# Alternate job names start
-
 # Engineering
 
 job-name-life-support-tech = техник жизнеобеспечения
@@ -59,9 +57,9 @@ job-name-mechanic = механик
 
 # Cargo
 
+job-name-intendant = интендант
 job-name-postman = почтальон
 job-name-inventory-associate = кладовщик
-job-name-excavator = шахтёр
 
 # Medical
 
@@ -100,9 +98,27 @@ job-name-clergyman = священнослужитель
 job-name-tourist = турист
 job-name-student = студент
 job-name-mixologist = миксолог
+job-name-tavernkeep = трактирщик
+job-name-barista = бариста
 job-name-baker = пекарь
 job-name-butcher = мясник
 job-name-pizzaiolo = пиццайоло
+job-name-confectioner = кондитер
+job-name-waiter = официант
+job-name-performer = исполнитель
+job-name-concertmaster = концертмейстер
+job-name-composer = композитор
+job-name-bard = бард
+job-name-dj = диджей
+job-name-journalist = журналист
+job-name-karateka = каратист
+job-name-kickboxer = кикбоксер
+job-name-savatist = саватист
+job-name-hand-to-hand-combat-master = мастер рукопашного боя
+job-name-mma-fighter = боец ММА
+job-name-judoist = дзюдоист
+job-name-coach = тренер
+job-name-gladiator = гладиатор
 
 # Security
 
@@ -113,5 +129,3 @@ job-name-field-doctor = полевой врач
 # Juridical
 
 job-name-adt-lawyer = юрист
-
-# Alternate job names end

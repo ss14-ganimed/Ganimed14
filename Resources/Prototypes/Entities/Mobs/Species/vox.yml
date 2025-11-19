@@ -16,6 +16,12 @@
     # undergarmentTop: UndergarmentTopTanktopVox # ADT-No-More-Useless-Feature
     # undergarmentBottom: UndergarmentBottomBoxersVox # ADT-No-More-Useless-Feature
     #- type: VoxAccent # Not yet coded
+    markingsDisplacement:
+      Hair:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Vox/displacement.rsi
+            state: hair
   - type: Speech
     speechVerb: Vox
     speechSounds: Vox
@@ -47,7 +53,7 @@
     damage:
       types:
         Heat: -0.07
-        Poison: -0.2
+        Poison: -0.2 # needs to be less than the PendingZombieComponent does or they never become zombies by the disease.
       groups:
         Brute: -0.07
   # ADT-Tweak Start
@@ -101,12 +107,11 @@
     - map: [ "outerClothing" ]
     - map: [ "belt" ]
     - map: [ "neck" ]
-    - map: [ "back" ]
+    - map: [ "suitstorage" ] # This is not in the default order
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
     - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
-    - map: [ "suitstorage" ] # This is not in the default order
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
     - map: [ "mask" ]
     - map: [ "head" ]
@@ -144,6 +149,11 @@
           32:
             sprite: Mobs/Species/Vox/displacement.rsi
             state: head
+      neck:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Vox/displacement.rsi
+            state: neck
       back:
         sizeMaps:
           32:
@@ -191,6 +201,12 @@
     species: Vox
     # undergarmentTop: UndergarmentTopTanktopVox # ADT-No-More-Useless-Feature
     # undergarmentBottom: UndergarmentBottomBoxersVox # ADT-No-More-Useless-Feature
+    markingsDisplacement:
+      Hair:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Vox/displacement.rsi
+            state: hair
   - type: Body
     prototype: Vox
   - type: Inventory

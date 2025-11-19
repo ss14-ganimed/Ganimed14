@@ -1,0 +1,24 @@
+- type: ore
+  id: ADTOreBS
+  oreEntity: ADTBSore1
+  minOreYield: 1
+  maxOreYield: 2
+
+#BFUU
+- type: ore
+  id: ADTOreCopper
+  oreEntity: ADTCopperOre1
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: ore
+  id: ADTOreZinc
+  oreEntity: ADTZincOre1
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: ore
+  id: ADTOreLead
+  oreEntity: ADTLeadOre1
+  minOreYield: 1
+  maxOreYield: 2

@@ -41,12 +41,7 @@ namespace Content.IntegrationTests.Tests
                     .Where(p => !p.Abstract)
                     .Where(p => !pair.IsTestPrototype(p))
                     .Where(p => !p.Components.ContainsKey("MapGrid")) // This will smash stuff otherwise.
-                    .Where(p => !p.ID.StartsWith("ImmovableRod")) // Ganimed edit
-                    .Where(p => !p.ID.StartsWith("MobRandom")) // Ganimed edit
                     .Where(p => !p.Components.ContainsKey("RoomFill")) // This comp can delete all entities, and spawn others
-                    .Where(p => !p.Components.ContainsKey("ExplodeOnTrigger")) // Эти компоненты требуют плитки/якорения/взрыва, игнорируем их в этом тесте
-                    .Where(p => !p.Components.ContainsKey("Destructible")) // Эти компоненты требуют плитки/якорения/взрыва, игнорируем их в этом тесте
-                    .Where(p => !p.Components.ContainsKey("Anchorable")) // Эти компоненты требуют плитки/якорения/взрыва, игнорируем их в этом тесте
                     .Select(p => p.ID)
                     .ToList();
 
@@ -61,7 +56,7 @@ namespace Content.IntegrationTests.Tests
                 }
             });
 
-            await server.WaitRunTicks(50);
+            await server.WaitRunTicks(450); // 15 seconds, enough to trigger most update loops
 
             await server.WaitPost(() =>
             {
@@ -109,12 +104,7 @@ namespace Content.IntegrationTests.Tests
                     .Where(p => !p.Abstract)
                     .Where(p => !pair.IsTestPrototype(p))
                     .Where(p => !p.Components.ContainsKey("MapGrid")) // This will smash stuff otherwise.
-                    .Where(p => !p.ID.StartsWith("ImmovableRod")) // Ganimed edit
-                    .Where(p => !p.ID.StartsWith("MobRandom")) // Ganimed edit
                     .Where(p => !p.Components.ContainsKey("RoomFill")) // This comp can delete all entities, and spawn others
-                    .Where(p => !p.Components.ContainsKey("ExplodeOnTrigger")) // Эти компоненты требуют плитки/якорения/взрыва, игнорируем их в этом тесте
-                    .Where(p => !p.Components.ContainsKey("Destructible")) // Эти компоненты требуют плитки/якорения/взрыва, игнорируем их в этом тесте
-                    .Where(p => !p.Components.ContainsKey("Anchorable")) // Эти компоненты требуют плитки/якорения/взрыва, игнорируем их в этом тесте
                     .Select(p => p.ID)
                     .ToList();
                 foreach (var protoId in protoIds)
@@ -122,7 +112,7 @@ namespace Content.IntegrationTests.Tests
                     entityMan.SpawnEntity(protoId, map.GridCoords);
                 }
             });
-            await server.WaitRunTicks(50);
+            await server.WaitRunTicks(450); // 15 seconds, enough to trigger most update loops
             await server.WaitPost(() =>
             {
                 static IEnumerable<(EntityUid, TComp)> Query<TComp>(IEntityManager entityMan)
@@ -175,8 +165,6 @@ namespace Content.IntegrationTests.Tests
                 .Where(p => !p.Abstract)
                 .Where(p => !pair.IsTestPrototype(p))
                 .Where(p => !p.Components.ContainsKey("MapGrid")) // This will smash stuff otherwise.
-                .Where(p => !p.ID.StartsWith("ImmovableRod")) // Ganimed edit
-                .Where(p => !p.ID.StartsWith("MobRandom")) // Ganimed edit
                 .Select(p => p.ID)
                 .ToList();
 
@@ -222,7 +210,7 @@ namespace Content.IntegrationTests.Tests
                 Assert.That(sEntMan.EntityCount, Is.Zero);
             });
 
-        //    await pair.CleanReturnAsync();
+            await pair.CleanReturnAsync();
         }
 
         /// <summary>
@@ -282,8 +270,8 @@ namespace Content.IntegrationTests.Tests
             await pair.RunTicksSync(3);
 
             // We consider only non-audio entities, as some entities will just play sounds when they spawn.
-            int Count(IEntityManager ent) =>  ent.EntityCount - ent.Count<AudioComponent>();
-            IEnumerable<EntityUid> Entities(IEntityManager entMan) => entMan.GetEntities().Where(entMan.HasComponent<AudioComponent>);
+            int Count(IEntityManager ent) => ent.EntityCount - ent.Count<AudioComponent>();
+            IEnumerable<EntityUid> Entities(IEntityManager entMan) => entMan.GetEntities().Where(e => !entMan.HasComponent<AudioComponent>(e));
 
             await Assert.MultipleAsync(async () =>
             {
@@ -321,12 +309,12 @@ namespace Content.IntegrationTests.Tests
                     await pair.RunTicksSync(3);
 
                     // Check that the number of entities has gone back to the original value.
-                    Warn.Unless(Count(server.EntMan), Is.EqualTo(count), $"Server prototype {protoId} failed on deletion: count didn't reset properly\n" +
+                    Assert.That(Count(server.EntMan), Is.EqualTo(count), $"Server prototype {protoId} failed on deletion: count didn't reset properly\n" +
                         BuildDiffString(serverEntities, Entities(server.EntMan), server.EntMan));
-                    //Assert.That(client.EntMan.EntityCount, Is.EqualTo(clientCount), $"Client prototype {protoId} failed on deletion: count didn't reset properly:\n" +
-                    //    $"Expected {clientCount} and found {client.EntMan.EntityCount}.\n" +
-                    //    $"Server count was {count}.\n" +
-                    //    BuildDiffString(clientEntities, Entities(client.EntMan), client.EntMan));
+                    Assert.That(Count(client.EntMan), Is.EqualTo(clientCount), $"Client prototype {protoId} failed on deletion: count didn't reset properly:\n" +
+                        $"Expected {clientCount} and found {Count(client.EntMan)}.\n" +
+                        $"Server count was {count}.\n" +
+                        BuildDiffString(clientEntities, Entities(client.EntMan), client.EntMan));
                 }
             });
 
@@ -391,11 +379,6 @@ namespace Content.IntegrationTests.Tests
                 "DebugExceptionStartup",
                 "GridFill",
                 "RoomFill",
-                "MobRandom",
-                "ImmovableRod",
-                "ExplodeOnTrigger",
-                "Destructible",
-                "Anchorable",
                 "Map", // We aren't testing a map entity in this test
                 "MapGrid",
                 "Broadphase",
@@ -416,7 +399,7 @@ namespace Content.IntegrationTests.Tests
             var logmill = server.ResolveDependency<ILogManager>().GetSawmill("EntityTest");
 
             await pair.CreateTestMap();
-            await server.WaitRunTicks(50);
+            await server.WaitRunTicks(5);
             var testLocation = pair.TestMap.GridCoords;
 
             await server.WaitAssertion(() =>

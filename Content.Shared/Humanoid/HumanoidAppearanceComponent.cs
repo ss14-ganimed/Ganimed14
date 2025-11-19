@@ -1,3 +1,6 @@
+using Content.Shared.Corvax.TTS;
+using Content.Shared.DisplacementMap;
+using Content.Shared.DisplacementMap;
 using Content.Shared.ADT.SpeechBarks;
 using Content.Shared.Corvax.TTS;
 using Content.Shared.Humanoid.Markings;
@@ -109,6 +112,12 @@ public sealed partial class HumanoidAppearanceComponent : Component
 
     [DataField]
     public ProtoId<MarkingPrototype>? UndergarmentBottom; // ADT-Tweak
+
+    /// <summary>
+    ///     The displacement maps that will be applied to specific layers of the humanoid.
+    /// </summary>
+    [DataField]
+    public Dictionary<HumanoidVisualLayers, DisplacementData> MarkingsDisplacement = new();
 
     // ADT Barks start
 

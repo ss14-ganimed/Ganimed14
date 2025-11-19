@@ -23,7 +23,7 @@
     - AnomalyShadow
     - AnomalyTech
     - ADTAnomalyMonkey # ADT Tweak
-    #- AnomalySanta 
+    #- AnomalySanta
     rareChance: 0.3
     rarePrototypes:
     - RandomAnomalyInjectorSpawner
@@ -31,6 +31,7 @@
 
 - type: entity
   id: RandomRockAnomalySpawner
+  name: random rock anomaly spawner
   parent: MarkerBase
   components:
   - type: Sprite
@@ -46,11 +47,17 @@
     - AnomalyRockGold
     - AnomalyRockQuartz
     - AnomalyRockUranium
+    - AnomalyRockBananium
+    - ADTAnomalyRockBS # ADT Tweak-start
+    - ADTAnomalyRockCopper
+    - ADTAnomalyRockLead
+    - ADTAnomalyRockZinc # ADT Tweak-end
     chance: 1
     offset: 0.15
 
 - type: entity
   id: RandomAnomalyInjectorSpawner
+  name: random anomaly injector spawner
   parent: MarkerBase
   components:
   - type: Sprite
@@ -72,4 +79,3 @@
     - AnomalyTrapRock
     #- AnomalyTrapSanta
     chance: 1
-

@@ -945,7 +945,7 @@
     sprite: ADT/Personalization/kringe-magboots.rsi
     layers:
     - state: icon
-      map: [ "enum.ToggleVisuals.Layer" ]
+      map: [ "enum.ToggleableVisuals.Layer" ]
   - type: Clothing
     sprite: ADT/Personalization/kringe-magboots.rsi
   - type: ToggleClothing
@@ -963,7 +963,7 @@
   parent: ActionToggleMagboots
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: ADT/Personalization/kringe-magboots.rsi, state: icon }
     iconOn: ADT/Personalization/kringe-magboots.rsi/icon-on.png
 
@@ -1076,3 +1076,276 @@
     protectionTime: 5
   - type: IdentityBlocker
     coverage: EYES
+
+#rache11
+
+- type: entity
+  parent: [ClothingOuterHardsuitVoidParamed, BaseMedicalContraband]
+  id: ADTClothingOuterHardsuitRachell
+  name: Rachell paramedic void suit
+  description: A void suit made for paramedics.
+  suffix: Personal, Rache11
+  components:
+  - type: Sprite
+    sprite: ADT/Personalization/rachel_hardsuit.rsi
+    layers:
+    - state: icon
+  - type: Clothing
+    sprite: ADT/Personalization/rachel_hardsuit.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: Armor
+    modifiers:
+      coefficients:
+        Radiation: 0.85
+        Caustic: 0.85
+  - type: ToggleableClothing
+    clothingPrototype: ADTClothingHeadHelmetRachell
+  - type: PointLight
+    enabled: false
+    radius: 2
+    energy: 2
+    color: violet
+    mask: /Textures/Effects/LightMasks/double_cone.png
+  - type: Item
+    size: Large
+    shape:
+    - 0,0,2,2
+
+- type: entity
+  parent: [ ClothingHeadHelmetVoidParamed, ClothingHeadEVAHelmetBase ]
+  id: ADTClothingHeadHelmetRachell
+  name: paramedic void helmet
+  description: A void helmet made for paramedics.
+  categories: [ HideSpawnMenu ]
+  suffix: Personal, Rache11
+  components:
+  - type: Sprite
+    sprite: ADT/Personalization/rachel_hardsuit_helmet.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Heat: 0.90
+        Radiation: 0.75
+  - type: PointLight
+    radius: 6
+    energy: 2
+    color: violet
+
+# kiwi_fruit
+- type: entity
+  parent: ADTSponsorClothingUniformSkirtBase
+  id: ADTSponsorClothingUniformSkirtKiwi
+  suffix: kiwi_fruit
+  name: dark green jumpskirt
+  description: dark green jumpskirt
+  components:
+  - type: Sprite
+    sprite: ADT/Personalization/kiwi_jumpskirt.rsi
+  - type: Clothing
+    sprite: ADT/Personalization/kiwi_jumpskirt.rsi
+
+#Sir_talter
+- type: entity
+  parent: [ClothingOuterArmorBasic, BadgeOnClothing]
+  id: ADTClothingOuterArmorMinerSirtalter
+  name: plated explorer suit
+  description: This explorer suit is reinforced with goliath hides. The pinnacle of mining ingenuity and Lavaland's own madness in the field of defense.
+  suffix: Personal, Sir_talter
+  components:
+  - type: Sprite
+    sprite: ADT/Personalization/sirtalter_armorminer.rsi
+  - type: Clothing
+    sprite: ADT/Personalization/sirtalter_armorminer.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.4
+        Piercing: 0.95
+        Heat: 0.6
+        Caustic: 0.8
+  - type: ExplosionResistance
+    damageCoefficient: 0.70
+  - type: ToggleableClothing
+    clothingPrototype: ADTClothingHeadHelmetMinerSirtalter
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        showEnts: False
+        occludes: True
+        ents: []
+      badge: !type:ContainerSlot
+        showEnts: False
+        occludes: True
+        ent: null
+      toggleable-clothing: !type:ContainerSlot {}
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ADTClothingHeadHelmetMinerSirtalter
+  name: explorers plated hood
+  description: A way to protect your head from danger as crazy as the mind of the person who came up with it.
+  suffix: Personal, Sir_talter
+  components:
+  - type: Sprite
+    sprite: ADT/Personalization/mining_helmet_sirtalter.rsi
+  - type: Clothing
+    sprite: ADT/Personalization/mining_helmet_sirtalter.rsi
+  - type: IngestionBlocker
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.85
+  - type: Tag
+    tags:
+    - HidesHair
+
+- type: entity
+  parent: ADTSponsorClothingUniformBase
+  id: ADTClothingUniformMiningSirtalter
+  name: mining uniform
+  description: mining uniform
+  suffix: Personal, Sir_talter
+  components:
+  - type: Sprite
+    sprite: ADT/Personalization/sirtalter_mining_uniform.rsi
+  - type: Clothing
+    sprite: ADT/Personalization/sirtalter_mining_uniform.rsi
+
+#Farrellka и Melima
+- type: entity
+  parent: ADTSponsorClothingUniformBase
+  id: ADTClothingUniformMelimaDress
+  name: MelimaDress
+  description: MelimaDress
+  suffix: Personal, Melima, Farrellka
+  components:
+  - type: Sprite
+    sprite: ADT/Personalization/melima_dress.rsi
+  - type: Clothing
+    sprite: ADT/Personalization/melima_dress.rsi
+
+#kugooergooer
+- type: entity
+  parent: ClothingHeadHatHardhatArmored
+  id: ADTGiPatterHardhat
+  name: blue hardhat
+  suffix: Personal, kugooergooer
+  description: An armored hard hat. Provides the best of both worlds in both protection & utility - perfect for the engineer on the frontlines.
+  components:
+  - type: Sprite
+    sprite: ADT/Personalization/blue_armored_hardhat.rsi
+  - type: Clothing
+    sprite: ADT/Personalization/blue_armored_hardhat.rsi
+
+#LemonLimeLord
+- type: entity
+  parent: [ClothingOuterEVASuitBase, BaseMedicalContraband, BaseJetpack] #Despite "Voidsuits are light hardsuits", since it parents of EVA Suits, it goes with the other softsuits
+  id: ADTClothingOuterHardsuitParamedLemon
+  name: paramedic void suit
+  description: A void suit made for paramedics.
+  suffix: Personal, LemonLimeLord
+  components:
+  - type: Sprite
+    sprite: ADT/Personalization/lemon_paramedic_hardsuit.rsi
+    layers:
+    - state: icon
+  - type: Appearance
+  - type: Clothing
+    sprite: ADT/Personalization/lemon_paramedic_hardsuit.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: ClothingSpeedModifier
+    walkModifier: 1.1
+    sprintModifier: 1.05
+  # - type: HeldSpeedModifier
+  - type: TemperatureProtection
+    heatingCoefficient: 0.1
+    coolingCoefficient: 0.1
+  - type: Armor
+    modifiers:
+      coefficients:
+        Heat: 0.70
+        Radiation: 0.75
+        Caustic: 0.5
+  - type: GroupExamine
+  # - type: StealTarget ADT tweak
+  #   stealGroup: ClothingOuterHardsuitVoidParamed ADT tweak
+  - type: ToggleableClothing
+    clothingPrototype: ADTClothingHeadHelmetParamedLemon
+  - type: ItemToggle
+    onUse: false
+    soundActivate:
+      path: /Audio/Items/flashlight_on.ogg
+    soundDeactivate:
+      path: /Audio/Items/flashlight_off.ogg
+  - type: ItemToggleActiveSound
+    activeSound:
+      path: /Audio/Effects/Vehicle/ambulancesiren.ogg #not the best sound, but after looking through all of current freesound regarding sirens and ambulance, this was the best compromise
+      params:
+        volume: -4
+  - type: UseDelay
+    delay: 1.0
+  - type: ToggleClothing
+    action: ActionToggleParamedicSiren
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 2
+    energy: 2
+    color: red
+    mask: /Textures/Effects/LightMasks/double_cone.png
+  - type: RotatingLight
+    speed: 360
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+  # - type: Tag
+  #   tags:
+  #   - CorgiWearable
+  #   - WhitelistChameleon
+  - type: GasTank
+    outputPressure: 42.6
+    air:
+      # 13 minutes of thrust
+      volume: 5
+      temperature: 293.15
+      moles:
+        - 1.025689525 # oxygen
+        - 1.025689525 # nitrogen
+
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ] #Despite acting like a hardsuit helmet, since it inherits from EVA Helmet, it goes here.
+  id: ADTClothingHeadHelmetParamedLemon
+  name: paramedic void helmet
+  description: A void helmet made for paramedics.
+  categories: [ HideSpawnMenu ]
+  suffix: Personal, LemonLimeLord
+  components:
+  - type: Sprite
+    sprite: ADT/Personalization/lemon_paramedic_helmet.rsi
+  - type: Clothing
+    sprite: ADT/Personalization/lemon_paramedic_helmet.rsi
+  - type: TemperatureProtection
+    heatingCoefficient: 0.1
+    coolingCoefficient: 0.1
+  - type: Armor
+    modifiers:
+      coefficients:
+        Heat: 0.90
+        Radiation: 0.5
+  - type: PointLight
+    radius: 5
+    energy: 2
+    color: "#00ffff"
+  - type: Tag
+    tags:
+    # - CorgiWearable
+    - HelmetEVA
+    # - WhitelistChameleon

@@ -5,16 +5,19 @@
   playTimeTracker: JobLawyer
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 36000 # 10 hrs
+      time: 54000 # 15 hrs Ganimed-RoleTime
+#  - !type:DepartmentTimeRequirement
+#    department: Security
+#    time: 18000 #5 hrs Ganimed-RoleTime
     #ADT tweak start
-    - !type:SpeciesRequirement
-      inverted: true
-      species:
-      - Vox
-      #ADT tweak end
+    #- !type:SpeciesRequirement
+    #  inverted: true
+    #  species:
+    #  - Vox
+    #ADT tweak end
   startingGear: LawyerGear
   icon: "JobIconLawyer"
-  supervisors: job-supervisors-hop
+  supervisors: job-supervisors-magistrat #Ganimed-Tweak
   access:
   - Service
   - Lawyer
@@ -24,7 +27,7 @@
 - type: startingGear
   id: LawyerGear
   equipment:
-    shoes: ClothingShoesBootsLaceup
+    # shoes: ClothingShoesBootsLaceup ADT-Tweak
     # id: LawyerPDA ADT: different PDAs in loadouts
     ears: ClothingHeadsetLawyer
   inhand:
@@ -32,4 +35,15 @@
   storage:
     back:
     - RubberStampLawyer
-    - BookSpaceLaw
+    - ADTBookSpaceLaw #ADT-WikiBooks
+
+- type: chameleonOutfit
+  id: LawyerChameleonOutfit
+  job: Lawyer
+  equipment:
+    head: ClothingHeadHatBowlerHat
+    eyes: ClothingEyesGlassesCheapSunglasses
+    mask: ClothingMaskBreath
+    neck: ClothingNeckLawyerbadge
+    outerClothing: ClothingOuterWinterColorBlack
+    gloves: ClothingHandsGlovesColorBlack

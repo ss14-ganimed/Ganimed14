@@ -9,6 +9,7 @@
   materials:
     Steel: 50
     Glass: 50
+    Copper: 50  #ADT-BFUU-Tweak
 
 - type: latheRecipe
   abstract: true
@@ -81,6 +82,7 @@
     Steel: 100
     Glass: 100
     Plastic: 100
+    Copper: 100  #ADT-BFUU-Tweak
 
 - type: latheRecipe
   parent: BaseToolRecipe
@@ -104,6 +106,16 @@
     Steel: 300
     Plastic: 300
     Glass: 100
+    Copper: 100  #ADT-BFUU-Tweak
+
+- type: latheRecipe
+  id: PushHorn
+  result: PushHorn
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 500
+    Plasma: 200
 
 - type: latheRecipe
   parent: BaseToolRecipe
@@ -112,6 +124,7 @@
   materials:
     Steel: 100
     Plastic: 50
+    Copper: 50  #ADT-BFUU-Tweak
 
 - type: latheRecipe
   id: AirTank
@@ -141,6 +154,7 @@
   materials:
     Steel: 1000
     Plastic: 500
+    Copper: 200  #ADT-BFUU-Tweak
 
 # ADT tweak - убираем луноходы
 # - type: latheRecipe
@@ -158,6 +172,7 @@
     Steel: 1500
     Plastic: 1000
     Silver: 500
+    Copper: 1000  #ADT-BFUU-Tweak
 
 - type: latheRecipe
   id: ModularReceiver
@@ -196,6 +211,11 @@
   parent: BaseFauxTileRecipe
   id: FauxTileAstroAsteroidSand
   result: FloorTileItemAstroAsteroidSand
+
+- type: latheRecipe
+  parent: BaseFauxTileRecipe
+  id: FauxTileAstroAsteroidSandBorderless
+  result: FloorTileItemAstroAsteroidSandBorderless
 
 - type: latheRecipe
   id: FloorGreenCircuit
@@ -238,3 +258,18 @@
   completetime: 3
   materials:
     Plastic: 200
+
+- type: latheRecipe
+  id: ClothingOuterVestTank
+  result: ClothingOuterVestTank
+  completetime: 2
+  materials:
+    Cloth: 100
+    Steel: 50
+
+- type: latheRecipe
+  id: Ashtray
+  result: Ashtray
+  completetime: 1
+  materials:
+    Steel: 30

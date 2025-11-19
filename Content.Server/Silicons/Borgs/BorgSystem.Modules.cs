@@ -4,6 +4,7 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
+using Content.Shared.ADT.Interaction.Components; // ADT
 
 namespace Content.Server.Silicons.Borgs;
 
@@ -61,12 +62,10 @@ public sealed partial class BorgSystem
 
         if (_actions.AddAction(chassis, ref component.ModuleSwapActionEntity, out var action, component.ModuleSwapActionId, uid))
         {
-            if(TryComp<BorgModuleIconComponent>(uid, out var moduleIconComp))
-            {
-                action.Icon = moduleIconComp.Icon;
-            };
-            action.EntityIcon = uid;
-            Dirty(component.ModuleSwapActionEntity.Value, action);
+            var actEnt = (component.ModuleSwapActionEntity.Value, action);
+            _actions.SetEntityIcon(actEnt, uid);
+            if (TryComp<BorgModuleIconComponent>(uid, out var moduleIconComp))
+                _actions.SetIcon(actEnt, moduleIconComp.Icon);
         }
 
         if (!TryComp(chassis, out BorgChassisComponent? chassisComp))
@@ -201,7 +200,7 @@ public sealed partial class BorgSystem
             else
             {
                 item = component.ProvidedContainer.ContainedEntities
-                    .FirstOrDefault(ent => Prototype(ent)?.ID == itemProto);
+                    .FirstOrDefault(ent => Prototype(ent)?.ID == itemProto.Id);
                 if (!item.IsValid())
                 {
                     Log.Debug($"no items found: {component.ProvidedContainer.ContainedEntities.Count}");
@@ -219,11 +218,68 @@ public sealed partial class BorgSystem
 
             var handId = $"{uid}-item{component.HandCounter}";
             component.HandCounter++;
-            _hands.AddHand(chassis, handId, HandLocation.Middle, hands);
-            _hands.DoPickup(chassis, hands.Hands[handId], item, hands);
+            _hands.AddHand((chassis, hands), handId, HandLocation.Middle);
+            _hands.DoPickup(chassis, handId, item, hands);
             EnsureComp<UnremoveableComponent>(item);
             component.ProvidedItems.Add(handId, item);
         }
+
+        // ADT: droppable cyborg items
+        foreach (var itemProto in component.DroppableItems)
+        {
+            EntityUid item;
+
+            if (!component.ItemsCreated)
+            {
+                item = Spawn(itemProto.ID, xform.Coordinates);
+                var placeComp = EnsureComp<HandPlaceholderRemoveableComponent>(item);
+                placeComp.Whitelist = itemProto.Whitelist;
+                placeComp.Prototype = itemProto.ID;
+                Dirty(item, placeComp);
+            }
+            else
+            {
+                item = component.ProvidedContainer.ContainedEntities
+                    .FirstOrDefault(ent => _whitelistSystem.IsWhitelistPassOrNull(itemProto.Whitelist, ent) || TryComp<HandPlaceholderComponent>(ent, out var placeholder));
+                if (!item.IsValid())
+                {
+                    Log.Debug($"no items found: {component.ProvidedContainer.ContainedEntities.Count}");
+                    continue;
+                }
+
+                // Just in case, make sure the borg can't drop the placeholder.
+                if (!HasComp<HandPlaceholderComponent>(item))
+                {
+                    var placeComp = EnsureComp<HandPlaceholderRemoveableComponent>(item);
+                    placeComp.Whitelist = itemProto.Whitelist;
+                    placeComp.Prototype = itemProto.ID;
+                    Dirty(item, placeComp);
+                }
+            }
+
+            if (!item.IsValid())
+            {
+                Log.Debug("no valid item");
+                continue;
+            }
+
+            var handId = $"{uid}-item{component.HandCounter}";
+            component.HandCounter++;
+            _hands.AddHand((chassis, hands), handId, HandLocation.Middle);
+            _hands.DoPickup(chassis, handId, item, hands);
+            if (_hands.TryGetHeldItem((chassis, hands), handId, out var heldEntity) && heldEntity != item)
+            {
+                // If we didn't pick up our expected item, delete the hand.  No free hands!
+                _hands.RemoveHand(chassis, handId);
+            }
+            else if (HasComp<HandPlaceholderComponent>(item))
+            {
+                // Placeholders can't be put down, must be changed after picked up (otherwise it'll fail to pick up)
+                EnsureComp<UnremoveableComponent>(item);
+            }
+            component.DroppableProvidedItems.Add(handId, (item, itemProto));
+        }
+        // End ADT: droppable cyborg items
 
         component.ItemsCreated = true;
     }
@@ -241,9 +297,17 @@ public sealed partial class BorgSystem
             foreach (var (hand, item) in component.ProvidedItems)
             {
                 QueueDel(item);
-                _hands.RemoveHand(chassis, hand, hands);
+                _hands.RemoveHand(chassis, hand);
             }
             component.ProvidedItems.Clear();
+            // ADT: droppable items
+            foreach (var (hand, item) in component.DroppableProvidedItems)
+            {
+                QueueDel(item.Item1);
+                _hands.RemoveHand(chassis, hand);
+            }
+            component.DroppableProvidedItems.Clear();
+            // End ADT: droppable items
             return;
         }
 
@@ -254,9 +318,23 @@ public sealed partial class BorgSystem
                 RemComp<UnremoveableComponent>(item);
                 _container.Insert(item, component.ProvidedContainer);
             }
-            _hands.RemoveHand(chassis, handId, hands);
+            _hands.RemoveHand(chassis, handId);
         }
         component.ProvidedItems.Clear();
+        // ADT: remove all items from borg hands directly, not from the provided items set
+        foreach (var (handId, _) in component.DroppableProvidedItems)
+        {
+            _hands.TryGetHand(chassis, handId, out var hand);
+            if (_hands.TryGetHeldItem((chassis, hands), handId, out var heldEntity))
+            {
+                RemComp<UnremoveableComponent>(heldEntity.Value);
+                _container.Insert(heldEntity.Value, component.ProvidedContainer);
+            }
+
+            _hands.RemoveHand(chassis, handId);
+        }
+        component.DroppableProvidedItems.Clear();
+        // End ADT
     }
 
     /// <summary>
@@ -283,13 +361,16 @@ public sealed partial class BorgSystem
 
         if (TryComp<ItemBorgModuleComponent>(module, out var itemModuleComp))
         {
+            var droppableComparer = new DroppableBorgItemComparer(); // ADT: cached comparer
             foreach (var containedModuleUid in component.ModuleContainer.ContainedEntities)
             {
                 if (!TryComp<ItemBorgModuleComponent>(containedModuleUid, out var containedItemModuleComp))
                     continue;
 
                 if (containedItemModuleComp.Items.Count == itemModuleComp.Items.Count &&
-                    containedItemModuleComp.Items.All(itemModuleComp.Items.Contains))
+                    containedItemModuleComp.DroppableItems.Count == itemModuleComp.DroppableItems.Count && // ADT
+                    containedItemModuleComp.Items.All(itemModuleComp.Items.Contains) &&
+                    containedItemModuleComp.DroppableItems.All(x => itemModuleComp.DroppableItems.Contains(x, droppableComparer))) // ADT
                 {
                     if (user != null)
                         Popup.PopupEntity(Loc.GetString("borg-module-duplicate"), uid, user.Value);
@@ -301,6 +382,29 @@ public sealed partial class BorgSystem
         return true;
     }
 
+    // Frontier: droppable borg item comparator
+    private sealed class DroppableBorgItemComparer : IEqualityComparer<DroppableBorgItem>
+    {
+        public bool Equals(DroppableBorgItem? x, DroppableBorgItem? y)
+        {
+            // Same object (or both null)
+            if (ReferenceEquals(x, y))
+                return true;
+            // One-side null
+            if (x == null || y == null)
+                return false;
+            // Otherwise, use EntProtoId of item
+            return x.ID == y.ID;
+        }
+
+        public int GetHashCode(DroppableBorgItem obj)
+        {
+            if (obj is null)
+                return 0;
+            return obj.ID.GetHashCode();
+        }
+    }
+    // End Frontier
     /// <summary>
     /// Check if a module can be removed from a borg.
     /// </summary>

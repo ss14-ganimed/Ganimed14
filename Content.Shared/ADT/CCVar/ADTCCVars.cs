@@ -261,5 +261,18 @@ public sealed class ADTCCVars
     public static readonly CVarDef<string> DiscordTokenBot =
         CVarDef.Create("discord.token_bot", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL | CVar.ARCHIVE);
 
+
+    /// <summary>
+    /// Кол-во предыдущих карт, которые будут исключены из голосования.
+    /// </summary>
+    public static readonly CVarDef<int> MapVoteRecentBanDepth =
+        CVarDef.Create("game.map_vote_recent_ban_depth", 3, CVar.SERVER | CVar.ARCHIVE);
+
+
+    public static readonly CVarDef<float> BookPrinterUploadCooldown =
+        CVarDef.Create("bookprinter.upload_cooldown", 3600.0f, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<bool> BookPrinterUploadCooldownEnabled =
+        CVarDef.Create("bookprinter.upload_cooldown_enabled", true, CVar.SERVERONLY | CVar.ARCHIVE);
 }
 

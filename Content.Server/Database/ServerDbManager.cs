@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
+using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -42,6 +43,8 @@ namespace Content.Server.Database
         Task SaveCharacterSlotAsync(NetUserId userId, ICharacterProfile? profile, int slot);
 
         Task SaveAdminOOCColorAsync(NetUserId userId, Color color);
+
+        Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites);
 
         // Single method for two operations for transaction.
         Task DeleteSlotAndSetSelectedIndex(NetUserId userId, int deleteSlot, int newSlot);
@@ -330,6 +333,7 @@ namespace Content.Server.Database
         // ADT-BookPrinter-Start
         #region BookPrinter
 
+        Task<bool> DeleteBookPrinterEntryAsync(int bookId);
         Task<List<BookPrinterEntry>> GetBookPrinterEntriesAsync();
         Task UploadBookPrinterEntryAsync(BookPrinterEntry bookEntry);
 
@@ -424,6 +428,7 @@ namespace Content.Server.Database
         private ServerDbBase _db = default!;
         private LoggingProvider _msLogProvider = default!;
         private ILoggerFactory _msLoggerFactory = default!;
+        private ISawmill _sawmill = default!;
 
         private bool _synchronous;
         // When running in integration tests, we'll use a single in-memory SQLite database connection.
@@ -439,6 +444,7 @@ namespace Content.Server.Database
             {
                 builder.AddProvider(_msLogProvider);
             });
+            _sawmill = _logMgr.GetSawmill("db.manager");
 
             _synchronous = _cfg.GetCVar(CCVars.DatabaseSynchronous);
 
@@ -501,6 +507,12 @@ namespace Content.Server.Database
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.SaveAdminOOCColorAsync(userId, color));
+        }
+
+        public Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SaveConstructionFavoritesAsync(userId, constructionFavorites));
         }
 
         public Task<PlayerPreferences?> GetPlayerPreferencesAsync(NetUserId userId, CancellationToken cancel)
@@ -1069,16 +1081,22 @@ namespace Content.Server.Database
 
         // ADT-BookPrinter-Start
         public Task<List<BookPrinterEntry>> GetBookPrinterEntriesAsync()
-		{
-			DbReadOpsMetric.Inc();
+        {
+            DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetBookPrinterEntries());
-		}
+        }
+
+        public Task<bool> DeleteBookPrinterEntryAsync(int bookId)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.DeleteBookPrinterEntryAsync(bookId));
+        }
 
         public Task UploadBookPrinterEntryAsync(BookPrinterEntry bookEntry)
-		{
-			DbReadOpsMetric.Inc();
+        {
+            DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.UploadBookPrinterEntry(bookEntry));
-		}
+        }
         // ADT-BookPrinter-Start
         public Task<bool> UpsertIPIntelCache(DateTime time, IPAddress ip, float score)
         {
@@ -1200,7 +1218,7 @@ namespace Content.Server.Database
                 Password = pass
             }.ConnectionString;
 
-            Logger.DebugS("db.manager", $"Using Postgres \"{host}:{port}/{db}\"");
+            _sawmill.Debug($"Using Postgres \"{host}:{port}/{db}\"");
 
             builder.UseNpgsql(connectionString);
             SetupLogging(builder);
@@ -1223,12 +1241,12 @@ namespace Content.Server.Database
             if (!inMemory)
             {
                 var finalPreferencesDbPath = Path.Combine(_res.UserData.RootDir!, configPreferencesDbPath);
-                Logger.DebugS("db.manager", $"Using SQLite DB \"{finalPreferencesDbPath}\"");
+                _sawmill.Debug($"Using SQLite DB \"{finalPreferencesDbPath}\"");
                 getConnection = () => new SqliteConnection($"Data Source={finalPreferencesDbPath}");
             }
             else
             {
-                Logger.DebugS("db.manager", "Using in-memory SQLite DB");
+                _sawmill.Debug("Using in-memory SQLite DB");
                 _sqliteInMemoryConnection = new SqliteConnection("Data Source=:memory:");
                 // When using an in-memory DB we have to open it manually
                 // so EFCore doesn't open, close and wipe it every operation.

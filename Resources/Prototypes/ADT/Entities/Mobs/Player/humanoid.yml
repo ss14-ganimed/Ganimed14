@@ -9,8 +9,9 @@
       state: ertleader
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstMilitaryLeader
-      - NamesLastMilitary
+      - ADTCmndNamesFirstMilitary
+      - NamesLastERTCallsign
+      nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
       settings: ADTERTLeader
 
@@ -57,14 +58,19 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h #
+      - !type:DepartmentTimeRequirement
+        department: Command
+        time: 36000 # 10 hrs Ganimed-RoleTime
+      - !type:DepartmentTimeRequirement
+        department: Security
+        time: 18000 # 5 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTLeaderGear ]
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstMilitaryLeader
-      - NamesLastMilitary
+      - ADTCmndNamesFirstMilitary
+      - NamesLastERTCallsign
+      nameFormat: name-format-standard
 
 - type: randomHumanoidSettings
   id: ADTERTLeaderEVA
@@ -77,8 +83,12 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h #
+      - !type:DepartmentTimeRequirement
+        department: Command
+        time: 36000 # 10 hrs Ganimed-RoleTime
+      - !type:DepartmentTimeRequirement
+        department: Security
+        time: 18000 # 5 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTLeaderGearEVA ]
 
@@ -105,8 +115,12 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h #
+      - !type:DepartmentTimeRequirement
+        department: Command
+        time: 36000 # 10 hrs Ganimed-RoleTime
+      - !type:DepartmentTimeRequirement
+        department: Security
+        time: 18000 # 5 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTLeaderGearEVARiot ]
 
@@ -123,8 +137,9 @@
       state: ertjanitor
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstMilitary
-      - NamesLastMilitary
+      - NamesFirstERTEngineer
+      - NamesLastERTCallsign
+      nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
       settings: ADTERTJanitor
 
@@ -159,11 +174,12 @@
         settings: short
       requirements:
       - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h #
+        time: 36000 # 10h Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstMilitary
-      - NamesLastMilitary
+      - NamesFirstERTEngineer
+      - NamesLastERTCallsign
+      nameFormat: name-format-standard
     - type: Loadout
       prototypes: [ ADTERTJanitorGear ]
 
@@ -191,7 +207,7 @@
         settings: short
       requirements:
       - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h #
+        time: 36000 # 10h Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTJanitorGearEVA ]
 
@@ -219,7 +235,7 @@
         settings: short
       requirements:
       - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h #
+        time: 36000 # 10h Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTJanitorGearEVARiot ]
 
@@ -236,8 +252,9 @@
       state: ertengineer
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstMilitary
-      - NamesLastMilitary
+      - NamesFirstERTEngineer
+      - NamesLastERTCallsign
+      nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
       settings: ADTERTEngineer
 
@@ -271,12 +288,14 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h #
+      - !type:DepartmentTimeRequirement
+        department: Engineering
+        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstMilitary
-      - NamesLastMilitary
+      - NamesFirstERTEngineer
+      - NamesLastERTCallsign
+      nameFormat: name-format-standard
     - type: Loadout
       prototypes: [ ADTERTEngineerGear ]
 
@@ -303,8 +322,9 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h #
+      - !type:DepartmentTimeRequirement
+        department: Engineering
+        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTEngineerGearEVA ]
 
@@ -331,8 +351,9 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h
+      - !type:DepartmentTimeRequirement
+        department: Engineering
+        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTEngineerGearEVARiot ]
 
@@ -349,8 +370,9 @@
       state: ertsecurity
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstMilitary
-      - NamesLastMilitary
+      - NamesFirstERTMilitary
+      - NamesLastERTCallsign
+      nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
       settings: ADTERTSecurity
 
@@ -384,12 +406,14 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h
+      - !type:DepartmentTimeRequirement
+        department: Security
+        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstMilitary
-      - NamesLastMilitary
+      - NamesFirstERTMilitary
+      - NamesLastERTCallsign
+      nameFormat: name-format-standard
     - type: Loadout
       prototypes: [ ADTERTSecurityGear ]
 
@@ -416,8 +440,9 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h
+      - !type:DepartmentTimeRequirement
+        department: Security
+        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTSecurityGearEVA ]
 
@@ -440,8 +465,9 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h
+      - !type:DepartmentTimeRequirement
+        department: Security
+        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [  ADTERTSecurityGearEVARiot ]
 
@@ -458,8 +484,9 @@
       state: ertmedical
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstMilitary
-      - NamesLastMilitary
+      - NamesFirstERTMedical
+      - NamesLastERTCallsign
+      nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
       settings: ADTERTMedical
 
@@ -493,12 +520,14 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h
+      - !type:DepartmentTimeRequirement
+        department: Medical
+        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstMilitary
-      - NamesLastMilitary
+      - NamesFirstERTMedical
+      - NamesLastERTCallsign
+      nameFormat: name-format-standard
     - type: Loadout
       prototypes: [ ADTERTMedicalGear ]
 
@@ -525,8 +554,9 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h
+      - !type:DepartmentTimeRequirement
+        department: Medical
+        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTMedicalGearEVA ]
 
@@ -553,8 +583,9 @@
       raffle:
         settings: short
       requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 180000 # 50h
+      - !type:DepartmentTimeRequirement
+        department: Medical
+        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTMedicalGearEVARiot ]
 
@@ -601,6 +632,8 @@
     - type: GhostRole
       name: ghost-role-information-cmnd-cburn-agent-name
       description: ghost-role-information-cmnd-cburn-agent-description
+      raffle:
+        settings: short
       # ADT-tweak-start
       requirements:
       - !type:DepartmentTimeRequirement
@@ -617,6 +650,7 @@
       nameSegments:
       - ADTCmndNamesFirstMilitary
       - NamesLastERTCallsign  # Corvax Localization
+      nameFormat: name-format-standard
 # end Капитан РХБЗЗ
 
 # SPACE SEC
@@ -865,3 +899,101 @@
     randomizeName: true
   - type: Loadout
     prototypes: [ADTPirateFirstmateGear]
+
+
+- type: entity
+  name: Vox Raider
+  parent: MobVox
+  id: ADTMobVoxRaider
+  components:
+  - type: NpcFactionMember
+    factions:
+      - Syndicate
+  - type: RandomHumanoidAppearance
+    randomizeName: true
+  - type: Loadout
+    prototypes: [ADTRoleMobVoxRaiderGear]
+
+- type: startingGear
+  id: ADTRoleMobVoxRaiderGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBlack
+    back: ClothingBackpackSatchel
+    ears: ClothingHeadsetFreelance
+    shoes: ADTClothingFootWrapsBlack
+    id: PiratePDA
+    pocket1: PlushieVox
+    outerClothing: ADTHardsuitRaidercommon
+    suitstorage: NitrogenTankFilled
+  storage:
+    back:
+    - BoxSurvivalNitrogen
+    - ChemistryBottleNocturine
+    - ChemistryBottleNocturine
+  
+- type: entity
+  name: ADTMobIanHero-name
+  parent: MobHuman
+  id: ADTMobIanHero
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: Loadout
+    prototypes: [ADTRoleMobIanHeroGear]
+
+- type: startingGear
+  id: ADTRoleMobIanHeroGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorOrange
+    gloves: ClothingHandsGlovesColorYellow
+    back: PortableRecharger
+    ears: ClothingHeadsetGrey
+    shoes: ClothingShoesBootsSpeed
+    id: ADTVisitorPDA
+    belt: ClothingBeltChampion
+    outerClothing: ClothingOuterSuitIan
+    suitstorage: WeaponTeslaGun
+
+- type: entity
+  name: ADTMobDrPolymorph-name
+  parent: MobHuman
+  id: ADTMobDrPolymorph
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: Loadout
+    prototypes: [ADTRoleMobDrPolymorphGear]
+
+- type: startingGear
+  id: ADTRoleMobDrPolymorphGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorWhite
+    gloves: ClothingHandsGlovesColorWhite
+    back: ClothingBackpackSatchelLeather
+    ears: ClothingHeadsetGrey
+    shoes: ClothingShoesBootsLaceup
+    id: ADTVisitorPDA
+    belt: ClothingBeltStorageWaistbag
+    outerClothing: ADTOuterClothingCoatsCrazyScientist
+    suitstorage: ADTWeaponVulpizator
+    head: ClothingHeadHatOutlawHat
+    eyes: ClothingEyesGlassesOutlawGlasses
+    mask: ClothingMaskItalianMoustache
+
+- type: entity
+  name: ADTEvilBot-name
+  parent: ADTDroneAntagIPC
+  id: ADTMobEvilBot
+  components:
+  - type: Loadout
+    prototypes: [ADTRoleMobEvilBotGear]
+  - type: TTS
+    voice: sentrybot
+    
+
+- type: startingGear
+  id: ADTRoleMobEvilBotGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorWhite
+    gloves: ClothingHandsGlovesColorWhite
+    outerClothing: ADTOuterClothingCoatsCrazyScientist

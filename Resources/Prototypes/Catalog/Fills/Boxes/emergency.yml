@@ -228,6 +228,7 @@
     - id: Flare
     - id: FoodBreadBaguette
     - id: DrinkWaterBottleFull
+    - id: SpaceMedipen # ADT-Tweak
 
 - type: entity
   parent: BoxSurvivalNitrogen
@@ -242,12 +243,27 @@
     - id: Flare
     - id: FoodBreadBaguette
     - id: DrinkWaterBottleFull
+    - id: SpaceMedipen # ADT-Tweak
   - type: Sprite
     layers:
     - state: internals
     - state: nitrogentank
   - type: Label
     currentLabel: reagent-name-nitrogen
+
+- type: entity
+  parent: BoxSurvival
+  id: BoxMimeMoth
+  suffix: Mime, Emergency moth
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskBreath
+    - id: EmergencyOxygenTankFilled
+    - id: EmergencyMedipen
+    - id: Flare
+    - id: FoodBreadBaguetteCotton
+    - id: DrinkWaterBottleFull
 
 - type: entity
   parent: BoxCardboard

@@ -9,13 +9,15 @@ public sealed partial class PressureDamageModifyComponent : Component
     /// only for projectiles, doesn`t work for melee damage
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("projDamage")]
-    public float ProjDamage = 0.2f;
+    public float ProjDamage = 0.1f;
 
     /// <summary>
     /// KPd, below which damage will diminishes.  0 kPa = 1 kPa
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("needsPressure")]
-    public float Pressure = 40f;
+    [ViewVariables(VVAccess.ReadWrite), DataField("maxPressure")]
+    public float MaxPressure = 40f;
+    [ViewVariables(VVAccess.ReadWrite), DataField("minPressure")]
+    public float MinPressure = 0f; // Ganimed-edit
 
     /// <summary>
     /// only for melee, doesn`t work for projectiles

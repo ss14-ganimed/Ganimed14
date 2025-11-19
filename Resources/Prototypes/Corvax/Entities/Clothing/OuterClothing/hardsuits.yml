@@ -30,5 +30,22 @@
         Caustic: 0.2 #ADT-tweak
   - type: ExplosionResistance
     damageCoefficient: 0.7
+#ADT tweak start
+  - type: ZombificationResistance
+    zombificationResistanceCoefficient: 0.25
+#ADT tweak end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetCBURNLeader
+
+- type: entity
+  parent: ClothingOuterHardsuitSecurity
+  id: ClothingOuterHardsuitSecurityPilot
+  name: security pilot hardsuit
+  description: A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor.
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/OuterClothing/hardsuits/security-pilot.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/OuterClothing/hardsuits/security-pilot.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitSecurityPilot

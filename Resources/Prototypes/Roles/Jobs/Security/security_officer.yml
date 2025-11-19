@@ -6,14 +6,14 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 54000 #15 hrs # ADT-RoleTime
+      time: 36000 #10 hrs Ganimed-RoleTime
   # ADT Restrict Start
     - !type:SpeciesRequirement
       inverted: true
       species:
       - Resomi
       - Vox
-      - Shadekin
+#      - Shadekin
   # ADT RESTRICT End
   startingGear: SecurityOfficerGear
   icon: "JobIconSecurityOfficer"
@@ -29,6 +29,11 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
+  # ADT-Tweak-Start: добавляем выдачу компонента отметки персонала службы безопасности
+  - !type:AddComponentSpecial
+    components:
+      - type: SecurityStaff
+  # ADT-Tweak-End
 
 - type: startingGear
   id: SecurityOfficerGear
@@ -40,3 +45,13 @@
     back:
     - Flash
     - MagazinePistol
+
+- type: chameleonOutfit
+  id: SecurityOfficerChameleonOutfit
+  job: SecurityOfficer
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatBeretSecurity
+    mask: ClothingMaskGasSecurity
+    neck: Dinkystar
+    gloves: ClothingHandsGlovesColorBlack

@@ -18,6 +18,10 @@
     slots:
     - Back
     - suitStorage
+  - type: UseDelay
+    delays:
+      gasTank:
+        length: 1.0
   - type: ActivatableUI
     key: enum.SharedGasTankUiKey.Key
   - type: UserInterface
@@ -32,7 +36,7 @@
       temperature: 293.15
     tankLowPressure: 30.0
   - type: Explosive
-    explosionType: Default
+    explosionType: MicroBomb
     maxIntensity: 20
   - type: MeleeWeapon
     wideAnimationRotation: 45
@@ -42,7 +46,7 @@
         Blunt: 10
   - type: PhysicalComposition
     materialComposition:
-      Steel: 185
+      Steel: 140 #ADT_Tweak 185 to 140 - для починки материал арбитража
   - type: StaticPrice
     price: 30
 

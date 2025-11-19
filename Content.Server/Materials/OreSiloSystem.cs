@@ -41,7 +41,7 @@ public sealed class OreSiloSystem : SharedOreSiloSystem
 
             // Don't show clients on the screen if we can't link them.
             if (!CanTransmitMaterials((ent, ent, xform), client))
-                continue;   
+                continue;
 
             var netEnt = GetNetEntity(client);
             var name = Identity.Name(client, EntityManager);

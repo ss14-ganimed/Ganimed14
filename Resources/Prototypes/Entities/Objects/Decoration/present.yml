@@ -164,6 +164,16 @@
         orGroup: GiftPool
       - id: GlockenspielInstrument
         orGroup: GiftPool
+# ADT-tweak start
+      - id: ADTToyBlasterGunRed
+        orGroup: GiftPool
+      - id: ADTToyBlasterGunGreen
+        orGroup: GiftPool
+      - id: ADTToyBlasterGunBlue
+        orGroup: GiftPool
+      - id: ADTWeaponRevolverRussian
+        orGroup: GiftPool
+# ADT-Tweak end
       - id: RecorderInstrument
         orGroup: GiftPool
       - id: FluteInstrument
@@ -276,6 +286,8 @@
         orGroup: GiftPool
       - id: FoodBoxDonkpocketHonk
         orGroup: GiftPool
+      - id: FoodBoxDonkpocketMoth
+        orGroup: GiftPool
       - id: ClothingHandsGlovesColorPurple
         orGroup: GiftPool
       - id: ClothingHandsGlovesColorYellow
@@ -319,6 +331,8 @@
       - id: ClothingUniformJumpsuitColorMaroon
         orGroup: GiftPool
       - id: ClothingUniformColorRainbow
+        orGroup: GiftPool
+      - id: ClothingUniformJumpskirtColorRainbow
         orGroup: GiftPool
       - id: ClothingUniformOveralls
         orGroup: GiftPool

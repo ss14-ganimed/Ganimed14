@@ -29,6 +29,8 @@
   - HoloprojectorField
   - SignallerAdvanced
   # - DeviceQuantumSpinInverter #ADT_Tweak - временно удалено до решения всех багов предмета
+  - DeviceDesynchronizer
+  - ClothingBackpackHarmpack
 
 - type: latheRecipePack
   id: ScienceClothing
@@ -40,22 +42,27 @@
   - ClothingBackpackHolding
   - ClothingBackpackSatchelHolding
   - ClothingBackpackDuffelHolding
+  - BotanistBagOfHolding # Ganimed-Edit
 
 - type: latheRecipePack
   id: PowerCells
   recipes:
   # - PowerCellMicroreactor ADT tweak
   - PowerCellHigh
+  - PowerCellHyper
 
 - type: latheRecipePack
   id: ScienceWeapons
   recipes:
   - WeaponPistolCHIMP
   - WeaponForceGun
-  - WeaponLaserSvalinn
   - WeaponProtoKineticAccelerator
+  - PKAUpgradeDamage
+  - PKAUpgradeRange
+  - PKAUpgradeFireRate
   - WeaponTetherGun
   - WeaponGauntletGorilla
+  - WeaponLaserSvalinn # ADT tweak
 
 - type: latheRecipePack
   id: FauxTiles
@@ -92,7 +99,7 @@
   - AnomalyVesselCircuitboard
   - AnomalyVesselExperimentalCircuitboard
   - AnomalySynchronizerCircuitboard
-  - BotanicDNACircuitboard # Ganimed
+  - BotanicalSeedDNAManipulatorCircuitboard # Ganimed-Edit
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard

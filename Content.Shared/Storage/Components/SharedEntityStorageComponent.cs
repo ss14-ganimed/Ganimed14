@@ -19,10 +19,16 @@ public abstract partial class SharedEntityStorageComponent : Component
     /// <summary>
     ///     Collision masks that get removed when the storage gets opened.
     /// </summary>
-    public readonly int MasksToRemove = (int) (
+    // ADT-Tweak-Start: разрешаем изменение масок коллизий через прототипы
+    /// <summary>
+    ///     Collision masks that get removed when the storage gets opened.
+    /// </summary>
+    [DataField]
+    public int MasksToRemove = (int) (
         CollisionGroup.MidImpassable |
         CollisionGroup.HighImpassable |
         CollisionGroup.LowImpassable);
+    // ADT-Tweak-End
 
     /// <summary>
     ///     Collision masks that were removed from ANY layer when the storage was opened;
@@ -146,8 +152,17 @@ public sealed class EntityStorageComponentState : ComponentState
     }
 }
 
+/// <summary>
+/// Raised on the entity being inserted whenever checking if an entity can be inserted into an entity storage.
+/// </summary>
 [ByRefEvent]
 public record struct InsertIntoEntityStorageAttemptEvent(EntityUid ItemToInsert, bool Cancelled = false);
+
+/// <summary>
+/// Raised on the entity storage whenever checking if an entity can be inserted into it.
+/// </summary>
+[ByRefEvent]
+public record struct EntityStorageInsertedIntoAttemptEvent(EntityUid ItemToInsert, bool Cancelled = false);
 
 [ByRefEvent]
 public record struct StorageOpenAttemptEvent(EntityUid User, bool Silent, bool Cancelled = false);
@@ -159,7 +174,7 @@ public readonly record struct StorageBeforeOpenEvent;
 public readonly record struct StorageAfterOpenEvent;
 
 [ByRefEvent]
-public record struct StorageCloseAttemptEvent(bool Cancelled = false);
+public record struct StorageCloseAttemptEvent(EntityUid? User, bool Cancelled = false);
 
 [ByRefEvent]
 public readonly record struct StorageBeforeCloseEvent(HashSet<EntityUid> Contents, HashSet<EntityUid> BypassChecks);

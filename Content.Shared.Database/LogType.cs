@@ -458,15 +458,30 @@ public enum LogType
     /// A player was selected or assigned antag status
     /// </summary>
     AntagSelection = 99,
-    // ADT Start
-    /// <summary>
-    /// A player grabbed another player
-    /// </summary>
-    Grab = 100,
-    /// ADT End
 
     /// <summary>
     /// Logs related to botany, such as planting and harvesting crops
     /// </summary>
-    Botany = 101,
+    Botany = 100,
+
+    /// <summary>
+    /// Artifact node got activated.
+    /// </summary>
+    ArtifactNode = 101,
+
+    /// <summary>
+    /// Damaging grid collision has occurred.
+    /// </summary>
+    ShuttleImpact = 102,
+
+    /// <summary>
+    /// Events relating to midi playback.
+    /// </summary>
+    Instrument = 103,
+    // ADT Start
+    /// <summary>
+    /// A player grabbed another player
+    /// </summary>
+    Grab = 104
+    /// ADT End
 }

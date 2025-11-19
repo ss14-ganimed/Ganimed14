@@ -3,17 +3,24 @@
   name: job-name-rd
   description: job-description-rd
   playTimeTracker: JobResearchDirector
+  requireAdminNotify: true # Ganimed Rules Tweak
   requirements:
-    - !type:DepartmentTimeRequirement
-      department: Science
-      time: 54000 #15 hrs # Corvax-RoleTime
-#    - !type:OverallPlaytimeRequirement
-#      time: 144000 #40 hrs
+  - !type:RoleTimeRequirement
+    role: JobScientist
+    time: 21600 #6 hrs #Ganimed-RoleTime
+  - !type:DepartmentTimeRequirement
+    department: Science
+    time: 72000 #20 hrs Ganimed-RoleTime
+  - !type:OverallPlaytimeRequirement
+    time: 144000 #40 hrs Ganimed-RoleTime
+  - !type:AgeRequirement # Ganimed-MRP
+    requiredAge: 21
   weight: 10
   startingGear: ResearchDirectorGear
   icon: "JobIconResearchDirector"
   supervisors: job-supervisors-captain
   canBeAntag: true # Ganimed-MRP
+  antagAdvantage: 5 # Ganimed-MRP: Heads can be antags
   access:
   - Research
   - Command
@@ -31,10 +38,22 @@
 
 - type: startingGear
   id: ResearchDirectorGear
-  equipment:
+  # equipment: # ADT tweak
  #id: RnDPDA # ADT Tweak
-    ears: ClothingHeadsetRD
+    # ears: ClothingHeadsetRD # ADT tweak
   storage:
     back:
     - Flash
     - ADTtelescopicBaton #ADT-CustomADTLoadout
+
+- type: chameleonOutfit
+  id: ResearchDirectorChameleonOutfit
+  job: ResearchDirector
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatBeretRND
+    eyes: ClothingEyesGlasses
+    mask: ClothingMaskGas
+    neck: ClothingNeckCloakRd
+    outerClothing: ClothingOuterCoatRD
+    gloves: ClothingHandsGlovesColorPurple

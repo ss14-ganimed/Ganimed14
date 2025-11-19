@@ -11,6 +11,10 @@
   blacklist:
     components:
     - BorgChassis
+    # ADT tweak start
+    tags:
+    - ADTSiliconEmotes
+    # ADT tweak end
   chatTriggers:
     - sneeze
     - sneezes
@@ -29,10 +33,9 @@
     components:
     - Vocal
   blacklist:
-    components:
-    - BorgChassis
     tags:
-    - ADTSiliconEmotes
+    - SiliconEmotes
+    - Ipc # Corvax-Species
   chatMessages: ["chat-emote-msg-cough"]
   chatTriggers:
     - cough
@@ -81,10 +84,9 @@
     components:
     - Vocal
   blacklist:
-    components:
-    - BorgChassis
     tags:
-    - ADTSiliconEmotes
+    - SiliconEmotes
+    - Ipc # Corvax-Species
   chatMessages: ["chat-emote-msg-yawn"]
   chatTriggers:
     - yawn

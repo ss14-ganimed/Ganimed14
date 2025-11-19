@@ -17,6 +17,9 @@ using Content.Shared.Mobs.Systems;
 using Robust.Server.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Shared.Cargo.Components;
+using Content.Shared.Cargo;
+using Robust.Shared.Timing;
 
 namespace Content.Server.ADT.Economy;
 
@@ -35,6 +38,7 @@ public sealed class BankCardSystem : EntitySystem
     [Dependency] private readonly JobSystem _job = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly CartridgeLoaderSystem _cartridgeLoader = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private const int SalaryDelay = 2700;
 
@@ -77,7 +81,9 @@ public sealed class BankCardSystem : EntitySystem
                      _playerManager.TryGetSessionById(account.Mind.Value.Comp.UserId!.Value, out _) &&
                      !_mobState.IsDead(account.Mind.Value.Comp.CurrentEntity!.Value)))
         {
-            account.Balance += GetSalary(account.Mind);
+            var salary = GetSalary(account.Mind);
+            if (salary > 0)
+                TryChangeBalance(account.AccountId, salary);
         }
 
         _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("salary-pay-announcement"),
@@ -165,13 +171,13 @@ public sealed class BankCardSystem : EntitySystem
             do
             {
                 accountNumber = _random.Next(100000, 999999);
-            } while (AccountExist(accountId));
+            } while (AccountExist(accountNumber));
 
-            account = new BankAccount(accountNumber, startingBalance);
+            account = new BankAccount(accountNumber, startingBalance, _random);
         }
         else
         {
-            account = new BankAccount(accountId, startingBalance);
+            account = new BankAccount(accountId, startingBalance, _random);
         }
 
         _accounts.Add(account);
@@ -205,19 +211,31 @@ public sealed class BankCardSystem : EntitySystem
         if (!TryGetAccount(accountId, out var account) || account.Balance + amount < 0)
             return false;
 
-        if (account.CommandBudgetAccount)
-        {
-            while (AllEntityQuery<StationBankAccountComponent>().MoveNext(out var uid, out var acc))
-            {
-                if (acc.BankAccount.AccountId != accountId)
-                    continue;
+        // if (account.CommandBudgetAccount)
+        // {
+        //     while (AllEntityQuery<StationBankAccountComponent>().MoveNext(out var uid, out var acc))
+        //     {
+        //         if (acc.BankAccount.AccountId != accountId)
+        //             continue;
 
-                _cargo.UpdateBankAccount((uid, acc), amount);
-                return true;
-            }
-        }
+        //         _cargo.UpdateBankAccount((uid, acc), amount);
+        //         return true;
+        //     }
+        // }
 
         account.Balance += amount;
+
+        if (account.History == null)
+            account.History = new List<TransactionsHistory>();
+
+        account.History.Add(new TransactionsHistory(
+            amount,
+            _timing.CurTime,
+            amount > 0 ? Loc.GetString("bank-deposit") : Loc.GetString("bank-withdrawal"),
+            Loc.GetString("bank-system"),
+            null
+        ));
+
         if (account.CartridgeUid != null)
             _bankCartridge.UpdateUiState(account.CartridgeUid.Value);
 

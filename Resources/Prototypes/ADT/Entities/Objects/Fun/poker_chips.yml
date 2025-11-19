@@ -42,35 +42,35 @@
 
 - type: stack
   id: ADTCasinoChip1
-  name: casino_chip_1
+  name: stack-name-casino_chip
   spawn: ADTFunCasinoChipBase
   maxCount: 10
   # itemSize: 1
 
 - type: stack
   id: ADTCasinoChip5
-  name: casino_chip_5
+  name: stack-name-casino_chips
   spawn: ADTFunCasinoChip5
   maxCount: 10
   # itemSize: 1
 
 - type: stack
   id: ADTCasinoChip10
-  name: casino_chip_10
+  name: stack-name-casino_chips
   spawn: ADTFunCasinoChip10
   maxCount: 10
   # itemSize: 1
 
 - type: stack
   id: ADTCasinoChip50
-  name: casino_chip_50
+  name: stack-name-casino_chips
   spawn: ADTFunCasinoChip50
   maxCount: 10
   # itemSize: 1
 
 - type: stack
   id: ADTCasinoChip100
-  name: casino_chip_100
+  name: stack-name-casino_chips
   spawn: ADTFunCasinoChip100
   maxCount: 10
   # itemSize: 1
@@ -337,15 +337,14 @@
     maxItemSize: Small
     grid:
     - 0,0,5,3
+    whitelist:
+      tags:
+        - ADTCardPlay
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
   - type: StorageFill
     contents:
-    - id: ADTFunCardsBoxFull54
-      amount: 1
-    - id: d6Dice
-      amount: 2
     - id: ADTFunCasinoChip1stack
       amount: 4
     - id: ADTFunCasinoChip5stack
@@ -357,4 +356,6 @@
     - id: ADTFunCasinoChip100stack
       amount: 4
     - id: ADTFunDealerChip
+      amount: 1
+    - id: ADTFunCardsBoxFull54
       amount: 1

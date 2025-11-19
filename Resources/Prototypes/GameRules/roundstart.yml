@@ -101,6 +101,7 @@
     nameSegments:
     - NamesOperationPrefix
     - NamesOperationSuffix
+    nameFormat: name-format-nuclear-operation
   - type: NukeopsRule
   - type: RuleGrids
   - type: AntagSelection
@@ -133,8 +134,8 @@
       - type: NukeOperative
       - type: RandomMetadata
         nameSegments:
-        - NamesNukieFirstCommander
         - NamesSyndicateElite
+        nameFormat: name-format-nukie-commander
       - type: NpcFactionMember
         factions:
         - Syndicate
@@ -150,8 +151,8 @@
       - type: NukeOperative
       - type: RandomMetadata
         nameSegments:
-        - NamesNukieFirstAgent
         - NamesSyndicateNormal
+        nameFormat: name-format-nukie-agent
       - type: NpcFactionMember
         factions:
         - Syndicate
@@ -169,8 +170,8 @@
       - type: NukeOperative
       - type: RandomMetadata
         nameSegments:
-        - NamesNukieFirstOperator
         - NamesSyndicateNormal
+        nameFormat: name-format-nukie-operator
       - type: NpcFactionMember
         factions:
         - Syndicate
@@ -183,12 +184,13 @@
   id: BaseTraitorRule
   components:
   - type: TraitorRule
+    bloodBrotherChance: 0.2 #ADT-tweak
   # TODO: codewords in yml
   # TODO: uplink in yml
   - type: AntagRandomObjectives
     sets:
     - groups: TraitorObjectiveGroups
-    maxDifficulty: 5
+    maxDifficulty: 8 #ADT-tweak
   - type: AntagSelection
     agentName: traitor-round-end-agent-name
 
@@ -274,7 +276,7 @@
     - WizardSurviveObjective
     - WizardDemonstrateObjective
   - type: LoadMapRule
-    gridPath: /Maps/Shuttles/wizard.yml
+    mapPath: /Maps/Nonstations/wizardsden.yml
   - type: RuleGrids
   - type: AntagSelection
   - type: AntagLoadProfileRule
@@ -311,6 +313,7 @@
         nameSegments:
         - NamesWizardFirst
         - NamesWizardLast
+        nameFormat: name-format-wizard
       mindRoles:
       - MindRoleWizard
 
@@ -454,3 +457,15 @@
       orGroup: puddleMess
     - id: SmugglerStashVariationPass
       prob: 0.90
+    - id: SolarPanelDamageVariationPass
+    - id: SolarPanelEmptyVariationPass
+    # ADT-Tweak-Start
+    # - id: BasicDecalDirtVariationPass
+    # - id: BasicDecalGraffitiVariationPass
+    # - id: BasicDecalBrunsVariationPass
+    #   prob: 0.50
+    #   orGroup: monospaceDecals
+    # - id: BasicDecalDirtMonospaceVariationPass
+    #   prob: 0.50
+    #   orGroup: monospaceDecals
+    # ADT-Tweak-End

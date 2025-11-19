@@ -30,6 +30,9 @@ alerts-weightless-desc =
 alerts-stunned-name = [color=yellow]Stunned[/color]
 alerts-stunned-desc = You're [color=yellow]stunned[/color]! Something is impairing your ability to move or interact with objects.
 
+alerts-knockdown-name = [color=yellow]Knocked Down[/color]
+alerts-knockdown-desc = You're [color=yellow]Knocked Down[/color]! Something has slipped or pushed you over, encumbering your movement.
+
 alerts-handcuffed-name = [color=yellow]Handcuffed[/color]
 alerts-handcuffed-desc = You're [color=yellow]handcuffed[/color] and can't use your hands. If anyone drags you, you won't be able to resist.
 
@@ -53,6 +56,9 @@ alerts-battery-desc = If your battery depletes, you will be unable to use your a
 
 alerts-no-battery-name = No Battery
 alerts-no-battery-desc = You don't have a battery, rendering you unable to charge or use your abilities.
+
+alerts-walking-name = Walking
+alerts-walking-desc = You are walking, moving at a slow pace.
 
 alerts-internals-name = Toggle internals
 alerts-internals-desc = Toggles your gas tank internals on or off.
@@ -111,4 +117,8 @@ alerts-revenant-essence-desc = The power of souls. It sustains you and is used f
 alerts-revenant-corporeal-name = Corporeal
 alerts-revenant-corporeal-desc = You have manifested physically. People around you can see and hurt you.
 
-ui-options-function-toggle-crawling = Toggle crawling
+alerts-rooted-name = Rooted
+alerts-rooted-desc = You are attached to the ground. You can't slip, but you absorb fluids under you.
+
+alerts-stealthy-name = Pickpocketing
+alerts-stealthy-desc = Whether you are currently pickpocketing. Click to toggle.
