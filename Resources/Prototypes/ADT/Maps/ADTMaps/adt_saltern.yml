@@ -2,7 +2,7 @@
   id: ADT_Saltern
   mapName: 'Saltern'
   mapPath: /Maps/ADTMaps/ADTStations/adt_saltern.yml
-  minPlayers: 0
+  minPlayers: 20
   maxPlayers: 35
   fallback: true
   stations:
@@ -15,7 +15,9 @@
             !type:NanotrasenNameGenerator
             prefixCreator: '-'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Corvax/Shuttles/corvax_emergency.yml # Corvax-EmergencyShuttle
+          emergencyShuttlePath: /Maps/ADTMaps/Shuttles/adt_emergency.yml
+        - type: StationCargoShuttle
+          path: /Maps/ADTMaps/Shuttles/adt_cargo.yml
         - type: StationJobs
           availableJobs:
             # command

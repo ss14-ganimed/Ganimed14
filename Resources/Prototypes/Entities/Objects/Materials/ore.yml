@@ -48,6 +48,10 @@
           Quantity: 10
   - type: Item
     heldPrefix: gold
+  - type: Tag
+    tags:
+    - Ore
+    - OreGold
 
 - type: entity
   parent: GoldOre
@@ -100,6 +104,12 @@
     stackType: SteelOre
   - type: Sprite
     state: iron
+### Start ADT Tweak
+  - type: Tag
+    tags:
+    - ADTSteelOre
+    - Ore
+### End ADT Tweak
   - type: Material
   - type: PhysicalComposition
     materialComposition:
@@ -152,6 +162,10 @@
           Quantity: 10
   - type: Item
     heldPrefix: plasma
+  - type: Tag
+    tags:
+    - Ore
+    - OrePlasma
 
 - type: entity
   parent: PlasmaOre
@@ -185,6 +199,10 @@
           Quantity: 10
   - type: Item
     heldPrefix: silver
+  - type: Tag
+    tags:
+    - Ore
+    - OreSilver
 
 - type: entity
   parent: SilverOre
@@ -205,6 +223,12 @@
   - type: Sprite
     state: spacequartz
   - type: Material
+### Start ADT Tweak
+  - type: Tag
+    tags:
+    - ADTQuarzOre
+    - Ore
+### End ADT Tweak
   - type: PhysicalComposition
     materialComposition:
       RawQuartz: 300   #ADT_Tweak - повышено со 100
@@ -259,6 +283,10 @@
         canReact: false
   - type: Item
     heldPrefix: uranium
+  - type: Tag
+    tags:
+    - Ore
+    - OreUranium
 
 - type: entity
   parent: UraniumOre
@@ -301,6 +329,10 @@
           Quantity: 5
   - type: Item
     heldPrefix: bananium
+  - type: Tag
+    tags:
+    - Ore
+    - OreBananium
 
 - type: entity
   parent: BananiumOre
@@ -321,6 +353,12 @@
   - type: Sprite
     state: coal
   - type: Material
+### Start ADT Tweak
+  - type: Tag
+    tags:
+    - ADTCoalOre
+    - Ore
+### End ADT Tweak
   - type: Extractable
     grindableSolutionName: coal
   - type: SolutionContainerManager
@@ -409,3 +447,4 @@
   components:
   - type: Stack
     count: 1
+

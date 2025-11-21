@@ -43,34 +43,33 @@
     sprite: Mobs/Ghosts/ghost_human.rsi
     color: "#fff8"
     layers: # ADT ghost start
-    - state: animated # TODO: был откат, это нужно доделать в Content.Server\Ghost\GhostSystem.cs метод OnPlayerAttached
-    # - map: [ "enum.HumanoidVisualLayers.Chest" ]
-    #   shader: unshaded
-    # - map: [ "enum.HumanoidVisualLayers.Head" ]
-    #   shader: unshaded
-    # - map: [ "enum.HumanoidVisualLayers.Snout" ]
-    #   shader: unshaded
-    # - map: [ "enum.HumanoidVisualLayers.Eyes" ]
-    #   shader: unshaded
-    # - map: [ "enum.HumanoidVisualLayers.RArm" ]
-    #   shader: unshaded
-    # - map: [ "enum.HumanoidVisualLayers.LArm" ]
-    #   shader: unshaded
-    # - map: [ "enum.HumanoidVisualLayers.RLeg" ]
-    #   shader: unshaded
-    # - map: [ "enum.HumanoidVisualLayers.LLeg" ]
-    #   shader: unshaded
-    # - map: [ "enum.HumanoidVisualLayers.LFoot" ]
-    #   shader: unshaded
-    # - map: [ "enum.HumanoidVisualLayers.RFoot" ]
-    #   shader: unshaded
-    # - map: ["enum.HumanoidVisualLayers.LHand"]
-    #   shader: unshaded
-    # - map: ["enum.HumanoidVisualLayers.RHand"]
-    #   shader: unshaded
-    # - map: ["jumpsuit"]
-    #   shader: unshaded
-  # ОЧЕНЬ ЧЁРТ ВОЗЬМИ ВАЖНЫЙ TODO: придумать, как сделать аншейдед на госта
+    # - state: animated
+    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      shader: unshaded
+    - map: [ "enum.HumanoidVisualLayers.Head" ]
+      shader: unshaded
+    - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      shader: unshaded
+    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      shader: unshaded
+    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      shader: unshaded
+    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      shader: unshaded
+    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      shader: unshaded
+    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      shader: unshaded
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+      shader: unshaded
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+      shader: unshaded
+    - map: ["enum.HumanoidVisualLayers.LHand"]
+      shader: unshaded
+    - map: ["enum.HumanoidVisualLayers.RHand"]
+      shader: unshaded
+    - map: ["jumpsuit"]
+      shader: unshaded
   # ADT ghost end
   - type: ContentEye
     maxZoom: 1.44,1.44
@@ -81,7 +80,8 @@
   - type: Examiner
     skipChecks: true
   - type: Ghost
-    availableClothing: #ADT tweak
+  # ADT-Tweak-Start
+    availableClothing:
     - ClothingUniformJumpsuitPsychologist
     - ClothingUniformJumpsuitScientist
     - ClothingUniformJumpsuitSafari
@@ -99,6 +99,12 @@
     - ClothingUniformJumpsuitChaplain
     - ClothingUniformJumpsuitParamedic
     - ClothingUniformJumpsuitPirate
+    - ADTClothingUniformJumpsuitBlueshield
+    - ADTClothingUniformJumpsuitGreenSuitLawyer
+    - ADTClothingUniformJumpsuitBarber
+    - ADTClothingUniformGuardOfficer
+    - ADTClothingUniformSquidGamePlayer
+  # ADT-Tweak-End
   - type: GhostHearing
   - type: ShowElectrocutionHUD
   - type: IntrinsicRadioReceiver
@@ -109,29 +115,27 @@
     tags:
     - BypassInteractionRangeChecks
   - type: PointLight
+    netsync: false
     radius: 6
     castShadows: false
     enabled: false
+  # ADT-Tweak-start
   - type: LanguageSpeaker
     languages:
       Universal: Understand
-  #ADT Observer PDA start
-  - type: Hands
-    showInHands: false
   - type: Inventory
     templateId: ghost
-  # - type: Loadout
-  #   prototypes: [ MobGhostGear ]
   - type: InventorySlots
-  - type: ComplexInteraction
   - type: HumanoidAppearance
     species: GhostSpecies
     shader: unshaded
-  #ADT Observer PDA end
-  # ADT-Tweak-start
   - type: TypingIndicator
     proto: ghost
   - type: Speech
+  - type: UserInterface
+    interfaces:
+      enum.GhostInfoUiKey.Key:
+        type: GhostInfoBoundUserInterface
   # ADT-Tweak-end
 
 # proto for player ghosts specifically
@@ -143,61 +147,69 @@
   - type: Tag
     tags:
     - AllowGhostShownByEvent
+  - type: GhostInfo # ADT-Tweak
+
 
 - type: entity
+  parent: BaseMentalAction
   id: ActionGhostBoo
   name: Boo!
   description: Scare your crew members because of boredom!
   components:
-  - type: InstantAction
+  - type: Action
     icon: Interface/Actions/scream.png
     checkCanInteract: false
-    event: !type:BooActionEvent
     startDelay: true
     useDelay: 120
+  - type: InstantAction
+    event: !type:BooActionEvent
 
 - type: entity
+  parent: BaseMentalAction
   id: ActionToggleLighting
   name: Toggle Lighting
   description: Toggle light rendering to better observe dark areas.
   components:
-  - type: InstantAction
+  - type: Action
     icon: Interface/VerbIcons/light.svg.192dpi.png
     clientExclusive: true
-    checkCanInteract: false
+  - type: InstantAction
     event: !type:ToggleLightingActionEvent
 
 - type: entity
+  parent: BaseMentalAction
   id: ActionToggleFov
   name: Toggle FoV
   description: Toggles field-of-view in order to see what players see.
   components:
-  - type: InstantAction
+  - type: Action
     icon: Interface/VerbIcons/vv.svg.192dpi.png
     clientExclusive: true
-    checkCanInteract: false
+  - type: InstantAction
     event: !type:ToggleFoVActionEvent
 
 - type: entity
+  parent: BaseMentalAction
   id: ActionToggleGhosts
   name: Toggle Ghosts
   description: Toggle the visibility of other ghosts.
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: Mobs/Ghosts/ghost_human.rsi, state: icon }
     clientExclusive: true
-    checkCanInteract: false
+  - type: InstantAction
     event: !type:ToggleGhostsActionEvent
 
 - type: entity
+  parent: BaseMentalAction
   id: ActionToggleGhostHearing
   name: Toggle Ghost Hearing
   description: Toggle between hearing all messages and hearing only radio & nearby messages.
   components:
-  - type: InstantAction
-    checkCanInteract: false
+  - type: Action
     icon:
       sprite: Clothing/Ears/Headsets/base.rsi
       state: icon
     iconOn: Interface/Actions/ghostHearingToggled.png
+  - type: InstantAction
     event: !type:ToggleGhostHearingActionEvent

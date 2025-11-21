@@ -3,6 +3,7 @@
 - type: latheRecipePack
   id: ServiceStatic
   recipes:
+  - WateringCan # Ganimed
   - Mousetrap  # ADT Tweak
   - TrashBag  # ADT Tweak
   - ADTPlantAnalyzer # ADT Tweak
@@ -23,10 +24,12 @@
   - FoodPlateMuffinTin
   - FoodKebabSkewer
   - SprayBottle
+  - TrashBag
   - LightReplacer
   - MopItem
   - Holoprojector
   - WetFloorSign
+  - WireBrush
 
 - type: latheRecipePack
   id: ServiceBoardsStatic
@@ -50,6 +53,8 @@
   - WeaponSprayNozzle
   - ClothingBackpackWaterTank
   - MegaSprayBottle
+  - ADTBluespaceTrashCan # ADT tweak
+  - AdvWateringCan  # Ganimed
 
 - type: latheRecipePack
   id: Instruments

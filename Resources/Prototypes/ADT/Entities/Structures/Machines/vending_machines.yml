@@ -9,8 +9,8 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-  - type: Advertise
-    pack: PatholodrobeAds
+  - type: DatasetVocalizer
+    dataset: PatholodrobeAds
   - type: Sprite
     sprite: ADT/Structures/Machines/VendingMachines/patholodrobe.rsi
     layers:
@@ -43,8 +43,8 @@
     brokenState: broken
     normalState: normal-unshaded
     denyState: deny-unshaded
-  - type: Advertise
-    pack: ClothesMateAds
+  - type: DatasetVocalizer
+    dataset: ClothesMateAds
   - type: Speech
   - type: Tag
     tags:
@@ -91,42 +91,6 @@
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
 
-
-      # halloween
-
-- type: entity
-  parent: VendingMachine
-  id: ADTVendingMachineHalloween
-  name: HalloMate
-  description: A vending machine for Halloween things.
-  components:
-  - type: VendingMachine
-    pack: ADTHalloweenMateInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    denyState: deny-unshaded
-  #- type: Advertise
-  #  pack: ClothesMateAds
-  - type: Speech
-  - type: Tag
-    tags:
-      - WhitelistChameleon
-  - type: Sprite
-    sprite: ADT/Structures/Machines/VendingMachines/halloweenmat.rsi
-    layers:
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
-      shader: unshaded
-    - state: panel
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: PointLight
-    radius: 1.8
-    energy: 1.6
-    color: "#c2adff"
-
 # Таблеткомат
 
 - type: entity
@@ -143,8 +107,8 @@
     denyState: deny-unshaded
     ejectState: eject-unshaded
     ejectDelay: 0.6
-  - type: Advertise
-    pack: PillAds
+  - type: DatasetVocalizer
+    dataset: PillAds
   - type: Speech
   - type: Sprite
     sprite: ADT/Structures/Machines/VendingMachines/pillomat.rsi
@@ -176,8 +140,8 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-  - type: Advertise
-    pack: MediDrobeAds
+  - type: DatasetVocalizer
+    dataset: MediDrobeAds
   - type: Sprite
     sprite: ADT/Structures/Machines/VendingMachines/paradrobe.rsi
     layers:
@@ -194,9 +158,6 @@
     radius: 1.8
     energy: 1.6
     color: "#1ca9d4"
-  - type: StaticPrice
-    price: 2600
-
 
 # ГраждоМед
 
@@ -214,8 +175,8 @@
     priceMultiplier: 1.1
     ejectDelay: 0.6
     # ejectState: eject-unshaded  No sprite, see chefvend/dinnerware/BODA/etc for expamples
-  - type: Advertise
-    pack: ADTCiviMedAds
+  - type: DatasetVocalizer
+    dataset: ADTCiviMedAds
   - type: Sprite
     sprite: ADT/Structures/Machines/VendingMachines/civimed.rsi
     layers:
@@ -251,8 +212,8 @@
     denyState: deny-unshaded
     priceMultiplier: 0.57 # ADT-Economy
     ejectDelay: 1
-  - type: Advertise
-    pack: IceCreammatAds
+  - type: DatasetVocalizer
+    dataset: IceCreammatAds
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
   - type: Sprite
@@ -327,42 +288,6 @@
     denyState: deny-unshaded
     initialStockQuality: 0.33
     allForFree: true # ADT-Economy
-
-- type: entity
-  parent: VendingMachine
-  id: ADTVendingMachineLoveVend
-  name: LoveVend
-  description: Happy Valentine's Day!
-  components:
-  - type: VendingMachine
-    priceMultiplier: 0.8
-    pack: ADTLoveLandInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    denyState: deny-unshaded
-  - type: Advertise
-    pack: ClothesMateAds
-  - type: Speech
-  - type: Tag
-    tags:
-      - WhitelistChameleon
-  - type: Sprite
-    sprite: ADT/Structures/Machines/VendingMachines/lovevend.rsi
-    layers:
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
-      shader: unshaded
-    - state: panel
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: PointLight
-    radius: 1.8
-    energy: 1.6
-    color: "#c2adff"
-  - type: StaticPrice
-    price: -4000
 
 - type: entity
   parent: VendingMachine

@@ -44,11 +44,23 @@
 
 - type: startingGear
   id: CMOGear
-  equipment:
+  # equipment: # ADT tweak
  #id: CMOPDA  # ADT Tweak
-    ears: ClothingHeadsetCMO
+    # ears: ClothingHeadsetCMO # ADT tweak
 #    belt: ClothingBeltMedicalFilled ADT tweak
   storage:
     back:
     - Flash
     - ADTtelescopicBaton #ADT-CustomADTLoadout
+
+- type: chameleonOutfit
+  id: ChiefMedicalOfficerChameleonOutfit
+  job: ChiefMedicalOfficer
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatBeretCmo
+    eyes: ClothingEyesHudMedical
+    mask: ClothingMaskSterile
+    neck: ClothingCloakCmo
+    outerClothing: ClothingOuterCoatLabCmo
+    gloves: ClothingHandsGlovesNitrile

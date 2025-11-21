@@ -9,44 +9,6 @@
   - type: Clothing
     sprite: ADT/Clothing/OuterClothing/Misc/apron_pathologist.rsi
 
-#День Святого Валентина
-
-- type: entity
-  parent: ClothingOuterStorageBase
-  id: ADTClothingOuterRedCardigan
-  name: red cardigan
-  description: red cardigan
-  suffix: Valentine Day
-  components:
-  - type: Sprite
-    sprite: ADT/Clothing/OuterClothing/Misc/red_cardigan.rsi #спрайты от @lunalita
-  - type: Clothing
-    sprite: ADT/Clothing/OuterClothing/Misc/red_cardigan.rsi
-
-- type: entity
-  parent: ClothingOuterStorageBase
-  id: ADTClothingOuterBlackCardigan
-  name: black cardigan
-  description: black cardigan
-  suffix: Valentine Day
-  components:
-  - type: Sprite
-    sprite: ADT/Clothing/OuterClothing/Misc/black_cardigan.rsi #спрайты от @lunalita
-  - type: Clothing
-    sprite: ADT/Clothing/OuterClothing/Misc/black_cardigan.rsi
-
-- type: entity
-  parent: ClothingOuterBase
-  id: ADTClothingOuterCupidonWings
-  name: cupidon wings
-  description: cupidon wings
-  suffix: Valentine Day
-  components:
-  - type: Sprite
-    sprite: ADT/Clothing/OuterClothing/Misc/cupidon_wings.rsi #спрайты от @lunalita
-  - type: Clothing
-    sprite: ADT/Clothing/OuterClothing/Misc/cupidon_wings.rsi
-
 #Коробка с подтяжками (для клунь)
 
 - type: entity
@@ -70,3 +32,51 @@
     sprite: ADT/Clothing/OuterClothing/Misc/barber_apron.rsi
   - type: Clothing
     sprite: ADT/Clothing/OuterClothing/Misc/barber_apron.rsi
+
+- type: entity
+  parent: ClothingOuterBaseToggleable
+  id: ADTClothingOuterHoodieChaplainWhite
+  name: white chaplain's hoodie
+  description: White and strict chaplain hoodie.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Misc/chaplain_hoodie_white.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/OuterClothing/Misc/chaplain_hoodie_white.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ADTClothingHeadHatHoodChaplainHoodWhite
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ADTClothingOuterApronBarista
+  suffix: Barista
+  name: apron
+  description: A brown apron designed for baristas.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Misc/apron_barista.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/OuterClothing/Misc/apron_barista.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ADTClothingOuterApronButcher
+  suffix: Butcher
+  name: apron
+  description: Come here, little piggy...
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Misc/apron_butcher.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/OuterClothing/Misc/apron_butcher.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ADTClothingOuterJacketChefRed
+  name: red chef jacket
+  description: An apron-jacket used by a high class confectioner.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Misc/chef_red.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/OuterClothing/Misc/chef_red.rsi

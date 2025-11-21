@@ -85,7 +85,7 @@ public sealed partial class MorphComponent : Component
     /// объява цк после массового размножения
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("soundReplication")]
-    public SoundSpecifier? SoundReplication = new SoundPathSpecifier("/Audio/ADT/Announcements/announce_dig.ogg")
+    public SoundSpecifier? SoundReplication = new SoundPathSpecifier("/Audio/Announcements/announce.ogg") // Ganimed edit
     {
         Params = AudioParams.Default.WithVolume(-3f),
     };
@@ -95,6 +95,8 @@ public sealed partial class MorphComponent : Component
     [DataField("devourTime")]
     public float DevourTime = 3f;
 
+    [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
+    public List<EntityUid> ContainedCreatures = new();
     /// <summary>
     /// вайтлист на обед
     /// </summary>

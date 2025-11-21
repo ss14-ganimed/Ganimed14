@@ -2,14 +2,10 @@ ent-ADTChairPizzeria = черный стул для пиццерии
     .desc = Хорошо подойдет для маленького кафе.
 
 ent-ADTChairRed = красный деревянный стул
-    .desc = { ent-ADTChairPizzeria }
+    .desc = Комфортный красный стул с белой спинкой и сидалищем
 
 ent-ADTChairWhite = белый деревянный стул
-    .desc = { ent-ADTChairPizzeria }
-
-ent-ADTChairOktoberfest = роскошный праздничный стул
-    .desc = Комфортнейший стул для праздника пива.
-    .suffix = { "Октоберфест" }
+    .desc = Комфортный белый стул с белой спинкой и сидалищем
 
 ent-ADTArmchairWhite = белое кресло
     .desc = Выглядит крайне комфортно.
@@ -40,10 +36,6 @@ ent-ADTArmchairBlue = синее кресло
 
 ent-ADTArmchairBlue2 = { ent-ADTArmchairBlue }
     .desc = { ent-ADTArmchairWhite.desc }
-
-ent-ADTSpiderStool = паучий стул
-    .suffix = Хеллоуин
-    .desc = Выглядит страшноватенько.
 
 ent-ADTBarberChair = парикмахерское кресло
     .desc = Очень удобное кресло, предназначенное для работы парикмахера.

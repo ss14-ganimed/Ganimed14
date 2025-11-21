@@ -15,7 +15,6 @@
   # they like eat it idk lol
   - type: Storage
     clickInsert: false
-    openOnActivate: false
     grid:
     - 0,0,1,2
     maxItemSize: Large
@@ -70,7 +69,6 @@
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Slime
-  - type: Geras # Ganimed
   - type: PassiveDamage # Around 8 damage a minute healed
     allowedStates:
     - Alive
@@ -94,30 +92,28 @@
       types:
         Blunt: 0.50 #per second, scales with pressure and other constants.
         Heat: 0.2 # 0.1 more than humans, i feel like low pressure would make slime boil more than blunt stretch them so i decided on this instead.
-  #ADT-tweak-start
-  #- type: Reactive
-  #  groups:
-  #    Flammable: [ Touch ]
-  #    Extinguish: [ Touch ]
-  #  reactions:
-  #  - reagents: [ Water, SpaceCleaner ]
-  #    methods: [ Touch ]
-  #    effects:
-  #    - !type:WashCreamPieReaction
-  #  - reagents: [ Water ]
-  #    methods: [ Touch ]
-  #    effects:
-  #    - !type:HealthChange
-  #      scaleByQuantity: true
-  #      damage:
-  #        types:
-  #          Heat: 0.1
-  #    - !type:PopupMessage
-  #      type: Local
-  #      visualType: Large
-  #      messages: [ "slime-hurt-by-water-popup" ]
-  #      probability: 0.25
-  #ADT-tweak-end
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+    reactions:
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
+      effects:
+      - !type:WashCreamPieReaction
+    - reagents: [ Water ]
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        damage:
+          types:
+            Heat: 0.1
+      - !type:PopupMessage
+        type: Local
+        visualType: Large
+        messages: [ "slime-hurt-by-water-popup" ]
+        probability: 0.25
   - type: Butcherable
     butcheringType: Spike
     spawned:
@@ -144,11 +140,15 @@
       GalacticCommon: Speak
       Bubblish: Speak
   - type: SlimeHair # ADT-SlimeHair
+  # Ganimed-Tweak-Start
+  - type: Sprite
+    scale: 0.95, 0.95
+  # Ganimed-Tweak-End
   - type: SizeAttributeWhitelist # Frontier
     tall: true
-    tallscale: 1.05
+    tallscale: 1 # Ganimed-Tweak
     short: true
-    shortscale: 0.95
+    shortscale: 0.9 # Ganimed-Tweak
   #End ADT tweak
 
 - type: entity

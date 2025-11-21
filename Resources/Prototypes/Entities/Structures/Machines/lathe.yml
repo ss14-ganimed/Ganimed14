@@ -193,6 +193,7 @@
         - RawMaterial
         - Ingot
         - PhantomEctoplasm
+        - ADTBSCrystal #ADT Tweak
   - type: OreSiloClient
   - type: Lathe
     idleState: icon
@@ -220,13 +221,16 @@
     #ADT-tweak-start
     - ADTRCDPack
     - ADTPKAPack
-    - ADTWeaponExperimentalPKAPack
     - ADTServiceHydroponics
     - ADTAdvancedMedicalMiscPack
     - ADTTranslatorPack
     - ADTXenoTranslatorPack
     - ADTPhantomPack
+    - ADTWeaponLauncherHydraPack
+    - ADTPowerPack
+    - ADTMegaCellPack
     #ADT-tweak-end
+    - ADTBluespaceCrystalTech #ADT Tweak
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityAmmo
@@ -286,8 +290,11 @@
     - MechBoards
     - ShuttleBoards
     # ADT-tweak-start
-    - ADTEnergyBoardsPack
     - ADTBluespaceHarvesterPack
+    - ADTArcade
+    - ADTIndustrialCharger
+    - ADTAdvancedThruster
+    - ADTMegaCharger
     # ADT-tweak-end
   - type: EmagLatheRecipes
     emagDynamicPacks:
@@ -298,6 +305,7 @@
         - Sheet
         - RawMaterial
         - Ingot
+        - ADTBSCrystal #ADT Tweak
   - type: OreSiloClient
   - type: RequireProjectileTarget
 
@@ -357,6 +365,7 @@
       - Sheet
       - RawMaterial
       - Ingot
+      - ADTBSCrystal #ADT Tweak
   - type: OreSiloClient
   - type: GuideHelp
     guides:
@@ -593,6 +602,7 @@
         - Sheet
         - RawMaterial
         - Ingot
+  - type: OreSiloClient
 
 - type: entity
   id: Biogenerator
@@ -669,6 +679,7 @@
       staticPacks:
       - OreSmelting
       - RGlassSmelting
+      - ADTBScrystalSmelting #ADT Tweak
     # ADT tweak start
     - type: AutoMaterialInsert
       tag: ADTOreBag
@@ -695,6 +706,7 @@
     - OreSmelting
     - RGlassSmelting
     - AdvancedSmelting
+    - ADTBScrystalSmelting #ADT Tweak
 
 - type: entity
   parent: BaseLathe
@@ -762,3 +774,4 @@
         - Wooden
         - RawMaterial
         - Plastic
+  - type: OreSiloClient

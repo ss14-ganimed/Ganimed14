@@ -11,7 +11,9 @@ ent-MagistratJumpsuit = Костюмы
 loadout-group-blueshield-jumpsuit = ОСЩ, комбинезон
 loadout-group-blueshield-head = ОСЩ, голова
 loadout-group-blueshield-neck = ОСЩ, шея
+loadout-blueshield-ears-adt = ОСЩ, ухо
 loadout-group-blueshield-back = ОСЩ, рюкзак
+loadout-group-blueshield-outer-clothing = ОСЩ, верхняя одежда
 
 # Civilian
 loadout-chef-pocket1-adt = Шеф Повар, карман 1
@@ -25,19 +27,45 @@ loadout-group-janitor-id-adt = Уборщик, ID
 loadout-group-botanist-id-adt = Ботаник, ID
 loadout-barber-jumpsuit-adt = Парикмахер, комбинезон
 loadout-barber-other-clothing-adt = Парикмахер, верхняя одежда
+loadout-group-clown-mask-adt = Клоун, маска
+loadout-group-clown-gloves-adt = Клоун, перчатки
+loadout-group-clown-pocket1-adt = Клоун, карман 1
+loadout-group-clown-pocket2-adt = Клоун, карман 2
+loadout-group-musician-id-adt = Музыкант, ID
+loadout-group-musician-gloves-adt = Музыкант, перчатки
+loadout-group-reporter-id-adt = Репортёр, ID
+loadout-group-bartender-gloves-adt = Бармен, перчатки
+loadout-group-boxer-id-adt = Боксёр, ID
+loadout-group-boxer-head-adt = Боксёр, голова
+loadout-group-service-worker-gloves-adt = Сервисный работник, перчатки
+loadout-group-service-worker-id-adt = Сервисный работник, ID
+loadout-group-service-worker-jumpsuit-adt = Сервисный работник, комбинезон
+loadout-group-chef-gloves-adt = Шеф-Повар, перчатки
+loadout-group-chef-neck-adt = Шеф-Повар, шея
 
 # Cargo
 loadout-group-quartermaster-id = Квартирмейстер, ID
+loadout-quartermaster-ears-adt = Квартирмейстер, ухо
 loadout-salvage-specialist-jumpsuit-adt = Утилизатор, комбинезон
 loadout-salvage-specialist-neck-adt = Утилизатор, шея
+loadout-salvage-specialist-ears-adt = Утилизатор, ухо
 loadout-group-salvage-id-adt = Утилизатор, ID
 loadout-group-cargo-id-adt = Грузчик, ID
+
+loadout-miner-jumpsuit-adt = Шахтёр, комбинезон
+loadout-miner-backpack = Шахтёр, рюкзак
+loadout-miner-ears-adt = Шахтёр, ухо
+loadout-miner-neck-adt = Шахтёр, шея
+loadout-miner-outerclothing-adt = Шахтёр, верхняя одежда
+loadout-miner-shoes-adt = Шахтёр, обувь
+loadout-miner-id-adt = Шахтёр, ID
 
 # Chaplain
 loadout-chaplain-blessedbook-adt = Священник, священная книга
 loadout-group-chaplain-id-adt = Священник, ID
 
 # Engineering
+loadout-chief-engineer-ears-adt = Старший инженер, ухо
 loadout-group-senior-engineer-head = Бригадир, голова
 loadout-group-senior-engineer-jumpsuit = Бригадир, комбинезон
 loadout-group-atmospheric-technician-neck = Атмосферный техник, плащ
@@ -46,6 +74,7 @@ loadout-group-atmospheric-technician-head = Атмосферный техник,
 loadout-group-atmos-id-adt = Атмосферный техник, ID
 
 # Science
+loadout-research-director-ears-adt = Научный руководитель, ухо
 loadout-group-reserch-director-id-adt = Научный руководитель, ID
 loadout-group-senior-researcher-head = Доцент, голова
 loadout-group-senior-researcher-jumpsuit = Доцент, комбинезон
@@ -82,6 +111,7 @@ loadout-brigmedic-outerwear-adt = Бригмедик, верхняя одежд�
 
 # Medical
 loadout-group-chief-medical-officer-id-adt = Главный врач, ID
+loadout-chief-medical-officer-ears-adt = Главный врач, ухо
 loadout-group-senior-physician-head = Ведущий врач, голова
 loadout-group-senior-physician-jumpsuit = Ведущий врач, комбинезон
 loadout-group-senior-physician-outerclothing = Ведущий врач, верхняя одежда
@@ -102,3 +132,7 @@ loadout-group-psychologist-id-adt = Психолог, ID
 loadout-group-lawyer-id-adt = Адвокат, ID
 loadout-group-lawyer-gloves = Адвокат, перчатки
 loadout-group-lawyer-backpack = Магистрат, рюкзак
+
+# Command
+loadout-captain-ears-adt = Капитан, ухо
+loadout-HoP-ears-adt = Глава персонала, ухо

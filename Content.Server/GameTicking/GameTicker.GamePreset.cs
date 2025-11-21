@@ -27,6 +27,7 @@ public sealed partial class GameTicker
     /// Countdown to the preset being reset to the server default.
     /// </summary>
     public int? ResetCountdown;
+    public readonly Dictionary<string, int> PlayedPresets = new(); // ADT-Tweak
 
     private bool StartPreset(ICommonSession[] origReadyPlayers, bool force)
     {
@@ -89,10 +90,10 @@ public sealed partial class GameTicker
         return true;
     }
 
-        private void InitializeGamePreset()
-        {
-            SetGamePreset(LobbyEnabled ? _cfg.GetCVar(CCVars.GameLobbyDefaultPreset) : "sandbox");
-        }
+    private void InitializeGamePreset()
+    {
+        SetGamePreset(LobbyEnabled ? _cfg.GetCVar(CCVars.GameLobbyDefaultPreset) : "Extended");
+    }
 
     public void SetGamePreset(GamePresetPrototype? preset, bool force = false, int? resetDelay = null)
     {

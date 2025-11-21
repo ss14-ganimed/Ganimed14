@@ -13,7 +13,8 @@
   - SeedExtractorMachineCircuitboard
   - HydroponicsTrayMachineCircuitboard
   - ReagentGrinderIndustrialMachineCircuitboard
-  - BotanicDNACircuitboard # Ganimed
+  - BotanicalSeedDNAManipulatorCircuitboard # Ganimed-Edit
+  - AdvWateringCan # Ganimed-Edit
   # ADT Research Console Rework start
   position: 2,-1
   requiredTech:
@@ -84,6 +85,11 @@
     - DawInstrumentMachineCircuitboard
     - MassMediaCircuitboard
     - JukeboxCircuitBoard
+    # ADT tweak start
+    - ADTBlockGameArcadeComputerCircuitboard
+    - ADTSpaceVillainArcadeComputerCircuitboard
+    - ADTMinesweeperCircuitboard
+    # ADT tweak end
   position: 3,0 # ADT Research Console Rework
 
 - type: technology
@@ -179,13 +185,16 @@
   tier: 2
   cost: 10000
   recipeUnlocks:
+  - ADTBluespaceTrashCan # ADT tweak
   - AdvMopItem
   - MegaSprayBottle
   - BorgModuleAdvancedCleaning
   # ADT Research Console Rework start
   position: 1,1
   requiredTech:
-  - ADTMechanizedTreatment # RoboticCleanliness -> ADTMechanizedTreatment. Заглушка, т.к нету прототипа RoboticCleanliness
+  - AdvancedEntertainment # add добавил
+  - ADTServiceMODsuitMODs # add добавил для того чтобы было больше смысла от линий...
+ # RoboticCleanliness -> ADTMechanizedTreatment. Remove = ADTMechanizedTreatment Заглушка идёт домой... а что она тут вобще делает?
   # ADT Research Console Rework end
 
 - type: technology
@@ -228,6 +237,7 @@
   # ADT Research Console Rework start
   position: 0,0
   requiredTech:
+  - AdvancedEntertainment
   - AdvancedCleaning
   # ADT Research Console Rework end
 
@@ -256,11 +266,13 @@
     state: icon
   discipline: CivilianServices
   tier: 2
-  cost: 4000
+  cost: 5000
   recipeUnlocks:
   - PushHorn
   # ADT Research Console Rework start
-  position: 2,2
+  position: 6,-1
+  requiredTech:
+  - ADTProtectionPseudoscience
   # ADT Research Console Rework end
 
 # Tier 3
@@ -301,5 +313,35 @@
 #   position: 1,3
 #   requiredTech:
 #   - ADTCloning
+
+# - type: technology
+#   id: BluespaceChemistry
+#   name: research-technology-bluespace-chemistry
+#   icon:
+#     sprite: Objects/Specific/Chemistry/beaker_bluespace.rsi
+#     state: beakerbluespace
+#   discipline: CivilianServices
+#   tier: 3
+#   cost: 10000
+#   recipeUnlocks:
+#   - BluespaceBeaker
+#   - SyringeBluespace
 #   # ADT Research Console Rework end
 
+# ADT Tweak start
+# - type: technology
+#   id: LauncherSyringe
+#   name: research-technology-launcher-syringe
+#   icon:
+#     sprite: Objects/Weapons/Guns/Cannons/syringe_gun.rsi
+#     state: syringe_gun
+#   discipline: CivilianServices
+#   tier: 3
+#   cost: 15000
+#   recipeUnlocks:
+#   - LauncherSyringe
+#   - MiniSyringe
+#   position: 7,-1
+#   requiredTech:
+#   - ADTProtectionPseudoscience
+# ADT Tweak end

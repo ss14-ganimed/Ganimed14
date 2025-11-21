@@ -16,7 +16,6 @@
       time: 36000 #10 hrs Ganimed-RoleTime
     - !type:AgeRequirement
       requiredAge: 21
-    # ADT Restrict Start
     - !type:SpeciesRequirement
       inverted: true
       species:
@@ -47,7 +46,6 @@
     - Medical
     - Engineering
     - Cargo
-    # - Centcom
     - BlueShield
   special:
   - !type:AddImplantSpecial
@@ -123,9 +121,6 @@
                   damage:
                     types:
                       Blunt: 15
-                - !type:ComboStunEffect
-                  stunTime: 2
-                  dropItems: false
                 - !type:ComboAudioEffect
                   sound:
                     collection: GenericHit
@@ -196,19 +191,21 @@
 - type: startingGear
   id: ADTBlueShieldOfficerGear
   equipment:
-    # head: ADTClothingHeadHatBeretBlueshieldBlack
     eyes: ADTClothingEyesGlassesBlueshield
-    ears: ADTClothingHeadsetBlueshield
-    # jumpsuit: ADTClothingUniformJumpsuitBlueshield
-    # back: ADTClothingBlueshieldBackpack
     shoes: ClothingShoesBootsCombatFilled
-    outerClothing: ADTClothingBlueshieldArmor
     belt: ADTClothingBeltMedicalSecurityFilled
     gloves: ClothingHandsGlovesCombat
     id: ADTBlueshieldOfficerPDA
-    pocket1: HandheldCrewMonitor
-  inhand: 
-    - ADTBaseWeaponCaseNTBS
-  # innerClothingSkirt: ClothingUniformJumpskirtBlueshield
-  # satchel: ADTClothingBackpackSatchelBlueshield
-  # duffelbag: ADTClothingBackpackDuffelBlueshield
+    pocket1: ADTBlueshieldVoucher
+    pocket2: ADTHandheldCrewMonitorBlueshield
+
+- type: chameleonOutfit
+  id: ADTBlueShieldChameleonOutfit
+  job: ADTBlueShieldOfficer
+  hasMindShield: true
+  equipment:
+    eyes: ADTClothingEyesGlassesBlueshield
+    shoes: ClothingShoesBootsCombatFilled
+    belt: ADTClothingBeltMedicalSecurityFilled
+    gloves: ClothingHandsGlovesCombat
+    id: ADTBlueshieldOfficerPDA

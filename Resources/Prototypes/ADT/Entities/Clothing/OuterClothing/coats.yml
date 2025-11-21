@@ -199,32 +199,6 @@
         Slash: 0.95
         Heat: 0.90
 
-
-    # halloween
-
-- type: entity
-  parent: ClothingOuterStorageBase
-  id: ADTJasonBomber
-  name: maniac bomber
-  description: maniac bomber
-  suffix: Halloween
-  components:
-  - type: Sprite
-    sprite: ADT/Clothing/OuterClothing/Coats/jason.rsi
-  - type: Clothing
-    sprite: ADT/Clothing/OuterClothing/Coats/jason.rsi
-
-- type: entity
-  parent: ClothingOuterStorageBase
-  id: ADTStudentBomber
-  name: student bomber
-  description: student bomber
-  suffix: Halloween
-  components:
-  - type: Sprite
-    sprite: ADT/Clothing/OuterClothing/Coats/hotline_student.rsi
-  - type: Clothing
-    sprite: ADT/Clothing/OuterClothing/Coats/hotline_student.rsi
 # Med
 
 - type: entity
@@ -386,6 +360,16 @@
   - type: Clothing
     sprite: ADT/Clothing/OuterClothing/Coats/letterman_syndie.rsi
 
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ADTClothingOuterLettermanBlack
+  name: black letterman jacket
+  description: A black letterman jacket.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Coats/letterman_black.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/OuterClothing/Coats/letterman_black.rsi
 
 # Тренч деку
 
@@ -424,7 +408,7 @@
   - type: Clothing
     sprite: ADT/Clothing/OuterClothing/Coats/radiodemoncoat.rsi
 
-# Бомбер шахтёрам/утилям 
+# Бомбер шахтёрам/утилям
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -444,3 +428,113 @@
       coefficients:
         Slash: 0.95
         Heat: 0.90
+
+# Одежда для Священника
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ADTClothingCoatMonkRobe
+  name: monks robe
+  description: You can't find something better than being alone in the altruism of cross.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Coats/chaplain_monk.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/OuterClothing/Coats/chaplain_monk.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ADTClothingHeadHatHoodMonk
+    requiredSlot:
+    - outerclothing
+    slot: head
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ADTClothingCoatReligionLeader
+  name: religion leader's robe
+  description: A royaly religious piece of clothing, that going to show all of your progeny about their place.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Coats/chaplain_leader.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/OuterClothing/Coats/chaplain_leader.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ADTClothingHeadHatHoodChaplainLeader
+    requiredSlot:
+    - outerclothing
+    slot: head
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ADTClothingCoatClockworkRobe
+  name: clockwork robe
+  description: Gungf gur ebor-bs oenff tbq-bs pybpxjebx zrpunavfzf-naq-fuvg`
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Coats/clockwork_robe.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/OuterClothing/Coats/clockwork_robe.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ADTClothingHeadHatClockworkHood
+    requiredSlot:
+    - outerclothing
+    slot: head
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ADTClothingOuterSpiderRobe
+  name: spider ominous robe
+  description: Robe, thats weared by spider cults. Looks kinda familiar...
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Coats/chaplain_web.rsi
+    state: icon
+  - type: Clothing
+    sprite: ADT/Clothing/OuterClothing/Coats/chaplain_web.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ADTClothingHeadHatWebHood
+    slot: head
+
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ADTClothingOuterTechpriestRobe
+  name: tech-priest robe
+  description: From the moment I understood the weakness of my flesh, it disgusted me.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Coats/chaplain_techpriest.rsi
+    state: icon
+  - type: Clothing
+    sprite: ADT/Clothing/OuterClothing/Coats/chaplain_techpriest.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ADTClothingHeadHatTechpriestHood
+    slot: head
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ADTClothingOuterDavidsJacket
+  name: EMT jacket
+  description: A bright yellow signal jacket, beloved by paramedics of the end of the 21st century.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Coats/david_jacket.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/OuterClothing/Coats/david_jacket.rsi
+
+- type: entity
+  parent: [ADTClothingOuterDavidsJacket, BaseMajorContraband]
+  id: ADTClothingOuterDavidsJacketValid
+  name: edgerunner jacket
+  description: You're right on the edge. Show 'em you got this.
+  components:
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - state: valid-equipped-OUTERCLOTHING
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.8

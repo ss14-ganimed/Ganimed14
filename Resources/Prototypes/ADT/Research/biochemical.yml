@@ -58,6 +58,7 @@
   recipeUnlocks:
   - ADTMedicalAssemblerMachineCircuitBoard
   - ADTBlankMediPen
+  - ADTTourniquet
   requiredTech:
   - ADTMedicalMODsuit
   position: 2,0
@@ -105,7 +106,7 @@
   cost: 5000
   recipeUnlocks:
   # - BorgModuleAdvancedTreatment # В прототипах такого не найдено
-  - ADTHighVoltageDefibrillator # BorgModuleDefibrillator -> ADTHighVoltageDefibrillator. Заглушка, т.к нету BorgModuleDefibrillator
+  # - ADTHighVoltageDefibrillator # BorgModuleDefibrillator -> ADTHighVoltageDefibrillator. Заглушка, т.к нету BorgModuleDefibrillator
   - BorgModuleAdvancedChemical
   position: 3,-1
   requiredTech:
@@ -155,7 +156,6 @@
   recipeUnlocks:
   - ADTMiniSyringe
   - ADTLauncherSyringe
-  - ADTTourniquet
   position: 1,-1
   requiredTech:
   - ADTIndustrialMedicine

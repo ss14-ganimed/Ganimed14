@@ -60,6 +60,13 @@
       - type: CommandStaff
       # - type: PhantomTyranyTarget # ADT Phantom
       - type: AntagImmune # Ganimed-MRP: Loyalty implant
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+      # - type: PhantomTyranyTarget # ADT Phantom
+      # ADT-Tweak-Start: метка персонала службы безопасности
+      - type: SecurityStaff
+      # ADT-Tweak-End
 
 - type: startingGear
   id: HoSGear
@@ -68,9 +75,16 @@
     id: HoSPDA #Ganimed-Tweak
     gloves: ClothingHandsGlovesCombat
     ears: ClothingHeadsetAltSecurity
-    pocket1: ADTWeaponRevolverLesserUnica
   storage:
     back:
     - Flash
-    - ADTSpeedLoaderMagnumLesser
     - ADTtelescopicBaton #ADT-CustomADTLoadout
+    - MagazinePistol
+
+- type: chameleonOutfit
+  id: HeadOfSecurityChameleonOutfit
+  job: HeadOfSecurity
+  hasMindShield: true
+  equipment:
+    mask: ClothingMaskGasSecurity
+    neck: ClothingNeckCloakHos

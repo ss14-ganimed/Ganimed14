@@ -1,7 +1,6 @@
 - type: vendingMachineInventory
   id: MegaSeedServitorInventory
   startingInventory:
-    ADTMandarinSeeds: 5 # ADT Tweak
     ADTStrawberrySeeds: 5 # ADT Tweak
     AloeSeeds: 3
     AmbrosiaVulgarisSeeds: 3
@@ -40,6 +39,7 @@
     TowercapSeeds: 5
     WheatSeeds: 5
     WatermelonSeeds: 5
+    CucumberSeeds: 5 # Ganimed-Edit
   contrabandInventory:
     TobaccoSeeds: 2
     FoodSnackSemki: 2

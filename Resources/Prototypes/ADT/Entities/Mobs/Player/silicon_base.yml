@@ -5,6 +5,7 @@
   abstract: true
   id: ADTPlayerSiliconBase # For player controlled silicons
   components:
+    - type: PassiveHolyHealing
     - type: Reactive
       groups:
         Acidic: [Touch]
@@ -97,6 +98,7 @@
   abstract: true
   components:
     - type: StatusIcon
+    - type: SSDIndicator
     - type: MobState
       allowedStates:
         - Alive
