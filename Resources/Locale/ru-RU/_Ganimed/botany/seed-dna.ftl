@@ -2,8 +2,8 @@ seed-dna-window-title = Манипулятор ДНК семян
 seed-dna-window-seed = Семена:
 seed-dna-window-dnadisk = ДНК-диск:
 seed-dna-window-invalid-seed = Эти семена использовать нельзя
-seed-dna-window-extract-all = Извлечь весь геном
-seed-dna-window-replace-all = Перезаписать весь геном
+seed-dna-window-extract-all = Извлечь весь геном на диск
+seed-dna-window-replace-all = Перезаписать весь геном семян
 
 seed-dna-slot-component-slot-name-disk = Диск
 seed-dna-slot-component-slot-name-seeds = Семена
