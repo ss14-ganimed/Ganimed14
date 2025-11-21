@@ -2,13 +2,13 @@ using Content.Server.Botany;
 using Content.Server.Botany.Components;
 using Content.Shared._Ganimed.SeedDna;
 using Content.Shared._Ganimed.SeedDna.Components;
-using Content.Shared._Ganimed.SeedDna.System;
+using Content.Shared._Ganimed.SeedDna.Systems;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using System.Linq;
 
-namespace Content.Server._Ganimed.SeedDna.System;
+namespace Content.Server._Ganimed.SeedDna.Systems;
 
 [UsedImplicitly]
 public sealed class SeedDnaConsoleSystem : SharedSeedDnaConsoleSystem
