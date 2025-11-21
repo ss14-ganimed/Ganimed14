@@ -8,14 +8,14 @@ seed-dna-window-replace-all = Перезаписать всё
 seed-dna-slot-component-slot-name-disk = ДНК-диск
 seed-dna-slot-component-slot-name-seeds = Семена
 
-seed-dna-eject-btn = Извлечь
+seed-dna-eject-btn = Изъять
 seed-dna-insert-btn = Вставить
 
 seed-dna-extract-btn = Извлечь
 seed-dna-replace-btn = Перезаписать
 
-seed-dna-row-consume-gas = Потребляемый газ: {$gas}
-seed-dna-row-exude-gas = Выделяемый газ: {$gas}
+seed-dna-row-consume-gas = Потребляемый газ: { $gas }
+seed-dna-row-exude-gas = Выделяемый газ: { $gas }
 
 # -------------------------------------------------
 
@@ -26,8 +26,8 @@ seed-dna-row-HeatTolerance = Устойчивость к теплу
 seed-dna-row-ToxinsTolerance = Устойчивость к токсинам
 seed-dna-row-LowPressureTolerance = Устойчивость к низкому давлению
 seed-dna-row-HighPressureTolerance = Устойчивость к высокому давлению
-seed-dna-row-PestTolerance = Защита от вредителей
-seed-dna-row-WeedTolerance = Защита от сорняков
+seed-dna-row-PestTolerance = Устойчивость к вредителям
+seed-dna-row-WeedTolerance = Устойчивость к сорнякам
 seed-dna-row-Endurance = Выносливость
 seed-dna-row-Yield = Урожайность
 seed-dna-row-Lifespan = Продолжительность жизни
@@ -38,7 +38,7 @@ seed-dna-row-Potency = Потенция
 seed-dna-row-Seedless = Безсемянность
 seed-dna-row-Viable = Жизнеспособность
 seed-dna-row-Ligneous = Светящийся
-seed-dna-row-CanScream = Может издавать крик
+seed-dna-row-CanScream = Кричащий
 
 # -------------------------------------------------
 
