@@ -31,8 +31,8 @@ seed-dna-row-WeedTolerance = Устойчивость к сорнякам
 seed-dna-row-Endurance = Выносливость
 seed-dna-row-Yield = Урожайность
 seed-dna-row-Lifespan = Продолжительность жизни
-seed-dna-row-Maturation = Срок роста
-seed-dna-row-Production = Срок созревания
+seed-dna-row-Maturation = Время роста
+seed-dna-row-Production = Время созревания
 seed-dna-row-HarvestRepeat = Количество сборов урожая
 seed-dna-row-Potency = Потенция
 seed-dna-row-Seedless = Безсемянность
@@ -48,7 +48,7 @@ seed-dna-row-CanScream = Кричащий
 seed-dna-chemicalProp-Min = Минимальное значение
 seed-dna-chemicalProp-Max = Максимальное значение
 seed-dna-chemicalProp-PotencyDivisor = Делитель потенции
-seed-dna-chemicalProp-Inherent = Врождённые
+seed-dna-chemicalProp-Inherent = Врождённый
 
 # Локализация газов — заполнить по необходимости
 # seed-dna-gas-??? = ???
