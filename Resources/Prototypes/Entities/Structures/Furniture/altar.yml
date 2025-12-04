@@ -206,13 +206,13 @@
         effectProto: ADTEffectKudzu
         powerCost: 3
         soundPath: /Audio/Voice/Diona/diona_scream.ogg
-      - requiredTag: IngotGold1 # Ganimed edit
+      - requiredTag: OreGold
         requiredAmount: 5
         resultProto: MobSpawnGoldCrabFriendly
         effectProto: ADTEffectKudzu
         powerCost: 3
         soundPath: /Audio/Voice/Diona/diona_scream.ogg
-      - requiredTag: IngotSilver1 # Ganimed edit
+      - requiredTag: OreSilver
         requiredAmount: 5
         resultProto: MobSpawnSilverCrabFriendly
         effectProto: ADTEffectKudzu
@@ -456,12 +456,7 @@
         effectProto: EffectRCDConstruct0
         soundPath: /Audio/Items/Mining/fultext_launch.ogg
         powerCost: 3
-      - requiredTag: ADTToolboxRedSacrifice
-        resultProto: ClothingBeltUtility
-        effectProto: EffectRCDConstruct0
-        soundPath: /Audio/Items/Mining/fultext_launch.ogg
-        powerCost: 1
-      ### End ADT Tweak
+  ### End ADT Tweak
 
 - type: entity
   id: AltarConvertFestival

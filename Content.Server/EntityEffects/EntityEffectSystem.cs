@@ -42,8 +42,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Shared.StatusEffect;
-using Content.Shared.NPC.Components; // Ganimed edit
-using Content.Shared.NPC.Systems; // Ganimed edit
 using Content.Server.ADT.Hallucinations;
 using Content.Server.ADT.Shadekin;
 
@@ -86,7 +84,6 @@ public sealed class EntityEffectSystem : EntitySystem
     [Dependency] private readonly StatusEffectsSystem _status = default!;
     [Dependency] private readonly ShadekinSystem _shadekin = default!;
     // ADT-Tweak-End
-    [Dependency] private readonly NpcFactionSystem _faction = default!; // Ganimed edit
 
     public override void Initialize()
     {
@@ -767,11 +764,6 @@ public sealed class EntityEffectSystem : EntitySystem
         // We call this before the mind check to allow things like player-controlled mice to be able to benefit from the effect
         RemComp<ReplacementAccentComponent>(uid);
         RemComp<MonkeyAccentComponent>(uid);
-        // Ganimed edit start
-        if (TryComp(uid, out GhostRoleComponent? existingGhostRole))
-        {
-            return;
-        }
 
         // Stops from adding a ghost role to things like people who already have a mind
         if (TryComp<MindContainerComponent>(uid, out var mindContainer) && mindContainer.HasMind)
@@ -779,27 +771,13 @@ public sealed class EntityEffectSystem : EntitySystem
             return;
         }
 
-        if (TryComp<NpcFactionMemberComponent>(uid, out var factionComp))
+        // Don't add a ghost role to things that already have ghost roles
+        if (TryComp(uid, out GhostRoleComponent? ghostRole))
         {
-            var hostileFactions = new List<string>
-            {
-                "SimpleHostile",
-                "Xeno",
-                "ADTSpaceMobs",
-                "AllHostile",
-                "DroneAntag"
-            };
-
-            foreach (var hostileFaction in hostileFactions)
-            {
-                _faction.RemoveFaction((uid, factionComp), hostileFaction, dirty: false);
-            }
-
-            _faction.AddFaction((uid, factionComp), "Passive");
+             return;
         }
 
-        var ghostRole = AddComp<GhostRoleComponent>(uid);
-        // Ganimed edit end
+        ghostRole = AddComp<GhostRoleComponent>(uid);
         EnsureComp<GhostTakeoverAvailableComponent>(uid);
 
         var entityData = Comp<MetaDataComponent>(uid);
