@@ -5,7 +5,7 @@
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 0
-  maxPlayers: 20
+  maxPlayers: 10
   stations:
     Silly:
       stationProto: StandardNanotrasenStation
