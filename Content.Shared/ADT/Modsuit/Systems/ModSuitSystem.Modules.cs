@@ -9,6 +9,14 @@ public sealed partial class ModSuitSystem
 {
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
 
+     // Ganimed-edit start
+    private const float GlobalEnergyMultiplier = 0.08f;
+    // < уменьшаешь или увеличиваешь потребление, да щит код. Но рабочий.
+    // 0.08f = батареи хватает надолго
+    // 0.03f = почти бесконечно
+    // 0.15f = умеренно
+    // Ganimed-edit start
+
     private void InitializeModules()
     {
         SubscribeLocalEvent<ModSuitModComponent, BeforeRangedInteractEvent>(OnAfterInteract);
@@ -117,12 +125,7 @@ public sealed partial class ModSuitSystem
             }
         }
 
-        if (TryComp<PowerCellDrawComponent>(suit, out var celldraw))
-        {
-            suit.Comp.ModEnergyBaseUsing = (float)Math.Round(suit.Comp.ModEnergyBaseUsing + module.Comp.EnergyUsing, 3); // Ganimed edit
-            var attachedCount = GetAttachedToggleCount(suit);
-            celldraw.DrawRate = suit.Comp.ModEnergyBaseUsing * attachedCount; // Ganimed edit
-        }
+        UpdateCellDraw(suit, module.Comp.EnergyUsing); // Ganimed edit
     }
 
     public void DeactivateModule(Entity<ModSuitComponent> suit, Entity<ModSuitModComponent> module)
@@ -149,12 +152,34 @@ public sealed partial class ModSuitSystem
             }
         }
 
-        if (TryComp<PowerCellDrawComponent>(suit, out var celldraw))
+        UpdateCellDraw(suit, -module.Comp.EnergyUsing); // CD-edit
+    }
+
+    private void UpdateCellDraw(Entity<ModSuitComponent> suit, float delta)
+    {
+        if (!TryComp<PowerCellDrawComponent>(suit, out var celldraw))
+            return;
+
+        // Ganimed-edit start
+        // Обновляем суммарное энергопотребление модулей (только при активации/деактивации)
+        suit.Comp.ModEnergyBaseUsing = MathF.Max(0f,
+            (float)Math.Round(suit.Comp.ModEnergyBaseUsing + delta, 3));
+
+        // Если базовой нагрузки нет — отключаем потребление
+        if (suit.Comp.ModEnergyBaseUsing <= 0f)
         {
-            suit.Comp.ModEnergyBaseUsing = (float)Math.Round(suit.Comp.ModEnergyBaseUsing - module.Comp.EnergyUsing, 3);
-            var attachedCount = GetAttachedToggleCount(suit);
-            celldraw.DrawRate = suit.Comp.ModEnergyBaseUsing * attachedCount;
+            _cell.SetDrawEnabled(suit.Owner, false);
+            return;
         }
+
+        // Включаем и выставляем DrawRate только от включённых модулей (и глобального множителя)
+        _cell.SetDrawEnabled(suit.Owner, true);
+        celldraw.DrawRate = suit.Comp.ModEnergyBaseUsing * GlobalEnergyMultiplier;
+
+        // Защита от нулевых/отрицательных артефактов
+        if (celldraw.DrawRate < 0.00001f)
+            celldraw.DrawRate = 0.00001f;
+        // Ganimed-edit end
     }
 
     public string GetColor(ExamineColor color, string text)
