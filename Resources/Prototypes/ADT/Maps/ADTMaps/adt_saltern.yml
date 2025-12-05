@@ -3,7 +3,7 @@
   mapName: 'Saltern'
   mapPath: /Maps/ADTMaps/ADTStations/adt_saltern.yml
   minPlayers: 8 # Ganimed-Tweak (20 -> 8)
-  maxPlayers: 35
+  maxPlayers: 30 # Ganimed-Tweak (35 -> 30)
   fallback: true
   stations:
     ADT_Saltern:
