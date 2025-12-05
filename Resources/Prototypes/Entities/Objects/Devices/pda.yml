@@ -83,6 +83,7 @@
       - NotekeeperCartridge
       - NanoTaskCartridge
       - NewsReaderCartridge
+      - NanoChatCartridge # ADT-tweak: Наночат
       - ADTWalletCartridge # ADT-Economy
     cartridgeSlot:
       priority: -1
@@ -113,6 +114,7 @@
     - DoorBumpOpener
     - WhitelistChameleon
     - WhitelistChameleonPDA
+    - ADTPDA # ADT-Tweak
   - type: Input
     context: "human"
   - type: SentienceTarget # sentient PDA = pAI lite
@@ -156,6 +158,7 @@
     - NanoTaskCartridge
     - NewsReaderCartridge
     - WantedListCartridge
+    - NanoChatCartridge # ADT-tweak: Наночат
     - ADTWalletCartridge # ADT-Economy
     diskSpace: 8 # ADT tweak
 
@@ -172,6 +175,7 @@
       - NanoTaskCartridge
       - NewsReaderCartridge
       - MedTekCartridge
+      - NanoChatCartridge # ADT-tweak: Наночат
       - ADTWalletCartridge # ADT-Economy
     diskSpace: 8 # ADT tweak
 
@@ -225,7 +229,7 @@
     state: pda-internmed
   - type: GuideHelp
     guides:
-    - Medical Doctor
+    - MedicalDoctor
 
 - type: entity
   parent: BaseSecurityPDA
@@ -487,6 +491,14 @@
     accentVColor: "#a23e3e"
   - type: Icon
     state: pda-qm
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - AstroNavCartridge
+    - NanoChatCartridge # ADT-tweak: Наночат
 
 - type: entity
   parent: BasePDA
@@ -532,6 +544,7 @@
       - NanoTaskCartridge
       - NewsReaderCartridge
       - AstroNavCartridge
+      - NanoChatCartridge # ADT-tweak: Наночат
       - ADTWalletCartridge # ADT-Economy
     diskSpace: 8 # ADT tweak
 
@@ -784,7 +797,7 @@
     state: pda-medical
   - type: GuideHelp
     guides:
-    - Medical Doctor
+    - MedicalDoctor
 
 - type: entity
   parent: MedicalPDA
@@ -916,6 +929,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - LogProbeCartridge
+    - NanoChatCartridge # ADT-tweak: Наночат
     - ADTWalletCartridge # ADT-Economy
 
 - type: entity
@@ -965,6 +979,7 @@
     id: CentcomIDCard
     penSlot:
       startingItem: PenCentcom
+      priority: -1
       whitelist:
         tags:
         - Write
@@ -988,6 +1003,7 @@
       - WantedListCartridge
       - LogProbeCartridge
       - AstroNavCartridge
+      - NanoChatCartridge # ADT-tweak: Наночат
 
 - type: entity
   parent: CentcomPDA
@@ -1002,9 +1018,14 @@
     maxScanRange: null
     scanDelay: 0
     silent: true
+  # ADT-Tweak-Start
+  - type: NanoChatCard
+    listNumber: false
+  # ADT-Tweak-End
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     notificationsEnabled: false
+    diskSpace: 10 # ADT tweak
     preinstalled:
       - CrewManifestCartridge
       - NotekeeperCartridge
@@ -1014,7 +1035,7 @@
       - WantedListCartridge
       - MedTekCartridge
       - AstroNavCartridge
-    diskSpace: 8 # ADT tweak
+      - NanoChatCartridge # ADT-tweak: Наночат
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1048,10 +1069,10 @@
   - type: Icon
     state: pda-musician
   - type: Instrument
-    allowPercussion: false
+    allowPercussion: true #ADT-tweak false>true
     handheld: true
     bank: 1
-    program: 2
+    program: 128 #ADT-tweak 2>128
 
 - type: entity
   parent: MusicianPDA
@@ -1132,6 +1153,7 @@
     uiKey: enum.PdaUiKey.Key
     preinstalled:
       - NotekeeperCartridge
+      - NanoChatCartridge # ADT-tweak: Наночат
       - NanoTaskCartridge
     diskSpace: 8 # ADT tweak
 
@@ -1166,6 +1188,7 @@
       - WantedListCartridge
       - LogProbeCartridge
       - AstroNavCartridge
+      - NanoChatCartridge # ADT-tweak: Наночат
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1346,6 +1369,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - LogProbeCartridge
+    - NanoChatCartridge # ADT-tweak: Наночат
     - ADTWalletCartridge # ADT-Economy
 
 - type: entity
@@ -1375,6 +1399,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - MedTekCartridge
+    - NanoChatCartridge # ADT-tweak: Наночат
     - ADTWalletCartridge # ADT-Economy
 
 - type: entity
@@ -1521,6 +1546,7 @@
       - NotekeeperCartridge
       - NanoTaskCartridge
       - MedTekCartridge
+      - NanoChatCartridge # ADT-tweak: Наночат
     cartridgeSlot:
       priority: -1
       name: Cartridge
@@ -1585,3 +1611,14 @@
     borderColor: "#7F3300"
   - type: Icon
     state: pda-wizard
+
+- type: entity
+  parent: ClearPDA
+  id: ScurretPDA
+  description: A temporary PDA granted to scurret temps. Doesn't do much. Wawa!
+  components:
+  - type: Pda
+    id: VisitorIDCard
+  - type: Tag #  Ignore Chameleon tags
+    tags:
+    - DoorBumpOpener

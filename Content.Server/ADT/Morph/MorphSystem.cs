@@ -1,5 +1,5 @@
 using Content.Shared.Actions;
-using Robust.Shared.Timing;
+using System.Numerics;
 using Content.Shared.ADT.Morph;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Mobs.Systems;
@@ -38,7 +38,7 @@ using Content.Shared.Standing;
 using Content.Server.Body.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
-using System.Numerics;
+using Content.Shared.Body.Events;
 
 namespace Content.Server.ADT.Morph;
 
@@ -200,7 +200,7 @@ public sealed class MorphSystem : SharedMorphSystem
     }
     private void OnAmbushAttack(Entity<MorphAmbushComponent> ent, ref MeleeHitEvent args)
     {
-        _standing.Down(args.HitEntities[0]);
+        _stun.TryKnockdown(args.HitEntities[0], TimeSpan.FromSeconds(ent.Comp.StunTimeInteract), false);
         AmbushBreak(ent);
     }
     public void AmbushBreak(EntityUid uid)
@@ -224,7 +224,7 @@ public sealed class MorphSystem : SharedMorphSystem
     {
         if (args.User == null)
             return;
-        _stun.TryParalyze(args.User.Value, TimeSpan.FromSeconds(component.StunTimeInteract), false);
+        _stun.TryUpdateStunDuration(args.User.Value, TimeSpan.FromSeconds(component.StunTimeInteract)); //при интеракции станим, при ударе морфом клокдауним
         _damageable.TryChangeDamage(args.User, component.DamageOnTouch);
         AmbushBreak(uid);
     }

@@ -52,6 +52,7 @@
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
       components:
+        - type: BlueShield
         - type: CantShoot
           popup: combo-cantshoot
           whitelist:
@@ -121,9 +122,6 @@
                   damage:
                     types:
                       Blunt: 15
-                - !type:ComboStunEffect
-                  stunTime: 2
-                  dropItems: false
                 - !type:ComboAudioEffect
                   sound:
                     collection: GenericHit
@@ -199,9 +197,16 @@
     belt: ADTClothingBeltMedicalSecurityFilled
     gloves: ClothingHandsGlovesCombat
     id: ADTBlueshieldOfficerPDA
-    pocket1: ADTHandheldCrewMonitorBlueshield
-  inhand: 
-    - ADTBaseWeaponCaseNTBS
-  # innerClothingSkirt: ClothingUniformJumpskirtBlueshield
-  # satchel: ADTClothingBackpackSatchelBlueshield
-  # duffelbag: ADTClothingBackpackDuffelBlueshield
+    pocket1: ADTBlueshieldVoucher
+    pocket2: ADTHandheldCrewMonitorBlueshield
+
+- type: chameleonOutfit
+  id: ADTBlueShieldChameleonOutfit
+  job: ADTBlueShieldOfficer
+  hasMindShield: true
+  equipment:
+    eyes: ADTClothingEyesGlassesBlueshield
+    shoes: ClothingShoesBootsCombatFilled
+    belt: ADTClothingBeltMedicalSecurityFilled
+    gloves: ClothingHandsGlovesCombat
+    id: ADTBlueshieldOfficerPDA

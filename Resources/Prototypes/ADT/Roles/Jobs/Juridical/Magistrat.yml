@@ -45,7 +45,6 @@
 - type: startingGear
   id: MagistratGear
   equipment:
-    shoes: ClothingShoesBootsLaceup
     eyes: ClothingEyesGlassesCommand
     id: MagistratPDA
     ears: ClothingHeadsetMagistrat
@@ -57,3 +56,11 @@
     - WeaponDisabler
     - Zipties
     - ADTtelescopicBaton
+
+- type: chameleonOutfit
+  id: MagistratChameleonOutfit
+  job: Magistrat
+  hasMindShield: true
+  equipment:
+    eyes: ClothingEyesGlassesCommand
+    ears: ClothingHeadsetMagistrat

@@ -151,7 +151,6 @@
     short: true
     shortscale: 0.9
   - type: CanEnterCryostorage
-  - type: Crawler
   - type: BloodCough
     postingSayDamage: blood-cough-ipc
   - type: TimeDespawnDamage
@@ -171,6 +170,9 @@
       enum.HereticLivingHeartKey.Key:
         type: LivingHeartMenuBoundUserInterface
   - type: IpcScreen
+    selectSlotTime: 0
+    changeSlotTime: 0
+  - type: AnimatedEmotes
 
 - type: entity
   save: false
@@ -184,3 +186,9 @@
     species: IPC
   - type: Inventory
     templateId: ipc
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
