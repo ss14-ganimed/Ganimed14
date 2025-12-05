@@ -3,7 +3,7 @@
   mapName: 'Gemini'
   mapPath: /Maps/ADTMaps/ADTStations/adt_gemini.yml
   maxRandomOffset: 0
-  minPlayers: 25
+  minPlayers: 20 # Ganimed-Tweak (25 -> 20)
   stations:
     Gemini:
       stationProto: StandardNanotrasenStation
