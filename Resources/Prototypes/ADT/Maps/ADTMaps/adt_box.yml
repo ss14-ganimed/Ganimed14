@@ -2,7 +2,7 @@
   id: ADT_Box
   mapName: 'Cyberiada'
   mapPath: /Maps/ADTMaps/ADTStations/adt_cyberiada.yml
-  minPlayers: 35
+  minPlayers: 20 # Ganimed-Tweak (35 -> 20)
   maxPlayers: 60
   stations:
     ADT_Boxstation:
