@@ -536,9 +536,9 @@
   parent: BaseGameRule
   components:
   - type: StationEvent
-    earliestStart: 50
-    minimumPlayers: 30
-    weight: 1
+    earliestStart: 90
+    minimumPlayers: 40
+    weight: 1 # Zombies was happening basically every single survival round, so now it's super rare
     duration: 1
   - type: ZombieRule
   - type: AntagSelection
@@ -561,14 +561,13 @@
       - type: ZombifyOnDeath
       - type: IncurableZombie
       - type: InitialInfected
-      # Corvax-Не знаю какой тег, морти поправь
+      # Corvax-MRP
       - type: NpcFactionMember
         addFriendlyFactions:
         - Zombie
       # Corvax
-      mindComponents:
-      - type: InitialInfectedRole
-        prototype: InitialInfected
+      mindRoles:
+      - MindRoleInitialInfected
 
 - type: entity
   parent: BaseNukeopsRule
