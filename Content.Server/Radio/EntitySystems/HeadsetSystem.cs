@@ -27,7 +27,6 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     [Dependency] private readonly LanguageSystem _language = default!;  // ADT Languages
     [Dependency] private readonly PopupSystem _popup = default!; // ADT Radio Block
     [Dependency] private readonly ILocalizationManager _loc = default!; // ADT Radio Block
-    [Dependency] private readonly SharedPopupSystem _popup = default!; // Ganimed edit
 
     public override void Initialize()
     {

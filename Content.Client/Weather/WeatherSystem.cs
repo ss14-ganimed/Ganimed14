@@ -4,7 +4,6 @@ using Content.Shared.Weather;
 using Robust.Client.Audio;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
-using Robust.Client.State; // Ganimed edit
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
@@ -20,7 +19,7 @@ public sealed class WeatherSystem : SharedWeatherSystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly IStateManager _stateManager = default!; // Ganimed edit
+
     public override void Initialize()
     {
         base.Initialize();
@@ -33,21 +32,8 @@ public sealed class WeatherSystem : SharedWeatherSystem
 
         var ent = _playerManager.LocalEntity;
 
-        // Ganimed edit start
-        if (!IsInGameState())
-        {
-            weather.Stream = _audio.Stop(weather.Stream);
-            return;
-        }
-        // Ganimed edit end
-
         if (ent == null)
-        // Ganimed edit start
-        {
-            weather.Stream = _audio.Stop(weather.Stream);
             return;
-        }
-        // Ganimed edit end
 
         var mapUid = Transform(uid).MapUid;
         var entXform = Transform(ent.Value);
