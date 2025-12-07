@@ -42,8 +42,8 @@
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
     # ADT-SlimeHair-Start
-      enum.SlimeHairUiKey.Key:
-        type: SlimeHairBoundUserInterface
+      enum.MidroundCustomizationUiKey.Key:
+        type: MidroundCustomizationBoundUserInterface
     # ADT-SlimeHair-End
       enum.StoreUiKey.Key:                # Чтобы не ломался генокрад
         type: StoreBoundUserInterface               # Чтобы не ломался генокрад
@@ -139,6 +139,12 @@
     languages:
       GalacticCommon: Speak
       Bubblish: Speak
+  - type: MidroundCustomization # ADT-SlimeHair
+    customizableCategories:
+    - Hair
+    - FacialHair
+    - HeadTop
+    - Tail
   - type: SlimeHair # ADT-SlimeHair
   # Ganimed-Tweak-Start
   - type: Sprite

@@ -144,27 +144,25 @@ public sealed class WeatherSystem : SharedWeatherSystem
         if (!Timing.IsFirstTimePredicted)
             return true;
 
-        // Ganimed edit start
-        if (!IsInGameState())
+        // ADT-Tweak-Start: (P4A) Исправление звука погоды в лобби (PORT from DeltaV-Station/Delta-v (2978)
+        if (_playerManager.LocalEntity is not { } ent)
+            return false;
+ 
+        var map = Transform(uid).MapUid;
+        var entMap = Transform(ent).MapUid;
+ 
+        if (map == null || entMap != map)
         {
             weather.Stream = _audio.Stop(weather.Stream);
-            return true;
+            return false;
         }
-        // Ganimed edit end
+        // ADT-Tweak-End
 
         // TODO: Fades (properly)
         weather.Stream = _audio.Stop(weather.Stream);
         weather.Stream = _audio.PlayGlobal(weatherProto.Sound, Filter.Local(), true)?.Entity;
         return true;
     }
-    // Ganimed edit start
-    private bool IsInGameState()
-    {
-        var currentState = _stateManager.CurrentState;
-        return currentState?.GetType().Name != "LobbyState" &&
-               _playerManager.LocalEntity != null;
-    }
-    // Ganimed edit end
 
     private void OnWeatherHandleState(EntityUid uid, WeatherComponent component, ref ComponentHandleState args)
     {
