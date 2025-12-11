@@ -8,6 +8,8 @@ jobs:
   remove_label:
     permissions:
       pull-requests: write
+      actions: write # Ganimed-Edit
+      checks: write # Ganimed-Edit
     if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
