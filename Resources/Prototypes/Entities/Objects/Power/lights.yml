@@ -270,9 +270,9 @@
   - type: LightBulb
     # Ganimed-Edit-Start
     color: "#FAFFFF"
-    lightEnergy: 1.2
+    lightEnergy: 1.1
     lightRadius: 14
-    lightSoftness: 1
+    lightSoftness: 0.9
     # Ganimed-Edit-End
     BurningTemperature: 350
     PowerUse: 12
