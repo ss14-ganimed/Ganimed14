@@ -1,7 +1,7 @@
 - type: holiday
   id: EnterpriseBirthday
   name: holiday-name-enterprise-birthday
-  beginDay: 24 # Community was organized on the 23rd as "Taipan", the first round on the server was played on the 24th, and the public hosting of "Ganimed" was launched on the 26th.
+  beginDay: 24 # Community was first formed on the 23rd as "Taipan", the first round on the server was played on the 24th, and the public hosting of "Ganimed" was launched on the 26th.
   beginMonth: February
   greet:
     !type:Custom
