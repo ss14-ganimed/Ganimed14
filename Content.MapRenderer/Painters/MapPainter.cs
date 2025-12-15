@@ -46,7 +46,6 @@ namespace Content.MapRenderer.Painters
 
             var poolSettings = new PoolSettings
             {
-                DummyClient = false, // Ganimed edit
                 DummyTicker = false,
                 Connected = true,
                 Destructive = true,
