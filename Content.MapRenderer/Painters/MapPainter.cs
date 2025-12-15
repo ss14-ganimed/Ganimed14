@@ -47,7 +47,7 @@ namespace Content.MapRenderer.Painters
             var poolSettings = new PoolSettings
             {
                 DummyTicker = false,
-                ShouldBeConnected = true, // Ganimed edit 
+                Connected = true,
                 Destructive = true,
                 Fresh = true,
                 // Seriously whoever made MapPainter use GameMapPrototype I wish you step on a lego one time.
