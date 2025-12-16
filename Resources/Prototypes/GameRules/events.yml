@@ -90,6 +90,8 @@
       path: /Audio/ADT/Announcements/spanomalies.ogg # ADT Tweak
       params:
         volume: -4
+    departmentPlayerLimits: # Ganimed edit
+      Science: 1
     weight: 8
     duration: 35
   - type: AnomalySpawnRule
@@ -456,6 +458,8 @@
     minimumPlayers: 15
     weight: 5
     duration: 60
+    departmentPlayerLimits: # Ganimed edit
+      Security: 1
   - type: VentCrittersRule
     entries:
     - id: MobAdultSlimesBlueAngry
@@ -498,6 +502,8 @@
     minimumPlayers: 15
     weight: 5
     duration: 60
+    departmentPlayerLimits: # Ganimed edit
+      Security: 1
   - type: VentCrittersRule
     entries:
 # ADT tweak start Разные пауки
@@ -525,6 +531,8 @@
     minimumPlayers: 20
     weight: 1.5
     duration: 60
+    departmentPlayerLimits: # Ganimed edit
+      Security: 1
   - type: VentCrittersRule
     entries:
     - id: ADTMobClownSpider # ADT tweak
@@ -620,6 +628,9 @@
       path: /Audio/Announcements/intercept.ogg
     duration: null # the rule has to last the whole round not 1 second
     occursDuringRoundEnd: false
+    departmentPlayerLimits: # Ganimed edit
+      Command: 1
+      Security: 1
   - type: AlertLevelInterceptionRule
   - type: AntagSelection
     definitions:
