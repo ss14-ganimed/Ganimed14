@@ -33,7 +33,7 @@ ent-ClothingOuterCoatRoboOriginal = лабораторный халат робо
 ent-ClothingOuterWinterSeniorPhysician = зимняя куртка заведующего врача
     .desc = { ent-ClothingOuterWinterCoatToggleable.desc }
 
-ent-ClothingOuterWinterSeniorResearcher = зимняя куртка ведущего учёного
+ent-ClothingOuterWinterSeniorResearcher = зимняя куртка старшего научного сотрудника
     .desc = { ent-ClothingOuterWinterCoatToggleable.desc }
 
 ent-ClothingOuterWinterSeniorEngineer = зимняя куртка ведущего инженера

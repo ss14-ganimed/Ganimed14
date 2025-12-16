@@ -9,11 +9,11 @@ JobRoboticist = робототехник
 job-name-magistrat = магистрат
 JobMagistrat = магистрат
 
-job-name-senior-physician = ведущий врач
-JobADTSeniorPhysician = ведущий врач
+job-name-senior-physician = заведующий врач
+JobADTSeniorPhysician = заведующий врач
 
-job-name-senior-researcher = доцент
-JobADTSeniorResearcher = доцент
+job-name-senior-researcher = старший научный сотрудник
+JobADTSeniorResearcher = старший научный сотрудник
 
 job-name-senior-engineer = бригадир
 JobADTSeniorEngineer = бригадир
@@ -122,10 +122,10 @@ job-name-gladiator = гладиатор
 
 # Security
 
-# job-name-sheriff = шериф
+job-name-sheriff = шериф
 job-name-investigator = следователь
 job-name-field-doctor = полевой врач
 
 # Juridical
 
-job-name-adt-lawyer = юрист
+job-name-adt-lawyer = адвокат
