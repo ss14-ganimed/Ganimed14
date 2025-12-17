@@ -13,10 +13,10 @@
         - type: StationCargoShuttle
           path: /Maps/ADTMaps/Shuttles/adt_cargo.yml
         - type: StationNameSetup
-          mapNameTemplate: '{0}CLU {1}'
+          mapNameTemplate: '{0} Cluster {1}' # Ganimed-Edit
           nameGenerator:
             !type:NanotrasenNameGenerator
-            prefixCreator: '-'
+            prefixCreator: 'ИС' # Ganimed-Edit
         - type: StationJobs
           availableJobs:
             # command
