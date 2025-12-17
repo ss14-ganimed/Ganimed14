@@ -85,7 +85,9 @@
   - type: StationEvent
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    weight: 2 # 10 default # Ganimed-Tweak
+    earliestStart: 40 # Ganimed-Tweak
+    weight: 1 # 10 default # Ganimed-Tweak
+    minimumPlayers: 10 # Ganimed-Tweak
     reoccurrenceDelay: 300
     duration: 1
     maxOccurrences: 1 # Ganimed edit
