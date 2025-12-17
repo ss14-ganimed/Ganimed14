@@ -2,7 +2,7 @@
   id: ADT_Marathon
   mapName: 'Marathon Station'
   mapPath: /Maps/ADTMaps/ADTStations/adt_marathon.yml
-  minPlayers: 15 # Ganimed-Tweak (35 -> 15)
+  minPlayers: 12 # Ganimed-Tweak (35 -> 12)
   maxPlayers: 40 # Ganimed-Tweak (60 -> 40)
   stations:
     ADT_Marathon:
