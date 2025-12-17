@@ -2,7 +2,7 @@
   id: ADT_Bagel
   mapName: 'Bagel Station'
   mapPath: /Maps/ADTMaps/ADTStations/adt_bagel.yml
-  minPlayers: 20
+  minPlayers: 15 # Ganimed-Tweak (20 -> 15)
   maxPlayers: 35
   stations:
     ADT_Bagel:

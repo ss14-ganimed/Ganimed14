@@ -2,7 +2,7 @@
   id: ADT_Meta
   mapName: 'Meta Station'
   mapPath: /Maps/ADTMaps/ADTStations/adt_meta.yml
-  minPlayers: 20
+  minPlayers: 15 # Ganimed-Tweak (20 -> 15)
   maxPlayers: 35
   stations:
     ADT_Meta:
