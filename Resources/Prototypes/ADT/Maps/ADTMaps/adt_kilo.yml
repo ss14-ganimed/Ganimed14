@@ -2,8 +2,8 @@
   id: ADT_kilo
   mapName: 'Kilo Station'
   mapPath: /Maps/ADTMaps/ADTStations/adt_kilo.yml
-  minPlayers: 30
-  maxPlayers: 80
+  minPlayers: 20 # Ganimed-Tweak (30 -> 20)
+  maxPlayers: 50 # Ganimed-Tweak (80 -> 50)
   stations:
     ADT_kilo:
       stationProto: StandardNanotrasenStation

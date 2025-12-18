@@ -90,6 +90,8 @@
       path: /Audio/ADT/Announcements/spanomalies.ogg # ADT Tweak
       params:
         volume: -4
+    departmentPlayerLimits: # Ganimed edit
+      Science: 1
     weight: 8
     duration: 35
   - type: AnomalySpawnRule
@@ -305,7 +307,7 @@
     duration: 1
     earliestStart: 40 # Corax-MRP # 30
     reoccurrenceDelay: 60
-    minimumPlayers: 1000  #ADT-Tweak - де факто отключаем визарда 10 > 1000
+    minimumPlayers: 20  # Ganimed-Tweak
   - type: AntagSelection
     agentName: wizard-round-end-name
     definitions:
@@ -456,6 +458,8 @@
     minimumPlayers: 15
     weight: 5
     duration: 60
+    departmentPlayerLimits: # Ganimed edit
+      Security: 1
   - type: VentCrittersRule
     entries:
     - id: MobAdultSlimesBlueAngry
@@ -498,6 +502,8 @@
     minimumPlayers: 15
     weight: 5
     duration: 60
+    departmentPlayerLimits: # Ganimed edit
+      Security: 1
   - type: VentCrittersRule
     entries:
 # ADT tweak start Разные пауки
@@ -525,50 +531,51 @@
     minimumPlayers: 20
     weight: 1.5
     duration: 60
+    departmentPlayerLimits: # Ganimed edit
+      Security: 1
   - type: VentCrittersRule
     entries:
     - id: ADTMobClownSpider # ADT tweak
       prob: 0.05
 
 # ADT zombie remove
-# - type: entity
-#   id: ZombieOutbreak
-#   parent: BaseGameRule
-#   components:
-#   - type: StationEvent
-#     earliestStart: 50
-#     minimumPlayers: 30
-#     weight: 2
-#     duration: 1
-#   - type: ZombieRule
-#   - type: AntagSelection
-#     definitions:
-#     - prefRoles: [ InitialInfected ]
-#       max: 3
-#       playerRatio: 10
-#       blacklist:
-#         components:
-#         - ZombieImmune
-#         - AntagImmune
-#       briefing:
-#         text: zombie-patientzero-role-greeting
-#         color: Plum
-#         sound: "/Audio/Ambience/Antag/zombie_start.ogg"
-#       components:
-#       - type: PendingZombie #less time to prepare than normal
-#         minInitialInfectedGrace: 300
-#         maxInitialInfectedGrace: 450
-#       - type: ZombifyOnDeath
-#       - type: IncurableZombie
-#       - type: InitialInfected
-#       # Corvax-Не знаю какой тег, морти поправь
-#       - type: NpcFactionMember
-#         addFriendlyFactions:
-#         - Zombie
-#       # Corvax
-#       mindComponents:
-#       - type: InitialInfectedRole
-#         prototype: InitialInfected
+- type: entity
+  id: ZombieOutbreak
+  parent: BaseGameRule
+  components:
+  - type: StationEvent
+    earliestStart: 90
+    minimumPlayers: 40
+    weight: 1 # Zombies was happening basically every single survival round, so now it's super rare
+    duration: 1
+  - type: ZombieRule
+  - type: AntagSelection
+    definitions:
+    - prefRoles: [ InitialInfected ]
+      max: 3
+      playerRatio: 10
+      blacklist:
+        components:
+        - ZombieImmune
+        - AntagImmune
+      briefing:
+        text: zombie-patientzero-role-greeting
+        color: Plum
+        sound: "/Audio/Ambience/Antag/zombie_start.ogg"
+      components:
+      - type: PendingZombie #less time to prepare than normal
+        minInitialInfectedGrace: 300
+        maxInitialInfectedGrace: 450
+      - type: ZombifyOnDeath
+      - type: IncurableZombie
+      - type: InitialInfected
+      # Corvax-MRP
+      - type: NpcFactionMember
+        addFriendlyFactions:
+        - Zombie
+      # Corvax
+      mindRoles:
+      - MindRoleInitialInfected
 
 - type: entity
   parent: BaseNukeopsRule
@@ -620,6 +627,9 @@
       path: /Audio/Announcements/intercept.ogg
     duration: null # the rule has to last the whole round not 1 second
     occursDuringRoundEnd: false
+    departmentPlayerLimits: # Ganimed edit
+      Command: 1
+      Security: 1
   - type: AlertLevelInterceptionRule
   - type: AntagSelection
     definitions:

@@ -76,10 +76,10 @@ loadout-group-atmos-id-adt = Атмосферный техник, ID
 # Science
 loadout-research-director-ears-adt = Научный руководитель, ухо
 loadout-group-reserch-director-id-adt = Научный руководитель, ID
-loadout-group-senior-researcher-head = Доцент, голова
-loadout-group-senior-researcher-jumpsuit = Доцент, комбинезон
-loadout-group-senior-researcher-gloves = Доцент, перчатки
-loadout-group-senior-researcher-outerclothing = Доцент, верхняя одежда
+loadout-group-senior-researcher-head = Старший Научный Сотрудник, голова
+loadout-group-senior-researcher-jumpsuit = Старший Научный Сотрудник, комбинезон
+loadout-group-senior-researcher-gloves = Старший Научный Сотрудник, перчатки
+loadout-group-senior-researcher-outerclothing = Старший Научный Сотрудник, верхняя одежда
 loadout-group-roboticist-head = Робототехник, голова
 loadout-group-roboticist-jumpsuit = Робототехник, комбинезон
 loadout-group-roboticist-outerclothing = Робототехник, верхняя одежда
@@ -113,9 +113,9 @@ loadout-brigmedic-outerwear-adt = Бригмедик, верхняя одежд�
 # Medical
 loadout-group-chief-medical-officer-id-adt = Главный врач, ID
 loadout-chief-medical-officer-ears-adt = Главный врач, ухо
-loadout-group-senior-physician-head = Ведущий врач, голова
-loadout-group-senior-physician-jumpsuit = Ведущий врач, комбинезон
-loadout-group-senior-physician-outerclothing = Ведущий врач, верхняя одежда
+loadout-group-senior-physician-head = Заведующий врач, голова
+loadout-group-senior-physician-jumpsuit = Заведующий врач, комбинезон
+loadout-group-senior-physician-outerclothing = Заведующий врач, верхняя одежда
 loadout-group-paramedic-belt-adt = Парамедик, пояс
 loadout-group-paramedic-backpack-adt = Парамедик, рюкзак
 loadout-group-patholog-head = Патологоанатом, голова
@@ -130,8 +130,8 @@ loadout-group-medical-intern-id-adt = Интерн, ID
 loadout-group-psychologist-id-adt = Психолог, ID
 
 # Juridical
-loadout-group-lawyer-id-adt = Адвокат, ID
-loadout-group-lawyer-gloves = Адвокат, перчатки
+loadout-group-lawyer-id-adt = Юрист, ID
+loadout-group-lawyer-gloves = Юрист, перчатки
 loadout-group-lawyer-backpack = Магистрат, рюкзак
 
 # Command

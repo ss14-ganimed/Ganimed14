@@ -3,7 +3,7 @@
   mapName: 'Kerberos Station'
   mapPath: /Maps/ADTMaps/ADTStations/adt_kerberos.yml
   maxRandomOffset: 0
-  minPlayers: 60
+  minPlayers: 45 # Ganimed-Tweak (60 -> 45)
   stations:
     ADT_Kerberos:
       stationProto: StandardNanotrasenStation
