@@ -3,6 +3,7 @@
   id: ClothingModsuitShoesCMO
   name: Chief medical officer MOD boots
   suffix: Ganimed
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Shoes/Modsuit/cmo.rsi
@@ -19,6 +20,7 @@
   id: ClothingModsuitShoesRD
   name: Research director MOD boots
   suffix: Ganimed
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Shoes/Modsuit/rd.rsi
@@ -35,6 +37,7 @@
   id: ClothingModsuitShoesMagnate
   name: Magnate MOD boots
   suffix: Ganimed
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Shoes/Modsuit/captain.rsi
@@ -51,6 +54,7 @@
   id: ClothingModsuitShoesCorporate
   name: Corporate MOD boots
   suffix: Ganimed
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Shoes/Modsuit/corporate.rsi
