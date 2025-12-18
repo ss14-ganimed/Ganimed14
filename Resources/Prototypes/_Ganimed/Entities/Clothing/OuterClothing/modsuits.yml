@@ -4,6 +4,7 @@
   name: chief medical officer MOD chestplate
   suffix: Ganimed
   description: A chestplate for a MODsuit.
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/OuterClothing/Modsuit/cmo.rsi
@@ -28,6 +29,7 @@
   name: Research director MOD chestplate
   suffix: Ganimed
   description: A chestplate for a MODsuit.
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/OuterClothing/Modsuit/rd.rsi
@@ -61,6 +63,7 @@
   name: Magnate MOD chestplate
   suffix: Ganimed
   description: A chestplate for a MODsuit.
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/OuterClothing/Modsuit/captain.rsi
@@ -91,6 +94,7 @@
   name: Corporate MOD chestplate
   suffix: Ganimed
   description: A chestplate for a MODsuit.
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/OuterClothing/Modsuit/corporate.rsi
