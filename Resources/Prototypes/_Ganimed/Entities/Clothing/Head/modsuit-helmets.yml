@@ -4,6 +4,7 @@
   name: chief medical officer MOD helmet
   suffix: Ganimed
   description: A helmet for a MODsuit.
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Head/Modsuit/cmo.rsi
@@ -27,6 +28,7 @@
   name: Research director MOD helmet
   suffix: Ganimed
   description: A helmet for a MODsuit.
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Head/Modsuit/rd.rsi
@@ -44,6 +46,7 @@
   name: Magnate MOD helmet
   suffix: Ganimed
   description: A helmet for a MODsuit.
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Head/Modsuit/captain.rsi
@@ -61,6 +64,7 @@
   name: Corporate MOD helmet
   suffix: Ganimed
   description: A helmet for a MODsuit.
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Head/Modsuit/corporate.rsi
