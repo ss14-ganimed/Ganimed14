@@ -3,6 +3,7 @@
   id: ClothingHandsModsuitCMO
   name: Chief medical officer MOD gauntlets
   suffix: Ganimed
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Hands/Modsuit/cmo.rsi
@@ -20,6 +21,7 @@
   id: ClothingHandsModsuitRD
   name: Research director MOD gauntlets
   suffix: Ganimed
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Hands/Modsuit/rd.rsi
@@ -37,6 +39,7 @@
   id: ClothingHandsModsuitCorporate
   name: Corporate MOD gauntlets
   suffix: Ganimed
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Hands/Modsuit/corporate.rsi
@@ -52,6 +55,7 @@
   id: ClothingHandsModsuitMagnate
   name: Magnate MOD gauntlets
   suffix: Ganimed
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Hands/Modsuit/captain.rsi
