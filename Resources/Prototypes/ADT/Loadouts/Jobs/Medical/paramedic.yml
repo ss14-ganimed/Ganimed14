@@ -54,4 +54,4 @@
   - !type:GroupLoadoutEffect
     proto: ADTDavidsjacket25hours
   equipment:
-    otherClothing: ADTClothingOuterDavidsJacket
+    outerClothing: ADTClothingOuterDavidsJacket

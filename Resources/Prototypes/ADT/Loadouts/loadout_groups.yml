@@ -268,6 +268,7 @@
   - SecurityOfficerGreatcoat
   - SeniorOfficerWintercoat
   # Ganimed-Loadouts-End
+  - ADTCoatSecurity
 
 # SENIOR PHYSICIAN
 
@@ -666,32 +667,45 @@
   loadouts:
   - ADTClothingNecChefShawl
 
-## GUARD OFFICER (НАДЗИРАТЕЛЬ)
+## CORRECTIONS OFFICER (НАДЗИРАТЕЛЬ)
 
 # Голова
-
-  #head
 - type: loadoutGroup
-  id: ADTGuardOfficerHead
-  name: loadout-guardofficer-head-adt
+  id: ADTCorrectionsOfficerHead
+  name: loadout-corrections-officer-head-adt
   minLimit: 0
   maxLimit: 1
   loadouts:
-  - ADTHeadHatGuardOfficer
-  - ADTHeadHatGuardGreyOfficer
-  - ADTHeadHatGuardOfficerMaster
-
+  - ADTHeadHatCorrectionsOfficer
+  - ADTHeadHatCorrectionsOfficerGrey
 
 # Униформа
 - type: loadoutGroup
-  id: ADTGuardOfficerJumpsuit
-  name: loadout-guardofficer-jumpsuit-adt
+  id: ADTCorrectionsOfficerJumpsuit
+  name: loadout-corrections-officer-jumpsuit-adt
   minLimit: 1
   maxLimit: 1
   loadouts:
-  - ADTUniformJumpsuitGuardOfficer
-  - ADTUniformJumpsuitGreyGuardOfficer
-  - ADTUniformJumpsuitGuardOfficerMaster
+  - ADTJumpsuitCorrectionsOfficer
+  - ADTJumpsuitCorrectionsOfficerGrey
+  - ADTJumpsuitCorrectionsOfficerLight
+  - ADTJumpskirtCorrectionsOfficer
+
+# Верхняя одежда
+- type: loadoutGroup
+  id: ADTCorrectionsOfficerOuterClothing
+  name: loadout-corrections-officer-outerclothing-adt
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ADTCoatSecurity
+  - ADTCoatCorrectionsOfficerGrey
+  - ArmorVest
+  - ArmorVestSlim
+  - SecurityOfficerWintercoat
+  - ADTArmorVestHidden
+
+# ПОЯСА КАКИЕ-ТО
 
 - type: loadoutGroup
   id: ADTChaplainBelt
