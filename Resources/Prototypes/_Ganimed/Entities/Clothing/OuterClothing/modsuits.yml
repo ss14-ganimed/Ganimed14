@@ -1,10 +1,10 @@
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ClothingOuterModsuitBodyCMO
-  name: chief medical officer MOD chestplate
-  suffix: Ganimed
-  description: A chestplate for a MODsuit.
   categories: [ HideSpawnMenu ]
+  name: chief medical officer MOD chestplate
+  description: A chestplate for a MODsuit.
+  suffix: Ganimed
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/OuterClothing/Modsuit/cmo.rsi
@@ -26,10 +26,10 @@
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ClothingOuterModsuitBodyRD
-  name: Research director MOD chestplate
-  suffix: Ganimed
-  description: A chestplate for a MODsuit.
   categories: [ HideSpawnMenu ]
+  name: Research director MOD chestplate
+  description: A chestplate for a MODsuit.
+  suffix: Ganimed
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/OuterClothing/Modsuit/rd.rsi
@@ -60,10 +60,10 @@
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ClothingOuterModsuitBodyMagnate
-  name: Magnate MOD chestplate
-  suffix: Ganimed
-  description: A chestplate for a MODsuit.
   categories: [ HideSpawnMenu ]
+  name: Magnate MOD chestplate
+  description: A chestplate for a MODsuit.
+  suffix: Ganimed
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/OuterClothing/Modsuit/captain.rsi
@@ -91,10 +91,10 @@
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ClothingOuterModsuitBodyCorporate
-  name: Corporate MOD chestplate
-  suffix: Ganimed
-  description: A chestplate for a MODsuit.
   categories: [ HideSpawnMenu ]
+  name: Corporate MOD chestplate
+  description: A chestplate for a MODsuit.
+  suffix: Ganimed
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/OuterClothing/Modsuit/corporate.rsi
