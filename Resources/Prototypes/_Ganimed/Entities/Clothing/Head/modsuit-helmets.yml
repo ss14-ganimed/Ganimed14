@@ -1,10 +1,10 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ClothingHeadHelmetModsuitCMO
-  name: chief medical officer MOD helmet
-  suffix: Ganimed
-  description: A helmet for a MODsuit.
   categories: [ HideSpawnMenu ]
+  name: chief medical officer MOD helmet
+  description: A helmet for a MODsuit.
+  suffix: Ganimed
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Head/Modsuit/cmo.rsi
@@ -25,10 +25,10 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ClothingHeadHelmetModsuitRD
-  name: Research director MOD helmet
-  suffix: Ganimed
-  description: A helmet for a MODsuit.
   categories: [ HideSpawnMenu ]
+  name: Research director MOD helmet
+  description: A helmet for a MODsuit.
+  suffix: Ganimed
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Head/Modsuit/rd.rsi
@@ -43,10 +43,10 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ClothingHeadHelmetModsuitMagnate
-  name: Magnate MOD helmet
-  suffix: Ganimed
-  description: A helmet for a MODsuit.
   categories: [ HideSpawnMenu ]
+  name: Magnate MOD helmet
+  description: A helmet for a MODsuit.
+  suffix: Ganimed
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Head/Modsuit/captain.rsi
@@ -61,10 +61,10 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ClothingHeadHelmetModsuitCorporate
-  name: Corporate MOD helmet
-  suffix: Ganimed
-  description: A helmet for a MODsuit.
   categories: [ HideSpawnMenu ]
+  name: Corporate MOD helmet
+  description: A helmet for a MODsuit.
+  suffix: Ganimed
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Head/Modsuit/corporate.rsi
