@@ -7,7 +7,7 @@ ent-ADTPathologistIDCard = ID карта патологоанатома
 ent-ADTRoboticistIDCard = ID карта робототехника
     .desc = { ent-IDCardStandard.desc }
 
-ent-ADTGuardOfficerIDCard = ID карта надзирателя
+ent-ADTCorrectionsOfficerIDCard = ID карта надзирателя СБ
     .desc = { ent-IDCardStandard.desc }
 
 ent-ADTBlueShieldOfficerIDCard = ID карта офицера синего щита
@@ -176,8 +176,8 @@ ent-ADTMechAssemblerIDCard = ID карта механосборщика
 ent-ADTSheriffIDCard = ID карта шерифа
     .desc = ID карта шерифа.
 
-ent-ADTLawyerIDCard = ID карта юриста
-    .desc = ID карта юриста.
+ent-ADTLawyerIDCard = ID карта адвоката
+    .desc = ID карта адвоката.
 
 ent-ADTGardenerIDCard = ID карта садовода
     .desc = ID карта садовода.

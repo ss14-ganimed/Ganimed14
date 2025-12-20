@@ -9,6 +9,12 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.EntityTable;
+using Content.Shared.Roles; // Ganimed edit
+using Content.Shared.Mind; // Ganimed edit
+using Content.Shared.Mind.Components; // Ganimed edit
+using Content.Shared.Mobs.Components; // Ganimed edit
+using Content.Shared.Mobs; // Ganimed edit
+using Content.Shared.Roles.Jobs; // Ganimed edit
 
 namespace Content.Server.StationEvents;
 
@@ -21,6 +27,11 @@ public sealed class EventManagerSystem : EntitySystem
     [Dependency] private readonly EntityTableSystem _entityTable = default!;
     [Dependency] public readonly GameTicker GameTicker = default!;
     [Dependency] private readonly RoundEndSystem _roundEnd = default!;
+
+    // Ganimed edit start
+    [Dependency] private readonly SharedJobSystem _jobs = default!;
+    [Dependency] private readonly SharedMindSystem _minds = default!;
+    // Ganimed edit end
 
     public bool EventsEnabled { get; private set; }
     private void SetEnabled(bool value) => EventsEnabled = value;
@@ -273,8 +284,60 @@ public sealed class EventManagerSystem : EntitySystem
         }
 
         if (_roundEnd.IsRoundEndRequested() && !stationEvent.OccursDuringRoundEnd)
-        {
             return false;
+        // Ganimed edit start
+        // Проверка департаментов
+        if (!CheckDepartmentLimits(stationEvent.DepartmentPlayerLimits))
+            return false;
+
+        return true;
+    }
+
+    // Проверка лимитов департаментов
+    private bool CheckDepartmentLimits(Dictionary<ProtoId<DepartmentPrototype>, int> limits)
+    {
+        if (limits.Count == 0)
+            return true;
+
+        var jobCounts = new Dictionary<string, int>();
+
+        foreach (var sess in _playerManager.Sessions)
+        {
+            if (sess.AttachedEntity is not { } ent)
+                continue;
+
+            if (!_minds.TryGetMind(ent, out var mindId, out var mind))
+                continue;
+
+            if (mind.OwnedEntity is not { } body)
+                continue;
+
+            if (!TryComp<MobStateComponent>(body, out var mob) || mob.CurrentState != MobState.Alive)
+                continue;
+
+            if (!_jobs.MindTryGetJob(mindId, out var job) || job == null)
+                continue;
+
+            if (!jobCounts.ContainsKey(job.ID))
+                jobCounts[job.ID] = 0;
+            jobCounts[job.ID]++;
+        }
+
+        foreach (var (deptId, need) in limits)
+        {
+            if (!_prototype.TryIndex(deptId, out DepartmentPrototype? dept))
+                continue;
+
+            var have = 0;
+            foreach (var jobId in dept.Roles)
+            {
+                if (jobCounts.TryGetValue(jobId, out var c))
+                    have += c;
+            }
+
+            if (have < need)
+        // Ganimed edit end
+                return false;
         }
 
         return true;

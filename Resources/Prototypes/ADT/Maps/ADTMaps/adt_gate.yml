@@ -2,7 +2,7 @@
   id: ADT_Gate
   mapName: 'Gate Station'
   mapPath: /Maps/ADTMaps/ADTStations/adt_gate.yml
-  minPlayers: 60
+  minPlayers: 45 # Ganimed-Tweak (60 -> 45)
   stations:
     Gate:
       stationProto: StandardNanotrasenStation

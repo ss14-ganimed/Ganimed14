@@ -2,8 +2,8 @@
   id: ADT_Cluster
   mapName: 'Cluster'
   mapPath: /Maps/ADTMaps/ADTStations/adt_cluster.yml
-  minPlayers: 20
-  maxPlayers: 35
+  minPlayers: 7 # Ganimed-Tweak (20 -> 7)
+  maxPlayers: 25 # Ganimed-Tweak (35 -> 25)
   stations:
     ADT_Cluster:
       stationProto: StandardNanotrasenStation
@@ -59,7 +59,7 @@
             SecurityCadet: [ 2, 2 ]
             Brigmedic: [ 1, 1 ] #ADT-Roles
             ADTSeniorOfficer: [ 1, 1 ] # ADT-Roles
-            ADTGuardOfficer: [ 1, 1 ] # ADT-Roles
+            ADTCorrectionsOfficer: [ 1, 1 ] # ADT-Roles
             #supply
             Quartermaster: [ 1, 1 ]
             SalvageSpecialist: [ 2, 2 ]

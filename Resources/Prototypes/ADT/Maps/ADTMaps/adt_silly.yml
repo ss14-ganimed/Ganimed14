@@ -5,7 +5,7 @@
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 0
-  maxPlayers: 20
+  maxPlayers: 10 # Ganimed-Tweak (20 -> 10)
   stations:
     Silly:
       stationProto: StandardNanotrasenStation
@@ -64,7 +64,7 @@
             Detective: [ 1, 1 ]
             Brigmedic: [ 1, 1 ]
             ADTSeniorOfficer: [ 1, 1 ]
-            ADTGuardOfficer: [ 1, 1 ]
+            ADTCorrectionsOfficer: [ 1, 1 ]
 
             # service
             HeadOfPersonnel: [ 1, 1 ]
