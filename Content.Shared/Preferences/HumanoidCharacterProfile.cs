@@ -47,6 +47,16 @@ namespace Content.Shared.Preferences
         };
 
         /// <summary>
+        /// Ganimed-JobAlt
+        /// Prefered job title for each job.
+        /// </summary>
+        [DataField]
+        public Dictionary<ProtoId<JobPrototype>, ProtoId<JobAlternateTitlePrototype>> JobAlternateTitles = new();
+
+        [DataField("alternateJobTitle")]
+        public string? AlternateJobTitle { get; set; }
+
+        /// <summary>
         /// Antags we have opted in to.
         /// </summary>
         [DataField]
@@ -152,6 +162,7 @@ namespace Content.Shared.Preferences
             HumanoidCharacterAppearance appearance,
             SpawnPriorityPreference spawnPriority,
             Dictionary<ProtoId<JobPrototype>, JobPriority> jobPriorities,
+            Dictionary<ProtoId<JobPrototype>, ProtoId<JobAlternateTitlePrototype>> jobAlternateTitles, // Ganimed-JobAlt
             PreferenceUnavailableMode preferenceUnavailable,
             HashSet<ProtoId<AntagPrototype>> antagPreferences,
             HashSet<ProtoId<TraitPrototype>> traitPreferences,
@@ -171,6 +182,7 @@ namespace Content.Shared.Preferences
             Appearance = appearance;
             SpawnPriority = spawnPriority;
             _jobPriorities = jobPriorities;
+            JobAlternateTitles = jobAlternateTitles; // Ganimed-JobAlt
             PreferenceUnavailable = preferenceUnavailable;
             _antagPreferences = antagPreferences;
             _traitPreferences = traitPreferences;
@@ -207,6 +219,7 @@ namespace Content.Shared.Preferences
                 other.Appearance.Clone(),
                 other.SpawnPriority,
                 new Dictionary<ProtoId<JobPrototype>, JobPriority>(other.JobPriorities),
+                new Dictionary<ProtoId<JobPrototype>, ProtoId<JobAlternateTitlePrototype>>(other.JobAlternateTitles), // Ganimed-JobAlt
                 other.PreferenceUnavailable,
                 new HashSet<ProtoId<AntagPrototype>>(other.AntagPreferences),
                 new HashSet<ProtoId<TraitPrototype>>(other.TraitPreferences),
@@ -390,6 +403,27 @@ namespace Content.Shared.Preferences
             return new(this) { SpawnPriority = spawnPriority };
         }
 
+        // Ganimed-JobAlt-start
+        public HumanoidCharacterProfile WithJobAltTitle(ProtoId<JobPrototype> jobId, ProtoId<JobAlternateTitlePrototype>? jobTitle)
+        {
+            var dictionary = new Dictionary<ProtoId<JobPrototype>, ProtoId<JobAlternateTitlePrototype>>(JobAlternateTitles);
+
+            if (jobTitle == null || jobTitle.Value.Id == null)
+            {
+                dictionary.Remove(jobId);
+            }
+            else
+            {
+                dictionary[jobId] = jobTitle.Value;
+            }
+
+            return new(this)
+            {
+                JobAlternateTitles = dictionary
+            };
+        }
+        // Ganimed-JobAl-end
+
         public HumanoidCharacterProfile WithJobPriorities(IEnumerable<KeyValuePair<ProtoId<JobPrototype>, JobPriority>> jobPriorities)
         {
             var dictionary = new Dictionary<ProtoId<JobPrototype>, JobPriority>(jobPriorities);
@@ -553,6 +587,7 @@ namespace Content.Shared.Preferences
             if (PreferenceUnavailable != other.PreferenceUnavailable) return false;
             if (SpawnPriority != other.SpawnPriority) return false;
             if (!_jobPriorities.SequenceEqual(other._jobPriorities)) return false;
+            if (!JobAlternateTitles.SequenceEqual(other.JobAlternateTitles)) return false; // Ganimed-JobAlt
             if (!_antagPreferences.SequenceEqual(other._antagPreferences)) return false;
             if (!_traitPreferences.SequenceEqual(other._traitPreferences)) return false;
             if (!_languages.SequenceEqual(other._languages)) return false;  // ADT Languages
@@ -688,6 +723,21 @@ namespace Content.Shared.Preferences
                 hasHighPrio = true;
             }
 
+            // Ganimed-JobAlt-start
+            var altTitles = new Dictionary<ProtoId<JobPrototype>, ProtoId<JobAlternateTitlePrototype>>();
+            foreach (var (key, value) in JobAlternateTitles)
+            {
+                if (value.Id == null || value.Id == string.Empty)
+                    continue;
+                if (!prototypeManager.TryIndex(key, out var job))
+                    continue;
+                if (job.AlternateTitles.Contains(value))
+                {
+                    altTitles.Add(key, value);
+                }
+            }
+            // Ganimed-JobAlt-end
+
             var antags = AntagPreferences
                 .Where(id => prototypeManager.TryIndex(id, out var antag) && antag.SetPreference)
                 .ToList();
@@ -710,6 +760,15 @@ namespace Content.Shared.Preferences
             {
                 _jobPriorities.Add(job, priority);
             }
+
+            // Ganimed-JobAlt-start
+            JobAlternateTitles.Clear();
+
+            foreach (var (job, title) in altTitles)
+            {
+                JobAlternateTitles.Add(job, title);
+            }
+            // Ganimed-JobAlt-end
 
             PreferenceUnavailable = prefsUnavailableMode;
 
@@ -841,6 +900,7 @@ namespace Content.Shared.Preferences
         {
             var hashCode = new HashCode();
             hashCode.Add(_jobPriorities);
+            hashCode.Add(JobAlternateTitles); // Ganimed-JobAlt
             hashCode.Add(_antagPreferences);
             hashCode.Add(_traitPreferences);
             hashCode.Add(_loadouts);

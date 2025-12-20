@@ -11,4 +11,8 @@ public sealed partial class PresetIdCardComponent : Component
 
     [DataField("name")]
     public string? IdName;
+
+    // Ganimed-JobAlt
+    [DataField("alternateTitle")]
+    public ProtoId<JobAlternateTitlePrototype>? AlternateTitleId;
 }

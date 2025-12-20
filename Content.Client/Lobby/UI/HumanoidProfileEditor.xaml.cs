@@ -1049,6 +1049,8 @@ namespace Content.Client.Lobby.UI
 
                 Array.Sort(jobs, JobUIComparer.Instance);
 
+                var altJobTitlesEnable = _cfgManager.GetCVar(CCVars.ICAlternateJobTitlesEnable); // Ganimed-JobAlt
+
                 foreach (var job in jobs)
                 {
                     var jobContainer = new BoxContainer()
@@ -1068,9 +1070,25 @@ namespace Content.Client.Lobby.UI
                         VerticalAlignment = VAlignment.Center
                     };
                     var jobIcon = _prototypeManager.Index(job.Icon);
-                    icon.Texture = _sprite.Frame0(jobIcon.Icon);
-                    selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides);
+                    icon.Texture = jobIcon.Icon.Frame0();
+                    // Ganimed-JobAlt-start
+                    var hasDefaultAltTitle = Profile?.JobAlternateTitles.ContainsKey(job.ID);
 
+                    if (altJobTitlesEnable)
+                    {
+                        if (hasDefaultAltTitle.HasValue && hasDefaultAltTitle.Value)
+                        {
+                            var defaultAltTitle = Profile?.JobAlternateTitles[job.ID];
+                            selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides, job.AlternateTitles, defaultAltTitle, _prototypeManager);
+                        }
+                        else
+                        {
+                            selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides, job.AlternateTitles, null, _prototypeManager);
+                        }
+                    }
+                    else
+                        selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides, null, null, null);
+                    // Ganimed-JobAlt-stop
                     if (!_requirements.IsAllowed(job, (HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter, out var reason))
                     {
                         selector.LockRequirements(reason);
@@ -1079,6 +1097,14 @@ namespace Content.Client.Lobby.UI
                     {
                         selector.UnlockRequirements();
                     }
+
+                    selector.OnSelectedTitle += selectedTitle =>
+                    {
+                        if (!altJobTitlesEnable)
+                            return;
+                        Profile = Profile?.WithJobAltTitle(job.ID, selectedTitle);
+                        SetDirty();
+                    };
 
                     selector.OnSelected += selectedPrio =>
                     {

@@ -156,9 +156,23 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         var gearEquippedEv = new StartingGearEquippedEvent(entity.Value);
         RaiseLocalEvent(entity.Value, ref gearEquippedEv);
 
-        if (prototype != null && TryComp(entity.Value, out MetaDataComponent? metaData))
+        // Ganimed-JobAlt-start
+        JobAlternateTitlePrototype? altTitle = null;
+        if (profile != null && prototype != null && profile.JobAlternateTitles.TryGetValue(prototype.ID, out var altId))
+            _prototypeManager.TryIndex(altId, out altTitle);
+        // Ganimed-JobAlt-end
+
+        if (profile != null)
         {
-            SetPdaAndIdCardData(entity.Value, metaData.EntityName, prototype, station);
+            if (prototype != null)
+                SetPdaAndIdCardData(entity.Value, profile.Name, prototype, station, altTitle); // Ganimed-JobAlt
+
+            _humanoidSystem.LoadProfile(entity.Value, profile);
+            _metaSystem.SetEntityName(entity.Value, profile.Name);
+            if (profile.FlavorText != "" && _configurationManager.GetCVar(CCVars.FlavorText))
+            {
+                AddComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
+            }
         }
 
         DoJobSpecials(job, entity.Value);
@@ -184,7 +198,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
     /// <param name="characterName">Character name to use for the ID.</param>
     /// <param name="jobPrototype">Job prototype to use for the PDA and ID.</param>
     /// <param name="station">The station this player is being spawned on.</param>
-    public void SetPdaAndIdCardData(EntityUid entity, string characterName, JobPrototype jobPrototype, EntityUid? station)
+    public void SetPdaAndIdCardData(EntityUid entity, string characterName, JobPrototype jobPrototype, EntityUid? station, JobAlternateTitlePrototype? jobAltTitle = null) // Ganimed-JobAlt
     {
         if (!InventorySystem.TryGetSlotEntity(entity, "id", out var idUid))
             return;
@@ -197,7 +211,12 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             return;
 
         _cardSystem.TryChangeFullName(cardId, characterName, card);
-        if (card.JobTitle == null) // ADT tweak
+
+        // Ganimed-JobAlt-start
+        if (jobAltTitle != null)
+            _cardSystem.TryChangeJobTitle(cardId, jobAltTitle.LocalizedName, card);
+        else
+            // Ganimed-JobAlt-end
             _cardSystem.TryChangeJobTitle(cardId, jobPrototype.LocalizedName, card); // ADT tweak
 
         if (_prototypeManager.TryIndex(jobPrototype.Icon, out var jobIcon))
@@ -216,8 +235,8 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             _pdaSystem.SetOwner(idUid.Value, pdaComponent, entity, characterName);
     }
 
-
-    #endregion Player spawning helpers
+    
+        #endregion Player spawning helpers
 }
 
 /// <summary>

@@ -97,6 +97,27 @@ public sealed class IdCardSystem : SharedIdCardSystem
         }
     }
 
+    /// <summary>
+    /// Ganimed-JobAlt
+    /// Изменяет должность на карте, обновляя локализованный ключ и строку отображения.
+    /// </summary>
+    /// <param name="uid">Сущность с IdCardComponent</param>
+    /// <param name="newJobTitleLocId">Новый ключ локализации должности</param>
+    /// <param name="card">Компонент IdCard (если уже есть)</param>
+    /// <returns>Успешно ли применена замена</returns>
+    public bool TryChangeJobTitle(EntityUid uid, LocId newJobTitleLocId, IdCardComponent? card = null)
+    {
+        if (!Resolve(uid, ref card))
+            return false;
+
+        card.JobTitle = newJobTitleLocId;
+        card.LocalizedJobTitle = Loc.GetString(newJobTitleLocId);
+
+        Dirty(uid, card);
+
+        return true;
+    }
+
     public override void ExpireId(Entity<ExpireIdCardComponent> ent)
     {
         if (ent.Comp.Expired)

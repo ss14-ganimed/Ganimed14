@@ -18,6 +18,8 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: BoxingDay
     prototype: BoxCardboard
+  alternateTitles: # Ganimed-JobAlt
+  - CargoTechnitianTitleWtf
 
 - type: startingGear
   id: CargoTechGear
@@ -28,6 +30,11 @@
   #storage:
     #back:
     #- Stuff
+
+  # Ganimed-JobAlt
+- type: jobAlternateTitle
+  id: CargoTechnitianTitleWtf
+  name: job-name-alt-cargo-wtf
 
 - type: chameleonOutfit
   id: CargoTechnicianChameleonOutfit

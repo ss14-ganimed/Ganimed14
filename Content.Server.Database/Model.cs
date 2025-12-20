@@ -48,6 +48,7 @@ namespace Content.Server.Database
 		public DbSet<BookPrinterEntry> BookPrinterEntry { get; set; } = null!; // ADT-BookPrinter
         public DbSet<DiscordUser> DiscordUser { get; set; } = null!; // ADT-Discord
         public DbSet<IPIntelCache> IPIntelCache { get; set; } = null!;
+        public DbSet<DBJobAlternateTitle> DBJobAlternateTitle { get; set; } = null!; // Ganimed-JobAlt
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -129,6 +130,17 @@ namespace Content.Server.Database
                 .HasIndex(j => new { j.ProfileId, j.JobName })
                 .IsUnique();
 
+            // Ganimed-JobAlt start
+            modelBuilder.Entity<DBJobAlternateTitle>()
+                .HasOne(e => e.Profile)
+                .WithMany(e => e.AltTitles)
+                .HasForeignKey(e => e.ProfileId)
+                .IsRequired();
+
+            modelBuilder.Entity<DBJobAlternateTitle>()
+                .HasIndex(p => new { p.ProfileId, p.RoleName, p.AlternateTitle })
+                .IsUnique();
+            // Ganimed-JobAlt end
             modelBuilder.Entity<AssignedUserId>()
                 .HasIndex(p => p.UserName)
                 .IsUnique();
@@ -456,6 +468,8 @@ namespace Content.Server.Database
         public List<Job> Jobs { get; } = new();
         public List<Antag> Antags { get; } = new();
         public List<Trait> Traits { get; } = new();
+
+        public List<DBJobAlternateTitle> AltTitles { get; } = new(); // Ganimed-JobAlt
         public List<Language> Languages { get; } = new(); // ADT Languages
 
         public List<ProfileRoleLoadout> Loadouts { get; } = new();
@@ -502,6 +516,19 @@ namespace Content.Server.Database
 
         public string TraitName { get; set; } = null!;
     }
+
+    // Ganimed-JobAlt-start
+    public class DBJobAlternateTitle
+    {
+        public int Id { get; set; }
+        public Profile Profile { get; set; } = null!;
+        public int ProfileId { get; set; }
+
+        public string RoleName { get; set; } = string.Empty;
+
+        public string AlternateTitle { get; set; } = string.Empty;
+    }
+    // Ganimed-JobAlt-end
 
     #region Loadouts
 

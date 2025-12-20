@@ -351,4 +351,10 @@ public sealed class MindSystem : SharedMindSystem
         MakeSentient(target);
         TransferTo(mindId, target, ghostCheckOverride: true, mind: mind);
     }
+
+    // Ganimed-JobAlt
+    internal bool TryGetMind(EntityUid mindId, out object mind)
+    {
+        throw new NotImplementedException();
+    }
 }
