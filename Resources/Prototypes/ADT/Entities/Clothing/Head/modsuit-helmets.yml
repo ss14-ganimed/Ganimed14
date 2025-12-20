@@ -1,6 +1,7 @@
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ADTClothingHeadHelmetModsuitBase
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: base MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -49,6 +50,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitAtmos
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: atmos MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -83,6 +85,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitClown
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: clown MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -97,6 +100,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitEngineering
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: engineering MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -128,6 +132,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitMedical
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: medical MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -150,6 +155,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitMining
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: mining MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -161,6 +167,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitSecurity
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: security MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -183,6 +190,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitScience
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: Science MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -212,6 +220,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitSafeguard
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: safeguard MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -242,6 +251,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitBso
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: bso MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -271,6 +281,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitAdvanced
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: advanced MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -290,6 +301,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitSyndicate
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: syndicate MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -321,6 +333,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitSyndicateElite
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: syndicate MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -352,6 +365,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitSyndicateCommander
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: syndicate MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -383,6 +397,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitCMO
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: CMO MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -405,6 +420,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitCaptain
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: captain MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -425,6 +441,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitWard
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: warden MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -444,6 +461,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitBrigmedic
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: Brigmedic MOD helmet
   description: A helmet for a MODsuit.
   components:

@@ -1,6 +1,7 @@
 - type: entity
   parent: ClothingShoesBase
   id: ADTClothingModsuitShoesBase
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: base MOD boots
   description: A pair of boots for a MODsuit.
   components:
@@ -28,6 +29,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesAtmos
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: atmos MOD boots
   components:
   - type: Sprite
@@ -43,6 +45,7 @@
 - type: entity
   parent: [ClothingShoesClown, ADTClothingModsuitShoesBase]
   id: ADTClothingModsuitShoesClown
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: clown MOD boots
   components:
   - type: Sprite
@@ -61,6 +64,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesEngineering
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: engineering MOD boots
   components:
   - type: Sprite
@@ -76,6 +80,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesMedical
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: medical MOD boots
   components:
   - type: Sprite
@@ -91,6 +96,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesMining
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: mining MOD boots
   components:
   - type: Sprite
@@ -106,6 +112,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesSecurity
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: security MOD boots
   components:
   - type: Sprite
@@ -123,6 +130,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesScience
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: Science MOD boots
   components:
   - type: Sprite
@@ -138,6 +146,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesSafeguard
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: safeguard MOD boots
   components:
   - type: Sprite
@@ -153,6 +162,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitBso
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: bso MOD boots
   components:
   - type: Sprite
@@ -168,6 +178,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesAdvanced
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: advanced MOD boots
   components:
   - type: Sprite
@@ -183,6 +194,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesSyndicate
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: syndicate MOD boots
   components:
   - type: Sprite
@@ -198,6 +210,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesSyndicateElite
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: syndicate MOD boots
   components:
   - type: Sprite
@@ -213,6 +226,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesSyndicateCommander
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: syndicate MOD boots
   components:
   - type: Sprite
@@ -228,6 +242,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesCMO
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: CMO MOD boots
   components:
   - type: Sprite
@@ -243,6 +258,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesCaptain
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: Captain MOD boots
   components:
   - type: Sprite
@@ -258,6 +274,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesWard
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: warden MOD boots
   components:
   - type: Sprite
@@ -273,6 +290,7 @@
 - type: entity
   parent: ADTClothingModsuitShoesBase
   id: ADTClothingModsuitShoesBrigmedic
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: Brigmedic MOD boots
   components:
   - type: Sprite
