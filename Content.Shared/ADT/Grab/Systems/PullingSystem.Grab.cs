@@ -296,6 +296,10 @@ public abstract partial class PullingSystem
             return;
         if (puller.Stage == GrabStage.None)
             return;
+
+        if (comp.EscapeAttemptDoAfter.HasValue) // Ganimed edit
+            return;
+
         args.Cancel();
     }
 
@@ -477,7 +481,7 @@ public abstract partial class PullingSystem
             return false;
 
         // Stop pulling if the puller is at the lowest grab stage
-        if (puller.Comp.Stage == GrabStage.None)
+        if (puller.Comp.Stage <= GrabStage.Soft) // Ganimed edit
         {
             StopPulling(pullable.Owner, pullable);
             return true;

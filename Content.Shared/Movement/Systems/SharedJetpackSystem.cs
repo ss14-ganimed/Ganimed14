@@ -114,6 +114,18 @@ public abstract class SharedJetpackSystem : EntitySystem
         EnsureComp<JetpackUserComponent>(user, out var userComp);
         component.JetpackUser = user;
 
+        // Ganimed edit start
+        var hasGravity = false;
+        if (TryComp<TransformComponent>(user, out var xform) && 
+            xform.GridUid != null &&
+            TryComp<GravityComponent>(xform.GridUid, out var gravity))
+        {
+            hasGravity = gravity.Enabled;
+        }
+
+        if (!hasGravity)
+        {
+        // Ganimed edit end
         if (TryComp<PhysicsComponent>(user, out var physics))
             _physics.SetBodyStatus(user, physics, BodyStatus.InAir);
 
@@ -123,6 +135,13 @@ public abstract class SharedJetpackSystem : EntitySystem
         userComp.WeightlessFriction = component.Friction;
         userComp.WeightlessFrictionNoInput = component.Friction;
         _movementSpeedModifier.RefreshWeightlessModifiers(user);
+        // Ganimed edit start
+        }
+        else
+        {
+            userComp.Jetpack = jetpackUid;
+        }
+        // Ganimed edit end
     }
 
     private void RemoveUser(EntityUid uid, JetpackComponent component)
@@ -132,7 +151,7 @@ public abstract class SharedJetpackSystem : EntitySystem
 
         component.JetpackUser = null;
 
-        if (TryComp<PhysicsComponent>(uid, out var physics))
+        if (TryComp<PhysicsComponent>(uid, out var physics) && physics.BodyStatus == BodyStatus.InAir) // Ganimed edit
             _physics.SetBodyStatus(uid, physics, BodyStatus.OnGround);
 
         _movementSpeedModifier.RefreshWeightlessModifiers(uid);

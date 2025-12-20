@@ -774,7 +774,7 @@ public sealed class EntityEffectSystem : EntitySystem
         // Don't add a ghost role to things that already have ghost roles
         if (TryComp(uid, out GhostRoleComponent? ghostRole))
         {
-            return;
+             return;
         }
 
         ghostRole = AddComp<GhostRoleComponent>(uid);

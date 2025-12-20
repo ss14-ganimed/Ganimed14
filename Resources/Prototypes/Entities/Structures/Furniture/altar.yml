@@ -105,7 +105,7 @@
 
 - type: entity
   id: AltarChaos
-  parent: BaseStructure
+  parent: AltarBase
   name: chaos altar
   components:
   - type: Sprite
@@ -184,7 +184,7 @@
 
 - type: entity
   id: AltarDruid
-  parent: BaseStructure
+  parent: AltarBase
   name: druid altar
   components:
   - type: Sprite
@@ -289,7 +289,7 @@
 
 - type: entity
   id: AltarToolbox
-  parent: BaseStructure
+  parent: AltarBase
   name: toolbox altar
   components:
   - type: Sprite
@@ -339,7 +339,7 @@
 
 - type: entity
   id: AltarSpaceChristian
-  parent: BaseStructure
+  parent: AltarBase
   name: space-Christian altar
   components:
   - type: Sprite
@@ -391,7 +391,7 @@
 
 - type: entity
   id: AltarSatana
-  parent: BaseStructure
+  parent: AltarBase
   name: satanic altar
   components:
   - type: Sprite
@@ -448,7 +448,7 @@
 
 - type: entity
   id: AltarTechnology
-  parent: BaseStructure
+  parent: AltarBase
   name: technology altar
   components:
   - type: Sprite

@@ -89,6 +89,11 @@
     board: HydroponicsTrayMachineCircuitboard
   - type: TTS # Corvax-TTS
     voice: space_core
+  # ADT tweak end
+  - type: LanguageSpeaker # Ganimed edit
+    languages:
+      GalacticCommon: Speak
+      BorgTalk: Speak
   - type: WiresPanel
   - type: AmbientSound
     volume: -9

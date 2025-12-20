@@ -49,10 +49,18 @@
     sprite: Clothing/Ears/Headsets/servicesecurity.rsi
 
 - type: entity
-  parent: ClothingHeadsetCentCom
+  parent: [ ClothingHeadset, BaseCentcommContraband ] # ganimed edit
   id: ADTClothingHeadsetBlueshield
   name: blueshield headset
   components:
+  # ganimed edit start
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyStationMaster
+  - type: Headset
+    radioTextIncrease: 3
+  # ganimed edit end
   - type: Sprite
     sprite: ADT/Clothing/Ears/Headsets/blueshield.rsi
   - type: Clothing
