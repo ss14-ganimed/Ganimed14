@@ -75,4 +75,9 @@ public sealed partial class TraitPrototype : IPrototype
     [DataField]
     public bool SponsorOnly = false;
     // ADT Tweak end
+
+    // Ganimed trait
+    [DataField]
+    public List<string>? TraitBlacklist;
+
 }
