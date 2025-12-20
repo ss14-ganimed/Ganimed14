@@ -30,6 +30,10 @@
     state: pill-canister
   - type: Item
     sprite: ADT/Objects/Specific/Chemistry/pills.rsi
+  - type: RandomSprite # Ganimed-Resprite # TODO: fix visuals
+    available:
+      - 0:
+          pill-canister: ""
 
 - type: entity
   id: ADTPillPack
