@@ -36,6 +36,13 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
             }
         };
 
+        // Ganimed edit start
+        _menu.OnLoopPressed += () =>
+        {
+            SendMessage(new JukeboxToggleLoopMessage());
+        };
+        // Ganimed edit end
+
         _menu.OnStopPressed += () =>
         {
             SendMessage(new JukeboxStopMessage());
@@ -57,6 +64,7 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
             return;
 
         _menu.SetAudioStream(jukebox.AudioStream);
+        _menu.SetLoopButton(jukebox.Loop); // Ganimed edit 
         _menu.SetVolumeSlider(jukebox.Volume); // ADT-Tweak
         if (_protoManager.TryIndex(jukebox.SelectedSongId, out var songProto))
         {

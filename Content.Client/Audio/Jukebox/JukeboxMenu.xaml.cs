@@ -17,6 +17,7 @@ public sealed partial class JukeboxMenu : FancyWindow
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
     private AudioSystem _audioSystem;
+    private readonly List<(string Name, ProtoId<JukeboxPrototype> Id)> _allSongs = new(); // Ganimed edit 
 
     /// <summary>
     /// Are we currently 'playing' or paused for the play / pause button.
@@ -27,6 +28,7 @@ public sealed partial class JukeboxMenu : FancyWindow
     /// True if playing, false if paused.
     /// </summary>
     public event Action<bool>? OnPlayPressed;
+    public event Action? OnLoopPressed; // Ganimed edit 
     public event Action? OnStopPressed;
     public event Action<ProtoId<JukeboxPrototype>>? OnSongSelected;
     public event Action<float>? SetTime;
@@ -44,29 +46,26 @@ public sealed partial class JukeboxMenu : FancyWindow
 
         MusicList.OnItemSelected += args =>
         {
-            var entry = MusicList[args.ItemIndex];
-
-            if (entry.Metadata is not string juke)
-                return;
-
-            OnSongSelected?.Invoke(juke);
+            // Ganimed edit start
+            if (MusicList[args.ItemIndex].Metadata is ProtoId<JukeboxPrototype> songId)
+            {
+                OnSongSelected?.Invoke(songId);
+            }
+            // Ganimed edit end
         };
 
-        PlayButton.OnPressed += args =>
-        {
-            OnPlayPressed?.Invoke(!_playState);
-        };
+        PlayButton.OnPressed += _ => OnPlayPressed?.Invoke(!_playState);
+        LoopButton.OnPressed += _ => OnLoopPressed?.Invoke(); // Ganimed edit
+        StopButton.OnPressed += _ => OnStopPressed?.Invoke();
+        PlaybackSlider.OnReleased += _ => SetTime?.Invoke(PlaybackSlider.Value); // Ganimed edit
+        VolumeSlider.OnReleased += _ => { SetVolume?.Invoke(VolumeSlider.Value); _lockTimer = 0.5f; }; // ADT-Tweak
 
-        StopButton.OnPressed += args =>
-        {
-            OnStopPressed?.Invoke();
-        };
-        PlaybackSlider.OnReleased += PlaybackSliderKeyUp;
-        VolumeSlider.OnReleased += VolumeSliderKeyUp; /// ADT-Tweak
-
-        VolumeSlider.MaxValue = 100f; /// ADT-Tweak
+        SearchBar.OnTextChanged += _ => FilterSongs();
+        // Ganimed edit end
 
         SetPlayPauseButton(_audioSystem.IsPlaying(_audio), force: true);
+
+        VolumeSlider.MaxValue = 100f; // ADT-Tweak
     }
 
     public JukeboxMenu(AudioSystem audioSystem)
@@ -85,25 +84,39 @@ public sealed partial class JukeboxMenu : FancyWindow
         _lockTimer = 0.5f;
     }
 
-    /// ADT-Tweak start
-    private void VolumeSliderKeyUp(Slider args)
+    public void SetLoopButton(bool loop)
     {
-        SetVolume?.Invoke(VolumeSlider.Value);
-        _lockTimer = 0.5f;
+        LoopButton.Text = Loc.GetString(loop ? "jukebox-menu-buttonloop-on" : "jukebox-menu-buttonloop-off");
     }
-    /// ADT-Tweak end
 
     /// <summary>
     /// Re-populates the list of jukebox prototypes available.
     /// </summary>
     public void Populate(IEnumerable<JukeboxPrototype> jukeboxProtos)
+    /// Ganimed edit start
     {
-        MusicList.Clear();
-
-        foreach (var entry in jukeboxProtos)
+        _allSongs.Clear();
+        foreach (var proto in jukeboxProtos)
         {
-            MusicList.AddItem(entry.Name, metadata: entry.ID);
+            _allSongs.Add((proto.Name, proto.ID));
         }
+        FilterSongs();
+    }
+    /// Ganimed edit end
+
+    private void FilterSongs()
+    {
+        /// Ganimed edit start
+        MusicList.Clear();
+        var filter = SearchBar.Text.Trim().ToLowerInvariant();
+        foreach (var song in _allSongs)
+        {
+            if (string.IsNullOrEmpty(filter) || song.Name.ToLowerInvariant().Contains(filter))
+            {
+                MusicList.AddItem(song.Name, metadata: song.Id);
+            }
+        }
+        /// Ganimed edit end
         MusicList.SortItemsByText(); /// ADT-Tweak
     }
 
@@ -113,14 +126,9 @@ public sealed partial class JukeboxMenu : FancyWindow
             return;
 
         _playState = playing;
-
-        if (playing)
-        {
-            PlayButton.Text = Loc.GetString("jukebox-menu-buttonpause");
-            return;
-        }
-
-        PlayButton.Text = Loc.GetString("jukebox-menu-buttonplay");
+        PlayButton.Text = playing
+            ? Loc.GetString("jukebox-menu-buttonpause")
+            : Loc.GetString("jukebox-menu-buttonplay");
     }
 
     public void SetSelectedSong(string name, float length)
@@ -130,21 +138,12 @@ public sealed partial class JukeboxMenu : FancyWindow
         PlaybackSlider.SetValueWithoutEvent(0);
     }
 
-    /// ADT-Tweak start
-    public void SetVolumeSlider(float volume)
-    {
-        VolumeSlider.Value = volume;
-    }
-    /// ADT-Tweak end
-
     protected override void FrameUpdate(FrameEventArgs args)
     {
         base.FrameUpdate(args);
 
         if (_lockTimer > 0f)
-        {
             _lockTimer -= args.DeltaSeconds;
-        }
 
         PlaybackSlider.Disabled = _lockTimer > 0f;
         VolumeSlider.Disabled = _lockTimer > 0f; /// ADT-Tweak
@@ -158,35 +157,27 @@ public sealed partial class JukeboxMenu : FancyWindow
             DurationLabel.Text = $"00:00 / 00:00";
         }
 
-        VolumeNumberLabel.Text = $"{VolumeSlider.Value.ToString("0.##")} %"; /// ADT-Tweak
-
-        if (PlaybackSlider.Grabbed)
-            return;
-
-        if (VolumeSlider.Grabbed) /// ADT-Tweak
+        VolumeNumberLabel.Text = $"{VolumeSlider.Value:0.##} %"; /// ADT-Tweak
+        if (PlaybackSlider.Grabbed || VolumeSlider.Grabbed) // Ganimed edit 
             return;
 
         if (audio != null || _entManager.TryGetComponent(_audio, out audio))
-        {
             PlaybackSlider.SetValueWithoutEvent(audio.PlaybackPosition);
-        }
         else
-        {
             PlaybackSlider.SetValueWithoutEvent(0f);
-        }
 
         SetPlayPauseButton(_audioSystem.IsPlaying(_audio, audio));
     }
 
     public void SetSelectedSongText(string? text)
     {
-        if (!string.IsNullOrEmpty(text))
-        {
-            SongName.Text = text;
-        }
-        else
-        {
-            SongName.Text = "---";
-        }
+        SongName.Text = !string.IsNullOrEmpty(text) ? text : "---"; // Ganimed edit 
     }
+
+    /// ADT-Tweak start
+    public void SetVolumeSlider(float volume)
+    {
+        VolumeSlider.Value = volume;
+    }
+    /// ADT-Tweak end
 }

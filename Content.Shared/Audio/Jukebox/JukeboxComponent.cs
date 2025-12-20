@@ -14,6 +14,11 @@ public sealed partial class JukeboxComponent : Component
     [DataField, AutoNetworkedField]
     public EntityUid? AudioStream;
 
+    // Ganimed edit start
+    [DataField, AutoNetworkedField]
+    public bool Loop { get; set; } = false;
+    // Ganimed edit end
+
     /// <summary>
     /// RSI state for the jukebox being on.
     /// </summary>
@@ -90,6 +95,9 @@ public enum JukeboxVisualState : byte
     Off,
     Select,
 }
+
+[Serializable, NetSerializable]
+public sealed class JukeboxToggleLoopMessage : BoundUserInterfaceMessage;
 
 public enum JukeboxVisualLayers : byte
 {
