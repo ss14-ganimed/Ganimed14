@@ -42,7 +42,7 @@
   - ClothingBackpackHolding
   - ClothingBackpackSatchelHolding
   - ClothingBackpackDuffelHolding
-  - BotanistBagOfHolding # Ganimed-Edit
+  - ADTBotanistBagOfHolding #ADT-Tweak
 
 - type: latheRecipePack
   id: PowerCells
@@ -99,7 +99,7 @@
   - AnomalyVesselCircuitboard
   - AnomalyVesselExperimentalCircuitboard
   - AnomalySynchronizerCircuitboard
-  - BotanicalSeedDNAManipulatorCircuitboard # Ganimed-Edit
+  - ADTBotanicalSeedDNAManipulatorCircuitboard #ADT-Tweak
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
