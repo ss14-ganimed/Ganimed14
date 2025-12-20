@@ -1,7 +1,7 @@
 {
-  "version": 1,
-  "license": "CC0-1.0",
-  "copyright": "Taken from cev-eris at commit https://github.com/discordia-space/CEV-Eris/commit/b63634bc17efe2f09cf06ef0e9a90d24d37f6203 and remade by SonicHDC (github)",
+  "version": 2,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Drawn by Ubaser, tweaked by HyperB1 (GitHub)",
   "size": {
     "x": 32,
     "y": 32
@@ -36,22 +36,10 @@
       "name": "full"
     },
     {
-      "name": "charging",
-      "delays": [
-        [
-          0.5,
-          0.5
-        ]
-      ]
+      "name": "charging"
     },
     {
-      "name": "dead",
-      "delays": [
-        [
-          0.2,
-          0.2
-        ]
-      ]
+      "name": "dead"
     },
     {
       "name": "screen",

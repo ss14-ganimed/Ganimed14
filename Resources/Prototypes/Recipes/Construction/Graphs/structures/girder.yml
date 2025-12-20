@@ -322,9 +322,13 @@
               completed:
                 - !type:VisualizerDataInt
                   key: "enum.ReinforcedWallVisuals.DeconstructionStage"
-                  data: 5
+                  data: 6 # Ganimed-Resprite
             - tool: Screwing
               doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 5 # Ganimed-Resprite
             - tool: Welding
               doAfter: 5
               completed:

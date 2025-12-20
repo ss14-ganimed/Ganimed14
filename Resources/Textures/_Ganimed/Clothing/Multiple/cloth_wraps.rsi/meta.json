@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Socks state taken from https://github.com/ParadiseSS13/Paradise/blob/master/icons/mob/clothing/feet.dmi; Hand state taken from https://github.com/ParadiseSS13/Paradise/blob/master/icons/mob/clothing/hands.dmi; Inhand and Feet states made by thedusteffin for Ganimed/Enterprise; Underpants, Undershirt and digi states made by HyperB1 (GitHub) for Ganimed/Enterprise",
+  "copyright": "Socks state derived from https://github.com/ParadiseSS13/Paradise/blob/master/icons/mob/clothing/feet.dmi; Hand state derived from https://github.com/ParadiseSS13/Paradise/blob/master/icons/mob/clothing/hands.dmi; Inhand and Feet states made by thedusteffin for Ganimed/Enterprise; Underpants, Undershirt and digi states made by HyperB1 (GitHub) for Ganimed/Enterprise",
   "size": {
     "x": 32,
     "y": 32
@@ -34,7 +34,7 @@
       "directions": 4
     },
     {
-      "name": "equipped-FEET-reptilian",
+      "name": "equipped-FEET-digi",
       "directions": 4
     },
     {

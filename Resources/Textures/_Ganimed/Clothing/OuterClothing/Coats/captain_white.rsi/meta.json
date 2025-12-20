@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Sprited by orange6775 (discord) for SS14.",
+  "copyright": "Sprited by orange6775 (discord) for SS14, recolored by HyperB1 (GitHub)",
   "size": {
     "x": 32,
     "y": 32
@@ -16,7 +16,7 @@
       "directions": 4
     },
     {
-      "name": "equipped-OUTERCLOTHING-digi",
+      "name": "equipped-OUTERCLOTHING-vox",
       "directions": 4
     },
     {

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Base taken from tgstation at commit https://github.com/tgstation/tgstation/commit/3fd95ab2a061459c881eeab6dbecaae5a8884f0a altered by Velcroboy",
+  "copyright": "Base taken from tgstation at commit https://github.com/tgstation/tgstation/commit/3fd95ab2a061459c881eeab6dbecaae5a8884f0a altered by Velcroboy. Resprited by HyperB1 (GitHub) based on sprite from tgstation at commit https://github.com/tgstation/tgstation/commit/92f9113201fba11224c140f908e04c5834f41cdf",
   "size": {
     "x": 32,
     "y": 32

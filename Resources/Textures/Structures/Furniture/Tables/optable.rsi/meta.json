@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from TauCetiStation at https://github.com/TauCetiStation/TauCetiClassic/commit/2456d1ba6ff2a506d0a5073c882ed89b7b67695b",
+    "copyright": "Derivative based on surgery_table.dmi from tgstation at commit https://github.com/axietheaxolotl/tgstation/commit/8e64e64ec5dbc0fb634817df62b5d4d3fcb42acd and a separate sprite by AftrLite (Github), compiled by HyperB1 (GitHub)",
     "size": {
         "x": 32,
         "y": 32

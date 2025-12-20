@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from shiptest (https://github.com/shiptest-ss13/Shiptest) | Edited by PuroSlavKing (Github) | inhand sprites, monkey and reptilian by vetochka_igrit (Discord)",
+  "copyright": "Taken from shiptest (https://github.com/shiptest-ss13/Shiptest) | Edited by PuroSlavKing (Github) | inhand sprites, monkey and digi by vetochka_igrit (Discord)",
   "size": {
     "x": 32,
     "y": 32
@@ -15,7 +15,7 @@
       "directions": 4
     },
     {
-      "name": "equipped-INNERCLOTHING-reptilian",
+      "name": "equipped-INNERCLOTHING-digi",
       "directions": 4
     },
     {

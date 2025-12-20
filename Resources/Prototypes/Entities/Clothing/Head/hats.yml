@@ -45,6 +45,7 @@
     - PetWearable
     - CorgiWearable
     - ClothMade
+    - HamsterWearable
     - Recyclable
     - WhitelistChameleon
 
@@ -213,8 +214,11 @@
     sprite: Clothing/Head/Hats/beret_brigmedic.rsi
   - type: Clothing
     sprite: Clothing/Head/Hats/beret_brigmedic.rsi
-  - type: Tag
+  - type: Tag # Ganimed-Resprite
     tags:
+    - ClothMade
+    - HamsterWearable
+    - WhitelistChameleon
     - PetWearable
     - CorgiWearable
 

@@ -6,7 +6,7 @@
   components:
   - type: Sprite
     sprite: ADT/Objects/Specific/Medical/patch.rsi
-    scale: 1.3, 1.3
+    # scale: 1.3, 1.3 # Ganimed-Resprite
     state: patchpack
   - type: Item
     size: Small

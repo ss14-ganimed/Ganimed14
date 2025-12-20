@@ -273,7 +273,7 @@
         maxVol: 100
   - type: Appearance
   - type: SolutionContainerVisuals
-    maxFillLevels: 6
+    maxFillLevels: 9 # Ganimed-Resprite
     fillBaseName: beakerlarge
     inHandsMaxFillLevels: 4
     inHandsFillBaseName: -fill-
@@ -663,3 +663,18 @@
       tags:
       - Pill
   - type: Dumpable
+  - type: RandomSprite # Ganimed-Resprite
+    available:
+      - 0:
+          pill_canister: ""
+          pill_black: ""
+          pill_blue: ""
+          pill_dred: ""
+          pill_green: ""
+          pill_lred: ""
+          pill_orange: ""
+          pill_pink: ""
+          pill_rainbow: ""
+          pill_red: ""
+          pill_white: ""
+          pill_yellow: ""

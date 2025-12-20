@@ -107,7 +107,7 @@
     #ADT-Tweak-End
 
 - type: entity
-  parent: ClothingOuterStorageBase
+  parent: ClothingOuterStorageFoldableBase # Ganimed-Resprite
   id: ClothingOuterCoatLabSecurityMedic
   name: security medic labcoat
   description: A suit that protects against minor chemical spills.

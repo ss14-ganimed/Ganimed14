@@ -16,7 +16,7 @@
   description: A plushie of a red-hair NanoTrasen worker. You can be sure it's a captain. A sense of terror is emanating from the plushie.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: mensk
 
 - type: entity
@@ -26,7 +26,7 @@
   description: A cute toy of a NanoTrasen security officer styled as a head of security. One look is enough to get a sense of pride for the man.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: morgan
 
 - type: entity
@@ -36,7 +36,7 @@
   description: A toy of a NanoTrasen legal department agent. A grim reminder of what could have been.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: erhard
 
 - type: entity
@@ -46,7 +46,7 @@
   description: A cute toy that resembles a worker in NanoTrasen-issued chief medical officer suit. Unfortunately, won't organise your med workflow.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: mira
   - type: Extractable
     grindableSolutionName: food
@@ -67,7 +67,7 @@
   description: An adorable toy of a medical worker. A look to follow if you want to be a professional medic.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: calisto
 
 - type: entity
@@ -77,7 +77,7 @@
   description: A stuffed toy that resembles an emergency medical technician. For some reason, you can't take off his glasses.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: andrew
 
 - type: entity
@@ -87,7 +87,7 @@
   description: He didn't want such a fate for himself.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     layers:
     - state: lazarus_1
       map: ["unfoldedLayer"]
@@ -105,7 +105,7 @@
   description: A cute toy in a chemist uniform. Looks like it's bothered by your mere presence, but is actually unable to do a thing.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: ocion
   - type: Extractable
     grindableSolutionName: food
@@ -126,7 +126,7 @@
   description: A cute toy of a slime bartender. Used as a key in a NanoTrasen interspecies communications project. May it offer you a drink in the trying times.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     layers:
     - state: kiss_1
       map: ["unfoldedLayer"]
@@ -152,7 +152,7 @@
   description: A cute toy of a bartender. It looks warm and comforting.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: ave
 
 - type: entity
@@ -162,7 +162,7 @@
   description: A cute toy of a 100% real NanoTrasen worker in a full-body suit and a quartermaster outfit. Rest assured of it's loyalty to the company.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: qm
 
 - type: entity
@@ -172,7 +172,7 @@
   description: A modification to the NanoTrasen-issued lizardperson plushie. Looks like it is wearing a quartermaster uniform. Say *"No"* to power positions racism.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: graff
 
 - type: entity
@@ -182,14 +182,13 @@
   description: A NanoTrasen-issued plushie of a stylish salvage specialist design. As if the job itself wasn't cool enough.
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     layers:
     - state: suren_1
       map: ["unfoldedLayer"]
     - state: suren_2
       map: ["foldedLayer"]
       visible: false
-
 
 - type: entity
   parent: PlushieLizard
@@ -198,10 +197,13 @@
   description: An adorable stuffed toy that resembles a lizardperson. Made by CentCom as a token initiative to combat speciesism in work environments. "Welcome your new colleagues as you do this plush, with open arms!"
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: bex
+  - type: Item
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
+    heldPrefix: bex
   - type: Clothing
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     equippedPrefix: bex
 
 - type: entity
@@ -211,10 +213,13 @@
   description: An adorable stuffed toy that resembles a lizardperson. Made by CentCom as a token initiative to combat speciesism in work environments. "Welcome your new colleagues as you do this plush, with open arms!"
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: hart
+  - type: Item
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
+    heldPrefix: hart
   - type: Clothing
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     equippedPrefix: hart
 
 - type: entity
@@ -224,10 +229,13 @@
   description: An adorable stuffed toy that resembles a lizardperson. Made by CentCom as a token initiative to combat speciesism in work environments. "Welcome your new colleagues as you do this plush, with open arms!"
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     state: metaku
+  - type: Item
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
+    heldPrefix: metaku
   - type: Clothing
-    sprite: _Ganimed/Objects/Fun/toys.rsi
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
     equippedPrefix: metaku
 
 - type: entity
@@ -237,8 +245,11 @@
   description: An adorable stuffed toy that resembles a lizardperson. Made by CentCom as a token initiative to combat speciesism in work environments. "Welcome your new colleagues as you do this plush, with open arms!"
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Fun/toys.rsi
-    state: reesu
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
+    state: reesa
+  - type: Item
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
+    heldPrefix: reesa
   - type: Clothing
-    sprite: _Ganimed/Objects/Fun/toys.rsi
-    equippedPrefix: reesu
+    sprite: _Ganimed/Objects/Fun/plushies.rsi
+    equippedPrefix: reesa

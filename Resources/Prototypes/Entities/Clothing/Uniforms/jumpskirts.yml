@@ -895,15 +895,32 @@
     sprite: Clothing/Uniforms/Jumpskirt/musician.rsi
 
 - type: entity
-  parent: ClothingUniformSkirtBase
+  parent: [ClothingUniformSkirtBase, BaseFoldable] # Ganimed-Resprite
   id: ClothingUniformJumpskirtPsychologist
   name: psychologist suitskirt
   description: I don't lose things. I place things in locations which later elude me.
   components:
     - type: Sprite
       sprite: Clothing/Uniforms/Jumpskirt/psychologist.rsi
+  # Ganimed-Resprite-Start
+      layers:
+      - state: icon
+        map: [ "unfoldedLayer" ]
+      - state: shortsleeve-icon
+        map: [ "foldedLayer" ]
+        visible: false
+  # Ganimed-Resprite-End
     - type: Clothing
       sprite: Clothing/Uniforms/Jumpskirt/psychologist.rsi
+  # Ganimed-Resprite-Start
+    - type: Appearance
+    - type: Foldable
+      canFoldInsideContainer: true
+      unfoldVerbText: unfold-pull-down-sleeves-verb
+      foldVerbText: fold-roll-up-sleeves-verb
+    - type: FoldableClothing
+      foldedEquippedPrefix: shortsleeve
+  # Ganimed-Resprite-End
 
 - type: entity
   parent: ClothingUniformSkirtBase

@@ -12,6 +12,7 @@
   - type: Sprite
     sprite: Objects/Misc/bedsheets.rsi
     noRot: true
+    offset: 0, 0.03125 # Ganimed-Resprite
   - type: Item
     size: Small
   - type: Clothing

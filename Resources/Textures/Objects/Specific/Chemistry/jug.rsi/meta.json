@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Created by HoofedEar",
+  "copyright": "Created by HoofedEar, modified by HyperB1 (GitHub) based on sprites from tgstation at commit https://github.com/tgstation/tgstation/commit/a856296eef799037b199621191a1acb56f9bb451",
   "size": {
     "x": 32,
     "y": 32
@@ -75,6 +75,15 @@
     },
     {
       "name": "jug6"
+    },
+    {
+      "name": "jug7"
+    },
+    {
+      "name": "jug8"
+    },
+    {
+      "name": "jug9"
     }
   ]
 }

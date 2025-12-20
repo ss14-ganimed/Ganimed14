@@ -33,26 +33,26 @@
     - state: display-charging
       shader: unshaded
       map: ["enum.ApcVisualLayers.ChargeState"]
-    - state: lock0-locked
+    - state: lock0-unlocked # Ganimed-Resprite
       shader: unshaded
       map: ["enum.ApcVisualLayers.InterfaceLock"]
-      visible: false
-    - state: lock1-locked
+      visible: true # Ganimed-Resprite
+    - state: lock1-unlocked # Ganimed-Resprite
       shader: unshaded
       map: ["enum.ApcVisualLayers.PanelLock"]
-      visible: false
-    - state: lock1-locked #when these are implemented get actual sprites.
+      visible: true # Ganimed-Resprite
+    - state: channel0-auto_on # Ganimed-Resprite
       shader: unshaded
       map: ["enum.ApcVisualLayers.Equipment"]
-      visible: false
-    - state: lock1-locked
+      visible: true # Ganimed-Resprite
+    - state: channel1-auto_on # Ganimed-Resprite
       shader: unshaded
       map: ["enum.ApcVisualLayers.Lighting"]
-      visible: false
-    - state: lock1-locked
+      visible: true # Ganimed-Resprite
+    - state: channel2-auto_on # Ganimed-Resprite
       shader: unshaded
       map: ["enum.ApcVisualLayers.Environment"]
-      visible: false
+      visible: true # Ganimed-Resprite
   - type: Appearance
   - type: ApcVisuals
   - type: Battery
