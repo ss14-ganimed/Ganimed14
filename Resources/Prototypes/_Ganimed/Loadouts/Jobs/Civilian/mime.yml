@@ -1,0 +1,18 @@
+# Mask
+- type: loadout # TODO: Whitelist restriction
+  id: MimeMaskBlushing
+  equipment:
+    mask: ClothingMaskBlushingMime
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Neck
+- type: loadout # TODO: Whitelist restriction
+  id: ScarfZebra
+  equipment:
+    neck: ClothingNeckScarfStripedZebra
+
+- type: loadout
+  id: MimeBedsheet
+  equipment:
+    neck: BedsheetMime

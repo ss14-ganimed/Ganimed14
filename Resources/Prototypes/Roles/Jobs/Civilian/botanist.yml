@@ -21,10 +21,10 @@
 - type: startingGear
   id: BotanistGear
   equipment:
-    shoes: ClothingShoesColorBrown
+    # shoes: ClothingShoesColorBrown # Ganimed-Loadouts
     # id: BotanistPDA ADT: different PDAs in loadouts
     ears: ClothingHeadsetService
-    belt: ClothingBeltPlantFilled
+    # belt: ClothingBeltPlantFilled # Ganimed-Loadouts
   #storage:
     #back:
     #- Stuff

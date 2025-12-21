@@ -8,122 +8,122 @@ loadout-group-socks-adt = Носки
 ent-MagistratNeck = Галстуки
 ent-MagistratJumpsuit = Костюмы
 
-loadout-group-blueshield-jumpsuit = ОСЩ, комбинезон
-loadout-group-blueshield-head = ОСЩ, голова
+loadout-group-blueshield-jumpsuit = Форма ОСЩ
+loadout-group-blueshield-head = Головной убор ОСЩ
 loadout-group-blueshield-neck = ОСЩ, шея
-loadout-blueshield-ears-adt = ОСЩ, ухо
-loadout-group-blueshield-back = ОСЩ, рюкзак
-loadout-group-blueshield-outer-clothing = ОСЩ, верхняя одежда
+loadout-blueshield-ears-adt = Гарнитура ОСЩ
+loadout-group-blueshield-back = Рюкзак ОСЩ
+loadout-group-blueshield-outer-clothing = Верхняя одежда ОСЩ
 
 # Civilian
-loadout-chef-pocket1-adt = Шеф Повар, карман 1
+loadout-chef-pocket1-adt = Карман шефа
 loadout-group-chef-id-adt = Шеф-Повар, ID
-loadout-group-librarian-backpack = Библиотекарь, рюкзак
+loadout-group-librarian-backpack = Рюкзак библиотекаря
 loadout-group-librarian-id-adt = Библиотекарь, ID
 loadout-group-passenger-id-adt = Ассистент, ID
 loadout-group-bartender-id-adt = Бармен, ID
 loadout-group-clown-id-adt = Клоун, ID
 loadout-group-janitor-id-adt = Уборщик, ID
 loadout-group-botanist-id-adt = Ботаник, ID
-loadout-barber-jumpsuit-adt = Парикмахер, комбинезон
-loadout-barber-other-clothing-adt = Парикмахер, верхняя одежда
-loadout-group-clown-mask-adt = Клоун, маска
-loadout-group-clown-gloves-adt = Клоун, перчатки
+loadout-barber-jumpsuit-adt = Комбинезон парикмахера
+loadout-barber-other-clothing-adt = Верхняя одежда парикмахера
+loadout-group-clown-mask-adt = Маска клоуна
+loadout-group-clown-gloves-adt = Перчатки клоуна
 loadout-group-clown-pocket1-adt = Клоун, карман 1
 loadout-group-clown-pocket2-adt = Клоун, карман 2
 loadout-group-musician-id-adt = Музыкант, ID
-loadout-group-musician-gloves-adt = Музыкант, перчатки
+loadout-group-musician-gloves-adt = Перчатки музыканта
 loadout-group-reporter-id-adt = Репортёр, ID
-loadout-group-bartender-gloves-adt = Бармен, перчатки
+loadout-group-bartender-gloves-adt = Перчатки бармена
 loadout-group-boxer-id-adt = Боксёр, ID
-loadout-group-boxer-head-adt = Боксёр, голова
-loadout-group-service-worker-gloves-adt = Сервисный работник, перчатки
+loadout-group-boxer-head-adt =  Головной убор боксёра
+loadout-group-service-worker-gloves-adt = Перчатки сервисного работника
 loadout-group-service-worker-id-adt = Сервисный работник, ID
-loadout-group-service-worker-jumpsuit-adt = Сервисный работник, комбинезон
-loadout-group-chef-gloves-adt = Шеф-Повар, перчатки
-loadout-group-chef-neck-adt = Шеф-Повар, шея
+loadout-group-service-worker-jumpsuit-adt = Комбинезон сервисного работника
+loadout-group-chef-gloves-adt = Перчатки шеф-повара
+loadout-group-chef-neck-adt = Платок шеф-повара
 
 # Cargo
 loadout-group-quartermaster-id = Квартирмейстер, ID
-loadout-quartermaster-ears-adt = Квартирмейстер, ухо
-loadout-salvage-specialist-jumpsuit-adt = Утилизатор, комбинезон
+loadout-quartermaster-ears-adt = Гарнитура квартирмейстера
+loadout-salvage-specialist-jumpsuit-adt = Комбинезон утилизатора
 loadout-salvage-specialist-neck-adt = Утилизатор, шея
-loadout-salvage-specialist-ears-adt = Утилизатор, ухо
+loadout-salvage-specialist-ears-adt = Гарнитура утилизатора
 loadout-group-salvage-id-adt = Утилизатор, ID
 loadout-group-cargo-id-adt = Грузчик, ID
 
-loadout-miner-jumpsuit-adt = Шахтёр, комбинезон
-loadout-miner-backpack = Шахтёр, рюкзак
-loadout-miner-ears-adt = Шахтёр, ухо
+loadout-miner-jumpsuit-adt = Комбинезон шахтёра
+loadout-miner-backpack = Рюкзак шахтёра
+loadout-miner-ears-adt = Гарнитура шахтёра
 loadout-miner-neck-adt = Шахтёр, шея
-loadout-miner-outerclothing-adt = Шахтёр, верхняя одежда
-loadout-miner-shoes-adt = Шахтёр, обувь
+loadout-miner-outerclothing-adt = Верхняя одежда шахтёра
+loadout-miner-shoes-adt = Обувь шахтёра
 loadout-miner-id-adt = Шахтёр, ID
 
 # Chaplain
-loadout-chaplain-blessedbook-adt = Священник, священная книга
+loadout-chaplain-blessedbook-adt = Священная книга
 loadout-group-chaplain-id-adt = Священник, ID
 
 # Engineering
-loadout-chief-engineer-ears-adt = Старший инженер, ухо
-loadout-group-senior-engineer-head = Бригадир, голова
-loadout-group-senior-engineer-jumpsuit = Бригадир, комбинезон
-loadout-group-atmospheric-technician-neck = Атмосферный техник, плащ
-loadout-group-atmospheric-technician-gasmask = Атмосферный техник, противогаз
-loadout-group-atmospheric-technician-head = Атмосферный техник, голова
+loadout-chief-engineer-ears-adt = Гарнитура старшнго инженера
+loadout-group-senior-engineer-head = Головной убор бригадира
+loadout-group-senior-engineer-jumpsuit = Комбинезон бригадира
+loadout-group-atmospheric-technician-neck = Плащ атмосферного техника
+loadout-group-atmospheric-technician-gasmask = Противогаз атмосферного техника
+loadout-group-atmospheric-technician-head = Головной убор атмосферного техника
 loadout-group-atmos-id-adt = Атмосферный техник, ID
 
 # Science
-loadout-research-director-ears-adt = Научный руководитель, ухо
+loadout-research-director-ears-adt = Гарнитура научного руководителя
 loadout-group-reserch-director-id-adt = Научный руководитель, ID
-loadout-group-senior-researcher-head = Старший Научный Сотрудник, голова
-loadout-group-senior-researcher-jumpsuit = Старший Научный Сотрудник, комбинезон
-loadout-group-senior-researcher-gloves = Старший Научный Сотрудник, перчатки
-loadout-group-senior-researcher-outerclothing = Старший Научный Сотрудник, верхняя одежда
-loadout-group-roboticist-head = Робототехник, голова
-loadout-group-roboticist-jumpsuit = Робототехник, комбинезон
-loadout-group-roboticist-outerclothing = Робототехник, верхняя одежда
-loadout-group-roboticist-gloves = Робототехник, перчатки
+loadout-group-senior-researcher-head = Головной убор старшего научного сотрудника
+loadout-group-senior-researcher-jumpsuit = Костюм старшего научного сотрудника
+loadout-group-senior-researcher-gloves = Перчатки старшего научного сотрудника
+loadout-group-senior-researcher-outerclothing = Верхняя одежда старшего научного сотрудника
+loadout-group-roboticist-head = Головной убор робототехника
+loadout-group-roboticist-jumpsuit = Комбинезон робототехника
+loadout-group-roboticist-outerclothing = Верхняя одежда робототехника
+loadout-group-roboticist-gloves = Перчатки робототехника
 loadout-group-mechanical-assembler-id-adt = Робототехник, ID
 
 # Security
 loadout-group-sheriff-id-adt = Глава службы безопасности, ID
-loadout-group-senior-officer-jumpsuit = Офицер-инструктор, комбинезон
-loadout-group-senior-officer-backpack = Офицер-инструктор, рюкзак
-loadout-group-senior-officer-outerclothing = Офицер-инструктор, верхняя одежда
+loadout-group-senior-officer-jumpsuit = Комбинезон инструктора
+loadout-group-senior-officer-backpack = Рюкзак инструктора
+loadout-group-senior-officer-outerclothing = Верхняя одежда инструктора
 loadout-warden-neck-adt = Смотритель, шея
-loadout-corrections-officer-head-adt = Надзиратель СБ, голова
-loadout-corrections-officer-jumpsuit-adt = Надзиратель СБ, комбинезон
+loadout-corrections-officer-head-adt = Головной убор надзирателя
+loadout-corrections-officer-jumpsuit-adt = Комбинезон надзирателя
 loadout-corrections-officer-outerclothing-adt = Надзиратель СБ, верхняя одежда
 loadout-group-detective-id-adt = Детектив, ID
 loadout-security-officer-neck-adt = Офицер СБ, шея
 loadout-security-cadet-neck-adt = Кадет СБ, шея
 
 # Brigmedic
-loadout-brigmedic-jumpsuit-adt = Бригмедик, комбинезон
-loadout-brigmedic-head-adt = Бригмедик, голова
+loadout-brigmedic-jumpsuit-adt = Комбинезон бригмедика
+loadout-brigmedic-head-adt = Бригмедик, голова бригмедика
 loadout-brigmedic-neck-adt = Бригмедик, шея
-loadout-brigmedic-back-adt = Бригмедик, рюкзак
-loadout-brigmedic-gloves-adt = Бригмедик, перчатки
-loadout-brigmedic-glasses-adt = Бригмедик, очки
+loadout-brigmedic-back-adt = Рюкзак бригмедика
+loadout-brigmedic-gloves-adt = Перчатки бригмедика
+loadout-brigmedic-glasses-adt = Очки бригмедика
 loadout-brigmedic-pda-adt = Бригмедик, ID
-loadout-brigmedic-belt-adt = Бригмедик, поясы
-loadout-brigmedic-outerwear-adt = Бригмедик, верхняя одежда
+loadout-brigmedic-belt-adt = Пояс бригмедика
+loadout-brigmedic-outerwear-adt = Верхняя одежда бригмедика
 
 # Medical
 loadout-group-chief-medical-officer-id-adt = Главный врач, ID
-loadout-chief-medical-officer-ears-adt = Главный врач, ухо
-loadout-group-senior-physician-head = Заведующий врач, голова
-loadout-group-senior-physician-jumpsuit = Заведующий врач, комбинезон
-loadout-group-senior-physician-outerclothing = Заведующий врач, верхняя одежда
-loadout-group-paramedic-belt-adt = Парамедик, пояс
-loadout-group-paramedic-backpack-adt = Парамедик, рюкзак
-loadout-group-patholog-head = Патологоанатом, голова
-loadout-group-patholog-jumpsuit = Патологоанатом, комбинезон
-loadout-group-patholog-outerclothing = Патологоанатом, верхняя одежда
-loadout-group-patholog-shoes = Патологоанатом, обувь
-loadout-group-patholog-backpack = Патологоанатом, рюкзак
-loadout-group-medical-belt-adt = Врач, пояс
+loadout-chief-medical-officer-ears-adt = Гарнитура главного врача
+loadout-group-senior-physician-head = Головной убор заведующего врача
+loadout-group-senior-physician-jumpsuit = Комбинезон заведующего врача
+loadout-group-senior-physician-outerclothing = Верхняя одежда заведующего врача
+loadout-group-paramedic-belt-adt = Пояс парамедика
+loadout-group-paramedic-backpack-adt = Рюкзак парамедика
+loadout-group-patholog-head = Головной убор патологоанатома
+loadout-group-patholog-jumpsuit = Комбинезон патологоанатома
+loadout-group-patholog-outerclothing = Верхняя одежда патологоанатома
+loadout-group-patholog-shoes = Обувь патологоанатома
+loadout-group-patholog-backpack = Рюкзак патологоанатома
+loadout-group-medical-belt-adt = Медицинский пояс
 loadout-group-medical-intern-id-adt = Интерн, ID
 
 # Wildcards
@@ -131,9 +131,9 @@ loadout-group-psychologist-id-adt = Психолог, ID
 
 # Juridical
 loadout-group-lawyer-id-adt = Юрист, ID
-loadout-group-lawyer-gloves = Юрист, перчатки
-loadout-group-lawyer-backpack = Магистрат, рюкзак
+loadout-group-lawyer-gloves = Перчатки юриста
+loadout-group-lawyer-backpack = Рюкзак магистрата
 
 # Command
-loadout-captain-ears-adt = Капитан, ухо
-loadout-HoP-ears-adt = Глава персонала, ухо
+loadout-captain-ears-adt = Гарнитура капитана
+loadout-HoP-ears-adt = Гарнитура главы персонала

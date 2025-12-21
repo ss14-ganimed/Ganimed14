@@ -1,0 +1,158 @@
+# Timers
+- type: loadoutEffectGroup
+  id: TenOverall
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 36000 # 10hr
+
+# Toys
+- type: loadout
+  id: PlushieMoth
+  storage:
+    back:
+    - PlushieMoth
+
+- type: loadout
+  id: PlushieDiona
+  storage:
+    back:
+    - PlushieDiona
+
+- type: loadout
+  id: PlushieVox
+  storage:
+    back:
+    - PlushieVox
+
+- type: loadout
+  id: PlushieArachind
+  storage:
+    back:
+    - PlushieArachind
+
+- type: loadout
+  id: PlushieSlime
+  storage:
+    back:
+    - PlushieSlime
+
+- type: loadout
+  id: PlushieBee
+  storage:
+    back:
+    - PlushieBee
+
+- type: loadout
+  id: PlushieCarp
+  storage:
+    back:
+    - PlushieCarp
+
+- type: loadout
+  id: AmongPequeno
+  storage:
+    back:
+    - ToyAmongPequeno
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: RubberDuck
+  storage:
+    back:
+    - ToyRubberDuck
+
+- type: loadout
+  id: XmasCrown
+  storage:
+    back:
+    - ClothingHeadHatXmasCrown
+
+- type: loadout
+  id: WarningCone
+  storage:
+    back:
+    - ClothingHeadHatCone
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Engineer
+
+# Smokeables
+- type: loadout
+  id: SmokingPipe
+  storage:
+    back:
+    - SmokingPipeFilledTobacco
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Flasks
+- type: loadout
+  id: VacuumFlask
+  storage:
+    back:
+    - DrinkVacuumFlask
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+
+- type: loadout
+  id: ShinyFlask
+  storage:
+    back:
+    - DrinkShinyFlask
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Glowsticks, TODO: Whitelist restriction
+- type: loadout
+  id: GlowstickGreen
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+  storage:
+    back:
+    - GlowstickBase
+
+- type: loadout
+  id: GlowstickYellow
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+  storage:
+    back:
+    - GlowstickYellow
+
+- type: loadout
+  id: GlowstickRed
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+  storage:
+    back:
+    - GlowstickRed
+
+- type: loadout
+  id: GlowstickPurple
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+  storage:
+    back:
+    - GlowstickPurple
+
+- type: loadout
+  id: GlowstickBlue
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+  storage:
+    back:
+    - GlowstickBlue

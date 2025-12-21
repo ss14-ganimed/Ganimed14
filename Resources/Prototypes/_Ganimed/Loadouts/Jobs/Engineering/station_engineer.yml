@@ -1,0 +1,60 @@
+# Head
+- type: loadout
+  id: WeldingMask
+  equipment:
+    head: ClothingHeadHatWelding
+
+- type: loadout # TODO: Whitelist restriction
+  id: WeldingMaskPainted
+  equipment:
+    head: ClothingHeadHatWeldingMaskPainted
+
+- type: loadout
+  id: WeldingMaskFlame
+  equipment:
+    head: ClothingHeadHatWeldingMaskFlame
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: WeldingMaskBlueFlame
+  equipment:
+    head: ClothingHeadHatWeldingMaskFlameBlue
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Jumpsuit
+- type: loadout
+  id: StationEngineerNTRepairmanJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRepairmanNT
+
+# OuterClothing
+- type: loadout
+  id: SeniorEngineerWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterSeniorEngineer
+#  effects:
+#  - !type:GroupLoadoutEffect
+#    proto: SeniorEngineering
+
+# Gloves
+- type: loadout
+  id: InsulatedGloves
+  equipment:
+    gloves: ClothingHandsGlovesColorYellow
+
+# Shoes
+- type: loadout
+  id: OrangeShoes
+  equipment:
+    shoes: ClothingShoesColorOrange
+
+- type: loadout # TODO: Whitelist restriction
+  id: EngineeringMagBoots
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: SeniorEngineering
+  equipment:
+    shoes: ClothingShoesBootsMag

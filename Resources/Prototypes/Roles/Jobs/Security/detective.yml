@@ -39,7 +39,7 @@
 - type: startingGear
   id: DetectiveGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
+    #eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts
     #id: DetectivePDA ADT: different PDAs in loadouts
     ears: ClothingHeadsetSecurity
     belt: ClothingBeltHolsterFilled

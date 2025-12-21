@@ -1,0 +1,252 @@
+# Head
+- type: loadout
+  id: SecurityCap
+  equipment:
+    head: ADTClothingHeadHelmetSecCap
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficer
+
+- type: loadout
+  id: SecurityCapAlt
+  equipment:
+    head: ClothingHeadHatCapSec
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficer
+
+- type: loadout
+  id: SecurityFlightCap
+  equipment:
+    head: ClothingHeadHatFlightCapSec
+
+- type: loadout # TODO: Whitelist restriction
+  id: BlackCowboyHat
+  equipment:
+    head: ClothingHeadHatCowboyBlack
+
+- type: loadout # TODO: Whitelist restriction
+  id: BountyHunterCowboyHat
+  equipment:
+    head: ClothingHeadHatCowboyBountyHunter
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: LightRiotHelmet
+  equipment:
+    head: ClothingHeadHelmetRiot
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Neck
+- type: loadout # TODO: Whitelist restriction
+  id: SecurityWhistle
+  equipment:
+    neck: SecurityWhistle
+  effects:
+  - !type:SponsorLoadoutEffect
+#  - !type:GroupLoadoutEffect
+#    proto: SeniorOfficer
+
+- type: loadout # TODO: Whitelist restriction
+  id: SecurityCloak
+  equipment:
+    neck: ClothingNeckCloakSec
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficer
+
+- type: loadout # TODO: Whitelist restriction
+  id: SecurityBodyCamera
+  equipment:
+    neck: ADTClothingNeckBodyCamera
+
+# Glasses
+- type: loadout
+  id: Sunglasses
+  equipment:
+    eyes: ClothingEyesGlassesSunglasses
+
+- type: loadout
+  id: SecurityHud
+  equipment:
+    eyes: ClothingEyesHudSecurity
+
+- type: loadout
+  id: SecurityHudEyepatch
+  equipment:
+    eyes: ClothingEyesEyepatchHudSecurity
+
+# Belt
+- type: loadout
+  id: AssaultBelt
+  equipment:
+    belt: ClothingBeltAssault
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: JudoBelt
+  equipment:
+    belt: ADTClothingBeltJudo
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Outerclothing
+- type: loadout
+  id: SecurityOvercoat
+  equipment:
+    outerClothing: ClothingOuterCoatSecurityOvercoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficer
+
+- type: loadout
+  id: SecurityOfficerGreatcoat
+  equipment:
+    outerClothing: ClothingOuterCoatSecurityOfficerGreatcoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficer
+
+- type: loadout
+  id: SecurityCadetOvercoat
+  equipment:
+    outerClothing: ADTClothingKadet
+
+- type: loadout
+  id: SeniorOfficerWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterSeniorOfficer
+#  effects:
+#  - !type:GroupLoadoutEffect
+#    proto: SeniorOfficer
+
+- type: loadout # TODO: Whitelist restriction
+  id: ArmorVestBulletproof
+  equipment:
+    outerClothing: ClothingOuterArmorBulletproof
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficer
+
+- type: loadout # TODO: Whitelist restriction
+  id: ArmorVestReflective
+  equipment:
+    outerClothing: ClothingOuterArmorReflective
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficer
+
+- type: loadout # TODO: Whitelist restriction
+  id: SecurityBombSuit
+  dummyEntity: ClothingOuterSuitBomb
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 108000 # 30 hrs
+  equipment:
+    outerClothing: ClothingOuterSuitBomb
+    head: ClothingHeadHelmetBombSuit
+
+# Shoes
+- type: loadout # TODO: Whitelist restriction
+  id: BlackCowboyBoots
+  equipment:
+    shoes: ClothingShoesBootsCowboyBlackFilled
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: HighheelBoots
+  equipment:
+    shoes: ClothingShoesHighheelBootsFilled
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Self defense weapons
+- type: loadout
+  id: Flash
+  storage:
+    back:
+    - Flash
+
+- type: loadout
+  id: TelescopicBaton
+  storage:
+    back:
+    - ADTtelescopicBaton
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Command
+
+- type: loadout
+  id: WeaponDisabler
+  storage:
+    back:
+    - WeaponDisabler
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+- type: loadout
+  id: WeaponTaser
+  storage:
+    back:
+    - WeaponTaser
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+# Weapon
+- type: loadout
+  id: WeaponPistolMk58
+  dummyEntity: WeaponPistolMk58
+  equipment:
+    pocket1: WeaponPistolMk58
+  storage:
+    back:
+    - MagazinePistol
+
+#- type: loadout
+#  id: WeaponPistolG22
+#  dummyEntity: WeaponPistolG22
+#  equipment:
+#    pocket1: WeaponPistolG22
+#  storage:
+#    back:
+#    - MagazinePistol
+
+#- type: loadout
+#  id: WeaponPistolACP14
+#  dummyEntity: WeaponPistolACP14
+#  equipment:
+#    pocket1: WeaponPistolACP14
+#  storage:
+#    back:
+#    - MagazinePistol
+
+#- type: loadout
+#  id: WeaponPistolM1911
+#  dummyEntity: WeaponPistolM1911
+#  equipment:
+#    pocket1: WeaponPistolM1911
+#  storage:
+#    back:
+#    - MagazinePistol
+
+#- type: loadout
+#  id: WeaponEnergyGunDominator
+#  equipment:
+#    pocket1: WeaponEnergyGunDominator
+
+- type: loadout
+  id: WeaponMultiphaseEnergyGun
+  equipment:
+    pocket1: ADTWeaponPistolX01

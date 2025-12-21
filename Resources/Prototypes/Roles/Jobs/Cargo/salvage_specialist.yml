@@ -31,8 +31,8 @@
     #id: SalvagePDA # ADT: different PDAs in loadouts
     # ears: ClothingHeadsetCargo # ADT tweak
     pocket1: AppraisalTool #ADT start
-    eyes: ClothingEyesGlassesMeson
-    pocket2: OreBag
+    # eyes: ClothingEyesGlassesMeson # Ganimed-Loadouts
+    # pocket2: OreBag # Ganimed-Loadouts
   storage:
     back:
     - MineralScanner

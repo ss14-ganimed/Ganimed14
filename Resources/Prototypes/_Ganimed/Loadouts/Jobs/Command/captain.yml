@@ -1,0 +1,205 @@
+# Timers
+- type: loadoutEffectGroup
+  id: Commander
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Command
+      time: 108000 #30 hrs
+
+# Glasses
+- type: loadout
+  id: AdministrationSunglasses
+  equipment:
+    eyes: ClothingEyesGlassesCommand
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Commander
+
+# Jumpsuit
+- type: loadout
+  id: CaptainMaleParadeUniform
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCaptainParadeMale
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+- type: loadout # TODO: Whitelist restriction
+  id: CaptainWhiteJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCaptainWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+- type: loadout
+  id: CaptainWhiteJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCaptainWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+- type: loadout
+  id: CaptainCommandSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCommandCaptain
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Commander
+
+# Head
+- type: loadout
+  id: CaptainHat
+  equipment:
+    head: ClothingHeadCaptainHat
+
+- type: loadout # TODO: Whitelist restriction
+  id: CaptainCapWhite
+  equipment:
+    head: ClothingHeadHatCapcapWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+- type: loadout # TODO: Whitelist restriction
+  id: CaptainBeretWhite
+  equipment:
+    head: ClothingHeadHatBeretCaptainWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+# Neck
+- type: loadout
+  id: CaptainCloakOriginal
+  equipment:
+    neck: ClothingNeckCloakCapOriginal
+
+- type: loadout
+  id: CaptainCloakAlt
+  equipment:
+    neck: ClothingNeckCloakCapAlt
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+- type: loadout # TODO: Whitelist restriction
+  id: CaptainCloakLong
+  equipment:
+    neck: ClothingNeckLongCloakCap
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+- type: loadout # TODO: Whitelist restriction
+  id: CaptainCloakFormalAlt
+  equipment:
+    neck: ClothingNeckCloakCapFormalAlt
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+- type: loadout # TODO: Whitelist restriction
+  id: CaptainGreatcoatOversize
+  equipment:
+    neck: ClothingNeckCaptainWide
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+- type: loadout # TODO: Whitelist restriction
+  id: CaptainMantleAlt
+  equipment:
+    neck: ClothingNeckMantleCaptainAlt
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+- type: loadout # TODO: Whitelist restriction
+  id: CaptainMantleWhite
+  equipment:
+    neck: ClothingNeckMantleCaptainWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+- type: loadout
+  id: CaptainBedsheet
+  equipment:
+    neck: BedsheetCaptain
+
+# Belt, TODO: Whitelist restriction
+- type: loadout
+  id: CaptainBeltSabreSheath
+  equipment:
+    belt: ClothingBeltSheath
+
+- type: loadout
+  id: CaptainBeltSabreSheathWhite
+  equipment:
+    belt: ClothingBeltWhiteSheath
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+# Gloves
+- type: loadout
+  id: CaptainGloves
+  equipment:
+    gloves: ClothingHandsGlovesCaptain
+
+- type: loadout # TODO: Whitelist restriction
+  id: CaptainGlovesWhite
+  equipment:
+    gloves: ClothingHandsGlovesCaptainWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+# Outer clothing
+- type: loadout
+  id: CaptainFormalJacket
+  equipment:
+    outerClothing: ClothingOuterCoatCaptain
+
+- type: loadout # TODO: Whitelist restriction
+  id: CaptainWhiteFormalJacket
+  equipment:
+    outerClothing: ClothingOuterCoatCaptainWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+- type: loadout # TODO: Whitelist restriction
+  id: CaptainWhiteCarapace
+  equipment:
+    outerClothing: ClothingOuterArmorCaptainCarapaceWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+# Back
+- type: loadout # TODO: Whitelist restriction
+  id: CaptainWhiteSatchel
+  equipment:
+    back: ClothingBackpackSatchelCaptainWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCap

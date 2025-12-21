@@ -21,7 +21,7 @@
 - type: startingGear
   id: ChefGear
   equipment:
-    shoes: ClothingShoesColorBlack
+    #shoes: ClothingShoesColorBlack # Ganimed-Loadouts
     #id: ChefPDA # ADT: different PDAs in loadouts
     ears: ClothingHeadsetService
     belt: ClothingBeltChefFilled

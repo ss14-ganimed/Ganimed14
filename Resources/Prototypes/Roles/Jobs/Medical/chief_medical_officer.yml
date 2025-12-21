@@ -48,10 +48,11 @@
  #id: CMOPDA  # ADT Tweak
     # ears: ClothingHeadsetCMO # ADT tweak
 #    belt: ClothingBeltMedicalFilled ADT tweak
-  storage:
-    back:
-    - Flash
-    - ADTtelescopicBaton #ADT-CustomADTLoadout
+#  storage: # Ganimed-Loadouts
+#    back:
+#    - Flash
+#    - ADTtelescopicBaton #ADT-CustomADTLoadout
+
 - type: chameleonOutfit
   id: ChiefMedicalOfficerChameleonOutfit
   job: ChiefMedicalOfficer

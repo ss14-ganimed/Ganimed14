@@ -1,0 +1,58 @@
+# Head
+- type: loadout # TODO: Whitelist restriction
+  id: ArmoredHardhat
+  equipment:
+    head: ClothingHeadHatHardhatArmored
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCE
+
+# Jumpsuit
+- type: loadout
+  id: ChiefEngineerNTJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChiefEngineerNT
+
+# Neck
+- type: loadout
+  id: ChiefEngineerCloakOriginal
+  equipment:
+    neck: ClothingNeckCloakCeOriginal
+
+- type: loadout
+  id: ChiefEngineerMantleOriginal
+  equipment:
+    neck: ClothingNeckMantleCEOriginal
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterCE
+
+- type: loadout
+  id: ChiefEngineerCloakAlt
+  equipment:
+    neck: ClothingNeckCloakCeAlt
+
+- type: loadout
+  id: ChiefEngineerCloakLong
+  equipment:
+    neck: ClothingNeckLongCloakCE
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCE
+
+- type: loadout
+  id: ChiefEngineerBedsheet
+  equipment:
+    neck: BedsheetCE
+
+# Glasses
+- type: loadout # TODO: Whitelist restriction
+  id: EngineeringSunglasses
+  equipment:
+    eyes: ClothingEyesGlassesHudSunglassesEngineering
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Commander

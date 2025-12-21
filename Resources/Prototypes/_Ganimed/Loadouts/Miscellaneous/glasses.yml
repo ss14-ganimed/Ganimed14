@@ -1,0 +1,53 @@
+# Cheap Sunglasses
+- type: loadout
+  id: CheapSunglasses
+  equipment:
+    eyes: ClothingEyesGlassesCheapSunglasses
+
+# Eyepatch
+- type: loadout
+  id: Eyepatch
+  equipment:
+    eyes: ClothingEyesEyepatch
+
+# Binoclard Lenses
+- type: loadout
+  id: GlassesBinoclard
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: JamjarTimer
+  equipment:
+    eyes: ClothingEyesBinoclardLenses
+
+# Salesman
+- type: loadout
+  id: GlassesSalesman
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: JensenTimer
+  equipment:
+    eyes: ClothingEyesSalesman
+
+# Gar
+- type: loadout
+  id: GlassesGar
+  equipment:
+    eyes: ClothingEyesGlassesGar
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Gar Orange
+- type: loadout
+  id: GlassesGarOrange
+  equipment:
+    eyes: ClothingEyesGlassesGarOrange
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Gar Giga
+- type: loadout
+  id: GlassesGarGiga
+  equipment:
+    eyes: ClothingEyesGlassesGarGiga
+  effects:
+  - !type:SponsorLoadoutEffect

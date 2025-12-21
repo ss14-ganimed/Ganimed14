@@ -1,0 +1,32 @@
+# Jumpsuit
+- type: loadout # TODO: Whitelist restriction
+  id: JanimaidUniform
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtJanimaid
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Civilian
+      time: 36000 # 10 hrs
+
+# Outer clothing
+- type: loadout
+  id: WetFloorSign
+  equipment:
+    outerClothing: WetFloorSign
+
+- type: loadout # TODO: Whitelist restriction
+  id: JanitorBioSuit
+  dummyEntity: ClothingOuterBioJanitor
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Medical
+      time: 108000 # 30 hrs
+  equipment:
+    outerClothing: ClothingOuterBioJanitor
+    head: ClothingHeadHatHoodBioJanitor

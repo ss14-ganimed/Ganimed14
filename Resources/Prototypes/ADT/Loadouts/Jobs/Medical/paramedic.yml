@@ -2,6 +2,12 @@
   id: ADTParamedicBeret
   equipment:
     head: ADTClothingHeadHatsParamedicBeret
+  effects: # Ganimed-Loadouts
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobParamedic
+      time: 72000 #20 hrs
 
 - type: loadout
   id: ADTParamedicBackpack

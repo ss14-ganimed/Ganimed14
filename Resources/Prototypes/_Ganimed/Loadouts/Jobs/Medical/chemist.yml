@@ -1,0 +1,5 @@
+# Glasses
+- type: loadout
+  id: ChemicalAnalysisGoggles
+  equipment:
+    eyes: ClothingEyesGlassesChemical

@@ -1,0 +1,40 @@
+# Head
+- type: loadout # TODO: Whitelist restriction
+  id: JudgePwig
+  equipment:
+    head: ClothingHeadHatPwig
+
+# Jumpsuit
+- type: loadout # TODO: Whitelist restriction
+  id: JumpsuitNanotrasen
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitNanotrasen
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Neck
+- type: loadout
+  id: NTBedsheet
+  equipment:
+    neck: BedsheetNT
+
+- type: loadout # TODO: Whitelist restriction
+  id: NanotrasenCloak
+  equipment:
+    neck: ClothingNeckCloakNanotrasen
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# OuterClothing
+- type: loadout # TODO: Whitelist restriction
+  id: JudgeRobes
+  equipment:
+    outerClothing: ClothingOuterRobesJudge
+
+# Shoes
+- type: loadout
+  id: LaceupShoesWhitelisted
+  equipment:
+    shoes: ClothingShoesBootsLaceup
+  effects:
+  - !type:SponsorLoadoutEffect

@@ -1,0 +1,59 @@
+# Timers
+- type: loadoutEffectGroup
+  id: HighRankPilot
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobPilot
+      time: 72000 #20 hrs
+
+# Jumpsuit
+- type: loadout # TODO: Whitelist restriction
+  id: AerostaticSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAerostatic
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: HighRankPilot
+
+# Head
+- type: loadout
+  id: PilotHelmet
+  equipment:
+    head: ClothingHeadHelmetPilot
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: HighRankPilot
+
+# Outerclothing
+- type: loadout
+  id: BomberCoat
+  equipment:
+    outerClothing: ClothingOuterCoatBomber
+
+- type: loadout
+  id: AerostaticBomberJacket
+  equipment:
+    outerClothing: ClothingOuterAerostaticBomberJacket
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: HighRankPilot
+
+# Gloves
+- type: loadout
+  id: AerostaticGloves
+  equipment:
+    gloves: ClothingHandsGlovesAerostatic
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: HighRankPilot
+
+# Shoes
+- type: loadout
+  id: AerostaticShoes
+  equipment:
+    shoes: ClothingShoesAerostatic
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: HighRankPilot

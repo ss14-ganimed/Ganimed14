@@ -1,0 +1,45 @@
+# Timers
+- type: loadoutEffectGroup
+  id: Watchman
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobWarden
+      time: 36000 #10 hrs
+
+# Head
+- type: loadout
+  id: WardenCapAlt
+  equipment:
+    head: ClothingHeadHatCapWardenAlt
+
+# Back, Ganimed
+- type: loadout
+  id: WardenBackpack
+  equipment:
+    back: ClothingBackpackWarden
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Watchman
+
+# Belt
+- type: loadout # TODO: Whitelist restriction
+  id: Bandolier
+  equipment:
+    belt: ClothingBeltBandolier
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Watchman
+
+# OuterClothing
+- type: loadout
+  id: WardenUnarmoredWinterCoat
+  equipment:
+    outerClothing: ClothingOuterWinterWardenUnarmored
+
+- type: loadout
+  id: WardenCoatAlt
+  equipment:
+    outerClothing: ClothingOuterCoatWardenAlt

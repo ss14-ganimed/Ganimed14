@@ -44,7 +44,7 @@
   equipment:
     # shoes: ClothingShoesColorBlack ADT-Tweak
     id: IAAPDA
-    eyes: ClothingEyesGlassesSunglasses
+    # eyes: ClothingEyesGlassesSunglasses # Ganimed-Loadouts
     ears: ClothingHeadsetIAA
     pocket2: ADTBookSpaceLaw #ADT-WikiBooks
   inhand:

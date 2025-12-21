@@ -1,0 +1,153 @@
+# Head
+- type: loadout
+  id: HeadofSecurityLeatherCap
+  equipment:
+    head: ClothingHeadHatCapHoS
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterHoS
+
+# Jumpsuit
+- type: loadout
+  id: HeadofSecurityJumpsuitOld
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSOld
+
+- type: loadout
+  id: HeadofSecurityJumpsuitGrey
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSGrey
+
+- type: loadout
+  id: HeadofSecurityJumpsuitBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSBlue
+
+- type: loadout
+  id: HeadofSecurityJumpsuitOriginal
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSOriginal
+
+- type: loadout
+  id: HeadofSecurityJumpskirtOriginal
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoSOriginal
+
+- type: loadout
+  id: HeadofSecurityMaleParadeUniform
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSParadeMale
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterHoS
+
+- type: loadout
+  id: HeadofSecurityFemaleParadeUniform
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoSParadeMale
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterHoS
+
+# Neck
+- type: loadout
+  id: HeadofSecurityCloakOriginal
+  equipment:
+    neck: ClothingNeckCloakHosOriginal
+
+- type: loadout
+  id: HeadofSecurityCloakAlt
+  equipment:
+    neck: ClothingNeckCloakHosAlt
+
+- type: loadout
+  id: HeadofSecurityCloakLong
+  equipment:
+    neck: ClothingNeckLongCloakHOS
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterHoS
+
+- type: loadout
+  id: HeadofSecurityBedsheet
+  equipment:
+    neck: BedsheetHOS
+
+- type: loadout
+  id: DarkRedScarf
+  equipment:
+    neck: ClothingNeckScarfStripedDarkRed
+
+# Back
+- type: loadout
+  id: HeadofSecuritySatchel
+  equipment:
+    back: ClothingBackpackSatchelHoS
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterHoS
+
+# Belt
+- type: loadout
+  id: HeadofSecurityLeatherBelt
+  equipment:
+    belt: ClothingBeltHoS
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterHoS
+
+# Gloves
+- type: loadout
+  id: CombatGloves
+  equipment:
+    gloves: ClothingHandsGlovesCombat
+
+- type: loadout
+  id: HeadofSecurityLeatherGloves
+  equipment:
+    gloves: ClothingHandsGlovesLeatherHoS
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: HeadofSecurityTacticalMaidGloves
+  equipment:
+    gloves: ClothingHandsTacticalMaidGloves
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterHoS
+
+# OuterClothing
+- type: loadout
+  id: HeadofSecurityUnarmoredWinterCoat
+  equipment:
+    outerClothing: ClothingOuterWinterHoSUnarmored
+
+- type: loadout
+  id: HeadofSecurityTrenchCoat
+  equipment:
+    outerClothing: ClothingOuterCoatHoS
+
+- type: loadout
+  id: HeadofSecurityGreatCoat
+  equipment:
+    outerClothing: ClothingOuterCoatHoSGreatcoat
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterHoS
+
+- type: loadout # TODO: Whitelist restriction
+  id: HeadofSecurityReflectiveCoat
+  equipment:
+    outerClothing: ClothingOuterCoatHoSReflective
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterHoS

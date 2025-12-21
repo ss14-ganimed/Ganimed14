@@ -6,7 +6,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Command
-      time: 3600 # 1 hour
+      time: 14400 # 4 hours
 
 # Flowers
 - type: loadout

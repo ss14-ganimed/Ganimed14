@@ -1,0 +1,120 @@
+﻿# Timer
+- type: loadoutEffectGroup
+  id: CombatMedic
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Medical
+      time: 72000 # 20 hours
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 72000 # 20 hours
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBrigmedic
+      time: 36000 # 10 hours
+
+# Head
+- type: loadout
+  id: CorpsmanHelmet
+  equipment:
+    head: ClothingHeadHelmetCorpsman
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: CombatMedic
+
+# Neck
+- type: loadout
+  id: BrigmedicBedsheet
+  equipment:
+    neck: BedsheetBrigmedic
+
+# JumpSuit
+- type: loadout
+  id: OriginalBrigmedicJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBrigmedicOriginal
+
+- type: loadout
+  id: OriginalBrigmedicJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBrigmedicOriginal
+
+- type: loadout # TODO: Whitelist restriction
+  id: BlackBrigmedicJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBrigmedicBlack
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout # TODO: Whitelist restriction
+  id: BlackBrigmedicJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBrigmedicBlack
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: JumpskirtOfLife
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtOfLife
+
+# Glasses
+- type: loadout
+  id: MedSecHud
+  equipment:
+    eyes: ClothingEyesHudMedSec
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 108000 #30 hrs
+
+# OuterClothing
+- type: loadout
+  id: SecurityBioSuit
+  dummyEntity: ClothingOuterBioSecurity
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Medical
+      time: 108000 #30 hrs
+  equipment:
+    outerClothing: ClothingOuterBioSecurity
+    head: ClothingHeadHatHoodBioSecurity
+
+# Mask
+- type: loadout
+  id: CorpsmanBreathMask
+  equipment:
+    mask: ClothingMaskBreathMedicalSecurity
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: CombatMedic
+
+- type: loadout
+  id: MedicalBreathMask
+  equipment:
+    mask: ClothingMaskBreathMedical
+
+# Belt
+- type: loadout
+  id: CorpsmanWebbing
+  equipment:
+    belt: ClothingBeltMilitaryWebbingCorpsmanFilled
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: CombatMedic
+
+# Shoes
+- type: loadout
+  id: RedShoes
+  equipment:
+    shoes: ClothingShoesColorRed

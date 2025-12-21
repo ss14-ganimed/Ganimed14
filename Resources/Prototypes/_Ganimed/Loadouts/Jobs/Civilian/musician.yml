@@ -1,0 +1,15 @@
+# Jumpsuit
+- type: loadout # TODO: Whitelist restriction
+  id: PerformerJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPerformer
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Shoes
+- type: loadout # TODO: Whitelist restriction
+  id: PerformerBoots
+  equipment:
+    shoes: ClothingShoesBootsPerformer
+  effects:
+  - !type:SponsorLoadoutEffect

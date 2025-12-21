@@ -1,0 +1,143 @@
+# Med-Sci Timer
+- type: loadoutEffectGroup
+  id: SeniorMedicalScientist
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Science
+      time: 216000 # 60 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Medical
+      time: 216000 # 60 hrs
+
+# Neck
+- type: loadout
+  id: ScientistCloak
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorResearcher
+  equipment:
+    neck: ClothingNeckCloakRdOriginal
+
+# Headset
+- type: loadout
+  id: HeadsetScience
+  equipment:
+    ears: ClothingHeadsetScience
+
+- type: loadout
+  id: HeadsetMedicalScience
+  equipment:
+    ears: ClothingHeadsetMedicalScience
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: SeniorMedicalScientist
+
+# Glasses
+- type: loadout
+  id: DiagnosticHud
+  equipment:
+    eyes: ClothingEyesHudDiagnostic
+
+- type: loadout
+  id: DiagnosticHudEyepatch
+  equipment:
+    eyes: ClothingEyesEyepatchHudDiag
+
+# Jumpsuit
+- type: loadout
+  id: OriginalScientistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitScientistOriginal
+
+- type: loadout
+  id: OriginalScientistJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtScientistOriginal
+
+- type: loadout # TODO: Whitelist restriction
+  id: FormalScientistJumpsuit
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: SeniorResearcher
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitScientistFormal
+
+# OuterClothing
+- type: loadout
+  id: RoboticistOriginalLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatRoboOriginal
+
+- type: loadout
+  id: SeniorResearcherWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterSeniorResearcher
+#  effects:
+#  - !type:GroupLoadoutEffect
+#    proto: SeniorResearcher
+
+- type: loadout # TODO: Whitelist restriction
+  id: ScientistBioSuit
+  dummyEntity: ClothingOuterBioScientist
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Medical
+      time: 108000 # 30 hrs
+  equipment:
+    outerClothing: ClothingOuterBioScientist
+    head: ClothingHeadHatHoodBioScientist
+
+- type: loadout # TODO: Whitelist restriction
+  id: RadSuit
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 108000 # 30 hrs
+  equipment:
+    outerClothing: ClothingOuterSuitRad
+
+- type: loadout # TODO: Whitelist restriction
+  id: ScienceBombSuit
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 108000 # 30 hrs
+  equipment:
+    outerClothing: ClothingOuterSuitBomb
+
+- type: loadout # TODO: Whitelist restriction
+  id: ScienceFireSuit
+  dummyEntity: ClothingOuterSuitFire
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobAtmosphericTechnician
+      time: 108000 #30 hrs
+  equipment:
+    outerClothing: ClothingOuterSuitFire
+    head: ClothingHeadHelmetFire
+
+# Shoes
+- type: loadout
+  id: MonochromeShoes
+  equipment:
+    shoes: ClothingShoesStylishMonochrome
+  effects:
+  - !type:SponsorLoadoutEffect

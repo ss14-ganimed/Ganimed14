@@ -1,0 +1,86 @@
+# Timers
+- type: loadoutEffectGroup
+  id: MasterEngineeringScientist
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobResearchDirector
+      time: 108000 #30 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChiefEngineer
+      time: 108000 #30 hrs
+
+# Neck
+- type: loadout
+  id: ResearchDirectorCloakAlt
+  equipment:
+    neck: ClothingNeckCloakRdAlt
+
+- type: loadout
+  id: ResearchDirectorMantleOriginal
+  equipment:
+    neck: ClothingNeckMantleRDOriginal
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterRD
+
+- type: loadout
+  id: ResearchDirectorCloakLong
+  equipment:
+    neck: ClothingNeckLongCloakRD
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterRD
+
+- type: loadout
+  id: ResearchDirectorBedsheet
+  equipment:
+    neck: BedsheetRD
+
+- type: loadout
+  id: VioletScarf
+  equipment:
+    neck: ClothingNeckScarfStripedViolet
+
+# Jumpsuit
+- type: loadout
+  id: RnDProfessorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRndAlt
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorResearcher
+
+# Gloves
+- type: loadout # TODO: Whitelist restriction
+  id: PowerGloves
+  equipment:
+    gloves: ClothingHandsGlovesPowerglove
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterEngineeringScientist
+
+# Glasses
+- type: loadout # TODO: Whitelist restriction
+  id: ScienceSunglasses
+  equipment:
+    eyes: ClothingEyesGlassesHudSunglassesScience
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Commander
+
+# Shoes
+- type: loadout # TODO: Whitelist restriction
+  id: ScienceMagBoots
+  equipment:
+    shoes: ClothingShoesBootsMagSci
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterEngineeringScientist

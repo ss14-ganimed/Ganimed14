@@ -1,0 +1,1089 @@
+# Miscellaneous
+# Spare clothes
+- type: loadoutGroup
+  id: SpareClothing
+  name: loadout-group-spare-clothing
+  minLimit: 0
+  maxLimit: 3
+  loadouts:
+  # Head
+  - SpareBlackCap
+  - SpareGreyCap
+  - SpareWhiteCap
+  - SpareRedCap
+  - SpareOrangeCap
+  - SpareYellowCap
+  - SpareGreenCap
+  - SpareBlueCap
+  - SpareBlackBandana
+  - SpareGreyBandana
+  - SpareBrownBandana
+  - SpareRedBandana
+  - SpareGoldBandana
+  - SpareGreenBandana
+  - SpareBlueBandana
+  - SpareBeret
+  - SpareBlackBeret
+  - SpareGreyFlatCap
+  - SpareBrownFlatCap
+  - SpareGreyFlatCapAlt
+  - SpareCinnamonFlatCap
+  - SpareUshanka
+  - SpareOldUshanka
+  - SpareHetmanHat
+  - SpareSombrero
+  - SpareGreyFedora
+  - SpareBeaverHat
+  - SpareMagicianHat
+  - SpareBlackCatHat
+  - SpareGreyCatHat
+  - SpareBrownCatHat
+  - SpareHeadslimeHat
+  - SpareWaterCupPartyHat
+  - SpareRedPartyHat
+  - SpareYellowPartyHat
+  - SpareGreenPartyHat
+  - SpareBluePartyHat
+  - SparePaperHat
+  - SparePaperSack
+  # Jumpsuits
+  - SpareJumpsuitColorBlack
+  - SpareJumpskirtColorBlack
+  - SpareJumpsuitColorGrey
+  - SpareJumpskirtColorGrey
+  - SpareJumpsuitColorWhite
+  - SpareJumpskirtColorWhite
+  - SpareJumpsuitColorLightBrown
+  - SpareJumpskirtColorLightBrown
+  - SpareJumpsuitColorBrown
+  - SpareJumpskirtColorBrown
+  - SpareJumpsuitColorRed
+  - SpareJumpskirtColorRed
+  - SpareJumpsuitColorOrange
+  - SpareJumpskirtColorOrange
+  - SpareJumpsuitColorYellow
+  - SpareJumpskirtColorYellow
+  - SpareJumpsuitColorGreen
+  - SpareJumpskirtColorGreen
+  - SpareJumpsuitColorDarkGreen
+  - SpareJumpskirtColorDarkGreen
+  - SpareJumpsuitColorTeal
+  - SpareJumpskirtColorTeal
+  - SpareJumpsuitColorBlue
+  - SpareJumpskirtColorBlue
+  - SpareJumpsuitColorDarkBlue
+  - SpareJumpskirtColorDarkBlue
+  - SpareJumpsuitColorPurple
+  - SpareJumpskirtColorPurple
+  - SpareJumpsuitColorMaroon
+  - SpareJumpskirtColorMaroon
+  - SpareJumpsuitColorPink
+  - SpareJumpskirtColorPink
+  - SpareTurtleneckColorBlack
+  - SpareTurtleneckSkirtColorBlack
+  - SpareTurtleneckColorGrey
+  - SpareTurtleneckSkirtColorGrey
+  - SpareTurtleneckColorWhite
+  - SpareTurtleneckSkirtColorWhite
+  - SpareTurtleneckColorLightBrown
+  - SpareTurtleneckSkirtColorLightBrown
+  - SpareTurtleneckColorBrown
+  - SpareTurtleneckSkirtColorBrown
+  - SpareTurtleneckColorRed
+  - SpareTurtleneckSkirtColorRed
+  - SpareTurtleneckColorOrange
+  - SpareTurtleneckSkirtColorOrange
+  - SpareTurtleneckColorYellow
+  - SpareTurtleneckSkirtColorYellow
+  - SpareTurtleneckColorGreen
+  - SpareTurtleneckSkirtColorGreen
+  - SpareTurtleneckColorDarkGreen
+  - SpareTurtleneckSkirtColorDarkGreen
+  - SpareTurtleneckColorTeal
+  - SpareTurtleneckSkirtColorTeal
+  - SpareTurtleneckColorBlue
+  - SpareTurtleneckSkirtColorBlue
+  - SpareTurtleneckColorDarkBlue
+  - SpareTurtleneckSkirtColorDarkBlue
+  - SpareTurtleneckColorPurple
+  - SpareTurtleneckSkirtColorPurple
+  - SpareTurtleneckColorMaroon
+  - SpareTurtleneckSkirtColorMaroon
+  - SpareTurtleneckColorPink
+  - SpareTurtleneckSkirtColorPink
+  - SpareRedCasualJumpsuit
+  - SpareRedCasualJumpskirt
+  - SpareGreenCasualJumpsuit
+  - SpareGreenCasualJumpskirt
+  - SpareBlueCasualJumpsuit
+  - SpareBlueCasualJumpskirt
+  - SparePurpleCasualJumpsuit
+  - SparePurpleCasualJumpskirt
+  - SpareLoungewear
+  - SpareRedShirt
+  - SpareBlueShirt
+  - SpareBlackHawaiianShirt
+  - SpareRedHawaiianShirt
+  - SpareYellowHawaiianShirt
+  - SpareBlueHawaiianShirt
+  - SparePsychologistSuit
+  - SparePsychologistSuitskirt
+  - SpareNoirSuit
+  - SpareNoirSuitskirt
+  - SpareHardWornSuit
+  - SpareHardWornSuitskirt
+  - SpareBlueSecShirt
+  - SpareDarkLightSuit
+  - SpareOldGreySuit
+  - SpareOldBrownSuit
+  - SpareBarberSuit
+  - SpareBarberSkirtSuit
+  - SpareBrownBarberSuit
+  - SpareBrownBarberSkirtSuit
+  - SpareDutchSuit
+  - SpareTwoPieceSuit
+  - SpareTwoPieceSkirtSuit
+  - SpareCuratorSuit
+  - SpareCuratorSuitskirt
+  - SpareJumpskirtOfLife
+  - SpareOveralls
+  - SpareJumpsuitFlannel
+  - SpareJumpsuitRandom
+  - SpareJumpsuitRandomShirt
+  - SpareCossackSuit
+  - SpareWebJumpsuit
+  - SpareWebJumpskirt
+  - SpareBlackElegantDress
+  - SpareRedElegantDress
+  - SpareGreenElegantDress
+  - SpareBlueElegantDress
+  - SparePurpleElegantDress
+  - SpareRedStripedDress
+  - SpareOrangeStripedDress
+  - SpareGreenStripedDress
+  - SpareCyanStripedDress
+  - SparePinkStripedDress
+  - SpareRedTurtleneckDress
+  - SpareYellowTurtleneckDress
+  - SpareGreenTurtleneckDress
+  - SpareBlueTurtleneckDress
+  - SparePurpleTurtleneckDress
+  - SpareYellowOldDress
+  - SpareOldDress
+  - SpareNightDress
+  # Gloves
+  - SpareGlovesFingerless
+  - SpareGlovesColorBlack
+  - SpareGlovesColorGray
+  - SpareGlovesColorWhite
+  - SpareGlovesColorLightBrown
+  - SpareGlovesColorBrown
+  - SpareGlovesColorRed
+  - SpareGlovesColorOrange
+  - SpareGlovesColorGreen
+  - SpareGlovesColorTeal
+  - SpareGlovesColorBlue
+  - SpareGlovesColorPurple
+  - SparePawsGloves
+  # Mask
+  - SpareSterileMask
+  - SpareNeckGaiter
+  # Neck
+  - SpareRedTie
+  - SpareBlueTie
+  - SpareDetTie
+  - SpareBowTie
+  - SpareBlackScarf
+  - SpareBrownScarf
+  - SpareRedScarf
+  - SpareOrangeScarf
+  - SpareGreenScarf
+  - SpareLightBlueScarf
+  - SpareBlueScarf
+  - SparePurpleScarf
+  - SpareLongBlackScarf
+  - SpareLongRedScarf
+  - SpareLongOrangeScarf
+  - SpareLongYellowScarf
+  - SpareLongGreenScarf
+  - SpareLongBlueScarf
+  - SpareLongPurpleScarf
+  - SpareLongPinkScarf
+  - SpareFaceScarfBlack
+  - SpareFaceScarfGrey
+  - SpareFaceScarfWhite
+  - SpareFaceScarfRed
+  - SpareFaceScarfOrange
+  - SpareFaceScarfGreen
+  - SpareFaceScarfBlue
+  - SpareFaceScarfPurple
+  - SpareOldMantle
+  - SpareHideMantle
+  - SpareHieroglyphicCloak
+  - SpareOrangeCloak
+  - SpareGoldChain
+  - SpareBling
+  - SpareRainbowBedsheet
+  - SpareWizardBedsheet
+  - SpareCosmosBedsheet
+  - SpareBlueTSFLoyalistBandage
+  - SpareDarkPeripheralistBandage
+  - SpareRedRevBandage
+  - SpareGreenElysiumBandage
+  # Outer clothing
+  - SpareRedFlannelJacket
+  - SpareGreenFlannelJacket
+  - SpareBlueFlannelJacket
+  - SpareBlackWintercoat
+  - SpareGrayWintercoat
+  - SpareWhiteWintercoat
+  - SpareLightBrownWintercoat
+  - SpareBrownWintercoat
+  - SpareRedWintercoat
+  - SpareOrangeWintercoat
+  - SpareYellowWintercoat
+  - SpareGreenWintercoat
+  - SpareBlueWintercoat
+  - SparePurpleWintercoat
+  - SpareWebWintercoat
+  - SpareBomberJacket
+  #- SpareBlackBomber
+  - SpareDutchCoat
+  - SpareLeatherJacket
+  - SpareLeatherCoat
+  - SpareGentleCoat
+  - SpareJensenCoat
+  - SpareRedCoat
+  - SpareBlackHoodieAlt
+  - SpareBlackHoodie
+  - SpareGreyHoodie
+  - SpareVest
+  - SpareTrenchCoat
+  - SpareClassicPoncho
+  - SpareUnathiRobe
+  - SpareApron
+  - SpareHospitalGown
+  - SpareHazardVest
+  # Shoes
+  - SpareClothWraps
+  # - SpareSlippers
+  # - SpareTouristShoes
+
+# Medals
+#- type: loadoutGroup
+#  id: Medals
+#  name: loadout-group-medals
+#  minLimit: 0
+#  maxLimit: 1
+#  loadouts:
+#  - MedalGoldenCrest
+#  - MedalGoldenSun
+#  - MedalSilverSword
+#  - MedalGoldenSol
+#  - MedalSilverSol
+#  - MedalIronSol
+#  - MedalBronzeSol
+#  - MedalGoldenStar
+#  - MedalIronStar
+
+# Jobs
+# Command
+- type: loadoutGroup
+  id: CaptainGlasses
+  name: loadout-group-captain-glasses
+  loadouts:
+  - Sunglasses
+  - AdministrationSunglasses
+  - AdministrationHud
+  - SecurityHud
+  - SecurityHudEyepatch
+  - GlassesGarGiga
+
+- type: loadoutGroup
+  id: CaptainGloves
+  name: loadout-group-captain-gloves
+  loadouts:
+  - CaptainGloves
+  - CaptainGlovesWhite
+
+- type: loadoutGroup
+  id: CaptainBelt
+  name: loadout-group-captain-belt
+  minLimit: 0
+  loadouts:
+  - CaptainBeltSabreSheath
+  - CaptainBeltSabreSheathWhite
+  - ExtraShoulderHolster
+
+- type: loadoutGroup
+  id: CaptainShoes
+  name: loadout-group-captain-shoes
+  loadouts:
+  - LaceupShoes
+  - LeatherShoes
+  - BlackShoes
+  - JackBoots
+
+- type: loadoutGroup
+  id: HoPGlasses
+  name: loadout-group-hop-glasses
+  minLimit: 0
+  loadouts:
+  - AdministrationHud
+  - Sunglasses
+  - Glasses
+  - Eyepatch
+  - GlassesJamjar
+  - GlassesBinoclard
+  - GlassesJensen
+  - GlassesSalesman
+  - GlassesGar
+  - GlassesGarOrange
+  - GlassesGarGiga
+
+- type: loadoutGroup
+  id: HoPShoes
+  name: loadout-group-hop-shoes
+  loadouts:
+  - BrownShoes
+  - BlackShoes
+  - LeatherShoes
+  - LaceupShoesWhitelisted
+  # - WinterBootsCommand
+
+- type: loadoutGroup
+  id: BureaucraticBelt
+  name: loadout-group-bureaucratic-belt
+  loadouts:
+  - Clipboard
+  - WaistBag
+  - BureaucraticBelt
+
+- type: loadoutGroup
+  id: MagistrateHead
+  name: loadout-group-magistrate-head
+  minLimit: 0
+  loadouts:
+  - DetectiveFedoraGrey
+  - BartenderHead
+  - BartenderBowler
+  - JudgePwig
+
+- type: loadoutGroup
+  id: MagistrateOuterClothing
+  name: loadout-group-magistrate-outerclothing
+  minLimit: 0
+  loadouts:
+  - JudgeRobes
+
+- type: loadoutGroup
+  id: MagistrateGlasses
+  name: loadout-group-magistrate-glasses
+  loadouts:
+  - Sunglasses
+  - AdministrationSunglasses
+  - AdministrationHud
+  - Glasses
+  - Eyepatch
+  - GlassesJamjar
+  - GlassesBinoclard
+  - GlassesJensen
+  - GlassesSalesman
+  - GlassesGar
+  - GlassesGarOrange
+  - GlassesGarGiga
+
+- type: loadoutGroup
+  id: IAAJumpsuit
+  name: loadout-group-iaa-jumpsuit
+  loadouts:
+  - JumpsuitNanotrasen
+  - LawyerJumpsuit
+  - LawyerJumpskirt
+  - LawyerJumpsuitBlue
+  - LawyerJumpskirtBlue
+  - LawyerJumpsuitPurple
+  - LawyerJumpskirtPurple
+  - LawyerJumpsuitRed
+  - LawyerJumpskirtRed
+  - LawyerJumpsuitGood
+  - LawyerJumpskirtGood
+  - LawyerGreenSuit
+
+- type: loadoutGroup
+  id: IAANeck
+  name: loadout-group-iaa-neck
+  minLimit: 0
+  loadouts:
+  - LawyerNeck
+  - NTBedsheet
+  - NanotrasenCloak
+
+- type: loadoutGroup
+  id: AdjutantHead
+  name: loadout-group-adjutant-head
+  minLimit: 0
+  loadouts: 
+  - CommandCap
+  - CommandBeret
+  - BridgeOfficerBeret
+
+- type: loadoutGroup
+  id: CommandOfficerNeck
+  name: loadout-group-command-officer-neck
+  minLimit: 0
+  loadouts: 
+  - BridgeOfficerMantle
+
+- type: loadoutGroup
+  id: AdjutantJumpsuit
+  name: loadout-group-adjutant-jumpsuit
+  loadouts:
+  - GenericCommandJumpsuit
+  - GenericCommandJumpskirt
+  - BridgeOfficerUniform
+  - BridgeOfficerBlackJumpsuit
+
+- type: loadoutGroup
+  id: CommandOfficerBelt
+  name: loadout-group-command-officer-belt
+  loadouts:
+  - BridgeOfficerWebbing
+  - SecurityBelt
+
+- type: loadoutGroup
+  id: NonLethalWeaponsSecurity
+  name: loadout-group-self-defense-weapons
+  loadouts:
+  - WeaponDisabler
+  - WeaponTaser
+
+- type: loadoutGroup
+  id: NonLethalWeaponsCommand
+  name: loadout-group-self-defense-weapons
+  loadouts:
+  - Flash
+  - TelescopicBaton
+
+# Civilian
+- type: loadoutGroup
+  id: CommonBelt
+  name: loadout-group-common-belt
+  minLimit: 0
+  loadouts:
+  - WaistBag
+  - Clipboard
+
+- type: loadoutGroup
+  id: GlassesWithSunglasses
+  name: loadout-group-glasses
+  minLimit: 0
+  loadouts:
+  - Sunglasses
+  - Glasses
+  - Eyepatch
+  - GlassesJamjar
+  - GlassesBinoclard
+  - GlassesJensen
+  - GlassesSalesman
+  - GlassesGar
+  - GlassesGarOrange
+
+- type: loadoutGroup
+  id: ServiceWorkerJumpsuit
+  name: loadout-group-service-worker-jumpsuit
+  loadouts:
+  - BartenderJumpsuit
+  - BartenderJumpskirt
+  - BartenderJumpsuitPurple
+  - JanimaidUniform
+
+- type: loadoutGroup
+  id: BartenderGlasses
+  name: loadout-group-bartender-glasses
+  minLimit: 0
+  loadouts:
+  - BeerGoggles
+  - BeerHudEyepatch
+  - ThungerstGoggles
+  - Glasses
+  - Sunglasses
+  - Eyepatch
+  - GlassesJamjar
+  - GlassesBinoclard
+  - GlassesJensen
+  - GlassesSalesman
+  - GlassesGar
+  - GlassesGarOrange
+
+- type: loadoutGroup
+  id: BartenderBelt
+  name: loadout-group-bartender-belt
+  minLimit: 0
+  loadouts:
+  - WaistBag
+  - Bandolier
+  - ExtraShoulderHolster
+
+- type: loadoutGroup
+  id: ChefGlasses
+  name: loadout-group-chef-glasses
+  minLimit: 0
+  loadouts:
+  - FriedOnionGoggles
+  - ThungerstGoggles
+  - Glasses
+  - CheapSunglasses
+  - Eyepatch
+  - GlassesJamjar
+  - GlassesBinoclard
+  - GlassesJensen
+  - GlassesSalesman
+  - GlassesGar
+  - GlassesGarOrange
+
+- type: loadoutGroup
+  id: ChefShoes
+  name: loadout-group-chef-shoes
+  loadouts:
+  - BlackShoes
+  - ChefShoes
+
+- type: loadoutGroup
+  id: LibrarianBelt
+  name: loadout-group-librarian-belt
+  minLimit: 0
+  loadouts:
+  - BooksBag
+  - WaistBag
+  - Clipboard
+
+- type: loadoutGroup
+  id: ChaplainGloves
+  name: loadout-group-chaplain-gloves
+  minLimit: 0
+  loadouts:
+  - ChaplainDivineWatch
+
+- type: loadoutGroup
+  id: ChaplainShoes
+  name: loadout-group-chaplain-shoes
+  loadouts:
+  - BlackShoes
+  - CultShoes
+
+- type: loadoutGroup
+  id: BotanistBelt
+  name: loadout-group-botanist-belt
+  loadouts:
+  - BotanistBelt
+  - PlantBag
+
+- type: loadoutGroup
+  id: BotanistGloves
+  name: loadout-group-botanist-gloves
+  minLimit: 0
+  loadouts:
+  - BotanistLeatherGloves
+
+- type: loadoutGroup
+  id: BotanistShoes
+  name: loadout-group-botanist-shoes
+  loadouts:
+  - BrownShoes
+  - GreenShoes
+
+- type: loadoutGroup
+  id: TheatricalAttire
+  name: loadout-group-theatrical-attire
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - TheatreSantaHat
+  - TheatreSantaSuit
+  - TheatreWitchHat
+  - TheatreWitchHat1
+  - TheatreWitchRobes
+  - TheatreCarpSuit
+  - TheatreCardborgHead
+  - TheatreCardborgSuit
+  - TheatreChickenHead
+  - TheatreChickenSuit
+  - TheatreMonkeyHat
+  - TheatreMonkeySuit
+  - TheatreRedRacoonHat
+  - TheatreRedRacoonSuit
+  - TheatreShrineMaidenWig
+  - TheatreShrineMaidenOutfit
+  - TheatreGhostSheet
+  - TheatreMothCloak
+  - TheatrePumpkinHat
+
+- type: loadoutGroup
+  id: MimeNeck
+  name: loadout-group-mime-neck
+  minLimit: 0
+  loadouts:
+  - ScarfZebra
+  - MimeBedsheet
+
+# Cargo
+- type: loadoutGroup
+  id: CargoBelt
+  name: loadout-group-cargo-technician-belt
+  minLimit: 0
+  loadouts:
+  - MailBag
+  - WaistBag
+  - Clipboard
+
+- type: loadoutGroup
+  id: SalvageSpecialistHead
+  name: loadout-group-salvage-specialist-head
+  minLimit: 0
+  loadouts:
+  - MercenaryHeadBand
+  - StationEngineerHardhatYellowDark
+  - SpaceBearHide
+
+- type: loadoutGroup
+  id: SalvageSpecialistHeadset
+  name: loadout-group-salvage-specialist-headset
+  loadouts:
+  - HeadsetCargo
+  - HeadsetMining
+
+- type: loadoutGroup
+  id: SalvageSpecialistBelt
+  name: loadout-group-salvage-specialist-belt
+  minLimit: 0
+  loadouts:
+  - SalvageWebbing
+  - ToolbeltEmpty
+  - SalvageOreBag
+
+- type: loadoutGroup
+  id: SalvageSpecialistGloves
+  name: loadout-group-salvage-specialist-gloves
+  minLimit: 0
+  loadouts:
+  - MercenaryFingerlessGloves
+
+# Engineering
+- type: loadoutGroup
+  id: ChiefEngineerGlasses
+  name: loadout-group-chief-engineer-glasses
+  loadouts:
+  - ADTEyeWeldingOldStyle
+  - ADTEyeWelding
+  - ADTEyeMeson
+  - TrayGoggles
+  - EngineeringSunglasses
+
+- type: loadoutGroup
+  id: ChiefEngineerGloves
+  name: loadout-group-chief-engineer-gloves
+  minLimit: 0
+  loadouts:
+  - InsulatedGloves
+  - PowerGloves
+
+- type: loadoutGroup
+  id: SeniorEngineerOuterClothing
+  name: loadout-group-senior-engineer-outerclothing
+  minLimit: 0
+  loadouts:
+  - SeniorEngineerWintercoat
+  - StationEngineerOuterVest
+  - RadSuit
+
+- type: loadoutGroup
+  id: SeniorEngineerBackpack
+  name: loadout-group-senior-engineer-backpack
+  loadouts:
+  - StationEngineerBackpack
+  - StationEngineerSatchel
+  - StationEngineerDuffel
+  - AtmosphericTechnicianBackpack
+  - AtmosphericTechnicianSatchel
+  - AtmosphericTechnicianDuffel
+
+- type: loadoutGroup
+  id: AtmosphericTechnicianGlasses
+  name: loadout-group-atmospheric-technician-glasses
+  loadouts:
+  - ADTEyeWeldingOldStyle
+  - ADTEyeWelding
+  - ADTEyeMeson
+  - TrayGoggles
+
+# Science
+- type: loadoutGroup
+  id: ResearchDirectorGlasses
+  name: loadout-group-research-director-glasses
+  minLimit: 0
+  loadouts:
+  - ChemicalAnalysisGoggles
+  - ScienceSunglasses
+  - DiagnosticHud
+  - DiagnosticHudEyepatch
+  - Glasses
+  - GlassesJamjar
+  - GlassesBinoclard
+  - GlassesSalesman
+
+- type: loadoutGroup
+  id: ResearchDirectorBelt
+  name: loadout-group-research-director-belt
+  minLimit: 0
+  loadouts:
+  - WaistBag
+  - Clipboard
+  - ToolbeltEmpty
+
+- type: loadoutGroup
+  id: ResearchDirectorGloves
+  name: loadout-group-research-director-gloves
+  minLimit: 0
+  loadouts:
+  - LatexGloves
+  - PurpleGloves
+  - RobohandsGloves
+  - PowerGloves
+
+- type: loadoutGroup
+  id: SeniorResearcherNeck
+  name: loadout-group-scientist-neck
+  minLimit: 0
+  loadouts:
+  - ScientistTie
+  - ScientistCloak
+
+- type: loadoutGroup
+  id: ScientistGlasses
+  name: loadout-group-scientist-glasses
+  minLimit: 0
+  loadouts:
+  - Glasses
+  - GlassesJamjar
+  - GlassesBinoclard
+  - GlassesSalesman
+  - ChemicalAnalysisGoggles
+  - DiagnosticHud
+  - DiagnosticHudEyepatch
+
+- type: loadoutGroup
+  id: ScientistHeadset
+  name: loadout-group-scientist-headset
+  loadouts:
+  - HeadsetScience
+  - HeadsetMedicalScience
+
+# Security
+- type: loadoutGroup
+  id: HeadofSecurityGloves
+  name: loadout-group-head-of-security-gloves
+  loadouts:
+  - CombatGloves
+  - HeadofSecurityLeatherGloves
+  - HeadofSecurityTacticalMaidGloves
+
+- type: loadoutGroup
+  id: HeadofSecurityBackpack
+  name: loadout-group-head-of-security-backpack
+  loadouts:
+  - SecurityBackpack
+  - SecuritySatchel
+  - SecurityDuffel
+  - HeadofSecuritySatchel
+
+- type: loadoutGroup
+  id: HeadofSecurityBelt
+  name: loadout-group-head-of-security-belt
+  loadouts:
+  - SecurityBelt
+  - SecurityWebbing
+  - HeadofSecurityLeatherBelt
+
+- type: loadoutGroup
+  id: HeadofSecuritySidearm
+  name: loadout-group-security-sidearm
+  loadouts:
+  #- WeaponEnergyGunDominator
+  - WeaponMultiphaseEnergyGun
+
+- type: loadoutGroup
+  id: WardenBackpack
+  name: loadout-group-warden-backpack
+  loadouts:
+  - SecurityBackpack
+  - SecuritySatchel
+  - SecurityDuffel
+  - WardenBackpack
+
+- type: loadoutGroup
+  id: SeniorOfficerHead
+  name: loadout-group-senior-officer-head
+  loadouts:
+  - SecurityHelmet
+  - SecurityBeret
+  - SecurityCap
+  - SecurityCapAlt
+  - SecurityFlightCap
+  - TrooperHat
+  - BountyHunterCowboyHat
+
+- type: loadoutGroup
+  id: SecurityBeltExtended
+  name: loadout-group-security-belt
+  loadouts:
+  - SecurityBelt
+  - SecurityWebbing
+  - AssaultBelt
+  - JudoBelt
+  - Bandolier
+
+- type: loadoutGroup
+  id: SecurityNeck
+  name: loadout-group-security-neck
+  minLimit: 0
+  loadouts:
+  - SecurityWhistle
+  - SecurityCloak
+  - SecurityBodyCamera
+  - ADTNeckSecBadgeBronze
+  - ADTNeckSecBadgeSilver
+  - ADTNeckSecBadgeGold
+  - SecStar
+
+- type: loadoutGroup
+  id: SecurityGlasses
+  name: loadout-group-security-glasses
+  loadouts:
+  - Sunglasses
+  - SecurityHud
+  - SecurityHudEyepatch
+
+- type: loadoutGroup
+  id: SecurityOfficerSidearm
+  name: loadout-group-security-sidearm
+  loadouts:
+  - WeaponPistolMk58
+  # - WeaponPistolG22
+  # - WeaponPistolACP14
+  # - WeaponPistolM1911
+
+- type: loadoutGroup
+  id: DetectiveBackpack
+  name: loadout-group-detective-backpack
+  loadouts:
+  - SecurityBackpack
+  - SecuritySatchel
+  - SecurityDuffel
+  - LeatherSatchel
+
+- type: loadoutGroup
+  id: DetectiveBelt
+  name: loadout-group-detective-belt
+  loadouts:
+  - DetectiveShoulderHolster
+  - SecurityBeltEmpty
+  - WaistBag
+
+- type: loadoutGroup
+  id: DetectiveGlasses
+  name: loadout-group-detective-glasses
+  loadouts:
+  - Sunglasses
+  - SecurityHud
+  - SecurityHudEyepatch
+  - ChemicalAnalysisGoggles
+
+- type: loadoutGroup
+  id: DetectiveGloves
+  name: loadout-group-detective-gloves
+  minLimit: 0
+  loadouts:
+  # - ForensicGloves
+  - LatexGloves
+  - HeadofSecurityLeatherGloves
+
+- type: loadoutGroup
+  id: DetectiveRevolver
+  name: loadout-group-security-sidearm
+  loadouts:
+  - WeaponRevolverInspector
+  # - WeaponRevolverR44
+  # - WeaponRevolverNY
+  # - WeaponRevolverRebota
+
+- type: loadoutGroup
+  id: PilotGloves
+  name: loadout-group-pilot-gloves
+  minLimit: 0
+  loadouts:
+  - AerostaticGloves
+
+- type: loadoutGroup
+  id: PilotShoes
+  name: loadout-group-pilot-shoes
+  loadouts:
+  - JackSecBoots
+  - JackBoots
+  - CombatBoots
+  - SecurityWinterBoots
+  - AerostaticShoes
+
+- type: loadoutGroup
+  id: BrigmedicMask
+  name: loadout-group-brigmedic-mask
+  minLimit: 0
+  loadouts:
+  - SterileMask
+  - MedicalBreathMask
+  - BrigmedicMedicalSecurity
+  - BrigmedicGasSecurity
+
+- type: loadoutGroup
+  id: BrigmedicShoes
+  name: loadout-group-brigmedic-shoes
+  loadouts:
+  - JackSecBoots
+  - SecurityWinterBoots
+  - RedShoes
+
+# Medical
+- type: loadoutGroup
+  id: ChiefMedicalOfficerMedicalMask
+  name: loadout-group-medical-mask
+  minLimit: 0
+  loadouts:
+  - SterileMask
+  - MedicalBreathMask
+  - CorpsmanBreathMask
+
+- type: loadoutGroup
+  id: ChiefMedicalOfficerGlasses
+  name: loadout-group-chief-medical-officer-glasses
+  minLimit: 0
+  loadouts:
+  - MedicalHud
+  - MedicalEyePatchHud
+  - MedicalSunglasses
+  - MedChemGoggles
+  - ChemicalAnalysisGoggles
+  - Glasses
+  - GlassesJamjar
+  - GlassesBinoclard
+  - GlassesJensen
+
+- type: loadoutGroup
+  id: ChiefMedicalOfficerBelt
+  name: loadout-group-chief-medical-officer-belt
+  loadouts:
+  - ADTBeltMedicalFilled
+  - ADTMedicalBeltBag
+  - CMOWebbing
+
+- type: loadoutGroup
+  id: MedicalDoctorNeck
+  name: loadout-group-medical-doctor-neck
+  minLimit: 0
+  loadouts:
+  - Stethoscope
+  - MedicalBedsheet
+
+- type: loadoutGroup
+  id: SeniorPhysicianNeck
+  name: loadout-group-senior-physician-neck
+  minLimit: 0
+  loadouts:
+  - Stethoscope
+  - MedicalCloak
+  - MedicalBedsheet
+
+- type: loadoutGroup
+  id: MedicalDoctorHeadset
+  name: loadout-group-medical-doctor-headset
+  loadouts:
+  - HeadsetMedical
+  - HeadsetMedicalScience
+
+- type: loadoutGroup
+  id: MedicalBelt
+  name: loadout-group-medical-doctor-belt
+  loadouts:
+  - MedicalBeltTopical
+  - MedicalBeltSurgical
+  - MedicalBeltMedication
+
+- type: loadoutGroup
+  id: MedicalBackpackExtended
+  name: loadout-group-medical-doctor-backpack
+  loadouts:
+  - MedicalDoctorBackpack
+  - MedicalDoctorSatchel
+  - MedicalDoctorDuffel
+  - GeneticsBackpack
+  - GeneticsSatchel
+  - GeneticsDuffel
+  - VirologyBackpack
+  - VirologySatchel
+  - VirologyDuffel
+
+- type: loadoutGroup
+  id: SeniorPhysicianBackpack
+  name: loadout-group-senior-physician-backpack
+  loadouts:
+  - MedicalDoctorBackpack
+  - MedicalDoctorSatchel
+  - MedicalDoctorDuffel
+  - ChemistBackpack
+  - ChemistSatchel
+  - ChemistDuffel
+
+- type: loadoutGroup
+  id: SeniorPhysicianEyewear
+  name: loadout-group-senior-physician-glasses
+  minLimit: 0
+  loadouts:
+  - MedChemGoggles
+  - MedicalHud
+  - MedicalEyePatchHud
+  - ChemicalAnalysisGoggles
+  - Glasses
+  - GlassesJamjar
+  - GlassesBinoclard
+  - GlassesJensen
+
+- type: loadoutGroup
+  id: ChemistGlasses
+  name: loadout-group-chemist-glasses
+  minLimit: 1
+  loadouts:
+  - ChemicalAnalysisGoggles
+  - MedicalHud
+  - MedicalEyePatchHud
+  - Glasses
+  - GlassesJamjar
+  - GlassesBinoclard
+  - GlassesJensen
+
+- type: loadoutGroup
+  id: ChemistShoes
+  name: loadout-group-chemist-shoes
+  loadouts:
+  - WhiteShoes
+  - OrangeShoes
+  - MedicalWinterBoots
+
+# Wildcards
+- type: loadoutGroup
+  id: PsychologistShoes
+  name: loadout-group-psychologist-shoes
+  loadouts:
+  - LeatherShoes
+  - BrownShoes
+  - BlackShoes
+  - LaceupShoesWhitelisted
+  - MedicalWinterBoots

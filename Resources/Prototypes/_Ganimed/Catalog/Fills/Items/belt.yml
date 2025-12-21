@@ -1,0 +1,101 @@
+- type: entity
+  parent: ClothingBeltMilitaryWebbingCorpsman
+  id: ClothingBeltMilitaryWebbingCorpsmanFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: Brutepack
+      - id: Ointment
+      - id: Gauze
+      - id: Bloodpack
+      - id: Tourniquet
+      - id: EmergencyMedipen
+      - id: Zipties
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbingCMO
+  id: ClothingBeltMilitaryWebbingCMOFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: Brutepack
+        amount: 2
+      - id: Ointment
+      - id: ADTAntibioticOintment
+      - id: Bloodpack
+      - id: Gauze
+      - id: EmergencyMedipen
+        amount: 2
+      #- id: EnergyCautery
+      #- id: EnergyScalpel
+      #- id: AdvancedRetractor
+      #- id: BoneGel
+
+- type: entity
+  id: ClothingBeltMedicalFilledSurgical
+  parent: ClothingBeltMedical
+  suffix: Filled, Surgical
+  components:
+  - type: StorageFill
+    contents:
+      - id: Scalpel
+      - id: Retractor
+      - id: Hemostat
+      - id: SawElectric
+      - id: Drill
+      - id: Cautery
+      #- id: BoneGel
+      #- id: Bonesetter
+      #- id: EmergencyMedipen
+
+- type: entity
+  id: ClothingBeltMedicalFilledMedication
+  parent: ClothingBeltMedical
+  suffix: Filled, Medication
+  components:
+  - type: StorageFill
+    contents:
+      - id: PillCanisterTricordrazine
+      - id: PillCanisterBicaridine
+      - id: PillCanisterKelotane
+      - id: PillCanisterIron #- PillCanisterDexalin #- SyringeSaline
+      - id: PillCanisterDylovene
+      - id: ChemistryBottleEpinephrine
+      - id: Syringe
+
+# Pouches
+#- type: entity #ERT
+#  parent: ClothingBeltPouchMedical
+#  id: ClothingBeltPouchMedicalERTFilled
+  # categories: [ HideSpawnMenu ]
+#  components:
+#    - type: StorageFill
+#      contents:
+#        - id: OintmentAdvanced1
+#          amount: 4
+#        - id: BrutepackAdvanced1
+#          amount: 4
+#        - id: Tourniquet
+#          amount: 2
+#        - id: CombatMedipen
+#        - id: EmergencyMedipen
+
+#- type: entity #CBURN
+#  parent: ClothingBeltPouchMedical
+#  id: ClothingBeltPouchMedicalCBURNFilled
+#  # categories: [ HideSpawnMenu ]
+#  components:
+#    - type: StorageFill
+#      contents:
+#        - id: OintmentAdvanced1
+#          amount: 4
+#        - id: BrutepackAdvanced1
+#          amount: 4
+#        - id: Tourniquet
+#          amount: 2
+#        - id: CombatMedipen
+#        - id: AntiPoisonMedipen
+#        - id: RadAutoInjector
+#        # - id: BattleMedipenAntiVirus нет в этом билде, но им бы пригодился. Добавится в будущих PR

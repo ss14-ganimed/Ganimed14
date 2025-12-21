@@ -34,7 +34,7 @@
 - type: loadout
   id: ADTMaskGasAtmosian
   equipment:
-    pocket1: ClothingMaskGasAtmosian
+    mask: ClothingMaskGasAtmosian
   effects:
   - !type:GroupLoadoutEffect
     proto: ADTMasterAtmos
@@ -44,6 +44,9 @@
   id: ADTHatBeretAtmos
   equipment:
     head: ADTClothingHeadHatsBeretAtmos
+  effects: # Ganimed-Loadouts
+  - !type:GroupLoadoutEffect
+    proto: MasterAtmosian
 
 # PDA
 - type: loadout

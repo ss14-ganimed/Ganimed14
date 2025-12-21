@@ -105,6 +105,105 @@
     tags:
     - WhitelistChameleon
 
+- type: entity
+  parent: [ClothingOuterCoatTrench, ClothingOuterCoatSecurityOvercoat]
+  id: ClothingOuterCoatHoS
+  name: black trench coat
+  description: Just a regular armored trench coat, belonging to the HoS. Nothing too fancy.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/hos_trenchcoat.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/hos_trenchcoat.rsi
+
+- type: entity
+  parent: [ClothingOuterCoatSecurityOvercoat, AllowSuitStorageClothing]
+  id: ClothingOuterCoatSecurityOfficerGreatcoat
+  name: security officer's greatcoat
+  description: Lightly armored leather greatcoat designed for everyday wear by officers. It has a badge of Nanotrasen Security.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/sec_greatcoat.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/sec_greatcoat.rsi
+
+- type: entity
+  parent: ClothingOuterCoatSecurityOvercoat
+  id: ClothingOuterCoatBlackDmc
+  name: black leather coat
+  description: Every loss remains a loss, no matter how many there were before.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/black.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/black.rsi
+
+- type: entity
+  parent: ClothingOuterCoatSecurityOvercoat
+  id: ClothingOuterCoatBlueDmc
+  name: blue leather coat
+  description: That regal look suits you!
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/blue.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/blue.rsi
+
+- type: entity
+  parent: ClothingOuterCoatSecurityOvercoat
+  id: ClothingOuterCoatDesertDmc
+  name: desert leather coat
+  description: Are you going to the party? What's the hurry, Didn't you get an invitation?
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/desert.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/desert.rsi
+
+- type: entity
+  parent: ClothingOuterCoatSecurityOvercoat
+  id: ClothingOuterCoatGoldDmc
+  name: golden leather coat
+  description: Aye to that truth which has the face of falsehood, a man should close his lips as far as may be, because without his fault it causes shame.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/gold.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/gold.rsi
+
+- type: entity
+  parent: ClothingOuterCoatSecurityOvercoat
+  id: ClothingOuterCoatPurpleDmc
+  name: purple leather coat
+  description: Humans are often worse than demons.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/purple.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/purple.rsi
+
+- type: entity
+  parent: ClothingOuterCoatSecurityOvercoat
+  id: ClothingOuterCoatRedDmc
+  name: red leather coat
+  description: Hey, kid! You giving up so soon?
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/red.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/red.rsi
+
+- type: entity
+  parent: ClothingOuterCoatSecurityOvercoat
+  id: ClothingOuterCoatSnowDmc
+  name: snow-white leather coat
+  description: You always hear stories about the lovers. They look like they were made for each other, but inside their hearts are as cold as ice.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/snow.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/snow.rsi
+
 # Old/Original
 - type: entity
   parent: ClothingOuterStorageBase

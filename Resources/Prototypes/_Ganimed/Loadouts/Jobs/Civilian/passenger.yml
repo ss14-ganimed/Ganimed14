@@ -1,0 +1,36 @@
+# Jumpsuits
+- type: loadout
+  id: RecruitJumpsuit
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: GreyTider
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRecruitNT
+
+# Back
+- type: loadout # TODO: Whitelist restriction
+  id: LeatherSatchel
+  equipment:
+    back: ClothingBackpackSatchelLeather
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+
+# Belt
+- type: loadout # TODO: Whitelist restriction
+  id: WaistBag
+  equipment:
+    belt: ClothingBeltStorageWaistbag
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+
+- type: loadout # TODO: Whitelist restriction
+  id: Clipboard
+  equipment:
+    belt: BoxFolderClipboard
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TenOverall

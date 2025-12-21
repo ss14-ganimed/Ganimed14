@@ -1,0 +1,267 @@
+# Other Timers
+- type: loadoutEffectGroup
+  id: ClinicalSpecialist
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Medical
+      time: 36000 # 10hr
+
+# Head
+- type: loadout # TODO: Whitelist restriction
+  id: CorpsmanBeret
+  equipment:
+    head: ClothingHeadHatBeretBrigmedic
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Corpsman
+
+# Neck
+- type: loadout
+  id: Stethoscope
+  equipment:
+    neck: ClothingNeckStethoscope
+
+- type: loadout
+  id: MedicalCloak
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorPhysician
+  equipment:
+    neck: ClothingNeckCloakMed
+
+- type: loadout
+  id: MedicalBedsheet
+  equipment:
+    neck: BedsheetMedical
+
+# Headset
+- type: loadout
+  id: HeadsetMedical
+  equipment:
+    ears: ClothingHeadsetMedical
+
+# Jumpsuit
+- type: loadout # TODO: Whitelist restriction
+  id: GeneticsJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGenetics
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout # TODO: Whitelist restriction
+  id: GeneticsJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGenetics
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout # TODO: Whitelist restriction
+  id: VirologyJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitVirology
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout # TODO: Whitelist restriction
+  id: VirologyJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtVirology
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout 
+  id: CoronerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCoroner
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout 
+  id: CoronerJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCoroner
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout 
+  id: BlackCoronerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCoronerBlack
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout 
+  id: BlackCoronerJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCoronerBlack
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+# Back
+- type: loadout # TODO: Whitelist restriction
+  id: GeneticsBackpack
+  equipment:
+    back: ClothingBackpackGenetics
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout # TODO: Whitelist restriction
+  id: GeneticsSatchel
+  equipment:
+    back: ClothingBackpackSatchelGenetics
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout # TODO: Whitelist restriction
+  id: GeneticsDuffel
+  equipment:
+    back: ClothingBackpackDuffelGenetics
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout # TODO: Whitelist restriction
+  id: VirologyBackpack
+  equipment:
+    back: ClothingBackpackVirology
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout # TODO: Whitelist restriction
+  id: VirologySatchel
+  equipment:
+    back: ClothingBackpackSatchelVirology
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout # TODO: Whitelist restriction
+  id: VirologyDuffel
+  equipment:
+    back: ClothingBackpackDuffelVirology
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+# OuterClothing
+- type: loadout 
+  id: SeniorPhysicianWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterSeniorPhysician
+#  effects:
+#  - !type:GroupLoadoutEffect
+#    proto: SeniorPhysician
+
+- type: loadout # TODO: Whitelist restriction
+  id: GeneticsLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLabGene
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout # TODO: Whitelist restriction
+  id: VirologyLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLabViro
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout 
+  id: CoronerLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLabCoroner
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout # TODO: Whitelist restriction
+  id: GeneticsWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterGen
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout # TODO: Whitelist restriction
+  id: VirologyWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterViro
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ClinicalSpecialist
+
+- type: loadout # TODO: Whitelist restriction
+  id: VirologyBioSuit
+  dummyEntity: ClothingOuterBioVirology
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MedicalHeadMirrorTimer
+  equipment:
+    outerClothing: ClothingOuterBioVirology
+    head: ClothingHeadHatHoodBioVirology
+
+# Belt contents
+- type: loadout
+  id: MedicalBeltTopical
+  dummyEntity: LoadoutDummyMedicalTopical
+  equipment:
+    belt: ClothingBeltMedicalFilled
+
+- type: loadout
+  id: MedicalBeltSurgical
+  dummyEntity: LoadoutDummyMedicalSurgical
+  equipment:
+    belt: ClothingBeltMedicalFilledSurgical
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobMedicalDoctor
+      time: 36000 # 10hr
+
+- type: loadout
+  id: MedicalBeltMedication
+  dummyEntity: LoadoutDummyMedicalReagents
+  equipment:
+    belt: ClothingBeltMedicalFilledMedication
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChemist
+      time: 36000 # 10hr

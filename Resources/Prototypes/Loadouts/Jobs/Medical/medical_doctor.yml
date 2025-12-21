@@ -40,10 +40,10 @@
     head: ClothingHeadMirror
 
 - type: loadout
-  id: HonoredDoctorBeret
+  id: MedicalBeret
   equipment:
     head: ClothingHeadHatBeretMedic
-  effects:
+  effects: # Ganimed-Loadouts
   - !type:GroupLoadoutEffect
     proto: SeniorPhysician
 

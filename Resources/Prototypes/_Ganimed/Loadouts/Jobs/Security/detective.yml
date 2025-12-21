@@ -1,0 +1,145 @@
+# Timers
+- type: loadoutEffectGroup
+  id: ForensicExpert
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobDetective
+      time: 72000 #20 hrs
+
+# Neck
+- type: loadout
+  id: DetectiveHorrificNecktie
+  equipment:
+    neck: ClothingNeckHorrific
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ForensicExpert
+
+# Jumpsuit
+- type: loadout
+  id: AltGrayDetectiveJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDetectiveGrayAlt
+
+- type: loadout
+  id: AltGrayDetectiveJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtDetectiveGrayAlt
+
+- type: loadout
+  id: SuperstarCopJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSuperstarCop
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ForensicExpert
+
+# OuterClothing
+- type: loadout
+  id: DetectiveCoatOriginal
+  equipment:
+    outerClothing: ClothingOuterCoatDetectiveOriginal
+
+- type: loadout
+  id: DetectiveCoatDark
+  equipment:
+    outerClothing: ClothingOuterCoatDetectiveDark
+
+- type: loadout # TODO: Whitelist restriction
+  id: DetectiveCoatDesertDMC
+  equipment:
+    outerClothing: ClothingOuterCoatDesertDmc
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout # TODO: Whitelist restriction
+  id: DetectiveCoatBlackDMC
+  equipment:
+    outerClothing: ClothingOuterCoatBlackDmc
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: DetectiveDiscoBlazer
+  equipment:
+    outerClothing: ClothingOuterDiscoAssBlazer
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ForensicExpert
+
+# Belt
+- type: loadout
+  id: DetectiveShoulderHolster
+  equipment:
+    belt: ClothingBeltHolster
+
+- type: loadout
+  id: ExtraShoulderHolster
+  equipment:
+    belt: ClothingBeltHolster
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ForensicExpert
+
+- type: loadout
+  id: SecurityBeltEmpty
+  equipment:
+    belt: ClothingBeltSecurity
+
+# Gloves
+- type: loadout # TODO: Whitelist restriction
+  id: ForensicGloves
+  equipment:
+    gloves: ClothingHandsGlovesForensic
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ForensicExpert
+
+# Shoes
+- type: loadout
+  id: GreenLizardskinShoes
+  equipment:
+    shoes: ClothingShoesGreenLizardskin
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ForensicExpert
+
+# Weapon
+- type: loadout
+  id: WeaponRevolverInspector
+  dummyEntity: WeaponRevolverInspector
+  storage:
+    belt:
+    - SpeedLoaderMagnum
+    - WeaponRevolverInspector
+
+#- type: loadout
+#  id: WeaponRevolverR44
+#  dummyEntity: WeaponRevolverR44
+#  storage:
+#    belt:
+#    - SpeedLoaderMagnum
+#    - WeaponRevolverR44
+
+#- type: loadout
+#  id: WeaponRevolverRebota
+#  dummyEntity: WeaponRevolverRebota
+#  storage:
+#    belt:
+#    - SpeedLoaderMagnum
+#    - WeaponRevolverRebota
+
+#- type: loadout
+#  id: WeaponRevolverNY
+#  dummyEntity: WeaponRevolverNY
+#  storage:
+#    belt:
+#    - SpeedLoaderMagnum
+#    - WeaponRevolverNY

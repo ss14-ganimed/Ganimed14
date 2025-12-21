@@ -1,0 +1,49 @@
+# Timer
+- type: loadoutEffectGroup
+  id: MasterAtmosian
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobAtmosphericTechnician
+      time: 72000 #20 hrs
+
+# Head
+- type: loadout
+  id: StationEngineerHardhatYellowDark
+  equipment:
+    head: ClothingHeadHatHardhatYellowDark
+
+- type: loadout
+  id: StationEngineerHardhatBlue
+  equipment:
+    head: ClothingHeadHatHardhatBlue
+
+# Jumpsuit
+- type: loadout
+  id: AtmosphericTechnicianJumpsuitCasualOriginal
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAtmosCasualOriginal
+
+# OuterClothing
+- type: loadout # TODO: Whitelist restriction
+  id: FireSuit
+  dummyEntity: ClothingOuterSuitFire
+  equipment:
+    outerClothing: ClothingOuterSuitFire
+    head: ClothingHeadHelmetFire
+
+# Glasses
+- type: loadout # TODO: Whitelist restriction
+  id: TrayGoggles
+  equipment:
+    eyes: ClothingEyesGlassesTray
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterAtmosian
+
+# Shoes
+- type: loadout
+  id: YellowShoes
+  equipment:
+    shoes: ClothingShoesColorYellow

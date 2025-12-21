@@ -21,7 +21,7 @@
 # Head
 
 - type: loadout
-  id: HonoredEngineerBeret
+  id: EngineeringBeret
   equipment:
     head: ClothingHeadHatBeretEngineering
   effects:

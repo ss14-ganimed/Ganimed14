@@ -41,11 +41,11 @@
   # equipment: # ADT tweak
  #id: RnDPDA # ADT Tweak
     # ears: ClothingHeadsetRD # ADT tweak
-  storage:
-    back:
-    - Flash
-    - ADTtelescopicBaton #ADT-CustomADTLoadoutStart
-    # - ADTHumanCubeWrapped #ADT-CustomADTLoadoutEnd # Ganimed-Remove
+#  storage: # Ganimed-Loadouts
+#    back:
+#    - Flash
+#    - ADTtelescopicBaton #ADT-CustomADTLoadout
+#    - ADTHumanCubeWrapped #ADT-CustomADTLoadoutEnd # Ganimed-Remove
 
 - type: chameleonOutfit
   id: ResearchDirectorChameleonOutfit

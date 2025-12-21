@@ -1,0 +1,109 @@
+# Timers
+- type: loadoutEffectGroup
+  id: ShaftMiner
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSalvageSpecialist
+      time: 72000 #20 hrs
+
+- type: loadoutEffectGroup
+  id: MasterSalvager
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSalvageSpecialist
+      time: 144000 #40 hrs
+
+# Head
+- type: loadout # TODO: Whitelist restriction
+  id: MercenaryHeadBand
+  equipment:
+    head: ClothingHeadBandMerc
+
+- type: loadout
+  id: SpaceBearHide
+  equipment:
+    head: MaterialHideBear
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterSalvager
+
+# Jumpsuit
+- type: loadout
+  id: GrimySalvageJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSalvageSpecialistAlt
+
+- type: loadout
+  id: ExplorersJumpsuit
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitKringeClothing
+
+# Neck
+- type: loadout # TODO: Whitelist restriction
+  id: MinerCloak
+  equipment:
+    neck: ClothingNeckCloakMiner
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ShaftMiner
+
+- type: loadout
+  id: GoliathCloak
+  equipment:
+    neck: ClothingNeckCloakGoliathCloak
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterSalvager
+
+# Headset
+- type: loadout
+  id: HeadsetCargo
+  equipment:
+    ears: ClothingHeadsetCargo
+
+- type: loadout # TODO: Whitelist restriction
+  id: HeadsetMining
+  equipment:
+    ears: ClothingHeadsetMining
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ShaftMiner
+
+# Belt
+- type: loadout # TODO: Whitelist restriction
+  id: SalvageWebbing
+  equipment:
+    belt: ClothingBeltSalvageWebbing
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTSalvageSpecialistEmeraldCape60hour # MasterSalvager
+
+- type: loadout
+  id: ToolbeltEmpty
+  equipment:
+    belt: ClothingBeltUtility
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 36000 # 10 hrs
+
+- type: loadout
+  id: SalvageOreBag
+  equipment:
+    belt: OreBag
+
+# Gloves
+- type: loadout # TODO: Whitelist restriction
+  id: MercenaryFingerlessGloves
+  equipment:
+    gloves: ClothingHandsGlovesMercFingerless

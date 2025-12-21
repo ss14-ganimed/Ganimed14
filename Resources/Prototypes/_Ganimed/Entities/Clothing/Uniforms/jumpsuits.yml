@@ -36,7 +36,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitJumpsuitOfficerDark
+  id: ClothingUniformJumpsuitOfficerDark
   name: officer's dark jumpsuit
   description: Pretty nice formal suit made with elastic materials.
   components:
@@ -84,13 +84,24 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitCentcomOfficialRegular
-  name: dark-green centcom suit
+  name: dark-green Centcom suit
   description: Regular dark-mint uniform, worn by mid-ranking Central Command officials. Respectable, but not at all glamorous.
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/centcom_uni.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/centcom_uni.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitCentcomOfficerAlt
+  name: Centcom officer uniform
+  description: Central Command officer's uniform. There are ranks visible on the shoulder straps.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/alt_centcom_officer.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/alt_centcom_officer.rsi
 
 #- type: entity
 #  parent: ClothingUniformBase
@@ -278,6 +289,30 @@
   - type: Clothing
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/alt_psychologist.rsi
 
+- type: entity
+  parent: [ClothingUniformBase, BaseFoldable]
+  id: ClothingUniformJumpsuitTwoPieceSuit
+  name: two-piece suit
+  description: A black suit with charcoal pants and a red tie. Very formal.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/two-piece-suit.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: open-icon
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/two-piece-suit.rsi
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: fold-zip-verb
+    foldVerbText: fold-unzip-verb
+  - type: FoldableClothing
+    foldedEquippedPrefix: open
+
 # Old/Original
 - type: entity
   parent: ClothingUniformBase
@@ -410,7 +445,7 @@
       coefficients:
         Caustic: 0.9
     staminaModifier: 0.9
-        
+
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitERTLeaderOriginal
@@ -474,3 +509,14 @@
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/original_capformal.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/original_capformal.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitDarkLight
+  name: dark and light suit
+  description: Light trousers and a black shirt flip the classic style upside-down.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/black-white.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/black-white.rsi

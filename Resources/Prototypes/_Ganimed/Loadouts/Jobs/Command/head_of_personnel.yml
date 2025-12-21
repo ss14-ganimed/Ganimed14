@@ -1,0 +1,67 @@
+# Neck
+- type: loadout
+  id: HoPCloakAlt
+  equipment:
+    neck: ClothingNeckCloakHopAlt
+
+- type: loadout
+  id: HoPCloakLong
+  equipment:
+    neck: ClothingNeckLongCloakHOP
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterHoP
+
+- type: loadout
+  id: HoPBedsheet
+  equipment:
+    neck: BedsheetHOP
+
+- type: loadout
+  id: IanBedsheet
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ProfessionalHoP
+  equipment:
+    neck: BedsheetIan
+
+# Glasses
+- type: loadout
+  id: AdministrationHud
+  equipment:
+    eyes: ClothingEyesHudCommand
+#  effects:
+#  - !type:GroupLoadoutEffect
+#    proto: Commander
+
+# Outerclothing
+- type: loadout
+  id: HoPCoat
+  equipment:
+    outerClothing: ClothingOuterCoatHOP
+
+# Belt
+- type: loadout
+  id: BureaucraticBelt
+  equipment:
+    belt: ADTBureaucraticBelt
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+
+# Back
+- type: loadout
+  id: HoPBackpack
+  equipment:
+    back: ClothingBackpackHop
+
+- type: loadout
+  id: HoPSatchel
+  equipment:
+    back: ClothingBackpackSatchelHop
+
+- type: loadout
+  id: HoPDuffel
+  equipment:
+    back: ClothingBackpackDuffelHop

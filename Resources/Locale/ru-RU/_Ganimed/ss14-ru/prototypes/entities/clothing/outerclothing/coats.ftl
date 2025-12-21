@@ -19,6 +19,33 @@ ent-ClothingOuterCoatCaptainWhite = белый китель капитана
 ent-ClothingOuterCoatHoSReflective = рефлекторный тренч
     .desc = Дорогая, удобная, а так-же более гибкая версия рефлекторного жилета.
 
+ent-ClothingOuterCoatHoS = чёрное пальто ГСБ
+    .desc = Обычный бронированный плащ, принадлежащий главе СБ. Ничего необычного.
+
+ent-ClothingOuterCoatSecurityOfficerGreatcoat = офицерская шинель
+    .desc = Легкобронированная кожаная шинель, предназначенная для повседневного ношения офицерами. Имеет значок СБ Nanotrasen.
+
+ent-ClothingOuterCoatBlackDmc = чёрная плащ-куртка
+    .desc = Каждая потеря остается потерей, сколько бы их ни было до этого.
+
+ent-ClothingOuterCoatBlueDmc = синяя плащ-куртка
+    .desc = Этот прикид тебе идёт!
+
+ent-ClothingOuterCoatDesertDmc = песочная плащ-куртка
+    .desc = Собираешься на вечеринку? К чему такая спешка, неужели у тебя есть приглашение?
+
+ent-ClothingOuterCoatGoldDmc = золотистая плащ-куртка
+    .desc = Мы истину, похожую на ложь, должны хранить сомкнутыми устами, иначе срам безвинно наживешь.
+
+ent-ClothingOuterCoatPurpleDmc = фиолетовая плащ-куртка
+    .desc = Порой люди хуже демонов.
+
+ent-ClothingOuterCoatRedDmc = красная плащ-куртка
+    .desc = Эй, пацан! Уже сдаёшься?
+
+ent-ClothingOuterCoatSnowDmc = снежная плащ-куртка
+    .desc = Я слышал, что пары, которые внешне любят друг друга, частенько холодны внутри.
+
 # Old/Original
 ent-ClothingOuterCoatDetectiveOriginal = оригинальный тренч детектива
     .desc = Прочный брезентовый плащ, разработка компании TX Fabrication Corp. Плащ устойчив к внешнему воздействию - идеально подходит для вашей следующей автодефенестрации!

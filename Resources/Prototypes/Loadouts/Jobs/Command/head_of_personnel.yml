@@ -6,7 +6,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobHeadOfPersonnel
-      time: 144000 #ADT_Tweak - увеличил до 40 часов
+      time: 72000 #20 hrs
 
 # Professional HoP Time
 - type: loadoutEffectGroup

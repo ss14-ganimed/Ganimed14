@@ -17,6 +17,9 @@
     - UNDERWEART
     - UNDERWEARB
     - SOCKS
+  - type: Construction
+    graph: ADTFootWrapsWhite
+    node: WrapsWhite
   - type: Butcherable
     butcheringType: Knife
     spawned:

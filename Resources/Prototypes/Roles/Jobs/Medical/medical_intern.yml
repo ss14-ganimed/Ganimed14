@@ -24,7 +24,7 @@
     shoes: ClothingShoesColorWhite
     #id: MedicalInternPDA # ADT: different PDAs in loadouts
     ears: ClothingHeadsetMedical
-#    belt: ClothingBeltMedicalFilled ADT tweak
+    belt: ClothingBeltMedicalFilled
     pocket2: BookMedicalReferenceBook
   #storage:
     #back:

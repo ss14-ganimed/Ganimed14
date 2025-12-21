@@ -1,0 +1,51 @@
+# Head
+- type: loadout
+  id: CommandCap
+  equipment:
+    head: ClothingHeadHatCommandSoft
+
+- type: loadout
+  id: CommandBeret
+  equipment:
+    head: ClothingHeadHatBeretCommand
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Commander
+
+- type: loadout
+  id: BridgeOfficerBeret
+  equipment:
+    head: ClothingHeadHatBeretBridgeOfficer
+
+# Jumpsuit
+- type: loadout
+  id: BridgeOfficerUniform
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBridgeOfficer
+
+- type: loadout
+  id: BridgeOfficerBlackJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitOfficerDark
+
+- type: loadout
+  id: GenericCommandJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCommandGeneric
+
+- type: loadout
+  id: GenericCommandJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCommandGeneric
+
+# Neck
+- type: loadout
+  id: BridgeOfficerMantle
+  equipment:
+    neck: ClothingNeckMantleBridgeOfficer
+
+# Belt
+- type: loadout
+  id: BridgeOfficerWebbing
+  equipment:
+    belt: ClothingBeltOfficerBlackWebbing # TODO: Make a filled option

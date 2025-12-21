@@ -60,9 +60,9 @@
 - type: startingGear
   id: CaptainGear
   equipment:
-    shoes: ClothingShoesBootsLaceup
-    eyes: ClothingEyesGlassesSunglasses
-    gloves: ClothingHandsGlovesCaptain
+    # shoes: ClothingShoesBootsLaceup # Ganimed-Loadouts
+    # eyes: ClothingEyesGlassesSunglasses # Ganimed-Loadouts
+    # gloves: ClothingHandsGlovesCaptain # Ganimed-Loadouts
     id: CaptainPDA
     # ears: ClothingHeadsetAltCommand # ADT tweak
   storage:

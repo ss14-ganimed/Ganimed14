@@ -36,3 +36,5 @@
   id: LizardSkinShoes
   equipment:
     shoes: ClothingShoesGreenLizardskin
+  effects: # Ganimed-Loadouts
+  - !type:SponsorLoadoutEffect

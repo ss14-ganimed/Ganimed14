@@ -80,15 +80,15 @@
 - type: startingGear
   id: HoPGear
   equipment:
-    shoes: ClothingShoesColorBrown
+    # shoes: ClothingShoesColorBrown # Ganimed-Loadouts
     id: HoPPDA
     gloves: ClothingHandsGlovesHop
     # ears: ClothingHeadsetAltCommand # ADT tweak
-    belt: BoxFolderClipboard
-  storage:
-    back:
-    - Flash
-    - ADTtelescopicBaton #ADT-CustomADTLoadout
+    # belt: BoxFolderClipboard # Ganimed-Loadouts
+#  storage: # Ganimed-Loadouts
+#    back:
+#    - Flash
+#    - ADTtelescopicBaton #ADT-CustomADTLoadout
 
 #ADT tweak start
 - type: chameleonOutfit

@@ -1,0 +1,40 @@
+# Head
+- type: loadout
+  id: TacticalHeadband
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBoxer
+      time: 36000 # 10hr
+  equipment:
+    head: ClothingHeadHatTacticalMaidHeadband
+
+- type: loadout
+  id: Casa
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBoxer
+      time: 36000 # 10hr
+  equipment:
+    head: ClothingHeadHatCasa
+
+# Jumpsuit
+- type: loadout
+  id: Kimono
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBoxer
+      time: 36000 # 10hr
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitKimono
+
+# Gloves
+#- type: loadout
+#  id: BoxingHandBandage
+#  equipment:
+#    gloves: ClothingHandBandage

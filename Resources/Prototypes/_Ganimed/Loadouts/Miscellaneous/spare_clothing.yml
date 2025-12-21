@@ -1,0 +1,1945 @@
+# Spare clothes
+# Timers
+- type: loadoutEffectGroup
+  id: FiftyOverall
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 180000 # 50 hours
+
+- type: loadoutEffectGroup
+  id: Security
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 18000 # 5 hours
+
+- type: loadoutEffectGroup
+  id: Engineer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 18000 # 5 hours
+
+- type: loadoutEffectGroup
+  id: Doctor
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Medical
+      time: 18000 # 5 hours
+
+- type: loadoutEffectGroup
+  id: Researcher
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Science
+      time: 18000 # 5 hours
+
+- type: loadoutEffectGroup
+  id: Service
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Civilian
+      time: 18000 # 5 hours
+
+- type: loadoutEffectGroup
+  id: Cargonian
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Cargo
+      time: 18000 # 5 hours
+
+- type: loadoutEffectGroup
+  id: Atmos
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobAtmosphericTechnician
+      time: 18000 # 5 hours
+
+- type: loadoutEffectGroup
+  id: Corpsman
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBrigmedic
+      time: 18000 # 5 hours
+
+
+# Head/Hats
+- type: loadout
+  id: SpareBlackCap
+  storage:
+    back:
+    - ClothingHeadHatBlacksoft
+
+- type: loadout
+  id: SpareGreyCap
+  storage:
+    back:
+    - ClothingHeadHatGreysoft
+
+- type: loadout
+  id: SpareWhiteCap
+  storage:
+    back:
+    - ClothingHeadHatMimesoft
+
+- type: loadout
+  id: SpareRedCap
+  storage:
+    back:
+    - ClothingHeadHatRedsoft
+
+- type: loadout
+  id: SpareOrangeCap
+  storage:
+    back:
+    - ClothingHeadHatOrangesoft
+
+- type: loadout
+  id: SpareYellowCap
+  storage:
+    back:
+    - ClothingHeadHatYellowsoft
+
+- type: loadout
+  id: SpareGreenCap
+  storage:
+    back:
+    - ClothingHeadHatGreensoft
+
+- type: loadout
+  id: SpareBlueCap
+  storage:
+    back:
+    - ClothingHeadHatBluesoft
+
+- type: loadout
+  id: SpareBlackBandana
+  storage:
+    back:
+    - ClothingHeadBandBlack
+
+- type: loadout
+  id: SpareGreyBandana
+  storage:
+    back:
+    - ClothingHeadBandGrey
+
+- type: loadout
+  id: SpareBrownBandana
+  storage:
+    back:
+    - ClothingHeadBandBrown
+
+- type: loadout
+  id: SpareRedBandana
+  storage:
+    back:
+    - ClothingHeadBandRed
+
+- type: loadout
+  id: SpareGoldBandana
+  storage:
+    back:
+    - ClothingHeadBandGold
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareGreenBandana
+  storage:
+    back:
+    - ClothingHeadBandGreen
+
+- type: loadout
+  id: SpareBlueBandana
+  storage:
+    back:
+    - ClothingHeadBandBlue
+
+- type: loadout
+  id: SpareBeret
+  storage:
+    back:
+    - ClothingHeadHatBeret
+
+- type: loadout
+  id: SpareBlackBeret
+  storage:
+    back:
+    - ADTClothingHeadHatBeretBlackCivilian
+
+- type: loadout
+  id: SpareGreyFlatCap
+  storage:
+    back:
+    - ClothingHeadHatGreyFlatcap
+
+- type: loadout
+  id: SpareBrownFlatCap
+  storage:
+    back:
+    - ClothingHeadHatBrownFlatcap
+
+- type: loadout
+  id: SpareGreyFlatCapAlt
+  storage:
+    back:
+    - ADTClothingHeadHatGreyFlatCap
+
+- type: loadout
+  id: SpareCinnamonFlatCap
+  storage:
+    back:
+    - ADTClothingHeadHatCinnamonFlatCap
+
+- type: loadout
+  id: SpareUshanka
+  storage:
+    back:
+    - ClothingHeadHatUshanka
+
+- type: loadout
+  id: SpareOldUshanka
+  storage:
+    back:
+    - ClothingHeadHatUshankaOriginal
+
+- type: loadout
+  id: SpareHetmanHat
+  storage:
+    back:
+    - ClothingHeadHatHetmanHat
+
+- type: loadout
+  id: SpareSombrero
+  storage:
+    back:
+    - ClothingHeadHatSombrero
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareGreyFedora
+  storage:
+    back:
+    - ClothingHeadHatFedoraGrey
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareBeaverHat
+  storage:
+    back:
+    - ClothingHeadHatBeaverHat
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareMagicianHat
+  storage:
+    back:
+    - ClothingHeadHatMagician
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+
+- type: loadout
+  id: SpareBlackCatHat
+  storage:
+    back:
+    - ClothingHeadHatAnimalCatBlack
+
+- type: loadout
+  id: SpareGreyCatHat
+  storage:
+    back:
+    - ClothingHeadHatAnimalCat
+
+- type: loadout
+  id: SpareBrownCatHat
+  storage:
+    back:
+    - ClothingHeadHatAnimalCatBrown
+
+- type: loadout
+  id: SpareHeadslimeHat
+  storage:
+    back:
+    - ClothingHeadHatAnimalHeadslime
+
+- type: loadout
+  id: SpareWaterCupPartyHat
+  storage:
+    back:
+    - ClothingHeadHatPartyWaterCup
+
+- type: loadout
+  id: SpareRedPartyHat
+  storage:
+    back:
+    - ClothingHeadHatPartyRed
+
+- type: loadout
+  id: SpareYellowPartyHat
+  storage:
+    back:
+    - ClothingHeadHatPartyYellow
+
+- type: loadout
+  id: SpareGreenPartyHat
+  storage:
+    back:
+    - ClothingHeadHatPartyGreen
+
+- type: loadout
+  id: SpareBluePartyHat
+  storage:
+    back:
+    - ClothingHeadHatPartyBlue
+
+- type: loadout
+  id: SparePaperHat
+  storage:
+    back:
+    - ClothingHeadHatPaper
+
+- type: loadout
+  id: SparePaperSack
+  storage:
+    back:
+    - ClothingHeadPaperSack
+
+# Jumpsuits/Uniform
+# Color
+- type: loadout
+  id: SpareJumpsuitColorBlack
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorBlack
+
+- type: loadout
+  id: SpareJumpskirtColorBlack
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorBlack
+
+- type: loadout
+  id: SpareJumpsuitColorGrey
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorGrey
+
+- type: loadout
+  id: SpareJumpskirtColorGrey
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorGrey
+
+- type: loadout
+  id: SpareJumpsuitColorWhite
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorWhite
+
+- type: loadout
+  id: SpareJumpskirtColorWhite
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorWhite
+
+- type: loadout
+  id: SpareJumpsuitColorLightBrown
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorLightBrown
+
+- type: loadout
+  id: SpareJumpskirtColorLightBrown
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorLightBrown
+
+- type: loadout
+  id: SpareJumpsuitColorBrown
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorBrown
+
+- type: loadout
+  id: SpareJumpskirtColorBrown
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorBrown
+
+- type: loadout
+  id: SpareJumpsuitColorRed
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorRed
+
+- type: loadout
+  id: SpareJumpskirtColorRed
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorRed
+
+- type: loadout
+  id: SpareJumpsuitColorOrange
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorOrange
+
+- type: loadout
+  id: SpareJumpskirtColorOrange
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorOrange
+
+- type: loadout
+  id: SpareJumpsuitColorYellow
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorYellow
+
+- type: loadout
+  id: SpareJumpskirtColorYellow
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorYellow
+
+- type: loadout
+  id: SpareJumpsuitColorGreen
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorGreen
+
+- type: loadout
+  id: SpareJumpskirtColorGreen
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorGreen
+
+- type: loadout
+  id: SpareJumpsuitColorDarkGreen
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorDarkGreen
+
+- type: loadout
+  id: SpareJumpskirtColorDarkGreen
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorDarkGreen
+
+- type: loadout
+  id: SpareJumpsuitColorTeal
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorTeal
+
+- type: loadout
+  id: SpareJumpskirtColorTeal
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorTeal
+
+- type: loadout
+  id: SpareJumpsuitColorBlue
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorBlue
+
+- type: loadout
+  id: SpareJumpskirtColorBlue
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorBlue
+
+- type: loadout
+  id: SpareJumpsuitColorDarkBlue
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorDarkBlue
+
+- type: loadout
+  id: SpareJumpskirtColorDarkBlue
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorDarkBlue
+
+- type: loadout
+  id: SpareJumpsuitColorPurple
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorPurple
+
+- type: loadout
+  id: SpareJumpskirtColorPurple
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorPurple
+
+- type: loadout
+  id: SpareJumpsuitColorMaroon
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorMaroon
+
+- type: loadout
+  id: SpareJumpskirtColorMaroon
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorMaroon
+
+- type: loadout
+  id: SpareJumpsuitColorPink
+  storage:
+    back:
+    - ClothingUniformJumpsuitColorPink
+
+- type: loadout
+  id: SpareJumpskirtColorPink
+  storage:
+    back:
+    - ClothingUniformJumpskirtColorPink
+
+# Turtlenecks, TODO: Whitelist restriction
+- type: loadout
+  id: SpareTurtleneckColorBlack
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorBlack
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorBlack
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorBlack
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorGrey
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorGrey
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorGrey
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorGrey
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorWhite
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorWhite
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorLightBrown
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorLightBrown
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorLightBrown
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorLightBrown
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorBrown
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorBrown
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorBrown
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorBrown
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorRed
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorRed
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorRed
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorRed
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorOrange
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorOrange
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorOrange
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorOrange
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorYellow
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorYellow
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorYellow
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorYellow
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorGreen
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorGreen
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorGreen
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorGreen
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorDarkGreen
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorDarkGreen
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorDarkGreen
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorDarkGreen
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorTeal
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorTeal
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorTeal
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorTeal
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorBlue
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorBlue
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorBlue
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorBlue
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorDarkBlue
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorDarkBlue
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorDarkBlue
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorDarkBlue
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorPurple
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorPurple
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorPurple
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorPurple
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorMaroon
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorMaroon
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorMaroon
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorMaroon
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckColorPink
+  storage:
+    back:
+    - ClothingUniformTurtleneckColorPink
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTurtleneckSkirtColorPink
+  storage:
+    back:
+    - ClothingUniformTurtleneckSkirtColorPink
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Casual
+- type: loadout
+  id: SpareRedCasualJumpsuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitCasualRed
+
+- type: loadout
+  id: SpareRedCasualJumpskirt
+  storage:
+    back:
+    - ClothingUniformJumpskirtCasualRed
+
+- type: loadout
+  id: SpareGreenCasualJumpsuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitCasualGreen
+
+- type: loadout
+  id: SpareGreenCasualJumpskirt
+  storage:
+    back:
+    - ClothingUniformJumpskirtCasualGreen
+
+- type: loadout
+  id: SpareBlueCasualJumpsuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitCasualBlue
+
+- type: loadout
+  id: SpareBlueCasualJumpskirt
+  storage:
+    back:
+    - ClothingUniformJumpskirtCasualBlue
+
+- type: loadout
+  id: SparePurpleCasualJumpsuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitCasualPurple
+
+- type: loadout
+  id: SparePurpleCasualJumpskirt
+  storage:
+    back:
+    - ClothingUniformJumpskirtCasualPurple
+
+- type: loadout
+  id: SpareLoungewear
+  storage:
+    back:
+    - ClothingUniformJumpsuitLoungewear
+
+- type: loadout
+  id: SpareRedShirt
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitRedShirt
+
+- type: loadout
+  id: SpareBlueShirt
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitBlueShirt
+
+# Hawaii
+- type: loadout
+  id: SpareBlackHawaiianShirt
+  storage:
+    back:
+    - ClothingUniformJumpsuitHawaiBlack
+
+- type: loadout
+  id: SpareRedHawaiianShirt
+  storage:
+    back:
+    - ClothingUniformJumpsuitHawaiRed
+
+- type: loadout
+  id: SpareYellowHawaiianShirt
+  storage:
+    back:
+    - ClothingUniformJumpsuitHawaiYellow
+
+- type: loadout
+  id: SpareBlueHawaiianShirt
+  storage:
+    back:
+    - ClothingUniformJumpsuitHawaiBlue
+
+# Unique, TODO: Whitelist restriction
+- type: loadout
+  id: SparePsychologistSuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitPsychologist
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Doctor
+
+- type: loadout
+  id: SparePsychologistSuitskirt
+  storage:
+    back:
+    - ClothingUniformJumpskirtPsychologist
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Doctor
+
+- type: loadout
+  id: SpareNoirSuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitDetectiveGrey
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+- type: loadout
+  id: SpareNoirSuitskirt
+  storage:
+    back:
+    - ClothingUniformJumpskirtDetectiveGrey
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+- type: loadout
+  id: SpareHardWornSuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitDetective
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+- type: loadout
+  id: SpareHardWornSuitskirt
+  storage:
+    back:
+    - ClothingUniformJumpskirtDetective
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+- type: loadout
+  id: SpareBlueSecShirt
+  storage:
+    back:
+    - ClothingUniformJumpsuitSecBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+- type: loadout
+  id: SpareDarkLightSuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitDarkLight
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout
+  id: SpareBarberSuit
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitBarber
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Service
+
+- type: loadout
+  id: SpareBarberSkirtSuit
+  storage:
+    back:
+    - ADTClothingUniformJumpskirtBarber
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Service
+
+- type: loadout
+  id: SpareBrownBarberSuit
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitBarberBrown
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Service
+
+- type: loadout
+  id: SpareBrownBarberSkirtSuit
+  storage:
+    back:
+    - ADTClothingUniformJumpskirtBarberBrown
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Service
+
+- type: loadout
+  id: SpareOldGreySuit
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitOldGreySuit
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout
+  id: SpareOldBrownSuit
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitOldBrownSuit
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout
+  id: SpareDutchSuit
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitDutch
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareTwoPieceSuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitTwoPieceSuit
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Service
+
+- type: loadout
+  id: SpareTwoPieceSkirtSuit
+  storage:
+    back:
+    - ClothingUniformJumpskirtTwoPieceSuit
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Service
+
+- type: loadout
+  id: SpareCuratorSuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitCurator
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: JamjarTimer
+
+- type: loadout
+  id: SpareCuratorSuitskirt
+  storage:
+    back:
+    - ClothingUniformJumpskirtCurator
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: JamjarTimer
+
+- type: loadout
+  id: SpareJumpskirtOfLife
+  storage:
+    back:
+    - ClothingUniformJumpskirtOfLife
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Corpsman
+
+- type: loadout
+  id: SpareOveralls
+  storage:
+    back:
+    - ClothingUniformOveralls
+
+- type: loadout
+  id: SpareJumpsuitFlannel
+  storage:
+    back:
+    - ClothingUniformJumpsuitFlannel
+
+- type: loadout
+  id: SpareJumpsuitRandom
+  storage:
+    back:
+    - ClothingUniformRandomStandard
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareJumpsuitRandomShirt
+  storage:
+    back:
+    - ClothingUniformRandomShirt
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareCossackSuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitCossack
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareWebJumpsuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitWeb
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Arachnid
+
+- type: loadout
+  id: SpareWebJumpskirt
+  storage:
+    back:
+    - ClothingUniformJumpskirtWeb
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Arachnid
+
+#Dresses, TODO: Whitelist restriction
+- type: loadout
+  id: SpareBlackElegantDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtBlackElegantDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareRedElegantDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtRedElegantDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareGreenElegantDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtGreenElegantDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareBlueElegantDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtBlueElegantDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SparePurpleElegantDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtPurpleElegantDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareRedStripedDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtRedStripedDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareOrangeStripedDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtOrangeStripedDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareGreenStripedDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtGreenStripedDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareCyanStripedDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtCyanStripedDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SparePinkStripedDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtPinkStripedDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareRedTurtleneckDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtRedTurtleneckDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareYellowTurtleneckDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtYellowTurtleneckDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareGreenTurtleneckDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtGreenTurtleneckDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareBlueTurtleneckDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtBlueTurtleneckDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SparePurpleTurtleneckDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtPurpleTurtleneckDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareYellowOldDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtYellowOldDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareOldDress
+  storage:
+    back:
+    - ClothingUniformJumpskirtOldDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareNightDress
+  storage:
+    back:
+    - ClothingOuterNightDress
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Hands/Gloves
+- type: loadout
+  id: SpareGlovesFingerless
+  storage:
+    back:
+    - ClothingHandsGlovesFingerless
+
+- type: loadout
+  id: SpareGlovesColorBlack
+  storage:
+    back:
+    - ClothingHandsGlovesColorBlack
+
+- type: loadout
+  id: SpareGlovesColorGray
+  storage:
+    back:
+    - ClothingHandsGlovesColorGray
+
+- type: loadout
+  id: SpareGlovesColorWhite
+  storage:
+    back:
+    - ClothingHandsGlovesColorWhite
+
+- type: loadout
+  id: SpareGlovesColorLightBrown
+  storage:
+    back:
+    - ClothingHandsGlovesColorLightBrown
+
+- type: loadout
+  id: SpareGlovesColorBrown
+  storage:
+    back:
+    - ClothingHandsGlovesColorBrown
+
+- type: loadout
+  id: SpareGlovesColorRed
+  storage:
+    back:
+    - ClothingHandsGlovesColorRed
+
+- type: loadout
+  id: SpareGlovesColorOrange
+  storage:
+    back:
+    - ClothingHandsGlovesColorOrange
+
+- type: loadout
+  id: SpareGlovesColorGreen
+  storage:
+    back:
+    - ClothingHandsGlovesColorGreen
+
+- type: loadout
+  id: SpareGlovesColorTeal
+  storage:
+    back:
+    - ClothingHandsGlovesColorTeal
+
+- type: loadout
+  id: SpareGlovesColorBlue
+  storage:
+    back:
+    - ClothingHandsGlovesColorBlue
+
+- type: loadout
+  id: SpareGlovesColorPurple
+  storage:
+    back:
+    - ClothingHandsGlovesColorPurple
+
+- type: loadout # TODO: Whitelist restriction
+  id: SparePawsGloves
+  storage:
+    back:
+    - ClothingHandsGlovesPaws
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Mask
+- type: loadout
+  id: SpareSterileMask
+  storage:
+    back:
+    - ClothingMaskSterile
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Doctor
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareNeckGaiter
+  storage:
+    back:
+    - ClothingMaskNeckGaiter
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+# Neck
+- type: loadout
+  id: SpareRedTie
+  storage:
+    back:
+    - ClothingNeckTieRed
+
+- type: loadout
+  id: SpareBlueTie
+  storage:
+    back:
+    - ADTClothingNeckBlueTie
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Command
+
+- type: loadout
+  id: SpareDetTie
+  storage:
+    back:
+    - ClothingNeckTieDet
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+- type: loadout
+  id: SpareBowTie
+  storage:
+    back:
+    - ClothingNeckBowTieBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout
+  id: SpareBlackScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+
+- type: loadout
+  id: SpareBrownScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedBrown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Cargonian
+
+- type: loadout
+  id: SpareRedScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+- type: loadout
+  id: SpareOrangeScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedOrange
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Engineer
+
+- type: loadout
+  id: SpareGreenScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Service
+
+- type: loadout
+  id: SpareLightBlueScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedLightBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Atmos
+
+- type: loadout
+  id: SpareBlueScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Doctor
+
+- type: loadout
+  id: SparePurpleScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedPurple
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Researcher
+
+- type: loadout
+  id: SpareLongBlackScarf
+  storage:
+    back:
+    - ADTClothingNeckScarfLongBlack
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareLongRedScarf
+  storage:
+    back:
+    - ADTClothingNeckScarfLongRed
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareLongOrangeScarf
+  storage:
+    back:
+    - ADTClothingNeckScarfLongOrange
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareLongYellowScarf
+  storage:
+    back:
+    - ADTClothingNeckScarfLongYellow
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareLongGreenScarf
+  storage:
+    back:
+    - ADTClothingNeckScarfLongGreen
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareLongBlueScarf
+  storage:
+    back:
+    - ADTClothingNeckScarfLongBlue
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareLongPurpleScarf
+  storage:
+    back:
+    - ADTClothingNeckScarfLongPurple
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareLongPinkScarf
+  storage:
+    back:
+    - ADTClothingNeckScarfLongPink
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareFaceScarfBlack
+  storage:
+    back:
+    - ADTClothingNeckFacescarfBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareFaceScarfGrey
+  storage:
+    back:
+    - ADTClothingNeckFacescarfGrey
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareFaceScarfWhite
+  storage:
+    back:
+    - ADTClothingNeckFacescarfWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareFaceScarfRed
+  storage:
+    back:
+    - ADTClothingNeckFacescarfRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareFaceScarfOrange
+  storage:
+    back:
+    - ADTClothingNeckFacescarfOrange
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareFaceScarfGreen
+  storage:
+    back:
+    - ADTClothingNeckFacescarfGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareFaceScarfBlue
+  storage:
+    back:
+    - ADTClothingNeckFacescarfBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareFaceScarfPurple
+  storage:
+    back:
+    - ADTClothingNeckFacescarfPurple
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareOldMantle
+  storage:
+    back:
+    - ClothingNeckMantleOld
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareHideMantle
+  storage:
+    back:
+    - ClothingNeckMantleUnathi
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Reptilian
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareHieroglyphicCloak
+  storage:
+    back:
+    - ClothingNeckCloakHieroglyphics
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareOrangeCloak
+  storage:
+    back:
+    - ClothingNeckCloakOrange
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
+
+- type: loadout
+  id: SpareGoldChain
+  storage:
+    back:
+    - ADTClothingNeckGoldChain
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: SpareBling
+  storage:
+    back:
+    - ClothingNeckBling
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareRainbowBedsheet
+  storage:
+    back:
+    - BedsheetRainbow
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareWizardBedsheet
+  storage:
+    back:
+    - BedsheetWiz
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareCosmosBedsheet
+  storage:
+    back:
+    - BedsheetCosmos
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareBlueTSFLoyalistBandage
+  storage:
+    back:
+    - ClothingNeckBandageTSF
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareDarkPeripheralistBandage
+  storage:
+    back:
+    - ClothingNeckBandagePeriph
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareRedRevBandage
+  storage:
+    back:
+    - ClothingNeckBandageRev
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareGreenElysiumBandage
+  storage:
+    back:
+    - ClothingNeckBandageElysium
+
+# Outer clothing
+- type: loadout
+  id: SpareRedFlannelJacket
+  storage:
+    back:
+    - ClothingOuterFlannelRed
+
+- type: loadout
+  id: SpareGreenFlannelJacket
+  storage:
+    back:
+    - ClothingOuterFlannelGreen
+
+- type: loadout
+  id: SpareBlueFlannelJacket
+  storage:
+    back:
+    - ClothingOuterFlannelBlue
+
+- type: loadout
+  id: SpareBlackWintercoat
+  storage:
+    back:
+    - ClothingOuterWinterColorBlack
+
+- type: loadout
+  id: SpareGrayWintercoat
+  storage:
+    back:
+    - ClothingOuterWinterColorGray
+
+- type: loadout
+  id: SpareWhiteWintercoat
+  storage:
+    back:
+    - ClothingOuterWinterColorWhite
+
+- type: loadout
+  id: SpareLightBrownWintercoat
+  storage:
+    back:
+    - ClothingOuterWinterColorLightBrown
+
+- type: loadout
+  id: SpareBrownWintercoat
+  storage:
+    back:
+    - ClothingOuterWinterColorBrown
+
+- type: loadout
+  id: SpareRedWintercoat
+  storage:
+    back:
+    - ClothingOuterWinterColorRed
+
+- type: loadout
+  id: SpareOrangeWintercoat
+  storage:
+    back:
+    - ClothingOuterWinterColorOrange
+
+- type: loadout
+  id: SpareYellowWintercoat
+  storage:
+    back:
+    - ClothingOuterWinterColorYellow
+
+- type: loadout
+  id: SpareGreenWintercoat
+  storage:
+    back:
+    - ClothingOuterWinterColorGreen
+
+- type: loadout
+  id: SpareBlueWintercoat
+  storage:
+    back:
+    - ClothingOuterWinterColorBlue
+
+- type: loadout
+  id: SparePurpleWintercoat
+  storage:
+    back:
+    - ClothingOuterWinterColorPurple
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareWebWintercoat
+  storage:
+    back:
+    - ClothingOuterWinterWeb
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Arachnid
+
+- type: loadout
+  id: SpareBomberJacket
+  storage:
+    back:
+    - ClothingOuterCoatBomber
+
+#- type: loadout
+#  id: SpareBlackBomber
+#  storage:
+#    back:
+#    - ClothingOuterCoatBomberBlack
+
+- type: loadout
+  id: SpareDutchCoat
+  storage:
+    back:
+    - ADTClothingOuterDutch
+
+- type: loadout
+  id: SpareLeatherJacket
+  storage:
+    back:
+    - ADTClothingOuterLeatherJacket
+
+- type: loadout
+  id: SpareLeatherCoat
+  storage:
+    back:
+    - ADTClothingOuterCoatLeathOvercoat
+
+- type: loadout
+  id: SpareGentleCoat
+  storage:
+    back:
+    - ClothingOuterCoatGentle
+
+- type: loadout
+  id: SpareJensenCoat
+  storage:
+    back:
+    - ClothingOuterCoatJensen
+
+- type: loadout
+  id: SpareRedCoat
+  storage:
+    back:
+    - ClothingOuterCoatRedCoat
+
+- type: loadout
+  id: SpareBlackHoodieAlt
+  storage:
+    back:
+    - ADTClothingOuterHoodyBlack
+
+- type: loadout
+  id: SpareBlackHoodie
+  storage:
+    back:
+    - ClothingOuterHoodieBlack
+
+- type: loadout
+  id: SpareGreyHoodie
+  storage:
+    back:
+    - ClothingOuterHoodieGrey
+
+- type: loadout
+  id: SpareVest
+  storage:
+    back:
+    - ClothingOuterVest
+
+- type: loadout
+  id: SpareTrenchCoat
+  storage:
+    back:
+    - ClothingOuterCoatTrench
+
+- type: loadout
+  id: SpareClassicPoncho
+  storage:
+    back:
+    - ClothingOuterPonchoClassic
+
+- type: loadout
+  id: SpareUnathiRobe
+  storage:
+    back:
+    - ClothingOuterUnathiRobe
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Reptilian
+
+- type: loadout
+  id: SpareApron
+  storage:
+    back:
+    - ClothingOuterApron
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Service
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareHospitalGown
+  storage:
+    back:
+    - ClothingOuterHospitalGown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Doctor
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareHazardVest
+  storage:
+    back:
+    - ClothingOuterVestHazard
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Engineer
+
+# Shoes/Feet
+- type: loadout # TODO: Whitelist restriction
+  id: SpareSlippers
+  storage:
+    back:
+    - ClothingShoesSlippers
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareTouristShoes
+  storage:
+    back:
+    - ClothingShoesTourist
+
+- type: loadout
+  id: SpareClothWraps
+  storage:
+    back:
+    - ClothingClothWraps

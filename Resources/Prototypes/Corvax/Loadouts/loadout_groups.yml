@@ -108,6 +108,8 @@
   minLimit: 0
   loadouts:
   - SecurityPilotBeret
+  - SecurityFlightCap
+  - PilotHelmet
 
 - type: loadoutGroup
   id: PilotJumpsuit
@@ -115,12 +117,18 @@
   loadouts:
   - JumpsuitPilot
   - JumpskirtPilot
+  - ADTClothingUniformJumpsuitSecBlue
+  - AerostaticSuit
 
 - type: loadoutGroup
   id: PilotOuterClothing
   name: loadout-group-pilot-outerclothing
   loadouts:
   - OuterWinterPilot
+  - ArmorVest
+  - ArmorVestSlim
+  - BomberCoat
+  - AerostaticBomberJacket
 
 # - type: loadoutGroup
 #   id: BrigmedicHead

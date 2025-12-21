@@ -10,7 +10,7 @@
             amount: 2
             doAfter: 5
     - node: WrapsWhite
-      entity: ADTClothingFootWrapsWhite
+      entity: ClothingClothWraps
 
 - type: construction
   id: WrapsWhite

@@ -12,7 +12,7 @@
   id: ADTCargoTechnicianBeret
   effects:
   - !type:GroupLoadoutEffect
-    proto: ADTCargoTechnician15hrs
+    proto: MasterCargonian # Ganimed-Loadouts
   equipment:
     head: ADTClothingHeadHatsBeretSupply
 

@@ -1,0 +1,72 @@
+# Timers
+- type: loadoutEffectGroup
+  id: Clergy
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChaplain
+      time: 72000 #20 hrs
+
+# Head
+- type: loadout
+  id: ChaplainWitchHunterHat
+  equipment:
+    head: ClothingHeadHatWitchHunter
+
+# Neck
+#- type: loadout
+#  id: HolyMedal
+#  equipment:
+#    neck: ClothingNeckHolyMedal
+
+- type: loadout
+  id: CultBedsheet
+  equipment:
+    neck: BedsheetCult
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Clergy
+
+- type: loadout
+  id: ChaplainCloakBlack
+  equipment:
+    neck: ClothingNeckCloakChaplainBlack
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Clergy
+
+- type: loadout
+  id: ChaplainCloakWhite
+  equipment:
+    neck: ClothingNeckCloakChaplainWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Clergy
+
+# Gloves
+- type: loadout
+  id: ChaplainDivineWatch
+  equipment:
+    gloves: ClothingHandsWatchDivine
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Clergy
+
+# Outer clothing
+- type: loadout
+  id: ChaplainWitchHunterSuit
+  equipment:
+    outerClothing: ClothingOuterRobesWitchHunter
+
+# Shoes
+- type: loadout # TODO: Whitelist restriction
+  id: CultShoes
+  equipment:
+    shoes: ClothingShoesCult
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Clergy
