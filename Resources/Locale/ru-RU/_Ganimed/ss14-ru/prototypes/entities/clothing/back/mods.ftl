@@ -9,24 +9,40 @@ ent-ClothingModsuitBackCorporate = корпоративный МОД
 
 # Шлемы
 ent-ClothingHeadHelmetModsuitCMO = шлем МОДа главного врача
+    .desc = { ent-ADTClothingHeadHelmetModsuitBase.desc }
 ent-ClothingHeadHelmetModsuitRD = шлем МОДа научного руководителя
+    .desc = { ent-ADTClothingHeadHelmetModsuitBase.desc }
 ent-ClothingHeadHelmetModsuitMagnate = шлем МОДа капитана
+    .desc = { ent-ADTClothingHeadHelmetModsuitBase.desc }
 ent-ClothingHeadHelmetModsuitCorporate = шлем корпоративного МОДа
+    .desc = { ent-ADTClothingHeadHelmetModsuitBase.desc }
 
 # Оболочка
 ent-ClothingOuterModsuitBodyCMO = оболочка МОДа главного врача
+    .desc = { ent-ADTClothingOuterModsuitBodyBase.desc }
 ent-ClothingOuterModsuitBodyRD = оболочка МОДа научного руководителя
+    .desc = { ent-ADTClothingOuterModsuitBodyBase.desc }
 ent-ClothingOuterModsuitBodyMagnate = оболочка МОДа капитана
+    .desc = { ent-ADTClothingOuterModsuitBodyBase.desc }
 ent-ClothingOuterModsuitBodyCorporate = оболочка корпоративного МОДа
+    .desc = { ent-ADTClothingOuterModsuitBodyBase.desc }
 
 # Ботинки
 ent-ClothingModsuitShoesCMO = ботинки МОДа главного врача
+    .desc = { ent-ADTClothingModsuitShoesBase.desc }
 ent-ClothingModsuitShoesRD = ботинки МОДа научного руководителя
+    .desc = { ent-ADTClothingModsuitShoesBase.desc }
 ent-ClothingModsuitShoesMagnate = ботинки МОДа капитана
+    .desc = { ent-ADTClothingModsuitShoesBase.desc }
 ent-ClothingModsuitShoesCorporate = ботинки корпоративного МОДа
+    .desc = { ent-ADTClothingModsuitShoesBase.desc }
 
 # Перчатки
 ent-ClothingHandsModsuitCMO = перчатки МОДа главного врача
+    .desc = { ent-ADTClothingHandsModsuitBase.desc }
 ent-ClothingHandsModsuitRD = перчатки МОДа научного руководителя
+    .desc = { ent-ADTClothingHandsModsuitBase.desc }
 ent-ClothingHandsModsuitMagnate = перчатки МОДа капитана
+    .desc = { ent-ADTClothingHandsModsuitBase.desc }
 ent-ClothingHandsModsuitCorporate = перчатки корпоративного МОДа
+    .desc = { ent-ADTClothingHandsModsuitBase.desc }
