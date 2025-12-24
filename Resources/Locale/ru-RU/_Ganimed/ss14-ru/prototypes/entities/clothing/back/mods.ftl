@@ -19,13 +19,13 @@ ent-ClothingHeadHelmetModsuitCorporate = шлем корпоративного �
 
 # Оболочка
 ent-ClothingOuterModsuitBodyCMO = оболочка МОДа главного врача
-    .desc = { ent-ADTClothingHeadHelmetModsuitBase.desc }
+    .desc = { ent-ADTClothingOuterModsuitBodyBase.desc }
 ent-ClothingOuterModsuitBodyRD = оболочка МОДа научного руководителя
-    .desc = { ent-ADTClothingHeadHelmetModsuitBase.desc }
+    .desc = { ent-ADTClothingOuterModsuitBodyBase.desc }
 ent-ClothingOuterModsuitBodyMagnate = оболочка МОДа капитана
-    .desc = { ent-ADTClothingHeadHelmetModsuitBase.desc }
+    .desc = { ent-ADTClothingOuterModsuitBodyBase.desc }
 ent-ClothingOuterModsuitBodyCorporate = оболочка корпоративного МОДа
-    .desc = { ent-ADTClothingHeadHelmetModsuitBase.desc }
+    .desc = { ent-ADTClothingOuterModsuitBodyBase.desc }
 
 # Ботинки
 ent-ClothingModsuitShoesCMO = ботинки МОДа главного врача
