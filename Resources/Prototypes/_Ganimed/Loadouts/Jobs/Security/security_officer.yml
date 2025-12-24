@@ -20,6 +20,16 @@
   equipment:
     head: ClothingHeadHatFlightCapSec
 
+- type: loadout
+  id: BrownCowboyHat
+  equipment:
+    head: ClothingHeadHatCowboyBrown
+
+- type: loadout
+  id: WhiteCowboyHat
+  equipment:
+    head: ClothingHeadHatCowboyWhite
+
 - type: loadout # TODO: Whitelist restriction
   id: BlackCowboyHat
   equipment:

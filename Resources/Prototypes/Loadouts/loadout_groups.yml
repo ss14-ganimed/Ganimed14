@@ -1601,7 +1601,14 @@
   - DetectiveInvestigatorCap
   - ADTDetectiveOldFedora
   # ADT-Loadout-End
-  - SecurityBeret # Ganimed-Loadouts
+  # Ganimed-Loadouts-Start
+  - SecurityBeret
+  - BrownCowboyHat
+  - BlackCowboyHat
+  - WhiteCowboyHat
+  - SecurityCapAlt
+  - SecurityFlightCap
+  # Ganimed-Loadouts-End
 
 - type: loadoutGroup
   id: DetectiveNeck
@@ -1737,6 +1744,7 @@
   - ChiefMedicalOfficerMantleOriginal
   - ChiefMedicalOfficerCloakLong
   - ChiefMedicalOfficerBedsheet
+  - Stethoscope
   - AzureScarf
   # Ganimed-Loadouts-End
 

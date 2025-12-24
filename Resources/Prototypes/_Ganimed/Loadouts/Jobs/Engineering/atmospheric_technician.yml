@@ -8,6 +8,17 @@
       role: JobAtmosphericTechnician
       time: 72000 #20 hrs
 
+# Mask
+- type: loadout
+  id: ClothingMaskGasAtmos
+  equipment:
+    mask: ClothingMaskGasAtmos
+
+- type: loadout
+  id: ClothingMaskGas
+  equipment:
+    mask: ClothingMaskGas
+
 # Head
 - type: loadout
   id: StationEngineerHardhatYellowDark
