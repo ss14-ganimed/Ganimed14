@@ -35,6 +35,7 @@
     earliestStart: 30
     weight: 2 # Ganimed-Tweak (3 to 2)
     reoccurrenceDelay: 90 # Ganimed-Tweak (30 to 90)
+    maxOccurrences: 2 # Ganimed-Add
   - type: CentComRandomEvent
 
 - type: entity
