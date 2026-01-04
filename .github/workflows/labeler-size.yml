@@ -1,15 +1,21 @@
 name: "Labels: Size"
-on: pull_request_target
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+  issues: write 
+  contents: read
+
 jobs:
   size-label:
     runs-on: ubuntu-latest
     steps:
       - name: size-label
         uses: "pascalgn/size-label-action@v0.5.5"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
-          # Custom size configuration
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           sizes: >
             {
               "0": "XS",
