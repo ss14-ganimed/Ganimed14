@@ -122,7 +122,7 @@
   components:
   - type: LightBulb
     bulb: Bulb
-    color: "#fffcf8" # ADT-Sound-Update
+    color: "#FFDABB" # 4500k color temp # Ganimed-Edit
     lightEnergy: 1.0
     lightRadius: 6
     lightSoftness: 1.1
@@ -175,7 +175,7 @@
   components:
   - type: LightBulb
     bulb: Bulb
-    color: "#fcc489" # ADT-Sound-Update
+    color: "#ffc489" # 3500k color temp # Ganimed-Edit
     lightEnergy: 1
     lightRadius: 6
     lightSoftness: 3
@@ -192,7 +192,7 @@
   components:
   - type: LightBulb
     bulb: Bulb
-    color: "#ffd5b9" # ADT-Sound-Update
+    color: "#FFD1A3" # 4000K color temp
     lightEnergy: 0.3 # old incandescents just arent as bright
     lightRadius: 6
     lightSoftness: 1.1
@@ -232,7 +232,7 @@
   description: A light fixture.
   components:
   - type: LightBulb
-    color: "#FFE4CE" # 5000K color temp
+    color: "#FFEDDE" # 5500K color temp # Ganimed-Edit
     lightEnergy: 0.8
     lightRadius: 10
     lightSoftness: 1
@@ -245,7 +245,7 @@
   description: An aging light fixture.
   components:
   - type: LightBulb
-    color: "#FFDABB" # old fluorescents are yellower-4500K temp
+    color: "#FFE4CE" # old fluorescents are yellower-5000K temp # Ganimed-Edit
     lightEnergy: 0.5
     lightRadius: 10
     lightSoftness: 1
@@ -268,10 +268,12 @@
   id: LedLightTube
   components:
   - type: LightBulb
-    color: "#EEEEFF"
-    lightEnergy: 1
-    lightRadius: 15
+    # Ganimed-Edit-Start
+    color: "#FAFFFF"
+    lightEnergy: 1.1
+    lightRadius: 14
     lightSoftness: 0.9
+    # Ganimed-Edit-End
     BurningTemperature: 350
     PowerUse: 12
 

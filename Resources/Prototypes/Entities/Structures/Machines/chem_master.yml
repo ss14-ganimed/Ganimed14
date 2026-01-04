@@ -26,6 +26,9 @@
           - FitsInDispenser
   - type: ChemMaster
     pillDosageLimit: 20
+    bottleDosageLimit: 30
+    maxPills: 30
+    maxBottles: 20
   - type: Physics
     bodyType: Static
   - type: Fixtures
