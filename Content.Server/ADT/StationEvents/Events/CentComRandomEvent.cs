@@ -12,7 +12,7 @@ namespace Content.Server.ADT.StationEvents.Events;
 
 public sealed class CentComRandomEvent : StationEventSystem<CentComRandomEventComponent>
 {
-    const int TIME_YEAR_SPACE_STATION_ADT = 544;
+    const int TIME_YEAR_SPACE_STATION_ADT = 570; // Ganimed game date
 
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly FaxSystem _fax = default!;
