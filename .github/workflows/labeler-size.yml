@@ -14,8 +14,9 @@ jobs:
     steps:
       - name: size-label
         uses: "pascalgn/size-label-action@v0.5.5"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           sizes: >
             {
               "0": "XS",
