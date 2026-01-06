@@ -7,7 +7,6 @@ permissions:
   pull-requests: write
   issues: write
   contents: read
-  organization: read
 
 jobs:
   add_label:
@@ -19,7 +18,7 @@ jobs:
       with:
         username: ${{ github.actor }}
         team: "content-maintainers,junior-maintainers"
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.ORG_READ_PAT }}
     
     - if: ${{ steps.checkUserMember.outputs.isTeamMember == 'true' }}
       uses: actions-ecosystem/action-add-labels@v1
