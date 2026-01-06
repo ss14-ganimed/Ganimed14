@@ -7,6 +7,7 @@ permissions:
   pull-requests: write
   issues: write
   contents: read
+  organization: read
 
 jobs:
   add_label:
