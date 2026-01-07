@@ -215,7 +215,7 @@
   - SpareClothing # Ganimed-Loadouts
 
 - type: roleLoadout
-  id: JobADTGuardOfficer
+  id: JobADTCorrectionsOfficer
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness

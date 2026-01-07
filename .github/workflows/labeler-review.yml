@@ -2,6 +2,12 @@ name: "Labels: Approved"
 on:
   pull_request_review:
     types: [submitted]
+
+permissions:
+  pull-requests: write
+  issues: write
+  contents: read
+
 jobs:
   add_label:
     # Change the repository name after you've made sure the team name is correct for your fork!

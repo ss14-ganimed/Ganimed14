@@ -53,10 +53,10 @@
     - id: ADTClothingNeckBodyCamera #ADT bodycam
     - id: ADTBookSRPsec
     - id: ADTBookPCDsec
-    - id: ADTClothingNeckShockCollar
-      amount: 2
-    - id: RemoteSignaller
-      amount: 2
+    # - id: ADTClothingNeckShockCollar # Ganimed-Remove
+    #   amount: 2
+    # - id: RemoteSignaller # Ganimed-Remove
+    #   amount: 2
     - id: ADTSecShuttleConsoleCircuitboard
     - id: BoxTapeRecorder
     # ADT-Tweak-End
