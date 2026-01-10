@@ -20,7 +20,6 @@ jobs:
         username: ${{ github.actor }}
         team: "content-maintainers,junior-maintainers"
         GITHUB_TOKEN: ${{ secrets.ORG_READ_PAT }}
-    
     - if: ${{ steps.checkUserMember.outputs.isTeamMember == 'true' }}
       uses: actions-ecosystem/action-add-labels@v1
       with:
