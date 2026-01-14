@@ -7,6 +7,11 @@ on:
     branches:
       - 'stable'
 
+permissions:
+  pull-requests: write
+  issues: write
+  contents: read
+
 jobs:
   add_label:
     runs-on: ubuntu-latest

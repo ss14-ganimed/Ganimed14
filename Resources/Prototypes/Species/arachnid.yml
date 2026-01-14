@@ -14,7 +14,10 @@
   femaleLastNames: NamesArachnidLast # Corvax-LastnameGender
   sexes:
   - Unsexed
+  - Female # Ganimed-Add: Species lore
+  - Male # Ganimed-Add: Species lore
   # ADT start
+  shortDesc: species-short-desc-spider
   pros:
   - Наносят 7 проникающего урона в ближнем бою.
   - Имеют два дополнительных слота (как карманы, но содержимое видно при обыске).

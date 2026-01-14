@@ -1,5 +1,7 @@
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using Robust.Shared.Prototypes;
+using Content.Shared.Roles; 
 
 namespace Content.Server.StationEvents.Components;
 
@@ -87,4 +89,12 @@ public sealed partial class StationEventComponent : Component
     /// </summary>
     [DataField]
     public bool OccursDuringRoundEnd = true;
+
+    /// <summary>
+    /// Ganimed edit
+    /// Минимальные требования по людям в департаментах.
+    /// Если пусто — проверка не выполняется.
+    /// </summary>
+    [DataField]
+    public Dictionary<ProtoId<DepartmentPrototype>, int> DepartmentPlayerLimits = new();
 }

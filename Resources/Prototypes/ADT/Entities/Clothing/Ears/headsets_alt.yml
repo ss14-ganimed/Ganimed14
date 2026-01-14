@@ -12,6 +12,12 @@
     containers:
       key_slots:
       - EncryptionKeyStationMaster
-  - type: Headset
-    radioTextIncrease: 3
-  # ganimed edit end
+
+- type: entity
+  abstract: true
+  parent: ClothingHeadsetAlt
+  id: ADTClothingHeadsetAltLoudspeaker
+  components:
+  - type: Loudspeaker
+    canToggle: true
+    affectRadio: true

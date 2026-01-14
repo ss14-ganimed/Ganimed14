@@ -51,7 +51,7 @@
     earliestStart: 20 # Corax-MRP # 15
     weight: 6
     duration: 50
-    minimumPlayers: 30 # Hopefully this is enough for the Rat King's potential Army (it was not, raised from 15 -> 30)
+    minimumPlayers: 20 # Hopefully this is enough for the Rat King's potential Army (it was not, raised from 15 -> 30) # Ganimed Tweak (30 -> 20)
   - type: VentCrittersRule
     entries:
     - id: MobMouse

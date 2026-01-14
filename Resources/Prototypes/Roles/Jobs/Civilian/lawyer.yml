@@ -17,7 +17,7 @@
     #ADT tweak end
   startingGear: LawyerGear
   icon: "JobIconLawyer"
-  supervisors: job-supervisors-magistrat #Ganimed-Tweak
+  supervisors: job-supervisors-magistrate # Ganimed-Tweak
   access:
   - Service
   - Lawyer

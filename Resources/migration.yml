@@ -841,3 +841,6 @@ GhostBarSpawner: null
 
 # Ganimed 2025-11-03
 ADTDrinkBeerCanPack: null
+
+# Ganimed 2026-01-04
+ADTClothingNeckShockCollar: ClothingBackpackElectropack

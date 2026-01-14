@@ -3,7 +3,7 @@
   mapName: 'Reach'
   mapPath: /Maps/ADTMaps/ADTStations/adt_reach.yml
   minPlayers: 0
-  maxPlayers: 20
+  maxPlayers: 10 # Ganimed-Tweak (20 -> 10)
   stations:
     ADT_Reach:
       stationProto: StandardNanotrasenStation
