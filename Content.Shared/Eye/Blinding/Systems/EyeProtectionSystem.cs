@@ -3,6 +3,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Tools.Components;
 using Content.Shared.Item.ItemToggle.Components;
+using Content.Shared.Clothing;
 
 namespace Content.Shared.Eye.Blinding.Systems
 {
@@ -19,6 +20,7 @@ namespace Content.Shared.Eye.Blinding.Systems
 
             SubscribeLocalEvent<EyeProtectionComponent, GetEyeProtectionEvent>(OnGetProtection);
             SubscribeLocalEvent<EyeProtectionComponent, InventoryRelayedEvent<GetEyeProtectionEvent>>(OnGetRelayedProtection);
+            SubscribeLocalEvent<EyeProtectionComponent, ItemMaskToggledEvent>(OnMaskToggled);
         }
 
         private void OnGetRelayedProtection(EntityUid uid, EyeProtectionComponent component,
@@ -29,7 +31,8 @@ namespace Content.Shared.Eye.Blinding.Systems
 
         private void OnGetProtection(EntityUid uid, EyeProtectionComponent component, GetEyeProtectionEvent args)
         {
-            args.Protection += component.ProtectionTime;
+            if (component.Enabled)
+                args.Protection += component.ProtectionTime;
         }
 
         private void OnUseAttempt(EntityUid uid, RequiresEyeProtectionComponent component, ToolUseAttemptEvent args)
@@ -58,6 +61,12 @@ namespace Content.Shared.Eye.Blinding.Systems
         {
             component.Toggled = args.Activated;
             Dirty(uid, component);
+        }
+
+        private void OnMaskToggled(Entity<EyeProtectionComponent> ent, ref ItemMaskToggledEvent args)
+        {
+            ent.Comp.Enabled = !args.Mask.Comp.IsToggled;
+            Dirty(ent);
         }
     }
 }
