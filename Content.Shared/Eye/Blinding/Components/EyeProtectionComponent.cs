@@ -1,4 +1,4 @@
-using Robust.Shared.GameStates;
+using Robust.Shared.GameStates; // Ganimed edit
 
 namespace Content.Shared.Eye.Blinding.Components;
 
@@ -16,6 +16,7 @@ public sealed partial class EyeProtectionComponent : Component
     public TimeSpan ProtectionTime = TimeSpan.FromSeconds(10);
 
     /// <summary>
+    /// Ganimed edit
     /// Is this component currently providing protection.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
