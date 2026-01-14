@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingHeadsetAlt # ganimed edit 
+  parent: ClothingHeadsetAlt # ganimed edit
   id: ADTClothingHeadsetAltBlueshield
   name: blueshield over-ear headset
   components:
@@ -12,6 +12,4 @@
     containers:
       key_slots:
       - EncryptionKeyStationMaster
-  - type: Headset
-    radioTextIncrease: 3
   # ganimed edit end
