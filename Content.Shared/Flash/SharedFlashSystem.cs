@@ -1,6 +1,5 @@
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
-using Content.Shared.Clothing; // Ganimed edit
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Flash.Components;
@@ -61,7 +60,6 @@ public abstract class SharedFlashSystem : EntitySystem
         SubscribeLocalEvent<TemporaryBlindnessComponent, FlashAttemptEvent>(OnTemporaryBlindnessFlashAttempt);
         Subs.SubscribeWithRelay<FlashImmunityComponent, FlashAttemptEvent>(OnFlashImmunityFlashAttempt, held: false);
         SubscribeLocalEvent<FlashImmunityComponent, ExaminedEvent>(OnExamine);
-        SubscribeLocalEvent<FlashImmunityComponent, ItemMaskToggledEvent>(OnMaskToggled); // Ganimed edit
 
         _statusEffectsQuery = GetEntityQuery<StatusEffectsComponent>();
         _damagedByFlashingQuery = GetEntityQuery<DamagedByFlashingComponent>();
@@ -271,12 +269,4 @@ public abstract class SharedFlashSystem : EntitySystem
         }
         // ADT-Tweak-End
     }
-
-    // Ganimed edit start
-    private void OnMaskToggled(Entity<FlashImmunityComponent> ent, ref ItemMaskToggledEvent args)
-    {
-        ent.Comp.Enabled = !args.Mask.Comp.IsToggled;
-        Dirty(ent);
-    }
-    // Ganimed edit end
 }
