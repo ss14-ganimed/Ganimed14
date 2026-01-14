@@ -4,6 +4,7 @@ using Content.Shared.Gravity;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
+using Content.Shared.Parallax.Biomes;
 using Content.Shared.Popups;
 using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
@@ -155,15 +156,28 @@ public abstract class SharedJetpackSystem : EntitySystem
 
     private bool CanEnableOnGrid(EntityUid? gridUid)
     {
-        // No and no again! Do not attempt to activate the jetpack on a grid with gravity disabled. You will not be the first or the last to try this.
-        // https://discord.com/channels/310555209753690112/310555209753690112/1270067921682694234
-
-        // ADT Tweak start
-        if (gridUid == null || !TryComp<GravityComponent>(gridUid, out var comp))
+        // Ganimed edit start
+        if (gridUid == null)
             return true;
 
-        return !comp.Enabled;
-        // ADT Tweak End
+        // Get the map UID from the grid's transform
+        if (!TryComp<TransformComponent>(gridUid, out var transform) || transform.MapUid == null)
+            return true;
+
+        var mapUid = transform.MapUid.Value;
+
+        // If the map is a biome
+        if (TryComp<BiomeComponent>(mapUid, out _))
+        {
+            // Allow only if the map's gravity is disabled
+            if (TryComp<GravityComponent>(mapUid, out var mapGravity))
+                return !mapGravity.Enabled;
+            return true; // No gravity component on map, allow
+        }
+
+        // For no - biome maps (stations), disallow
+        return false;
+        // Ganimed edit end
     }
 
     private void OnJetpackGetAction(EntityUid uid, JetpackComponent component, GetItemActionsEvent args)
