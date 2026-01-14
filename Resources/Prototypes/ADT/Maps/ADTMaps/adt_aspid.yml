@@ -2,7 +2,7 @@
   id: ADT_Aspid
   mapName: 'Aspid'
   mapPath: /Maps/ADTMaps/ADTStations/adt_aspid.yml
-  minPlayers: 20
+  minPlayers: 15 # Ganimed-Tweak (20 -> 15)
   maxPlayers: 40
   stations:
     ADT_Aspid:

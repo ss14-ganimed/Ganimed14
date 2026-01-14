@@ -13,3 +13,12 @@
       key_slots:
       - EncryptionKeyStationMaster
   # ganimed edit end
+
+- type: entity
+  abstract: true
+  parent: ClothingHeadsetAlt
+  id: ADTClothingHeadsetAltLoudspeaker
+  components:
+  - type: Loudspeaker
+    canToggle: true
+    affectRadio: true

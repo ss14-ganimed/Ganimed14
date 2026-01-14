@@ -3,7 +3,7 @@
   mapName: 'Delta Station'
   mapPath: /Maps/ADTMaps/ADTStations/adt_delta.yml
   maxRandomOffset: 0
-  minPlayers: 55
+  minPlayers: 40 # Ganimed-Tweak (55 -> 40)
   stations:
     Delta:
       stationProto: StandardNanotrasenStation

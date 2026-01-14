@@ -2,7 +2,7 @@
   id: ADT_Fland
   mapName: 'Fland Installation'
   mapPath: /Maps/ADTMaps/ADTStations/adt_fland.yml
-  minPlayers: 60
+  minPlayers: 45 # Ganimed-Tweak (60 -> 45)
   stations:
     ADT_Fland:
       stationProto: StandardNanotrasenStation
