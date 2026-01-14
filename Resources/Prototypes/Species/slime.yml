@@ -109,7 +109,7 @@
   id: MobSlimeTorso
   baseSprite:
     sprite: Mobs/Species/Slime/parts.rsi
-    state: torso_m
+    state: torso # Ganimed-Edit: Species lore (torso_m)
 
 - type: humanoidBaseSprite
   id: MobSlimeTorsoMale
