@@ -715,7 +715,7 @@
   - ChiefMedicalOfficerJumpsuit
   - MedicalGloves
   - MedicalBackpack
-  - ChiefMedicalOfficerBelt # ADT tweak
+  - ChiefMedicalOfficerBelt # Ganimed-Loadouts-Edit (ADTMedicalBelt)
   - ChiefMedicalOfficerOuterClothing
   - ChiefMedicalOfficerNeck
   - ADTChiefMedicalOfficerEars # ADT tweak
@@ -788,7 +788,7 @@
   - ChemistJumpsuit
   - MedicalGloves
   - ChemistBackpack
-  - ChemistGlasses # Ganimed-Loadouts-Edit (MedicalEyewear)
+  - ChemistGlasses # Ganimed-Loadouts-Add
   - ChemistOuterClothing
   - ChemistBelt # Ganimed-Loadouts-Add
   - ChemistShoes # Ganimed-Loadouts-Edit (MedicalShoes)
@@ -884,7 +884,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
-  - GroupSpeciesBreathToolMedical
+  - GroupSpeciesBreathToolMedical # Ganimed-Loadouts-Edit (GroupSpeciesBreathTool)
   - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout

@@ -514,7 +514,7 @@
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitDarkLight
   name: dark and light suit
-  description: Light trousers and a black shirt flip the classic style upside-down.
+  description: Ivory trousers and a black shirt flip the classic style upside-down.
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/black-white.rsi
