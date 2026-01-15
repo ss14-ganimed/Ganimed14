@@ -69,7 +69,7 @@
   maxLimit: 1
   loadouts:
   - ADTClothingHeadsetCargo
-  - HeadsetMining # Ganimed-Loadouts
+  - HeadsetMining # Ganimed-Loadouts-Edit (ADTClothingHeadsetMining)
 
 # MAGISTRATE
 
@@ -165,6 +165,12 @@
   - PathologJumpskirt
   - PathologJumpsuitAlt
   - PathologJumpskirtAlt
+  # Ganimed-Loadouts-Add-Start
+  - CoronerJumpsuit
+  - CoronerJumpskirt
+  - BlackCoronerJumpsuit
+  - BlackCoronerJumpskirt
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: PathologBackpack
@@ -184,6 +190,7 @@
   loadouts:
   - PathologWindbreaker
   - ADTPathologWindbreakerAlt
+  - CoronerLabCoat # Ganimed-Loadouts-Add
   - PathologWintercoat
   - PathologApron
 
@@ -194,8 +201,8 @@
   maxLimit: 1
   loadouts:
   - BlueShoes
-  - WhiteShoes # Ganimed-Loadouts
-  - BlackShoes # Ganimed-Loadouts
+  - WhiteShoes # Ganimed-Loadouts-Add
+  - BlackShoes # Ganimed-Loadouts-Add
   - MedicalWinterBoots
 
 - type: loadoutGroup
@@ -204,9 +211,9 @@
   minLimit: 1
   maxLimit: 1
   loadouts:
-  - MedicalBeltTopical # Ganimed-Loadouts
-  - MedicalBeltSurgical # Ganimed-Loadouts
-  - MedicalBeltMedication # Ganimed-Loadouts
+  - MedicalBeltTopical # Ganimed-Loadouts-Edit (ADTMedicalBelt)
+  - MedicalBeltSurgical # Ganimed-Loadouts-Add
+  - MedicalBeltMedication # Ganimed-Loadouts-Add
   - ADTMedicalBeltBag
 
 # PARAMEDIC
@@ -240,7 +247,7 @@
   loadouts:
   - SeniorOfficerJumpsuit
   - SeniorOfficerJumpskirt
-  - TrooperUniform # Ganimed-Loadouts
+  - TrooperUniform # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ADTSeniorOfficerBackpack
@@ -260,14 +267,15 @@
   loadouts:
   - ArmorVest
   - ArmorVestSlim
+  # - SecurityOfficerWintercoat # Ganimed-Loadouts-Remove
   - ADTSeniorOfficerArmor
   - ADTArmorVestHidden
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - ArmorVestReflective
   - SecurityOvercoat
   - SecurityOfficerGreatcoat
   - SeniorOfficerWintercoat
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
   - ADTCoatSecurity
 
 # SENIOR PHYSICIAN
@@ -296,7 +304,7 @@
   minLimit: 0
   loadouts:
   - SeniorPhysicianLabCoat
-  - SeniorPhysicianWintercoat # Ganimed-Loadouts
+  - SeniorPhysicianWintercoat # Ganimed-Loadouts-Add
 
 # ROBOTICIST
 
@@ -306,12 +314,12 @@
   minLimit: 0
   loadouts:
   - RoboticistCap
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - SkullBandana
   # - ScientificBeret
   - WeldingMaskFlame
   - WeldingMaskBlueFlame
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: RoboticistJumpsuit
@@ -320,10 +328,10 @@
   loadouts:
   - RoboticistJumpsuit
   - RoboticistJumpskirt
-  # - ADTClothingUniformJumpsuitTurtleneckBlack # Ganimed-Loadouts
-  # - ADTClothingUniformJumpskirtTurtleneckBlack # Ganimed-Loadouts
-  # - ADTClothingUniformJumpsuitTurtleneckRed # Ganimed-Loadouts
-  # - ADTClothingUniformJumpskirtTurtleneckRed # Ganimed-Loadouts
+  # - ADTClothingUniformJumpsuitTurtleneckBlack # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpskirtTurtleneckBlack # Ganimed-Loadouts-Remove
+  # - ADTClothingUniformJumpsuitTurtleneckRed # Ganimed-Loadouts-Remove
+  # - ADTClothingUniformJumpskirtTurtleneckRed # Ganimed-Loadouts-Remove
 
 - type: loadoutGroup
   id: RoboticistOuterClothing
@@ -332,7 +340,7 @@
   loadouts:
   - RoboticistWintercoat
   - RoboticistLabCoat
-  - RoboticistOriginalLabCoat # Ganimed-Loadouts
+  - RoboticistOriginalLabCoat # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: RobohandsGloves
@@ -351,7 +359,7 @@
   minLimit: 0
   loadouts:
   - SeniorEngineerBeret
-  - StationEngineerHardhatOrange # Ganimed-Loadouts
+  - StationEngineerHardhatOrange # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ADTSeniorEngineerJumpsuit
@@ -379,7 +387,7 @@
   loadouts:
   - SeniorResearcherJumpsuit
   - SeniorResearcherJumpskirt
-  - FormalScientistJumpsuit # Ganimed-Loadouts
+  - FormalScientistJumpsuit # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ADTSeniorResearcherGloves
@@ -397,13 +405,13 @@
   loadouts:
   - SeniorResearcherLabCoat
   - ADTOuterClothingCoatsCrazySci
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - SeniorResearcherWintercoat
   - ScientistBioSuit
   - RadSuit
   - ScienceBombSuit
   - ScienceFireSuit
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 # BLUESHIELD
 
@@ -463,6 +471,7 @@
   minLimit: 0
   loadouts:
   # - ADTWardenNeck
+  - NeckBinoculars # Ganimed-Loadouts-Add
   - ADTNeckSecBadgeBronze
   - ADTNeckSecBadgeSilver
   - ADTNeckSecBadgeGold
@@ -512,8 +521,8 @@
   name: loadout-group-atmospheric-technician-head
   minLimit: 0
   loadouts:
-  - StationEngineerHardhatYellowDark # Ganimed-Loadouts
-  - StationEngineerHardhatBlue # Ganimed-Loadouts
+  - StationEngineerHardhatYellowDark # Ganimed-Loadouts-Add
+  - StationEngineerHardhatBlue # Ganimed-Loadouts-Add
   - ADTHatBeretAtmos
 
 # ENGINEER
@@ -548,13 +557,13 @@
   - ADTUniformJumpskirtBrigmedic
   - ADTUniformBrigmedicJumpsuitTurtleneck
   - ADTUniformSkirtBrigmedicJumpskirtTurtleneck
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - OriginalBrigmedicJumpsuit
   - OriginalBrigmedicJumpskirt
   - BlackBrigmedicJumpsuit
   - BlackBrigmedicJumpskirt
   - JumpskirtOfLife
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
   #head
 - type: loadoutGroup
@@ -564,10 +573,10 @@
   maxLimit: 1
   loadouts:
   - ADTHeadHatBeretBrigmedic
-  - BrigmedicSecurityHat # Ganimed-Loadouts
-  - BrigmedicHat # Ganimed-Loadouts
+  - BrigmedicSecurityHat # Ganimed-Loadouts-Add
+  - BrigmedicHat # Ganimed-Loadouts-Add
   - ADTHeadHelmetSecurityMedic
-  - CorpsmanHelmet # Ganimed-Loadouts
+  - CorpsmanHelmet # Ganimed-Loadouts-Add
 
   #neck
 - type: loadoutGroup
@@ -580,7 +589,7 @@
   - ADTNeckSecBadgeBronze
   - ADTNeckSecBadgeSilver
   - ADTNeckSecBadgeGold
-  - BrigmedicBedsheet # Ganimed-Loadouts
+  - BrigmedicBedsheet # Ganimed-Loadouts-Add
 
   #back
 - type: loadoutGroup
@@ -607,13 +616,14 @@
 - type: loadoutGroup
   id: ADTBrigmedicEyes
   name: loadout-brigmedic-glasses-adt
-  minLimit: 1 # Ganimed-Loadouts
+  minLimit: 1 # Ganimed-Loadouts-Tweak (0 to 1)
   maxLimit: 1
   loadouts:
-  - MedicalHud # Ganimed-Loadouts
-  - MedicalEyePatchHud # Ganimed-Loadouts
-  - MedSecHud # Ganimed-Loadouts
+  - MedicalHud # Ganimed-Loadouts-Add
+  - MedicalEyePatchHud # Ganimed-Loadouts-Add
+  - MedSecHud # Ganimed-Loadouts-Add
   - ADTEyesGlassesMed
+  # - ADTEyesGlassesSecurity # Ganimed-Loadouts-Remove
 
   # belts
 - type: loadoutGroup
@@ -622,9 +632,9 @@
   minLimit: 1
   maxLimit: 1
   loadouts:
-  - ADTMedicalBelt
+  - ADTMedicalBelt # Ganimed-Loadouts-Edit (ADTBeltMedicalFilled)
   - ADTMedicalBeltBag
-  - CorpsmanWebbing # Ganimed-Loadouts
+  - CorpsmanWebbing # Ganimed-Loadouts-Add
 
   # outerwear
 - type: loadoutGroup
@@ -633,12 +643,12 @@
   minLimit: 0
   maxLimit: 1
   loadouts:
-  - BrigmedicCoatAMG # Ganimed-Loadouts
+  - BrigmedicCoatAMG # Ganimed-Loadouts-Add
   - ADTOuterCoatLabSecurityMedic
   - ADTOuterCoatBrigmedicWB
   - ADTOuterVestSecurityMedic
-  - BrigmedicVestArmor # Ganimed-Loadouts
-  - SecurityBioSuit # Ganimed-Loadouts
+  - BrigmedicVestArmor # Ganimed-Loadouts-Add
+  - SecurityBioSuit # Ganimed-Loadouts-Add
 
 ## повар
 
@@ -650,6 +660,7 @@
   loadouts:
   - ADTWhiteGloves
   - ADTRedGloves
+  - BlackNitrileGloves # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ADTChefNeck
@@ -722,9 +733,9 @@
   maxLimit: 1
   loadouts:
   - ADTClothingUniformJumpsuitSalvageSpecialist
-  - GrimySalvageJumpsuit # Ganimed-Loadouts
-  - ADTUniformJumpsuitExplorer # Ganimed-Loadouts
-  - ExplorersJumpsuit # Ganimed-Loadouts
+  - GrimySalvageJumpsuit # Ganimed-Loadouts-Add
+  - ADTUniformJumpsuitExplorer # Ganimed-Loadouts-Add
+  - ExplorersJumpsuit # Ganimed-Loadouts-Add
 
 # ШАХТЁР
 - type: loadoutGroup
@@ -802,8 +813,8 @@
   minLimit: 0
   maxLimit: 1
   loadouts:
-  - MinerCloak # Ganimed-Loadouts
-  - GoliathCloak # Ganimed-Loadouts
+  - MinerCloak # Ganimed-Loadouts-Add
+  - GoliathCloak # Ganimed-Loadouts-Add
   - ADTNeckSalvageSpecialistCCape
   - ADTNeckSalvageSpecialistSCape
   - ADTNeckSalvageSpecialistGCape
@@ -824,10 +835,10 @@
   - JackBoots
   - SecurityWinterBoots
   - ADTDetectiveBootsOld
-  - BrownShoes # Ganimed-Loadouts
-  - LeatherShoesWhitelisted # Ganimed-Loadouts
-  - LaceupShoesWhitelisted # Ganimed-Loadouts
-  - GreenLizardskinShoes # Ganimed-Loadouts
+  - BrownShoes # Ganimed-Loadouts-Add
+  - LeatherShoesWhitelisted # Ganimed-Loadouts-Add
+  - LaceupShoesWhitelisted # Ganimed-Loadouts-Add
+  - GreenLizardskinShoes # Ganimed-Loadouts-Add
   - ADTFootWrapsW
   - ADTFootWrapsHighW
   - ADTFootWrapsBr
@@ -932,6 +943,7 @@
   loadouts:
   - ADTBlackGloves
   - ADTWhiteGloves
+  - BlackNitrileGloves # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ADTServiceWorkerJumpsuit
@@ -949,8 +961,8 @@
   minLimit: 0
   maxLimit: 1
   loadouts:
-  - TacticalHeadband # Ganimed-Loadouts
-  - Casa # Ganimed-Loadouts
+  - BoxerTacticalHeadband # Ganimed-Loadouts-Add
+  - BoxerCasa # Ganimed-Loadouts-Add
   - ADTClothingHeadHatGladiator
 
 # Alts PDA start
@@ -1115,7 +1127,7 @@
 #  maxLimit: 1
 #  loadouts:
 #  - HoSPDA
-#  - ADTSheriffPDA #Ganimed-MRP
+#  - ADTSheriffPDA # Ganimed-Loadouts-Remove
 
 - type: loadoutGroup
   id: ADTlawyerID
@@ -1231,7 +1243,7 @@
   - ADTUnderwearPantiesLaceBlack
   - ADTUnderwearMonokiniWhite
   - ADTUnderwearMonokiniBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteUnderpants
   - BlackUnderpants
   - BrownUnderpants
@@ -1268,7 +1280,7 @@
   - FlowersPanties
   - NekoPanties
   - ClothStrappingUnderpants
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTTop
@@ -1289,7 +1301,7 @@
   - ADTUnderwearBraLaceBlack
   - ADTUnderwearTopMonokiniWhite
   - ADTUnderwearTopMonokiniBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteShirt
   - BlackShirt
   - BrownShirt
@@ -1324,7 +1336,7 @@
   - FlowersBrassiere
   - NekoBrassiere
   - ClothBinderBrassiere
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTSocks
@@ -1393,7 +1405,7 @@
   - ADTUnderwearSocksKneeThin
   - ADTUnderwearSocksThighThin
   - ADTUnderwearSocksThighPantyhose
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - BlackSocks
   - WhiteSocks
   - BrownSocks
@@ -1410,7 +1422,7 @@
   - NekoStockings
   - LightBlueStripedStockings
   - ClothFootWraps
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 ## Бельё для клоуна и мима
 
@@ -1480,7 +1492,7 @@
   - ADTUnderwearSocksYellow
   - ADTUnderwearSocksKneeYellow
   - ADTUnderwearSocksThighYellow
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - BlackSocks
   - WhiteSocks
   - BrownSocks
@@ -1497,7 +1509,7 @@
   - NekoStockings
   - LightBlueStripedStockings
   - ClothFootWraps
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTSocksMime
@@ -1564,7 +1576,7 @@
   - ADTUnderwearSocksYellow
   - ADTUnderwearSocksKneeYellow
   - ADTUnderwearSocksThighYellow
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - BlackSocks
   - WhiteSocks
   - BrownSocks
@@ -1581,7 +1593,7 @@
   - NekoStockings
   - LightBlueStripedStockings
   - ClothFootWraps
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 ## Бельё для глав
 
@@ -1605,7 +1617,7 @@
   - ADTUnderwearPantiesLaceBlue
   - ADTUnderwearPantiesLaceRed
   - ADTUnderwearPantiesLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteUnderpants
   - BlackUnderpants
   - BrownUnderpants
@@ -1642,7 +1654,7 @@
   - FlowersPanties
   - NekoPanties
   - ClothStrappingUnderpants
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTBottomRD
@@ -1662,7 +1674,7 @@
   - ADTUnderwearPantiesLaceBlue
   - ADTUnderwearPantiesLaceRed
   - ADTUnderwearPantiesLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteUnderpants
   - BlackUnderpants
   - BrownUnderpants
@@ -1699,7 +1711,7 @@
   - FlowersPanties
   - NekoPanties
   - ClothStrappingUnderpants
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTBottomCap
@@ -1719,7 +1731,7 @@
   - ADTUnderwearPantiesLaceBlue
   - ADTUnderwearPantiesLaceRed
   - ADTUnderwearPantiesLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteUnderpants
   - BlackUnderpants
   - BrownUnderpants
@@ -1756,7 +1768,7 @@
   - FlowersPanties
   - NekoPanties
   - ClothStrappingUnderpants
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTBottomHOP
@@ -1776,7 +1788,7 @@
   - ADTUnderwearPantiesLaceBlue
   - ADTUnderwearPantiesLaceRed
   - ADTUnderwearPantiesLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteUnderpants
   - BlackUnderpants
   - BrownUnderpants
@@ -1813,7 +1825,7 @@
   - FlowersPanties
   - NekoPanties
   - ClothStrappingUnderpants
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTBottomHOS
@@ -1833,7 +1845,7 @@
   - ADTUnderwearPantiesLaceBlue
   - ADTUnderwearPantiesLaceRed
   - ADTUnderwearPantiesLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteUnderpants
   - BlackUnderpants
   - BrownUnderpants
@@ -1870,7 +1882,7 @@
   - FlowersPanties
   - NekoPanties
   - ClothStrappingUnderpants
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTBottomCMO
@@ -1890,7 +1902,7 @@
   - ADTUnderwearPantiesLaceBlue
   - ADTUnderwearPantiesLaceRed
   - ADTUnderwearPantiesLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteUnderpants
   - BlackUnderpants
   - BrownUnderpants
@@ -1927,7 +1939,7 @@
   - FlowersPanties
   - NekoPanties
   - ClothStrappingUnderpants
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTBottomCE
@@ -1947,7 +1959,7 @@
   - ADTUnderwearPantiesLaceBlue
   - ADTUnderwearPantiesLaceRed
   - ADTUnderwearPantiesLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteUnderpants
   - BlackUnderpants
   - BrownUnderpants
@@ -1984,7 +1996,7 @@
   - FlowersPanties
   - NekoPanties
   - ClothStrappingUnderpants
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTBottomBlueshield
@@ -2004,7 +2016,7 @@
   - ADTUnderwearPantiesLaceBlue
   - ADTUnderwearPantiesLaceRed
   - ADTUnderwearPantiesLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteUnderpants
   - BlackUnderpants
   - BrownUnderpants
@@ -2041,7 +2053,7 @@
   - FlowersPanties
   - NekoPanties
   - ClothStrappingUnderpants
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 ### Топ
 
@@ -2063,7 +2075,7 @@
   - ADTUnderwearBraLaceBlue
   - ADTUnderwearBraLaceRed
   - ADTUnderwearBraLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteShirt
   - BlackShirt
   - BrownShirt
@@ -2098,7 +2110,7 @@
   - FlowersBrassiere
   - NekoBrassiere
   - ClothBinderBrassiere
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTTopRD
@@ -2118,7 +2130,7 @@
   - ADTUnderwearBraLaceBlue
   - ADTUnderwearBraLaceRed
   - ADTUnderwearBraLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteShirt
   - BlackShirt
   - BrownShirt
@@ -2153,7 +2165,7 @@
   - FlowersBrassiere
   - NekoBrassiere
   - ClothBinderBrassiere
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTTopCap
@@ -2173,7 +2185,7 @@
   - ADTUnderwearBraLaceBlue
   - ADTUnderwearBraLaceRed
   - ADTUnderwearBraLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteShirt
   - BlackShirt
   - BrownShirt
@@ -2208,7 +2220,7 @@
   - FlowersBrassiere
   - NekoBrassiere
   - ClothBinderBrassiere
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTTopHOP
@@ -2228,7 +2240,7 @@
   - ADTUnderwearBraLaceBlue
   - ADTUnderwearBraLaceRed
   - ADTUnderwearBraLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteShirt
   - BlackShirt
   - BrownShirt
@@ -2263,7 +2275,7 @@
   - FlowersBrassiere
   - NekoBrassiere
   - ClothBinderBrassiere
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTTopHOS
@@ -2282,7 +2294,7 @@
   - ADTUnderwearBraLaceBlue
   - ADTUnderwearBraLaceRed
   - ADTUnderwearBraLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteShirt
   - BlackShirt
   - BrownShirt
@@ -2317,7 +2329,7 @@
   - FlowersBrassiere
   - NekoBrassiere
   - ClothBinderBrassiere
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTTopCMO
@@ -2337,7 +2349,7 @@
   - ADTUnderwearBraLaceBlue
   - ADTUnderwearBraLaceRed
   - ADTUnderwearBraLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteShirt
   - BlackShirt
   - BrownShirt
@@ -2372,7 +2384,7 @@
   - FlowersBrassiere
   - NekoBrassiere
   - ClothBinderBrassiere
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTTopCE
@@ -2392,7 +2404,7 @@
   - ADTUnderwearBraLaceBlue
   - ADTUnderwearBraLaceRed
   - ADTUnderwearBraLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteShirt
   - BlackShirt
   - BrownShirt
@@ -2427,7 +2439,7 @@
   - FlowersBrassiere
   - NekoBrassiere
   - ClothBinderBrassiere
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTTopBlueshield
@@ -2447,7 +2459,7 @@
   - ADTUnderwearBraLaceBlue
   - ADTUnderwearBraLaceRed
   - ADTUnderwearBraLaceBlack
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - WhiteShirt
   - BlackShirt
   - BrownShirt
@@ -2482,7 +2494,7 @@
   - FlowersBrassiere
   - NekoBrassiere
   - ClothBinderBrassiere
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 ### Носки, гольфы и чулки
 
@@ -2552,7 +2564,7 @@
   - ADTUnderwearSocksYellow
   - ADTUnderwearSocksKneeYellow
   - ADTUnderwearSocksThighYellow
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - BlackSocks
   - WhiteSocks
   - BrownSocks
@@ -2569,7 +2581,7 @@
   - NekoStockings
   - LightBlueStripedStockings
   - ClothFootWraps
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 
 - type: loadoutGroup
@@ -2639,7 +2651,7 @@
   - ADTUnderwearSocksYellow
   - ADTUnderwearSocksKneeYellow
   - ADTUnderwearSocksThighYellow
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - BlackSocks
   - WhiteSocks
   - BrownSocks
@@ -2656,7 +2668,7 @@
   - NekoStockings
   - LightBlueStripedStockings
   - ClothFootWraps
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTSocksHOS
@@ -2725,7 +2737,7 @@
   - ADTUnderwearSocksYellow
   - ADTUnderwearSocksKneeYellow
   - ADTUnderwearSocksThighYellow
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - BlackSocks
   - WhiteSocks
   - BrownSocks
@@ -2742,7 +2754,7 @@
   - NekoStockings
   - LightBlueStripedStockings
   - ClothFootWraps
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ADTSocksCaptain
@@ -2811,7 +2823,7 @@
   - ADTUnderwearSocksYellow
   - ADTUnderwearSocksKneeYellow
   - ADTUnderwearSocksThighYellow
-  # Ganimed-Loadouts-Start
+  # Ganimed-Loadouts-Add-Start
   - BlackSocks
   - WhiteSocks
   - BrownSocks
@@ -2828,7 +2840,7 @@
   - NekoStockings
   - LightBlueStripedStockings
   - ClothFootWraps
-  # Ganimed-Loadouts-End
+  # Ganimed-Loadouts-Add-End
 
 # ОЧЕНЬ ПРОШУ ДЕЛАТЬ НОВЫЕ ГРУППЫ НАД НИЖНИМ БЕЛЬЁМ А НЕ ПОД НИМ. ИНАЧЕ Я ЁЖИКОВ НА ВАС НАТРАВЛЮ И ВАМ КАПУТ.
 # Н А Д Е Ю С Ь  В Ы  М Е Н Я  У С Л Ы Ш А Л И ! ! !

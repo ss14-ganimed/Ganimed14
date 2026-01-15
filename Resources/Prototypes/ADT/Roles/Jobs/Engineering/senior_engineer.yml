@@ -32,6 +32,6 @@
 - type: chameleonOutfit
   id: ADTSeniorEngineerChameleonOutfit
   job: ADTSeniorEngineer
-  hasMindShield: true
+  hasMindShield: false # Ganimed-Edit
   equipment:
     ears: ClothingHeadsetEngineering

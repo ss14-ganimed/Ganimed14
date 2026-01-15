@@ -80,11 +80,13 @@ loadout-group-chief-medical-officer-belt = Пояс главного врача
 loadout-group-senior-physician-glasses = Очки заведующего
 loadout-group-senior-physician-neck = Заведующий, шея
 loadout-group-senior-physician-backpack = Рюкзак заведующего
+loadout-group-senior-physician-shoes = Обувь заведующего
 loadout-group-medical-doctor-neck = Врач, шея
 loadout-group-medical-doctor-headset = Медицинская гарнитура
 loadout-group-medical-doctor-glasses = Очки врача
 loadout-group-medical-doctor-belt = Пояс медика
 loadout-group-chemist-glasses = Очки химика
+loadout-group-chemist-belt = Пояс химика
 loadout-group-chemist-shoes = Обувь химика
 # Wildcards
 loadout-group-psychologist-shoes = Обувь психолога

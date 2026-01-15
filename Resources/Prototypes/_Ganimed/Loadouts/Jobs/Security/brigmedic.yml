@@ -33,7 +33,7 @@
   equipment:
     neck: BedsheetBrigmedic
 
-# JumpSuit
+# Jumpsuit
 - type: loadout
   id: OriginalBrigmedicJumpsuit
   equipment:

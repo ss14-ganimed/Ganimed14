@@ -1,3 +1,9 @@
+# Head
+- type: loadout
+  id: HeadPlunger
+  equipment:
+    head: Plunger
+
 # Jumpsuit
 - type: loadout # TODO: Whitelist restriction
   id: JanimaidUniform

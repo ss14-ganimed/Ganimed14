@@ -50,9 +50,9 @@
   equipment:
     id: QuartermasterPDA
     # ears: ClothingHeadsetQM # ADT tweak
-    # belt: BoxFolderClipboard # Ganimed-Loadouts
+    # belt: BoxFolderClipboard # Ganimed-Loadouts-Remove (Loadout choice)
     pocket1: AppraisalTool
-#  storage: # Ganimed-Loadouts
+#  storage: # Ganimed-Loadouts-Remove (Loadout choice)
 #    back:
 #    - Flash
 #    - ADTtelescopicBaton #ADT-CustomADTLoadout

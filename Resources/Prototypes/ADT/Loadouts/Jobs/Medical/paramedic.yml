@@ -2,7 +2,7 @@
   id: ADTParamedicBeret
   equipment:
     head: ADTClothingHeadHatsParamedicBeret
-  effects: # Ganimed-Loadouts
+  effects: # Ganimed-Loadouts-Add
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement

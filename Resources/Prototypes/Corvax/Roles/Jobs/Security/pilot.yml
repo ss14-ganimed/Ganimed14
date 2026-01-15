@@ -32,7 +32,7 @@
 - type: startingGear
   id: PilotGear
   equipment:
-    # eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts
+    # eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts-Remove (Loadout choice)
     id: PilotPDA
     ears: ClothingHeadsetSecurity
     neck: ClothingNeckTieRed

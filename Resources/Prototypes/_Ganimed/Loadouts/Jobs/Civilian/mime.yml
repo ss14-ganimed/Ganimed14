@@ -1,5 +1,5 @@
 # Mask
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: MimeMaskBlushing
   equipment:
     mask: ClothingMaskBlushingMime

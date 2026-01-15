@@ -87,6 +87,7 @@
     - SmokingPipeFilledTobacco
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "smokeables"
 
 # Flasks
 - type: loadout
@@ -116,6 +117,7 @@
   storage:
     back:
     - GlowstickBase
+  groupBy: "glowsticks"
 
 - type: loadout
   id: GlowstickYellow
@@ -126,6 +128,7 @@
   storage:
     back:
     - GlowstickYellow
+  groupBy: "glowsticks"
 
 - type: loadout
   id: GlowstickRed
@@ -136,6 +139,7 @@
   storage:
     back:
     - GlowstickRed
+  groupBy: "glowsticks"
 
 - type: loadout
   id: GlowstickPurple
@@ -146,6 +150,7 @@
   storage:
     back:
     - GlowstickPurple
+  groupBy: "glowsticks"
 
 - type: loadout
   id: GlowstickBlue
@@ -156,3 +161,4 @@
   storage:
     back:
     - GlowstickBlue
+  groupBy: "glowsticks"

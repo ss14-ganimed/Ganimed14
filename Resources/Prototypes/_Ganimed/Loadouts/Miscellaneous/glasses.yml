@@ -4,6 +4,16 @@
   equipment:
     eyes: ClothingEyesGlassesCheapSunglasses
 
+# Aviator Sunglasses
+- type: loadout
+  id: SunglassesAviator
+  equipment:
+    eyes: ClothingEyesGlassesSunglassesAviator
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Security
+
 # Eyepatch
 - type: loadout
   id: Eyepatch

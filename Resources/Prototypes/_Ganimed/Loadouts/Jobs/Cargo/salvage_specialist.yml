@@ -42,6 +42,8 @@
   id: ExplorersJumpsuit
   equipment:
     jumpsuit: ADTClothingUniformJumpsuitKringeClothing
+  effects:
+  - !type:SponsorLoadoutEffect
 
 # Neck
 - type: loadout # TODO: Whitelist restriction

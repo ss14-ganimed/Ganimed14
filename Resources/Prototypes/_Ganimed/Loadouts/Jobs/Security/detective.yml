@@ -76,7 +76,7 @@
 - type: loadout
   id: DetectiveShoulderHolster
   equipment:
-    belt: ClothingBeltHolster
+    belt: ClothingBeltHolster # Not filled because contents should be in startinggear
 
 - type: loadout
   id: ExtraShoulderHolster
@@ -86,6 +86,11 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ForensicExpert
+
+- type: loadout
+  id: DetectiveRevolverHolster
+  equipment:
+    belt: ClothingBeltRevolverHolster
 
 - type: loadout
   id: SecurityBeltEmpty

@@ -151,3 +151,14 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: MasterHoS
+
+# Weapon
+- type: loadout
+  id: WeaponMultiphaseEnergyGun
+  equipment:
+    pocket1: ADTWeaponPistolX01
+
+#- type: loadout
+#  id: WeaponEnergyGunDominator
+#  equipment:
+#    pocket1: WeaponEnergyGunDominator
