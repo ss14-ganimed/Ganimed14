@@ -1,8 +1,6 @@
-
 using Content.Server.Maps;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
 namespace Content.Server.GameTicking.Presets
 {
@@ -33,8 +31,8 @@ namespace Content.Server.GameTicking.Presets
         [DataField("maxPlayers")]
         public int? MaxPlayers;
 
-        [DataField("rules", customTypeSerializer: typeof(PrototypeIdListSerializer<EntityPrototype>))]
-        public IReadOnlyList<string> Rules { get; private set; } = Array.Empty<string>();
+        [DataField]
+        public IReadOnlyList<EntProtoId> Rules { get; private set; } = Array.Empty<EntProtoId>();
 
         /// <summary>
         /// If specified, the gamemode will only be run with these maps.
@@ -43,8 +41,9 @@ namespace Content.Server.GameTicking.Presets
         [DataField("supportedMaps", customTypeSerializer: typeof(PrototypeIdSerializer<GameMapPoolPrototype>))]
         public string? MapPool;
 
+        //ADT-Tweak-Start
         /// <summary>
-        /// ADT. Количество раундов, на которое этот игровой режим будет заблокирован после его использования.
+        /// Количество раундов, на которое этот игровой режим будет заблокирован после его использования.
         /// </summary>
         /// <remarks>
         /// Если значение не задано (<c>null</c>) или равно 0, режим не блокируется и может появляться в голосовании каждую игру.
@@ -54,7 +53,8 @@ namespace Content.Server.GameTicking.Presets
         /// Например, при значении <c>2</c> режим будет отсутствовать в голосовании в течение двух следующих раундов,
         /// а затем снова появится.
         /// </example>
-        [DataField("bannedRound")]
+        [DataField]
         public int? BannedRound = 0;
+        //ADT-Tweak-End
     }
 }

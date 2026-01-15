@@ -28,3 +28,10 @@
     id: SeniorEngineerPDA
     ears: ClothingHeadsetEngineering
     pocket1: PowerDrill
+
+- type: chameleonOutfit
+  id: ADTSeniorEngineerChameleonOutfit
+  job: ADTSeniorEngineer
+  hasMindShield: false # Ganimed-Edit
+  equipment:
+    ears: ClothingHeadsetEngineering

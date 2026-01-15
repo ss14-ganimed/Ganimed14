@@ -38,10 +38,20 @@
 - type: startingGear
   id: SecurityOfficerGear
   equipment:
-    # eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts
+    # eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts-Remove (Loadout choice)
     ears: ClothingHeadsetSecurity
     pocket1: WeaponPistolMk58
   storage:
     back:
     - Flash
     - MagazinePistol
+
+- type: chameleonOutfit
+  id: SecurityOfficerChameleonOutfit
+  job: SecurityOfficer
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatBeretSecurity
+    mask: ClothingMaskGasSecurity
+    neck: Dinkystar
+    gloves: ClothingHandsGlovesColorBlack

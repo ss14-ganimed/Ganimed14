@@ -13,6 +13,12 @@
       role: JobChiefEngineer
       time: 108000 #30 hrs
 
+# Head
+- type: loadout
+  id: ResearchDirectorSquareAcademicCap
+  equipment:
+    head: ClothingHeadHatMortarboard
+
 # Neck
 - type: loadout
   id: ResearchDirectorCloakAlt

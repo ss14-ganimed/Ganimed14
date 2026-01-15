@@ -5,6 +5,7 @@
   description: A bed that massively slows down the patient's metabolism and prevents bodily decay, allowing more time to administer a proper treatment for stabilization.
   components:
   - type: StasisBed
+  - type: InjectorBoost # ADT-Tweak (P4A) Ускорение Шприцов на койках и каталках
   - type: AntiRotOnBuckle
   - type: HealOnBuckle
     damage:
@@ -18,8 +19,13 @@
     - state: icon
     - state: unlit
       shader: unshaded
-      map: ["enum.StasisBedVisualLayers.IsOn"]
-  - type: StasisBedVisuals
+      map: ["unlit"]
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        unlit:
+          True: { visible: true }
+          False: { visible: false }
   - type: Appearance
   - type: ApcPowerReceiver
     powerLoad: 1000
@@ -58,5 +64,5 @@
         - LowImpassable
   - type: GuideHelp
     guides:
-    - Medical Doctor
+    - MedicalDoctor
   - type: PowerSwitch

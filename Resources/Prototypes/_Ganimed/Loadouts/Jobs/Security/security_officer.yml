@@ -49,6 +49,20 @@
   effects:
   - !type:SponsorLoadoutEffect
 
+- type: loadout
+  id: SolidHeadband
+  equipment:
+    head: ClothingHeadHatSolidHeadband
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: TacticalMaidHeadband
+  equipment:
+    head: ClothingHeadHatTacticalMaidHeadband
+  effects:
+  - !type:SponsorLoadoutEffect
+
 # Neck
 - type: loadout # TODO: Whitelist restriction
   id: SecurityWhistle
@@ -88,12 +102,6 @@
   equipment:
     eyes: ClothingEyesEyepatchHudSecurity
 
-# Jumpsuit
-- type: loadout
-  id: SecurityUniformBlueShirt
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitSecBlue
-
 # Belt
 - type: loadout
   id: AssaultBelt
@@ -109,7 +117,7 @@
   effects:
   - !type:SponsorLoadoutEffect
 
-# Outerclothing
+# OuterClothing
 - type: loadout
   id: SecurityOvercoat
   equipment:
@@ -186,7 +194,41 @@
   effects:
   - !type:SponsorLoadoutEffect
 
-# Weapon
+# Self defense weapons
+- type: loadout
+  id: Flash
+  storage:
+    back:
+    - Flash
+
+- type: loadout
+  id: TelescopicBaton
+  storage:
+    back:
+    - ADTtelescopicBaton
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Command
+
+- type: loadout
+  id: WeaponDisabler
+  storage:
+    back:
+    - WeaponDisabler
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+- type: loadout
+  id: WeaponTaser
+  storage:
+    back:
+    - WeaponTaser
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Security
+
+# Service pistol
 - type: loadout
   id: WeaponPistolMk58
   dummyEntity: WeaponPistolMk58
@@ -222,13 +264,3 @@
 #  storage:
 #    back:
 #    - MagazinePistol
-
-#- type: loadout
-#  id: WeaponEnergyGunDominator
-#  equipment:
-#    pocket1: WeaponEnergyGunDominator
-
-- type: loadout
-  id: WeaponMultiphaseEnergyGun
-  equipment:
-    pocket1: ADTWeaponPistolX01

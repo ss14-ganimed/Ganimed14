@@ -70,7 +70,7 @@
           hide: true
           nameGrid: true
           minCount: 0 #ADT tweak, moved to magnet
-          maxCount: 0 #ADT tweak, moved to magnet
+          maxCount: 2 #ADT tweak, moved to magnet # Ganimed-Tweak (0 -> 2)
           stationGrid: false
           paths:
           - /Maps/Ruins/abandoned_outpost.yml
@@ -92,8 +92,8 @@
           minimumDistance: 150
           maximumDistance: 300
           stationGrid: false
-          minCount: 12
-          maxCount: 16
+          minCount: 2 # Ganimed-Tweak (12 -> 2)
+          maxCount: 6 # Ganimed-Tweak (16 -> 6)
           addComponents:
           - type: Gravity
             enabled: true
@@ -126,6 +126,10 @@
           nameGrid: false
           paths:
           - /Maps/ADTMaps/Shuttles/pioneer.yml
+        mining_guest: !type:GridSpawnGroup
+          nameGrid: false
+          paths:
+          - /Maps/ADTMaps/Shuttles/mining_guest.yml
         mining: !type:GridSpawnGroup
           nameGrid: false
           paths:
@@ -169,6 +173,27 @@
   abstract: true
   components:
     - type: SalvageMagnetData
+
+- type: entity
+  id: BaseStationSalvageJobs
+  abstract: true
+  components:
+  - type: SalvageJobsData
+    rankThresholds:
+      0:
+        title: salvage-job-rank-title-0
+        bountyGroup: SalvageJobTier1
+      3:
+        title: salvage-job-rank-title-1
+        bountyGroup: SalvageJobTier2
+        unlockedMarket: SalvageJobReward2
+      6:
+        title: salvage-job-rank-title-2
+        bountyGroup: SalvageJobTier3
+        unlockedMarket: SalvageJobReward3
+    maxRank:
+      title: salvage-job-rank-title-MAX
+      unlockedMarket: SalvageJobRewardMAX
 
 - type: entity
   id: BaseStationSiliconLawCrewsimov

@@ -80,12 +80,22 @@
 - type: startingGear
   id: HoPGear
   equipment:
-    # shoes: ClothingShoesColorBrown # Ganimed-Loadouts
+    # shoes: ClothingShoesColorBrown # Ganimed-Loadouts-Remove (Loadout choice)
     id: HoPPDA
     gloves: ClothingHandsGlovesHop
     # ears: ClothingHeadsetAltCommand # ADT tweak
-    # belt: BoxFolderClipboard # Ganimed-Loadouts
+    # belt: BoxFolderClipboard # Ganimed-Loadouts-Remove (Loadout choice)
 #  storage: # Ganimed-Loadouts
 #    back:
 #    - Flash
 #    - ADTtelescopicBaton #ADT-CustomADTLoadout
+
+#ADT tweak start
+- type: chameleonOutfit
+  id: HeadOfPersonnelChameleonOutfit
+  job: HeadOfPersonnel
+  hasMindShield: true
+  equipment:
+    shoes: ClothingShoesColorBrown
+    gloves: ClothingHandsGlovesHop
+#ADT tweak end

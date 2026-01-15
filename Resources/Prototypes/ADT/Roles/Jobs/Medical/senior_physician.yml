@@ -25,5 +25,16 @@
   id: SeniorPhysicianGear
   equipment:
     id: SeniorPhysicianPDA
-    # ears: ClothingHeadsetMedical # Ganimed-Loadouts
-    # eyes: ADTClothingEyesGlassesMedChem # Ganimed-Loadouts
+    # ears: ClothingHeadsetMedical # Ganimed-Loadouts-Remove (Loadout choice)
+    # eyes: ADTClothingEyesGlassesMedChem # Ganimed-Loadouts-Remove (Loadout choice)
+  # storage:
+  #   back:
+  #   - ADTHumanCubeWrapped #ADT-CustomADTLoadout # Ganimed-Remove
+
+- type: chameleonOutfit
+  id: ADTSeniorPhysicianChameleonOutfit
+  job: ADTSeniorPhysician
+  hasMindShield: false # Ganimed-Edit
+  equipment:
+    ears: ClothingHeadsetMedical
+    eyes: ADTClothingEyesGlassesMedChem

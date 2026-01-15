@@ -16,13 +16,13 @@ ent-SpawnPointSeniorEngineer = бригадир
 ent-SpawnPointSeniorPhysician = ведущий врач
     .desc = { ent-SpawnPointJobBase.desc }
 
-ent-SpawnPointSeniorResearcher = доцент
+ent-SpawnPointSeniorResearcher = старший научный сотрудник
     .desc = { ent-SpawnPointJobBase.desc }
 
 ent-SpawnPointSeniorOfficer = офицер-инструктор
     .desc = { ent-SpawnPointJobBase.desc }
 
-ent-SpawnPointADTGuardOfficer = надзиратель
+ent-SpawnPointADTCorrectionsOfficer = надзиратель СБ
     .desc = { ent-SpawnPointJobBase.desc }
 
 ent-SpawnPointADTBarber = парикмахер

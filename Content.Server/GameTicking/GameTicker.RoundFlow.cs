@@ -24,14 +24,18 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Shared.Damage;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Robust.Shared.Configuration; // Ganimed edit
-
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Content.Server.Voting.Managers;
 using Content.Shared.Voting;
+using Content.Shared.FixedPoint;
+using Content.Shared.ADT.LastWords;
 
 namespace Content.Server.GameTicking
 {
@@ -41,7 +45,6 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly RoleSystem _role = default!;
         [Dependency] private readonly ITaskManager _taskManager = default!;
         [Dependency] private readonly IVoteManager _voteManager = default!;
-        [Dependency] private readonly IConfigurationManager _configManager = default!;
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -100,7 +103,7 @@ namespace Content.Server.GameTicking
         /// </remarks>
         private void LoadMaps()
         {
-            if (_mapManager.MapExists(DefaultMap))
+            if (_map.MapExists(DefaultMap))
                 return;
 
             AddGamePresetRules();
@@ -218,7 +221,7 @@ namespace Content.Server.GameTicking
                 }
 
                 _metaData.SetEntityName(mapUid, proto.MapName);
-                var g = new List<EntityUid> {grid.Value.Owner};
+                var g = new List<EntityUid> { grid.Value.Owner };
                 RaiseLocalEvent(new PostGameMapLoad(proto, mapId, g, stationName));
                 return g;
             }
@@ -268,7 +271,7 @@ namespace Content.Server.GameTicking
                 }
 
                 _metaData.SetEntityName(mapUid, proto.MapName);
-                var g = new List<EntityUid> {grid.Value.Owner};
+                var g = new List<EntityUid> { grid.Value.Owner };
                 RaiseLocalEvent(new PostGameMapLoad(proto, mapId, g, stationName));
                 return g;
             }
@@ -318,7 +321,7 @@ namespace Content.Server.GameTicking
                     throw new Exception($"Failed to load game-map grid {ev.GameMap.ID}");
                 }
 
-                var g = new List<EntityUid> {grid.Value.Owner};
+                var g = new List<EntityUid> { grid.Value.Owner };
                 // TODO MAP LOADING use a new event?
                 RaiseLocalEvent(new PostGameMapLoad(proto, targetMap, g, stationName));
                 return g;
@@ -408,7 +411,7 @@ namespace Content.Server.GameTicking
                 HumanoidCharacterProfile profile;
                 if (_prefsManager.TryGetCachedPreferences(userId, out var preferences))
                 {
-                    profile = (HumanoidCharacterProfile) preferences.SelectedCharacter;
+                    profile = (HumanoidCharacterProfile)preferences.SelectedCharacter;
                 }
                 else
                 {
@@ -600,6 +603,26 @@ namespace Content.Server.GameTicking
 
                 var roles = _roles.MindGetAllRoleInfo(mindId);
 
+                // ADT-tweak-start
+
+                var lastWords = "";
+                var mobState = MobState.Invalid;
+                var damagePerGroup = new Dictionary<string, FixedPoint2>();
+                var lastMob = mind.LastMob;
+                if (TryComp<LastWordsComponent>(mindId, out var lastWordsComponent)
+                    && !TerminatingOrDeleted(lastMob))
+                {
+                    lastWords = lastWordsComponent.LastWords;
+
+                    if (TryComp<MobStateComponent>(lastMob, out var mobStateComp))
+                        mobState = mobStateComp.CurrentState;
+
+                    if (TryComp<DamageableComponent>(lastMob, out var damageableComp))
+                        damagePerGroup = damageableComp.DamagePerGroup;
+                }
+
+                // ADT-tweak-end
+
                 var playerEndRoundInfo = new RoundEndMessageEvent.RoundEndPlayerInfo()
                 {
                     // Note that contentPlayerData?.Name sticks around after the player is disconnected.
@@ -616,7 +639,12 @@ namespace Content.Server.GameTicking
                     JobPrototypes = roles.Where(role => !role.Antagonist).Select(role => role.Prototype).ToArray(),
                     AntagPrototypes = roles.Where(role => role.Antagonist).Select(role => role.Prototype).ToArray(),
                     Observer = observer,
-                    Connected = connected
+                    Connected = connected,
+                    // ADT-tweak-start: manifest
+                    LastWords = lastWords,
+                    EntMobState = mobState,
+                    DamagePerGroup = damagePerGroup
+                    // ADT-tweak-end
                 };
                 listOfPlayerInfo.Add(playerEndRoundInfo);
             }

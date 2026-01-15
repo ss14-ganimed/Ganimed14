@@ -11,6 +11,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using System.Linq;
 using System.Text;
+using Content.Shared.ADT.CCVar;
+using Content.Shared.ADT.ManifestListings;
 using Content.Server.Objectives.Commands;
 using Content.Shared.CCVar;
 using Content.Shared.Prototypes;
@@ -151,6 +153,13 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
             var agentSummary = new StringBuilder();
             agentSummary.AppendLine(Loc.GetString("objectives-with-objectives", ("custody", custody), ("title", title), ("agent", agent)));
 
+            // ADT-tweak-start
+            var ev = new PrependObjectivesSummaryTextEvent();
+            RaiseLocalEvent(mindId, ref ev);
+            if (ev.Text != string.Empty)
+                agentSummary.AppendLine(ev.Text);
+            // ADT-tweak-end
+
             foreach (var objectiveGroup in objectives.GroupBy(o => Comp<ObjectiveComponent>(o).LocIssuer))
             {
                 //TO DO:
@@ -178,17 +187,32 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                         agentSummary.AppendLine(Loc.GetString(
                             "objectives-objective-success",
                             ("objective", objectiveTitle),
-                            ("markupColor", "green")
+                            ("progress", progress)
                         ));
                         completedObjectives++;
+                    }
+                    else if (progress <= 0.99f && progress >= 0.5f)
+                    {
+                        agentSummary.AppendLine(Loc.GetString(
+                            "objectives-objective-partial-success",
+                            ("objective", objectiveTitle),
+                            ("progress", progress)
+                        ));
+                    }
+                    else if (progress < 0.5f && progress > 0f)
+                    {
+                        agentSummary.AppendLine(Loc.GetString(
+                            "objectives-objective-partial-failure",
+                            ("objective", objectiveTitle),
+                            ("progress", progress)
+                        ));
                     }
                     else
                     {
                         agentSummary.AppendLine(Loc.GetString(
                             "objectives-objective-fail",
                             ("objective", objectiveTitle),
-                            ("progress", (int) (progress * 100)),
-                            ("markupColor", "red")
+                            ("progress", progress)
                         ));
                     }
                 }
@@ -229,8 +253,10 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
             var objectives = group.Weights.ShallowClone();
             while (_random.TryPickAndTake(objectives, out var objectiveProto))
             {
-                if (TryCreateObjective((mindId, mind), objectiveProto, out var objective)
-                    && Comp<ObjectiveComponent>(objective.Value).Difficulty <= maxDifficulty)
+                if (!_prototypeManager.Index(objectiveProto).TryGetComponent<ObjectiveComponent>(out var objectiveComp, EntityManager.ComponentFactory))
+                    continue;
+
+                if (objectiveComp.Difficulty <= maxDifficulty && TryCreateObjective((mindId, mind), objectiveProto, out var objective))
                     return objective;
             }
         }

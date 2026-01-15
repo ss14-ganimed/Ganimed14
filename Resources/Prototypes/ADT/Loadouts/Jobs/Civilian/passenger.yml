@@ -19,6 +19,21 @@
   equipment:
     id: ADTStudentPDA
 
+# Back
+- type: loadout
+  id: ADTClothingBackpackBlackLadySatchel
+  equipment:
+    back: ADTClothingBackpackBlackLadySatchel
+  effects: # Ganimed-Loadouts-Add
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: ADTClothingBackpackLeatherLadySatchel
+  equipment:
+    back: ADTClothingBackpackLeatherLadySatchel
+  effects: # Ganimed-Loadouts-Add
+  - !type:SponsorLoadoutEffect
+
 # Jumpsuit
 - type: loadout
   id: ADTClothingUniformJumpsuitTurtleneckPink

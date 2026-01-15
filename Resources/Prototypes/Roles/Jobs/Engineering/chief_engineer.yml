@@ -55,8 +55,18 @@
     # ears: ClothingHeadsetCE # ADT tweak
 # ADT-Tweak-start по причине того, что ассистент и остальной состав ИО спавнится с двумя поясами, если их выбрать в лоудауте
     # belt: ClothingBeltUtilityEngineering
-# ADT-Tweak-end # Ganimed-Loadouts
-#  storage:
+# ADT-Tweak-end
+#  storage: # Ganimed-Loadouts-Remove (Loadout choice)
 #    back:
 #    - Flash
 #    - ADTtelescopicBaton #ADT-CustomADTLoadout
+
+#ADT tweak start
+- type: chameleonOutfit
+  id: ChiefEngineerChameleonOutfit
+  job: ChiefEngineer
+  hasMindShield: true
+  equipment:
+    eyes: ClothingEyesGlassesMeson
+    ears: ClothingHeadsetCE
+#ADT tweak end

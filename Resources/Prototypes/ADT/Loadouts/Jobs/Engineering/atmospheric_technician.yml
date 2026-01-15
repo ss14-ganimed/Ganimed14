@@ -44,7 +44,7 @@
   id: ADTHatBeretAtmos
   equipment:
     head: ADTClothingHeadHatsBeretAtmos
-  effects: # Ganimed-Loadouts
+  effects: # Ganimed-Loadouts-Add
   - !type:GroupLoadoutEffect
     proto: MasterAtmosian
 

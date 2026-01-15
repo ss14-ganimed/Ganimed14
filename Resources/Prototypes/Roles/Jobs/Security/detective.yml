@@ -39,7 +39,7 @@
 - type: startingGear
   id: DetectiveGear
   equipment:
-    #eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts
+    #eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts-Remove (Loadout choice)
     #id: DetectivePDA ADT: different PDAs in loadouts
     ears: ClothingHeadsetSecurity
     belt: ClothingBeltHolsterFilled
@@ -48,3 +48,13 @@
     - Flash
     - ForensicPad
     - ForensicScanner
+
+- type: chameleonOutfit
+  id: DetectiveChameleonOutfit
+  job: Detective
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatFedoraBrown
+    mask: ClothingMaskGasSecurity
+    neck: ClothingNeckTieDet
+    gloves: ClothingHandsGlovesForensic

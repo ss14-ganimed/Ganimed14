@@ -20,13 +20,6 @@
     Plastic: 100
 
 - type: latheRecipe
-  id: ADTBaseChemistryEmptyVial
-  result: BaseChemistryEmptyVial
-  completetime: 2
-  materials:
-    Glass: 50
-
-- type: latheRecipe
   id: ADTBlankMediPen
   result: ADTBlankMediPen
   completetime: 2
@@ -42,3 +35,4 @@
     Glass: 600
     Steel: 500
     Plastic: 700
+    Copper: 400

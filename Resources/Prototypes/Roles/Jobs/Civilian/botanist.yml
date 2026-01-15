@@ -21,10 +21,21 @@
 - type: startingGear
   id: BotanistGear
   equipment:
-    # shoes: ClothingShoesColorBrown # Ganimed-Loadouts
+    # shoes: ClothingShoesColorBrown # Ganimed-Loadouts-Remove (Loadout choice)
     # id: BotanistPDA ADT: different PDAs in loadouts
     ears: ClothingHeadsetService
-    # belt: ClothingBeltPlantFilled # Ganimed-Loadouts
+    # belt: ClothingBeltPlantFilled # Ganimed-Loadouts-Remove (Loadout choice)
   #storage:
     #back:
     #- Stuff
+
+- type: chameleonOutfit
+  id: BotanistChameleonOutfit
+  job: Botanist
+  equipment:
+    head: ClothingHeadBandBotany
+    eyes: ClothingEyesGlassesCheapSunglasses
+    mask: ClothingMaskBreath
+    neck: ClothingNeckScarfStripedGreen
+    outerClothing: ClothingOuterApronBotanist
+    gloves: ClothingHandsGlovesLeather

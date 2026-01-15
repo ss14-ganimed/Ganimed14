@@ -2,8 +2,12 @@
   id: Lavaland
   biome: LavaLand
   mapName: shuttle-destination-lavaland
-  mapLight: "#1F0E11"
+  mapLight: "#6e2c2c"
+  dayCycle: false
   addedComponents:
+  - type: RestrictedRange
+    range: 250
+    texturepath: "/Textures/ADT/Effects/weather.rsi/ashfal_lvery_light.png"
   - type: SpawnInRange
     protosToSpawn:
       - LavaDungeonRoomMarker
@@ -17,7 +21,20 @@
       - LavaDungeonRoomMarker
       - LavaDungeonRoomMarker
       - LavaDungeonRoomMarker
+      - LavaDungeonRoomMarker
+      - LavaDungeonRoomMarker
       - BloodMinerDungeMarker
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
+      - ADTRandomTendrilSpawner
     minX: -250
     maxX: 250
     minY: -250
@@ -43,6 +60,9 @@
       duration:
         min: 30
         max: 30
+  - type: SunShadow
+    alpha: 0.75
+    direction: "-1, -1"
   atmosphere:
     volume: 2500
     temperature: 313.15 # 40C
@@ -60,6 +80,10 @@
   - OreDiamond
   - OreArtifactFragment
   - ADTOreBS
+  - OreCopper
+  - OreZinc
+  - OreLead
+  - OreGibtonit
 
 - type: planet
   id: GlacierSurface
@@ -89,3 +113,6 @@
   - OreDiamond
   - OreArtifactFragment
   - ADTOreBS
+  - OreCopper
+  - OreZinc
+  - OreLead

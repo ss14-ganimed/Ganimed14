@@ -9,11 +9,11 @@ JobRoboticist = робототехник
 job-name-magistrat = магистрат
 JobMagistrat = магистрат
 
-job-name-senior-physician = ведущий врач
-JobADTSeniorPhysician = ведущий врач
+job-name-senior-physician = заведующий врач
+JobADTSeniorPhysician = заведующий врач
 
-job-name-senior-researcher = доцент
-JobADTSeniorResearcher = доцент
+job-name-senior-researcher = старший научный сотрудник
+JobADTSeniorResearcher = старший научный сотрудник
 
 job-name-senior-engineer = бригадир
 JobADTSeniorEngineer = бригадир
@@ -35,8 +35,8 @@ job-name-ADTSpaceSecPilot = пилот SPACE SEC
 job-name-ADTSpaceSecCommander = командир SPACE SEC
 job-name-ADTSpaceSecService = сотрудник SPACE SEC
 
-job-name-guard-officer = надзиратель
-ADTGuardOfficer = надзиратель
+job-name-corrections-officer = надзиратель СБ
+ADTCorrectionsOfficer = надзиратель СБ
 
 # Job titles
 cadet-space-sec = кадет SPACE SEC
@@ -98,16 +98,34 @@ job-name-clergyman = священнослужитель
 job-name-tourist = турист
 job-name-student = студент
 job-name-mixologist = миксолог
+job-name-tavernkeep = трактирщик
+job-name-barista = бариста
 job-name-baker = пекарь
 job-name-butcher = мясник
 job-name-pizzaiolo = пиццайоло
+job-name-confectioner = кондитер
+job-name-waiter = официант
+job-name-performer = исполнитель
+job-name-concertmaster = концертмейстер
+job-name-composer = композитор
+job-name-bard = бард
+job-name-dj = диджей
+job-name-journalist = журналист
+job-name-karateka = каратист
+job-name-kickboxer = кикбоксер
+job-name-savatist = саватист
+job-name-hand-to-hand-combat-master = мастер рукопашного боя
+job-name-mma-fighter = боец ММА
+job-name-judoist = дзюдоист
+job-name-coach = тренер
+job-name-gladiator = гладиатор
 
 # Security
 
-# job-name-sheriff = шериф
+job-name-sheriff = шериф
 job-name-investigator = следователь
 job-name-field-doctor = полевой врач
 
 # Juridical
 
-job-name-adt-lawyer = юрист
+job-name-adt-lawyer = адвокат

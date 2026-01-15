@@ -150,6 +150,7 @@ namespace Content.Client.Stylesheets
 
         //Background
         public const string StyleClassBackgroundBaseDark = "PanelBackgroundBaseDark";
+        public const string StyleClassBackgroundBaseLight = "PanelBackgroundBaseLight"; // ADT-tweak: cool manifest
 
         //Buttons
         public const string StyleClassCrossButtonRed = "CrossButtonRed";
@@ -1594,6 +1595,12 @@ namespace Content.Client.Stylesheets
                     .Prop("panel", new StyleBoxTexture(BaseButtonOpenBoth) { Padding = default })
                     .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#1F1F23")),
 
+                // ADT-tweak-start: Cool manifest
+                Element<PanelContainer>().Class("PanelBackgroundBaseLight")
+                    .Prop("panel", new StyleBoxTexture(BaseButtonOpenBoth) { Padding = default })
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#2d2d39")),
+                // ADT-tweak-end
+
                 Element<PanelContainer>().Class("PanelBackgroundLight")
                     .Prop("panel", new StyleBoxTexture(BaseButtonOpenBoth) { Padding = default })
                     .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#2F2F3B")),
@@ -1617,6 +1624,10 @@ namespace Content.Client.Stylesheets
 
                 Element<TextureButton>().Class("CrossButtonRed").Pseudo(TextureButton.StylePseudoClassHover)
                     .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#753131")),
+
+                //
+                Element<TextureButton>().Class("Refresh")
+                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Nano/circular_arrow.svg.96dpi.png")),
                 // ---
 
                 // Profile Editor

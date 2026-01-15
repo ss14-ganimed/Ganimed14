@@ -3,15 +3,15 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
-  - MagistrateHead # Ganimed-Loadouts
+  - MagistrateHead # Ganimed-Loadouts-Add
   - MagistratNeck
   - MagistratJumpsuit
-  - MagistrateOuterClothing # Ganimed-Loadouts
+  - MagistrateOuterClothing # Ganimed-Loadouts-Add
   - ADTLawyerBackpack # ADT-Tweak
-  # - ADTLawyerGloves # ADT-Tweak # Ganimed-Loadouts
-  - BureaucraticBelt # Ganimed-Loadouts
+  # - ADTLawyerGloves # ADT-Tweak # Ganimed-Loadouts-Remove (Gloves in spare clothing)
+  - BureaucraticBelt # Ganimed-Loadouts-Add
   - LawyerShoes
-  - MagistrateGlasses # Ganimed-Loadouts
+  - MagistrateGlasses # Ganimed-Loadouts-Edit (Glasses)
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
@@ -20,7 +20,7 @@
   - ADTBottom
   - ADTSocks
   # ADT underwear tweak end
-  - SpareClothing # Ganimed-Loadouts
+  - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
   id: JobADTPathologist
@@ -30,7 +30,7 @@
   - PathologHead
   - MedicalMask
   - PathologJumpsuit
-  - MedicalGloves
+  - CoronerGloves # Ganimed-Loadouts-Edit (MedicalGloves)
   - PathologBackpack
   - PathologWindbreaker
   - PathologShoes
@@ -43,7 +43,7 @@
   - ADTBottom
   - ADTSocks
   # ADT underwear tweak end
-  - SpareClothing # Ganimed-Loadouts
+  - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
   id: JobADTRoboticist
@@ -57,7 +57,7 @@
   - RoboticistOuterClothing
   - RobohandsGloves
   - ScientistShoes
-  - ScientistGlasses # Ganimed-Loadouts
+  - ScientistGlasses # Ganimed-Loadouts-Edit (Glasses)
   - ADTRoboticistPDALoadout
   - Survival
   - Trinkets
@@ -67,7 +67,7 @@
   - ADTBottom
   - ADTSocks
   # ADT underwear tweak end
-  - SpareClothing # Ganimed-Loadouts
+  - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
   id: JobADTBlueShieldOfficer
@@ -88,7 +88,7 @@
   - ADTBottomBlueshield
   - ADTSocksBlueshield
   # ADT underwear tweak end
-  - SpareClothing # Ganimed-Loadouts
+  - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
   id: JobADTSeniorPhysician
@@ -96,25 +96,25 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - SeniorPhysicianHead # ADT-Tweak-senior
-  - MedicalDoctorHeadset # Ganimed-Loadouts
+  - MedicalDoctorHeadset # Ganimed-Loadouts-Add
   - MedicalMask
-  - SeniorPhysicianNeck # Ganimed-Loadouts
+  - SeniorPhysicianNeck # Ganimed-Loadouts-Add
   - SeniorPhysicianJumpsuit # ADT-Tweak-senior
   - MedicalGloves
   - ADTMedicalBelt # ADT tweak
-  - SeniorPhysicianBackpack # Ganimed-Loadouts
+  - SeniorPhysicianBackpack # Ganimed-Loadouts-Edit (MedicalBackpack)
   - SeniorPhysicianOuterClothing # ADT-Tweak-senior
-  - SeniorPhysicianEyewear # Ganimed-Loadouts
+  - SeniorPhysicianEyewear # Ganimed-Loadouts-Edit (MedicalEyewear)
   - Trinkets
   - SurvivalMedical
   - GroupSpeciesBreathToolMedical
-  - MedicalShoes
+  - SeniorPhysicianShoes # Ganimed-Loadouts-Edit (MedicalShoes)
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
   - ADTSocks
   # ADT underwear tweak end
-  - SpareClothing # Ganimed-Loadouts
+  - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
   id: JobADTSeniorResearcher
@@ -122,11 +122,11 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - SeniorResearcherHead # ADT-Tweak-senior
-  - ScientistHeadset # Ganimed-Loadouts
-  - ScientistGlasses # Ganimed-Loadouts
+  - ScientistHeadset # Ganimed-Loadouts-Add
+  - ScientistGlasses # Ganimed-Loadouts-Edit (Glasses)
   - ADTSeniorResearcherJumpsuit # ADT-Tweak-senior
-  - SeniorResearcherNeck # Ganimed-Loadouts
-  - RobohandsGloves # ADT-Tweak-senior
+  - SeniorResearcherNeck # Ganimed-Loadouts-Add
+  - RobohandsGloves # ADT-Tweak-senior # Ganimed-Loadouts-Edit (ADTSeniorResearcherGloves)
   - ScientistBackpack
   - ADTSeniorResearcherOuterClothing # ADT-Tweak-senior
   - ScientistShoes
@@ -138,7 +138,7 @@
   - ADTSocks
   - GroupSpeciesBreathTool
   # ADT tweak end
-  - SpareClothing # Ganimed-Loadouts
+  - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
   id: JobADTSeniorEngineer
@@ -147,9 +147,9 @@
   - GroupTankHarness
   - SeniorEngineerHead # ADT-Tweak-senior
   - ADTSeniorEngineerJumpsuit # ADT-Tweak-senior
-  - SeniorEngineerOuterClothing # Ganimed-Loadouts
-  - SeniorEngineerBackpack # Ganimed-Loadouts
-  - AtmosphericTechnicianGlasses # Ganimed-Loadouts
+  - SeniorEngineerOuterClothing # Ganimed-Loadouts-Edit (StationEngineerOuterClothing)
+  - SeniorEngineerBackpack # Ganimed-Loadouts-Edit (StationEngineerBackpack)
+  - AtmosphericTechnicianGlasses # Ganimed-Loadouts-Edit (ADTEngineeringGlasses)
   - ADTEngineeringBelt
   - StationEngineerShoes
   - SurvivalExtended
@@ -160,19 +160,19 @@
   - ADTSocks
   - GroupSpeciesBreathTool
   # ADT tweak end
-  - SpareClothing # Ganimed-Loadouts
+  - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
   id: JobADTSeniorOfficer
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
-  - SeniorOfficerHead # Ganimed-Loadouts
-  - SecurityNeck # Ganimed-Loadouts
+  - SeniorOfficerHead # Ganimed-Loadouts-Edit (SecurityHead)
+  - SecurityNeck # Ganimed-Loadouts-Edit (SecurityOfficerNeckADT)
   - SeniorOfficerJumpsuit # ADT-Tweak-senior
   - ADTSeniorOfficerOuterClothing # ADT-Tweak-senior
-  - SecurityGlasses # Ganimed-Loadouts
-  - SecurityBeltExtended # Ganimed-Loadouts
+  - SecurityGlasses # Ganimed-Loadouts-Add
+  - SecurityBeltExtended # Ganimed-Loadouts-Edit (SecurityBelt)
   - ADTSeniorOfficerBackpack # ADT-Tweak-senior
   - SecurityShoes
   - SurvivalSecurity
@@ -183,7 +183,7 @@
   - ADTSocks
   - GroupSpeciesBreathToolSecurity
   # ADT tweak end
-  - SpareClothing # Ganimed-Loadouts
+  - SpareClothing # Ganimed-Loadouts-Add
 
   # brigmedic
 - type: roleLoadout
@@ -192,38 +192,37 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   # Bridmed spec outfit:
-  - BrigmedicHead
+  - ADTBrigmedicHead
   - ADTBrigmedicNeck
-  - BrigmedicJumpsuit
-  - BrigmedicOuterClothing
-  - BrigmedicBackpack
+  - ADTBrigmedicJumpsuit
+  - ADTBrigmedicOuterWear
+  - ADTBrigmedicBack
   # Another stuffs
-  - BrigmedicMask # Ganimed-Loadouts
-  - ADTBrigmedicBelts # Ganimed-Loadouts
+  - BrigmedicMask # Ganimed-Loadouts-Add
+  - ADTBrigmedicBelts # Ganimed-Loadouts-Edit (ADTMedicalBelt)
   - ADTBrigmedicEyes
-  - MedicalGloves
-  - BrigmedicShoes
-  - SurvivalMedical
+  - MedicalGloves # Ganimed-Loadouts-Edit (ADTBrigmedicGloves)
+  - BrigmedicShoes # Ganimed-Loadouts-Edit (SecurityShoes)
+  - SurvivalMedical # Ganimed-Loadouts-Edit (SurvivalSecurity)
   - Trinkets
-  - GroupSpeciesBreathToolMedical
+  - GroupSpeciesBreathToolMedical # Ganimed-Loadouts-Edit (GroupSpeciesBreathToolSecurity)
   - ADTBrigmedicPDA
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
   - ADTSocks
   # ADT underwear tweak end
-  - SpareClothing # Ganimed-Loadouts
+  - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
-  id: JobADTGuardOfficer
+  id: JobADTCorrectionsOfficer
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
-  - ADTGuardOfficerHead
+  - ADTCorrectionsOfficerHead
   - SecurityOfficerNeckADT # ADT-Loadouts
-  - ADTGuardOfficerJumpsuit
-  - ADTSeniorOfficerOuterClothing
-  - SecurityBelt
+  - ADTCorrectionsOfficerJumpsuit
+  - ADTCorrectionsOfficerOuterClothing
   - SecurityBackpack
   - SecurityShoes
   - SurvivalSecurity
@@ -234,7 +233,7 @@
   - ADTSocks
   - GroupSpeciesBreathToolSecurity
   # ADT tweak end
-  - SpareClothing # Ganimed-Loadouts
+  - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
   id: ADTRoleSurvivalCBURN
@@ -251,6 +250,7 @@
   - Glasses
   - ADTBarberJumpsuit
   - ADTBarberOtherClothing
+  - ADTServiceWorkerGloves # Ganimed-Loadouts-Add
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
@@ -259,7 +259,7 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
-  - SpareClothing # Ganimed-Loadouts
+  - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
   id: JobADTMiner
@@ -282,4 +282,4 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
-  - SpareClothing # Ganimed-Loadouts
+  - SpareClothing # Ganimed-Loadouts-Add

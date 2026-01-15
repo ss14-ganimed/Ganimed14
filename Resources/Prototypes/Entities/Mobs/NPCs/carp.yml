@@ -76,7 +76,8 @@
       tags:
         - Carp
         - DoorBumpOpener
-        - NoPaint # ADT tweak
+        - NoPaint # ADT-tweak
+        - CannotSuicide
     - type: ReplacementAccent
       accent: genericAggressive
     - type: Speech
@@ -88,13 +89,13 @@
         path: /Audio/Effects/bite.ogg
     - type: CollectiveMindRank
       rankName: collective-mind-carp-rank
-    # Start ADT Tweak
+    # ADT-tweak-end
     - type: LanguageSpeaker
       languages:
         GalacticCommon: Speak
         CarpCollectiveMind: Speak
     - type: GrabProtection
-    # End ADT Tweak
+    # ADT-tweak-start
 
 - type: entity
   parent: BaseMobCarp
@@ -166,6 +167,10 @@
   suffix: "Salvage Ruleset"
   components:
     - type: SalvageMobRestrictions
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        30: Dead
 
 - type: entity
   name: space carp
@@ -179,21 +184,14 @@
       makeSentient: true
       name: ghost-role-information-sentient-carp-name
       description: ghost-role-information-sentient-carp-description
-      # ADT-Tweak-start
-      requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 7200 # 2h
-      # ADT-Tweak-end
       rules: ghost-role-information-space-dragon-summoned-carp-rules
       mindRoles:
-      - MindRoleGhostRoleTeamAntagonist
-#      raffle:
-#        settings: short ADT tweak для быстрого захода на рольку
+      - MindRoleGhostRoleTeamAntagonistFlock
     - type: GhostTakeoverAvailable
     - type: HTN
       rootTask:
         task: DragonCarpCompound
-# ADT-Tweak-start
+# ADT-tweak-start
 # the carps must not be combustible because they are the children of the dragon mwahahahaha. only those who come out of the portal.
     - type: Flammable
       fireSpread: false
@@ -206,7 +204,7 @@
     - type: Temperature
       heatDamageThreshold: 800
       coldDamageThreshold: -800
-# ADT-Tweak-end
+# ADT-tweak-end
 
 - type: entity
   id: MobCarpDungeon
@@ -253,7 +251,7 @@
     - type: MobThresholds
       thresholds:
         0: Alive
-        150: Dead
+        82: Dead # Might seem random, but this brings up the hits to kill with a crusher mark to 3
     - type: Stamina
       critThreshold: 150
     - type: DamageStateVisuals
@@ -272,21 +270,20 @@
         - id: FoodMeatFish
           amount: 4
         - id: MaterialToothSharkminnow1
-          amount: 1
-          maxAmount: 3
+          amount: 3
     - type: MeleeWeapon
       damage:
         types:
           Slash: 10
           Bloodloss: 5
-    # ADT Start
+    # ADT-tweak-start
     - type: CollectiveMindRank
       rankName: collective-mind-shark-rank
     - type: LanguageSpeaker
       languages:
         GalacticCommon: Speak
         CarpCollectiveMind: Speak
-    # ADT End
+    # ADT-tweak-end
 
 - type: entity
   id: MobSharkSalvage

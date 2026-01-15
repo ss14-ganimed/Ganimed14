@@ -11,7 +11,7 @@
     equippedPrefix: alt
 
 - type: entity
-  parent: ClothingHeadsetAlt
+  parent: ADTClothingHeadsetAltLoudspeaker # ADT-Tweak: добавлен громкоговоритель
   id: ClothingHeadsetAltCargo
   name: quartermaster's over-ear headset
   components:
@@ -19,7 +19,7 @@
     containers:
       key_slots:
       - EncryptionKeyCargo
-    #  - EncryptionKeyCommand
+      - EncryptionKeyCommand
       - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/cargo.rsi
@@ -27,7 +27,7 @@
     sprite: Clothing/Ears/Headsets/cargo.rsi
 
 - type: entity
-  parent: ClothingHeadsetAlt
+  parent: ADTClothingHeadsetAltLoudspeaker # ADT-Tweak: добавлен громкоговоритель
   id: ClothingHeadsetAltCentCom
   name: CentComm over-ear headset
   components:
@@ -40,11 +40,9 @@
     sprite: Clothing/Ears/Headsets/centcom.rsi
   - type: Clothing
     sprite: Clothing/Ears/Headsets/centcom.rsi
-  - type: Headset # ganimed edit
-    radioTextIncrease: 3
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [ADTClothingHeadsetAltLoudspeaker, BaseCommandContraband] # ADT-Tweak: добавлен громкоговоритель
   id: ClothingHeadsetAltCommand
   name: command over-ear headset
   components:
@@ -56,11 +54,9 @@
     sprite: Clothing/Ears/Headsets/command.rsi
   - type: Clothing
     sprite: Clothing/Ears/Headsets/command.rsi
-  - type: Headset # ganimed edit
-    radioTextIncrease: 3
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [ADTClothingHeadsetAltLoudspeaker, BaseCommandContraband] # ADT-Tweak: добавлен громкоговоритель
   id: ClothingHeadsetAltEngineering
   name: chief engineer's over-ear headset
   components:
@@ -74,11 +70,9 @@
     sprite: Clothing/Ears/Headsets/engineering.rsi
   - type: Clothing
     sprite: Clothing/Ears/Headsets/engineering.rsi
-  - type: Headset # ganimed edit
-    radioTextIncrease: 2
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [ADTClothingHeadsetAltLoudspeaker, BaseCommandContraband] # ADT-Tweak: добавлен громкоговоритель
   id: ClothingHeadsetAltMedical
   name: chief medical officer's over-ear headset
   components:
@@ -94,11 +88,9 @@
     sprite: Clothing/Ears/Headsets/medical.rsi
   - type: StealTarget
     stealGroup: ClothingHeadsetAltMedical
-  - type: Headset # ganimed edit
-    radioTextIncrease: 2
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [ADTClothingHeadsetAltLoudspeaker, BaseCommandContraband] # ADT-Tweak: добавлен громкоговоритель
   id: ClothingHeadsetAltSecurity
   name: head of security's over-ear headset
   components:
@@ -113,11 +105,9 @@
     sprite: Clothing/Ears/Headsets/security.rsi
   - type: Clothing
     sprite: Clothing/Ears/Headsets/security.rsi
-  - type: Headset # ganimed edit
-    radioTextIncrease: 2
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [ADTClothingHeadsetAltLoudspeaker, BaseCommandContraband] # ADT-Tweak: добавлен громкоговоритель
   id: ClothingHeadsetAltScience
   name: research director's over-ear headset
   components:
@@ -131,11 +121,9 @@
     sprite: Clothing/Ears/Headsets/science.rsi
   - type: Clothing
     sprite: Clothing/Ears/Headsets/science.rsi
-  - type: Headset # ganimed edit
-    radioTextIncrease: 2
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseSyndicateContraband]
+  parent: [ADTClothingHeadsetAltLoudspeaker, BaseSyndicateContraband] # ADT-Tweak: добавлен громкоговоритель
   id: ClothingHeadsetAltSyndicate
   name: blood-red over-ear headset
   description: An updated, modular syndicate intercom that fits over the head and takes encryption keys (there are 5 key slots.).
@@ -153,7 +141,7 @@
     sprite: Clothing/Ears/Headsets/syndicate.rsi
 
 - type: entity
-  parent: ClothingHeadsetAlt
+  parent: ADTClothingHeadsetAltLoudspeaker # ADT-Tweak: добавлен громкоговоритель
   id: ClothingHeadsetAltFreelancer
   name: freelancer's over-ear headset
   components:
@@ -170,7 +158,7 @@
       sprite: Clothing/Ears/Headsets/freelance.rsi
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseMagicalContraband]
+  parent: [ADTClothingHeadsetAltLoudspeaker, BaseMagicalContraband] # ADT-Tweak: добавлен громкоговоритель
   id: ClothingHeadsetAltWizard
   name: wizard's over-ear headset
   components:

@@ -1,4 +1,4 @@
-# Spare clothes
+# Spare clothes. All loadout IDs should start with "Spare" to avoid conflict with regular loadouts
 # Timers
 - type: loadoutEffectGroup
   id: FiftyOverall
@@ -80,79 +80,90 @@
       role: JobBrigmedic
       time: 18000 # 5 hours
 
-
 # Head/Hats
 - type: loadout
   id: SpareBlackCap
   storage:
     back:
     - ClothingHeadHatBlacksoft
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareGreyCap
   storage:
     back:
     - ClothingHeadHatGreysoft
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareWhiteCap
   storage:
     back:
     - ClothingHeadHatMimesoft
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareRedCap
   storage:
     back:
     - ClothingHeadHatRedsoft
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareOrangeCap
   storage:
     back:
     - ClothingHeadHatOrangesoft
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareYellowCap
   storage:
     back:
     - ClothingHeadHatYellowsoft
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareGreenCap
   storage:
     back:
     - ClothingHeadHatGreensoft
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareBlueCap
   storage:
     back:
     - ClothingHeadHatBluesoft
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareBlackBandana
   storage:
     back:
     - ClothingHeadBandBlack
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareGreyBandana
   storage:
     back:
     - ClothingHeadBandGrey
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareBrownBandana
   storage:
     back:
     - ClothingHeadBandBrown
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareRedBandana
   storage:
     back:
     - ClothingHeadBandRed
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareGoldBandana
@@ -161,78 +172,101 @@
     - ClothingHeadBandGold
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareGreenBandana
   storage:
     back:
     - ClothingHeadBandGreen
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareBlueBandana
   storage:
     back:
     - ClothingHeadBandBlue
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareBeret
   storage:
     back:
     - ClothingHeadHatBeret
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareBlackBeret
   storage:
     back:
     - ADTClothingHeadHatBeretBlackCivilian
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareGreyFlatCap
   storage:
     back:
     - ClothingHeadHatGreyFlatcap
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareBrownFlatCap
   storage:
     back:
     - ClothingHeadHatBrownFlatcap
+  groupBy: "sparehats"
 
-- type: loadout
+- type: loadout # TODO: Move sprites and remove duplucates
   id: SpareGreyFlatCapAlt
   storage:
     back:
     - ADTClothingHeadHatGreyFlatCap
+  groupBy: "sparehats"
 
-- type: loadout
+- type: loadout # TODO: Move sprites and remove duplucates
   id: SpareCinnamonFlatCap
   storage:
     back:
     - ADTClothingHeadHatCinnamonFlatCap
+  groupBy: "sparehats"
+
+- type: loadout
+  id: SpareSquareAcademicCap
+  storage:
+    back:
+    - ClothingHeadHatMortarboard
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorResearcher
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareUshanka
   storage:
     back:
     - ClothingHeadHatUshanka
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareOldUshanka
   storage:
     back:
     - ClothingHeadHatUshankaOriginal
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareHetmanHat
   storage:
     back:
     - ClothingHeadHatHetmanHat
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareSombrero
   storage:
     back:
     - ClothingHeadHatSombrero
+  groupBy: "sparehats"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareGreyFedora
@@ -243,6 +277,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Security
+  groupBy: "sparehats"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareBeaverHat
@@ -251,6 +286,7 @@
     - ClothingHeadHatBeaverHat
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareMagicianHat
@@ -260,73 +296,95 @@
   effects:
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
-    proto: TenOverall
+    proto: FiftyOverall
+  groupBy: "sparehats"
+
+- type: loadout
+  id: SpareHairBow
+  storage:
+    back:
+    - ClothingHeadHatBowWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareBlackCatHat
   storage:
     back:
     - ClothingHeadHatAnimalCatBlack
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareGreyCatHat
   storage:
     back:
     - ClothingHeadHatAnimalCat
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareBrownCatHat
   storage:
     back:
     - ClothingHeadHatAnimalCatBrown
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareHeadslimeHat
   storage:
     back:
     - ClothingHeadHatAnimalHeadslime
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareWaterCupPartyHat
   storage:
     back:
     - ClothingHeadHatPartyWaterCup
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareRedPartyHat
   storage:
     back:
     - ClothingHeadHatPartyRed
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareYellowPartyHat
   storage:
     back:
     - ClothingHeadHatPartyYellow
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareGreenPartyHat
   storage:
     back:
     - ClothingHeadHatPartyGreen
+  groupBy: "sparehats"
 
 - type: loadout
   id: SpareBluePartyHat
   storage:
     back:
     - ClothingHeadHatPartyBlue
+  groupBy: "sparehats"
 
 - type: loadout
   id: SparePaperHat
   storage:
     back:
     - ClothingHeadHatPaper
+  groupBy: "sparehats"
 
 - type: loadout
   id: SparePaperSack
   storage:
     back:
     - ClothingHeadPaperSack
+  groupBy: "sparehats"
 
 # Jumpsuits/Uniform
 # Color
@@ -335,192 +393,224 @@
   storage:
     back:
     - ClothingUniformJumpsuitColorBlack
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorBlack
   storage:
     back:
     - ClothingUniformJumpskirtColorBlack
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorGrey
   storage:
     back:
     - ClothingUniformJumpsuitColorGrey
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorGrey
   storage:
     back:
     - ClothingUniformJumpskirtColorGrey
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorWhite
   storage:
     back:
     - ClothingUniformJumpsuitColorWhite
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorWhite
   storage:
     back:
     - ClothingUniformJumpskirtColorWhite
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorLightBrown
   storage:
     back:
     - ClothingUniformJumpsuitColorLightBrown
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorLightBrown
   storage:
     back:
     - ClothingUniformJumpskirtColorLightBrown
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorBrown
   storage:
     back:
     - ClothingUniformJumpsuitColorBrown
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorBrown
   storage:
     back:
     - ClothingUniformJumpskirtColorBrown
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorRed
   storage:
     back:
     - ClothingUniformJumpsuitColorRed
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorRed
   storage:
     back:
     - ClothingUniformJumpskirtColorRed
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorOrange
   storage:
     back:
     - ClothingUniformJumpsuitColorOrange
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorOrange
   storage:
     back:
     - ClothingUniformJumpskirtColorOrange
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorYellow
   storage:
     back:
     - ClothingUniformJumpsuitColorYellow
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorYellow
   storage:
     back:
     - ClothingUniformJumpskirtColorYellow
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorGreen
   storage:
     back:
     - ClothingUniformJumpsuitColorGreen
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorGreen
   storage:
     back:
     - ClothingUniformJumpskirtColorGreen
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorDarkGreen
   storage:
     back:
     - ClothingUniformJumpsuitColorDarkGreen
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorDarkGreen
   storage:
     back:
     - ClothingUniformJumpskirtColorDarkGreen
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorTeal
   storage:
     back:
     - ClothingUniformJumpsuitColorTeal
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorTeal
   storage:
     back:
     - ClothingUniformJumpskirtColorTeal
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorBlue
   storage:
     back:
     - ClothingUniformJumpsuitColorBlue
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorBlue
   storage:
     back:
     - ClothingUniformJumpskirtColorBlue
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorDarkBlue
   storage:
     back:
     - ClothingUniformJumpsuitColorDarkBlue
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorDarkBlue
   storage:
     back:
     - ClothingUniformJumpskirtColorDarkBlue
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorPurple
   storage:
     back:
     - ClothingUniformJumpsuitColorPurple
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorPurple
   storage:
     back:
     - ClothingUniformJumpskirtColorPurple
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorMaroon
   storage:
     back:
     - ClothingUniformJumpsuitColorMaroon
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorMaroon
   storage:
     back:
     - ClothingUniformJumpskirtColorMaroon
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitColorPink
   storage:
     back:
     - ClothingUniformJumpsuitColorPink
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtColorPink
   storage:
     back:
     - ClothingUniformJumpskirtColorPink
+  groupBy: "spareuniform"
 
 # Turtlenecks, TODO: Whitelist restriction
 - type: loadout
@@ -530,6 +620,7 @@
     - ClothingUniformTurtleneckColorBlack
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorBlack
@@ -538,6 +629,7 @@
     - ClothingUniformTurtleneckSkirtColorBlack
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorGrey
@@ -546,6 +638,7 @@
     - ClothingUniformTurtleneckColorGrey
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorGrey
@@ -554,6 +647,7 @@
     - ClothingUniformTurtleneckSkirtColorGrey
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorWhite
@@ -562,6 +656,7 @@
     - ClothingUniformTurtleneckColorWhite
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorWhite
@@ -570,6 +665,7 @@
     - ClothingUniformTurtleneckSkirtColorWhite
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorLightBrown
@@ -578,6 +674,7 @@
     - ClothingUniformTurtleneckColorLightBrown
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorLightBrown
@@ -586,6 +683,7 @@
     - ClothingUniformTurtleneckSkirtColorLightBrown
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorBrown
@@ -594,6 +692,7 @@
     - ClothingUniformTurtleneckColorBrown
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorBrown
@@ -602,6 +701,7 @@
     - ClothingUniformTurtleneckSkirtColorBrown
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorRed
@@ -610,6 +710,7 @@
     - ClothingUniformTurtleneckColorRed
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorRed
@@ -618,6 +719,7 @@
     - ClothingUniformTurtleneckSkirtColorRed
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorOrange
@@ -626,6 +728,7 @@
     - ClothingUniformTurtleneckColorOrange
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorOrange
@@ -634,6 +737,7 @@
     - ClothingUniformTurtleneckSkirtColorOrange
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorYellow
@@ -642,6 +746,7 @@
     - ClothingUniformTurtleneckColorYellow
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorYellow
@@ -650,6 +755,7 @@
     - ClothingUniformTurtleneckSkirtColorYellow
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorGreen
@@ -658,6 +764,7 @@
     - ClothingUniformTurtleneckColorGreen
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorGreen
@@ -666,6 +773,7 @@
     - ClothingUniformTurtleneckSkirtColorGreen
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorDarkGreen
@@ -674,6 +782,7 @@
     - ClothingUniformTurtleneckColorDarkGreen
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorDarkGreen
@@ -682,6 +791,7 @@
     - ClothingUniformTurtleneckSkirtColorDarkGreen
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorTeal
@@ -690,6 +800,7 @@
     - ClothingUniformTurtleneckColorTeal
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorTeal
@@ -698,6 +809,7 @@
     - ClothingUniformTurtleneckSkirtColorTeal
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorBlue
@@ -706,6 +818,7 @@
     - ClothingUniformTurtleneckColorBlue
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorBlue
@@ -714,6 +827,7 @@
     - ClothingUniformTurtleneckSkirtColorBlue
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorDarkBlue
@@ -722,6 +836,7 @@
     - ClothingUniformTurtleneckColorDarkBlue
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorDarkBlue
@@ -730,6 +845,7 @@
     - ClothingUniformTurtleneckSkirtColorDarkBlue
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorPurple
@@ -738,6 +854,7 @@
     - ClothingUniformTurtleneckColorPurple
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorPurple
@@ -746,6 +863,7 @@
     - ClothingUniformTurtleneckSkirtColorPurple
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorMaroon
@@ -754,6 +872,7 @@
     - ClothingUniformTurtleneckColorMaroon
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorMaroon
@@ -762,6 +881,7 @@
     - ClothingUniformTurtleneckSkirtColorMaroon
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckColorPink
@@ -770,6 +890,7 @@
     - ClothingUniformTurtleneckColorPink
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTurtleneckSkirtColorPink
@@ -778,6 +899,7 @@
     - ClothingUniformTurtleneckSkirtColorPink
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 # Casual
 - type: loadout
@@ -785,66 +907,63 @@
   storage:
     back:
     - ClothingUniformJumpsuitCasualRed
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareRedCasualJumpskirt
   storage:
     back:
     - ClothingUniformJumpskirtCasualRed
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareGreenCasualJumpsuit
   storage:
     back:
     - ClothingUniformJumpsuitCasualGreen
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareGreenCasualJumpskirt
   storage:
     back:
     - ClothingUniformJumpskirtCasualGreen
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareBlueCasualJumpsuit
   storage:
     back:
     - ClothingUniformJumpsuitCasualBlue
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareBlueCasualJumpskirt
   storage:
     back:
     - ClothingUniformJumpskirtCasualBlue
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SparePurpleCasualJumpsuit
   storage:
     back:
     - ClothingUniformJumpsuitCasualPurple
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SparePurpleCasualJumpskirt
   storage:
     back:
     - ClothingUniformJumpskirtCasualPurple
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareLoungewear
   storage:
     back:
     - ClothingUniformJumpsuitLoungewear
-
-- type: loadout
-  id: SpareRedShirt
-  storage:
-    back:
-    - ADTClothingUniformJumpsuitRedShirt
-
-- type: loadout
-  id: SpareBlueShirt
-  storage:
-    back:
-    - ADTClothingUniformJumpsuitBlueShirt
+  groupBy: "spareuniform"
 
 # Hawaii
 - type: loadout
@@ -852,24 +971,56 @@
   storage:
     back:
     - ClothingUniformJumpsuitHawaiBlack
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareRedHawaiianShirt
   storage:
     back:
     - ClothingUniformJumpsuitHawaiRed
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareYellowHawaiianShirt
   storage:
     back:
     - ClothingUniformJumpsuitHawaiYellow
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareBlueHawaiianShirt
   storage:
     back:
     - ClothingUniformJumpsuitHawaiBlue
+  groupBy: "spareuniform"
+
+- type: loadout
+  id: SpareBlackShirt
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitBlackShirt
+  groupBy: "spareuniform"
+
+- type: loadout
+  id: SpareWhiteShirt
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitWhiteShirt
+  groupBy: "spareuniform"
+
+- type: loadout
+  id: SpareRedShirt
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitRedShirt
+  groupBy: "spareuniform"
+
+- type: loadout
+  id: SpareBlueShirt
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitBlueShirt
+  groupBy: "spareuniform"
 
 # Unique, TODO: Whitelist restriction
 - type: loadout
@@ -880,6 +1031,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Doctor
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SparePsychologistSuitskirt
@@ -889,6 +1041,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Doctor
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareNoirSuit
@@ -898,6 +1051,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Security
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareNoirSuitskirt
@@ -907,6 +1061,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Security
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareHardWornSuit
@@ -916,6 +1071,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Security
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareHardWornSuitskirt
@@ -925,6 +1081,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Security
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareBlueSecShirt
@@ -934,6 +1091,17 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Security
+  groupBy: "spareuniform"
+
+- type: loadout
+  id: SpareDarkLightSuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitDarkLight
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareBarberSuit
@@ -944,6 +1112,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Service
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareBarberSkirtSuit
@@ -954,6 +1123,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Service
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareBrownBarberSuit
@@ -964,6 +1134,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Service
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareBrownBarberSkirtSuit
@@ -974,6 +1145,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Service
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareOldGreySuit
@@ -984,6 +1156,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareOldBrownSuit
@@ -994,6 +1167,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareDutchSuit
@@ -1002,6 +1176,7 @@
     - ADTClothingUniformJumpsuitDutch
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTwoPieceSuit
@@ -1011,7 +1186,8 @@
   effects:
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
-    proto: Service
+    proto: FiftyOverall
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareTwoPieceSkirtSuit
@@ -1021,7 +1197,8 @@
   effects:
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
-    proto: Service
+    proto: FiftyOverall
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareCuratorSuit
@@ -1031,6 +1208,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: JamjarTimer
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareCuratorSuitskirt
@@ -1040,6 +1218,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: JamjarTimer
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpskirtOfLife
@@ -1050,18 +1229,31 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Corpsman
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareOveralls
   storage:
     back:
     - ClothingUniformOveralls
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Service
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitFlannel
   storage:
     back:
     - ClothingUniformJumpsuitFlannel
+  groupBy: "spareuniform"
+
+- type: loadout
+  id: SpareJumpsuitDenim
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitDenim
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitRandom
@@ -1070,6 +1262,7 @@
     - ClothingUniformRandomStandard
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareJumpsuitRandomShirt
@@ -1078,6 +1271,7 @@
     - ClothingUniformRandomShirt
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareCossackSuit
@@ -1086,6 +1280,7 @@
     - ClothingUniformJumpsuitCossack
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareWebJumpsuit
@@ -1096,6 +1291,7 @@
   - !type:SpeciesLoadoutEffect
     species:
     - Arachnid
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareWebJumpskirt
@@ -1106,6 +1302,7 @@
   - !type:SpeciesLoadoutEffect
     species:
     - Arachnid
+  groupBy: "spareuniform"
 
 #Dresses, TODO: Whitelist restriction
 - type: loadout
@@ -1115,6 +1312,7 @@
     - ClothingUniformJumpskirtBlackElegantDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareRedElegantDress
@@ -1123,6 +1321,7 @@
     - ClothingUniformJumpskirtRedElegantDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareGreenElegantDress
@@ -1131,6 +1330,7 @@
     - ClothingUniformJumpskirtGreenElegantDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareBlueElegantDress
@@ -1139,6 +1339,7 @@
     - ClothingUniformJumpskirtBlueElegantDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SparePurpleElegantDress
@@ -1147,6 +1348,7 @@
     - ClothingUniformJumpskirtPurpleElegantDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareRedStripedDress
@@ -1155,6 +1357,7 @@
     - ClothingUniformJumpskirtRedStripedDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareOrangeStripedDress
@@ -1163,6 +1366,7 @@
     - ClothingUniformJumpskirtOrangeStripedDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareGreenStripedDress
@@ -1171,6 +1375,7 @@
     - ClothingUniformJumpskirtGreenStripedDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareCyanStripedDress
@@ -1179,6 +1384,7 @@
     - ClothingUniformJumpskirtCyanStripedDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SparePinkStripedDress
@@ -1187,6 +1393,7 @@
     - ClothingUniformJumpskirtPinkStripedDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareRedTurtleneckDress
@@ -1195,6 +1402,7 @@
     - ClothingUniformJumpskirtRedTurtleneckDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareYellowTurtleneckDress
@@ -1203,6 +1411,7 @@
     - ClothingUniformJumpskirtYellowTurtleneckDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareGreenTurtleneckDress
@@ -1211,6 +1420,7 @@
     - ClothingUniformJumpskirtGreenTurtleneckDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareBlueTurtleneckDress
@@ -1219,6 +1429,7 @@
     - ClothingUniformJumpskirtBlueTurtleneckDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SparePurpleTurtleneckDress
@@ -1227,6 +1438,7 @@
     - ClothingUniformJumpskirtPurpleTurtleneckDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareYellowOldDress
@@ -1235,6 +1447,7 @@
     - ClothingUniformJumpskirtYellowOldDress
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 - type: loadout
   id: SpareOldDress
@@ -1243,14 +1456,7 @@
     - ClothingUniformJumpskirtOldDress
   effects:
   - !type:SponsorLoadoutEffect
-
-- type: loadout
-  id: SpareNightDress
-  storage:
-    back:
-    - ClothingOuterNightDress
-  effects:
-  - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
 
 # Hands/Gloves
 - type: loadout
@@ -1258,36 +1464,42 @@
   storage:
     back:
     - ClothingHandsGlovesFingerless
+  groupBy: "sparegloves"
 
 - type: loadout
   id: SpareGlovesColorBlack
   storage:
     back:
     - ClothingHandsGlovesColorBlack
+  groupBy: "sparegloves"
 
 - type: loadout
   id: SpareGlovesColorGray
   storage:
     back:
     - ClothingHandsGlovesColorGray
+  groupBy: "sparegloves"
 
 - type: loadout
   id: SpareGlovesColorWhite
   storage:
     back:
     - ClothingHandsGlovesColorWhite
+  groupBy: "sparegloves"
 
 - type: loadout
   id: SpareGlovesColorLightBrown
   storage:
     back:
     - ClothingHandsGlovesColorLightBrown
+  groupBy: "sparegloves"
 
 - type: loadout
   id: SpareGlovesColorBrown
   storage:
     back:
     - ClothingHandsGlovesColorBrown
+  groupBy: "sparegloves"
 
 - type: loadout
   id: SpareGlovesColorRed
@@ -1300,30 +1512,35 @@
   storage:
     back:
     - ClothingHandsGlovesColorOrange
+  groupBy: "sparegloves"
 
 - type: loadout
   id: SpareGlovesColorGreen
   storage:
     back:
     - ClothingHandsGlovesColorGreen
+  groupBy: "sparegloves"
 
 - type: loadout
   id: SpareGlovesColorTeal
   storage:
     back:
     - ClothingHandsGlovesColorTeal
+  groupBy: "sparegloves"
 
 - type: loadout
   id: SpareGlovesColorBlue
   storage:
     back:
     - ClothingHandsGlovesColorBlue
+  groupBy: "sparegloves"
 
 - type: loadout
   id: SpareGlovesColorPurple
   storage:
     back:
     - ClothingHandsGlovesColorPurple
+  groupBy: "sparegloves"
 
 - type: loadout # TODO: Whitelist restriction
   id: SparePawsGloves
@@ -1332,6 +1549,34 @@
     - ClothingHandsGlovesPaws
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "sparegloves"
+
+- type: loadout
+  id: SpareSilverRing
+  storage:
+    back:
+    - SilverRing
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "sparegloves"
+
+- type: loadout
+  id: SpareGoldRing
+  storage:
+    back:
+    - GoldRing
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "sparegloves"
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareWristwatch
+  storage:
+    back:
+    - Wristwatch
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
 
 # Mask
 - type: loadout
@@ -1342,6 +1587,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Doctor
+  groupBy: "sparemask"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareNeckGaiter
@@ -1352,6 +1598,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Security
+  groupBy: "sparemask"
 
 # Neck
 - type: loadout
@@ -1359,6 +1606,7 @@
   storage:
     back:
     - ClothingNeckTieRed
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareBlueTie
@@ -1368,6 +1616,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Command
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareDetTie
@@ -1377,6 +1626,17 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Security
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SpareBowTie
+  storage:
+    back:
+    - ClothingNeckBowTieBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareBlackScarf
@@ -1386,6 +1646,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: TenOverall
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareBrownScarf
@@ -1395,6 +1656,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Cargonian
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareRedScarf
@@ -1404,6 +1666,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Security
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareOrangeScarf
@@ -1413,6 +1676,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Engineer
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareGreenScarf
@@ -1422,6 +1686,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Service
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareLightBlueScarf
@@ -1431,6 +1696,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Atmos
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareBlueScarf
@@ -1440,6 +1706,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Doctor
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SparePurpleScarf
@@ -1449,6 +1716,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Researcher
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareLongBlackScarf
@@ -1457,6 +1725,7 @@
     - ADTClothingNeckScarfLongBlack
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareLongRedScarf
@@ -1465,6 +1734,7 @@
     - ADTClothingNeckScarfLongRed
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareLongOrangeScarf
@@ -1473,6 +1743,7 @@
     - ADTClothingNeckScarfLongOrange
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareLongYellowScarf
@@ -1481,6 +1752,7 @@
     - ADTClothingNeckScarfLongYellow
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareLongGreenScarf
@@ -1489,6 +1761,7 @@
     - ADTClothingNeckScarfLongGreen
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareLongBlueScarf
@@ -1497,6 +1770,7 @@
     - ADTClothingNeckScarfLongBlue
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareLongPurpleScarf
@@ -1505,6 +1779,7 @@
     - ADTClothingNeckScarfLongPurple
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareLongPinkScarf
@@ -1513,6 +1788,7 @@
     - ADTClothingNeckScarfLongPink
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareFaceScarfBlack
@@ -1522,6 +1798,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareFaceScarfGrey
@@ -1531,6 +1808,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareFaceScarfWhite
@@ -1540,6 +1818,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareFaceScarfRed
@@ -1549,6 +1828,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareFaceScarfOrange
@@ -1558,6 +1838,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareFaceScarfGreen
@@ -1567,6 +1848,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareFaceScarfBlue
@@ -1576,6 +1858,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareFaceScarfPurple
@@ -1585,6 +1868,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareOldMantle
@@ -1594,6 +1878,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareHideMantle
@@ -1606,6 +1891,7 @@
     - Reptilian
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareHieroglyphicCloak
@@ -1616,6 +1902,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: TenOverall
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareOrangeCloak
@@ -1626,6 +1913,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: TenOverall
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareGoldChain
@@ -1634,6 +1922,7 @@
     - ADTClothingNeckGoldChain
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareBling
@@ -1642,6 +1931,78 @@
     - ClothingNeckBling
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
+
+# Bedsheets
+- type: loadout
+  id: SpareBlackBedsheet
+  storage:
+    back:
+    - BedsheetBlack
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SpareGreyBedsheet
+  storage:
+    back:
+    - BedsheetGrey
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SpareWhiteBedsheet
+  storage:
+    back:
+    - BedsheetWhite
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SpareBrownBedsheet
+  storage:
+    back:
+    - BedsheetBrown
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SpareRedBedsheet
+  storage:
+    back:
+    - BedsheetRed
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SpareOrangeBedsheet
+  storage:
+    back:
+    - BedsheetOrange
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SpareYellowBedsheet
+  storage:
+    back:
+    - BedsheetYellow
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SpareGreenBedsheet
+  storage:
+    back:
+    - BedsheetGreen
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SpareBlueBedsheet
+  storage:
+    back:
+    - BedsheetBlue
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SparePurpleBedsheet
+  storage:
+    back:
+    - BedsheetPurple
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareRainbowBedsheet
@@ -1650,6 +2011,7 @@
     - BedsheetRainbow
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareWizardBedsheet
@@ -1658,6 +2020,7 @@
     - BedsheetWiz
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareCosmosBedsheet
@@ -1666,115 +2029,114 @@
     - BedsheetCosmos
   effects:
   - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
 
+# Faction bandages
 - type: loadout # TODO: Whitelist restriction
   id: SpareBlueTSFLoyalistBandage
   storage:
     back:
     - ClothingNeckBandageTSF
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareDarkPeripheralistBandage
   storage:
     back:
     - ClothingNeckBandagePeriph
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareRedRevBandage
   storage:
     back:
     - ClothingNeckBandageRev
+  groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareGreenElysiumBandage
   storage:
     back:
     - ClothingNeckBandageElysium
+  groupBy: "spareneckwear"
 
 # Outer clothing
-- type: loadout
-  id: SpareRedFlannelJacket
-  storage:
-    back:
-    - ClothingOuterFlannelRed
-
-- type: loadout
-  id: SpareGreenFlannelJacket
-  storage:
-    back:
-    - ClothingOuterFlannelGreen
-
-- type: loadout
-  id: SpareBlueFlannelJacket
-  storage:
-    back:
-    - ClothingOuterFlannelBlue
-
 - type: loadout
   id: SpareBlackWintercoat
   storage:
     back:
     - ClothingOuterWinterColorBlack
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareGrayWintercoat
   storage:
     back:
     - ClothingOuterWinterColorGray
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareWhiteWintercoat
   storage:
     back:
     - ClothingOuterWinterColorWhite
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareLightBrownWintercoat
   storage:
     back:
     - ClothingOuterWinterColorLightBrown
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareBrownWintercoat
   storage:
     back:
     - ClothingOuterWinterColorBrown
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareRedWintercoat
   storage:
     back:
     - ClothingOuterWinterColorRed
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareOrangeWintercoat
   storage:
     back:
     - ClothingOuterWinterColorOrange
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareYellowWintercoat
   storage:
     back:
     - ClothingOuterWinterColorYellow
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareGreenWintercoat
   storage:
     back:
     - ClothingOuterWinterColorGreen
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareBlueWintercoat
   storage:
     back:
     - ClothingOuterWinterColorBlue
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SparePurpleWintercoat
   storage:
     back:
     - ClothingOuterWinterColorPurple
+  groupBy: "spareouterclothing"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareWebWintercoat
@@ -1785,90 +2147,161 @@
   - !type:SpeciesLoadoutEffect
     species:
     - Arachnid
+  groupBy: "spareouterclothing"
+
+- type: loadout
+  id: SpareRedFlannelJacket
+  storage:
+    back:
+    - ClothingOuterFlannelRed
+  groupBy: "spareouterclothing"
+
+- type: loadout
+  id: SpareGreenFlannelJacket
+  storage:
+    back:
+    - ClothingOuterFlannelGreen
+  groupBy: "spareouterclothing"
+
+- type: loadout
+  id: SpareBlueFlannelJacket
+  storage:
+    back:
+    - ClothingOuterFlannelBlue
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareBomberJacket
   storage:
     back:
     - ClothingOuterCoatBomber
+  groupBy: "spareouterclothing"
 
 #- type: loadout
 #  id: SpareBlackBomber
 #  storage:
 #    back:
 #    - ClothingOuterCoatBomberBlack
+#  groupBy: "spareouterclothing"
 
 - type: loadout
-  id: SpareDutchCoat
+  id: SpareBlackJacket
   storage:
     back:
-    - ADTClothingOuterDutch
+    - ADTClothingOuterLettermanBlack
+  groupBy: "spareouterclothing"
+
+- type: loadout
+  id: SpareNTLettermanJacket
+  storage:
+    back:
+    - ADTClothingOuterLettermanNanoTrasen
+  groupBy: "spareouterclothing"
+
+- type: loadout
+  id: SpareBikerJacket
+  storage:
+    back:
+    - ADTClothingOuterBikerJacket
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareLeatherJacket
   storage:
     back:
     - ADTClothingOuterLeatherJacket
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareLeatherCoat
   storage:
     back:
     - ADTClothingOuterCoatLeathOvercoat
+  groupBy: "spareouterclothing"
+
+- type: loadout
+  id: SpareDutchCoat
+  storage:
+    back:
+    - ADTClothingOuterDutch
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareGentleCoat
   storage:
     back:
     - ClothingOuterCoatGentle
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareJensenCoat
   storage:
     back:
     - ClothingOuterCoatJensen
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareRedCoat
   storage:
     back:
     - ClothingOuterCoatRedCoat
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareBlackHoodieAlt
   storage:
     back:
     - ADTClothingOuterHoodyBlack
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareBlackHoodie
   storage:
     back:
     - ClothingOuterHoodieBlack
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareGreyHoodie
   storage:
     back:
     - ClothingOuterHoodieGrey
+  groupBy: "spareouterclothing"
+
+- type: loadout
+  id: SpareBlackSweatshirt
+  storage:
+    back:
+    - ADTClothingOuterBlackSweatshirtTop
+  groupBy: "spareouterclothing"
+
+- type: loadout
+  id: SpareGreySweatshirt
+  storage:
+    back:
+    - ADTClothingOuterGraySweatshirtTop
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareVest
   storage:
     back:
     - ClothingOuterVest
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareTrenchCoat
   storage:
     back:
     - ClothingOuterCoatTrench
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareClassicPoncho
   storage:
     back:
     - ClothingOuterPonchoClassic
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareUnathiRobe
@@ -1879,6 +2312,16 @@
   - !type:SpeciesLoadoutEffect
     species:
     - Reptilian
+  groupBy: "spareouterclothing"
+
+- type: loadout
+  id: SpareNightDress
+  storage:
+    back:
+    - ClothingOuterNightDress
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareApron
@@ -1888,6 +2331,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Service
+  groupBy: "spareouterclothing"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareHospitalGown
@@ -1897,6 +2341,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Doctor
+  groupBy: "spareouterclothing"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareHazardVest
@@ -1906,6 +2351,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Engineer
+  groupBy: "spareouterclothing"
 
 # Shoes/Feet
 - type: loadout # TODO: Whitelist restriction
@@ -1913,15 +2359,18 @@
   storage:
     back:
     - ClothingShoesSlippers
+  groupBy: "spareshoes"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareTouristShoes
   storage:
     back:
     - ClothingShoesTourist
+  groupBy: "spareshoes"
 
 - type: loadout
   id: SpareClothWraps
   storage:
     back:
     - ClothingClothWraps
+  groupBy: "spareshoes"

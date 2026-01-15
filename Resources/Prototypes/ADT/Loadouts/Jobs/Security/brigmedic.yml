@@ -63,7 +63,7 @@
   id: ADTEyesGlassesMed
   equipment:
     eyes: ADTClothingEyesGlassesMed
-  effects: # Ganimed-Loadouts
+  effects: # Ganimed-Loadouts-Add
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement

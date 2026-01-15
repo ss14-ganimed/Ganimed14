@@ -38,6 +38,13 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitSalvageSpecialistAlt
 
+- type: loadout
+  id: ExplorersJumpsuit
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitKringeClothing
+  effects:
+  - !type:SponsorLoadoutEffect
+
 # Neck
 - type: loadout # TODO: Whitelist restriction
   id: MinerCloak

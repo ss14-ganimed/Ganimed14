@@ -9,6 +9,7 @@
 
 - type: dungeonConfig
   id: VGRoid
+  sizeTag: MediumMagnetTargets # ADT-Tweak: MagnetUpdate
   layers:
     - !type:PrototypeDunGen
       proto: VGRoidBlob
@@ -18,6 +19,7 @@
       proto: VGRoidSmaller
     - !type:PrototypeDunGen
       proto: VGRoidSmallPaths
+      inheritDungeons: All
     - !type:EntityTableDunGen
       minCount: 7
       maxCount: 12
@@ -26,6 +28,7 @@
     # Fill
     - !type:PrototypeDunGen
       proto: VGRoidFill
+      inheritDungeons: All
     # Ores
     - !type:OreDunGen
       replacement: IronRock
@@ -97,6 +100,7 @@
 # Configs
 - type: dungeonConfig
   id: VGRoidBlob
+  sizeTag: MediumMagnetTargets # ADT-Tweak: MagnetUpdate
   layers:
   - !type:NoiseDistanceDunGen
     size: 272, 272
@@ -115,6 +119,7 @@
 
 - type: dungeonConfig
   id: VGRoidSmaller
+  sizeTag: MediumMagnetTargets # ADT-Tweak: MagnetUpdate
   minOffset: 40
   maxOffset: 60
   layers:
@@ -134,18 +139,18 @@
 
 - type: dungeonConfig
   id: VGRoidExterior
+  sizeTag: MediumMagnetTargets # ADT-Tweak: MagnetUpdate
   reserveTiles: true
-  data:
-    tiles:
-      FallbackTile: PlatingAsteroid
-      WidenTile: FloorAsteroidSand
   layers:
   - !type:PrototypeDunGen
     proto: VGRoidExteriorDungeons
   - !type:SplineDungeonConnectorDunGen
+    tile: PlatingAsteroid
+    widenTile: FloorAsteroidSand
 
 - type: dungeonConfig
   id: VGRoidExteriorDungeons
+  sizeTag: MediumMagnetTargets # ADT-Tweak: MagnetUpdate
   reserveTiles: true
   minCount: 2
   maxCount: 3
@@ -163,29 +168,24 @@
     table: !type:NestedSelector
       tableId: SalvageScrapSpawnerValuable
   - !type:EntityTableDunGen
-    minCount: 15
-    maxCount: 25
+    minCount: 30
+    maxCount: 45
     table: !type:NestedSelector
       tableId: SalvageTreasureSpawnerCommon
   - !type:EntityTableDunGen
-    minCount: 15
-    maxCount: 25
-    table: !type:NestedSelector
-      tableId: SalvageEquipmentSpawnerCommon
-  - !type:EntityTableDunGen
-    minCount: 15
-    maxCount: 20
+    minCount: 30
+    maxCount: 45
     table: !type:NestedSelector
       tableId: SalvageTreasureSpawnerValuable
-  - !type:EntityTableDunGen
-    minCount: 15
-    maxCount: 20
-    table: !type:NestedSelector
-      tableId: SalvageEquipmentSpawnerValuable
   - !type:MobsDunGen
     minCount: 8
     maxCount: 15
-    groups:
+    contents: VGRoidExteriorDungeonsMobs
+
+- type: entityTable
+  id: VGRoidExteriorDungeonsMobs
+  table: !type:GroupSelector
+    children:
     - id: SalvageSpawnerMobMiningAsteroid
       amount: 1
 
@@ -197,6 +197,7 @@
 
 - type: dungeonConfig
   id: VGRoidSmallPaths
+  sizeTag: MediumMagnetTargets # ADT-Tweak: MagnetUpdate
   reserveTiles: true
   layers:
   - !type:ReplaceTileDunGen
@@ -215,7 +216,12 @@
   - !type:MobsDunGen
     minCount: 25
     maxCount: 35
-    groups:
+    contents: VGRoidSmallPathsMobs
+
+- type: entityTable
+  id: VGRoidSmallPathsMobs
+  table: !type:GroupSelector
+    children:
     - id: SalvageSpawnerMobMiningAsteroid
       amount: 1
 
@@ -225,10 +231,9 @@
 # Fill with rocks.
 - type: dungeonConfig
   id: VGRoidFill
-  data:
-    entities:
-      Fill: IronRock
+  sizeTag: MediumMagnetTargets # ADT-Tweak: MagnetUpdate
   layers:
   - !type:FillGridDunGen
+    entity: IronRock
     allowedTiles:
     - FloorAsteroidSand

@@ -14,6 +14,15 @@
   equipment:
     head: ClothingHeadHatCapWardenAlt
 
+# Neck
+- type: loadout # TODO: Whitelist restriction
+  id: NeckBinoculars
+  equipment:
+    neck: Binoculars
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficer
+
 # Back, Ganimed
 - type: loadout
   id: WardenBackpack

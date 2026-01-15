@@ -2,20 +2,25 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
+using Content.Shared.Emoting;
 using Content.Shared.Examine;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Movement.Components;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Objectives.Systems;
 using Content.Shared.Players;
+using Content.Shared.Speech;
 using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Shared.ADT.LastWords;
 
 namespace Content.Shared.Mind;
 
@@ -32,6 +37,7 @@ public abstract partial class SharedMindSystem : EntitySystem
 
     [ViewVariables]
     protected readonly Dictionary<NetUserId, EntityUid> UserMinds = new();
+
 
     public override void Initialize()
     {
@@ -217,6 +223,7 @@ public abstract partial class SharedMindSystem : EntitySystem
         var mindId = Spawn(null, MapCoordinates.Nullspace);
         _metadata.SetEntityName(mindId, name == null ? "mind" : $"mind ({name})");
         var mind = EnsureComp<MindComponent>(mindId);
+        EnsureComp<LastWordsComponent>(mindId); //ADT-tweak: последние слова
         mind.CharacterName = name;
         SetUserId(mindId, userId, mind);
 
@@ -631,6 +638,31 @@ public abstract partial class SharedMindSystem : EntitySystem
         }
 
         return allHumans;
+    }
+
+    /// <summary>
+    /// Give sentience to a target entity by attaching necessary components.
+    /// </summary>
+    /// <param name="uid">Uid of the target entity.</param>
+    /// <param name="allowMovement">Whether the target entity should be able to move.</param>
+    /// <param name="allowSpeech">Whether the target entity should be able to talk.</param>
+    public void MakeSentient(EntityUid uid, bool allowMovement = true, bool allowSpeech = true)
+    {
+        EnsureComp<MindContainerComponent>(uid);
+        if (allowMovement)
+        {
+            EnsureComp<InputMoverComponent>(uid);
+            EnsureComp<MobMoverComponent>(uid);
+            EnsureComp<MovementSpeedModifierComponent>(uid);
+        }
+
+        if (allowSpeech)
+        {
+            EnsureComp<SpeechComponent>(uid);
+            EnsureComp<EmotingComponent>(uid);
+        }
+
+        EnsureComp<ExaminerComponent>(uid);
     }
 }
 

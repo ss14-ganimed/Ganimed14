@@ -142,7 +142,7 @@
   parent: ClothingOuterCoatSecurityOvercoat
   id: ClothingOuterCoatBlueDmc
   name: blue leather coat
-  description: First I whip it out. Then I thrust it. With great force! Every angle..! It penetrates! Until..! With great strength! I.. ram it in! In the end, we are all satisfied, and you are set free.
+  description: That regal look suits you!
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/OuterClothing/Coats/DMC/blue.rsi

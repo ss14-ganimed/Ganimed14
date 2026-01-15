@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: MedicalIntern
   name: job-name-intern
   description: job-description-intern
@@ -24,8 +24,19 @@
     shoes: ClothingShoesColorWhite
     #id: MedicalInternPDA # ADT: different PDAs in loadouts
     ears: ClothingHeadsetMedical
-    belt: ClothingBeltMedicalFilled
+    belt: ClothingBeltMedicalFilled # Ganimed-Loadouts-Readd
     pocket2: BookMedicalReferenceBook
   #storage:
     #back:
     #- Stuff
+
+- type: chameleonOutfit
+  id: MedicalInternChameleonOutfit
+  job: MedicalIntern
+  equipment:
+    head: ClothingHeadHatBeretMedic
+    eyes: ClothingEyesHudMedical
+    mask: ClothingMaskSterile
+    neck: ClothingNeckStethoscope
+    outerClothing: ClothingOuterCoatLabOpened
+    gloves: ClothingHandsGlovesLatex

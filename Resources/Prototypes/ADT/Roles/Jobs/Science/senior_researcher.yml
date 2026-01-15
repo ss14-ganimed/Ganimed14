@@ -18,6 +18,16 @@
   id: SeniorResearcherGear
   equipment:
     id: SeniorResearcherPDA
-    # ears: ClothingHeadsetScience # Ganimed-Loadouts
+    # ears: ClothingHeadsetScience # Ganimed-Loadouts-Remove (Loadout choice)
     belt: ClothingBeltUtilityFilled
     pocket1: AnomalyLocatorEmpty
+  # storage:
+  #   back:
+  #   - ADTHumanCubeWrapped #ADT-CustomADTLoadout # Ganimed-Remove
+
+- type: chameleonOutfit
+  id: ADTSeniorResearcherChameleonOutfit
+  job: ADTSeniorResearcher
+  hasMindShield: false # Ganimed-Edit
+  equipment:
+    ears: ClothingHeadsetScience

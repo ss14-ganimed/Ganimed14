@@ -49,13 +49,15 @@
       provided_container: !type:Container { }
 
 - type: entity
+  parent: BaseAction
   id: ActionBorgSwapModule
   name: Swap Module
   description: Select this module, enabling you to use the tools it provides.
   components:
-  - type: InstantAction
+  - type: Action
     itemIconStyle: BigAction
     useDelay: 0.5
+  - type: InstantAction
     event: !type:BorgModuleActionSelectedEvent
 
 - type: entity
@@ -444,6 +446,7 @@
     items:
     - BorgFireExtinguisher
     - BorgHandheldGPSBasic
+    - HandheldStationMapUnpowered
     - HandHeldMassScannerBorg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: extinguisher-module }
@@ -459,6 +462,7 @@
     - state: icon-tools
   - type: ItemBorgModule
     items:
+    - HandheldStationMapUnpowered # ADT-tweak
     - Crowbar
     - Wrench
     - Screwdriver
@@ -504,6 +508,8 @@
     # - Shovel ADT tweak
     - MineralScannerUnpowered
     - BorgOreBag
+    - BorgHandheldGPSBasic #ADT tweak: MineBorgModulesUpdate
+    - HandheldStationMapUnpowered #ADT tweak: MineBorgModulesUpdate
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
 
@@ -523,8 +529,12 @@
     - Shovel
     - AdvancedMineralScannerUnpowered
     - OreBagOfHolding
+    - BorgHandheldGPSBasic #ADT tweak: MineBorgModulesUpdate
+    - HandheldStationMapUnpowered #ADT tweak: MineBorgModulesUpdate
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-mining-module }
+
+#ADT tweak-Start: MineBorgModulesUpdate
 
 - type: entity
   id: BorgModuleTraversal
@@ -543,6 +553,8 @@
     - HandHeldMassScannerBorg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: grappling-module }
+
+#ADT tweak-End: MineBorgModulesUpdate
 
 # engineering modules
 - type: entity
@@ -592,10 +604,6 @@
         components:
         - Electronics
         - MachineBoard
-    - id: CapacitorStockPart
-      whitelist:
-        components:
-        - StockPart
     # ADT end: droppable borg items
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: construction-module }
@@ -612,11 +620,12 @@
   - type: ItemBorgModule
     items:
     - RCDRecharging
-    - BorgFireExtinguisher
+    ##- BorgFireExtinguisher   # ADT-tweak
     - BorgHandheldGPSBasic
-    - GasAnalyzer
-    - HolofanProjectorBorg
+    ##- GasAnalyzer            # ADT-tweak
+    ##- HolofanProjectorBorg   # ADT-tweak
     - GeigerCounter
+    - WeaponGrapplingGun       # ADT-tweak
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: rcd-module }
 
@@ -678,6 +687,8 @@
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-cleaning-module }
 
 # medical modules
+# ADT-Tweak-Start "MedborgModuleUpdate":
+# ADT-Tweak-Start
 - type: entity
   id: BorgModuleDiagnosis # todo: reuse when med refractor is finished
   parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
@@ -693,6 +704,7 @@
     - ClothingNeckStethoscope
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: diagnosis-module }
+  # ADT-Tweak-End
 
 - type: entity
   id: BorgModuleTopicals
@@ -719,6 +731,7 @@
   id: BorgModuleRescue
   parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
   name: rescue cyborg module
+  abstract: true # ADT-Tweak: "MedborgModuleUpdate"
   components:
   - type: Sprite
     layers:
@@ -737,6 +750,7 @@
 - type: entity
   id: BorgModuleChemical
   parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
+  abstract: true  # ADT-Tweak: "MedborgModuleUpdate"
   name: chemical cyborg module
   components:
   - type: Sprite
@@ -754,6 +768,7 @@
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: chem-module }
 
+# ADT-Tweak-Start: "MedborgModuleUpdate"   # новые модули сделал отдельно в папке ADT
 - type: entity
   id: BorgModuleAdvancedChemical
   parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
@@ -781,6 +796,8 @@
     # ADT end: droppable borg items
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-chem-module }
+# ADT-Tweak-End
+# ADT-Tweak-End
 
 # science modules
 # todo: if science ever gets their own custom robot, add more "sci" modules.
@@ -971,6 +988,8 @@
       - state: base-part-inhand-right
       - state: base-stripes-inhand-right
         color: "#7B0F12"
+  - type: StaticPrice
+    price: 2500
 
 - type: entity
   id: BorgModuleOperative
@@ -1118,6 +1137,8 @@
         - state: base-part-inhand-right
         - state: base-stripes-inhand-right
           color: "#7B0F12"
+    - type: StaticPrice
+      price: 2000
 
 # xenoborg modules
 - type: entity
@@ -1263,7 +1284,7 @@
   parent: [ BaseXenoborgModuleScout, BaseProviderBorgModule, BaseXenoborgContraband ]
   id: XenoborgModuleSword
   name: sword xenoborg module
-  description: Module with an energy dagger.
+  description: Module with a kukri knife.
   components:
   - type: Sprite
     layers:
@@ -1271,16 +1292,16 @@
     - state: icon-xenoborg-sword
   - type: ItemBorgModule
     items:
-    - EnergyDaggerLoudBlue
+    - KukriKnife
     - JetpackXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-sword-module }
 
 - type: entity
   parent: [ BaseXenoborgModuleScout, BaseProviderBorgModule, BaseXenoborgContraband ]
-  id: XenoborgModuleFastSword
-  name: fast sword xenoborg module
-  description: Module with a crusher dagger.
+  id: XenoborgModuleEnergySword
+  name: energy sword xenoborg module
+  description: Module with an energy dagger.
   components:
   - type: Sprite
     layers:
@@ -1288,7 +1309,7 @@
     - state: icon-xenoborg-sword2
   - type: ItemBorgModule
     items:
-    - WeaponCrusherDagger
+    - EnergyDaggerLoudBlue
     - JetpackXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-sword2-module }

@@ -9,7 +9,19 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Humanoid;
 using Content.Shared.ADT.Crawling;
 using Content.Shared.Coordinates;
-
+using Robust.Shared.Prototypes;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Components;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Standing;
+using Content.Shared.Damage.Prototypes;
+using Content.Shared.Popups;
+using Content.Shared.IdentityManagement;
 namespace Content.Shared.ADT.Combat;
 
 public abstract class SharedComboSystem : EntitySystem
@@ -23,7 +35,6 @@ public abstract class SharedComboSystem : EntitySystem
         SubscribeLocalEvent<ComboComponent, DisarmAttemptEvent>(OnDisarmUsed);
         SubscribeLocalEvent<ComboComponent, MeleeHitEvent>(OnMeleeHit);
         SubscribeLocalEvent<ComboComponent, GrabStageChangedEvent>(OnGrab);
-        SubscribeLocalEvent<ComboComponent, CrawlingKeybindEvent>(ToggleCrawling);
 
         SubscribeLocalEvent<ComboComponent, ToggleCombatActionEvent>(OnCombatToggled);
     }
@@ -56,6 +67,8 @@ public abstract class SharedComboSystem : EntitySystem
             comp.CurrestActions.RemoveAt(0);
         }
         comp.Target = args.HitEntities[0];
+
+
         TryDoCombo(uid, args.HitEntities[0], comp);
     }
 
@@ -91,6 +104,7 @@ public abstract class SharedComboSystem : EntitySystem
         if (mainList == null)
             return false;
         var isComboCompleted = false;
+        var stopGrab = false;
         foreach (var combo in comp.AvailableMoves)
         {
             var subList = combo.ActionsNeeds;
@@ -98,10 +112,12 @@ public abstract class SharedComboSystem : EntitySystem
                 continue;
             UseEventOnTarget(user, target, combo);
             isComboCompleted = true;
+            if (combo.StopGrab)
+                stopGrab = true;
         }
         if (isComboCompleted)
             comp.CurrestActions.Clear();
-        if (TryComp<PullableComponent>(target, out var pulled) && isComboCompleted)
+        if (TryComp<PullableComponent>(target, out var pulled) && isComboCompleted && stopGrab)
             _pullingSystem.TryStopPull(target, pulled, user);
         return true;
     }
@@ -130,24 +146,24 @@ public abstract class SharedComboSystem : EntitySystem
         return false;
     }
 
-    private void ToggleCrawling(EntityUid uid, ComboComponent comp, CrawlingKeybindEvent args)
-    {
-        var userCoords = uid.ToCoordinates();
-        var targetCoords = comp.Target.ToCoordinates();
-        var diff = userCoords.X - targetCoords.X + userCoords.Y - targetCoords.Y;
+    // private void ToggleCrawling(EntityUid uid, ComboComponent comp, CrawlingKeybindEvent args)
+    // {
+    //     var userCoords = uid.ToCoordinates();
+    //     var targetCoords = comp.Target.ToCoordinates();
+    //     var diff = userCoords.X - targetCoords.X + userCoords.Y - targetCoords.Y;
 
-        if (diff >= 4 || diff <= -4)
-            return;
+    //     if (diff >= 4 || diff <= -4)
+    //         return;
 
-        comp.CurrestActions.Add(CombatAction.Crawl);
+    //     comp.CurrestActions.Add(CombatAction.Crawl);
 
-        if (comp.CurrestActions.Count >= 5 && comp.CurrestActions != null)
-        {
-            comp.CurrestActions.RemoveAt(0);
-        }
+    //     if (comp.CurrestActions.Count >= 5 && comp.CurrestActions != null)
+    //     {
+    //         comp.CurrestActions.RemoveAt(0);
+    //     }
 
-        TryDoCombo(uid, comp.Target, comp);
-    }
+    //     TryDoCombo(uid, comp.Target, comp);
+    // }
 
     private void OnCombatToggled(EntityUid uid, ComboComponent comp, ToggleCombatActionEvent args)
     {

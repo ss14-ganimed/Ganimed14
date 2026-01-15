@@ -26,6 +26,8 @@
     - id: SpiderClownSpawn
     - id: SpiderSpawn
     - id: VentClog
+    - id: WormholesSpawn # ADT-Tweak Wormholes Spawns now correctly without admin abuse
+    - id: SpaceEmperorSpawn # ADT Tweak
 
 - type: entityTable
   id: BasicAntagEventsTable
@@ -43,10 +45,10 @@
     - id: WizardSpawn
     - id: LoneOpsSpawn  # ADT tweak - вернул лон опса в список... АНТАГОВ
     - id: Pirates # ADT tweak pirates
-    # - id: MorphSpawn #ADT tweak morph #TODO: Раскомментить после фикса
-    - id: PhantomSpawn # ADT tweak phantom
+    - id: MorphSpawn #ADT tweak morph
     - id: VoxRaidersEvent # ADT tweak vox-raiders
-    # - id: ZombieOutbreak
+    - id: SuperHeroEvent # ADT tweak heros
+    # - id: IanHeroEvent # ADT tweak heros
 
 - type: entity
   id: BaseStationEvent
@@ -55,8 +57,8 @@
   components:
   - type: GameRule
     delay:
-      min:  10
-      max:  20
+      min:  20 # Corax-MRP # 10
+      max:  30 # Corax-MRP # 20
 
 - type: entity
   id: BaseStationEventShortDelay
@@ -65,8 +67,8 @@
   components:
   - type: GameRule
     delay:
-      min:  10
-      max:  20
+      min:  20 # Corax-MRP # 10
+      max:  30 # Corax-MRP # 20
 
 - type: entity
   id: BaseStationEventLongDelay
@@ -75,8 +77,8 @@
   components:
   - type: GameRule
     delay:
-      min:  40
-      max:  60
+      min:  50 # Corax-MRP # 40
+      max:  70 # Corax-MRP # 60
 
 - type: entity
   id: AnomalySpawn
@@ -88,6 +90,8 @@
       path: /Audio/ADT/Announcements/spanomalies.ogg # ADT Tweak
       params:
         volume: -4
+    departmentPlayerLimits: # Ganimed edit
+      Science: 1
     weight: 8
     duration: 35
   - type: AnomalySpawnRule
@@ -290,7 +294,7 @@
     weight: 6.5  # ADT tweak  7.5 > 6.5
     duration: 1
     earliestStart: 45
-    minimumPlayers: 20
+    minimumPlayers: 30 # Corax-MRP # 20
   - type: RandomSpawnRule
     prototype: MobRevenant
 
@@ -301,9 +305,9 @@
   - type: StationEvent
     weight: 1 # rare
     duration: 1
-    earliestStart: 30
+    earliestStart: 40 # Corax-MRP # 30
     reoccurrenceDelay: 60
-    minimumPlayers: 1000  #ADT-Tweak - де факто отключаем визарда 10 > 1000
+    minimumPlayers: 20  # Ganimed-Tweak
   - type: AntagSelection
     agentName: wizard-round-end-name
     definitions:
@@ -450,10 +454,12 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 20
+    earliestStart: 30 # Corax-MRP # 20
     minimumPlayers: 15
     weight: 5
     duration: 60
+    departmentPlayerLimits: # Ganimed edit
+      Security: 1
   - type: VentCrittersRule
     entries:
     - id: MobAdultSlimesBlueAngry
@@ -471,7 +477,7 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 20
+    earliestStart: 30 # Corax-MRP # 20
     minimumPlayers: 15
     weight: 5
     duration: 60
@@ -492,10 +498,12 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 20
+    earliestStart: 30 # Corax-MRP # 20
     minimumPlayers: 15
     weight: 5
     duration: 60
+    departmentPlayerLimits: # Ganimed edit
+      Security: 1
   - type: VentCrittersRule
     entries:
 # ADT tweak start Разные пауки
@@ -519,64 +527,65 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 20
+    earliestStart: 30 # Corax-MRP # 20
     minimumPlayers: 20
     weight: 1.5
     duration: 60
+    departmentPlayerLimits: # Ganimed edit
+      Security: 1
   - type: VentCrittersRule
     entries:
     - id: ADTMobClownSpider # ADT tweak
       prob: 0.05
 
 # ADT zombie remove
-# - type: entity
-#   id: ZombieOutbreak
-#   parent: BaseGameRule
-#   components:
-#   - type: StationEvent
-#     earliestStart: 50
-#     minimumPlayers: 30
-#     weight: 2
-#     duration: 1
-#   - type: ZombieRule
-#   - type: AntagSelection
-#     definitions:
-#     - prefRoles: [ InitialInfected ]
-#       max: 3
-#       playerRatio: 10
-#       blacklist:
-#         components:
-#         - ZombieImmune
-#         - AntagImmune
-#       briefing:
-#         text: zombie-patientzero-role-greeting
-#         color: Plum
-#         sound: "/Audio/Ambience/Antag/zombie_start.ogg"
-#       components:
-#       - type: PendingZombie #less time to prepare than normal
-#         minInitialInfectedGrace: 300
-#         maxInitialInfectedGrace: 450
-#       - type: ZombifyOnDeath
-#       - type: IncurableZombie
-#       - type: InitialInfected
-#       # Corvax-Не знаю какой тег, морти поправь
-#       - type: NpcFactionMember
-#         addFriendlyFactions:
-#         - Zombie
-#       # Corvax
-#       mindComponents:
-#       - type: InitialInfectedRole
-#         prototype: InitialInfected
+- type: entity
+  id: ZombieOutbreak
+  parent: BaseGameRule
+  components:
+  - type: StationEvent
+    earliestStart: 90
+    minimumPlayers: 40
+    weight: 1 # Zombies was happening basically every single survival round, so now it's super rare
+    duration: 1
+  - type: ZombieRule
+  - type: AntagSelection
+    definitions:
+    - prefRoles: [ InitialInfected ]
+      max: 3
+      playerRatio: 10
+      blacklist:
+        components:
+        - ZombieImmune
+        - AntagImmune
+      briefing:
+        text: zombie-patientzero-role-greeting
+        color: Plum
+        sound: "/Audio/Ambience/Antag/zombie_start.ogg"
+      components:
+      - type: PendingZombie #less time to prepare than normal
+        minInitialInfectedGrace: 300
+        maxInitialInfectedGrace: 450
+      - type: ZombifyOnDeath
+      - type: IncurableZombie
+      - type: InitialInfected
+      # Corvax-MRP
+      - type: NpcFactionMember
+        addFriendlyFactions:
+        - Zombie
+      # Corvax
+      mindRoles:
+      - MindRoleInitialInfected
 
 - type: entity
   parent: BaseNukeopsRule
   id: LoneOpsSpawn
   components:
   - type: StationEvent
-    earliestStart: 35
-    weight: 2 # ADT TWEAK 5.5 >>> 2
-    minimumPlayers: 30 #ADT-Tweak 20 >>> 30
-    duration: 1
+    earliestStart: 30
+    weight: 5.5
+    minimumPlayers: 20
+    duration: null # LoneOpsSpawn needs an infinite duration so that it inherits the NukeOpsRule things of an actually appropriate end scrreen (not always "Neutral outcome!") and... ending the game if the station is nuked.
   - type: RuleGrids
   - type: LoadMapRule
     gridPath: /Maps/Shuttles/ShuttleEvent/striker.yml
@@ -609,7 +618,7 @@
   id: SleeperAgents
   components:
   - type: StationEvent
-    earliestStart: 30
+    earliestStart: 40 # Corax-MRP #
     weight: 8
     minimumPlayers: 15
     maxOccurrences: 1 # can only happen once per round
@@ -618,6 +627,9 @@
       path: /Audio/Announcements/intercept.ogg
     duration: null # the rule has to last the whole round not 1 second
     occursDuringRoundEnd: false
+    departmentPlayerLimits: # Ganimed edit
+      Command: 1
+      Security: 1
   - type: AlertLevelInterceptionRule
   - type: AntagSelection
     definitions:

@@ -72,10 +72,19 @@
   id: HoSGear
   equipment:
     eyes: ClothingEyesGlassesSecurity
-    id: HoSPDA #Ganimed-Tweak
-    # gloves: ClothingHandsGlovesCombat # Ganimed-Loadouts
+    id: HoSPDA # Ganimed-Loadouts-Readd
+    # gloves: ClothingHandsGlovesCombat # Ganimed-Loadouts-Remove (Loadout choice)
     ears: ClothingHeadsetAltSecurity
   storage:
     back:
     - Flash
     - ADTtelescopicBaton #ADT-CustomADTLoadout
+    - MagazinePistol
+
+- type: chameleonOutfit
+  id: HeadOfSecurityChameleonOutfit
+  job: HeadOfSecurity
+  hasMindShield: true
+  equipment:
+    mask: ClothingMaskGasSecurity
+    neck: ClothingNeckCloakHos

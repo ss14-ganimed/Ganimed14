@@ -29,7 +29,7 @@ ent-ClothingOuterCoatBlackDmc = чёрная плащ-куртка
     .desc = Каждая потеря остается потерей, сколько бы их ни было до этого.
 
 ent-ClothingOuterCoatBlueDmc = синяя плащ-куртка
-    .desc = Сначала я его выхвачу! Потом воткну! Как следует! Под всеми углами! И во все дырки! Вот так! Входит и выходит! С огромной силой! И в конце концов... все удовлетворены. А ты... свободен...
+    .desc = Этот прикид тебе идёт!
 
 ent-ClothingOuterCoatDesertDmc = песочная плащ-куртка
     .desc = Собираешься на вечеринку? К чему такая спешка, неужели у тебя есть приглашение?
@@ -60,7 +60,7 @@ ent-ClothingOuterCoatRoboOriginal = лабораторный халат робо
 ent-ClothingOuterWinterSeniorPhysician = зимняя куртка заведующего врача
     .desc = { ent-ClothingOuterWinterCoatToggleable.desc }
 
-ent-ClothingOuterWinterSeniorResearcher = зимняя куртка ведущего учёного
+ent-ClothingOuterWinterSeniorResearcher = зимняя куртка старшего научного сотрудника
     .desc = { ent-ClothingOuterWinterCoatToggleable.desc }
 
 ent-ClothingOuterWinterSeniorEngineer = зимняя куртка ведущего инженера

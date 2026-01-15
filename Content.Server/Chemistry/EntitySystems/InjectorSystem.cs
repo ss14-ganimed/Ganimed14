@@ -1,10 +1,9 @@
-using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Body.Components;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
@@ -14,7 +13,8 @@ using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Stacks;
 using Content.Shared.Nutrition.EntitySystems;
-
+using Content.Shared.Buckle.Components; // ADT-Tweak (P4A) Ускорение Шприцов на койках и каталках
+using Content.Shared.ADT.Chemistry.Components; // ADT-Tweak (P4A) Ускорение Шприцов на койках и каталках
 namespace Content.Server.Chemistry.EntitySystems;
 
 public sealed class InjectorSystem : SharedInjectorSystem
@@ -91,7 +91,7 @@ public sealed class InjectorSystem : SharedInjectorSystem
         // Is the target a mob? If yes, use a do-after to give them time to respond.
         if (HasComp<MobStateComponent>(target) || HasComp<BloodstreamComponent>(target))
         {
-            // Are use using an injector capible of targeting a mob?
+            // Are use using an injector capable of targeting a mob?
             if (entity.Comp.IgnoreMobs)
                 return;
 
@@ -153,7 +153,19 @@ public sealed class InjectorSystem : SharedInjectorSystem
 
         // Ensure that minimum delay before incapacitation checks is 1 seconds
         actualDelay = MathHelper.Max(actualDelay, TimeSpan.FromSeconds(1));
-
+        // ADT-Tweak-start (P4A) Ускорение Шприцов на койках и каталках
+        if (injector.Comp.RestrainedMultiplier > 1f)
+        {
+            if (TryComp<BuckleComponent>(target, out var buckle) &&
+                buckle.BuckledTo is { Valid: true } buckledTo)
+            {
+                if (HasComp<InjectorBoostComponent>(buckledTo))
+                {
+                    actualDelay /= injector.Comp.RestrainedMultiplier;
+                }
+            }
+        }
+        // ADT-Tweak-end (P4A) Ускорение Шприцов на койках и каталках
 
         var isTarget = user != target;
 
@@ -189,12 +201,12 @@ public sealed class InjectorSystem : SharedInjectorSystem
             if (injector.Comp.ToggleState == InjectorToggleMode.Inject)
             {
                 AdminLogger.Add(LogType.ForceFeed,
-                    $"{EntityManager.ToPrettyString(user):user} is attempting to inject {EntityManager.ToPrettyString(target):target} with a solution {SharedSolutionContainerSystem.ToPrettyString(solution):solution}");
+                    $"{ToPrettyString(user):user} is attempting to inject {ToPrettyString(target):target} with a solution {SharedSolutionContainerSystem.ToPrettyString(solution):solution}");
             }
             else
             {
                 AdminLogger.Add(LogType.ForceFeed,
-                    $"{EntityManager.ToPrettyString(user):user} is attempting to draw {injector.Comp.TransferAmount.ToString()} units from {EntityManager.ToPrettyString(target):target}");
+                    $"{ToPrettyString(user):user} is attempting to draw {injector.Comp.TransferAmount.ToString()} units from {ToPrettyString(target):target}");
             }
         }
         else
@@ -205,12 +217,12 @@ public sealed class InjectorSystem : SharedInjectorSystem
             if (injector.Comp.ToggleState == InjectorToggleMode.Inject)
             {
                 AdminLogger.Add(LogType.Ingestion,
-                    $"{EntityManager.ToPrettyString(user):user} is attempting to inject themselves with a solution {SharedSolutionContainerSystem.ToPrettyString(solution):solution}.");
+                    $"{ToPrettyString(user):user} is attempting to inject themselves with a solution {SharedSolutionContainerSystem.ToPrettyString(solution):solution}.");
             }
             else
             {
                 AdminLogger.Add(LogType.ForceFeed,
-                    $"{EntityManager.ToPrettyString(user):user} is attempting to draw {injector.Comp.TransferAmount.ToString()} units from themselves.");
+                    $"{ToPrettyString(user):user} is attempting to draw {injector.Comp.TransferAmount.ToString()} units from themselves.");
             }
         }
 
@@ -250,7 +262,7 @@ public sealed class InjectorSystem : SharedInjectorSystem
         // Move units from attackSolution to targetSolution
         var removedSolution = SolutionContainers.SplitSolution(target.Comp.ChemicalSolution.Value, realTransferAmount);
 
-        _blood.TryAddToChemicals(target, removedSolution, target.Comp);
+        _blood.TryAddToChemicals(target.AsNullable(), removedSolution);
 
         _reactiveSystem.DoEntityReaction(target, removedSolution, ReactionMethod.Injection);
 

@@ -1,4 +1,4 @@
-# Med-Sci Timer
+# Timers
 - type: loadoutEffectGroup
   id: SeniorMedicalScientist
   effects:
@@ -12,6 +12,30 @@
       !type:DepartmentTimeRequirement
       department: Medical
       time: 216000 # 60 hrs
+
+- type: loadoutEffectGroup
+  id: SeniorRoboticist
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobRoboticist
+      time: 36000 # 10 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Science
+      time: 108000 # 30 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Silicon
+      time: 36000 # 10 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 36000 # 10 hrs
 
 # Neck
 - type: loadout
@@ -36,6 +60,15 @@
   #- !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: SeniorMedicalScientist
+
+- type: loadout
+  id: HeadsetRobotics
+  equipment:
+    ears: ClothingHeadsetRobotics
+  effects:
+  #- !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: SeniorRoboticist
 
 # Glasses
 - type: loadout

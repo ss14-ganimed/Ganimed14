@@ -43,7 +43,7 @@
 - type: startingGear
   id: WardenGear
   equipment:
-    # eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts
+    # eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts-Remove (Loadout choice)
     id: WardenPDA
     ears: ClothingHeadsetSecurity
     pocket1: WeaponPistolMk58
@@ -51,3 +51,17 @@
     back:
     - Flash
     - MagazinePistol
+
+- type: chameleonOutfit
+  id: WardenChameleonOutfit
+  job: Warden
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatWarden
+    mask: ClothingMaskGasSecurity
+    outerClothing: ClothingOuterCoatWarden
+    jumpsuit: ClothingUniformJumpsuitWarden
+    neck: Dinkystar
+    belt: ClothingBeltSecurity
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsJack

@@ -1,7 +1,6 @@
 using Content.Server.Administration.Logs;
 using Content.Server.GameTicking;
 using Content.Server.Ghost;
-using Content.Server.Mind.Commands;
 using Content.Shared.Database;
 using Content.Shared.Ghost;
 using Content.Shared.Mind;
@@ -13,6 +12,8 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared.Tag;
+using Content.Shared.Mobs.Components;
 
 namespace Content.Server.Mind;
 
@@ -199,6 +200,11 @@ public sealed class MindSystem : SharedMindSystem
 
                 alreadyAttached = true;
             }
+
+            //ADT-tweak-start
+            if (HasComp<MobStateComponent>(entity.Value))
+                mind.LastMob = entity.Value;
+            //ADT-tweak-end
         }
         else if (createGhost)
         {
@@ -349,7 +355,7 @@ public sealed class MindSystem : SharedMindSystem
             return;
         }
 
-        MakeSentientCommand.MakeSentient(target, EntityManager);
+        MakeSentient(target);
         TransferTo(mindId, target, ghostCheckOverride: true, mind: mind);
     }
 }

@@ -152,27 +152,13 @@
   - !type:GroupLoadoutEffect
     proto: MasterHoS
 
-# Self defense weapons
+# Weapon
 - type: loadout
-  id: Flash
-  storage:
-    back:
-    - Flash
+  id: WeaponMultiphaseEnergyGun
+  equipment:
+    pocket1: ADTWeaponPistolX01
 
-- type: loadout
-  id: TelescopicBaton
-  storage:
-    back:
-    - ADTtelescopicBaton
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: Command
-
-- type: loadout
-  id: WeaponDisabler
-  storage:
-    back:
-    - WeaponDisabler
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: Security
+#- type: loadout
+#  id: WeaponEnergyGunDominator
+#  equipment:
+#    pocket1: WeaponEnergyGunDominator

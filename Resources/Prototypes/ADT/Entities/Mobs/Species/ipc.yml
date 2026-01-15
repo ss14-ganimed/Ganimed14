@@ -151,15 +151,14 @@
     short: true
     shortscale: 0.9
   - type: CanEnterCryostorage
-  - type: Crawler
   - type: BloodCough
     postingSayDamage: blood-cough-ipc
   - type: TimeDespawnDamage
   - type: OfferItem
   - type: UserInterface
     interfaces:
-      enum.IpcScreenUiKey.Key:
-        type: IpcScreenBoundUserInterface
+      enum.MidroundCustomizationUiKey.Key:
+        type: MidroundCustomizationBoundUserInterface
       enum.VoiceMaskUIKey.Key:
         type: VoiceMaskBoundUserInterface
       enum.HumanoidMarkingModifierKey.Key:
@@ -170,7 +169,15 @@
         type: StoreBoundUserInterface
       enum.HereticLivingHeartKey.Key:
         type: LivingHeartMenuBoundUserInterface
-  - type: IpcScreen
+  - type: MidroundCustomization
+    action: ActionIpcScreen
+    selectSlotTime: 0
+    changeSlotTime: 0
+    changeMarkingSound:
+      path: /Audio/Machines/beep.ogg
+    customizableCategories:
+    - FacialHair
+  - type: AnimatedEmotes
 
 - type: entity
   save: false
@@ -184,3 +191,9 @@
     species: IPC
   - type: Inventory
     templateId: ipc
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female

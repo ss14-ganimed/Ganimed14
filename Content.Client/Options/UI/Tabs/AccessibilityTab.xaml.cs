@@ -21,6 +21,8 @@ public sealed partial class AccessibilityTab : Control
         Control.AddOptionPercentSlider(CCVars.SpeechBubbleTextOpacity, SpeechBubbleTextOpacitySlider);
         Control.AddOptionPercentSlider(CCVars.SpeechBubbleSpeakerOpacity, SpeechBubbleSpeakerOpacitySlider);
         Control.AddOptionPercentSlider(CCVars.SpeechBubbleBackgroundOpacity, SpeechBubbleBackgroundOpacitySlider);
+        Control.AddOptionCheckBox(CCVars.ChatAutoFillHighlights, AutoFillHighlightsCheckBox);
+        Control.AddOptionColorSlider(CCVars.ChatHighlightsColor, HighlightsColorSlider);
 
         // ADT-No-More-Useless-Feature-Start
         // Control.AddOptionCheckBox(CCVars.AccessibilityClientCensorNudity, CensorNudityCheckBox);
@@ -30,6 +32,9 @@ public sealed partial class AccessibilityTab : Control
         Control.AddOptionCheckBox(ADTCCVars.CenterRadialMenu, CenterRadialMenu);
         Control.AddOptionCheckBox(ADTCCVars.EnableLanguageFonts, EnableLanguageFonts);
         // ADT Settings end
+
+        Control.AddOptionCheckBox(CCVars.TransliterationEnToRu, TranslitEnToRuCheckBox); // Ganimed - Transliteration
+        Control.AddOptionCheckBox(CCVars.TransliterationRuToEn, TranslitRuToEnCheckBox); // Ganimed - Transliteration
 
         Control.Initialize();
     }

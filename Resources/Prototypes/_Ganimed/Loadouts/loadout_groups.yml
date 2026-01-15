@@ -28,6 +28,7 @@
   - SpareBrownFlatCap
   - SpareGreyFlatCapAlt
   - SpareCinnamonFlatCap
+  - SpareSquareAcademicCap
   - SpareUshanka
   - SpareOldUshanka
   - SpareHetmanHat
@@ -35,6 +36,7 @@
   - SpareGreyFedora
   - SpareBeaverHat
   - SpareMagicianHat
+  - SpareHairBow
   - SpareBlackCatHat
   - SpareGreyCatHat
   - SpareBrownCatHat
@@ -120,12 +122,14 @@
   - SparePurpleCasualJumpsuit
   - SparePurpleCasualJumpskirt
   - SpareLoungewear
-  - SpareRedShirt
-  - SpareBlueShirt
   - SpareBlackHawaiianShirt
   - SpareRedHawaiianShirt
   - SpareYellowHawaiianShirt
   - SpareBlueHawaiianShirt
+  - SpareBlackShirt
+  - SpareWhiteShirt
+  - SpareRedShirt
+  - SpareBlueShirt
   - SparePsychologistSuit
   - SparePsychologistSuitskirt
   - SpareNoirSuit
@@ -133,6 +137,7 @@
   - SpareHardWornSuit
   - SpareHardWornSuitskirt
   - SpareBlueSecShirt
+  - SpareDarkLightSuit
   - SpareOldGreySuit
   - SpareOldBrownSuit
   - SpareBarberSuit
@@ -147,6 +152,7 @@
   - SpareJumpskirtOfLife
   - SpareOveralls
   - SpareJumpsuitFlannel
+  - SpareJumpsuitDenim
   - SpareJumpsuitRandom
   - SpareJumpsuitRandomShirt
   - SpareCossackSuit
@@ -169,7 +175,6 @@
   - SparePurpleTurtleneckDress
   - SpareYellowOldDress
   - SpareOldDress
-  - SpareNightDress
   # Gloves
   - SpareGlovesFingerless
   - SpareGlovesColorBlack
@@ -184,13 +189,17 @@
   - SpareGlovesColorBlue
   - SpareGlovesColorPurple
   - SparePawsGloves
+  - SpareSilverRing
+  - SpareGoldRing
+  - SpareWristwatch
   # Mask
   - SpareSterileMask
   - SpareNeckGaiter
   # Neck
   - SpareRedTie
-  - SpareDetTie
   - SpareBlueTie
+  - SpareDetTie
+  - SpareBowTie
   - SpareBlackScarf
   - SpareBrownScarf
   - SpareRedScarf
@@ -221,6 +230,16 @@
   - SpareOrangeCloak
   - SpareGoldChain
   - SpareBling
+  - SpareBlackBedsheet
+  - SpareGreyBedsheet
+  - SpareWhiteBedsheet
+  - SpareBrownBedsheet
+  - SpareRedBedsheet
+  - SpareOrangeBedsheet
+  - SpareYellowBedsheet
+  - SpareGreenBedsheet
+  - SpareBlueBedsheet
+  - SparePurpleBedsheet
   - SpareRainbowBedsheet
   - SpareWizardBedsheet
   - SpareCosmosBedsheet
@@ -229,9 +248,6 @@
   - SpareRedRevBandage
   - SpareGreenElysiumBandage
   # Outer clothing
-  - SpareRedFlannelJacket
-  - SpareGreenFlannelJacket
-  - SpareBlueFlannelJacket
   - SpareBlackWintercoat
   - SpareGrayWintercoat
   - SpareWhiteWintercoat
@@ -244,21 +260,30 @@
   - SpareBlueWintercoat
   - SparePurpleWintercoat
   - SpareWebWintercoat
+  - SpareRedFlannelJacket
+  - SpareGreenFlannelJacket
+  - SpareBlueFlannelJacket
   - SpareBomberJacket
-  #- SpareBlackBomber
-  - SpareDutchCoat
+  # - SpareBlackBomber
+  - SpareBlackJacket
+  - SpareNTLettermanJacket
+  - SpareBikerJacket
   - SpareLeatherJacket
   - SpareLeatherCoat
+  - SpareDutchCoat
   - SpareGentleCoat
   - SpareJensenCoat
   - SpareRedCoat
   - SpareBlackHoodieAlt
   - SpareBlackHoodie
   - SpareGreyHoodie
+  - SpareBlackSweatshirt
+  - SpareGreySweatshirt
   - SpareVest
   - SpareTrenchCoat
   - SpareClassicPoncho
   - SpareUnathiRobe
+  - SpareNightDress
   - SpareApron
   - SpareHospitalGown
   - SpareHazardVest
@@ -450,15 +475,14 @@
   - SecurityBelt
 
 - type: loadoutGroup
-  id: NonLethalWeapons
+  id: NonLethalWeaponsSecurity # Range
   name: loadout-group-self-defense-weapons
   loadouts:
-  - Flash
-  - TelescopicBaton
   - WeaponDisabler
+  - WeaponTaser
 
 - type: loadoutGroup
-  id: NonLethalWeaponsCommand
+  id: NonLethalWeaponsCommand # Melee
   name: loadout-group-self-defense-weapons
   loadouts:
   - Flash
@@ -623,6 +647,7 @@
   name: loadout-group-mime-neck
   minLimit: 0
   loadouts:
+  - ADTClothingNecChefShawl
   - ScarfZebra
   - MimeBedsheet
 
@@ -726,6 +751,7 @@
   - ScienceSunglasses
   - DiagnosticHud
   - DiagnosticHudEyepatch
+  - SafetyGoggles
   - Glasses
   - GlassesJamjar
   - GlassesBinoclard
@@ -748,6 +774,7 @@
   - LatexGloves
   - PurpleGloves
   - RobohandsGloves
+  - BlackNitrileGloves
   - PowerGloves
 
 - type: loadoutGroup
@@ -767,6 +794,7 @@
   - GlassesJamjar
   - GlassesBinoclard
   - GlassesSalesman
+  - SafetyGoggles
   - ChemicalAnalysisGoggles
   - DiagnosticHud
   - DiagnosticHudEyepatch
@@ -777,6 +805,7 @@
   loadouts:
   - HeadsetScience
   - HeadsetMedicalScience
+  - HeadsetRobotics
 
 # Security
 - type: loadoutGroup
@@ -784,7 +813,7 @@
   name: loadout-group-head-of-security-gloves
   loadouts:
   - CombatGloves
-  - HeadofSecurityLeatherGloves
+#  - HeadofSecurityLeatherGloves # They are not insulated, so can become a noob trap
   - HeadofSecurityTacticalMaidGloves
 
 - type: loadoutGroup
@@ -831,6 +860,8 @@
   - SecurityFlightCap
   - TrooperHat
   - BountyHunterCowboyHat
+  - SolidHeadband
+  - TacticalMaidHeadband
 
 - type: loadoutGroup
   id: SecurityBeltExtended
@@ -838,7 +869,7 @@
   loadouts:
   - SecurityBelt
   - SecurityWebbing
-  - AssaultBelt
+  # - AssaultBelt
   - JudoBelt
   - Bandolier
 
@@ -886,6 +917,7 @@
   name: loadout-group-detective-belt
   loadouts:
   - DetectiveShoulderHolster
+  - DetectiveRevolverHolster
   - SecurityBeltEmpty
   - WaistBag
 
@@ -905,6 +937,7 @@
   loadouts:
   # - ForensicGloves
   - LatexGloves
+  - BlackNitrileGloves
   - HeadofSecurityLeatherGloves
 
 - type: loadoutGroup
@@ -917,40 +950,11 @@
   # - WeaponRevolverRebota
 
 - type: loadoutGroup
-  id: PilotHead
-  name: loadout-group-pilot-head
-  minLimit: 0
-  loadouts:
-  - SecurityBeret
-  - SecurityFlightCap
-  - SecurityHelmet
-  - PilotHelmet
-
-- type: loadoutGroup
-  id: PilotJumpsuit
-  name: loadout-group-pilot-jumpsuit
-  loadouts:
-  - SecurityJumpsuit
-  - SecurityJumpskirt
-  - SecurityUniformBlueShirt
-  - AerostaticSuit
-
-- type: loadoutGroup
   id: PilotGloves
   name: loadout-group-pilot-gloves
   minLimit: 0
   loadouts:
   - AerostaticGloves
-
-- type: loadoutGroup
-  id: PilotOuterClothing
-  name: loadout-group-pilot-outerclothing
-  loadouts:
-  - BomberCoat
-  - ArmorVest
-  - ArmorVestSlim
-  - SecurityOfficerWintercoat
-  - AerostaticBomberJacket
 
 - type: loadoutGroup
   id: PilotShoes
@@ -961,6 +965,24 @@
   - CombatBoots
   - SecurityWinterBoots
   - AerostaticShoes
+
+- type: loadoutGroup
+  id: BrigmedicMask
+  name: loadout-group-brigmedic-mask
+  minLimit: 0
+  loadouts:
+  - SterileMask
+  - MedicalBreathMask
+  - BrigmedicMedicalSecurity
+  - BrigmedicGasSecurity
+
+- type: loadoutGroup
+  id: BrigmedicShoes
+  name: loadout-group-brigmedic-shoes
+  loadouts:
+  - JackSecBoots
+  - SecurityWinterBoots
+  - RedShoes
 
 # Medical
 - type: loadoutGroup
@@ -982,6 +1004,7 @@
   - MedicalSunglasses
   - MedChemGoggles
   - ChemicalAnalysisGoggles
+  - SafetyGoggles
   - Glasses
   - GlassesJamjar
   - GlassesBinoclard
@@ -1067,6 +1090,16 @@
   - GlassesJensen
 
 - type: loadoutGroup
+  id: SeniorPhysicianShoes
+  name: loadout-group-senior-physician-shoes
+  loadouts:
+  - WhiteShoes
+  - BlueShoes
+  - OrangeShoes
+  - BlackShoes
+  - MedicalWinterBoots
+
+- type: loadoutGroup
   id: ChemistGlasses
   name: loadout-group-chemist-glasses
   minLimit: 1
@@ -1074,10 +1107,18 @@
   - ChemicalAnalysisGoggles
   - MedicalHud
   - MedicalEyePatchHud
+  - SafetyGoggles
   - Glasses
   - GlassesJamjar
   - GlassesBinoclard
   - GlassesJensen
+
+- type: loadoutGroup
+  id: ChemistBelt
+  name: loadout-group-chemist-belt
+  loadouts:
+  - ChemBag
+  - ChemDispenserBelt
 
 - type: loadoutGroup
   id: ChemistShoes
@@ -1086,6 +1127,15 @@
   - WhiteShoes
   - OrangeShoes
   - MedicalWinterBoots
+
+- type: loadoutGroup
+  id: CoronerGloves
+  name: loadout-group-medical-gloves
+  minLimit: 0
+  loadouts:
+  - LatexGloves
+  - NitrileGloves
+  - BlackNitrileGloves
 
 # Wildcards
 - type: loadoutGroup
@@ -1097,12 +1147,3 @@
   - BlackShoes
   - LaceupShoesWhitelisted
   - MedicalWinterBoots
-
-- type: loadoutGroup
-  id: BoxerHead
-  name: loadout-group-boxer-head
-  minLimit: 0
-  loadouts:
-  - TacticalHeadband
-  - Casa
-  - GladiatorHelmet

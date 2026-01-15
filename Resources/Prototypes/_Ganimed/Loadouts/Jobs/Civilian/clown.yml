@@ -1,3 +1,14 @@
+# Head
+- type: loadout
+  id: OrangeClownWig
+  equipment:
+    head: ClothingHeadHatWigClownOrange
+
+- type: loadout
+  id: RainbowClownWig
+  equipment:
+    head: ClothingHeadHatWigClownRainbow
+
 # Jumpsuit
 - type: loadout # TODO: Whitelist restriction
   id: GreenJesterCostume

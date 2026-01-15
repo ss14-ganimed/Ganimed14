@@ -47,6 +47,15 @@
 
 - type: entity
   parent: ClothingNeckBase
+  id: ClothingNeckCloakMiner
+  name: miner's cloak
+  description: Worn by the most skilled miners, for one who has moved mountains and filled valleys.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/Cloaks/miner.rsi
+
+- type: entity
+  parent: ClothingNeckBase
   id: ClothingNeckCloakChaplainBlack
   name: black chaplain's cloak
   description: Black chasuble of the cleric. It holds mysteries?

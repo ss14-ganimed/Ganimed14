@@ -41,7 +41,20 @@
   # equipment: # ADT tweak
  #id: RnDPDA # ADT Tweak
     # ears: ClothingHeadsetRD # ADT tweak
-#  storage: # Ganimed-Loadouts
+#  storage: # Ganimed-Loadouts-Remove (Loadout choice)
 #    back:
 #    - Flash
-#    - ADTtelescopicBaton #ADT-CustomADTLoadout
+#    - ADTtelescopicBaton #ADT-CustomADTLoadoutStart
+#    - ADTHumanCubeWrapped #ADT-CustomADTLoadoutEnd # Ganimed-Remove
+
+- type: chameleonOutfit
+  id: ResearchDirectorChameleonOutfit
+  job: ResearchDirector
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatBeretRND
+    eyes: ClothingEyesGlasses
+    mask: ClothingMaskGas
+    neck: ClothingNeckCloakRd
+    outerClothing: ClothingOuterCoatRD
+    gloves: ClothingHandsGlovesColorPurple

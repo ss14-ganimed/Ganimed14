@@ -89,11 +89,11 @@
           key: "enum.MechAssemblyVisuals.State"
           data: 14
 
-      - tag: CapacitorStockPart
-        name: construction-graph-tag-capicator-stock-part
+      - tag: ADTMicroManipulatorStockPart
+        name: construction-graph-tag-manipulator-stock-part
         icon:
           sprite: "Objects/Misc/stock_parts.rsi"
-          state: capacitor
+          state: micro_mani
         completed:
         - !type:VisualizerDataInt
           key: "enum.MechAssemblyVisuals.State"

@@ -3,3 +3,25 @@
   id: ChemicalAnalysisGoggles
   equipment:
     eyes: ClothingEyesGlassesChemical
+
+- type: loadout
+  id: SafetyGoggles
+  equipment:
+    eyes: ClothingEyesGlassesSafety
+
+# Belt
+- type: loadout
+  id: ChemBag
+  equipment:
+    belt: ChemBag
+
+- type: loadout
+  id: ChemDispenserBelt
+  equipment:
+    belt: ADTClothingChemdisBelt
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChemist
+      time: 108000 # 30hr
