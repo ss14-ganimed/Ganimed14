@@ -8,6 +8,10 @@
   markingLimits: MobSlimeMarkingLimits
   dollPrototype: MobSlimePersonDummy
   skinColoration: Hues
+  sexes: # Ganimed-Add: Species lore
+  - Unsexed
+  - Male
+  - Female
   # ADT start
   shortDesc: species-short-desc-slime
   description: "/ServerInfo/ADT/SpeciesDescriptions/Slime.xml"
@@ -105,7 +109,7 @@
   id: MobSlimeTorso
   baseSprite:
     sprite: Mobs/Species/Slime/parts.rsi
-    state: torso_m
+    state: torso # Ganimed-Edit: Species lore (torso_m)
 
 - type: humanoidBaseSprite
   id: MobSlimeTorsoMale
