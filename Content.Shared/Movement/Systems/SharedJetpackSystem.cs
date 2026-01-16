@@ -4,7 +4,7 @@ using Content.Shared.Gravity;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
-using Content.Shared.Parallax.Biomes;
+using Content.Shared.Parallax.Biomes; // Ganimed-Fix: Planet grids with gravity
 using Content.Shared.Popups;
 using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
@@ -156,6 +156,8 @@ public abstract class SharedJetpackSystem : EntitySystem
 
     private bool CanEnableOnGrid(EntityUid? gridUid)
     {
+        // No and no again! Do not attempt to activate the jetpack on a grid with gravity disabled. You will not be the first or the last to try this.
+        // https://discord.com/channels/310555209753690112/310555209753690112/1270067921682694234
         // Ganimed edit start
         if (gridUid == null)
             return true;
