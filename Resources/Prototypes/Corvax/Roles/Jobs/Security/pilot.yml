@@ -41,6 +41,8 @@
     back:
     - Flash
     - MagazinePistol
+    - WeaponFlareGunSecurity # Ganimed-Add
+    - ShellShotgunFlare # Ganimed-Add
 
 #ADT tweak start
 - type: chameleonOutfit
