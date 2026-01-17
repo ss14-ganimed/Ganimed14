@@ -37,7 +37,7 @@
     layers:
     - state: KZ
   - type: HyperLink
-    url: https://station-enterprise.space/ru/game/corporate-law
+    url: https://station-enterprise.space/ru/game/corporate-law # Ganimed Tweak
 
 # procedures
 # procedures
@@ -54,7 +54,7 @@
     layers:
     - state: PCD_SEC
   - type: HyperLink
-    url: https://station-enterprise.space/ru/game/sop/security
+    url: https://station-enterprise.space/ru/game/sop/security # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
