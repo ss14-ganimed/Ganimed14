@@ -78,4 +78,4 @@
       - id: ADTHandheldCrewMonitorBrigmedic
       - id: ADTBookSRPsec
       - id: ADTBookSRPmed
-      - id: ADTBookPCDsec
+      # - id: ADTBookPCDsec # Ganimed-Remove
