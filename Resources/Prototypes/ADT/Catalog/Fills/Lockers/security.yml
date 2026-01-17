@@ -12,7 +12,7 @@
       - id: WeaponDisabler
       - id: TrackingImplanter
         amount: 4
-      - id: ADTClothingModsuitBackBrigmedic
+      #- id: ADTClothingModsuitBackBrigmedic
       - id: ClothingHandsGlovesNitrile
       - id: BrigmedicDuffelbagClothing
       - id: MedkitFilled
@@ -33,6 +33,14 @@
       - id: ChemistryBottleEpinephrine
         amount: 1
       - id: ADTHandheldCrewMonitorBrigmedic
+  - type: UserInterface
+    interfaces:
+      enum.SuitStorageUiKey.Key:
+        type: SuitStorageBoundUserInterface
+  - type: SuitStorage
+    options:
+    - ADTClothingModsuitBackBrigmedic
+    - ClothingOuterHardsuitBrigmedic
 
 - type: entity
   id: LockerBrigmedicFilled
@@ -78,4 +86,4 @@
       - id: ADTHandheldCrewMonitorBrigmedic
       - id: ADTBookSRPsec
       - id: ADTBookSRPmed
-      - id: ADTBookPCDsec
+      # - id: ADTBookPCDsec # Ganimed-Remove

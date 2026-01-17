@@ -9,7 +9,7 @@
     department: Security
     time: 36000 # 10 hrs
   startingGear: DeathSquadGear
-  icon: "JobIconNanotrasen"
+  icon: "ADTJobIconDeathSquad" #ADT-Tweak
   supervisors: job-supervisors-centcom
   canBeAntag: false
   accessGroups:
