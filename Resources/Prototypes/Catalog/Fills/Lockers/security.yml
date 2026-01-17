@@ -52,7 +52,7 @@
     - id: ClothingHandsGlovesKravMaga
     - id: ADTClothingNeckBodyCamera #ADT bodycam
     - id: ADTBookSRPsec
-    - id: ADTBookPCDsec
+    # - id: ADTBookPCDsec # Ganimed-Remove
     # - id: ADTClothingNeckShockCollar # Ganimed-Remove
     #   amount: 2
     # - id: RemoteSignaller # Ganimed-Remove
