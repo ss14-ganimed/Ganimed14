@@ -29,7 +29,7 @@
     # ADT-WikiBooks-Start
     - id: ADTBookSRPcmd
     - id: ADTBookSRPcrg
-    - id: ADTBookPCDcmd
+    # - id: ADTBookPCDcmd # Ganimed-Remove
     - id: ADTtelescopicBaton
     # ADT-WikiBooks-End
     # ADT-Tweak Start - частичный откат нерфа утилей
@@ -209,7 +209,7 @@
     # ADT-WikiBooks-Start
     - id: ADTBookSRPcmd
     - id: ADTBookSRPeng
-    - id: ADTBookPCDcmd
+    # - id: ADTBookPCDcmd # Ganimed-Remove
     - id: ADTtelescopicBaton
     # ADT-WikiBooks-End
 
@@ -278,7 +278,7 @@
     - id: ADTBriefcaseMedicalFilled
     - id: ADTBookSRPcmd
     - id: ADTBookSRPmed
-    - id: ADTBookPCDcmd
+    # - id: ADTBookPCDcmd # Ganimed-Remove
     - id: ADTtelescopicBaton
     - id: OpporozidoneBeakerSmall
     - id: ADTClothingEyesGlassesMedChem
@@ -339,7 +339,7 @@
     # ADT-WikiBooks-Start
     - id: ADTBookSRPcmd
     - id: ADTBookSRPrnd
-    - id: ADTBookPCDcmd
+    # - id: ADTBookPCDcmd # Ganimed-Remove
     - id: ADTtelescopicBaton
     - id: ADTBoxAICircuitBoard
     # ADT-WikiBooks-End
@@ -413,8 +413,8 @@
     # ADT-WikiBooks-Start
     - id: ADTBookSRPcmd
     - id: ADTBookSRPsec
-    - id: ADTBookPCDsec
-    - id: ADTBookPCDcmd
+    # - id: ADTBookPCDsec # Ganimed-Remove
+    # - id: ADTBookPCDcmd # Ganimed-Remove
     - id: ADTtelescopicBaton
     # ADT-WikiBooks-End
     # ADT-SecShuttle-Start
