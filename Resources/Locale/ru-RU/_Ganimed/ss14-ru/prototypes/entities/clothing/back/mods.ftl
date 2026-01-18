@@ -6,12 +6,15 @@ ent-ClothingModsuitBackMagnate = МОД капитана
     .desc = Необычный, очень защитный костюм для капитанов Nanotrasen. Ударопрочный, пожаро и кислотоустойчивый, а также обладающий высокой скоростью.
 ent-ClothingModsuitBackCorporate = корпоративный МОД
     .desc = Модный, высокотехнологичный костюм для высокопоставленных офицеров Nanotrasen.
+ent-ClothingModsuitBackBee = пчелиный МОД
+    .desc = Специально модифицированный шахтерский МОД, для настоящих работяг
 
 # Шлемы
 ent-ClothingHeadHelmetModsuitCMO = шлем МОДа главного врача
 ent-ClothingHeadHelmetModsuitRD = шлем МОДа научного руководителя
 ent-ClothingHeadHelmetModsuitMagnate = шлем МОДа капитана
 ent-ClothingHeadHelmetModsuitCorporate = шлем корпоративного МОДа
+ent-ClothingHeadHelmetModsuitBee = шлем пчелиного МОДа
 
 # Оболочка
 ent-ClothingOuterModsuitBodyCMO = оболочка МОДа главного врача
@@ -24,9 +27,11 @@ ent-ClothingModsuitShoesCMO = ботинки МОДа главного врач�
 ent-ClothingModsuitShoesRD = ботинки МОДа научного руководителя
 ent-ClothingModsuitShoesMagnate = ботинки МОДа капитана
 ent-ClothingModsuitShoesCorporate = ботинки корпоративного МОДа
+ent-ClothingModsuitShoesBee = ботинки пчелиного МОДа
 
 # Перчатки
 ent-ClothingHandsModsuitCMO = перчатки МОДа главного врача
 ent-ClothingHandsModsuitRD = перчатки МОДа научного руководителя
 ent-ClothingHandsModsuitMagnate = перчатки МОДа капитана
 ent-ClothingHandsModsuitCorporate = перчатки корпоративного МОДа
+ent-ClothingHandsModsuitBee = перчатки пчелиного МОДа

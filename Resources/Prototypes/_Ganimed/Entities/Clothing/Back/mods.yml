@@ -97,3 +97,28 @@
       - ADTModsuitModRadiationProtection
       - ADTModsuitModIsulation
       - ADTModsuitModWelding
+
+# пчелиный 
+- type: entity
+  parent: ADTClothingModsuitBackMining
+  id: ClothingModsuitBackBee
+  description: Bz-bz-bz-bz
+  name: Bee lover control unit
+  suffix: Ganimed, sponsor
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Back/Modsuit/bee.rsi
+    state: icon
+  - type: ModSuit
+    maxComplexity: 10
+    fullyEnabledSound:
+      path: /Audio/ADT/Mecha/nominalnano.ogg
+    clothingPrototypes:
+      head: ADTClothingHeadHelmetModsuitBee
+      gloves: ADTClothingHandsModsuitBee
+      outerClothing: ADTClothingOuterModsuitBodyBee
+      shoes: ADTClothingModsuitShoesBee
+    startingModules:
+      - ADTModsuitModOrebag
+      - ADTModsuitModStorage
+      - ADTModsuitModLight
+      - ADTModsuitModPlasmaStabilizer
