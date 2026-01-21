@@ -1,5 +1,5 @@
 ent-BaseRocket = ракета
-   .desc = Оно взорвалось... Чёрт...
+   .desc = Оно сейчас взорвётся... Чёрт...
 
 ent-Rocket = { ent-BaseRocket }
     .desc = { ent-BaseRocket.desc }
