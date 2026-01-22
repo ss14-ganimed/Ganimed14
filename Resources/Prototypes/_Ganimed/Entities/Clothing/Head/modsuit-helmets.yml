@@ -75,21 +75,3 @@
     clothingVisuals:
       head:
       - state: equipped-head
-
-- type: entity
-  parent: ADTClothingHeadHelmetModsuitMining
-  id: ClothingHeadHelmetModsuitBee
-  categories: [ HideSpawnMenu ]
-  name: Bee lover MOD helmet
-  description: A helmet for a MODsuit.
-  suffix: Ganimed
-  components:
-  - type: Sprite
-    sprite: _Ganimed/Clothing/Head/Modsuit/bee.rsi
-    layers:
-    - state: icon
-  - type: Clothing
-    sprite: _Ganimed/Clothing/Head/Modsuit/bee.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-head

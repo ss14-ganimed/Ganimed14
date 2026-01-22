@@ -65,20 +65,3 @@
     sprite: _Ganimed/Clothing/Shoes/Modsuit/corporate.rsi
     equipSound: /Audio/Mecha/mechmove03.ogg
     unequipSound: /Audio/Mecha/mechmove03.ogg
-
-- type: entity
-  parent: ADTClothingModsuitShoesMining
-  id: ClothingModsuitShoesBee
-  categories: [ HideSpawnMenu ]
-  name: Bee lover MOD boots
-  suffix: Ganimed
-  components:
-  - type: Sprite
-    sprite: _Ganimed/Clothing/Shoes/Modsuit/bee.rsi
-    state: icon
-  - type: Clothing
-    equipDelay: 3
-    unequipDelay: 3
-    sprite: _Ganimed/Clothing/Shoes/Modsuit/bee.rsi
-    equipSound: /Audio/Mecha/mechmove03.ogg
-    unequipSound: /Audio/Mecha/mechmove03.ogg
