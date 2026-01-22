@@ -9,7 +9,7 @@
       state: ertleader
     - type: RandomMetadata
       nameSegments:
-      - ADTCmndNamesFirstMilitary
+      - NamesFirstNTHighSergeants # Ganimed edit (ADTCmndNamesFirstMilitary)
       - NamesLastERTCallsign
       nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
@@ -68,7 +68,7 @@
       prototypes: [ ADTERTLeaderGear ]
     - type: RandomMetadata
       nameSegments:
-      - ADTCmndNamesFirstMilitary
+      - NamesFirstNTHighSergeants # Ganimed edit (ADTCmndNamesFirstMilitary)
       - NamesLastERTCallsign
       nameFormat: name-format-standard
 
@@ -137,7 +137,7 @@
       state: ertjanitor
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstERTEngineer
+      - NamesFirstNTPrivates # Ganimed edit (NamesFirstERTEngineer)
       - NamesLastERTCallsign
       nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
@@ -177,7 +177,7 @@
         time: 36000 # 10h Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstERTEngineer
+      - NamesFirstNTPrivates # Ganimed edit (NamesFirstERTEngineer)
       - NamesLastERTCallsign
       nameFormat: name-format-standard
     - type: Loadout
@@ -252,7 +252,7 @@
       state: ertengineer
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstERTEngineer
+      - NamesFirstNTSpecialistCorporals # Ganimed edit (NamesFirstERTEngineer)
       - NamesLastERTCallsign
       nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
@@ -293,7 +293,7 @@
         time: 36000 # 10 hrs Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstERTEngineer
+      - NamesFirstNTSpecialistCorporals # Ganimed edit (NamesFirstERTEngineer)
       - NamesLastERTCallsign
       nameFormat: name-format-standard
     - type: Loadout
@@ -370,7 +370,7 @@
       state: ertsecurity
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstERTMilitary
+      - NamesFirstNTSergeants # Ganimed edit (NamesFirstERTMilitary)
       - NamesLastERTCallsign
       nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
@@ -411,7 +411,7 @@
         time: 36000 # 10 hrs Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstERTMilitary
+      - NamesFirstNTSergeants # Ganimed edit (NamesFirstERTMilitary)
       - NamesLastERTCallsign
       nameFormat: name-format-standard
     - type: Loadout
@@ -484,7 +484,7 @@
       state: ertmedical
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstERTMedical
+      - NamesFirstNTSpecialistCorporals # Ganimed edit (NamesFirstERTMedical)
       - NamesLastERTCallsign
       nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
@@ -525,7 +525,7 @@
         time: 36000 # 10 hrs Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstERTMedical
+      - NamesFirstNTSpecialistCorporals # Ganimed edit (NamesFirstERTMedical)
       - NamesLastERTCallsign
       nameFormat: name-format-standard
     - type: Loadout
@@ -648,7 +648,7 @@
     - type: GhostTakeoverAvailable
     - type: RandomMetadata
       nameSegments:
-      - ADTCmndNamesFirstMilitary
+      - NamesFirstNTSergeants # Ganimed edit (ADTCmndNamesFirstMilitary)
       - NamesLastERTCallsign  # Corvax Localization
       nameFormat: name-format-standard
 # end Капитан РХБЗЗ
