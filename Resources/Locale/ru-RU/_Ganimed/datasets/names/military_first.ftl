@@ -14,7 +14,7 @@ names-soh-ranks-sergeants-first-dataset-2 = Штаб-Сержант
 
 # E9 E9E paygrade: SRT Squad Leader, ERT Squad Leader, CBURN Squad Leader
 names-soh-ranks-special-sergeants-first-dataset-1 = Мастер-Сержант
-names-soh-ranks-special-sergeants-first-dataset-2 = Первый-Сежант
+names-soh-ranks-special-sergeants-first-dataset-2 = Первый Сержант
 
 # E10 Sergeant-Major: MTF Agent (Squad member) ((deathsquad))
 names-soh-ranks-command-sergeants-first-dataset-1 = Сержант-Майор
