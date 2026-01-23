@@ -13,6 +13,8 @@
   maleLastNames: NamesDionaLast # Corvax-LastnameGender
   femaleLastNames: NamesDionaLast # Corvax-LastnameGender
   naming: TheFirstofLast
+  sexes: # Ganimed-Add: Species lore
+  - Unsexed
   # ADT start
   shortDesc: species-short-desc-diona
   description: "/ServerInfo/ADT/SpeciesDescriptions/Diona.xml"
