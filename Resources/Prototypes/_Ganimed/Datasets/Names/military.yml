@@ -45,7 +45,7 @@
 - type: localizedDataset
   id: NamesFirstMilitaryNTSergeantMajor
   values:
-    prefix: names-military-nt-command-sergeants-first-dataset-
+    prefix: names-military-nt-sergeant-major-first-dataset-
     count: 1
 
 - type: localizedDataset

@@ -17,7 +17,7 @@ names-military-nt-special-sergeants-first-dataset-1 = Мастер-Сержан�
 names-military-nt-special-sergeants-first-dataset-2 = Первый Сержант
 
 # E10 Sergeant-Major: MTF Agent (Squad member) ((deathsquad))
-names-military-nt-command-sergeants-first-dataset-1 = Сержант-Майор
+names-military-nt-sergeant-major-first-dataset-1 = Сержант-Майор
 
 # O1, first officer rank: MTF Pilot
 names-military-nt-ensign-officer-first-dataset-1 = Энсин
