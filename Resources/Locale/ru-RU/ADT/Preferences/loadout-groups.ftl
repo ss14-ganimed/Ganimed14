@@ -137,3 +137,14 @@ loadout-group-lawyer-backpack = Рюкзак магистрата
 # Command
 loadout-captain-ears-adt = Гарнитура капитана
 loadout-HoP-ears-adt = Гарнитура главы персонала
+
+# Consultant Centcom
+loadout-ccc-ears-adt = Гарнитура консультанта Центком
+loadout-group-ccc-jumpsuit = Комбинезон консультанта Центком
+loadout-group-ccc-head = Головной убор консультанта Центком
+loadout-group-ccc-neck = консультант Центком, шея
+loadout-group-ccc-back = Рюкзак консультанта Центком
+loadout-group-ccc-outer-clothing = Верхняя одежда консультанта Центком
+loadout-group-ccc-shoes = Обувь консультанта Центком
+loadout-group-ccc-hands = Перчатки консультанта Центком
+loadout-group-ccc-socks = Носки консультанта Центком

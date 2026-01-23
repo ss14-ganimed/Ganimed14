@@ -826,9 +826,6 @@ ADTClothingUniformGuardOfficer: ADTClothingUniformCorrectionsOfficer
 # ChemDispenser: EnergyChemDispenser # Ganimed-Remove
 # ChemDispenserEmpty: EnergyChemDispenser # Ganimed-Remove
 
-#Ganimed 2025-06-01
-ADTIconAdventureTime: null
-
 #Ganimed 2025-06-14
 ADTPoweredShuttleLight: AlwaysPoweredWallLight
 ADTPoweredShuttleLightLED: AlwaysPoweredWallLight
@@ -844,3 +841,9 @@ ADTDrinkBeerCanPack: null
 
 # Ganimed 2026-01-04
 ADTClothingNeckShockCollar: ClothingBackpackElectropack
+
+# ADT 2026-01-06
+ADTSpawnMobXenoBurrower: SpawnMobXenoBurrower
+ADTSpawnMobXenoDrone: SpawnMobXenoDrone
+ADTSpawnMobXenoQueen: SpawnMobXenoQueen
+ADTSpawnMobXenoRavager: SpawnMobXenoRavager

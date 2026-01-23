@@ -72,6 +72,7 @@
   - GlowstickPurple
   - GlowstickBlue
   # Ganimed-Loadouts-Add-End
+  #ADT-tweak-end
   - TowelColorBlack
   - TowelColorDarkBlue
   - TowelColorDarkGreen
@@ -90,8 +91,12 @@
   - TowelColorYellow
   # ADT-Tweak-Start
   - AcousticGuitarInstrument
-  - RockGuitar
+  - RockGuitarInstrument
   - HarmonicaInstrument
+  - ADTClothingHandsRingEmerald
+  - ADTClothingHandsRingBlood
+  - ADTClothingHandsRingPlazma
+  - ADTClothingHandsRingTurk
   - ADTHandheldStationMapUnpowered
   - ADTModStorageVoucher
   - ADTClothingGeorgeRibbonPin
@@ -585,6 +590,9 @@
   - JanitorHead
   - HeadBucket # Ganimed-Loadouts-Add
   - HeadPlunger # Ganimed-Loadouts-Add
+  # ADT-tweak-start
+  - ADTJanitorHeadbandTacticalMaid
+  # ADT-tweak-end
 
 - type: loadoutGroup
   id: JanitorJumpsuit
@@ -596,6 +604,7 @@
   - ADTJanitorJumpsuitJanimaid
   - ADTJanitorJumpsuitJanimaidmini
   - ADTJanitorJumpsuitJanimaidElegant
+  - ADTJanitorJumpsuitTacticalMaid
   # ADT-Loadouts-End
   # ADT tweak start
   # - ADTClothingUniformJumpsuitTurtleneckPurple # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
@@ -612,6 +621,11 @@
   - PurpleGloves
   - LatexGloves # Ganimed-Loadouts-Add
   - BlackNitrileGloves # Ganimed-Loadouts-Add
+  # ADT tweak start
+  # - ADTOrangeGloves # Ganimed-Loadouts-Remove (Duplicates)
+  # - ADTPurpleGloves # Ganimed-Loadouts-Remove
+  - ADTJanitorGlovesTacticalMaid
+  # ADT tweak end
 
 - type: loadoutGroup
   id: JanitorOuterClothing
@@ -1150,6 +1164,7 @@
   - StationEngineerPDA
   - ADTElectricianPDA # ADT
   - ADTMechanicPDA # ADT
+  - ADTWelderPDA # ADT
 
 - type: loadoutGroup
   id: AtmosphericTechnicianJumpsuit
@@ -1362,6 +1377,7 @@
   loadouts:
   - LatexGloves
   - ADTPurpleGloves # ADT tweak
+  - ADTGlovesLatexBlack # ADT tweak
 
 - type: loadoutGroup
   id: ScientistPDA
@@ -1585,6 +1601,7 @@
   - DetectiveTie
   - DetectiveHorrificNecktie # Ganimed-Loadouts-Add
   # ADT-Loadout-Start
+  - ADTClothingInvestigatorShoulderNeck
   - ADTNeckSecBadgeBronze
   - ADTNeckSecBadgeSilver
   - ADTNeckSecBadgeGold
@@ -1831,6 +1848,7 @@
   minLimit: 0
   loadouts:
   - LatexGloves
+  - ADTGlovesLatexBlack #ADT tweak
   - NitrileGloves
 
 - type: loadoutGroup

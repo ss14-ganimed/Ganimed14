@@ -349,7 +349,7 @@
 #    guides:
 #    - SpaceLaw
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/corporate-law # Ganimed Tweak
+    url: https://station-enterprise.space/ru/game/corporate-law # Ganimed Tweak
 # Corvax-HyperLink
 # ADT-Fix-Start Подтверждение перехода по ссылке
   - type: UserInterface
