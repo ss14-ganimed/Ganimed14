@@ -19,43 +19,43 @@
 
 # NT SOH faction
 - type: localizedDataset
-  id: NamesFirstNTPrivates
+  id: NamesFirstMilitaryNTPrivates
   values:
-    prefix: names-soh-ranks-privates-first-dataset-
+    prefix: names-military-nt-privates-first-dataset-
     count: 3
 
 - type: localizedDataset
-  id: NamesFirstNTSpecialistCorporals
+  id: NamesFirstMilitaryNTSpecialistCorporals
   values:
-    prefix: names-soh-ranks-specialist-corporals-first-dataset-
+    prefix: names-military-nt-specialist-corporals-first-dataset-
     count: 3
 
 - type: localizedDataset
-  id: NamesFirstNTSergeants
+  id: NamesFirstMilitaryNTSergeants
   values:
-    prefix: names-soh-ranks-sergeants-first-dataset-
+    prefix: names-military-nt-sergeants-first-dataset-
     count: 2
 
 - type: localizedDataset
-  id: NamesFirstNTHighSergeants
+  id: NamesFirstMilitaryNTSpecialSergeants
   values:
-    prefix: names-soh-ranks-special-sergeants-first-dataset-
+    prefix: names-military-nt-special-sergeants-first-dataset-
     count: 2
 
 - type: localizedDataset
-  id: NamesFirstNTSergeantMajor
+  id: NamesFirstMilitaryNTSergeantMajor
   values:
-    prefix: names-soh-ranks-command-sergeants-first-dataset-
+    prefix: names-military-nt-command-sergeants-first-dataset-
     count: 1
 
 - type: localizedDataset
-  id: NamesFirstNTEnsign
+  id: NamesFirstMilitaryNTEnsign
   values:
-    prefix: names-soh-ranks-ens-officer-first-dataset-
+    prefix: names-military-nt-ensign-officer-first-dataset-
     count: 1
 
 - type: localizedDataset
-  id: NamesFirstNTFirstSecondLieutenants
+  id: NamesFirstMilitaryNTLieutenants
   values:
-    prefix: names-soh-ranks-lt-officers-first-dataset-
+    prefix: names-military-nt-lieutenant-officers-first-dataset-
     count: 2
