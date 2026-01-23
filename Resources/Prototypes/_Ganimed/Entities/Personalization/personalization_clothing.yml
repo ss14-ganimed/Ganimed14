@@ -133,20 +133,21 @@
   - type: StaticPrice
     price: 70
 
+# Halo_Shivter
 - type: entity
   parent: ADTClothingModsuitShoesMining
   id: ClothingModsuitShoesBee
   categories: [ HideSpawnMenu ]
-  name: Bee lover MOD boots
-  suffix: Ganimed
+  name: bee lover MOD boots
+  suffix: Ganimed, sponsor, Halo_Shivter
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/bee_modsuit_shoes.rsi
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_shoes.rsi
     state: icon
   - type: Clothing
     equipDelay: 3
     unequipDelay: 3
-    sprite: _Ganimed/Personalization/Clothing/bee_modsuit_shoes.rsi
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_shoes.rsi
     equipSound: /Audio/Mecha/mechmove03.ogg
     unequipSound: /Audio/Mecha/mechmove03.ogg
 
@@ -154,31 +155,33 @@
   parent: ADTClothingHeadHelmetModsuitMining
   id: ClothingHeadHelmetModsuitBee
   categories: [ HideSpawnMenu ]
-  name: Bee lover MOD helmet
+  name: bee lover MOD helmet
   description: A helmet for a MODsuit.
-  suffix: Ganimed
+  suffix: Ganimed, sponsor, Halo_Shivter
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/bee_modsuit_helmet.rsi
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_helmet.rsi
     layers:
     - state: icon
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/bee_modsuit_helmet.rsi
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_helmet.rsi
     clothingVisuals:
       head:
       - state: equipped-head
+  - type: RgbLightController
+    layers: [ 1 ]
 
 - type: entity
   parent: ADTClothingHandsModsuitMining
   id: ClothingHandsModsuitBee
   categories: [ HideSpawnMenu ]
-  name: Bee lover MOD gauntlets
-  suffix: Ganimed
+  name: bee lover MOD gauntlets
+  suffix: Ganimed, sponsor, Halo_Shivter
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/bee_modsuit_gloves.rsi
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_gloves.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/bee_modsuit_gloves.rsi
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_gloves.rsi
     equipSound: /Audio/Mecha/mechmove03.ogg
     unequipSound: /Audio/Mecha/mechmove03.ogg
     equipDelay: 3
@@ -188,38 +191,39 @@
   parent: ADTClothingOuterModsuitBodyMining
   id: ClothingOuterModsuitBodyBee
   categories: [ HideSpawnMenu ]
-  name: Bee lover MOD chestplate
+  name: bee lover MOD chestplate
   description: A chestplate for a MODsuit.
-  suffix: Ganimed
+  suffix: Ganimed, sponsor, Halo_Shivter
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/bee_modsuit_body.rsi
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_body.rsi
   - type: Clothing
     equipDelay: 3
     unequipDelay: 3
-    sprite: _Ganimed/Personalization/Clothing/bee_modsuit_body.rsi
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_body.rsi
     slots: [ OUTERCLOTHING ]
     equipSound: /Audio/Mecha/mechmove03.ogg
     unequipSound: /Audio/Mecha/mechmove03.ogg
-    
+
 - type: entity
   parent: ADTClothingModsuitBackMining
   id: ClothingModsuitBackBee
-  description: Bz-bz-bz-bz
-  name: Bee lover control unit
-  suffix: Ganimed, sponsor
+  description: Bz-bz-bz-bz.
+  name: bee lover control unit
+  suffix: Ganimed, sponsor, Halo_Shivter
+  components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/bee_modsuit_body.rsi
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_backpack.rsi
     state: icon
   - type: ModSuit
     maxComplexity: 10
     fullyEnabledSound:
       path: /Audio/ADT/Mecha/nominalnano.ogg
     clothingPrototypes:
-      head: ADTClothingHeadHelmetModsuitBee
-      gloves: ADTClothingHandsModsuitBee
-      outerClothing: ADTClothingOuterModsuitBodyBee
-      shoes: ADTClothingModsuitShoesBee
+      head: ClothingHeadHelmetModsuitBee
+      gloves: ClothingHandsModsuitBee
+      outerClothing: ClothingOuterModsuitBodyBee
+      shoes: ClothingModsuitShoesBee
     startingModules:
       - ADTModsuitModOrebag
       - ADTModsuitModStorage
