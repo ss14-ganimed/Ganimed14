@@ -848,5 +848,6 @@ ADTSpawnMobXenoDrone: SpawnMobXenoDrone
 ADTSpawnMobXenoQueen: SpawnMobXenoQueen
 ADTSpawnMobXenoRavager: SpawnMobXenoRavager
 
-# Ganimed 2026-01-24
+# Ganimed 2026-01-24 (No roundstart energy dispensers)
 EnergyChemDispenser: ChemDispenser
+EnergyChemDispenserMachineCircuitboard: ChemDispenserMachineCircuitboard
