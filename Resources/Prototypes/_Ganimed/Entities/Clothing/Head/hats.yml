@@ -94,12 +94,42 @@
   parent: ClothingHeadBase
   id: ClothingHeadHatMortarboard
   name: square academic cap
-  description: Hides the receding hairline of the eggheads who quote theory while their anomalies explode. This serves as a proof you've survived tuition hell, unfortunatelly does not guarantee your survival in the Science department.
+  description: It's like you're fresh from graduation. This serves as a proof you've survived tuition hell, unfortunatelly does not guarantee your survival in the Science department.
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Head/Hats/mortarboard.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Head/Hats/mortarboard.rsi
+
+- type: entity # ss14Starlight
+  parent: ClothingHeadBase
+  id: ClothingHeadHatWideBrim
+  name: wide brimmed hat
+  description: Keep that bloody sun out of your eyes.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Hats/brim_hat.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Hats/brim_hat.rsi 
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity # ss14Starlight
+  parent: ClothingHeadBase
+  id: ClothingHeadHatFeathered
+  name: feathered hat
+  description: You own these streets.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Hats/feather_hat.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Hats/feather_hat.rsi 
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
 
 # Old/Original
 - type: entity

@@ -130,12 +130,14 @@
   - WhiteShoes
   - LizardSkinShoes
   # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -337,10 +339,12 @@
   loadouts:
   - RoboticistJumpsuit
   - RoboticistJumpskirt
-  # - ADTClothingUniformJumpsuitTurtleneckBlack # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
-  # - ADTClothingUniformJumpskirtTurtleneckBlack # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpsuitTurtleneckRed # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpskirtTurtleneckRed # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpsuitTurtleneckBlack
+  # - ADTClothingUniformJumpskirtTurtleneckBlack
+  # - ADTClothingUniformJumpsuitTurtleneckRed
+  # - ADTClothingUniformJumpskirtTurtleneckRed
+  # Ganimed-Loadouts-Remove-End
 
 - type: loadoutGroup
   id: RoboticistOuterClothing
@@ -661,6 +665,8 @@
   name: loadout-group-atmospheric-technician-gasmask
   minLimit: 0
   loadouts:
+  - GasMask # Ganimed-Loadouts-Add
+  - AtmosGasMask # Ganimed-Loadouts-Add
   - ADTMaskGasAtmosian
 
 - type: loadoutGroup
@@ -668,8 +674,11 @@
   name: loadout-group-atmospheric-technician-head
   minLimit: 0
   loadouts:
-  - StationEngineerHardhatYellowDark # Ganimed-Loadouts-Add
-  - StationEngineerHardhatBlue # Ganimed-Loadouts-Add
+  # Ganimed-Loadouts-Add-Start
+  - StationEngineerHardhatYellow
+  - StationEngineerHardhatBlue
+  - AtmosphericTechnicianHardhat
+  # Ganimed-Loadouts-Add-End
   - ADTHatBeretAtmos
 
 # ENGINEER
@@ -767,9 +776,11 @@
   minLimit: 1 # Ganimed-Loadouts-Tweak (0 to 1)
   maxLimit: 1
   loadouts:
-  - MedicalHud # Ganimed-Loadouts-Add
-  - MedicalEyePatchHud # Ganimed-Loadouts-Add
-  - MedSecHud # Ganimed-Loadouts-Add
+  # Ganimed-Loadouts-Add-Start
+  - MedicalHud
+  - MedicalEyePatchHud
+  - MedSecHud
+  # Ganimed-Loadouts-Add-End
   - ADTEyesGlassesMed
   # - ADTEyesGlassesSecurity # Ganimed-Loadouts-Remove
 
@@ -947,12 +958,14 @@
   loadouts:
   - SalvageBoots
   - CargoWinterBoots
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
 
 # Плащи
 - type: loadoutGroup
@@ -983,16 +996,20 @@
   - JackBoots
   - SecurityWinterBoots
   - ADTDetectiveBootsOld
-  - BrownShoes # Ganimed-Loadouts-Add
-  - LeatherShoesWhitelisted # Ganimed-Loadouts-Add
-  - LaceupShoesWhitelisted # Ganimed-Loadouts-Add
-  - GreenLizardskinShoes # Ganimed-Loadouts-Add
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Add-Start
+  - BrownShoes
+  - LeatherShoesWhitelisted
+  - LaceupShoesWhitelisted
+  - GreenLizardskinShoes
+  # Ganimed-Loadouts-Add-End
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
 
 ## Парикмахер
 
@@ -1045,6 +1062,7 @@
   loadouts:
   - ADTBikeHorn
   - ADTBikeHornAbyss
+  - GoldenBikeHorn # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ADTClownPocket2
@@ -1100,6 +1118,7 @@
   - BartenderJumpsuit
   - BartenderJumpskirt
   - ADTClothingUniformJumpsuitTuxedo
+  - JanimaidUniform # Ganimed-Loadouts-Add
 
 # Боксёр
 

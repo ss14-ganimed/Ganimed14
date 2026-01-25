@@ -125,10 +125,12 @@
   name: loadout-group-pilot-outerclothing
   loadouts:
   - OuterWinterPilot
-  - ArmorVest # Ganimed-Loadouts-Add
-  - ArmorVestSlim # Ganimed-Loadouts-Add
-  - BomberCoat # Ganimed-Loadouts-Add
-  - AerostaticBomberJacket # Ganimed-Loadouts-Add
+  # Ganimed-Loadouts-Add-Start
+  - ArmorVest
+  - ArmorVestSlim
+  - BomberCoat
+  - AerostaticBomberJacket
+  # Ganimed-Loadouts-Add-End
 
 # - type: loadoutGroup
 #   id: BrigmedicHead

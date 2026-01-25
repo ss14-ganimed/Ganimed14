@@ -29,7 +29,8 @@
   equipment:
     head: Bucket
   effects:
-  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Service
 
 # Jumpsuit
 - type: loadout

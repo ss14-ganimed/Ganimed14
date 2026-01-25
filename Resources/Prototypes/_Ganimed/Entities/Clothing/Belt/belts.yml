@@ -67,7 +67,7 @@
     sprite: _Ganimed/Clothing/Belt/white_sheath.rsi
 
 - type: entity
-  parent: ClothingBeltSecurityWebbingFilled
+  parent: ClothingBeltSecurityWebbing
   id: ClothingBeltOfficerBlackWebbing
   name: bridge officer webbing
   description: It's a fairly comfortable and ergonomic webbing.

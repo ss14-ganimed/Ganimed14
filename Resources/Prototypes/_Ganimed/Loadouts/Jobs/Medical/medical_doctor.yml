@@ -43,39 +43,39 @@
     ears: ClothingHeadsetMedical
 
 # Jumpsuit
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: GeneticsJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitGenetics
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: GeneticsJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtGenetics
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: VirologyJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitVirology
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: VirologyJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtVirology
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
@@ -116,57 +116,57 @@
     proto: ClinicalSpecialist
 
 # Back
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: GeneticsBackpack
   equipment:
     back: ClothingBackpackGenetics
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: GeneticsSatchel
   equipment:
     back: ClothingBackpackSatchelGenetics
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: GeneticsDuffel
   equipment:
     back: ClothingBackpackDuffelGenetics
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: VirologyBackpack
   equipment:
     back: ClothingBackpackVirology
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: VirologySatchel
   equipment:
     back: ClothingBackpackSatchelVirology
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: VirologyDuffel
   equipment:
     back: ClothingBackpackDuffelVirology
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
@@ -179,21 +179,21 @@
 #  - !type:GroupLoadoutEffect
 #    proto: SeniorPhysician
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: GeneticsLabCoat
   equipment:
     outerClothing: ClothingOuterCoatLabGene
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: VirologyLabCoat
   equipment:
     outerClothing: ClothingOuterCoatLabViro
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
@@ -206,29 +206,29 @@
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: GeneticsWintercoat
   equipment:
     outerClothing: ClothingOuterWinterGen
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: VirologyWintercoat
   equipment:
     outerClothing: ClothingOuterWinterViro
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: VirologyBioSuit
   dummyEntity: ClothingOuterBioVirology
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: MedicalHeadMirrorTimer
   equipment:

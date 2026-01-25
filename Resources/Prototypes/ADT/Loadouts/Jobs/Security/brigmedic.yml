@@ -68,7 +68,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Medical
-      time: 108000 #30 hrs
+      time: 108000 # 30 hrs
 
 - type: loadout
   id: ADTEyesGlassesSecurity

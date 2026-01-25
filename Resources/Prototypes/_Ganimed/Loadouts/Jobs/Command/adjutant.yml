@@ -48,4 +48,4 @@
 - type: loadout
   id: BridgeOfficerWebbing
   equipment:
-    belt: ClothingBeltOfficerBlackWebbing # TODO: Make a filled option
+    belt: ClothingBeltOfficerBlackWebbingFilled

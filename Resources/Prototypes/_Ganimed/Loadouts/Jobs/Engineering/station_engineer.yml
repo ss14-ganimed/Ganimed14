@@ -50,10 +50,10 @@
   equipment:
     shoes: ClothingShoesColorOrange
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: EngineeringMagBoots
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: SeniorEngineering
   equipment:

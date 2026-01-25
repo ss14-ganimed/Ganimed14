@@ -43,8 +43,8 @@
   - ADTBottomHOP
   - ADTSocksHOP
   # ADT underwear tweak end
-  - Survival
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
+  - Survival
   - Trinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -192,7 +192,7 @@
   - CommonBackpack
   # - ADTLawyerGloves # ADT-Tweak # Ganimed-Loadouts-Remove (Gloves in spare clothing)
   - LawyerShoes # ADT tweak
-  - GlassesWithSunglasses # Ganimed-Loadouts-Edit (Glasses)
+  - Glasses
   - ADTlawyerID # ADT tweak
   # ADT underwear tweak start
   - ADTTop
@@ -265,7 +265,6 @@
   - BotanistBackpack
   - BotanistOuterClothing
   - Glasses
-  - BotanistBelt # Ganimed-Loadouts-Add
   - BotanistGloves # Ganimed-Loadouts-Add
   - BotanistShoes # Ganimed-Loadouts-Add
   - ADTBotanistPDA # ADT tweak
@@ -372,8 +371,8 @@
   - ADTBottomQM
   - ADTSocks
   # ADT underwear tweak end
-  - Survival
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
+  - Survival
   - Trinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -448,8 +447,8 @@
   - ADTBottomCE
   - ADTSocks
   # ADT underwear tweak end
-  - SurvivalExtended
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
+  - SurvivalExtended
   - Trinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -542,8 +541,8 @@
   - ADTBottomRD
   - ADTSocks
   # ADT underwear tweak end
-  - Survival
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
+  - Survival
   - Trinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -727,8 +726,8 @@
   - ADTBottomCMO
   - ADTSocks
   # ADT underwear tweak end
-  - SurvivalMedical
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
+  - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add

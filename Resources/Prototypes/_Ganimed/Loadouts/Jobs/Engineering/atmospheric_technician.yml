@@ -6,7 +6,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobAtmosphericTechnician
-      time: 72000 #20 hrs
+      time: 72000 # 20 hrs
 
 # Head
 - type: loadout
@@ -18,6 +18,28 @@
   id: StationEngineerHardhatBlue
   equipment:
     head: ClothingHeadHatHardhatBlue
+
+- type: loadout
+  id: AtmosphericTechnicianHardhat
+  equipment:
+    head: ClothingHeadHatHardhatAtmos
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterAtmosian
+
+# Mask
+- type: loadout
+  id: GasMask
+  equipment:
+    mask: ClothingMaskGas
+
+- type: loadout
+  id: AtmosGasMask
+  equipment:
+    mask: ClothingMaskGasAtmos
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterAtmosian
 
 # Jumpsuit
 - type: loadout
@@ -34,11 +56,12 @@
     head: ClothingHeadHelmetFire
 
 # Glasses
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: TrayGoggles
   equipment:
     eyes: ClothingEyesGlassesTray
   effects:
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: MasterAtmosian
 

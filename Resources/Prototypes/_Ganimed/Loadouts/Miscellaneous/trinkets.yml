@@ -5,7 +5,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:OverallPlaytimeRequirement
-      time: 36000 # 10hr
+      time: 36000 # 10 hrs
 
 # Toys
 - type: loadout
@@ -162,3 +162,28 @@
     back:
     - GlowstickBlue
   groupBy: "glowsticks"
+
+# Utilities
+- type: loadout
+  id: BarberScissors
+  effects:
+  - !type:JobRequirementLoadoutEffect # Move to SponsorLoadoutEffect or service department playtime requirement if barber is ever removed
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobADTBarber
+      time: 36000 # 10 hours
+  storage:
+    back:
+    - BarberScissors
+
+- type: loadout
+  id: PersonalAI
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobRoboticist
+      time: 36000 # 10 hours
+  storage:
+    back:
+    - PersonalAI

@@ -33,9 +33,13 @@
   - CigPackBlack
   - CigarCase
   - CigarGold
-  - SmokingPipe # Ganimed-Loadouts-Add
-  - VacuumFlask # Ganimed-Loadouts-Add
-  - ShinyFlask # Ganimed-Loadouts-Add
+  # Ganimed-Loadouts-Add-Start
+  - SmokingPipe
+  - VacuumFlask
+  - ShinyFlask
+  - BarberScissors
+  - PersonalAI
+  # Ganimed-Loadouts-Add-End
   - OffsetCane
   - OffsetCaneWood
   - OffsetCaneClown
@@ -109,9 +113,11 @@
   minLimit: 0
   loadouts:
   - Glasses
-  - CheapSunglasses # Ganimed-Loadouts-Add
-  - SunglassesAviator # Ganimed-Loadouts-Add
-  - Eyepatch # Ganimed-Loadouts-Add
+  # Ganimed-Loadouts-Add-Start
+  - CheapSunglasses
+  - SunglassesAviator
+  - Eyepatch
+  # Ganimed-Loadouts-Add-End
   - GlassesJamjar
   - GlassesBinoclard # Ganimed-Loadouts-Add
   - GlassesJensen
@@ -174,12 +180,10 @@
   loadouts:
   - CaptainHead
   - CaptainCap
-  # Ganimed-Loadouts-Add-Start
-  - CaptainHat
-  - CaptainCapWhite
-  - CaptainBeretWhite
-  # Ganimed-Loadouts-Add-End
+  - CaptainHat # Ganimed-Loadouts-Add
   - ADTClothingAdmiralHat # ADT Loadout
+  - CaptainCapWhite # Ganimed-Loadouts-Add
+  - CaptainBeretWhite # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -236,9 +240,11 @@
   loadouts:
   - CaptainOuterClothing
   - CaptainWintercoat
-  - CaptainFormalJacket # Ganimed-Loadouts-Add
-  - CaptainWhiteFormalJacket # Ganimed-Loadouts-Add
-  - CaptainWhiteCarapace # Ganimed-Loadouts-Add
+  # Ganimed-Loadouts-Add-Start
+  - CaptainFormalJacket
+  - CaptainWhiteFormalJacket
+  - CaptainWhiteCarapace
+  # Ganimed-Loadouts-Add-End
   - ADTArmorVestHidden # ADT Loadout
 
 - type: loadoutGroup
@@ -262,6 +268,8 @@
   - HoPJumpskirtTurtleneck
   # Corvax-Loadouts-End
   # ADT-Loadouts-Start
+  # - ADTJumpsuitHopWarm # Ganimed-Loadouts-Remove
+  # - ADTJumpskirtHopWarm # Ganimed-Loadouts-Remove
   - ADTJumpsuitHopAlt
   - ADTJumpskirtHopAlt
   # ADT-Loadouts-End
@@ -321,14 +329,16 @@
   - RainbowJumpskirt
   - RecruitJumpsuit # Ganimed-Loadouts-Add
   # ADT tweak start
-  # - ADTClothingUniformJumpsuitTurtleneckGrey # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
-  # - ADTClothingUniformJumpskirtTurtleneckGrey # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpsuitTurtleneckPink # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpskirtTurtleneckPink # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpsuitHawaiRed # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpsuitHawaiBlue # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpsuitHawaiYellow # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpsuitHawaiBlack # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpsuitTurtleneckGrey
+  # - ADTClothingUniformJumpskirtTurtleneckGrey
+  # - ADTClothingUniformJumpsuitTurtleneckPink
+  # - ADTClothingUniformJumpskirtTurtleneckPink
+  # - ADTClothingUniformJumpsuitHawaiRed
+  # - ADTClothingUniformJumpsuitHawaiBlue
+  # - ADTClothingUniformJumpsuitHawaiYellow
+  # - ADTClothingUniformJumpsuitHawaiBlack
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -570,7 +580,6 @@
   - BibleDruid
   - BibleNanoTrasen
   - BibleSatanic
-  - BibleTanakh
   # Ganimed-Loadouts-Add-Start
   - ADTChaplainQuaran
   - ADTChaplainTanahk
@@ -707,7 +716,7 @@
   - ClownSkirt
   - JesterSuit
   - JesterAltSuit
-  #- GreenJesterCostume # Ganimed-Loadouts-Add
+  # - GreenJesterCostume # Ganimed-Loadouts-Add
   - ADTClothingUniformJumpsuitClownAbyss #ADT-tweak
 
 - type: loadoutGroup
@@ -757,6 +766,7 @@
   loadouts:
   - MimeHead
   - MimeFrenchBeret
+  - BlackBeret # Ganimed-Loadouts-Add
   - MimeCap
 
 - type: loadoutGroup
@@ -920,12 +930,14 @@
   # - SalvageBoots # Ganimed-Loadouts-Add
   - LeatherShoesWhitelisted # Ganimed-Loadouts-Add
   # ADT tweak start
-  # - ADTFootWrapsW # Ganimed-Loadouts-Remove (cloth wraps in spare clothing)
-  # - ADTFootWrapsHighW # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBl # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBl # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -959,7 +971,7 @@
   - CargoTechnicianBackpack
   - CargoTechnicianSatchel
   - CargoTechnicianDuffel
-  - LeatherSatchel # Ganimed-Loadouts-Edit (ADTClothingBackpackSatchelLeather)
+  - LeatherSatchel # ADT tweak # Ganimed-Loadouts-Edit (ADTClothingBackpackSatchelLeather)
 
 - type: loadoutGroup
   id: CargoTechnicianOuterClothing
@@ -973,15 +985,17 @@
   name: loadout-group-cargo-technician-shoes
   loadouts:
   - BlackShoes
-  # - BrownShoes # Ganimed-Loadouts-Add
   - CargoWinterBoots
+  - WorkBoots # Ganimed-Loadouts-Add
   # ADT tweak start
-  # - ADTFootWrapsW # Ganimed-Loadouts-Remove (cloth wraps in spare clothing)
-  # - ADTFootWrapsHighW # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBl # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBl # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -991,7 +1005,7 @@
   - SalvageSpecialistBackpack
   - SalvageSpecialistSatchel
   - SalvageSpecialistDuffel
-  - ADTClothingBackpackSatchelLeather # ADT tweak
+  - LeatherSatchel # ADT tweak # Ganimed-Loadouts-Edit (ADTClothingBackpackSatchelLeather)
 
 - type: loadoutGroup
   id: SalvageSpecialistOuterClothing
@@ -1009,12 +1023,14 @@
   - SalvageBoots
   - CargoWinterBoots
   # ADT tweak start
-  # - ADTFootWrapsW # Ganimed-Loadouts-Remove (cloth wraps in spare clothing)
-  # - ADTFootWrapsHighW # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBl # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBl # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 # Engineering
@@ -1074,12 +1090,14 @@
   - WorkBoots # Ganimed-Loadouts-Add
   - LeatherShoesWhitelisted # Ganimed-Loadouts-Add
   # ADT tweak start
-  # - ADTFootWrapsW # Ganimed-Loadouts-Remove (cloth wraps in spare clothing)
-  # - ADTFootWrapsHighW # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBl # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBl # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1097,7 +1115,7 @@
   - StationEngineerHardhatYellow
   - StationEngineerHardhatOrange
   - StationEngineerHardhatRed
-  - EngineeringBeret # Ganimed-Loadouts-Edit (HonoredEngineerBeret)
+  - EngineeringBeret # ADT-Tweak-senior # Ganimed-Loadouts-Edit (HonoredEngineerBeret)
   # Ganimed-Loadouts-Add-Start
   - WeldingMask
   - WeldingMaskPainted
@@ -1114,10 +1132,12 @@
   - StationEngineerHazardsuit
   - StationEngineerNTRepairmanJumpsuit # Ganimed-Loadouts-Add
   # ADT tweak start
-  # - ADTClothingUniformJumpsuitTurtleneckOrange # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
-  # - ADTClothingUniformJumpskirtTurtleneckOrange # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpsuitTurtleneckYellow # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpskirtTurtleneckYellow # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpsuitTurtleneckOrange
+  # - ADTClothingUniformJumpskirtTurtleneckOrange
+  # - ADTClothingUniformJumpsuitTurtleneckYellow
+  # - ADTClothingUniformJumpskirtTurtleneckYellow
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1149,12 +1169,14 @@
   - EngineeringMagBoots
   # Ganimed-Loadouts-Add-End
   # ADT tweak start
-  # - ADTFootWrapsW # Ganimed-Loadouts-Remove (cloth wraps in spare clothing)
-  # - ADTFootWrapsHighW # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBl # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBl # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1207,12 +1229,14 @@
   # Ganimed-Loadouts-Add-End
   - EngineeringWinterBoots
   # ADT tweak start
-  # - ADTFootWrapsW # Ganimed-Loadouts-Remove (cloth wraps in spare clothing)
-  # - ADTFootWrapsHighW # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBl # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBl # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1287,12 +1311,14 @@
   - ScienceMagBoots
   # Ganimed-Loadouts-Add-End
   # ADT tweak start
-  # - ADTFootWrapsW # Ganimed-Loadouts-Remove (cloth wraps in spare clothing)
-  # - ADTFootWrapsHighW # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBl # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBl # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1325,12 +1351,14 @@
   - FormalScientistJumpsuit
   # Ganimed-Loadouts-Add-End
   # ADT tweak start
-  # - ADTClothingUniformJumpsuitTurtleneckBlack # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
-  # - ADTClothingUniformJumpskirtTurtleneckBlack # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpsuitTurtleneckPurple # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpskirtTurtleneckPurple # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpsuitTurtleneckWhite # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpskirtTurtleneckWhite # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpsuitTurtleneckBlack
+  # - ADTClothingUniformJumpskirtTurtleneckBlack
+  # - ADTClothingUniformJumpsuitTurtleneckPurple
+  # - ADTClothingUniformJumpskirtTurtleneckPurple
+  # - ADTClothingUniformJumpsuitTurtleneckWhite
+  # - ADTClothingUniformJumpskirtTurtleneckWhite
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1340,7 +1368,7 @@
   - ScientistBackpack
   - ScientistSatchel
   - ScientistDuffel
-  - LeatherSatchel # Ganimed-Loadouts-Edit (ADTClothingBackpackSatchelLeather)
+  - LeatherSatchel # ADT tweak # Ganimed-Loadouts-Edit (ADTClothingBackpackSatchelLeather)
 
 - type: loadoutGroup
   id: ScientistOuterClothing
@@ -1362,12 +1390,14 @@
   - MonochromeShoes # Ganimed-Loadouts-Add
   - ScienceWinterBoots
   # ADT tweak start
-  # - ADTFootWrapsW # Ganimed-Loadouts-Remove (cloth wraps in spare clothing)
-  # - ADTFootWrapsHighW # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBl # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBl # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1376,7 +1406,7 @@
   minLimit: 0
   loadouts:
   - LatexGloves
-  - ADTPurpleGloves # ADT tweak
+  - PurpleGloves
   - ADTGlovesLatexBlack # ADT tweak
 
 - type: loadoutGroup
@@ -1447,9 +1477,11 @@
   - DarkRedScarf
   # Ganimed-Loadouts-Add-End
   # ADT-Loadout-Start
+  # - HeadofSecurityMantleShoulder # Ganimed-Loadouts-Remove (duplicate)
   - ADTNeckSecBadgeBronze
   - ADTNeckSecBadgeSilver
   - ADTNeckSecBadgeGold
+  # - HeadofSecurityShoulderMantle # Corvax-Loadouts
   # ADT-Loadout-End
 
 - type: loadoutGroup
@@ -1566,12 +1598,14 @@
   - BlackCowboyBoots # Ganimed-Loadouts-Add
   - HighheelBoots # Ganimed-Loadouts-Add
   # ADT tweak start
-  # - ADTFootWrapsW # Ganimed-Loadouts-Remove (cloth wraps in spare clothing)
-  # - ADTFootWrapsHighW # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBl # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBl # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1729,6 +1763,7 @@
   - ChiefMedicalOfficerCloakLong
   - ChiefMedicalOfficerBedsheet
   - AzureScarf
+  - Stethoscope
   # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
@@ -1744,12 +1779,14 @@
   - MedicalWinterBoots
   - ADTCMOHighBoots # ADT tweak
   # ADT tweak start
-  # - ADTFootWrapsW # Ganimed-Loadouts-Remove (cloth wraps in spare clothing)
-  # - ADTFootWrapsHighW # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBl # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBl # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1785,10 +1822,12 @@
   # - BlackCoronerJumpskirt
   # Ganimed-Loadouts-Add-End
   # ADT tweak start
-  # - ADTClothingUniformJumpsuitTurtleneckAzure # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
-  # - ADTClothingUniformJumpskirtTurtleneckAzure # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpsuitTurtleneckWhite # Ganimed-Loadouts-Remove
-  # - ADTClothingUniformJumpskirtTurtleneckWhite # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpsuitTurtleneckAzure
+  # - ADTClothingUniformJumpskirtTurtleneckAzure
+  # - ADTClothingUniformJumpsuitTurtleneckWhite
+  # - ADTClothingUniformJumpskirtTurtleneckWhite
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1824,12 +1863,14 @@
   - BlueShoes # Ganimed-Loadouts-Add
   - MedicalWinterBoots
   # ADT tweak start
-  # - ADTFootWrapsW # Ganimed-Loadouts-Remove (cloth wraps in spare clothing)
-  # - ADTFootWrapsHighW # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBl # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBl # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1931,12 +1972,14 @@
   - WhiteShoes
   - MedicalWinterBoots
   # ADT tweak start
-  # - ADTFootWrapsW # Ganimed-Loadouts-Remove (cloth wraps in spare clothing)
-  # - ADTFootWrapsHighW # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBr # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsBl # Ganimed-Loadouts-Remove
-  # - ADTFootWrapsHighBl # Ganimed-Loadouts-Remove
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -2002,7 +2045,7 @@
   - BlueBoxingGloves
   - GreenBoxingGloves
   - YellowBoxingGloves
-  #- BoxingHandBandage # Ganimed-Loadouts-Add
+  # - BoxingHandBandage # Ganimed-Loadouts-Add
 
 # Other
 

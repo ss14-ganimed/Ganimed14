@@ -81,6 +81,7 @@
       time: 18000 # 5 hours
 
 # Head/Hats
+# Soft caps
 - type: loadout
   id: SpareBlackCap
   storage:
@@ -131,12 +132,20 @@
   groupBy: "sparehats"
 
 - type: loadout
+  id: SpareWehcellentCap
+  storage:
+    back:
+    - ClothingHeadWehcellentCap
+  groupBy: "sparehats"
+
+- type: loadout
   id: SpareBlueCap
   storage:
     back:
     - ClothingHeadHatBluesoft
   groupBy: "sparehats"
 
+# Bandanas
 - type: loadout
   id: SpareBlackBandana
   storage:
@@ -188,6 +197,7 @@
     - ClothingHeadBandBlue
   groupBy: "sparehats"
 
+# Other hats
 - type: loadout
   id: SpareBeret
   storage:
@@ -216,20 +226,6 @@
     - ClothingHeadHatBrownFlatcap
   groupBy: "sparehats"
 
-- type: loadout # TODO: Move sprites and remove duplucates
-  id: SpareGreyFlatCapAlt
-  storage:
-    back:
-    - ADTClothingHeadHatGreyFlatCap
-  groupBy: "sparehats"
-
-- type: loadout # TODO: Move sprites and remove duplucates
-  id: SpareCinnamonFlatCap
-  storage:
-    back:
-    - ADTClothingHeadHatCinnamonFlatCap
-  groupBy: "sparehats"
-
 - type: loadout
   id: SpareSquareAcademicCap
   storage:
@@ -238,6 +234,13 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: SeniorResearcher
+  groupBy: "sparehats"
+
+- type: loadout
+  id: SpareCanadaBeanie
+  storage:
+    back:
+    - ClothingHeadHatCanadaBeanie
   groupBy: "sparehats"
 
 - type: loadout
@@ -279,6 +282,26 @@
     proto: Security
   groupBy: "sparehats"
 
+- type: loadout
+  id: SpareWideBrimHat
+  storage:
+    back:
+    - ClothingHeadHatWideBrim
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+  groupBy: "sparehats"
+
+- type: loadout
+  id: SpareFeatheredHat
+  storage:
+    back:
+    - ClothingHeadHatFeathered
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+  groupBy: "sparehats"
+
 - type: loadout # TODO: Whitelist restriction
   id: SpareBeaverHat
   storage:
@@ -299,6 +322,7 @@
     proto: FiftyOverall
   groupBy: "sparehats"
 
+# Head accessories
 - type: loadout
   id: SpareHairBow
   storage:
@@ -1256,6 +1280,13 @@
   groupBy: "spareuniform"
 
 - type: loadout
+  id: SpareYakuzaOutfit
+  storage:
+    back:
+    - ClothingUniformJumpsuitDameDane
+  groupBy: "spareuniform"
+
+- type: loadout
   id: SpareJumpsuitRandom
   storage:
     back:
@@ -1302,6 +1333,20 @@
   - !type:SpeciesLoadoutEffect
     species:
     - Arachnid
+  groupBy: "spareuniform"
+
+- type: loadout
+  id: SpareDryadCoverings
+  storage:
+    back:
+    - ADTClothingJumpsuitDryadCoverings
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBotanist
+      time: 54000 # 15 hours
   groupBy: "spareuniform"
 
 #Dresses, TODO: Whitelist restriction
@@ -1455,7 +1500,8 @@
     back:
     - ClothingUniformJumpskirtOldDress
   effects:
-  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
   groupBy: "spareuniform"
 
 # Hands/Gloves
@@ -1577,6 +1623,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
+  groupBy: "sparegloves"
 
 # Mask
 - type: loadout
@@ -1601,6 +1648,7 @@
   groupBy: "sparemask"
 
 # Neck
+# Ties
 - type: loadout
   id: SpareRedTie
   storage:
@@ -1638,6 +1686,7 @@
     proto: FiftyOverall
   groupBy: "spareneckwear"
 
+# Scarves
 - type: loadout
   id: SpareBlackScarf
   storage:
@@ -1669,6 +1718,24 @@
   groupBy: "spareneckwear"
 
 - type: loadout
+  id: SpareVermilionScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedVermilion
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SpareBrightOrangeScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedBrightOrange
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
+
+- type: loadout
   id: SpareOrangeScarf
   storage:
     back:
@@ -1676,6 +1743,24 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Engineer
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SpareYellowScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedYellow
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SpareLimeScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedLime
+  effects:
+  - !type:SponsorLoadoutEffect
   groupBy: "spareneckwear"
 
 - type: loadout
@@ -1716,6 +1801,15 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: Researcher
+  groupBy: "spareneckwear"
+
+- type: loadout
+  id: SparePinkScarf
+  storage:
+    back:
+    - ClothingNeckScarfStripedPink
+  effects:
+  - !type:SponsorLoadoutEffect
   groupBy: "spareneckwear"
 
 - type: loadout
@@ -1870,6 +1964,7 @@
     proto: FiftyOverall
   groupBy: "spareneckwear"
 
+# Mantles and cloaks
 - type: loadout # TODO: Whitelist restriction
   id: SpareOldMantle
   storage:
@@ -1915,6 +2010,7 @@
     proto: TenOverall
   groupBy: "spareneckwear"
 
+# Neckwear accessories
 - type: loadout
   id: SpareGoldChain
   storage:
@@ -2061,6 +2157,7 @@
   groupBy: "spareneckwear"
 
 # Outer clothing
+# Winter coats
 - type: loadout
   id: SpareBlackWintercoat
   storage:
@@ -2149,6 +2246,7 @@
     - Arachnid
   groupBy: "spareouterclothing"
 
+# Jackets and coats
 - type: loadout
   id: SpareRedFlannelJacket
   storage:
@@ -2248,6 +2346,13 @@
   groupBy: "spareouterclothing"
 
 - type: loadout
+  id: SpareYakuzaCoat
+  storage:
+    back:
+    - ClothingOuterDameDane
+  groupBy: "spareouterclothing"
+
+- type: loadout
   id: SpareBlackHoodieAlt
   storage:
     back:
@@ -2296,6 +2401,7 @@
     - ClothingOuterCoatTrench
   groupBy: "spareouterclothing"
 
+# Misc outer clothing
 - type: loadout
   id: SpareClassicPoncho
   storage:
@@ -2354,6 +2460,23 @@
   groupBy: "spareouterclothing"
 
 # Shoes/Feet
+- type: loadout
+  id: SpareBlackBoots
+  storage:
+    back:
+    - ADTClothingFootBlackBoots
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+  groupBy: "spareshoes"
+
+- type: loadout
+  id: SpareYakuzaShoes
+  storage:
+    back:
+    - ClothingShoesDameDane
+  groupBy: "spareshoes"
+
 - type: loadout # TODO: Whitelist restriction
   id: SpareSlippers
   storage:

@@ -35,11 +35,11 @@
   id: BrigmedicGear
   equipment:
     ears: ClothingHeadsetBrigmedic
-    pocket1: WeaponDisabler # Ganimed-Tweak (WeaponPistolMk58)
+    pocket1: WeaponDisabler # Ganimed-Edit (WeaponPistolMk58)
   storage:
     back:
     - Flash
-    #- MagazinePistol # Ganimed-Remove (No lethals)
+    # - MagazinePistol # Ganimed-Remove (No lethals)
 
 - type: chameleonOutfit
   id: BrigmedicChameleonOutfit

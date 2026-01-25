@@ -1,32 +1,36 @@
 # Glasses
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: BeerGoggles
   equipment:
     eyes: ClothingEyesHudBeer
   effects:
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Service
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: BeerHudEyepatch
   equipment:
     eyes: ClothingEyesEyepatchHudBeer
   effects:
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Service
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: ThungerstGoggles
   equipment:
     eyes: ClothingEyesHudOnionBeer
   effects:
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Service
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: FriedOnionGoggles
   equipment:
     eyes: ClothingEyesHudFriedOnion
   effects:
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Service

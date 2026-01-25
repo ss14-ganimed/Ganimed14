@@ -6,7 +6,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Command
-      time: 108000 #30 hrs
+      time: 108000 # 30 hrs
 
 # Glasses
 - type: loadout
@@ -118,11 +118,12 @@
   - !type:GroupLoadoutEffect
     proto: MasterCap
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: CaptainMantleAlt
   equipment:
     neck: ClothingNeckMantleCaptainAlt
   effects:
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: MasterCap
 
@@ -203,3 +204,9 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: MasterCap
+
+# Shoes
+- type: loadout
+  id: JackBootsEmpty
+  equipment:
+    shoes: ClothingShoesBootsJack

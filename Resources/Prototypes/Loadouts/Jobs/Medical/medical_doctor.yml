@@ -43,7 +43,7 @@
   id: MedicalBeret
   equipment:
     head: ClothingHeadHatBeretMedic
-  effects: # Ganimed-Loadouts
+  effects: # Ganimed-Loadouts-Add
   - !type:GroupLoadoutEffect
     proto: SeniorPhysician
 

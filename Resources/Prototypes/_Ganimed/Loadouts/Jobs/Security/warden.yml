@@ -6,7 +6,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobWarden
-      time: 36000 #10 hrs
+      time: 36000 # 10 hrs
 
 # Head
 - type: loadout
@@ -15,11 +15,12 @@
     head: ClothingHeadHatCapWardenAlt
 
 # Neck
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: NeckBinoculars
   equipment:
     neck: Binoculars
   effects:
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: SeniorOfficer
 

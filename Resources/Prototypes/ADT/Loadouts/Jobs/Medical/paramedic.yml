@@ -7,7 +7,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobParamedic
-      time: 72000 #20 hrs
+      time: 72000 # 20 hrs
 
 - type: loadout
   id: ADTParamedicBackpack

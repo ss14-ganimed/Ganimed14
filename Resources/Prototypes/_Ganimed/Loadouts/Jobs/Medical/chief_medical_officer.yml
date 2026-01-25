@@ -60,12 +60,12 @@
     proto: MasterCMO
 
 # Glasses
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: MedicalSunglasses
   equipment:
     eyes: ADTClothingEyesGlassesMed
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Commander
 

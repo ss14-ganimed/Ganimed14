@@ -6,12 +6,12 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobResearchDirector
-      time: 108000 #30 hrs
+      time: 108000 # 30 hrs
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
       role: JobChiefEngineer
-      time: 108000 #30 hrs
+      time: 108000 # 30 hrs
 
 # Head
 - type: loadout
@@ -62,31 +62,31 @@
     proto: SeniorResearcher
 
 # Gloves
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: PowerGloves
   equipment:
     gloves: ClothingHandsGlovesPowerglove
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: MasterEngineeringScientist
 
 # Glasses
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: ScienceSunglasses
   equipment:
     eyes: ClothingEyesGlassesHudSunglassesScience
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Commander
 
 # Shoes
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: ScienceMagBoots
   equipment:
     shoes: ClothingShoesBootsMagSci
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: MasterEngineeringScientist

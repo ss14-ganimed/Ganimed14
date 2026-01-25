@@ -57,7 +57,7 @@
   equipment:
     ears: ClothingHeadsetMedicalScience
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: SeniorMedicalScientist
 
@@ -66,7 +66,7 @@
   equipment:
     ears: ClothingHeadsetRobotics
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: SeniorRoboticist
 
@@ -115,11 +115,11 @@
 #  - !type:GroupLoadoutEffect
 #    proto: SeniorResearcher
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: ScientistBioSuit
   dummyEntity: ClothingOuterBioScientist
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
@@ -129,10 +129,10 @@
     outerClothing: ClothingOuterBioScientist
     head: ClothingHeadHatHoodBioScientist
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: RadSuit
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
@@ -141,10 +141,10 @@
   equipment:
     outerClothing: ClothingOuterSuitRad
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: ScienceBombSuit
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
@@ -153,11 +153,11 @@
   equipment:
     outerClothing: ClothingOuterSuitBomb
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: ScienceFireSuit
   dummyEntity: ClothingOuterSuitFire
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement

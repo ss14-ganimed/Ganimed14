@@ -111,6 +111,7 @@
   - ADTTop
   - ADTBottom
   # ADT underwear tweak end
+  - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
   id: JobADTSeniorPhysician
@@ -245,6 +246,7 @@
   - SecurityOfficerNeckADT # ADT-Loadouts
   - ADTCorrectionsOfficerJumpsuit
   - ADTCorrectionsOfficerOuterClothing
+  - SecurityGlasses # Ganimed-Loadouts-Add
   - SecurityBackpack
   - SecurityShoes
   - SurvivalSecurity

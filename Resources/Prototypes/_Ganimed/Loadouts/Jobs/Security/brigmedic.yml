@@ -73,7 +73,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Security
-      time: 108000 #30 hrs
+      time: 108000 # 30 hrs
 
 # OuterClothing
 - type: loadout
@@ -84,7 +84,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Medical
-      time: 108000 #30 hrs
+      time: 108000 # 30 hrs
   equipment:
     outerClothing: ClothingOuterBioSecurity
     head: ClothingHeadHatHoodBioSecurity

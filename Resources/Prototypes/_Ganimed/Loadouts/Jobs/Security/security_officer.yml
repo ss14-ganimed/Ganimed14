@@ -63,11 +63,12 @@
 #  - !type:GroupLoadoutEffect
 #    proto: SeniorOfficer
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: SecurityCloak
   equipment:
     neck: ClothingNeckCloakSec
   effects:
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: SeniorOfficer
 
@@ -101,11 +102,13 @@
   - !type:SponsorLoadoutEffect
 
 - type: loadout
-  id: JudoBelt
+  id: SecurityJudoBelt
   equipment:
-    belt: ADTClothingBeltJudo
+    belt: ADTClothingBeltJudoFilled
   effects:
   - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficer
 
 # OuterClothing
 - type: loadout

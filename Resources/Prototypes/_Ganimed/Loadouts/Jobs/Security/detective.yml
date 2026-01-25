@@ -6,7 +6,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobDetective
-      time: 72000 #20 hrs
+      time: 72000 # 20 hrs
 
 # Neck
 - type: loadout
@@ -72,11 +72,21 @@
   - !type:GroupLoadoutEffect
     proto: ForensicExpert
 
+# Glasses
+- type: loadout
+  id: NoirGlasses
+  equipment:
+    eyes: ClothingEyesGlassesNoir
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ForensicExpert
+
 # Belt
 - type: loadout
   id: DetectiveShoulderHolster
   equipment:
-    belt: ClothingBeltHolster # Not filled because contents should be in startinggear
+    belt: ClothingBeltHolster # Not filled because contents should be either in startinggear or in another loadoutgroup
 
 - type: loadout
   id: ExtraShoulderHolster

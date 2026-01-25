@@ -36,7 +36,7 @@
   equipment:
     underweart: ClothingUnderShirtBlue
 
-# Brassiere
+# Bras
 - type: loadout
   id: WhiteBrassiere
   equipment:
@@ -172,7 +172,7 @@
   equipment:
     underweart: ClothingClothWraps
 
-# Pants
+# Underpants
 - type: loadout
   id: WhiteUnderpants
   equipment:

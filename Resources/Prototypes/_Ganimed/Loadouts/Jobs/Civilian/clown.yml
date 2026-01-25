@@ -53,6 +53,14 @@
   equipment:
     shoes: ClothingShoesClownLarge
 
+# Pocket
+- type: loadout
+  id: GoldenBikeHorn
+  equipment:
+    pocket1: GoldenBikeHorn
+  effects:
+  - !type:SponsorLoadoutEffect
+
 # Theatrical attire
 - type: loadout
   id: TheatreSantaHat

@@ -15,6 +15,7 @@
   - SpareYellowCap
   - SpareGreenCap
   - SpareBlueCap
+  - SpareWehcellentCap
   - SpareBlackBandana
   - SpareGreyBandana
   - SpareBrownBandana
@@ -26,14 +27,15 @@
   - SpareBlackBeret
   - SpareGreyFlatCap
   - SpareBrownFlatCap
-  - SpareGreyFlatCapAlt
-  - SpareCinnamonFlatCap
   - SpareSquareAcademicCap
+  - SpareCanadaBeanie
   - SpareUshanka
   - SpareOldUshanka
   - SpareHetmanHat
   - SpareSombrero
   - SpareGreyFedora
+  - SpareWideBrimHat
+  - SpareFeatheredHat
   - SpareBeaverHat
   - SpareMagicianHat
   - SpareHairBow
@@ -153,11 +155,13 @@
   - SpareOveralls
   - SpareJumpsuitFlannel
   - SpareJumpsuitDenim
+  - SpareYakuzaOutfit
   - SpareJumpsuitRandom
   - SpareJumpsuitRandomShirt
   - SpareCossackSuit
   - SpareWebJumpsuit
   - SpareWebJumpskirt
+  - SpareDryadCoverings
   - SpareBlackElegantDress
   - SpareRedElegantDress
   - SpareGreenElegantDress
@@ -203,11 +207,16 @@
   - SpareBlackScarf
   - SpareBrownScarf
   - SpareRedScarf
+  - SpareVermilionScarf
+  - SpareBrightOrangeScarf
   - SpareOrangeScarf
+  - SpareYellowScarf
+  - SpareLimeScarf
   - SpareGreenScarf
   - SpareLightBlueScarf
   - SpareBlueScarf
   - SparePurpleScarf
+  - SparePinkScarf
   - SpareLongBlackScarf
   - SpareLongRedScarf
   - SpareLongOrangeScarf
@@ -274,6 +283,7 @@
   - SpareGentleCoat
   - SpareJensenCoat
   - SpareRedCoat
+  - SpareYakuzaCoat
   - SpareBlackHoodieAlt
   - SpareBlackHoodie
   - SpareGreyHoodie
@@ -288,6 +298,8 @@
   - SpareHospitalGown
   - SpareHazardVest
   # Shoes
+  - SpareBlackBoots
+  - SpareYakuzaShoes
   - SpareClothWraps
   # - SpareSlippers
   # - SpareTouristShoes
@@ -297,7 +309,6 @@
 #  id: Medals
 #  name: loadout-group-medals
 #  minLimit: 0
-#  maxLimit: 1
 #  loadouts:
 #  - MedalGoldenCrest
 #  - MedalGoldenSun
@@ -345,7 +356,7 @@
   - LaceupShoes
   - LeatherShoes
   - BlackShoes
-  - JackBoots
+  - JackBootsEmpty
 
 - type: loadoutGroup
   id: HoPGlasses
@@ -513,15 +524,6 @@
   - GlassesGarOrange
 
 - type: loadoutGroup
-  id: ServiceWorkerJumpsuit
-  name: loadout-group-service-worker-jumpsuit
-  loadouts:
-  - BartenderJumpsuit
-  - BartenderJumpskirt
-  - BartenderJumpsuitPurple
-  - JanimaidUniform
-
-- type: loadoutGroup
   id: BartenderGlasses
   name: loadout-group-bartender-glasses
   minLimit: 0
@@ -580,6 +582,7 @@
   - BooksBag
   - WaistBag
   - Clipboard
+  - BureaucraticBelt
 
 - type: loadoutGroup
   id: ChaplainGloves
@@ -595,7 +598,7 @@
   - BlackShoes
   - CultShoes
 
-- type: loadoutGroup
+- type: loadoutGroup # Temporarily unused
   id: BotanistBelt
   name: loadout-group-botanist-belt
   loadouts:
@@ -870,8 +873,8 @@
   - SecurityBelt
   - SecurityWebbing
   # - AssaultBelt
-  - JudoBelt
-  - Bandolier
+  - SecurityJudoBelt
+  # - Bandolier
 
 - type: loadoutGroup
   id: SecurityNeck
@@ -894,7 +897,7 @@
   - SecurityHud
   - SecurityHudEyepatch
 
-- type: loadoutGroup
+- type: loadoutGroup # Temporarily unused (we need to add more sidearms)
   id: SecurityOfficerSidearm
   name: loadout-group-security-sidearm
   loadouts:
@@ -912,7 +915,7 @@
   - SecurityDuffel
   - LeatherSatchel
 
-- type: loadoutGroup
+- type: loadoutGroup # Temporarily unused
   id: DetectiveBelt
   name: loadout-group-detective-belt
   loadouts:
@@ -929,6 +932,7 @@
   - SecurityHud
   - SecurityHudEyepatch
   - ChemicalAnalysisGoggles
+  - NoirGlasses
 
 - type: loadoutGroup
   id: DetectiveGloves
@@ -940,7 +944,7 @@
   - BlackNitrileGloves
   - HeadofSecurityLeatherGloves
 
-- type: loadoutGroup
+- type: loadoutGroup # Temporarily unused (we need to add more sidearms)
   id: DetectiveRevolver
   name: loadout-group-security-sidearm
   loadouts:
@@ -1102,7 +1106,6 @@
 - type: loadoutGroup
   id: ChemistGlasses
   name: loadout-group-chemist-glasses
-  minLimit: 1
   loadouts:
   - ChemicalAnalysisGoggles
   - MedicalHud

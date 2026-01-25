@@ -1,3 +1,9 @@
+# Head
+- type: loadout
+  id: BlackBeret
+  equipment:
+    head: ADTClothingHeadHatBeretBlackCivilian
+
 # Mask
 - type: loadout
   id: MimeMaskBlushing

@@ -27,10 +27,11 @@
   - !type:GroupLoadoutEffect
     proto: TenOverall
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: Clipboard
   equipment:
     belt: BoxFolderClipboard
   effects:
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: TenOverall

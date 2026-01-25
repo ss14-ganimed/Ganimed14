@@ -24,7 +24,7 @@
     # shoes: ClothingShoesColorBrown # Ganimed-Loadouts-Remove (Loadout choice)
     # id: BotanistPDA ADT: different PDAs in loadouts
     ears: ClothingHeadsetService
-    # belt: ClothingBeltPlantFilled # Ganimed-Loadouts-Remove (Loadout choice)
+    belt: ClothingBeltPlantFilled
   #storage:
     #back:
     #- Stuff

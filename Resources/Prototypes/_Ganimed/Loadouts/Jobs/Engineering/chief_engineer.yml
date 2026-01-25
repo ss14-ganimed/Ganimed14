@@ -1,10 +1,10 @@
 # Head
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: ArmoredHardhat
   equipment:
     head: ClothingHeadHatHardhatArmored
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: MasterCE
 
@@ -48,11 +48,11 @@
     neck: BedsheetCE
 
 # Glasses
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: EngineeringSunglasses
   equipment:
     eyes: ClothingEyesGlassesHudSunglassesEngineering
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Commander

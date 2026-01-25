@@ -313,6 +313,17 @@
   - type: FoldableClothing
     foldedEquippedPrefix: open
 
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitDarkLight
+  name: dark and light suit
+  description: Ivory trousers and a black shirt flip the classic style upside-down.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/black-white.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/black-white.rsi
+
 # Old/Original
 - type: entity
   parent: ClothingUniformBase
@@ -509,14 +520,3 @@
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/original_capformal.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/original_capformal.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitDarkLight
-  name: dark and light suit
-  description: Ivory trousers and a black shirt flip the classic style upside-down.
-  components:
-  - type: Sprite
-    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/black-white.rsi
-  - type: Clothing
-    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/black-white.rsi

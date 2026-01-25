@@ -23,11 +23,11 @@
   equipment:
     outerClothing: WetFloorSign
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: JanitorBioSuit
   dummyEntity: ClothingOuterBioJanitor
   effects:
-  #- !type:WhitelistedLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement

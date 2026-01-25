@@ -6,10 +6,10 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobPilot
-      time: 72000 #20 hrs
+      time: 72000 # 20 hrs
 
 # Jumpsuit
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: AerostaticSuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitAerostatic
@@ -23,6 +23,7 @@
   equipment:
     head: ClothingHeadHelmetPilot
   effects:
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: HighRankPilot
 
