@@ -145,11 +145,7 @@
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_shoes.rsi
     state: icon
   - type: Clothing
-    equipDelay: 3
-    unequipDelay: 3
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_shoes.rsi
-    equipSound: /Audio/Mecha/mechmove03.ogg
-    unequipSound: /Audio/Mecha/mechmove03.ogg
 
 - type: entity
   parent: ADTClothingHeadHelmetModsuitMining
@@ -161,13 +157,8 @@
   components:
   - type: Sprite
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_helmet.rsi
-    layers:
-    - state: icon
   - type: Clothing
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_helmet.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-head
   - type: RgbLightController
     layers: [ 1 ]
 
@@ -182,10 +173,6 @@
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_gloves.rsi
   - type: Clothing
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_gloves.rsi
-    equipSound: /Audio/Mecha/mechmove03.ogg
-    unequipSound: /Audio/Mecha/mechmove03.ogg
-    equipDelay: 3
-    unequipDelay: 3
 
 - type: entity
   parent: ADTClothingOuterModsuitBodyMining
@@ -198,12 +185,7 @@
   - type: Sprite
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_body.rsi
   - type: Clothing
-    equipDelay: 3
-    unequipDelay: 3
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_body.rsi
-    slots: [ OUTERCLOTHING ]
-    equipSound: /Audio/Mecha/mechmove03.ogg
-    unequipSound: /Audio/Mecha/mechmove03.ogg
 
 - type: entity
   parent: ADTClothingModsuitBackMining
@@ -224,8 +206,3 @@
       gloves: ClothingHandsModsuitBee
       outerClothing: ClothingOuterModsuitBodyBee
       shoes: ClothingModsuitShoesBee
-    startingModules:
-      - ADTModsuitModOrebag
-      - ADTModsuitModStorage
-      - ADTModsuitModLight
-      - ADTModsuitModPlasmaStabilizer
