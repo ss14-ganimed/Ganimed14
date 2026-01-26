@@ -18,9 +18,9 @@ ent-ClothingBeltHoSSafno = тактический пояс ГСБ с ножна�
     .suffix = { "Спонсорское, Safno_S" }
 
 ent-ClothingModsuitBackBee = пчелиный МОД
-    .desc = Специально модифицированный шахтерский МОД, для настоящих трудяг.
+    .desc = Специально модифицированный шахтерский МОД, создан для настоящих трудяг.
     .suffix = { "Спонсорское, Halo_Shivter" }
-ent-ClothingHandsModsuitBee = перчатки пчелиного МОДа
-ent-ClothingModsuitShoesBee = ботинки пчелиного МОДа
 ent-ClothingHeadHelmetModsuitBee = шлем пчелиного МОДа
 ent-ClothingOuterModsuitBodyBee = оболочка пчелиного МОДа
+ent-ClothingHandsModsuitBee = перчатки пчелиного МОДа
+ent-ClothingModsuitShoesBee = ботинки пчелиного МОДа
