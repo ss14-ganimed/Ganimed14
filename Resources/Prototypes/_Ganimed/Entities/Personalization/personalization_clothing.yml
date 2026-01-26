@@ -198,9 +198,6 @@
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_backpack.rsi
     state: icon
   - type: ModSuit
-    maxComplexity: 10
-    fullyEnabledSound:
-      path: /Audio/ADT/Mecha/nominalnano.ogg
     clothingPrototypes:
       head: ClothingHeadHelmetModsuitBee
       gloves: ClothingHandsModsuitBee
