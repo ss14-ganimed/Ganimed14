@@ -135,17 +135,21 @@
 
 # Halo_Shivter
 - type: entity
-  parent: ADTClothingModsuitShoesMining
-  id: ClothingModsuitShoesBee
-  categories: [ HideSpawnMenu ]
-  name: bee lover MOD boots
+  parent: ADTClothingModsuitBackMining
+  id: ClothingModsuitBackBee
+  description: Bz-bz-bz-bz.
+  name: bee lover control unit
   suffix: Ganimed, sponsor, Halo_Shivter
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_shoes.rsi
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_backpack.rsi
     state: icon
-  - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_shoes.rsi
+  - type: ModSuit
+    clothingPrototypes:
+      head: ClothingHeadHelmetModsuitBee
+      gloves: ClothingHandsModsuitBee
+      outerClothing: ClothingOuterModsuitBodyBee
+      shoes: ClothingModsuitShoesBee
 
 - type: entity
   parent: ADTClothingHeadHelmetModsuitMining
@@ -168,18 +172,6 @@
     layers: [ 1 ]
 
 - type: entity
-  parent: ADTClothingHandsModsuitMining
-  id: ClothingHandsModsuitBee
-  categories: [ HideSpawnMenu ]
-  name: bee lover MOD gauntlets
-  suffix: Ganimed, sponsor, Halo_Shivter
-  components:
-  - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_gloves.rsi
-  - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_gloves.rsi
-
-- type: entity
   parent: ADTClothingOuterModsuitBodyMining
   id: ClothingOuterModsuitBodyBee
   categories: [ HideSpawnMenu ]
@@ -193,18 +185,26 @@
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_body.rsi
 
 - type: entity
-  parent: ADTClothingModsuitBackMining
-  id: ClothingModsuitBackBee
-  description: Bz-bz-bz-bz.
-  name: bee lover control unit
+  parent: ADTClothingHandsModsuitMining
+  id: ClothingHandsModsuitBee
+  categories: [ HideSpawnMenu ]
+  name: bee lover MOD gauntlets
   suffix: Ganimed, sponsor, Halo_Shivter
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_backpack.rsi
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_gloves.rsi
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_gloves.rsi
+
+- type: entity
+  parent: ADTClothingModsuitShoesMining
+  id: ClothingModsuitShoesBee
+  categories: [ HideSpawnMenu ]
+  name: bee lover MOD boots
+  suffix: Ganimed, sponsor, Halo_Shivter
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_shoes.rsi
     state: icon
-  - type: ModSuit
-    clothingPrototypes:
-      head: ClothingHeadHelmetModsuitBee
-      gloves: ClothingHandsModsuitBee
-      outerClothing: ClothingOuterModsuitBodyBee
-      shoes: ClothingModsuitShoesBee
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_shoes.rsi
