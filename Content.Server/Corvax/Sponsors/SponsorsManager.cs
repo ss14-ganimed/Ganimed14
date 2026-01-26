@@ -135,7 +135,7 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
                     var errorText = await response.Content.ReadAsStringAsync();
-                    _sawmill.Error(
+                    _sawmill.Warning(
                         "Failed to get sponsor info from API: [{StatusCode}] {Response}",
                         response.StatusCode,
                         errorText);
@@ -148,12 +148,12 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
             }
             catch (HttpRequestException e)
             {
-                _sawmill.Error($"[Fetch] HttpRequestException: {e.Message}");
+                _sawmill.Warning($"[Fetch] HttpRequestException: {e.Message}");
                 return null;
             }
             catch (Exception e)
             {
-                _sawmill.Error($"[Fetch] Unexpected exception: {e}");
+                _sawmill.Warning($"[Fetch] Unexpected exception: {e}");
                 return null;
             }
         }
