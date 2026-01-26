@@ -157,8 +157,13 @@
   components:
   - type: Sprite
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_helmet.rsi
+    layers:
+    - state: icon
   - type: Clothing
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_helmet.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-head
   - type: RgbLightController
     layers: [ 1 ]
 
