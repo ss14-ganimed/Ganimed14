@@ -16,7 +16,7 @@ conspirator-objective = Целью заговора являлось: [color=whi
 conspirator-identities = Список заговорщиков:
 # Локализация в формате "{ $name } — один/одна/одни/одно из нас" или "{ $name }, { $job }" потребует изменений в коде
 conspirator-name = { $name }
-conspirator-radio-implant = Кооперируйтесь с другими заговорщиками, используя свой радиоимплант (:г).
+conspirator-radio-implant = Кооперируйтесь с другими заговорщиками, используя свой радиоимплант (:щ).
 
 conspiracy-title = Заговорщики
 conspiracy-description = Назревает заговор!
