@@ -13,6 +13,11 @@
         locked: true
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMedium
+      # ADT-tweak-start
+        blacklist:
+          tags:
+          - ADTMegaCell
+      # ADT-tweak-end
   - type: Lock
     locked: true
     lockOnClick: false
@@ -157,8 +162,8 @@
   - type: OfferItem
   - type: UserInterface
     interfaces:
-      enum.IpcScreenUiKey.Key:
-        type: IpcScreenBoundUserInterface
+      enum.MidroundCustomizationUiKey.Key:
+        type: MidroundCustomizationBoundUserInterface
       enum.VoiceMaskUIKey.Key:
         type: VoiceMaskBoundUserInterface
       enum.HumanoidMarkingModifierKey.Key:
@@ -169,7 +174,19 @@
         type: StoreBoundUserInterface
       enum.HereticLivingHeartKey.Key:
         type: LivingHeartMenuBoundUserInterface
-  - type: IpcScreen
+  - type: MidroundCustomization
+    action: ActionIpcScreen
+    selectSlotTime: 0
+    changeSlotTime: 0
+    changeVoiceTime: 0
+    changeMarkingSound:
+      path: /Audio/Machines/beep.ogg
+    playSoundForVoiceChange: false
+    customizableCategories:
+    - FacialHair
+    defaultSkinColoring: false
+  - type: AnimatedEmotes
+  - type: Posing
 
 - type: entity
   save: false
@@ -183,3 +200,9 @@
     species: IPC
   - type: Inventory
     templateId: ipc
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female

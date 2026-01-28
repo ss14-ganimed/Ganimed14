@@ -18,11 +18,20 @@ ent-ADTClothingOuterApronPathologist = фартук патологоанатом
 ent-ADTClothingKadet = шинель кадета службы безопасности
     .desc = Легкобронированная кожаная шинель, предназначенная для повседневного ношения кадетами службы безопасности. Имеет логотип компании NanoTrasen Security.
 
-ent-ADTClothingOuterGraySweatshirtTop = серая толстовка-топка
+ent-ADTClothingOuterCoatSecurity = пальто службы безопасности
+    .desc = Плотное лёгкобронированное пальто Службы Безопасности, из-за своей дороговизны в производстве изготавливается в малых партиях.
+
+ent-ADTClothingOuterCoatCorrectionsOfficerGrey = серое пальто надзирателя СБ
+    .desc = Серое плотное лёгкобронированное пальто надзирателя Службы Безопасности, демонстрирующее его опыт всем заключённым. Одним своим видом оно говорит: «Пытаться сбежать — бесполезно».
+
+ent-ADTClothingOuterWhiteSweatshirtTop = белая толстовка-топка
     .desc = Стильная белая толстовка-топка. Производства компании "Modeling Agency Dar-Vaxed".
 
-ent-ADTClothingOuterBlackSweatshirtTop = черная толстовка-топка
-    .desc = Стильная белая толстовка-топка. Производства компании "Modeling Agency Dar-Vaxed".
+ent-ADTClothingOuterGraySweatshirtTop = серая толстовка-топка
+    .desc = Стильная серая толстовка-топка. Производства компании "Modeling Agency Dar-Vaxed".
+
+ent-ADTClothingOuterBlackSweatshirtTop = чёрная толстовка-топка
+    .desc = Стильная чёрная толстовка-топка. Производства компании "Modeling Agency Dar-Vaxed".
 
 ent-ADTClothingOuterCoatBrigmedicWB = ветровка Бригмедика
     .desc = Надежная ветровка врача брига, защита от любого космического ветра.
@@ -39,7 +48,10 @@ ent-ClothingOuterAtmosianBomberJacket = куртка-бомбер атмосиа
     .desc = Плотная, поношенная куртка-бомбер атмосианина.
 
 ent-ADTClothingOuterCoatCentCom = пальто ЦентКом
-    .desc = Зеленое пальто с золотыми вставками. На спине выгравирована золотая буква N. Такое пальто носят только важные персоны...
+    .desc = Зеленое пальто с золотыми вставками. На спине выгравирована золотая буква N. Такое пальто явно носят только важные чины Nanotrasen.
+
+ent-ADTClothingOuterCoatCCC = пальто консультанта ЦентКом
+    .desc = Тёмно-серое пальто с золотыми вставками. На спине выгравирована золотая буква N. Такое пальто явно носят только важные чины Nanotrasen.
 
 ent-ADTClothingOuterCoatCyberSun = лабораторный халат CyberSun
     .desc = Лабораторный халат CyberSun, предоставляющий минимальную защиту от вредного воздействия.
@@ -118,3 +130,45 @@ ent-ADTClothingOuterDavidsJacket = куртка парамедика
 
 ent-ADTClothingOuterDavidsJacketValid = куртка эджраннера
     .desc = Ты на самой грани. Покажи им, что ты готов на всё.
+
+ent-ADTClothingOuterWinterCoatLightColorAquamarine = аквамариновая лёгкая куртка
+    .desc = Лёгкая, стильная, тёплая куртка.
+
+ent-ADTClothingOuterWinterCoatLightColorWhite = белая лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }
+
+ent-ADTClothingOuterWinterCoatLightColorAzure = голубая лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }
+
+ent-ADTClothingOuterWinterCoatLightColorYellow = жёлтая лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }
+
+ent-ADTClothingOuterWinterCoatLightColorGreen = зелёная лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }
+
+ent-ADTClothingOuterWinterCoatLightColorBrown = коричневая лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }
+
+ent-ADTClothingOuterWinterCoatLightColorRed = красная лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }
+
+ent-ADTClothingOuterWinterCoatLightColorOrange = оранжевая лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }
+
+ent-ADTClothingOuterWinterCoatLightColorPink = розовая лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }
+
+ent-ADTClothingOuterWinterCoatLightColorGrey = серая лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }
+
+ent-ADTClothingOuterWinterCoatLightColorBlue = синяя лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }
+
+ent-ADTClothingOuterWinterCoatLightColorPurple = фиолетовая лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }
+
+ent-ADTClothingOuterWinterCoatLightColorBlack = чёрная лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }
+
+ent-ADTClothingOuterWinterCoatLightColorDarkBlue = тёмно-синяя лёгкая куртка
+    .desc = { ent-ADTClothingOuterWinterCoatLightColorAquamarine.desc }

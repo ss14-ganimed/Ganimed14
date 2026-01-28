@@ -70,6 +70,18 @@
         - state: blueshield
 
 - type: entity
+  id: SpawnADTCentcomConsultant
+  parent: ADTSpawnPointJobBase
+  name: ADTCentcomConsultant
+  components:
+    - type: SpawnPoint
+      job_id: ADTCentcomConsultant
+    - type: Sprite
+      layers:
+        - state: green
+        - state: consultant_cc
+
+- type: entity
   id: SpawnPointSeniorEngineer
   parent: SpawnPointJobBase
   name: seniorengineer
@@ -119,16 +131,16 @@
       - state: seniorofficer
 
 - type: entity
-  id: SpawnPointADTGuardOfficer
+  id: SpawnPointADTCorrectionsOfficer
   parent: ADTSpawnPointJobBase
-  name: spawn job guard oficcer
+  name: spawn job corrections oficcer
   components:
     - type: SpawnPoint
-      job_id: ADTGuardOfficer
+      job_id: ADTCorrectionsOfficer
     - type: Sprite
       layers:
       - state: green
-      - state: guardofficer
+      - state: correctionsofficer
 
 - type: entity
   id: SpawnPointADTBarber

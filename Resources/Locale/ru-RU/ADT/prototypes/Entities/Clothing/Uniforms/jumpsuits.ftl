@@ -7,11 +7,17 @@ ent-ADTClothingUniformPathologistSuit = костюм патологоанато�
 ent-ADTClothingUniformPathologistSuitAlt = чёрный костюм патологоанатома
     .desc = Лёгкий комбинезон работника морга. Более угрюмая версия.
 
-ent-ADTClothingUniformJumpsuitBlueshield = костюм офицера "Синего Щита"
+ent-ADTClothingUniformJumpsuitBlueshield = комбинезон офицера "Синий Щит"
     .desc = Военные штаны и белая рубашка с погонами Офицера "Синего Щита", уже очень скоро она будет окроплена кроваво-алой кровью врагов NT, перепутавших его с охранником продуктового магазина 21-го века.
 
-ent-ADTClothingUniformJumpsuitTurtleneckBlueshield = водолазка офицера "Синего Щита"
+ent-ADTClothingUniformJumpsuitTurtleneckBlueshield = водолазка офицера "Синий Щит"
     .desc = Белая удобная водолазка Офицера "Синего Щита" с пришитыми золотыми погонами и ярким именным бейджиком. К сожалению, если вы её наденете, это не будет значить, что вам дадут отпуск.
+
+ent-ADTClothingUniformJumpsuitConsultantCentcom = комбинезон консультанта Центком
+    .desc = Комбинезон консультанта Центрального Командования, зелёный, строгий, простой. Просто и надёжно, подходит для каждого бюрократа.
+
+ent-ADTClothingUniformJumpsuitCCCFormal = формальный костюм консультанта Центком
+    .desc = Формальная форма консультанта Центрального Командования, идеально подходит как и под официальные и грандиозные встречи, так и под стильную и скромную прогулку по станции.
 
 ent-ADTClothingUniformJumpsuitAnarchyTshirt = черная футболка с символикой анархизма
     .desc = "Анархия-мама сынов своих любит, Анархия-мама не продаст, Свинцовым дождём врага приголубит, Анархия-мама - за нас!"
@@ -101,6 +107,10 @@ ent-ADTClothingUniformTurleneckTactick = тактическая водолазк
 
 ent-ADTClothingUniformJumpsuitTurtleneckBlack = чёрная водолазка
     .desc = Любимая одежда книжного червя.
+    .suffix = { "" }
+
+ent-ADTClothingUniformJumpsuitTurtleneckDarkBlue = тёмно-синяя водолазка
+    .desc = Для тех, кто любит косить под капитана.
     .suffix = { "" }
 
 ent-ADTClothingUniformJumpsuitTurtleneckBlue = синяя водолазка
@@ -263,14 +273,17 @@ ent-ADTClothingUniformJumpsuitTrader = комбинезон торговца
 ent-ADTClothingUniformMimicry = мимикрический комбинезон
     .desc = На вид как деловой костюм что агрессивно сшили из плоти, выглядит ужасно!
 
-ent-ADTClothingUniformGuardOfficer = комбинезон надзирателя
-    .desc = Ничем не примечательная оранжевая униформа тюремного охранника.
+ent-ADTClothingUniformCorrectionsOfficer = комбинезон надзирателя СБ
+    .desc = Тёмный комбинезон тюремного надзирателя Службы Безопасности. Кажется, на ней ещё остались пятна свежей крови избитых дубинкой заключённых, отбывавших наказание по 1ХХ статье.
 
-ent-ADTClothingUniformGuardOfficerMaster = комбинезон заслуженного надзирателя
-    .desc = Обновленная оранжевая форма тюремного охранника для сотрудников с опытом работы, украшенная черными полосками на рукавах, символизирующая годы службы и опыт.
+ent-ADTClothingUniformCorrectionsOfficerGrey = серый комбинезон надзирателя СБ
+    .desc = Серый комбинезон заслуженного тюремного надзирателя. Каждая застёжка и потёртость безмолвно кричит о том, скольких он – посадил, удержал, защитил.
 
-ent-ADTClothingUniformGreyGuardOfficer = серый комбинезон надзирателя
-    .desc = Обновленная серая форма тюремного охранника.
+ent-ADTClothingUniformCorrectionsOfficerLight = лёгкая форма надзирателя СБ
+    .desc = Лёгкая форма тюремного надзирателя. Летняя, удобная, свободная, отлично подходит для того, чтобы бегать кросс за сбежавшими заключёнными.
+
+ent-ADTClothingUniformSecurityCadetLight = лёгкая форма кадета СБ
+    .desc = Лёгкая форма кадета Службы Безопасности, короткие шорты по пояс, с заправленной в них футболкой, прямо говорят, что вы кадет.
 
 ent-ADTClothingUniformJumpsuitCMOHike = походный костюм главного врача
     .desc = Рубашка и мешковитые штаны, отлично подходящие для активной работы как вне, так и внутри своего отдела.
@@ -383,3 +396,15 @@ ent-ADTClothingUniformJumpsuitTuxedoRed = красный смокинг
 
 ent-ADTClothingUniformJumpsuitTuxedoHell = адский смокинг
     .desc = Стильный и опрятный смокинг с галстуком и красной рубашкой. Демонесса в комплект не входит.
+
+ent-ADTClothingUniformKimanoZero = Кимоно Змея
+    .desc = Стильное кимоно, свободное и удобное.
+
+ent-ADTClothingUniformKimanoArmoredZero = Кимоно Змея
+    .desc = Стильное кимоно, свободное и удобное, так ещё и с почти незаметными вшитыми бронепластинами 3 класса... Удачи выполнить заказ и получить Хронус
+
+ent-ADTClothingUniformJumpsuitRedVictorianSuit = красный викторианский костюм
+    .desc = Элегантный костюм, создающий образ аристократичной роскоши.
+
+ent-ADTClothingUniformJumpsuitBlackVictorianSuit = черный викторианский костюм
+    .desc = Элегантный костюм, создающий образ аристократичной роскоши.

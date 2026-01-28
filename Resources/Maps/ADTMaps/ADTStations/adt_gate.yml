@@ -2,20 +2,20 @@ meta:
   format: 7
   category: Map
   engineVersion: 265.0.0
-  forkId: ADT
-  forkVersion: 27e8daa7d0d87118ecd6b60bebcb19b1e260fcb8
-  time: 10/15/2025 15:28:42
-  entityCount: 34444
+  forkId: ""
+  forkVersion: ""
+  time: 10/31/2025 23:45:48
+  entityCount: 34443
 maps:
 - 1
 grids:
 - 2
+- 9776
 - 13386
 - 21114
 - 30902
 - 36996
 - 37842
-- 9776
 orphans: []
 nullspace: []
 tilemap:
@@ -12895,8 +12895,8 @@ entities:
           localAnchorB: -3,-1.5
           localAnchorA: -8.5,8
           referenceAngle: 1.5707964
-          damping: 753.6482
-          stiffness: 6764.7305
+          damping: 753.688
+          stiffness: 6765.088
         docking457716: !type:WeldJoint
           bodyB: 37842
           bodyA: 2
@@ -12904,16 +12904,16 @@ entities:
           localAnchorB: -3,0.5
           localAnchorA: -10.5,8
           referenceAngle: 1.5707964
-          damping: 753.6482
-          stiffness: 6764.7305
+          damping: 753.688
+          stiffness: 6765.088
         docking168406: !type:WeldJoint
           bodyB: 21114
           bodyA: 2
           id: docking168406
           localAnchorB: 6,1.5
           localAnchorA: -50,100.5
-          damping: 433.784
-          stiffness: 3893.6365
+          damping: 433.79718
+          stiffness: 3893.7542
         docking51973: !type:WeldJoint
           bodyB: 30902
           bodyA: 2
@@ -12921,8 +12921,8 @@ entities:
           localAnchorB: 2.5,-4
           localAnchorA: -0.5,161
           referenceAngle: 3.1415927
-          damping: 621.39874
-          stiffness: 5577.6626
+          damping: 621.42584
+          stiffness: 5577.906
         docking51974: !type:WeldJoint
           bodyB: 30902
           bodyA: 2
@@ -12930,8 +12930,8 @@ entities:
           localAnchorB: 0.49999997,-4
           localAnchorA: 1.5,161
           referenceAngle: 3.1415927
-          damping: 621.39874
-          stiffness: 5577.6626
+          damping: 621.42584
+          stiffness: 5577.906
         docking15994: !type:WeldJoint
           bodyB: 13386
           bodyA: 2
@@ -12939,8 +12939,8 @@ entities:
           localAnchorB: 5,0.49999997
           localAnchorA: 42.5,68
           referenceAngle: 4.712389
-          damping: 922.5353
-          stiffness: 8280.658
+          damping: 922.59503
+          stiffness: 8281.194
     - type: BecomesStation
       id: Gate
     - type: FTLDestination
@@ -14110,6 +14110,14 @@ entities:
     - type: Transform
       pos: 69.5,67.5
       parent: 2
+- proto: ADTComputerShuttleSalvage
+  entities:
+  - uid: 5310
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -43.5,-12.5
+      parent: 2
 - proto: ADTDrinkBeerCanPack
   entities:
   - uid: 9403
@@ -14118,15 +14126,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -116.21145,-1.7565308
       parent: 2
-- proto: ADTFloorBlastDoor
-  entities:
-  - uid: 9379
-    components:
-    - type: Transform
-      pos: -125.5,-2.5
-      parent: 2
-    - type: Physics
-      canCollide: True
 - proto: ADTGlassBlueShieldAirlockLocked
   entities:
   - uid: 1739
@@ -14171,6 +14170,11 @@ entities:
       parent: 2
 - proto: ADTMiningShop
   entities:
+  - uid: 9205
+    components:
+    - type: Transform
+      pos: -42.5,-7.5
+      parent: 2
   - uid: 9219
     components:
     - type: Transform
@@ -81669,14 +81673,6 @@ entities:
     - type: Transform
       pos: -44.5,-7.5
       parent: 2
-- proto: ComputerShuttleSalvage
-  entities:
-  - uid: 5310
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -43.5,-12.5
-      parent: 2
 - proto: ComputerSolarControl
   entities:
   - uid: 4270
@@ -83666,8 +83662,8 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
-      open: True
       removedMasks: 20
+      open: True
     - type: PlaceableSurface
       isPlaceable: True
   - uid: 21305
@@ -83696,8 +83692,8 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
-      open: True
       removedMasks: 20
+      open: True
     - type: PlaceableSurface
       isPlaceable: True
 - proto: CrateTrashCartFilled
@@ -83789,8 +83785,8 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
-      open: True
       removedMasks: 20
+      open: True
     - type: PlaceableSurface
       isPlaceable: True
   - uid: 24316
@@ -83950,8 +83946,8 @@ entities:
         - 0
         - 0
         - 0
-      open: True
       removedMasks: 20
+      open: True
     - type: Fixtures
       fixtures:
         fix1:
@@ -142784,11 +142780,6 @@ entities:
     - type: Transform
       pos: -123.5,-3.5
       parent: 2
-    - type: DeviceLinkSource
-      linkedPorts:
-        9379:
-        - - Pressed
-          - Toggle
   - uid: 9416
     components:
     - type: Transform
@@ -167982,8 +167973,8 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
-      open: True
       removedMasks: 20
+      open: True
     - type: PlaceableSurface
       isPlaceable: True
 - proto: SuitStorageCaptain
@@ -173963,8 +173954,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -105.5,31.5
       parent: 2
-    - type: ApcPowerReceiver
-      powerDisabled: True
     - type: Physics
       bodyType: Dynamic
 - proto: TegCirculator
@@ -176805,13 +176794,6 @@ entities:
     components:
     - type: Transform
       pos: -73.5,175.5
-      parent: 2
-- proto: VendingMachineSalvage
-  entities:
-  - uid: 9205
-    components:
-    - type: Transform
-      pos: -42.5,-7.5
       parent: 2
 - proto: VendingMachineSciDrobe
   entities:

@@ -76,10 +76,10 @@ loadout-group-atmos-id-adt = Атмосферный техник, ID
 # Science
 loadout-research-director-ears-adt = Научный руководитель, ухо
 loadout-group-reserch-director-id-adt = Научный руководитель, ID
-loadout-group-senior-researcher-head = Доцент, голова
-loadout-group-senior-researcher-jumpsuit = Доцент, комбинезон
-loadout-group-senior-researcher-gloves = Доцент, перчатки
-loadout-group-senior-researcher-outerclothing = Доцент, верхняя одежда
+loadout-group-senior-researcher-head = Старший Научный Сотрудник, голова
+loadout-group-senior-researcher-jumpsuit = Старший Научный Сотрудник, комбинезон
+loadout-group-senior-researcher-gloves = Старший Научный Сотрудник, перчатки
+loadout-group-senior-researcher-outerclothing = Старший Научный Сотрудник, верхняя одежда
 loadout-group-roboticist-head = Робототехник, голова
 loadout-group-roboticist-jumpsuit = Робототехник, комбинезон
 loadout-group-roboticist-outerclothing = Робототехник, верхняя одежда
@@ -92,8 +92,9 @@ loadout-group-senior-officer-jumpsuit = Офицер-инструктор, ко�
 loadout-group-senior-officer-backpack = Офицер-инструктор, рюкзак
 loadout-group-senior-officer-outerclothing = Офицер-инструктор, верхняя одежда
 loadout-warden-neck-adt = Смотритель, шея
-loadout-guardofficer-head-adt = Надзиратель, голова
-loadout-guardofficer-jumpsuit-adt = Надзиратель, комбинезон
+loadout-corrections-officer-head-adt = Надзиратель СБ, голова
+loadout-corrections-officer-jumpsuit-adt = Надзиратель СБ, комбинезон
+loadout-corrections-officer-outerclothing-adt = Надзиратель СБ, верхняя одежда
 loadout-group-detective-id-adt = Детектив, ID
 loadout-security-officer-neck-adt = Офицер СБ, шея
 loadout-security-cadet-neck-adt = Кадет СБ, шея
@@ -112,9 +113,9 @@ loadout-brigmedic-outerwear-adt = Бригмедик, верхняя одежд�
 # Medical
 loadout-group-chief-medical-officer-id-adt = Главный врач, ID
 loadout-chief-medical-officer-ears-adt = Главный врач, ухо
-loadout-group-senior-physician-head = Ведущий врач, голова
-loadout-group-senior-physician-jumpsuit = Ведущий врач, комбинезон
-loadout-group-senior-physician-outerclothing = Ведущий врач, верхняя одежда
+loadout-group-senior-physician-head = Заведующий врач, голова
+loadout-group-senior-physician-jumpsuit = Заведующий врач, комбинезон
+loadout-group-senior-physician-outerclothing = Заведующий врач, верхняя одежда
 loadout-group-paramedic-belt-adt = Парамедик, пояс
 loadout-group-paramedic-backpack-adt = Парамедик, рюкзак
 loadout-group-patholog-head = Патологоанатом, голова
@@ -129,10 +130,21 @@ loadout-group-medical-intern-id-adt = Интерн, ID
 loadout-group-psychologist-id-adt = Психолог, ID
 
 # Juridical
-loadout-group-lawyer-id-adt = Адвокат, ID
-loadout-group-lawyer-gloves = Адвокат, перчатки
+loadout-group-lawyer-id-adt = Юрист, ID
+loadout-group-lawyer-gloves = Юрист, перчатки
 loadout-group-lawyer-backpack = Магистрат, рюкзак
 
 # Command
 loadout-captain-ears-adt = Капитан, ухо
 loadout-HoP-ears-adt = Глава персонала, ухо
+
+# Consultant Centcom
+loadout-ccc-ears-adt = консультант Центком, ухо
+loadout-group-ccc-jumpsuit = консультант Центком, комбинезон
+loadout-group-ccc-head = консультант Центком, голова
+loadout-group-ccc-neck = консультант Центком, шея
+loadout-group-ccc-back = консультант Центком, спина
+loadout-group-ccc-outer-clothing = консультант Центком, верхняя одежда
+loadout-group-ccc-shoes = консультант Центком, обувь
+loadout-group-ccc-hands = консультант Центком, перчатки
+loadout-group-ccc-socks = консультант Центком, носки

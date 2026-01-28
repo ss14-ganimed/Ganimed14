@@ -32,6 +32,29 @@
   - type: Clothing
     sprite: ADT/Clothing/Uniforms/Jumpsuit/turtleneck_blueshield.rsi
 
+# Centcom Consultant
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitConsultantCentcom
+  name: Centcom consultants's jumpsuit
+  description: Centcom consultants's jumpsuit
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/ccc_suit.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/ccc_suit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitCCCFormal
+  name: Centcom consultant's formal suit
+  description: Centcom consultant's formal suit
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/ccc_formal.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/ccc_formal.rsi
+
 # Водолазки. От prazat911, конечно же.
 - type: entity
   parent: ClothingUniformBase
@@ -199,6 +222,19 @@
     sprite: ADT/Clothing/Uniforms/Jumpsuit/turtleneck_black.rsi
   - type: Clothing
     sprite: ADT/Clothing/Uniforms/Jumpsuit/turtleneck_black.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitTurtleneckDarkBlue
+  name: dark blue turtleneck
+  description: Warm and comfy.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/turtleneck_darkblue.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/turtleneck_darkblue.rsi
   - type: StaticPrice
     price: 15
 
@@ -561,6 +597,32 @@
   - type: StaticPrice
     price: 55
 
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitRedVictorianSuit
+  name: red victorian suit
+  description: A Victorian-style costume for true connoisseurs.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/victorian_red_suit.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/victorian_red_suit.rsi #rhetajrkah взял с сервера Orehum Project
+  - type: StaticPrice
+    price: 55
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitBlackVictorianSuit
+  name: black victorian suit
+  description: A Victorian-style costume for true connoisseurs.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/victorian_black_suit.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/victorian_black_suit.rsi #rhetajrkah взял с сервера Orehum Project
+  - type: StaticPrice
+    price: 55
+
 # SPACE SEC
 - type: entity
   parent: ClothingUniformBase
@@ -838,36 +900,48 @@
 # Униформа надзирателя
 - type: entity
   parent: ClothingUniformBase
-  id: ADTClothingUniformGuardOfficer
-  name: uniform guard officer
-  description: uniform guard officer
+  id: ADTClothingUniformCorrectionsOfficer
+  name: uniform corrections officer
+  description: uniform corrections officer
   components:
   - type: Sprite
-    sprite: ADT/Clothing/Uniforms/Jumpsuit/guard_officer.rsi
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/corrections_officer.rsi
   - type: Clothing
-    sprite: ADT/Clothing/Uniforms/Jumpsuit/guard_officer.rsi
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/corrections_officer.rsi
 
 - type: entity
   parent: ClothingUniformBase
-  id: ADTClothingUniformGuardOfficerMaster
-  name: uniform guard officer master
-  description: uniform guard officer master
+  id: ADTClothingUniformCorrectionsOfficerLight
+  name: uniform corrections officer light
+  description: uniform corrections officer light
   components:
   - type: Sprite
-    sprite: ADT/Clothing/Uniforms/Jumpsuit/guard_officer_master.rsi
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/corrections_officer_light.rsi
   - type: Clothing
-    sprite: ADT/Clothing/Uniforms/Jumpsuit/guard_officer_master.rsi
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/corrections_officer_light.rsi
 
 - type: entity
   parent: ClothingUniformBase
-  id: ADTClothingUniformGreyGuardOfficer
-  name: grey uniform guard officer
-  description: grey uniform guard officer
+  id: ADTClothingUniformCorrectionsOfficerGrey
+  name: grey uniform corrections officer
+  description: grey uniform corrections officer
   components:
   - type: Sprite
-    sprite: ADT/Clothing/Uniforms/Jumpsuit/grey_guard_officer.rsi
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/corrections_officer_grey.rsi
   - type: Clothing
-    sprite: ADT/Clothing/Uniforms/Jumpsuit/grey_guard_officer.rsi
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/corrections_officer_grey.rsi
+
+#Кадет
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformSecurityCadetLight
+  name: uniform security cadet light
+  description: uniform security cadet light
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/sec_cadet_light.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/sec_cadet_light.rsi
 
 # ТСФ
 
@@ -1376,3 +1450,29 @@
     sprite: ADT/Clothing/Uniforms/Jumpsuit/tuxedo_hell.rsi
   - type: Clothing
     sprite: ADT/Clothing/Uniforms/Jumpsuit/tuxedo_hell.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformKimanoZero
+  name: Kimano
+  description: Kimano of some guy
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/kimono_zero.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/kimono_zero.rsi
+
+- type: entity
+  parent: ADTClothingUniformKimanoZero
+  id: ADTClothingUniformKimanoArmoredZero
+  name: Kimano
+  suffix: Armored
+  description: Armored kimano of some guy
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.6
+        Heat: 0.6

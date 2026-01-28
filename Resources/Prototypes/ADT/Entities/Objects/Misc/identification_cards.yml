@@ -51,6 +51,19 @@
 
 - type: entity
   parent: IDCardStandard
+  id: ADTCentcomConsultantIDCard
+  name: Central Command consultant ID card
+  components:
+    - type: Sprite
+      sprite: ADT/Objects/Misc/id_cards.rsi
+      layers:
+        - state: ert_commander
+        - state: idconsultant
+    - type: PresetIdCard
+      job: ADTCentcomConsultant
+
+- type: entity
+  parent: IDCardStandard
   id: ADTSpaceSecCadetIDCard
   name: space sec cadet ID card
   components:
@@ -170,16 +183,16 @@
 
 - type: entity
   parent: IDCardStandard
-  id: ADTGuardOfficerIDCard
-  name: guard officer ID card
+  id: ADTCorrectionsOfficerIDCard
+  name: corrections officer ID card
   components:
   - type: Sprite
     sprite: ADT/Objects/Misc/id_cards.rsi
     layers:
     - state: default
-    - state: id-guardofficer
+    - state: id-correctionsofficer
   - type: PresetIdCard
-    job: ADTGuardOfficer
+    job: ADTCorrectionsOfficer
 
 - type: entity
   parent: PassengerIDCard
@@ -415,6 +428,14 @@
   components:
   - type: IdCard
     jobTitle: job-name-mechanic
+
+- type: entity
+  parent: EngineeringIDCard
+  id: ADTWelderIDCard
+  name: welder ID card
+  components:
+  - type: IdCard
+    jobTitle: job-name-welder
 
 # Cargo Technician
 

@@ -1,11 +1,26 @@
 ent-ADTClothingUniformPathologistSkirt = юбка-костюм патологоанатома
     .desc = Лёгкая юбка-комбинезон для работницы морга.
+
 ent-ADTClothingUniformPathologistSkirtAlt = чёрная юбка-костюм патологоанатома
     .desc = Лёгкая юбка-комбинезон для работницы морга. Более угрюмая версия.
-ent-ADTClothingUniformJumpskirtBlueshield = юбка и костюм офицера "Синего Щита"
-    .desc = Юбка и белая рубашка с погонами Офицера "Синего Щита", уже очень скоро она будет окроплена кроваво-алой кровью врагов НТ, перепутавших его с охранником продуктового магазина 21-го века.
-ent-ADTClothingUniformJumpskirtTurtleneckBlueshield = юбка-водолазка офицера синего щита
-    .desc = Белая удобная водолазка с юбкой для Офицера "Синего Щита" с пришитыми золотыми погонами и ярким именным бейджиком. К сожалению, если вы её наденете, это не будет значить, что вам дадут отпуск.
+
+ent-ADTClothingUniformJumpskirtBlueshield = юбка-комбинезон офицера "Синий Щит"
+    .desc = Юбка и белая рубашка с погонами Офицера "Синий Щит", уже очень скоро она будет окроплена кроваво-алой кровью врагов НТ, перепутавших его с охранником продуктового магазина 21-го века.
+
+ent-ADTClothingUniformJumpskirtTurtleneckBlueshield = юбка-водолазка офицера "Синий Щит"
+    .desc = Белая удобная водолазка с юбкой для Офицера "Синий Щит" с пришитыми золотыми погонами и ярким именным бейджиком. К сожалению, если вы её наденете, это не будет значить, что вам дадут отпуск.
+
+ent-ADTClothingUniformJumpskirtCCC = юбка-комбинезон консультанта Центком
+    .desc = Юбка-комбинезон консультанта Центрального Командования, зелёная, строгая, простая. Просто и надёжно, подходит для каждого бюрократа.
+
+ent-ADTClothingUniformJumpskirtCCCFormal = формальная костюм-юбка консультанта Центком
+    .desc = Формальная форма консультанта Центрального Командования с юбкой, идеально подходит как и под официальные и грандиозные встречи, так и под стильную и скромную прогулку по станции.
+
+ent-ADTClothingUniformJumpskirtCorrectionsOfficer = юбка-комбинезон надзирателя СБ
+    .desc = Тёмная юбка-комбинезон тюремного надзирателя Службы Безопасности. Кажется, на ней ещё остались пятна свежей крови избитых дубинкой заключённых, которые сидели срок по 1ХХ статье.
+
+ent-ADTClothingUniformJumpskirtSecurityCadetLight = лёгкая форма-юбка кадета СБ
+    .desc = Лёгкая форма с юбкой кадета Службы Безопасности, длинная юбка с заправленной в неё футболкой, прямо говорят, что вы кадет.
 
 ent-ADTClothingUniformJumpskirtTurtleneckBlack = чёрная водолазка с юбкой
     .desc = Любимая одежда книжного червя.
@@ -59,6 +74,10 @@ ent-ADTClothingUniformJumpskirtTurtleneckPink = розовая водолазк�
     .desc = { ent-ADTClothingUniformJumpsuitTurtleneckPink.desc }
     .suffix = { "" }
 
+ent-ADTClothingUniformJumpskirtTurtleneckDarkBlue = тёмно-синяя водолазка с юбкой
+    .desc = { ent-ADTClothingUniformJumpsuitTurtleneckDarkBlue.desc }
+    .suffix = { "" }
+
 ent-ADTClothingUniformJumpskirtTurtleneckBlackSleeveless = чёрная водолазка с юбкой
     .desc = { ent-ADTClothingUniformJumpsuitTurtleneckBlackSleeveless.desc }
     .suffix = { "" }
@@ -82,9 +101,6 @@ ent-ADTClothingUniformJumpskirtHopWarm = водолазка c юбкой гла�
 ent-ADTQMJumpskirtWarm = водолазка квартирмейстера
     .desc = { ent-ADTQMJumpsuitWarm.desc }
     .suffix = {""}
-
-ent-ClothingUniformJumpskirtBlueshieldTurtleneck = юбка-водолазка офицера синего щита
-    .desc = Белая удобная водолазка с юбкой для Офицера Синего Щита с пришитыми золотыми погонами и ярким именным бейджиком. К сожалению, если вы её наденете, это не будет значить, что вам дадут отпуск.
 
 ent-ADTClothingUniformJumpskirtBrigmedicTurtleneck = юбка-водолазка бригмедика
     .desc = { ent-ADTClothingUniformJumpsuitBrigmedicTurtleneck.desc }

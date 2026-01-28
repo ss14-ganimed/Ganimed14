@@ -7,11 +7,14 @@ ent-ADTPathologistIDCard = ID карта патологоанатома
 ent-ADTRoboticistIDCard = ID карта робототехника
     .desc = { ent-IDCardStandard.desc }
 
-ent-ADTGuardOfficerIDCard = ID карта надзирателя
+ent-ADTCorrectionsOfficerIDCard = ID карта надзирателя СБ
     .desc = { ent-IDCardStandard.desc }
 
 ent-ADTBlueShieldOfficerIDCard = ID карта офицера синего щита
     .desc = Блестящая карта офицера Синего Щита.
+
+ent-ADTCentcomConsultantIDCard = ID карта консультанта Центком
+    .desc = Золотая версия карты для представителей Центрального Командования.
 
 ent-ADTBrigMedicIDCard = ID карта бригмедика
     .desc = ID карта бриг медика
@@ -98,6 +101,9 @@ ent-ADTElectricianIDCard = ID карта электрика
 ent-ADTMechanicIDCard = ID карта механика
     .desc = ID карта механика.
 
+ent-ADTWelderIDCard = ID карта сварщика
+    .desc = ID карта сварщика.
+
 ent-ADTPostmanIDCard = ID карта почтальона
     .desc = ID карта почтальона.
 
@@ -176,8 +182,8 @@ ent-ADTMechAssemblerIDCard = ID карта механосборщика
 ent-ADTSheriffIDCard = ID карта шерифа
     .desc = ID карта шерифа.
 
-ent-ADTLawyerIDCard = ID карта юриста
-    .desc = ID карта юриста.
+ent-ADTLawyerIDCard = ID карта адвоката
+    .desc = ID карта адвоката.
 
 ent-ADTGardenerIDCard = ID карта садовода
     .desc = ID карта садовода.

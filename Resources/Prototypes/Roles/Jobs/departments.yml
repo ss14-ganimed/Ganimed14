@@ -60,7 +60,7 @@
   roles:
   - Captain
   # ADT-Tweak
-  - ADTBlueShieldOfficer
+  - ADTCentcomConsultant
   - Magistrat
   # ADT-Tweak
   - IAA # Corvax-IAA
@@ -127,7 +127,7 @@
   # ADT-Tweak
   - Brigmedic
   - ADTSeniorOfficer
-  - ADTGuardOfficer
+  - ADTCorrectionsOfficer
   # ADT-Tweak
 
 - type: department

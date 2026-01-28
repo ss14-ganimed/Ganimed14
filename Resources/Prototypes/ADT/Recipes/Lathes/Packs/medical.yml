@@ -6,7 +6,6 @@
   - ADTPillCanister
   - ADTPillPack
   - ADTPlasticBottle
-  - ADTBaseChemistryEmptyVial
   - ADTAutoSurgeon
 
 - type: latheRecipePack
@@ -14,6 +13,7 @@
   recipes:
   - ADTHighVoltageDefibrillator
   - ADTReagentAnalyzer
+  - ClothingEyesGlassesChemical
 
 - type: latheRecipePack
   id: ADTAdvancedMedicalCarePack
@@ -21,3 +21,34 @@
   - ADTLauncherSyringe
   - ADTMiniSyringe
   - ADTTourniquet
+  - ADTPatchLepo
+
+- type: latheRecipePack
+  id: ADTAdvancedMedical
+  recipes:
+  - ADTAdvancedMedicalBedCircuitboard
+
+- type: latheRecipePack
+  id: ADTCryoPodMachineCircuitboard
+  recipes:
+  - CryoPodMachineCircuitboard
+
+- type: latheRecipePack
+  id: ADTChemDisp
+  recipes:
+  - ChemDispenserMachineCircuitboard
+  - ChemMasterMachineCircuitboard
+  - HotplateMachineCircuitboard
+  - ADTColdplateMachineCircuitboard
+
+- type: latheRecipePack
+  id: ADTCryoTech
+  recipes:
+  - ADTPatchCryo
+  - CryostasisBeaker
+  - SyringeCryostasis
+
+- type: latheRecipePack
+  id: ADTThermoTech
+  recipes:
+  - ADTPatchThermo

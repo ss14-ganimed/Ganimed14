@@ -13,6 +13,7 @@
     Captain: 800
     Magistrat: 800
     ADTBlueShieldOfficer: 1000
+    ADTCentcomConsultant: 1000
     # Карго
     CargoTechnician: 200
     SalvageSpecialist: 300
@@ -48,7 +49,7 @@
     # СБ
     SecurityCadet: 200
     SecurityOfficer: 300
-    ADTGuardOfficer: 375
+    ADTCorrectionsOfficer: 375
     Detective: 400
     Pilot: 400
     Brigmedic: 400

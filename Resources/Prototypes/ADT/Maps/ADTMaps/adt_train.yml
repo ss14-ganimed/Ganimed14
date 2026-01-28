@@ -19,9 +19,12 @@
             prefixCreator: '-'
         - type: StationJobs
           availableJobs:
+            # Centcom specialists
+            ADTCentcomConsultant: [ 1, 1 ] #ADT-Roles
+            ADTBlueShieldOfficer: [ 1, 1 ] #ADT-Roles
+
             # Command
             Captain: [ 1, 1 ]
-            ADTBlueShieldOfficer: [ 1, 1 ]
 
             # Service
             HeadOfPersonnel: [ 1, 1 ]
@@ -49,7 +52,7 @@
             # Med
             ChiefMedicalOfficer: [ 1, 1 ]
             Chemist: [ 2, 2 ]
-            MedicalDoctor: [ 2, 4 ]
+            MedicalDoctor: [ 2, 3 ]
             MedicalIntern: [ 2, 4 ]
             ADTPathologist: [ 1, 1 ]
             ADTSeniorPhysician: [ 1, 1 ]
@@ -69,7 +72,7 @@
             SecurityCadet: [ 4, 4 ]
             Brigmedic: [ 1, 1 ]
             ADTSeniorOfficer: [ 1, 1 ]
-            ADTGuardOfficer: [ 1, 1 ]
+            ADTCorrectionsOfficer: [ 1, 1 ]
 
             # Supply
             Quartermaster: [ 1, 1 ]

@@ -2,8 +2,8 @@
   id: ADT_Saltern
   mapName: 'Saltern'
   mapPath: /Maps/ADTMaps/ADTStations/adt_saltern.yml
-  minPlayers: 20
-  maxPlayers: 35
+  minPlayers: 8 # Ganimed-Tweak (20 -> 8)
+  maxPlayers: 30 # Ganimed-Tweak (35 -> 30)
   fallback: true
   stations:
     ADT_Saltern:
@@ -20,9 +20,11 @@
           path: /Maps/ADTMaps/Shuttles/adt_cargo.yml
         - type: StationJobs
           availableJobs:
+            #centcom specialists
+            ADTCentcomConsultant: [ 1, 1 ] #ADT-Roles
+            ADTBlueShieldOfficer: [ 1, 1 ] #ADT-Roles
             # command
             Captain: [ 1, 1 ]
-            ADTBlueShieldOfficer: [ 1, 1 ] #ADT-Roles
             #service
             HeadOfPersonnel: [ 1, 1 ]
             Bartender: [ 1, 1 ]
@@ -34,7 +36,7 @@
             ServiceWorker: [ 2, 2 ]
             #engineering
             ChiefEngineer: [ 1, 1 ]
-            AtmosphericTechnician: [ 2, 2 ]
+            AtmosphericTechnician: [ 0, 2 ]
             StationEngineer: [ 4, 4 ]
             TechnicalAssistant: [ 4, 4 ]
             ADTSeniorEngineer: [ 1, 1 ] # ADT-roles
@@ -60,7 +62,7 @@
             SecurityCadet: [ 4, 4 ]
             Brigmedic: [ 1, 1 ] #ADT-Roles
             ADTSeniorOfficer: [ 1, 1 ] # ADT-Roles
-            ADTGuardOfficer: [ 1, 1 ] # ADT-Roles
+            ADTCorrectionsOfficer: [ 1, 1 ] # ADT-Roles
             #supply
             Quartermaster: [ 1, 1 ]
             SalvageSpecialist: [ 1, 3 ]

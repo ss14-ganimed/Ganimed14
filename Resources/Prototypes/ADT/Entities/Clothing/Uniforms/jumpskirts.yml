@@ -21,6 +21,29 @@
   - type: Clothing
     sprite: ADT/Clothing/Uniforms/Jumpskirt/turtleneck_blueshield_woman.rsi
 
+# Centcom consultant
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtCCC
+  name: Centcom consultants's jumpskirt
+  description: Centcom consultants's jumpskirt
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpskirt/ccc_suit.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpskirt/ccc_suit.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtCCCFormal
+  name: Centcom consultant's formal suit
+  description: Centcom consultant's formal suit
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpskirt/ccc_formal.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpskirt/ccc_formal.rsi
+
 #Водолазки от prazat911.
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -188,6 +211,19 @@
     sprite: ADT/Clothing/Uniforms/Jumpskirt/turtleneck_black_women.rsi
   - type: Clothing
     sprite: ADT/Clothing/Uniforms/Jumpskirt/turtleneck_black_women.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtTurtleneckDarkBlue
+  name: dark blue turtleneck with skirt
+  description: Warm and comfy.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpskirt/turtleneck_darkblue_women.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpskirt/turtleneck_darkblue_women.rsi
   - type: StaticPrice
     price: 15
 
@@ -481,6 +517,30 @@
     sprite: ADT/Clothing/Uniforms/Jumpskirt/teto.rsi
   - type: Clothing
     sprite: ADT/Clothing/Uniforms/Jumpskirt/teto.rsi
+
+# Corrections Officer
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtCorrectionsOfficer
+  name: skirt-uniform corrections officer
+  description: skirt-uniform corrections officer
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpskirt/corrections_officer.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpskirt/corrections_officer.rsi
+
+# Cadet
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtSecurityCadetLight
+  name: skirt-uniform security cadet light
+  description: skirt-uniform security cadet light
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpskirt/sec_cadet_light.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpskirt/sec_cadet_light.rsi
 
 # Бармен
 

@@ -9,17 +9,20 @@ JobRoboticist = робототехник
 job-name-magistrat = магистрат
 JobMagistrat = магистрат
 
-job-name-senior-physician = ведущий врач
-JobADTSeniorPhysician = ведущий врач
+job-name-senior-physician = заведующий врач
+JobADTSeniorPhysician = заведующий врач
 
-job-name-senior-researcher = доцент
-JobADTSeniorResearcher = доцент
+job-name-senior-researcher = старший научный сотрудник
+JobADTSeniorResearcher = старший научный сотрудник
 
 job-name-senior-engineer = бригадир
 JobADTSeniorEngineer = бригадир
 
 job-name-senior-officer = офицер-инструктор
 JobADTSeniorOfficer = офицер-инструктор
+
+job-name-ADTCentcomConsultant = консультант центком
+JobADTCentcomConsultant = консультант центком
 
 job-name-ADTBlueShieldOfficer = офицер синий щит
 JobADTBlueShieldOfficer = офицер синий щит
@@ -35,8 +38,8 @@ job-name-ADTSpaceSecPilot = пилот SPACE SEC
 job-name-ADTSpaceSecCommander = командир SPACE SEC
 job-name-ADTSpaceSecService = сотрудник SPACE SEC
 
-job-name-guard-officer = надзиратель
-ADTGuardOfficer = надзиратель
+job-name-corrections-officer = надзиратель СБ
+ADTCorrectionsOfficer = надзиратель СБ
 
 # Job titles
 cadet-space-sec = кадет SPACE SEC
@@ -54,6 +57,7 @@ job-name-life-support-tech = техник жизнеобеспечения
 job-name-plasma-scientist = плазмотехнолог
 job-name-electrician = электрик
 job-name-mechanic = механик
+job-name-welder = сварщик
 
 # Cargo
 
@@ -122,10 +126,10 @@ job-name-gladiator = гладиатор
 
 # Security
 
-# job-name-sheriff = шериф
+job-name-sheriff = шериф
 job-name-investigator = следователь
 job-name-field-doctor = полевой врач
 
 # Juridical
 
-job-name-adt-lawyer = юрист
+job-name-adt-lawyer = адвокат

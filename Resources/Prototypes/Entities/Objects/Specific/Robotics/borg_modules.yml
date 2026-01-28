@@ -462,6 +462,7 @@
     - state: icon-tools
   - type: ItemBorgModule
     items:
+    - HandheldStationMapUnpowered # ADT-tweak
     - Crowbar
     - Wrench
     - Screwdriver
@@ -507,6 +508,8 @@
     # - Shovel ADT tweak
     - MineralScannerUnpowered
     - BorgOreBag
+    - BorgHandheldGPSBasic #ADT tweak: MineBorgModulesUpdate
+    - HandheldStationMapUnpowered #ADT tweak: MineBorgModulesUpdate
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
 
@@ -526,8 +529,12 @@
     - Shovel
     - AdvancedMineralScannerUnpowered
     - OreBagOfHolding
+    - BorgHandheldGPSBasic #ADT tweak: MineBorgModulesUpdate
+    - HandheldStationMapUnpowered #ADT tweak: MineBorgModulesUpdate
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-mining-module }
+
+#ADT tweak-Start: MineBorgModulesUpdate
 
 - type: entity
   id: BorgModuleTraversal
@@ -546,6 +553,8 @@
     - HandHeldMassScannerBorg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: grappling-module }
+
+#ADT tweak-End: MineBorgModulesUpdate
 
 # engineering modules
 - type: entity
@@ -611,11 +620,12 @@
   - type: ItemBorgModule
     items:
     - RCDRecharging
-    - BorgFireExtinguisher
+    ##- BorgFireExtinguisher   # ADT-tweak
     - BorgHandheldGPSBasic
-    - GasAnalyzer
-    - HolofanProjectorBorg
+    ##- GasAnalyzer            # ADT-tweak
+    ##- HolofanProjectorBorg   # ADT-tweak
     - GeigerCounter
+    - WeaponGrapplingGun       # ADT-tweak
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: rcd-module }
 
@@ -677,6 +687,8 @@
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-cleaning-module }
 
 # medical modules
+# ADT-Tweak-Start "MedborgModuleUpdate":
+# ADT-Tweak-Start
 - type: entity
   id: BorgModuleDiagnosis # todo: reuse when med refractor is finished
   parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
@@ -692,6 +704,7 @@
     - ClothingNeckStethoscope
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: diagnosis-module }
+  # ADT-Tweak-End
 
 - type: entity
   id: BorgModuleTopicals
@@ -718,6 +731,7 @@
   id: BorgModuleRescue
   parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
   name: rescue cyborg module
+  abstract: true # ADT-Tweak: "MedborgModuleUpdate"
   components:
   - type: Sprite
     layers:
@@ -736,6 +750,7 @@
 - type: entity
   id: BorgModuleChemical
   parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
+  abstract: true  # ADT-Tweak: "MedborgModuleUpdate"
   name: chemical cyborg module
   components:
   - type: Sprite
@@ -753,6 +768,7 @@
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: chem-module }
 
+# ADT-Tweak-Start: "MedborgModuleUpdate"   # новые модули сделал отдельно в папке ADT
 - type: entity
   id: BorgModuleAdvancedChemical
   parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
@@ -780,6 +796,8 @@
     # ADT end: droppable borg items
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-chem-module }
+# ADT-Tweak-End
+# ADT-Tweak-End
 
 # science modules
 # todo: if science ever gets their own custom robot, add more "sci" modules.

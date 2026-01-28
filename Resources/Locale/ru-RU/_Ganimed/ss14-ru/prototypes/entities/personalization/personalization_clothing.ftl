@@ -16,3 +16,11 @@ ent-ClothingOuterArmorHoSSafno = бронежилет главы службы б
 ent-ClothingBeltHoSSafno = тактический пояс ГСБ с ножнами
     .desc = Уникальный пояс главы службы безопасности, предназначенный для снаряжения и экипировки СБ. Оснащён интегрированными ножнами для хранения катаны и вакидзаси.
     .suffix = { "Спонсорское, Safno_S" }
+
+ent-ClothingModsuitBackBee = пчелиный МОД
+    .desc = Специально модифицированный шахтерский МОД, создан для настоящих трудяг.
+    .suffix = { "Спонсорское, Halo_Shivter" }
+ent-ClothingHeadHelmetModsuitBee = шлем пчелиного МОДа
+ent-ClothingOuterModsuitBodyBee = оболочка пчелиного МОДа
+ent-ClothingHandsModsuitBee = перчатки пчелиного МОДа
+ent-ClothingModsuitShoesBee = ботинки пчелиного МОДа
