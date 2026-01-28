@@ -1,7 +1,7 @@
 - type: radioChannel
   id: Conspiracy
   name: chat-radio-conspiracy
-  keycode: 'o'
+  keycode: 'г' # 'з' была занята, поменяйте на 'з', если не занята другой радиочастотой.
   frequency: 1174
   color: "#724F29"
   longRange: true
