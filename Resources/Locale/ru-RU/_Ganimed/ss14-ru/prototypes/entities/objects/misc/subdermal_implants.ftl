@@ -1,2 +1,2 @@
-ent-RadioImplantConspiracy = имплант "радио"
+ent-RadioImplantConspiracy = имплант "радио заговорщиков"
     .desc = Этот имплант даёт доступ к радиочастоте заговорщиков без гарнитуры.

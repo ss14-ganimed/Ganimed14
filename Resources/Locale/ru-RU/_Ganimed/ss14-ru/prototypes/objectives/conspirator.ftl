@@ -2,7 +2,7 @@ ent-BaseConspiratorObjective = { ent-BaseObjective }
     .desc = { ent-BaseObjective.desc }
 
 ent-ConspiratorUnionObjective = Захватить отдел под свой контроль.
-    .desc = Возьмите под контроль отдел и объявите независимость от Nanotrasen.
+    .desc = Возьмите под контроль отдел и установите там свои порядки.
 
 ent-ConspiratorGameshowObjective = Устроить шоу "не на жизнь, а на смерть".
     .desc = Заставьте экипаж принять участие в игровом шоу с невероятно высокими ставками.
