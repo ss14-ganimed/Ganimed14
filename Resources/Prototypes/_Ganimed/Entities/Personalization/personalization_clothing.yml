@@ -163,6 +163,10 @@
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_helmet.rsi
     layers:
     - state: icon
+    - state: light-overlay
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
   - type: Clothing
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/bee_modsuit_helmet.rsi
     clothingVisuals:
