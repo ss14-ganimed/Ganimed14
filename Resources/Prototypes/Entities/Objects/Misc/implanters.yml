@@ -46,6 +46,7 @@
       - MindShieldImplant
       - FakeMindShieldImplant
       - RadioImplant
+      - RadioImplantConspiracy # Ganimed-Add: Harmony conspirators
       - ChameleonControllerImplant
       deimplantFailureDamage:
         types:
