@@ -159,6 +159,14 @@
     - trayScanner
     - AccessConfiguratorUniversal
     - Multitool
+    # Ganimed-Add-Start
+    - Omnitool
+    - DoorRemoteAll
+    - RubberStampCentcom
+    - RubberStampApproved
+    - RubberStampDenied
+    - ADTRubberStampRemake
+    # Ganimed-Add-End
 
 #Gladiator with spear
 - type: startingGear
