@@ -28,12 +28,14 @@
     Biomass: 120
 
 # Start ADT Tweak
-- type: latheRecipe
-  parent: BaseCubeRecipe
-  id: ADTCubeGondola
-  result: ADTCubeGondola
-  materials:
-    Biomass: 120
+# Ganimed-Remove-Start
+#- type: latheRecipe
+#  parent: BaseCubeRecipe
+#  id: ADTCubeGondola
+#  result: ADTCubeGondola
+#  materials:
+#    Biomass: 120
+# Ganimed-Remove-End
 # End ADT Tweak
 
 - type: latheRecipe
