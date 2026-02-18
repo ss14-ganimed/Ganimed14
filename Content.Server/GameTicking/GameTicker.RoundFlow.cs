@@ -691,13 +691,37 @@ namespace Content.Server.GameTicking
                 stringBuilder.AppendLine($"Информация: {roundEndTextMarkdown}\n");
             }
 
+            // Group players by their OOC and IC name to avoid duplicates
+            // Use JobPrototypes and AntagPrototypes to show ALL roles a player had
             var groupedPlayers = playerInfoArray
-                .GroupBy(p => new { p.PlayerOOCName, p.PlayerICName })
+                .Where(p => p.PlayerGuid != null)
+                .GroupBy(p => p.PlayerGuid)
                 .Select(g => new
                 {
-                    PlayerOOCName = g.Key.PlayerOOCName,
-                    PlayerICName = g.Key.PlayerICName,
-                    Roles = string.Join(", ", g.Select(p => p.Role).Distinct())
+                    PlayerGuid = g.Key,
+                    PlayerOOCName = g.First().PlayerOOCName,
+
+                    PlayerICNames = g.Select(p => p.PlayerICName)
+                        .Where(n => !string.IsNullOrWhiteSpace(n))
+                        .Distinct()
+                        .ToList(),
+
+                    JobPrototypes = g.SelectMany(p => p.JobPrototypes ?? Array.Empty<string>())
+                        .Aggregate(new List<string>(), (list, role) =>
+                        {
+                            if (!list.Contains(role))
+                                list.Add(role);
+                            return list;
+                        }),
+
+                    AntagPrototypes = g.SelectMany(p => p.AntagPrototypes ?? Array.Empty<string>())
+                        .Aggregate(new List<string>(), (list, role) =>
+                        {
+                            if (!list.Contains(role))
+                                list.Add(role);
+                            return list;
+                        }),
+
                 })
                 .ToList();
 
@@ -708,10 +732,34 @@ namespace Content.Server.GameTicking
 
             foreach (var playerInfo in groupedPlayers)
             {
-                stringBuilder.AppendLine($"{playerInfo.PlayerICName}({playerInfo.PlayerOOCName}) в роли: {Loc.GetString(playerInfo.Roles)}");
+                // Combine all roles (jobs + antags) into a single list
+                var allRoles = new List<string>();
+
+                // Add antagonist roles first (they take priority)
+                foreach (var antagRole in playerInfo.AntagPrototypes)
+                {
+                    if (!string.IsNullOrEmpty(antagRole) && !allRoles.Contains(antagRole))
+                        allRoles.Add(antagRole);
+                }
+
+                // Add job roles
+                foreach (var jobRole in playerInfo.JobPrototypes)
+                {
+                    if (!string.IsNullOrEmpty(jobRole) && !allRoles.Contains(jobRole))
+                        allRoles.Add(jobRole);
+                }
+
+                var rolesString = allRoles.Count > 0
+                    ? string.Join(" -> ", allRoles.Select(r => Loc.GetString(r)))
+                    : Loc.GetString("game-ticker-unknown-role");
+
+                var icNames = string.Join(", ", playerInfo.PlayerICNames);
+                stringBuilder.AppendLine($"{icNames} ({playerInfo.PlayerOOCName}) в роли: {rolesString}");
+
             }
 
-            return stringBuilder.ToString();}
+            return stringBuilder.ToString();
+        }
         // ADT-Tweak-end
 
         private async void SendRoundEndDiscordMessage()
