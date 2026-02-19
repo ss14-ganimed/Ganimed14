@@ -101,7 +101,7 @@ public abstract class SharedJetpackSystem : EntitySystem
     private void OnJetpackUserEntParentChanged(EntityUid uid, JetpackUserComponent component, ref EntParentChangedMessage args)
     {
         if (TryComp<JetpackComponent>(component.Jetpack, out var jetpack) &&
-            !CanEnableOnGrid(args.Transform.GridUid))
+            !CanEnableOnGrid(args.Transform.GridUid, args.Transform.MapUid)) // Ganimed edit
         {
             SetEnabled(component.Jetpack, jetpack, false, uid);
 
@@ -143,7 +143,7 @@ public abstract class SharedJetpackSystem : EntitySystem
         if (args.Handled)
             return;
 
-        if (TryComp(uid, out TransformComponent? xform) && !CanEnableOnGrid(xform.GridUid))
+        if (TryComp(uid, out TransformComponent? xform) && !CanEnableOnGrid(xform.GridUid, xform.MapUid)) // Ganimed edit
         {
             _popup.PopupClient(Loc.GetString("jetpack-no-station"), uid, args.Performer);
 
@@ -153,17 +153,25 @@ public abstract class SharedJetpackSystem : EntitySystem
         SetEnabled(uid, component, !IsEnabled(uid));
     }
 
-    private bool CanEnableOnGrid(EntityUid? gridUid)
+    protected bool CanEnableOnGrid(EntityUid? gridUid, EntityUid? mapUid = null) // Ganimed edit
     {
         // No and no again! Do not attempt to activate the jetpack on a grid with gravity disabled. You will not be the first or the last to try this.
         // https://discord.com/channels/310555209753690112/310555209753690112/1270067921682694234
 
-        // ADT Tweak start
-        if (gridUid == null || !TryComp<GravityComponent>(gridUid, out var comp))
-            return true;
+        // Ganimed edit start
+        if (gridUid != null && TryComp<GravityComponent>(gridUid, out var gravityComp) && gravityComp.Enabled)
+        {
+            return false;
+        }
 
-        return !comp.Enabled;
-        // ADT Tweak End
+        // Check if map has gravity enabled (e.g., planets like Lavaland)
+        if (mapUid != null && TryComp<GravityComponent>(mapUid, out var mapGravityComp) && mapGravityComp.Enabled)
+        {
+            return false;
+        }
+        // Ganimed edit end
+
+        return true;
     }
 
     private void OnJetpackGetAction(EntityUid uid, JetpackComponent component, GetItemActionsEvent args)
