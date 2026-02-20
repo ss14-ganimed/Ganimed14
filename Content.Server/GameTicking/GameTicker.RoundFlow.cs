@@ -636,8 +636,8 @@ namespace Content.Server.GameTicking
                         ? roles.First(role => role.Antagonist).Name
                         : roles.FirstOrDefault().Name ?? Loc.GetString("game-ticker-unknown-role"),
                     Antag = antag,
-                    JobPrototypes = roles.Where(role => !role.Antagonist).Select(role => role.Prototype).ToArray(),
-                    AntagPrototypes = roles.Where(role => role.Antagonist).Select(role => role.Prototype).ToArray(),
+                    JobPrototypes = roles.Where(role => !role.Antagonist).Select(role => role.Name).ToArray(),
+                    AntagPrototypes = roles.Where(role => role.Antagonist).Select(role => role.Name).ToArray(),
                     Observer = observer,
                     Connected = connected,
                     // ADT-tweak-start: manifest
@@ -694,10 +694,14 @@ namespace Content.Server.GameTicking
             // Group players by their OOC and IC name to avoid duplicates
             // Use JobPrototypes and AntagPrototypes to show ALL roles a player had
             var groupedPlayers = playerInfoArray
+            // ADT-Tweak-end
+            // Ganimed edit start
                 .Where(p => p.PlayerGuid != null)
                 .GroupBy(p => p.PlayerGuid)
+            // Ganimed edit end
                 .Select(g => new
                 {
+                    // Ganimed edit start
                     PlayerGuid = g.Key,
                     PlayerOOCName = g.First().PlayerOOCName,
 
@@ -721,7 +725,7 @@ namespace Content.Server.GameTicking
                                 list.Add(role);
                             return list;
                         }),
-
+                // Ganimed edit end
                 })
                 .ToList();
 
@@ -732,21 +736,22 @@ namespace Content.Server.GameTicking
 
             foreach (var playerInfo in groupedPlayers)
             {
+                // Ganimed edit start
                 // Combine all roles (jobs + antags) into a single list
                 var allRoles = new List<string>();
 
-                // Add antagonist roles first (they take priority)
-                foreach (var antagRole in playerInfo.AntagPrototypes)
-                {
-                    if (!string.IsNullOrEmpty(antagRole) && !allRoles.Contains(antagRole))
-                        allRoles.Add(antagRole);
-                }
-
-                // Add job roles
+                // Add job roles first (chronological order: jobs are assigned before antagonist roles)
                 foreach (var jobRole in playerInfo.JobPrototypes)
                 {
                     if (!string.IsNullOrEmpty(jobRole) && !allRoles.Contains(jobRole))
                         allRoles.Add(jobRole);
+                }
+
+                // Add antagonist roles after jobs
+                foreach (var antagRole in playerInfo.AntagPrototypes)
+                {
+                    if (!string.IsNullOrEmpty(antagRole) && !allRoles.Contains(antagRole))
+                        allRoles.Add(antagRole);
                 }
 
                 var rolesString = allRoles.Count > 0
@@ -759,8 +764,8 @@ namespace Content.Server.GameTicking
             }
 
             return stringBuilder.ToString();
+            // Ganimed edit end
         }
-        // ADT-Tweak-end
 
         private async void SendRoundEndDiscordMessage()
         {
