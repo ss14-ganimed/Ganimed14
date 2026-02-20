@@ -1,6 +1,7 @@
+#if DEBUG
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Ganimed.SponsorLoadout;
+namespace Content.Server.Corvax.Sponsors;
 
 /// <summary>
 /// Прототип для локальной проверки спонсорства в Debug-сборках.
@@ -60,3 +61,4 @@ public sealed class DebugSponsorPrototype : IPrototype
     [DataField("allowJob")]
     public bool AllowJob { get; } = false;
 }
+#endif

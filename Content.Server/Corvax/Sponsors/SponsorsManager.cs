@@ -7,7 +7,6 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Content.Server.ADT.SponsorLoadout;
 using Content.Server.Database;
-using Content.Server.Ganimed.SponsorLoadout; // Ganimed-Sponsors
 using Content.Shared.Corvax.CCCVars;
 using Content.Shared.Corvax.Sponsors;
 using Content.Shared.Roles;
@@ -28,16 +27,16 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     private readonly HttpClient _httpClient = new();
+    // Ganimed-Sponsors start
+    private readonly Dictionary<NetUserId, SponsorInfo> _cachedSponsors = new();
+
+#if DEBUG
+    private DebugSponsorLoader? _debugSponsorLoader;
+#endif
+    // Ganimed-Sponsors end
 
     private ISawmill _sawmill = default!;
     private string _apiUrl = string.Empty;
-
-    private readonly Dictionary<NetUserId, SponsorInfo> _cachedSponsors = new();
-    // Ganimed-Sponsors start
-    private readonly Dictionary<string, SponsorInfo> _ckeyBasedSponsors = new();
-
-    private bool _debugSponsorsLoaded = false;
-    // Ganimed-Sponsors end
 
     public void Initialize()
     {
@@ -60,49 +59,26 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
         _sawmill.Info($"[Init] Sponsor API URL (from CVar): '{_apiUrl}'");
 
     // Ganimed-Sponsors start
-        _prototypeManager.PrototypesReloaded += OnPrototypesReloaded;
-    }
-
-    private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
-    {
-        if (_debugSponsorsLoaded)
-            return;
-
-        LoadDebugSponsors();
-    }
+#if DEBUG
+        _debugSponsorLoader = new DebugSponsorLoader(_prototypeManager, _sawmill);
+        _debugSponsorLoader.Initialize();
+#endif
     // Ganimed-Sponsors end
-
+    }
 
     public bool TryGetInfo(NetUserId userId, [NotNullWhen(true)] out SponsorInfo? sponsor)
     {
         return _cachedSponsors.TryGetValue(userId, out sponsor);
     }
 
-    /// <summary>
-    /// Ganimed-Sponsors
-    /// Попытка получить информацию о спонсоре по ckey
-    /// </summary>
     public bool TryGetInfoByCkey(string ckey, [NotNullWhen(true)] out SponsorInfo? sponsor)
     {
-        if (string.IsNullOrEmpty(ckey))
-        {
-            sponsor = null;
-            return false;
-        }
-
-        var normalizedCkey = ckey.ToLowerInvariant();
-
-        if (_ckeyBasedSponsors.TryGetValue(normalizedCkey, out sponsor))
-        {
-            if (sponsor.ExpireDate.ToLocalTime() <= DateTime.Now)
-            {
-                sponsor = null;
-                return false;
-            }
-
-            return true;
-        }
-
+       // Ganimed-Sponsors start
+#if DEBUG
+        if (_debugSponsorLoader != null)
+            return _debugSponsorLoader.TryGetInfoByCkey(ckey, out sponsor);
+#endif
+       // Ganimed-Sponsors end
         sponsor = null;
         return false;
     }
@@ -126,26 +102,16 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
             info = await LoadSponsorInfo(e.UserId);
         }
 
-        // Если не найдено в API, пробуем локальные прототипы
-        if (info == null)
+#if DEBUG
+        // Если не найдено в API, пробуем локальные debug-прототипы
+        if (_debugSponsorLoader != null && info == null)
         {
-            // Загружаем спонсоров если ещё не загружены
-            if (!_debugSponsorsLoaded)
-            {
-                LoadDebugSponsors();
-            }
-
-            // Пытаемся получить сессию (может быть недоступна во время OnConnecting)
             if (_playerManager.TryGetSessionById(e.UserId, out var session))
             {
-                var ckey = session.Name;
-                if (TryGetInfoByCkey(ckey, out var debugSponsor))
-                {
-                    info = debugSponsor;
-                    _sawmill.Info($"[DebugSponsor] Found sponsor for '{ckey}'");
-                }
+                _debugSponsorLoader.OnConnectingLoadDebugSponsors(session.Name, ref info);
             }
         }
+#endif
         // Ganimed-Sponsors end
 
         if (info == null)
@@ -170,7 +136,6 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
                 AllowJob = true
             };
         }
-
         else if (isExpired || info.Tier == null)
         {
             _cachedSponsors.Remove(e.UserId);
@@ -183,27 +148,21 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
 
     private void OnConnected(object? sender, NetChannelArgs e)
     {
-        // Ganimed-Sponsors start
-        if (!_debugSponsorsLoaded)
-        {
-            LoadDebugSponsors();
-        }
-        // Ganimed-Sponsors end
         var info = _cachedSponsors.TryGetValue(e.Channel.UserId, out var sponsor) ? sponsor : null;
 
-        // Ganimed-Sponsors start
-        // Если HTTP API спонсоркий не указан, ищем локально
-        if (info == null && _playerManager.TryGetSessionById(e.Channel.UserId, out var session))
+        // Ganimed-Sponsors stat
+#if DEBUG
+        // Если HTTP API спонсорский не указан, ищем локально
+        if (_debugSponsorLoader != null && info == null && _playerManager.TryGetSessionById(e.Channel.UserId, out var session))
         {
-            var ckey = session.Name;
-            if (TryGetInfoByCkey(ckey, out var debugSponsor))
+            _debugSponsorLoader.OnConnectedLoadDebugSponsors(session.Name, ref info);
+            if (info != null)
             {
-                info = debugSponsor;
                 _cachedSponsors[e.Channel.UserId] = info;
-                _sawmill.Info($"[DebugSponsor] Found sponsor for '{ckey}' in OnConnected");
             }
         }
         // Ganimed-Sponsors end
+#endif
 
         var msg = new MsgSponsorInfo { Info = info };
         _netMgr.ServerSendMessage(msg, e.Channel);
@@ -317,53 +276,4 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
         return spawnEquipment != null;
     }
     // ADT-Tweak-End
-
-    /// <summary>
-    /// // Ganimed-Sponsors
-    /// Загружает debug-спонсоров из прототипов debugSponsor.
-    /// Использует ckey для идентификации.
-    /// </summary>
-    private void LoadDebugSponsors()
-    {
-        if (_debugSponsorsLoaded)
-            return;
-
-        _ckeyBasedSponsors.Clear();
-
-        var currentDate = DateTime.Now;
-
-        if (!_prototypeManager.TryGetInstances<DebugSponsorPrototype>(out var prototypes))
-        {
-            _sawmill.Warning("[DebugSponsor] Prototypes not loaded yet.");
-            return;
-        }
-
-        _debugSponsorsLoaded = true;
-
-        foreach (var debugSponsor in prototypes.Values)
-        {
-            if (debugSponsor.ExpireDate.HasValue &&
-                debugSponsor.ExpireDate.Value.ToLocalTime() <= currentDate)
-            {
-                continue;
-            }
-
-            var sponsorInfo = new SponsorInfo
-            {
-                CharacterName = debugSponsor.Ckey,
-                Tier = debugSponsor.Tier,
-                OOCColor = debugSponsor.OOCColor,
-                HavePriorityJoin = debugSponsor.HavePriorityJoin,
-                ExtraSlots = debugSponsor.ExtraSlots,
-                AllowedMarkings = debugSponsor.AllowedMarkings,
-                ExpireDate = debugSponsor.ExpireDate ?? DateTime.MaxValue,
-                AllowJob = debugSponsor.AllowJob
-            };
-
-            var normalizedCkey = debugSponsor.Ckey.ToLowerInvariant();
-            _ckeyBasedSponsors[normalizedCkey] = sponsorInfo;
-        }
-
-        _sawmill.Info($"[DebugSponsor] Loaded {_ckeyBasedSponsors.Count} sponsors from prototypes.");
-    }
 }
