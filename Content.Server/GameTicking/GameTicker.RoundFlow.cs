@@ -636,8 +636,8 @@ namespace Content.Server.GameTicking
                         ? roles.First(role => role.Antagonist).Name
                         : roles.FirstOrDefault().Name ?? Loc.GetString("game-ticker-unknown-role"),
                     Antag = antag,
-                    JobPrototypes = roles.Where(role => !role.Antagonist).Select(role => role.Name).ToArray(),
-                    AntagPrototypes = roles.Where(role => role.Antagonist).Select(role => role.Name).ToArray(),
+                    JobPrototypes = roles.Where(role => !role.Antagonist).Select(role => role.Name).ToArray(), // Ganimed edit
+                    AntagPrototypes = roles.Where(role => role.Antagonist).Select(role => role.Name).ToArray(), // Ganimed edit
                     Observer = observer,
                     Connected = connected,
                     // ADT-tweak-start: manifest
