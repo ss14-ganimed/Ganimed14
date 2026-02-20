@@ -38,3 +38,14 @@
       tier: 3
     - !type:JobRestrictedLoadoutEffect
       whitelistJobs: [ HeadOfSecurity ]
+
+# Halo_Shivter
+- type: loadout
+  id: SponsorLoadoutHaloShivterBeeModsuit
+  equipment:
+    back: ClothingModsuitBackBee
+  effects:
+    - !type:SponsorLoadoutEffect
+      tier: 3
+    - !type:JobRestrictedLoadoutEffect
+      whitelistJobs: [ Quartermaster, SalvageSpecialist ]

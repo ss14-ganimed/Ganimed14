@@ -39,7 +39,7 @@
       state: icon
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstDeadSquad
+      - NamesFirstMilitaryNTSergeantMajor # Ganimed edit (NamesFirstDeadSquad)
       - NamesLastDeadSquadCallsign
       nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
@@ -86,7 +86,7 @@
       roleLoadout: [ RoleSurvivalEVA ]
     - type: RandomMetadata
       nameSegments:
-      - NamesFirstDeadSquad
+      - NamesFirstMilitaryNTSergeantMajor # Ganimed edit (NamesFirstDeadSquad)
       - NamesLastDeadSquadCallsign
       nameFormat: name-format-standard
 
@@ -562,7 +562,7 @@
         time: 18000 # 5 hrs Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
-      - ADTNamesFirstMilitaryRXBZZ # ADT Tweak
+      - NamesFirstMilitaryNTSergeants # Ganimed edit (ADTNamesFirstMilitaryRXBZZ (OH GOD, WTF IS RXBZZ))
       - NamesLastERTCallsign
       nameFormat: name-format-standard
 
