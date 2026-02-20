@@ -19,5 +19,14 @@ namespace Content.Shared.Lathe
         /// </summary>
         [DataField, AutoNetworkedField]
         public List<ProtoId<LatheRecipePackPrototype>> EmagStaticPacks = new();
+
+        // Ganimed edit start: Option to ignore alert level restrictions when emagged
+        /// <summary>
+        /// If true, the lathe will ignore alert level restrictions when emagged.
+        /// Default is false - restrictions are only ignored AFTER emagging.
+        /// </summary>
+        [DataField, AutoNetworkedField]
+        public bool IgnoreAlertLevelRestrictions = false;
+        // Ganimed edit end
     }
 }

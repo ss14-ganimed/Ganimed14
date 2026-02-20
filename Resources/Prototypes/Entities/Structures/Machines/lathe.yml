@@ -245,6 +245,8 @@
     - SecurityExplosives
     - SecurityEquipment
     - SecurityWeapons
+  - type: LatheAlertLevelRestriction # Ganimed edit
+  - type: EmagLatheRecipes # Ganimed edit
 
 - type: entity
   id: ProtolatheHyperConvection
@@ -501,6 +503,8 @@
   - type: OreSiloClient
   - type: LatheAnnouncing
     channels: [Security]
+  - type: LatheAlertLevelRestriction # Ganimed edit
+  - type: EmagLatheRecipes # Ganimed edit
 
 - type: entity
   id: AmmoTechFab

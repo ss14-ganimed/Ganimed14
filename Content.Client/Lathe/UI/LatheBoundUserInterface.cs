@@ -1,8 +1,11 @@
+using Content.Shared._Ganimed.Components; // Ganimed edit
 using Content.Shared.ADT.Salvage; // ADT
 using Content.Shared.Lathe;
 using Content.Shared.Research.Components;
 using JetBrains.Annotations;
+using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
+using Robust.Shared.IoC;
 
 namespace Content.Client.Lathe.UI
 {
@@ -11,8 +14,12 @@ namespace Content.Client.Lathe.UI
     {
         [ViewVariables]
         private LatheMenu? _menu;
+
+        private readonly IEntityManager _entityManager; // Ganimed edit
+
         public LatheBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
         {
+            _entityManager = IoCManager.Resolve<IEntityManager>(); // Ganimed edit
         }
 
         protected override void Open()
@@ -43,7 +50,18 @@ namespace Content.Client.Lathe.UI
             {
                 case LatheUpdateState msg:
                     if (_menu != null)
+                    {
                         _menu.Recipes = msg.Recipes;
+                        // Ganimed edit start
+                        _menu.CurrentAlertLevel = msg.CurrentAlertLevel;
+
+                        // Обновляем компонент ограничения по уровню угрозы
+                        if (_entityManager.TryGetComponent<LatheAlertLevelRestrictionComponent>(Owner, out var restrictionComp))
+                        {
+                            restrictionComp.CurrentAlertLevel = msg.CurrentAlertLevel;
+                        }
+                    }
+                        // Ganimed edit end
                     _menu?.PopulateRecipes();
                     _menu?.UpdateCategories();
                     _menu?.PopulateQueueList(msg.Queue);

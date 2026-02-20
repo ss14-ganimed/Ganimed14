@@ -227,6 +227,7 @@
   parent: BaseWeaponRecipeLong
   id: WeaponLaserCarbine
   result: WeaponLaserCarbine
+  requiredAlertLevel: red # Ganimed edit
   materials:
     Steel: 2000
     Glass: 800
@@ -237,6 +238,7 @@
   parent: BaseWeaponRecipeLong
   id: WeaponAdvancedLaser
   result: WeaponAdvancedLaser
+  requiredAlertLevel: blue # Ganimed edit
   materials:
     Steel: 1500
     Glass: 1000
@@ -248,6 +250,7 @@
   parent: BaseWeaponRecipeLong
   id: WeaponLaserCannon
   result: WeaponLaserCannon
+  requiredAlertLevel: blue # Ganimed edit
   materials:
     Steel: 1250
     Plastic: 750
@@ -258,6 +261,7 @@
   parent: BaseWeaponRecipeLong
   id: WeaponXrayCannon
   result: WeaponXrayCannon
+  requiredAlertLevel: red # Ganimed edit
   materials:
     Steel: 1500
     Glass: 500

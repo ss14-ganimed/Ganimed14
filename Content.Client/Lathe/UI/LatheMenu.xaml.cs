@@ -44,6 +44,8 @@ public sealed partial class LatheMenu : DefaultWindow
 
     private uint? _lastMiningPoints; // ADT tweak: used to avoid Loc.GetString every frame
 
+    public string? CurrentAlertLevel; // Ganimed edit
+
     public LatheMenu()
     {
         RobustXamlLoader.Load(this);
@@ -188,6 +190,42 @@ public sealed partial class LatheMenu : DefaultWindow
     {
         StringBuilder sb = new();
         var multiplier = _entityManager.GetComponent<LatheComponent>(Entity).MaterialUseMultiplier;
+
+        // Ganimed edit start: Show current and required alert level
+        if (!string.IsNullOrEmpty(prototype.RequiredAlertLevel))
+        {
+            // Get required level name
+            var requiredLevelNameKey = $"lathe-menu-alert-level-{prototype.RequiredAlertLevel}";
+            var requiredLevelName = Loc.GetString(requiredLevelNameKey);
+            if (requiredLevelName == requiredLevelNameKey)
+            {
+                var alertLevelKey = $"alert-level-{prototype.RequiredAlertLevel}";
+                requiredLevelName = Loc.GetString(alertLevelKey);
+                if (requiredLevelName == alertLevelKey)
+                    requiredLevelName = prototype.RequiredAlertLevel;
+            }
+
+            // Get current level name
+            var currentLevelName = "???";
+            if (_entityManager.TryGetComponent(Entity, out Content.Shared._Ganimed.Components.LatheAlertLevelRestrictionComponent? restrictionComp)
+                && !string.IsNullOrEmpty(restrictionComp.CurrentAlertLevel))
+            {
+                var currentLevelNameKey = $"lathe-menu-alert-level-{restrictionComp.CurrentAlertLevel}";
+                currentLevelName = Loc.GetString(currentLevelNameKey);
+                if (currentLevelName == currentLevelNameKey)
+                {
+                    var alertLevelKey = $"alert-level-{restrictionComp.CurrentAlertLevel}";
+                    currentLevelName = Loc.GetString(alertLevelKey);
+                    if (currentLevelName == alertLevelKey)
+                        currentLevelName = restrictionComp.CurrentAlertLevel;
+                }
+            }
+
+            sb.AppendLine(Loc.GetString("lathe-menu-alert-level-required", ("level", requiredLevelName)));
+            sb.AppendLine(Loc.GetString("lathe-menu-alert-level-current", ("level", currentLevelName)));
+            sb.AppendLine();
+        }
+        // Ganimed edit end
 
         foreach (var (id, amount) in prototype.Materials)
         {

@@ -34,7 +34,8 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Shared.DocumentPrinter;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Content.Server._Ganimed.Systems; // Ganimed edit
+using Content.Shared._Ganimed.Components; // Ganimed edit
 
 namespace Content.Server.Lathe
 {
@@ -58,6 +59,7 @@ namespace Content.Server.Lathe
         [Dependency] private readonly StackSystem _stack = default!;
         [Dependency] private readonly TransformSystem _transform = default!;
         [Dependency] private readonly RadioSystem _radio = default!;
+        [Dependency] private readonly LatheAlertLevelRestrictionSystem _alertLevelRestriction = default!; // Ganimed edit
 
         /// <summary>
         /// Per-tick cache
@@ -174,6 +176,11 @@ namespace Content.Server.Lathe
             if (!Resolve(uid, ref component))
                 return false;
 
+            // Ganimed edit start: Check alert level restriction
+            if (!_alertLevelRestriction.IsRecipeAvailable(uid, recipe))
+                return false;
+            // Ganimed edit end
+
             if (!CanProduce(uid, recipe, 1, component))
                 return false;
 
@@ -198,7 +205,8 @@ namespace Content.Server.Lathe
                 return false;
 
             var recipeProto = component.Queue.Dequeue();
-            var recipe = _proto.Index(recipeProto);
+            if (!_proto.TryIndex(recipeProto, out var recipe))
+                return false; // Recipe prototype not found, skip it
 
             var time = _reagentSpeed.ApplySpeed(uid, recipe.CompleteTime) * component.TimeMultiplier;
 
@@ -288,7 +296,15 @@ namespace Content.Server.Lathe
             if (producing == null && component.Queue.TryPeek(out var next))
                 producing = next;
 
-            var state = new LatheUpdateState(GetAvailableRecipes(uid, component), component.Queue.ToArray(), producing);
+            // Ganimed edit start
+            string? currentAlertLevel = null;
+            if (TryComp<LatheAlertLevelRestrictionComponent>(uid, out var restrictionComp))
+            {
+                currentAlertLevel = restrictionComp.CurrentAlertLevel;
+            }
+            // Ganimed edit end
+
+            var state = new LatheUpdateState(GetAvailableRecipes(uid, component), component.Queue.ToArray(), producing, currentAlertLevel); // Ganimed edit
             _uiSys.SetUiState(uid, LatheUiKey.Key, state);
         }
 

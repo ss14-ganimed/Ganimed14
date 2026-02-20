@@ -6,6 +6,7 @@ using Content.Shared.Lathe.Prototypes;
 using Content.Shared.Localizations;
 using Content.Shared.Materials;
 using Content.Shared.Research.Prototypes;
+using Content.Shared._Ganimed.Components; // Ganimed edit
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -80,7 +81,7 @@ public abstract class SharedLatheSystem : EntitySystem
         return _proto.TryIndex<LatheRecipePrototype>(recipe, out var proto) && CanProduce(uid, proto, amount, component);
     }
 
-    public bool CanProduce(EntityUid uid, LatheRecipePrototype recipe, int amount = 1, LatheComponent? component = null)
+    public virtual bool CanProduce(EntityUid uid, LatheRecipePrototype recipe, int amount = 1, LatheComponent? component = null) // Ganimed edit
     {
         if (!Resolve(uid, ref component))
             return false;
@@ -106,6 +107,11 @@ public abstract class SharedLatheSystem : EntitySystem
             return;
 
         args.Handled = true;
+        
+        // Ganimed edit start: Enable alert level restriction override after emagging
+        component.IgnoreAlertLevelRestrictions = true;
+        Dirty(uid, component); // Mark component as dirty for network replication
+        // Ganimed edit end
     }
 
     public static int AdjustMaterial(int original, bool reduce, float multiplier)

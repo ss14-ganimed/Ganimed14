@@ -76,5 +76,14 @@ namespace Content.Shared.Research.Prototypes
         /// </summary>
         [DataField]
         public uint MiningPoints;
+
+        // Ganimed edit start: Alert level requirement for recipes
+        /// <summary>
+        /// Required alert level to craft this recipe.
+        /// Hierarchy: green < blue < violet < yellow < red < gamma < delta < epsilon < amber
+        /// </summary>
+        [DataField("requiredAlertLevel")]
+        public string? RequiredAlertLevel;
+        // Ganimed edit end
     }
 }
