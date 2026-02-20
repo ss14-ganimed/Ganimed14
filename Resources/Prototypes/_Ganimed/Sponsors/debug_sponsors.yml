@@ -1,0 +1,27 @@
+# Debug спонсоры для локальной разработки
+# Добавьте эти прототипы в свой локальный файл для тестирования спонсорства по ckey
+# Важно: ckey должен быть в нижнем регистре!
+
+- type: debugSponsor
+  id: DebugSponsorSchrodinger71
+  ckey: schrodinger71
+  tier: 3
+  oocColor: "#FF6B6B"
+  priorityJoin: true
+  extraSlots: 2
+  allowedMarkings:
+    - MarkingExample1
+    - MarkingExample2
+  expireDate: 2026-12-31T23:59:59Z
+  allowJob: true
+
+- type: debugSponsor
+  id: DebugSponsorJoeGenero
+  ckey: localhost@joegenero
+  tier: 3
+  oocColor: "#FFD700"
+  priorityJoin: true
+  extraSlots: 5
+  allowedMarkings: []
+  expireDate: 2027-12-31T23:59:59Z
+  allowJob: true
