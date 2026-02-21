@@ -9,7 +9,7 @@ public static class SkinColor
     public const float MaxTintedHuesSaturation = 0.1f;
     public const float MinTintedHuesLightness = 0.85f;
 
-    public const float MinHuesLightness = 0.175f;
+    public const float MinHuesLightness = 0.125f; // Ganimed-Tweak: 0.175 -> 0.125
 
     public const float MinFeathersHue = 29f / 360;
     public const float MaxFeathersHue = 174f / 360;

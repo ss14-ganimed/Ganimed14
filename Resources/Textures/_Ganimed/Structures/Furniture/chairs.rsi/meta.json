@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "bar-high and passenger taken from CEV-Eris at https://github.com/discordia-space/CEV-Eris/blob/master/icons/obj/furniture.dmi, dark comfy by EDMI",
+  "copyright": "bar-high and passenger taken from CEV-Eris at https://github.com/discordia-space/CEV-Eris/blob/master/icons/obj/furniture.dmi; comfy-greyscale derived from tgstation at commit https://github.com/tgstation/tgstation/blob/HEAD/icons/obj/chairs.dmi and recolored by Conflee; sleek-office-chair taken from Goon at commit https://github.com/goonstation/goonstation/blob/HEAD/icons/obj/furniture/chairs.dmi and edited by Conflee",
   "size": {
     "x": 32,
     "y": 32
@@ -15,11 +15,23 @@
       "directions": 4
     },
     {
-      "name": "dark-comfy",
+      "name": "comfy-greyscale",
       "directions": 4
     },
     {
-      "name": "dark-comfy-overlay",
+      "name": "comfy-greyscale-overlay",
+      "directions": 4
+    },
+    {
+      "name": "comfy-greyscale-stripe",
+      "directions": 4
+    },
+    {
+      "name": "sleek-office-chair",
+      "directions": 4
+    },
+    {
+      "name": "sleek-office-chair-overlay",
       "directions": 4
     }
   ]

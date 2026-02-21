@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at https://github.com/tgstation/tgstation/commit/59f2a4e10e5ba36033c9734ddebfbbdc6157472d, nukefestive by Alekshhh (Github), nuclearbomb_gay by PJB3005",
+  "copyright": "Taken from ParadiseSS13 at https://github.com/ParadiseSS13/Paradise/commit/282f1cb62ce8c2bc7586d4bbd4bf7c8a6a3e75e5, nukefestive by Alekshhh (Github), nuclearbomb_gay by PJB3005",
   "size": {
     "x": 32,
     "y": 32
@@ -20,8 +20,8 @@
       "name": "nukefestive",
       "delays": [
         [
-          0.25,
-          0.25
+          0.5,
+          0.5
         ]
       ]
     },
@@ -29,6 +29,8 @@
       "name": "nuclearbomb_timing",
       "delays": [
         [
+          0.5,
+          0.5,
           0.5,
           0.5
         ]
@@ -50,9 +52,10 @@
       "name": "nuclearbombc",
       "delays": [
         [
-          1,
-          0.3,
-          0.3
+          0.25,
+          0.25,
+          0.25,
+          0.25
         ]
       ]
     }

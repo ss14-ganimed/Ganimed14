@@ -664,18 +664,18 @@
       tags:
       - Pill
   - type: Dumpable
-  - type: RandomSprite # Ganimed-Resprite
-    available:
-      - 0:
-          pill_canister: ""
-          pill_black: ""
-          pill_blue: ""
-          pill_dred: ""
-          pill_green: ""
-          pill_lred: ""
-          pill_orange: ""
-          pill_pink: ""
-          pill_rainbow: ""
-          pill_red: ""
-          pill_white: ""
-          pill_yellow: ""
+  # - type: RandomSprite # Ganimed-Resprite (temporarily commented out because it breaks entities with this parent)
+    # available:
+    # - 0:
+      # pill_canister: ""
+      # pill_black: ""
+      # pill_blue: ""
+      # pill_dred: ""
+      # pill_green: ""
+      # pill_lred: ""
+      # pill_orange: ""
+      # pill_pink: ""
+      # pill_rainbow: ""
+      # pill_red: ""
+      # pill_white: ""
+      # pill_yellow: ""

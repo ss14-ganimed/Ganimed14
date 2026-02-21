@@ -1,7 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/9c7d509354ee030300f63c701da63c17928c3b3b and modified by Swept, advanced-smes, advanced-smes-static, advanced-smes-open modified from smes, smes-open, and static by august-sun (GitHub)",
+  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/9c7d509354ee030300f63c701da63c17928c3b3b and modified by Swept, advanced-smes, advanced-smes-static, advanced-smes-open modified from smes, smes-open, and static by august-sun (GitHub). Resprited by TheGypsyBaron https://github.com/SemkaGamez, edited by HyperB1 (GitHub)",
   "size": {
     "x": 32,
     "y": 32
@@ -26,14 +26,25 @@
       "name": "smes-open"
     },
     {
-      "name": "smes-oc0"
+      "name": "smes-oc0",
+      "delays": [
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ]
+      ]
     },
     {
       "name": "smes-oc1",
       "delays": [
         [
-          0.5,
-          0.5
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
         ]
       ]
     },
@@ -41,8 +52,10 @@
       "name": "smes-oc2",
       "delays": [
         [
-          0.5,
-          0.5
+          0.7,
+          0.7,
+          0.7,
+          0.7
         ]
       ]
     },
@@ -56,16 +69,40 @@
       ]
     },
     {
-      "name": "smes-og2"
+      "name": "smes-og2",
+      "delays": [
+        [
+          1,
+          1
+        ]
+      ]
     },
     {
-      "name": "smes-og3"
+      "name": "smes-og3",
+      "delays": [
+        [
+          1,
+          1
+        ]
+      ]
     },
     {
-      "name": "smes-og4"
+      "name": "smes-og4",
+      "delays": [
+        [
+          1,
+          1
+        ]
+      ]
     },
     {
-      "name": "smes-og5"
+      "name": "smes-og5",
+      "delays": [
+        [
+          1,
+          1
+        ]
+      ]
     },
     {
       "name": "smes-op0"

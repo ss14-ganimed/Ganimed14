@@ -8,25 +8,22 @@
   },
   "states": [
     {
-      "name": "hardmaint"
+      "name": "hard_steel"
     },
     {
-      "name": "hardsmoothiron"
+      "name": "hard_white_steel"
     },
     {
-      "name": "hardtitanium"
+      "name": "hard_dark_steel"
     },
     {
-      "name": "hardwhiteiron"
+      "name": "hard_smooth_steel"
     },
     {
-      "name": "harddarkiron"
+      "name": "hard_titanium"
     },
     {
-      "name": "hardflatwhite"
-    },
-    {
-      "name": "hardiron"
+      "name": "hard_maint"
     }
   ]
 }

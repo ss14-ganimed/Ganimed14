@@ -1,25 +1,55 @@
 - type: entity
-  name: passenger seat
+  parent: ChairPilotSeat
   id: ChairPassengerSeat
-  parent: ChairBase
+  name: passenger seat
   description: The passenger seat of a prestigious ship.
   components:
   - type: Sprite
     sprite: _Ganimed/Structures/Furniture/chairs.rsi
     state: passenger
-  - type: Construction
-    graph: Seat
-    node: chairPilotSeat
 
-- type: entity
-  name: comfy chair
-  id: ChairComfyDark
-  parent: ChairBase
-  description: It looks comfy.
+- type: entity # ss14Starlight
+  name: sleek office chair
+  id: ChairOfficeSleek
+  parent: StoolBase
   components:
   - type: Sprite
     sprite: _Ganimed/Structures/Furniture/chairs.rsi
-    state: dark-comfy
+    state: sleek-office-chair
   - type: Construction
     graph: Seat
-    node: chairComfy
+    node: stoolBar
+
+# Colored comfy chairs
+- type: entity
+  parent: ComfyChair
+  id: ChairComfyWhite
+  suffix: White
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+
+- type: entity
+  parent: ChairComfyWhite
+  id: ChairComfyDark
+  suffix: Dark grey
+  components:
+  - type: Sprite
+    color: "#5a5f64"
+
+- type: entity
+  parent: ChairComfyWhite
+  id: ChairComfyRed
+  suffix: Red
+  components:
+  - type: Sprite
+    color: "#8c4141"
+
+- type: entity
+  parent: ChairComfyWhite
+  id: ChairComfyBlue
+  suffix: Blue
+  components:
+  - type: Sprite
+    color: "#334e6d"

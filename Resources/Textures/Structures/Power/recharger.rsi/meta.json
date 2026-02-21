@@ -5,30 +5,23 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "https://github.com/discordia-space/CEV-Eris/raw/9ea3eccbe22e18d24653949067f3d7dd12194ea9/icons/obj/stationobjs.dmi",
+    "copyright": "Derived from Artea-Station at commit https://github.com/Artea-Station/Artea-Station-Server/commit/44e1572df09b1fc6c30afe5316b8a3a757d30b53 and modified",
     "states": [
         {
             "name": "empty"
-
         },
         {
             "name": "full"
-
         },
         {
-            "name": "light-off",
-            "delays": [
-                [
-                    1
-                ]
-            ]
+            "name": "light-off"
         },
         {
             "name": "light-empty",
             "delays": [
                 [
-                    1,
-                    0.2
+                    0.8,
+                    0.8
                 ]
             ]
         },
@@ -36,14 +29,10 @@
             "name": "light-charging",
             "delays": [
                 [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
                 ]
             ]
         },
@@ -51,8 +40,8 @@
             "name": "light-charged",
             "delays": [
                 [
-                    0.2,
-                    0.1
+                    0.6,
+                    0.6
                 ]
             ]
         }
