@@ -211,7 +211,7 @@
   loadouts:
   - CaptainCloak
   - CaptainCloakOriginal # Ganimed-Loadouts-Add
-  - CaptainCloakAlt # Ganimed-Loadouts-Add
+  # - CaptainCloakAlt # Ganimed-Loadouts-Add
   - CaptainCloakFormal
   - CaptainCloakFormalAlt # Ganimed-Loadouts-Add
   - ADTClothingCaptainShoulderNeck # ADT Loadout
@@ -677,6 +677,7 @@
   - BotanistJumpskirt
   - BotanistOveralls
   - BotanistOverallsOriginal # Ganimed-Loadouts-Add
+  - BotanistDryadCoverings # Ganimed-Loadouts-Add
   # ADT tweak start
   # - ADTClothingUniformJumpsuitTurtleneckGreen # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
   # - ADTClothingUniformJumpskirtTurtleneckGreen # Ganimed-Loadouts-Remove

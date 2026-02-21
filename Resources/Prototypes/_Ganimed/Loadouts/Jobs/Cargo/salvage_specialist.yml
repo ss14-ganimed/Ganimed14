@@ -79,12 +79,12 @@
   equipment:
     ears: ClothingHeadsetMining
   effects:
-  - !type:SponsorLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ShaftMiner
 
 # Belt
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: SalvageWebbing
   equipment:
     belt: ClothingBeltSalvageWebbing

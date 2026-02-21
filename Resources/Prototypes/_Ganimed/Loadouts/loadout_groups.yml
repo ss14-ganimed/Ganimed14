@@ -15,6 +15,7 @@
   - SpareYellowCap
   - SpareGreenCap
   - SpareBlueCap
+  - SpareColorCapVoucher
   - SpareWehcellentCap
   - SpareBlackBandana
   - SpareGreyBandana
@@ -115,6 +116,8 @@
   - SpareTurtleneckSkirtColorMaroon
   - SpareTurtleneckColorPink
   - SpareTurtleneckSkirtColorPink
+  - SpareColorTurtleneckVoucher
+  - SpareColorTurtleneckSkirtVoucher
   - SpareRedCasualJumpsuit
   - SpareRedCasualJumpskirt
   - SpareGreenCasualJumpsuit
@@ -147,6 +150,8 @@
   - SpareBrownBarberSuit
   - SpareBrownBarberSkirtSuit
   - SpareDutchSuit
+  - SpareBlackVictorianSuit
+  - SpareRedVictorianSuit
   - SpareTwoPieceSuit
   - SpareTwoPieceSkirtSuit
   - SpareCuratorSuit
@@ -161,7 +166,6 @@
   - SpareCossackSuit
   - SpareWebJumpsuit
   - SpareWebJumpskirt
-  - SpareDryadCoverings
   - SpareBlackElegantDress
   - SpareRedElegantDress
   - SpareGreenElegantDress
@@ -203,6 +207,7 @@
   - SpareRedTie
   - SpareBlueTie
   - SpareDetTie
+  - SpareColorTieVoucher
   - SpareBowTie
   - SpareBlackScarf
   - SpareBrownScarf
@@ -217,6 +222,7 @@
   - SpareBlueScarf
   - SparePurpleScarf
   - SparePinkScarf
+  - SpareColorScarfVoucher
   - SpareLongBlackScarf
   - SpareLongRedScarf
   - SpareLongOrangeScarf
@@ -225,6 +231,7 @@
   - SpareLongBlueScarf
   - SpareLongPurpleScarf
   - SpareLongPinkScarf
+  - SpareLongColorScarfVoucher
   - SpareFaceScarfBlack
   - SpareFaceScarfGrey
   - SpareFaceScarfWhite
@@ -233,6 +240,7 @@
   - SpareFaceScarfGreen
   - SpareFaceScarfBlue
   - SpareFaceScarfPurple
+  - SpareColorFaceScarfVoucher
   - SpareOldMantle
   - SpareHideMantle
   - SpareHieroglyphicCloak
@@ -269,6 +277,7 @@
   - SpareBlueWintercoat
   - SparePurpleWintercoat
   - SpareWebWintercoat
+  - SpareColorLightWintercoatVoucher
   - SpareRedFlannelJacket
   - SpareGreenFlannelJacket
   - SpareBlueFlannelJacket

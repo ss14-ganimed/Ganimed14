@@ -38,6 +38,18 @@
   equipment:
     jumpsuit: ClothingUniformOverallsOriginal
 
+- type: loadout
+  id: BotanistDryadCoverings
+  equipment:
+    jumpsuit: ADTClothingJumpsuitDryadCoverings
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBotanist
+      time: 54000 # 15 hours
+
 # Belt
 - type: loadout
   id: BotanistBelt

@@ -44,14 +44,14 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtBrigmedicOriginal
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: BlackBrigmedicJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitBrigmedicBlack
   effects:
   - !type:SponsorLoadoutEffect
 
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: BlackBrigmedicJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtBrigmedicBlack

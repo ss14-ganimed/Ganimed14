@@ -33,7 +33,7 @@
   equipment:
     neck: ClothingNeckCloakChaplainBlack
   effects:
-  - !type:SponsorLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Clergy
 
@@ -42,7 +42,7 @@
   equipment:
     neck: ClothingNeckCloakChaplainWhite
   effects:
-  - !type:SponsorLoadoutEffect
+  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: Clergy
 

@@ -132,17 +132,29 @@
   groupBy: "sparehats"
 
 - type: loadout
-  id: SpareWehcellentCap
-  storage:
-    back:
-    - ClothingHeadWehcellentCap
-  groupBy: "sparehats"
-
-- type: loadout
   id: SpareBlueCap
   storage:
     back:
     - ClothingHeadHatBluesoft
+  groupBy: "sparehats"
+
+- type: loadout
+  id: SpareColorCapVoucher
+  storage:
+    back:
+    - ADTClothingVoucherHatsoft
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "sparehats"
+
+- type: loadout
+  id: SpareWehcellentCap
+  storage:
+    back:
+    - ClothingHeadWehcellentCap
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TenOverall
   groupBy: "sparehats"
 
 # Bandanas
@@ -925,6 +937,24 @@
   - !type:SponsorLoadoutEffect
   groupBy: "spareuniform"
 
+- type: loadout
+  id: SpareColorTurtleneckVoucher
+  storage:
+    back:
+    - ADTClothingVoucherJumpsuitTurtleneck
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
+
+- type: loadout
+  id: SpareColorTurtleneckSkirtVoucher
+  storage:
+    back:
+    - ADTClothingVoucherJumpskirtTurtleneck
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
+
 # Casual
 - type: loadout
   id: SpareRedCasualJumpsuit
@@ -1203,6 +1233,24 @@
   groupBy: "spareuniform"
 
 - type: loadout
+  id: SpareBlackVictorianSuit
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitBlackVictorianSuit
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
+
+- type: loadout
+  id: SpareRedVictorianSuit
+  storage:
+    back:
+    - ADTClothingUniformJumpsuitRedVictorianSuit
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
+
+- type: loadout
   id: SpareTwoPieceSuit
   storage:
     back:
@@ -1333,20 +1381,6 @@
   - !type:SpeciesLoadoutEffect
     species:
     - Arachnid
-  groupBy: "spareuniform"
-
-- type: loadout
-  id: SpareDryadCoverings
-  storage:
-    back:
-    - ADTClothingJumpsuitDryadCoverings
-  effects:
-  - !type:SponsorLoadoutEffect
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobBotanist
-      time: 54000 # 15 hours
   groupBy: "spareuniform"
 
 #Dresses, TODO: Whitelist restriction
@@ -1677,6 +1711,15 @@
   groupBy: "spareneckwear"
 
 - type: loadout
+  id: SpareColorTieVoucher
+  storage:
+    back:
+    - ADTClothingVoucherTie
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
+
+- type: loadout
   id: SpareBowTie
   storage:
     back:
@@ -1813,6 +1856,16 @@
   groupBy: "spareneckwear"
 
 - type: loadout
+  id: SpareColorScarfVoucher
+  storage:
+    back:
+    - ADTClothingVoucherScarfStriped
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
+
+# Long scarves
+- type: loadout
   id: SpareLongBlackScarf
   storage:
     back:
@@ -1884,6 +1937,16 @@
   - !type:SponsorLoadoutEffect
   groupBy: "spareneckwear"
 
+- type: loadout
+  id: SpareLongColorScarfVoucher
+  storage:
+    back:
+    - ADTClothingVoucherScarfLong
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareneckwear"
+
+# Face scarves
 - type: loadout # TODO: Whitelist restriction
   id: SpareFaceScarfBlack
   storage:
@@ -1960,6 +2023,17 @@
     back:
     - ADTClothingNeckFacescarfPurple
   effects:
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+  groupBy: "spareneckwear"
+
+- type: loadout # TODO: Whitelist restriction
+  id: SpareColorFaceScarfVoucher
+  storage:
+    back:
+    - ADTClothingVoucherFacescarf
+  effects:
+  - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: FiftyOverall
   groupBy: "spareneckwear"
@@ -2244,6 +2318,15 @@
   - !type:SpeciesLoadoutEffect
     species:
     - Arachnid
+  groupBy: "spareouterclothing"
+
+- type: loadout
+  id: SpareColorLightWintercoatVoucher
+  storage:
+    back:
+    - ADTClothingVoucherWinterCoatLight
+  effects:
+  - !type:SponsorLoadoutEffect
   groupBy: "spareouterclothing"
 
 # Jackets and coats
