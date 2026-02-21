@@ -3,8 +3,8 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._Ganimed.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class LatheAlertLevelRestrictionComponent : Component
+public sealed partial class ProtolatheEmagComponent : Component
 {
     [ViewVariables, AutoNetworkedField]
-    public string? CurrentAlertLevel;
+    public bool IsEmagged;
 }

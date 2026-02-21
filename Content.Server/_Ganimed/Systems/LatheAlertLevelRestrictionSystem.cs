@@ -1,14 +1,11 @@
 using Content.Server.AlertLevel;
 using Content.Server.Lathe;
 using Content.Server.Station.Systems;
-using Content.Shared.Emag.Components;
-using Content.Shared.Emag.Systems;
 using Content.Shared.Lathe;
 using Content.Shared.Lathe.Prototypes;
 using Content.Shared.Research.Prototypes;
 using Content.Shared._Ganimed.Components;
 using Robust.Server.GameObjects;
-using Robust.Shared.Log;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Ganimed.Systems;
@@ -17,7 +14,6 @@ public sealed class LatheAlertLevelRestrictionSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly AlertLevelSystem _alertLevelSystem = default!;
     [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly EmagSystem _emag = default!;
 
     public override void Initialize()
     {
@@ -68,7 +64,7 @@ public sealed class LatheAlertLevelRestrictionSystem : EntitySystem
         if (string.IsNullOrEmpty(recipe.RequiredAlertLevel))
             return true;
 
-        if (TryComp<EmagLatheRecipesComponent>(uid, out var emagComp) && emagComp.IgnoreAlertLevelRestrictions)
+        if (TryComp<ProtolatheEmagComponent>(uid, out var emagComp) && emagComp.IsEmagged)
             return true;
 
         if (string.IsNullOrEmpty(restrictionComp.CurrentAlertLevel))

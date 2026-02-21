@@ -49,6 +49,7 @@
     price: 800
   - type: ResearchClient
   - type: TechnologyDatabase
+  - type: ProtolatheEmag # Ganimed edit
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity
@@ -503,7 +504,6 @@
   - type: LatheAnnouncing
     channels: [Security]
   - type: LatheAlertLevelRestriction # Ganimed edit
-  - type: EmagLatheRecipes # Ganimed edit
 
 - type: entity
   id: AmmoTechFab

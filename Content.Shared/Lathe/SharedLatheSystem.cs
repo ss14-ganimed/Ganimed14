@@ -107,11 +107,6 @@ public abstract class SharedLatheSystem : EntitySystem
             return;
 
         args.Handled = true;
-        
-        // Ganimed edit start: Enable alert level restriction override after emagging
-        component.IgnoreAlertLevelRestrictions = true;
-        Dirty(uid, component); // Mark component as dirty for network replication
-        // Ganimed edit end
     }
 
     public static int AdjustMaterial(int original, bool reduce, float multiplier)

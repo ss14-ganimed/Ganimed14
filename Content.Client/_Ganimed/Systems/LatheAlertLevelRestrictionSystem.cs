@@ -1,4 +1,3 @@
-using Content.Shared.Emag.Components;
 using Content.Shared.Lathe;
 using Content.Shared.Lathe.Prototypes;
 using Content.Shared.Research.Prototypes;
@@ -24,7 +23,7 @@ public sealed class LatheAlertLevelRestrictionSystem : EntitySystem
         if (string.IsNullOrEmpty(recipe.RequiredAlertLevel))
             return true;
 
-        if (TryComp<EmagLatheRecipesComponent>(uid, out var emagComp) && emagComp.IgnoreAlertLevelRestrictions)
+        if (TryComp<ProtolatheEmagComponent>(uid, out var emagComp) && emagComp.IsEmagged)
             return true;
 
         if (string.IsNullOrEmpty(restrictionComp.CurrentAlertLevel))
