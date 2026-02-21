@@ -53,9 +53,7 @@ namespace Content.Client.Lathe.UI
                     {
                         _menu.Recipes = msg.Recipes;
                         // Ganimed edit start
-                        _menu.CurrentAlertLevel = msg.CurrentAlertLevel;
 
-                        // Обновляем компонент ограничения по уровню угрозы
                         if (_entityManager.TryGetComponent<LatheAlertLevelRestrictionComponent>(Owner, out var restrictionComp))
                         {
                             restrictionComp.CurrentAlertLevel = msg.CurrentAlertLevel;

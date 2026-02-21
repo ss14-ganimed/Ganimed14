@@ -18,6 +18,9 @@ public sealed class LatheAlertLevelRestrictionSystem : EntitySystem
         if (!Resolve(uid, ref restrictionComp))
             return true;
 
+        if (restrictionComp == null)
+            return true;
+
         if (string.IsNullOrEmpty(recipe.RequiredAlertLevel))
             return true;
 

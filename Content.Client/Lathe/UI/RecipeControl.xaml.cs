@@ -23,14 +23,7 @@ public sealed partial class RecipeControl : Control
         Button.TooltipSupplier = SupplyTooltip;
 
         // Ganimed edit start
-        if (recipe.RequiredAlertLevel != null && !canProduce)
-        {
-            AlertLevelLockIcon.Visible = true;
-        }
-        else
-        {
-            AlertLevelLockIcon.Visible = false;
-        }
+        AlertLevelLockIcon.Visible = recipe.RequiredAlertLevel != null && !canProduce;
         // Ganimed edit end
 
         Button.OnPressed += (_) =>

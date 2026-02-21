@@ -246,7 +246,6 @@
     - SecurityEquipment
     - SecurityWeapons
   - type: LatheAlertLevelRestriction # Ganimed edit
-  - type: EmagLatheRecipes # Ganimed edit
 
 - type: entity
   id: ProtolatheHyperConvection

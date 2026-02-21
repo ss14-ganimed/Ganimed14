@@ -44,8 +44,6 @@ public sealed partial class LatheMenu : DefaultWindow
 
     private uint? _lastMiningPoints; // ADT tweak: used to avoid Loc.GetString every frame
 
-    public string? CurrentAlertLevel; // Ganimed edit
-
     public LatheMenu()
     {
         RobustXamlLoader.Load(this);
@@ -275,7 +273,8 @@ public sealed partial class LatheMenu : DefaultWindow
         var currentCategories = new List<ProtoId<LatheCategoryPrototype>>();
         foreach (var recipeId in Recipes)
         {
-            var recipe = _prototypeManager.Index(recipeId);
+            if (!_prototypeManager.TryIndex(recipeId, out var recipe))
+                continue;
 
             if (recipe.Categories.Count <= 0)
                 continue;
@@ -319,7 +318,9 @@ public sealed partial class LatheMenu : DefaultWindow
         var idx = 1;
         foreach (var recipeProto in queue)
         {
-            var recipe = _prototypeManager.Index(recipeProto);
+            if (!_prototypeManager.TryIndex(recipeProto, out var recipe))
+                continue;
+
             var queuedRecipeBox = new BoxContainer();
             queuedRecipeBox.Orientation = BoxContainer.LayoutOrientation.Horizontal;
 
@@ -339,7 +340,8 @@ public sealed partial class LatheMenu : DefaultWindow
         if (recipeProto == null)
             return;
 
-        var recipe = _prototypeManager.Index(recipeProto.Value);
+        if (!_prototypeManager.TryIndex(recipeProto.Value, out var recipe))
+            return;
 
         FabricatingDisplayContainer.Children.Clear();
         FabricatingDisplayContainer.AddChild(GetRecipeDisplayControl(recipe));

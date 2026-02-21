@@ -67,11 +67,8 @@ public sealed class LatheSystem : SharedLatheSystem
         if (!base.CanProduce(uid, recipe, amount, component))
             return false;
 
-        if (HasComp<LatheAlertLevelRestrictionComponent>(uid))
-        {
-            if (!_alertLevelRestriction.IsRecipeAvailable(uid, recipe))
-                return false;
-        }
+        if (HasComp<LatheAlertLevelRestrictionComponent>(uid) && !_alertLevelRestriction.IsRecipeAvailable(uid, recipe))
+            return false;
 
         return true;
     }

@@ -53,19 +53,16 @@ public sealed class LatheAlertLevelRestrictionSystem : EntitySystem
     private void UpdateAlertLevel(EntityUid uid, LatheAlertLevelRestrictionComponent component)
     {
         var station = _stationSystem.GetOwningStation(uid);
-
-        if (station != null && TryComp<AlertLevelComponent>(station.Value, out var alertLevel))
-        {
-            component.CurrentAlertLevel = alertLevel.CurrentLevel;
-        }
-        else
-        {
-            component.CurrentAlertLevel = null;
-        }
+        component.CurrentAlertLevel = station != null && TryComp<AlertLevelComponent>(station.Value, out var alertLevel)
+            ? alertLevel.CurrentLevel
+            : null;
     }
     public bool IsRecipeAvailable(EntityUid uid, LatheRecipePrototype recipe, LatheAlertLevelRestrictionComponent? restrictionComp = null)
     {
         if (!Resolve(uid, ref restrictionComp))
+            return true;
+
+        if (restrictionComp == null)
             return true;
 
         if (string.IsNullOrEmpty(recipe.RequiredAlertLevel))
@@ -73,7 +70,6 @@ public sealed class LatheAlertLevelRestrictionSystem : EntitySystem
 
         if (TryComp<EmagLatheRecipesComponent>(uid, out var emagComp) && emagComp.IgnoreAlertLevelRestrictions)
             return true;
-
 
         if (string.IsNullOrEmpty(restrictionComp.CurrentAlertLevel))
             return false;
