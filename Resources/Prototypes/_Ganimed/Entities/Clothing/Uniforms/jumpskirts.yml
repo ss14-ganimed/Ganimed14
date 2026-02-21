@@ -55,6 +55,17 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtCentcomOfficialRegular
+  name: dark-green Centcom suit
+  description: Regular dark-mint uniform, worn by mid-ranking Central Command officials. Respectable, but not at all glamorous.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/centcom_uni.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/centcom_uni.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtBrigmedicBlack
   name: black brigmedic jumpskirt
   description: Total overhaul vastly different from the usual brigmedic uniform. It is generally a bad idea to be bright if you are on a battlefield.
@@ -116,6 +127,30 @@
     sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/alt_psychologist.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/alt_psychologist.rsi
+
+- type: entity
+  parent: [ClothingUniformSkirtBase, BaseFoldable]
+  id: ClothingUniformJumpskirtTwoPieceSuit
+  name: two-piece suitskirt
+  description: A black suit with a charcoal skirt and a red tie. Very formal.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/two-piece-suit.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: open-icon
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/two-piece-suit.rsi
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: fold-zip-verb
+    foldVerbText: fold-unzip-verb
+  - type: FoldableClothing
+    foldedEquippedPrefix: open
 
 # Old/Original
 - type: entity

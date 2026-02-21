@@ -21,7 +21,7 @@
     head: ClothingHeadBandSkull
 
 - type: loadout
-  id: HonoredScientistBeret
+  id: ScientificBeret
   equipment:
     head: ClothingHeadHatBeretRND
   effects:

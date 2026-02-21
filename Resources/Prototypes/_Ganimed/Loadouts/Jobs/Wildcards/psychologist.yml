@@ -1,0 +1,33 @@
+# Jumpsuit
+- type: loadout
+  id: PsychologistShortsleeveJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitShortsleeveSuit
+
+- type: loadout
+  id: PsychologistShortsleeveJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtShortsleeveSuit
+
+- type: loadout
+  id: PsychologistOriginalJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPsychologistOriginal
+
+- type: loadout
+  id: PsychologistOriginalJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPsychologistOriginal
+
+# Shoes
+- type: loadout
+  id: LeatherShoes
+  equipment:
+    shoes: ClothingShoesLeather
+
+- type: loadout
+  id: LeatherShoesWhitelisted
+  equipment:
+    shoes: ClothingShoesLeather
+  effects:
+  - !type:SponsorLoadoutEffect

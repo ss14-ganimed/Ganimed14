@@ -50,12 +50,12 @@
   equipment:
     # id: QuartermasterPDA # ADT: different PDAs in loadouts
     # ears: ClothingHeadsetQM # ADT tweak
-    belt: BoxFolderClipboard
+    # belt: BoxFolderClipboard # Ganimed-Loadouts-Remove (Loadout choice)
     pocket1: AppraisalTool
-  storage:
-    back:
-    - Flash
-    - ADTtelescopicBaton #ADT-CustomADTLoadout
+#  storage: # Ganimed-Loadouts-Remove (Loadout choice)
+#    back:
+#    - Flash
+#    - ADTtelescopicBaton #ADT-CustomADTLoadout
 
 - type: chameleonOutfit
   id: QuartermasterChameleonOutfit

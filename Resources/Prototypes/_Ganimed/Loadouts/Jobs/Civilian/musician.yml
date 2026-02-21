@@ -1,0 +1,15 @@
+# Jumpsuit
+- type: loadout
+  id: PerformerJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPerformer
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Shoes
+- type: loadout
+  id: PerformerBoots
+  equipment:
+    shoes: ClothingShoesBootsPerformer
+  effects:
+  - !type:SponsorLoadoutEffect

@@ -62,6 +62,9 @@
   id: ADTClothingHeadsetAltBlueshield
   equipment:
     ears: ADTClothingHeadsetAltBlueshield
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: Commander
 
 # OuterClothing
 - type: loadout

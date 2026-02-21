@@ -1,3 +1,6 @@
+ent-ClothingEyesGlassesSunglassesAviator = очки-авиаторы
+    .desc = Пара дизайнерских солнцезащитных очков.
+
 ent-ClothingEyesGlassesHudSunglassesScience = солнцезащитные научные очки
     .desc = Модные очки для модного учёного.
 
@@ -15,3 +18,6 @@ ent-ClothingEyesGlassesBrigmedic = медико-охранные очки
 
 ent-ClothingEyesHudSecEng = охранные очки полевого инженера
     .desc = Модель защитных очков представляет собой комбинацию оптического мезонного сканера с датчиком безопасности.
+
+ent-ClothingEyesGlassesSafety = защитные очки
+    .desc = Плотно прилегающие защитные очки для тех, кто работает с опасными реагентами или в опасных условиях.

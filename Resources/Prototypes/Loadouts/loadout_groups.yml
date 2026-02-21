@@ -12,6 +12,19 @@
   - Headphones
   - PlushieLizard
   - PlushieSpaceLizard
+  # Ganimed-Loadouts-Add-Start
+  - PlushieMoth
+  - PlushieDiona
+  - PlushieArachind
+  - PlushieVox
+  - PlushieSlime
+  - PlushieBee
+  - PlushieCarp
+  - AmongPequeno
+  - RubberDuck
+  - XmasCrown
+  - WarningCone
+  # Ganimed-Loadouts-Add-End
   - ThreeCandles
   - Lighter
   - CigPackGreen
@@ -20,6 +33,13 @@
   - CigPackBlack
   - CigarCase
   - CigarGold
+  # Ganimed-Loadouts-Add-Start
+  - SmokingPipe
+  - VacuumFlask
+  - ShinyFlask
+  - BarberScissors
+  - PersonalAI
+  # Ganimed-Loadouts-Add-End
   - OffsetCane
   - OffsetCaneWood
   - OffsetCaneClown
@@ -48,19 +68,14 @@
   # - ClothingNeckSolarisPin
   # - ClothingNeckWhiteListPin
   # # Corvax-Loadouts-End
-  - AcousticGuitarInstrument
-  - RockGuitarInstrument #ADT-tweak
-  - HarmonicaInstrument #ADT-tweak
-  - ADTModStorageVoucher
-  - ADTClothingGeorgeRibbonPin
-  - ADTClothingMaskPaperBlank
-  #ADT-tweak-end
-  - AcousticGuitarInstrument
-  - RockGuitar
-  - HarmonicaInstrument
-  - ADTModStorageVoucher
-  - ADTClothingGeorgeRibbonPin
-  - ADTClothingMaskPaperBlank
+  #ADT end
+  # Ganimed-Loadouts-Add-Start
+  - GlowstickGreen
+  - GlowstickYellow
+  - GlowstickRed
+  - GlowstickPurple
+  - GlowstickBlue
+  # Ganimed-Loadouts-Add-End
   #ADT-tweak-end
   - TowelColorBlack
   - TowelColorDarkBlue
@@ -79,6 +94,9 @@
   - TowelColorWhite
   - TowelColorYellow
   # ADT-Tweak-Start
+  - AcousticGuitarInstrument
+  - RockGuitarInstrument
+  - HarmonicaInstrument
   - ADTClothingHandsRingEmerald
   - ADTClothingHandsRingBlood
   - ADTClothingHandsRingPlazma
@@ -86,6 +104,7 @@
   - ADTHandheldStationMapUnpowered
   - ADTModStorageVoucher
   - ADTClothingGeorgeRibbonPin
+  - ADTClothingMaskPaperBlank
   # ADT-Tweak-End
 
 - type: loadoutGroup
@@ -94,8 +113,16 @@
   minLimit: 0
   loadouts:
   - Glasses
+  # Ganimed-Loadouts-Add-Start
+  - CheapSunglasses
+  - SunglassesAviator
+  - Eyepatch
+  # Ganimed-Loadouts-Add-End
   - GlassesJamjar
+  - GlassesBinoclard # Ganimed-Loadouts-Add
   - GlassesJensen
+  - GlassesSalesman # Ganimed-Loadouts-Add
+  - GlassesGar # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -153,7 +180,10 @@
   loadouts:
   - CaptainHead
   - CaptainCap
+  - CaptainHat # Ganimed-Loadouts-Add
   - ADTClothingAdmiralHat # ADT Loadout
+  - CaptainCapWhite # Ganimed-Loadouts-Add
+  - CaptainBeretWhite # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -167,6 +197,12 @@
   - CaptainJumpsuitTurtleneck
   - CaptainJumpskirtTurtleneck
   # Corvax-Loadouts-End
+  # Ganimed-Loadouts-Add-Start
+  - CaptainMaleParadeUniform
+  - CaptainWhiteJumpsuit
+  - CaptainWhiteJumpskirt
+  # - CaptainCommandSuit
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: CaptainNeck
@@ -174,10 +210,20 @@
   minLimit: 0
   loadouts:
   - CaptainCloak
+  - CaptainCloakOriginal # Ganimed-Loadouts-Add
+  # - CaptainCloakAlt # Ganimed-Loadouts-Add
   - CaptainCloakFormal
+  - CaptainCloakFormalAlt # Ganimed-Loadouts-Add
   - ADTClothingCaptainShoulderNeck # ADT Loadout
   - CaptainMantle
   - ADTClothingAdmiralShoulder # ADT Loadout
+  # Ganimed-Loadouts-Add-Start
+  - CaptainMantleAlt
+  - CaptainCloakLong
+  - CaptainGreatcoatOversize
+  - CaptainMantleWhite
+  - CaptainBedsheet
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -186,6 +232,7 @@
   - CaptainBackpack
   - CaptainSatchel
   - CaptainDuffel
+  - CaptainWhiteSatchel # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: CaptainOuterClothing
@@ -193,6 +240,11 @@
   loadouts:
   - CaptainOuterClothing
   - CaptainWintercoat
+  # Ganimed-Loadouts-Add-Start
+  - CaptainFormalJacket
+  - CaptainWhiteFormalJacket
+  - CaptainWhiteCarapace
+  # Ganimed-Loadouts-Add-End
   - ADTArmorVestHidden # ADT Loadout
 
 - type: loadoutGroup
@@ -216,11 +268,16 @@
   - HoPJumpskirtTurtleneck
   # Corvax-Loadouts-End
   # ADT-Loadouts-Start
-  - ADTJumpsuitHopWarm
-  - ADTJumpskirtHopWarm
+  # - ADTJumpsuitHopWarm # Ganimed-Loadouts-Remove
+  # - ADTJumpskirtHopWarm # Ganimed-Loadouts-Remove
   - ADTJumpsuitHopAlt
   - ADTJumpskirtHopAlt
   # ADT-Loadouts-End
+  # Ganimed-Loadouts-Add-Start
+  - LawyerJumpsuitBlue
+  - LawyerJumpskirtBlue
+  # - JumpsuitNanotrasen
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: HoPNeck
@@ -228,19 +285,26 @@
   minLimit: 0
   loadouts:
   - HoPCloak
+  - HoPCloakAlt # Ganimed-Loadouts-Add
   - HoPMantle
   # ADT-Loadouts-Start
   - ADTHoPAltCloak
   # ADT-Loadouts-End
+  # Ganimed-Loadouts-Add-Start
+  - HoPCloakLong
+  - HoPBedsheet
+  - IanBedsheet
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: HoPBackpack
   name: loadout-group-hop-backpack
   loadouts:
-  - CommonBackpack
-  - CommonSatchel
-  - CommonDuffel
+  - HoPBackpack # Ganimed-Loadouts-Edit (CommonBackpack)
+  - HoPSatchel # Ganimed-Loadouts-Edit (CommonSatchel)
+  - HoPDuffel # Ganimed-Loadouts-Edit (CommonDuffel)
   - HoPBackpackIan
+  - LeatherSatchel # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: HoPOuterClothing
@@ -263,15 +327,18 @@
   - AncientJumpsuit
   - RainbowJumpsuit
   - RainbowJumpskirt
+  - RecruitJumpsuit # Ganimed-Loadouts-Add
   # ADT tweak start
-  - ADTClothingUniformJumpsuitTurtleneckGrey
-  - ADTClothingUniformJumpskirtTurtleneckGrey
-  - ADTClothingUniformJumpsuitTurtleneckPink
-  - ADTClothingUniformJumpskirtTurtleneckPink
-  - ADTClothingUniformJumpsuitHawaiRed
-  - ADTClothingUniformJumpsuitHawaiBlue
-  - ADTClothingUniformJumpsuitHawaiYellow
-  - ADTClothingUniformJumpsuitHawaiBlack
+  # Ganimed-Loadouts-Remove-Start (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpsuitTurtleneckGrey
+  # - ADTClothingUniformJumpskirtTurtleneckGrey
+  # - ADTClothingUniformJumpsuitTurtleneckPink
+  # - ADTClothingUniformJumpskirtTurtleneckPink
+  # - ADTClothingUniformJumpsuitHawaiRed
+  # - ADTClothingUniformJumpsuitHawaiBlue
+  # - ADTClothingUniformJumpsuitHawaiYellow
+  # - ADTClothingUniformJumpsuitHawaiBlack
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -296,12 +363,7 @@
   - CommonSatchel
   - CommonDuffel
   #ADT-Tweak-Start
-  - ADTClothingBackpackSatchelLeather
-  - ADTClothingBackpackBlackLadySatchel
-  - ADTClothingBackpackLeatherLadySatchel
-  #ADT-Tweak-End
-  #ADT-Tweak-Start
-  - ADTClothingBackpackSatchelLeather
+  - LeatherSatchel # Ganimed-Loadouts-Edit (ADTClothingBackpackSatchelLeather)
   - ADTClothingBackpackBlackLadySatchel
   - ADTClothingBackpackLeatherLadySatchel
   #ADT-Tweak-End
@@ -344,16 +406,7 @@
   loadouts:
   - BartenderJumpsuit
   - BartenderJumpskirt
-    #ADT-tweak-start
-  - ADTClothingUniformJumpsuitBartenderRed
-  - ADTClothingUniformJumpsuitBartenderGreen
-  - ADTClothingUniformJumpskirtBartenderRed
-  - ADTClothingUniformJumpskirtBartenderGreen
-  - ADTClothingUniformJumpsuitBartenderVest
-  - ADTClothingUniformJumpsuitBartenderVestRed
-  - ADTClothingUniformJumpsuitBartenderVestGreen
-  #- BartenderJumpsuitPurple
-    #ADT-tweak-end
+  - BartenderJumpsuitPurple
     #ADT-tweak-start
   - ADTClothingUniformJumpsuitBartenderRed
   - ADTClothingUniformJumpsuitBartenderGreen
@@ -373,7 +426,6 @@
   - BartenderVest
   - BartenderApron
   - ADTClothingOuterApronBarista #ADT-tweak
-  - ADTClothingOuterApronBarista #ADT-tweak
   - BartenderWintercoat
 
 - type: loadoutGroup
@@ -382,11 +434,6 @@
   minLimit: 0
   loadouts:
   - ChefHead
-  # ADT-Tweak-Start
-  - ADTClothingHeadHatChefRed
-  - ADTHatSoftWhite
-  - ADTHatSoftRed
-  # ADT-Tweak-End
   # ADT-Tweak-Start
   - ADTClothingHeadHatChefRed
   - ADTHatSoftWhite
@@ -418,10 +465,6 @@
   - ADTClothingOuterApronButcher
   - ADTClothingOuterJacketChefRed
   # ADT-Tweak-End
-  # ADT-Tweak-Start
-  - ADTClothingOuterApronButcher
-  - ADTClothingOuterJacketChefRed
-  # ADT-Tweak-End
   - ChefWintercoat
 
 - type: loadoutGroup
@@ -433,9 +476,10 @@
   - CuratorJumpsuit
   - CuratorJumpskirt
   # ADT tweak start
-  - ADTClothingUniformJumpsuitTurtleneckRed
-  - ADTClothingUniformJumpskirtTurtleneckRed
+  # - ADTClothingUniformJumpsuitTurtleneckRed # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpskirtTurtleneckRed # Ganimed-Loadouts-Remove
   # ADT tweak end
+
 # ADT-Loadouts-Start
 - type: loadoutGroup
   id: LibrarianBackpack
@@ -446,6 +490,7 @@
   - CommonDuffel
   - ADTLibrarianBWinRAR
 # ADT-Loadouts-End
+
 - type: loadoutGroup
   id: LawyerJumpsuit
   name: loadout-group-lawyer-jumpsuit
@@ -460,7 +505,7 @@
   - LawyerJumpskirtRed
   - LawyerJumpsuitGood
   - LawyerJumpskirtGood
-  - LawyerGreenSuit # ADT-Loadouts
+  # - LawyerGreenSuit # ADT-Loadouts # Ganimed-Loadouts-Remove
 
 - type: loadoutGroup
   id: LawyerNeck
@@ -479,6 +524,7 @@
   - ChaplainPlagueHat
   - ChaplainWitchHat
   - ChaplainWitchHatAlt
+  - ChaplainWitchHunterHat # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ChaplainMask
@@ -505,9 +551,9 @@
   - ChaplainNunRobe
   - ChaplainBlackHoodie
   - ADTClothingOuterHoodieChaplainWhite #ADT-Tweak
-  - ADTClothingOuterHoodieChaplainWhite #ADT-Tweak
   - ChaplainHoodie
   - ADTChaplainReligiousLeaderRobe # ADT Tweak
+  - ChaplainWitchHunterSuit # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ChaplainNeck
@@ -521,6 +567,12 @@
   - ADTChaplainSCross
   - ADTChaplainGCross
   # ADT-Loadouts-End
+  # Ganimed-Loadouts-Add-Start
+  # - HolyMedal
+  - CultBedsheet
+  - ChaplainCloakBlack
+  - ChaplainCloakWhite
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ChaplainBible
@@ -531,7 +583,16 @@
   - BibleDruid
   - BibleNanoTrasen
   - BibleSatanic
-  - BibleTanakh
+  # Ganimed-Loadouts-Add-Start
+  - ADTChaplainQuaran
+  - ADTChaplainTanahk
+  - ADTChaplainTripitaka
+  - ADTChaplainVedas
+  - ADTChaplainTajaran
+  - ADTChaplainUnathi
+  - ADTChaplainMoth
+  - ADTChaplainLeatherCodex
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: JanitorHead
@@ -539,6 +600,8 @@
   minLimit: 0
   loadouts:
   - JanitorHead
+  - HeadBucket # Ganimed-Loadouts-Add
+  - HeadPlunger # Ganimed-Loadouts-Add
   # ADT-tweak-start
   - ADTJanitorHeadbandTacticalMaid
   # ADT-tweak-end
@@ -556,8 +619,8 @@
   - ADTJanitorJumpsuitTacticalMaid
   # ADT-Loadouts-End
   # ADT tweak start
-  - ADTClothingUniformJumpsuitTurtleneckPurple
-  - ADTClothingUniformJumpskirtTurtleneckPurple
+  # - ADTClothingUniformJumpsuitTurtleneckPurple # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpskirtTurtleneckPurple # Ganimed-Loadouts-Remove
   # ADT tweak end
 
 - type: loadoutGroup
@@ -566,9 +629,13 @@
   minLimit: 0
   loadouts:
   - JanitorRubberGloves
+  - OrangeGloves
+  - PurpleGloves
+  - LatexGloves # Ganimed-Loadouts-Add
+  - BlackNitrileGloves # Ganimed-Loadouts-Add
   # ADT tweak start
-  - ADTOrangeGloves
-  - ADTPurpleGloves
+  # - ADTOrangeGloves # Ganimed-Loadouts-Remove (Duplicates)
+  # - ADTPurpleGloves # Ganimed-Loadouts-Remove
   - ADTJanitorGlovesTacticalMaid
   # ADT tweak end
 
@@ -578,6 +645,8 @@
   minLimit: 0
   loadouts:
   - JanitorWintercoat
+  - WetFloorSign # Ganimed-Loadouts-Add
+  - JanitorBioSuit # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: JanitorPlunger
@@ -594,6 +663,14 @@
   - BotanistHead
   - BotanistBandana
   - ADTClothingHeadHatFlowerWreath # ADT tweak
+  # Ganimed-Loadouts-Add-Start
+  - BotanistPoppy
+  - BotanistAmbrosia
+  # - BotanistFlowerWreath
+  - BotanistStrawHat
+  - WatermelonHelmet
+  - HeadBucket
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: BotanistJumpsuit
@@ -602,9 +679,11 @@
   - BotanistJumpsuit
   - BotanistJumpskirt
   - BotanistOveralls
+  - BotanistOverallsOriginal # Ganimed-Loadouts-Add
+  - BotanistDryadCoverings # Ganimed-Loadouts-Add
   # ADT tweak start
-  - ADTClothingUniformJumpsuitTurtleneckGreen
-  - ADTClothingUniformJumpskirtTurtleneckGreen
+  # - ADTClothingUniformJumpsuitTurtleneckGreen # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpskirtTurtleneckGreen # Ganimed-Loadouts-Remove
   # ADT tweak end
 
 - type: loadoutGroup
@@ -630,6 +709,8 @@
   loadouts:
   - JesterHat
   - JesterAltHat
+  - OrangeClownWig # Ganimed-Loadouts-Add
+  - RainbowClownWig # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ClownJumpsuit
@@ -639,7 +720,7 @@
   - ClownSkirt
   - JesterSuit
   - JesterAltSuit
-  - ADTClothingUniformJumpsuitClownAbyss #ADT-tweak
+  # - GreenJesterCostume # Ganimed-Loadouts-Add
   - ADTClothingUniformJumpsuitClownAbyss #ADT-tweak
 
 - type: loadoutGroup
@@ -649,6 +730,7 @@
   - ClownBackpack
   - ClownSatchel
   - ClownDuffel
+  - CluwneBackpackJigglesVonJonkertonRemovable # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ClownOuterClothing
@@ -664,7 +746,7 @@
   loadouts:
   - ClownShoes
   - JesterShoes
-  - ADTClothingShoesClownAbyss #ADT-tweak
+  - LargeClownShoes # Ganimed-Loadouts-Add
   - ADTClothingShoesClownAbyss #ADT-tweak
 
 - type: loadoutGroup
@@ -688,6 +770,7 @@
   loadouts:
   - MimeHead
   - MimeFrenchBeret
+  - BlackBeret # Ganimed-Loadouts-Add
   - MimeCap
 
 - type: loadoutGroup
@@ -697,6 +780,7 @@
   - MimeMask
   - MimeMaskSad
   - MimeMaskScared
+  - MimeMaskBlushing # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: MimeJumpsuit
@@ -745,12 +829,6 @@
   loadouts:
   - MusicianJumpsuit
   - MusicianJumpskirt
-  #ADT-tweak-start
-  - ADTClothingUniformJumpsuitTuxedo
-  - ADTClothingUniformJumpsuitTuxedoWhite
-  - ADTClothingUniformJumpsuitTuxedoRed
-  - ADTClothingUniformJumpsuitTuxedoHell
-  #ADT-tweak-end
   #ADT-tweak-start
   - ADTClothingUniformJumpsuitTuxedo
   - ADTClothingUniformJumpsuitTuxedoWhite
@@ -834,7 +912,10 @@
   minLimit: 0
   loadouts:
   - QuartermasterCloak
+  - QuartermasterCloakAlt # Ganimed-Loadouts-Add
   - QuartermasterMantle
+  - QuartermasterCloakLong # Ganimed-Loadouts-Add
+  - QuartermasterBedsheet # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
@@ -848,14 +929,19 @@
   name: loadout-group-quartermaster-shoes
   loadouts:
   - BrownShoes
+  - BlackShoes # Ganimed-Loadouts-Add
   - CargoWinterBoots
+  # - SalvageBoots # Ganimed-Loadouts-Add
+  - LeatherShoesWhitelisted # Ganimed-Loadouts-Add
   # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -864,6 +950,7 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianHead
+  - CargoTechnicianPostalCap # Ganimed-Loadouts-Add
   # ADT-Loadouts-Start
   - ADTCargoTechnicianBeret
   # ADT-Loadouts-End
@@ -874,9 +961,11 @@
   loadouts:
   - CargoTechnicianJumpsuit
   - CargoTechnicianJumpskirt
+  - CargoTechnicianJumpsuitPostal # Ganimed-Loadouts-Add
+  - CargoTechnicianJumpskirtPostal # Ganimed-Loadouts-Add
   # ADT tweak start
-  - ADTClothingUniformJumpsuitTurtleneckGrey
-  - ADTClothingUniformJumpskirtTurtleneckGrey
+  # - ADTClothingUniformJumpsuitTurtleneckGrey # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpskirtTurtleneckGrey # Ganimed-Loadouts-Remove
   # ADT tweak end
 
 - type: loadoutGroup
@@ -886,7 +975,7 @@
   - CargoTechnicianBackpack
   - CargoTechnicianSatchel
   - CargoTechnicianDuffel
-  - ADTClothingBackpackSatchelLeather # ADT tweak
+  - LeatherSatchel # ADT tweak # Ganimed-Loadouts-Edit (ADTClothingBackpackSatchelLeather)
 
 - type: loadoutGroup
   id: CargoTechnicianOuterClothing
@@ -901,13 +990,16 @@
   loadouts:
   - BlackShoes
   - CargoWinterBoots
+  - WorkBoots # Ganimed-Loadouts-Add
   # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -917,8 +1009,7 @@
   - SalvageSpecialistBackpack
   - SalvageSpecialistSatchel
   - SalvageSpecialistDuffel
-  - ADTClothingBackpackSatchelLeather # ADT tweak
-  - ADTClothingBackpackSatchelLeather # ADT tweak
+  - LeatherSatchel # ADT tweak # Ganimed-Loadouts-Edit (ADTClothingBackpackSatchelLeather)
 
 - type: loadoutGroup
   id: SalvageSpecialistOuterClothing
@@ -936,12 +1027,14 @@
   - SalvageBoots
   - CargoWinterBoots
   # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 # Engineering
@@ -952,6 +1045,7 @@
   minLimit: 0
   loadouts:
   - ChiefEngineerHead
+  - ArmoredHardhat # Ganimed-Loadouts-Add
   - ADTChiefEngineerBeret # ADT tweak
 
 - type: loadoutGroup
@@ -962,6 +1056,7 @@
   - ChiefEngineerJumpskirt
   - ChiefEngineerTurtleneck
   - ChiefEngineerTurtleneckSkirt
+  - ChiefEngineerNTJumpsuit # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ChiefEngineerNeck
@@ -969,7 +1064,14 @@
   minLimit: 0
   loadouts:
   - ChiefEngineerCloak
+  - ChiefEngineerCloakAlt # Ganimed-Loadouts-Add
+  - ChiefEngineerCloakOriginal # Ganimed-Loadouts-Add
   - ChiefEngineerMantle
+  # Ganimed-Loadouts-Add-Start
+  - ChiefEngineerMantleOriginal
+  - ChiefEngineerCloakLong
+  - ChiefEngineerBedsheet
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ChiefEngineerOuterClothing
@@ -983,14 +1085,23 @@
   name: loadout-group-chief-engineer-shoes
   loadouts:
   - BrownShoes
+  # Ganimed-Loadouts-Add-Start
+  - WhiteShoes
+  - BlackShoes
+  - OrangeShoes
+  # Ganimed-Loadouts-Add-End
   - EngineeringWinterBoots
+  - WorkBoots # Ganimed-Loadouts-Add
+  - LeatherShoesWhitelisted # Ganimed-Loadouts-Add
   # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1008,7 +1119,13 @@
   - StationEngineerHardhatYellow
   - StationEngineerHardhatOrange
   - StationEngineerHardhatRed
-  - HonoredEngineerBeret # ADT-Tweak-senior
+  - EngineeringBeret # ADT-Tweak-senior # Ganimed-Loadouts-Edit (HonoredEngineerBeret)
+  # Ganimed-Loadouts-Add-Start
+  - WeldingMask
+  - WeldingMaskPainted
+  - WeldingMaskFlame
+  - WeldingMaskBlueFlame
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: StationEngineerJumpsuit
@@ -1017,11 +1134,14 @@
   - StationEngineerJumpsuit
   - StationEngineerJumpskirt
   - StationEngineerHazardsuit
+  - StationEngineerNTRepairmanJumpsuit # Ganimed-Loadouts-Add
   # ADT tweak start
-  - ADTClothingUniformJumpsuitTurtleneckOrange
-  - ADTClothingUniformJumpskirtTurtleneckOrange
-  - ADTClothingUniformJumpsuitTurtleneckYellow
-  - ADTClothingUniformJumpskirtTurtleneckYellow
+  # Ganimed-Loadouts-Remove-Start (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpsuitTurtleneckOrange
+  # - ADTClothingUniformJumpskirtTurtleneckOrange
+  # - ADTClothingUniformJumpsuitTurtleneckYellow
+  # - ADTClothingUniformJumpskirtTurtleneckYellow
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1039,6 +1159,7 @@
   loadouts:
   - StationEngineerOuterVest
   - StationEngineerWintercoat
+  - RadSuit # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: StationEngineerShoes
@@ -1046,13 +1167,20 @@
   loadouts:
   - WorkBoots
   - EngineeringWinterBoots
+  # Ganimed-Loadouts-Add-Start
+  - BlackShoes
+  - OrangeShoes
+  - EngineeringMagBoots
+  # Ganimed-Loadouts-Add-End
   # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1071,6 +1199,7 @@
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianJumpskirt
   - AtmosphericTechnicianJumpsuitCasual
+  - AtmosphericTechnicianJumpsuitCasualOriginal # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: AtmosphericTechnicianOuterClothing
@@ -1082,6 +1211,7 @@
   - ADTOuterAtmosianBomberJacket
   - ADTClothingAtmosphericsOveralls
   # ADT-Loadouts-End
+  - FireSuit # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
@@ -1096,14 +1226,21 @@
   name: loadout-group-atmospheric-technician-shoes
   loadouts:
   - WhiteShoes
+  # Ganimed-Loadouts-Add-Start
+  - YellowShoes
+  - BlueShoes
+  - WorkBoots
+  # Ganimed-Loadouts-Add-End
   - EngineeringWinterBoots
   # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1126,6 +1263,7 @@
   minLimit: 0
   loadouts:
   - ResearchDirectorBeret
+  - ResearchDirectorSquareAcademicCap # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ResearchDirectorNeck
@@ -1133,7 +1271,14 @@
   minLimit: 0
   loadouts:
   - ResearchDirectorMantle
+  - ResearchDirectorMantleOriginal # Ganimed-Loadouts-Add
   - ResearchDirectorCloak
+  # Ganimed-Loadouts-Add-Start
+  - ResearchDirectorCloakAlt
+  - ResearchDirectorCloakLong
+  - ResearchDirectorBedsheet
+  - VioletScarf
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ResearchDirectorJumpsuit
@@ -1145,6 +1290,7 @@
   - ResearchDirectorJumpsuitClassical
   - ResearchDirectorJumpskirtClassical
   # Corvax-Loadouts-End
+  - RnDProfessorJumpsuit # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ResearchDirectorOuterClothing
@@ -1160,15 +1306,23 @@
   name: loadout-group-research-director-shoes
   loadouts:
   - BrownShoes
+  - BlackShoes # Ganimed-Loadouts-Add
+  - PurpleShoes # Ganimed-Loadouts-Add
   - ScienceWinterBoots
+  # Ganimed-Loadouts-Add-Start
+  - MonochromeShoes
+  - LeatherShoesWhitelisted
+  - ScienceMagBoots
+  # Ganimed-Loadouts-Add-End
   # ADT tweak start
-  - PurpleShoes
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1177,9 +1331,9 @@
   minLimit: 0
   loadouts:
   - SkullBandana
+  - ScientificBeret
   # ADT-Loadout-Senior-Start
   - PurpleCap
-  - HonoredScientistBeret
   # ADT-Loadout-Senior-End
 
 - type: loadoutGroup
@@ -1195,13 +1349,20 @@
   loadouts:
   - ScientistJumpsuit
   - ScientistJumpskirt
+  # Ganimed-Loadouts-Add-Start
+  - OriginalScientistJumpsuit
+  - OriginalScientistJumpskirt
+  - FormalScientistJumpsuit
+  # Ganimed-Loadouts-Add-End
   # ADT tweak start
-  - ADTClothingUniformJumpsuitTurtleneckBlack
-  - ADTClothingUniformJumpskirtTurtleneckBlack
-  - ADTClothingUniformJumpsuitTurtleneckPurple
-  - ADTClothingUniformJumpskirtTurtleneckPurple
-  - ADTClothingUniformJumpsuitTurtleneckWhite
-  - ADTClothingUniformJumpskirtTurtleneckWhite
+  # Ganimed-Loadouts-Remove-Start (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpsuitTurtleneckBlack
+  # - ADTClothingUniformJumpskirtTurtleneckBlack
+  # - ADTClothingUniformJumpsuitTurtleneckPurple
+  # - ADTClothingUniformJumpskirtTurtleneckPurple
+  # - ADTClothingUniformJumpsuitTurtleneckWhite
+  # - ADTClothingUniformJumpskirtTurtleneckWhite
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1211,7 +1372,7 @@
   - ScientistBackpack
   - ScientistSatchel
   - ScientistDuffel
-  - ADTClothingBackpackSatchelLeather # ADT tweak
+  - LeatherSatchel # ADT tweak # Ganimed-Loadouts-Edit (ADTClothingBackpackSatchelLeather)
 
 - type: loadoutGroup
   id: ScientistOuterClothing
@@ -1229,15 +1390,18 @@
   loadouts:
   - WhiteShoes
   - BlackShoes
+  - PurpleShoes # ADT tweak
+  - MonochromeShoes # Ganimed-Loadouts-Add
   - ScienceWinterBoots
   # ADT tweak start
-  - PurpleShoes
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1246,7 +1410,7 @@
   minLimit: 0
   loadouts:
   - LatexGloves
-  - ADTPurpleGloves # ADT tweak
+  - PurpleGloves
   - ADTGlovesLatexBlack # ADT tweak
 
 - type: loadoutGroup
@@ -1274,6 +1438,8 @@
   loadouts:
   - HeadofSecurityHead
   - HeadofSecurityBeret
+  - HeadofSecurityLeatherCap # Ganimed-Loadouts-Add
+  - BountyHunterCowboyHat # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: HeadofSecurityJumpsuit
@@ -1289,6 +1455,15 @@
   - HeadofSecurityJumpsuitBlack
   - HeadofSecurityJumpskirtBlack
   # Corvax-Loadouts-End
+  # Ganimed-Loadouts-Add-Start
+  - HeadofSecurityJumpsuitGrey
+  - HeadofSecurityJumpsuitBlue
+  - HeadofSecurityJumpsuitOld
+  - HeadofSecurityJumpsuitOriginal
+  - HeadofSecurityJumpskirtOriginal
+  - HeadofSecurityMaleParadeUniform
+  - HeadofSecurityFemaleParadeUniform
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: HeadofSecurityNeck
@@ -1296,10 +1471,18 @@
   minLimit: 0
   loadouts:
   - HeadofSecurityCloak
+  - HeadofSecurityCloakOriginal # Ganimed-Loadouts-Add
+  - HeadofSecurityCloakAlt # Ganimed-Loadouts-Add
   - HeadofSecurityMantle
+  - HeadofSecurityShoulderMantle # Corvax-Loadouts
+  # Ganimed-Loadouts-Add-Start
+  - HeadofSecurityCloakLong
+  - HeadofSecurityBedsheet
+  - DarkRedScarf
+  # Ganimed-Loadouts-Add-End
   # ADT-Loadout-Start
   - HeadOfSecurityWhistle
-  - HeadofSecurityMantleShoulder
+  # - HeadofSecurityMantleShoulder # Ganimed-Loadouts-Remove (duplicate)
   - ADTNeckSecBadgeBronze
   - ADTNeckSecBadgeSilver
   - ADTNeckSecBadgeGold
@@ -1312,6 +1495,12 @@
   loadouts:
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
+  # Ganimed-Loadouts-Add-Start
+  - HeadofSecurityUnarmoredWinterCoat
+  - HeadofSecurityTrenchCoat
+  - HeadofSecurityGreatCoat
+  - HeadofSecurityReflectiveCoat
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: WardenHead
@@ -1319,7 +1508,9 @@
   minLimit: 0
   loadouts:
   - WardenHead
+  - WardenCapAlt # Ganimed-Loadouts-Add
   - WardenBeret
+  - SecurityBeret # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: WardenJumpsuit
@@ -1327,13 +1518,16 @@
   loadouts:
   - WardenJumpsuit
   - WardenJumpskirt
+  - ADTClothingUniformJumpsuitSecBlue # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: WardenOuterClothing
   name: loadout-group-warden-outerclothing
   loadouts:
   - WardenCoat
+  - WardenCoatAlt # Ganimed-Loadouts-Add
   - WardenArmoredWinterCoat
+  - WardenUnarmoredWinterCoat # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: SecurityHead
@@ -1341,9 +1535,13 @@
   minLimit: 0
   loadouts:
   - SecurityHelmet
+  - LightRiotHelmet # Ganimed-Loadouts-Add
   - SecurityBeret
   - SecurityHat
+  - SecurityCapAlt # Ganimed-Loadouts-Add
+  - SecurityFlightCap # Ganimed-Loadouts-Add
   - TrooperHat
+  - BlackCowboyHat # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: SecurityJumpsuit
@@ -1355,10 +1553,10 @@
   - SecurityJumpskirtGrey
   - TrooperUniform
   # ADT-Loadouts-Start
+  - ADTClothingUniformJumpsuitSecBlue
   - ADTSecurityOfficerMogesBrown
   - ADTSecurityOfficerMogesBlue
   - ADTSecurityOfficerMogesGray
-  - ADTClothingUniformJumpsuitSecBlue
   # ADT-Loadouts-End
 
 - type: loadoutGroup
@@ -1383,8 +1581,16 @@
   - ArmorVestSec # Corvax
   - ArmorVest
   - ArmorVestSlim
-  - SecurityOfficerWintercoat
   - ADTArmorVestHidden #ADT-Loadout
+  # Ganimed-Loadouts-Add-Start
+  - ArmorVestBulletproof
+  - ArmorVestReflective
+  - SecurityCadetOvercoat
+  - SecurityOvercoat
+  - SecurityOfficerGreatcoat
+  # Ganimed-Loadouts-Add-End
+  - SecurityOfficerWintercoat
+  - SecurityBombSuit # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: SecurityShoes
@@ -1392,14 +1598,19 @@
   loadouts:
   - JackSecBoots # Corvax
   - JackBoots
+  - CombatBoots # Ganimed-Loadouts-Add
   - SecurityWinterBoots
+  - BlackCowboyBoots # Ganimed-Loadouts-Add
+  - HighheelBoots # Ganimed-Loadouts-Add
   # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1419,6 +1630,7 @@
   - DetectiveInvestigatorCap
   - ADTDetectiveOldFedora
   # ADT-Loadout-End
+  - SecurityBeret # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: DetectiveNeck
@@ -1426,6 +1638,7 @@
   minLimit: 0
   loadouts:
   - DetectiveTie
+  - DetectiveHorrificNecktie # Ganimed-Loadouts-Add
   # ADT-Loadout-Start
   - ADTClothingInvestigatorShoulderNeck
   - ADTNeckSecBadgeBronze
@@ -1445,6 +1658,12 @@
   - ADTDetectiveOldSuit
   - ADTDetectiveOldJumpskirt
   - DetectiveInvestigatorSuit
+  # Ganimed-Loadouts-Add-Start
+  - AltGrayDetectiveJumpsuit
+  - AltGrayDetectiveJumpskirt
+  - ADTClothingUniformJumpsuitSecBlue # SecurityUniformBlueShirt
+  - SuperstarCopJumpsuit
+  # Ganimed-Loadouts-Add-End
   - ADTSecurityOfficerMogesBrown
   - ADTSecurityOfficerMogesBlue
   - ADTSecurityOfficerMogesGray
@@ -1462,11 +1681,20 @@
   - DetectiveCoatInvestigator
   - ADTArmorVestHidden
   # ADT-Loadouts-End
+  # Ganimed-Loadouts-Add-Start
+  - DetectiveCoatOriginal
+  - DetectiveCoatDark
+  - DetectiveCoatDesertDMC
+  - DetectiveCoatBlackDMC
+  - DetectiveDiscoBlazer
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: SecurityCadetJumpsuit
   name: loadout-group-security-cadet-jumpsuit
   loadouts:
+  - RedJumpsuit
+  - RedJumpskirt
   - ADTUniformSecurityCadetLight #ADT-Tweak
   - ADTJumpskirtSecurityCadetLight #ADT-Tweak
   - SecurityJumpsuitGrey # Corvax-Resprite
@@ -1500,6 +1728,7 @@
   minLimit: 0
   loadouts:
   - ChiefMedicalOfficerBeret
+  - ChiefMedicalOfficerBeretOriginal # Ganimed-Loadouts-Add
   - CMOMedicalHeadMirror
 
 - type: loadoutGroup
@@ -1523,6 +1752,7 @@
   - ChiefMedicalOfficerLabCoat
   - ChiefMedicalOfficerWintercoat
   - ADTCMOLabcoatHike # ADT tweak
+  - ChiefMedicalOfficerBioSuit # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerNeck
@@ -1530,22 +1760,38 @@
   minLimit: 0
   loadouts:
   - ChiefMedicalOfficerCloak
+  - ChiefMedicalOfficerCloakAlt # Ganimed-Loadouts-Add
+  - ChiefMedicalOfficerCloakTurquoise # Ganimed-Loadouts-Add
   - ChiefMedicalOfficerMantle
+  # Ganimed-Loadouts-Add-Start
+  - ChiefMedicalOfficerMantleOriginal
+  - ChiefMedicalOfficerCloakLong
+  - ChiefMedicalOfficerBedsheet
+  - AzureScarf
+  - Stethoscope
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerShoes
   name: loadout-group-chief-medical-officer-shoes
   loadouts:
   - BrownShoes
+  # Ganimed-Loadouts-Add-Start
+  - WhiteShoes
+  - BlueShoes
+  - LeatherShoesWhitelisted
+  # Ganimed-Loadouts-Add-End
   - MedicalWinterBoots
   - ADTCMOHighBoots # ADT tweak
   # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1553,8 +1799,12 @@
   name: loadout-group-medical-doctor-head
   minLimit: 0
   loadouts:
-  - HonoredDoctorBeret
+  - MedicalBeret
+  - CorpsmanBeret # Ganimed-Loadouts-Add
   - MedicalHeadMirror
+  - BlueSurgeryCap
+  - GreenSurgeryCap
+  - PurpleSurgeryCap
   - NurseHat
 
 - type: loadoutGroup
@@ -1563,11 +1813,26 @@
   loadouts:
   - MedicalDoctorJumpsuit
   - MedicalDoctorJumpskirt
+  - MedicalBlueScrubs
+  - MedicalGreenScrubs
+  - MedicalPurpleScrubs
+  # Ganimed-Loadouts-Add-Start
+  - GeneticsJumpsuit
+  - GeneticsJumpskirt
+  - VirologyJumpsuit
+  - VirologyJumpskirt
+  # - CoronerJumpsuit
+  # - CoronerJumpskirt
+  # - BlackCoronerJumpsuit
+  # - BlackCoronerJumpskirt
+  # Ganimed-Loadouts-Add-End
   # ADT tweak start
-  - ADTClothingUniformJumpsuitTurtleneckAzure
-  - ADTClothingUniformJumpskirtTurtleneckAzure
-  - ADTClothingUniformJumpsuitTurtleneckWhite
-  - ADTClothingUniformJumpskirtTurtleneckWhite
+  # Ganimed-Loadouts-Remove-Start (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpsuitTurtleneckAzure
+  # - ADTClothingUniformJumpskirtTurtleneckAzure
+  # - ADTClothingUniformJumpsuitTurtleneckWhite
+  # - ADTClothingUniformJumpskirtTurtleneckWhite
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1577,6 +1842,15 @@
   loadouts:
   - RegularLabCoat
   - MedicalDoctorWintercoat
+  # Ganimed-Loadouts-Add-Start
+  - GeneticsLabCoat
+  - GeneticsWintercoat
+  - VirologyLabCoat
+  - VirologyWintercoat
+  # - CoronerLabCoat
+  - VirologyBioSuit
+  # Ganimed-Loadouts-Add-End
+
 - type: loadoutGroup
   id: MedicalBackpack
   name: loadout-group-medical-doctor-backpack
@@ -1584,21 +1858,24 @@
   - MedicalDoctorBackpack
   - MedicalDoctorSatchel
   - MedicalDoctorDuffel
-  - ADTClothingBackpackSatchelLeather # ADT tweak
+  - LeatherSatchel # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: MedicalShoes
   name: loadout-group-medical-doctor-shoes
   loadouts:
   - WhiteShoes
+  - BlueShoes # Ganimed-Loadouts-Add
   - MedicalWinterBoots
   # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1634,8 +1911,8 @@
   - WhiteJumpsuit
   - WhiteJumpskirt
   # ADT tweak start
-  - ADTClothingUniformJumpsuitTurtleneckWhite
-  - ADTClothingUniformJumpskirtTurtleneckWhite
+  # - ADTClothingUniformJumpsuitTurtleneckWhite # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpskirtTurtleneckWhite # Ganimed-Loadouts-Remove
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1645,8 +1922,8 @@
   - ChemistJumpsuit
   - ChemistJumpskirt
   # ADT tweak start
-  - ADTClothingUniformJumpsuitTurtleneckOrange
-  - ADTClothingUniformJumpskirtTurtleneckOrange
+  # - ADTClothingUniformJumpsuitTurtleneckOrange # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpskirtTurtleneckOrange # Ganimed-Loadouts-Remove
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1672,6 +1949,7 @@
   loadouts:
   - ParamedicHead
   - ADTParamedicBeret # ADT tweak
+  - CorpsmanBeret # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ParamedicJumpsuit
@@ -1680,6 +1958,7 @@
   - ParamedicJumpsuit
   - ParamedicJumpskirt
   - ADTClothingJumpsuitParamedicField # ADT tweak
+  - ParamedicNTJumpsuit # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ParamedicOuterClothing
@@ -1688,7 +1967,6 @@
   loadouts:
   - ParamedicWindbreaker
   - ParamedicWintercoat
-  - ADTDavidsjacketParamedic # ADT-tweak
   - ADTDavidsjacketParamedic # ADT-tweak
 
 - type: loadoutGroup
@@ -1699,12 +1977,14 @@
   - WhiteShoes
   - MedicalWinterBoots
   # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - ADTFootWrapsW
+  # - ADTFootWrapsHighW
+  # - ADTFootWrapsBr
+  # - ADTFootWrapsHighBr
+  # - ADTFootWrapsBl
+  # - ADTFootWrapsHighBl
+  # Ganimed-Loadouts-Remove-End
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1716,6 +1996,7 @@
   - MedicalEyePatchHud
   - Glasses
   - GlassesJamjar
+  - GlassesBinoclard # Ganimed-Loadouts-Add
   - GlassesJensen
 
 - type: loadoutGroup
@@ -1748,8 +2029,8 @@
   - PsychologistJumpsuit
   - PsychologistJumpskirt
   # ADT tweak start
-  - ADTClothingUniformJumpsuitTurtleneckWhite
-  - ADTClothingUniformJumpskirtTurtleneckWhite
+  # - ADTClothingUniformJumpsuitTurtleneckWhite # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpskirtTurtleneckWhite # Ganimed-Loadouts-Remove
   # ADT tweak end
 
 - type: loadoutGroup
@@ -1758,7 +2039,7 @@
   loadouts:
   - BoxerShorts
   - BoxerShortsWithTop
-  - ADTClothingUniformJumpsuitGladiator #ADT-tweak
+  - BoxerKimono # Ganimed-Loadouts-Add
   - ADTClothingUniformJumpsuitGladiator #ADT-tweak
 
 - type: loadoutGroup
@@ -1769,6 +2050,7 @@
   - BlueBoxingGloves
   - GreenBoxingGloves
   - YellowBoxingGloves
+  # - BoxingHandBandage # Ganimed-Loadouts-Add
 
 # Other
 

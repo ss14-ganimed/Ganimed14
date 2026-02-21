@@ -72,8 +72,8 @@
   id: HoSGear
   equipment:
     eyes: ClothingEyesGlassesSecurity
-    id: HoSPDA #Ganimed-Tweak
-    gloves: ClothingHandsGlovesCombat
+    id: HoSPDA # Ganimed-Loadouts-Readd
+    # gloves: ClothingHandsGlovesCombat # Ganimed-Loadouts-Remove (Loadout choice)
     ears: ClothingHeadsetAltSecurity
   storage:
     back:

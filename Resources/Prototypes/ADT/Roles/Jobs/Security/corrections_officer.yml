@@ -31,7 +31,7 @@
 - type: startingGear
   id: CorrectionsOfficerGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
+    # eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts-Remove (Loadout choice)
     ears: ClothingHeadsetSecurity
     belt: ClothingBeltSecurityLightbatonFilled
     pocket1: WeaponPistolMk58

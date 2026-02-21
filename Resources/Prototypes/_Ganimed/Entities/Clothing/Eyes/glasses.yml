@@ -1,4 +1,18 @@
 - type: entity
+  parent: ClothingEyesGlassesCheapSunglasses
+  id: ClothingEyesGlassesSunglassesAviator
+  name: shielded aviator sunglasses
+  description: A pair of designer sunglasses.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Eyes/Glasses/aviators.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Eyes/Glasses/aviators.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
   parent: [ClothingEyesBase, ShowSecurityIcons]
   id: ClothingEyesGlassesBrigmedic
   name: medical-security sunglasses
@@ -27,7 +41,7 @@
   parent: ClothingEyesBase
   id: ClothingEyesGlassesTray
   name: T-ray glasses
-  description: Improved shielding blocks many flashes. Improved ancient technology?
+  description: Used by engineering staff to see underfloor objects such as cables and pipes.
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Eyes/Glasses/traymeson.rsi
@@ -83,3 +97,25 @@
   - type: Tag
     tags:
     - HudSecurity
+
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGlassesSafety
+  name: safety goggles
+  description: Tightly fitting protective goggles for workers dealing with dangerous reagents or operating in dangerous environments.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Eyes/Glasses/safety_goggles.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Eyes/Glasses/safety_goggles.rsi
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: EyeProtection
+    protectionTime: 5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.95
+  - type: Tag
+    tags:
+    - WhitelistChameleon

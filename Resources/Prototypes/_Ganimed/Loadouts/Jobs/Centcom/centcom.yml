@@ -1,0 +1,188 @@
+# Jumpsuit
+#- type: loadout
+#  id: CentcomInternJumpsuit
+#  equipment:
+#    jumpsuit: ClothingUniformJumpsuitCentcomIntern
+
+- type: loadout
+  id: CentcomOriginalOfficerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficerOriginal
+
+- type: loadout
+  id: CentcomOfficerTurtleneckJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficer
+
+- type: loadout
+  id: CentcomOfficerTurtleneckJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCentcomOfficer
+
+- type: loadout
+  id: CentcomOfficerUniformJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficerAlt
+
+- type: loadout
+  id: CentcomOfficialRegularSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficialRegular
+
+- type: loadout
+  id: CentcomOfficialRegularSkirtsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCentcomOfficialRegular
+
+- type: loadout
+  id: CentcomOfficialSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficial
+
+- type: loadout
+  id: CentcomOfficialSkirtsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCentcomOfficial
+
+- type: loadout
+  id: CentcomAgentSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomAgent
+
+- type: loadout
+  id: CentcomOriginalFormalSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficialOriginal
+
+- type: loadout
+  id: CentcomFormalSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomFormal
+
+- type: loadout
+  id: CentcomFormalDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCentcomFormalDress
+
+- type: loadout
+  id: CentcomSpecOpsOfficerUniform
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficerBlack
+
+- type: loadout
+  id: CentcomAdmiralUniform
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomAdmiral
+
+# Mask
+- type: loadout
+  id: CentcomGasmask
+  equipment:
+    mask: ClothingMaskGasCentcom
+
+# Head
+- type: loadout
+  id: CentcomHat
+  equipment:
+    head: ClothingHeadHatCentcom
+
+- type: loadout
+  id: CentcomCap
+  equipment:
+    head: ClothingHeadHatCentcomcap
+
+- type: loadout
+  id: CentcomNavyCap
+  equipment:
+    head: ClothingHeadCapCentcomNaval
+
+- type: loadout
+  id: CentcomNavyBeret
+  equipment:
+    head: ClothingHeadHatBeretCentcomNaval
+
+- type: loadout
+  id: CentcomSpecOpsOfficer
+  equipment:
+    head: ClothingHeadCapCentcomBlack
+
+# Outer Clothing
+- type: loadout
+  id: CentcomWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterCentcom
+
+- type: loadout
+  id: ArmorCentcomCarapace
+  equipment:
+    outerClothing: ClothingOuterArmorCentcomCarapace
+
+# Backpack
+#- type: loadout
+#  id: CentcomBackpack
+#  equipment:
+#    back: ClothingBackpackCentcom
+
+# Neck
+- type: loadout
+  id: CentcomCloak
+  equipment:
+    neck: ClothingNeckCloakCentcom
+
+- type: loadout
+  id: CentcomSpecOpsOfficerCloak
+  equipment:
+    neck: ClothingNeckCloakCentcomBlack
+
+- type: loadout
+  id: CentcomAdmiralCloak
+  equipment:
+    neck: ClothingNeckCloakCentcomAdmiral
+
+- type: loadout
+  id: CentcomScarf
+  equipment:
+    neck: ClothingNeckScarfStripedCentcom
+
+- type: loadout
+  id: CentcomBedsheet
+  equipment:
+    neck: BedsheetCentcom
+
+#- type: loadout
+#  id: CentcomTie
+#  equipment:
+#    neck: ClothingNeckTieCentCom
+
+# Gloves
+- type: loadout
+  id: CentcomNavyGloves
+  equipment:
+    gloves: ClothingHandsGlovesCentcomNaval
+
+# Shoes
+- type: loadout
+  id: CentcomSpecOpsOfficerShoes
+  equipment:
+    shoes: ClothingShoesCentcomBlack
+
+# Pocket
+- type: loadout
+  id: CentcomFolder
+  equipment:
+    pocket1: BoxFolderCentCom
+
+- type: loadout
+  id: CentcomClipboard
+  equipment:
+    pocket1: BoxFolderCentComClipboard
+
+- type: loadout
+  id: CentcomTowel
+  equipment:
+    pocket1: TowelColorCentcom
+
+- type: loadout
+  id: WeaponPistolN1984
+  equipment:
+    pocket1: WeaponPistolN1984
