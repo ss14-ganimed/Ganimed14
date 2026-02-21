@@ -44,7 +44,7 @@ loadout-group-chef-gloves-adt = Перчатки шеф-повара
 loadout-group-chef-neck-adt = Платок шеф-повара
 
 # Cargo
-loadout-group-quartermaster-id = ID квартирмейстера
+loadout-group-quartermaster-id-adt = ID квартирмейстера
 loadout-quartermaster-ears-adt = Гарнитура квартирмейстера
 loadout-salvage-specialist-jumpsuit-adt = Комбинезон утилизатора
 loadout-salvage-specialist-neck-adt = Шея утилизатора

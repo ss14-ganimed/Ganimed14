@@ -524,7 +524,7 @@
   minLimit: 1
   maxLimit: 1
   loadouts:
-  - CoatCCC 
+  - CoatCCC
   - CoatCentCom
 
 - type: loadoutGroup
@@ -914,7 +914,7 @@
   - SalvageSpecialistDuffel
 
 - type: loadoutGroup
-  id: ADTMinerSpecialistEars
+  id: ADTMinerEars
   name: loadout-miner-ears-adt
   minLimit: 1
   maxLimit: 1
@@ -924,18 +924,20 @@
 
 # Плащи
 - type: loadoutGroup
-  id: ADTMinerSpecialistNeck
+  id: ADTMinerNeck
   name: loadout-miner-neck-adt
   minLimit: 0
   maxLimit: 1
   loadouts:
-  - ADTNeckSalvageSpecialistCCape
-  - ADTNeckSalvageSpecialistSCape
-  - ADTNeckSalvageSpecialistGCape
-  - ADTNeckSalvageSpecialistPCape
-  - ADTNeckSalvageSpecialistECape
-  - ADTNeckSalvageSpecialistDCape
-  - ADTNeckSalvageSpecialistRCape
+  - MinerCloak # Ganimed-Loadouts-Add
+  - GoliathCloak # Ganimed-Loadouts-Add
+  - ADTNeckMinerCCape
+  - ADTNeckMinerSCape
+  - ADTNeckMinerGCape
+  - ADTNeckMinerPCape
+  - ADTNeckMinerECape
+  - ADTNeckMinerDCape
+  - ADTNeckMinerRCape
 
 - type: loadoutGroup
   id: ADTMinerOuterClothing
@@ -966,24 +968,6 @@
   # - ADTFootWrapsBl
   # - ADTFootWrapsHighBl
   # Ganimed-Loadouts-Remove-End
-
-# Плащи
-- type: loadoutGroup
-  id: ADTSalvageSpecialistNeck
-  name: loadout-salvage-specialist-neck-adt
-  minLimit: 0
-  maxLimit: 1
-  loadouts:
-  - MinerCloak # Ganimed-Loadouts-Add
-  - GoliathCloak # Ganimed-Loadouts-Add
-  - ADTNeckSalvageSpecialistCCape
-  - ADTNeckSalvageSpecialistSCape
-  - ADTNeckSalvageSpecialistGCape
-  - ADTNeckSalvageSpecialistPCape
-  - ADTNeckSalvageSpecialistECape
-  - ADTNeckSalvageSpecialistDCape
-  - ADTNeckSalvageSpecialistRCape
-
 
 ## ДЕТЕКТИВ
 
@@ -1195,6 +1179,15 @@
   - ADTPlasmaScientistPDA
 
 - type: loadoutGroup
+  id: ADTQuartermasterPDA
+  name: loadout-group-quartermaster-id-adt
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - QuartermasterPDA
+  - ADTIntendantPDA
+
+- type: loadoutGroup
   id: ADTCargoPDA
   name: loadout-group-cargo-id-adt
   minLimit: 1
@@ -1374,16 +1367,6 @@
   loadouts:
   - CMOPDA
   - ADTCMOPDA
-
-- type: loadoutGroup
-  id: ADTQuartermasterPDA
-  name: loadout-group-quartermaster-id
-  minLimit: 1
-  maxLimit: 1
-  loadouts:
-  - QuartermasterPDAloadout
-  - ADTintendantPDAloadout
-
 
 # Alts PDA end
 

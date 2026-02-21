@@ -59,23 +59,25 @@
             tags:
             - ADTBsoWeapon
         - type: Necksnap
+        - type: AntagImmune # Ganimed-MRP: Loyalty implant
         - type: Combo
           availableMoves:
             - actionsNeeds:
                 - Grab
                 - Hit
               comboEvent:
-                - !type:ComboPopupEffect
-                  localeText: combo-slam-end
-                - !type:ComboDamageEffect
-                  damage:
-                    types:
-                      Blunt: 10
-                - !type:ComboFallEffect
-                - !type:ComboStopGrabEffect
-                - !type:ComboAudioEffect
-                  sound:
-                    collection: GenericHit
+              - !type:ComboEffectToStanding
+                comboEvents:
+                  - !type:ComboPopupEffect
+                    localeText: combo-slam-end
+                  - !type:ComboDamageEffect
+                    damage:
+                      types:
+                        Blunt: 20
+                  - !type:ComboFallEffect
+                  - !type:ComboAudioEffect
+                    sound:
+                      collection: GenericHit
             - actionsNeeds:
                 - Hit
                 - Hit
@@ -87,9 +89,9 @@
                 - !type:ComboMoreDamageToDownedEffect
                   damage:
                     types:
-                      Blunt: 15
+                      Blunt: 20
                 - !type:ComboPopupEffect
-                  localeText: combo-cqc-kick-end
+                  localeText: combo-headkick-end
                 - !type:ComboDamageEffect
                   damage:
                     types:
@@ -98,8 +100,6 @@
                   sound:
                     collection: GenericHit
                 - !type:ComboTrowTargetEffect
-                - !type:ComboStaminaDamageEffect
-                  staminaDamage: 25
             - actionsNeeds:
                 - Disarm
                 - Grab
@@ -108,7 +108,6 @@
                   localeText: combo-cqc-pressure-end
                 - !type:ComboStaminaDamageEffect
                   staminaDamage: 35
-                - !type:ComboHandsRetakeEffect
             - actionsNeeds:
                 - Grab
                 - Grab
@@ -119,7 +118,7 @@
                 - !type:ComboFallEffect
                   dropItems: true
                 - !type:ComboStaminaDamageEffect
-                  staminaDamage: 55
+                  staminaDamage: 30
             - actionsNeeds:
                 - Disarm
                 - Disarm
@@ -130,10 +129,10 @@
                 - !type:ComboMoreDamageToDownedEffect
                   damage:
                     types:
-                      Blunt: 25
+                      Blunt: 35
                 - !type:ComboFallEffect
                 - !type:ComboStaminaDamageEffect
-                  staminaDamage: 60
+                  staminaDamage: 45
                 - !type:ComboAudioEffect
                   sound:
                     collection: GenericHit
@@ -144,28 +143,9 @@
                 - !type:ComboPopupEffect
                   localeText: combo-leg-sweep-end
                 - !type:ComboFallEffect
-                - !type:ComboStopGrabEffect
                 - !type:ComboAudioEffect
                   sound:
                     collection: GenericHit
-            - actionsNeeds:
-                - Crawl
-                - Crawl
-              comboEvent:
-                - !type:ComboEffectToUserPuller
-                  comboEvents:
-                  - !type:ComboDamageEffect
-                    damage:
-                      types:
-                        Blunt: 10
-                  - !type:ComboTrowOnUserEffect
-                  - !type:ComboStopTargetGrabEffect
-                  - !type:ComboStunEffect
-                    stunTime: 1
-                    dropItems: false
-                  - !type:ComboPopupEffect
-                    localeText: combo-leg-sweep-end
-        - type: AntagImmune # Ganimed-MRP: Loyalty implant
 
 - type: startingGear
   id: ADTBlueShieldOfficerGear

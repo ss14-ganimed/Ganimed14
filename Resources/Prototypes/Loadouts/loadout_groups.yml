@@ -381,6 +381,9 @@
   minLimit: 0
   loadouts:
   - PassengerWintercoat
+  # ADT-Loadouts-Start
+  - ADTClothingOuterCoatSpaceAsshole
+  # ADT-Loadouts-End
 
 - type: loadoutGroup
   id: PassengerShoes
@@ -1478,6 +1481,7 @@
   - DarkRedScarf
   # Ganimed-Loadouts-Add-End
   # ADT-Loadout-Start
+  - HeadOfSecurityWhistle
   # - HeadofSecurityMantleShoulder # Ganimed-Loadouts-Remove (duplicate)
   - ADTNeckSecBadgeBronze
   - ADTNeckSecBadgeSilver
