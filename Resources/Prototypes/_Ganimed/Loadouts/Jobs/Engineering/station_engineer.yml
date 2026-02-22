@@ -29,6 +29,13 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitRepairmanNT
 
+- type: loadout
+  id: StationEngineerMechanicJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMechanic
+  effects:
+  - !type:SponsorLoadoutEffect
+
 # OuterClothing
 - type: loadout
   id: SeniorEngineerWintercoat

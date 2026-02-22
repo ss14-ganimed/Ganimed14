@@ -52,6 +52,9 @@ ent-ClothingUniformJumpsuitCentcomOfficialRegular = тёмно-зелёный к
 ent-ClothingUniformJumpsuitCentcomOfficerAlt = офицерская форма Центком
     .desc = Форма офицера Центрального Командования. На плечах видны погоны.
 
+ent-ClothingUniformJumpsuitMechanic = комбинезон механика
+    .desc = Оранжевый комбинезон с тёмно-синей спецовкой на тот случай, когда вам захочется чинить и возиться с техникой.
+
 ent-ClothingUniformJumpsuitSalvageSpecialistAlt = мрачный шахтёрский комбинезон
     .desc = Утилизаторский комбинезон с прочной спецовкой. Он сильно запачкан космической пылью и пеплом.
 

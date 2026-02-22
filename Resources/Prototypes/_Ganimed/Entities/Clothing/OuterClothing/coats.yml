@@ -128,6 +128,17 @@
     sprite: _Ganimed/Clothing/OuterClothing/Coats/sec_greatcoat.rsi
 
 - type: entity
+  parent: ClothingOuterCoatTrench
+  id: ClothingOuterCoatQuartermaster
+  name: quatermaster's overcoat
+  description: A luxury, brown double-breasted overcoat, made from kangaroo skin. It's gold cuffs linked are styled on the credits symbol. It makes you feel more important then you probably are.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/qm_coat.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/OuterClothing/Coats/qm_coat.rsi
+
+- type: entity
   parent: ClothingOuterCoatSecurityOvercoat
   id: ClothingOuterCoatBlackDmc
   name: black leather coat
