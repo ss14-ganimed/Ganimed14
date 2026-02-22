@@ -42,7 +42,6 @@
 # Halo_Shivter
 - type: loadout
   id: SponsorLoadoutHaloShivterBeeModsuit
-  equipment:
   inhand:
   - ClothingModsuitBackBee
   effects:
