@@ -1,0 +1,22 @@
+- type: gameMap
+  id: ENT_Birthday_Event
+  mapName: 'Holiday'
+  mapPath: /Maps/_Ganimed/birthday_event.yml
+  minPlayers: 5
+  maxPlayers: 50
+  stations:
+    ENT_Birthday_Event:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/ADTMaps/Shuttles/adt_emergency.yml
+        - type: StationCargoShuttle
+          path: /Maps/ADTMaps/Shuttles/adt_cargo.yml
+        - type: StationNameSetup
+          mapNameTemplate: '{0}Holiday {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '-'
+        - type: StationJobs
+          availableJobs:
+            Passenger: [ -1, -1 ]
