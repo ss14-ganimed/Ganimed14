@@ -4,6 +4,17 @@
   equipment:
     head: ClothingHeadHatBeretCmoOriginal
 
+- type: loadout
+  id: ChiefMedicalOfficerSurgeryCap
+  equipment:
+    head: ClothingHeadHatSurgcapTurquoise
+
+# Jumpsuit
+- type: loadout
+  id: ChiefMedicalOfficerScrubs
+  equipment:
+    jumpsuit: UniformScrubsColorTurquoise
+
 # Neck
 - type: loadout
   id: ChiefMedicalOfficerCloakAlt

@@ -36,7 +36,7 @@ loadout-group-musician-gloves-adt = Перчатки музыканта
 loadout-group-reporter-id-adt = ID репортёра
 loadout-group-bartender-gloves-adt = Перчатки бармена
 loadout-group-boxer-id-adt = ID боксёра
-loadout-group-boxer-head-adt =  Головной убор боксёра
+loadout-group-boxer-head-adt = Головной убор боксёра
 loadout-group-service-worker-gloves-adt = Перчатки сервисного работника
 loadout-group-service-worker-id-adt = ID сервисного работника
 loadout-group-service-worker-jumpsuit-adt = Комбинезон сервисного работника
@@ -65,7 +65,7 @@ loadout-chaplain-blessedbook-adt = Священная книга
 loadout-group-chaplain-id-adt = ID священника
 
 # Engineering
-loadout-chief-engineer-ears-adt = Гарнитура старшнго инженера
+loadout-chief-engineer-ears-adt = Гарнитура старшего инженера
 loadout-group-senior-engineer-head = Головной убор бригадира
 loadout-group-senior-engineer-jumpsuit = Комбинезон бригадира
 loadout-group-atmospheric-technician-neck = Плащ атмосферного техника

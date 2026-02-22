@@ -258,6 +258,17 @@
 
 - type: entity
   parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitMechanic
+  name: mechanic's jumpsuit
+  description: Orange jumpsuit with dark blue denim overalls for when you feel the urge to fix and tinker machinery.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/mechanic.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/mechanic.rsi
+
+- type: entity
+  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitSalvageSpecialistAlt
   name: grimy shaft miner's jumpsuit
   description: Salvager's jumpsuit with a sturdy set of dark overalls. It's very dirty and covered with cosmic dust and ash.

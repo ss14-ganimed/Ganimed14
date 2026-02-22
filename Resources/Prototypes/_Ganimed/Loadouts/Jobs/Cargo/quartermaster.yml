@@ -17,3 +17,12 @@
   id: QuartermasterBedsheet
   equipment:
     neck: BedsheetQM
+
+# OuterClothing
+- type: loadout
+  id: QuartermasterOvercoat
+  equipment:
+    outerClothing: ClothingOuterCoatQuartermaster
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterQM

@@ -91,7 +91,7 @@
   effects:
   # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
-    proto: ADTSalvageSpecialistEmeraldCape60hour # MasterSalvager
+    proto: ADTMinerEmeraldCape60hour # MasterSalvager
 
 - type: loadout
   id: ToolbeltEmpty

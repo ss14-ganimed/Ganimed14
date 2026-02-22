@@ -94,12 +94,34 @@
   parent: ClothingHeadBase
   id: ClothingHeadHatMortarboard
   name: square academic cap
-  description: It's like you're fresh from graduation. This serves as a proof you've survived tuition hell, unfortunatelly does not guarantee your survival in the Science department.
+  description: It's like you're fresh from graduation. This serves as a proof you've survived tuition hell, unfortunately does not guarantee your survival in the Science department.
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Head/Hats/mortarboard.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Head/Hats/mortarboard.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSurgcapTurquoise
+  name: surgical cap
+  description: A turquoise cap the chief medical officer wears during operations. Keeps their hair from tickling your internal organs.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Hats/surgcap_cmo.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Hats/surgcap_cmo.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop: HEAD
+      HeadSide: HEAD
 
 - type: entity # ss14Starlight
   parent: ClothingHeadBase
@@ -110,7 +132,7 @@
   - type: Sprite
     sprite: _Ganimed/Clothing/Head/Hats/brim_hat.rsi
   - type: Clothing
-    sprite: _Ganimed/Clothing/Head/Hats/brim_hat.rsi 
+    sprite: _Ganimed/Clothing/Head/Hats/brim_hat.rsi
   - type: Tag
     tags:
     - ClothMade
@@ -125,7 +147,7 @@
   - type: Sprite
     sprite: _Ganimed/Clothing/Head/Hats/feather_hat.rsi
   - type: Clothing
-    sprite: _Ganimed/Clothing/Head/Hats/feather_hat.rsi 
+    sprite: _Ganimed/Clothing/Head/Hats/feather_hat.rsi
   - type: Tag
     tags:
     - ClothMade

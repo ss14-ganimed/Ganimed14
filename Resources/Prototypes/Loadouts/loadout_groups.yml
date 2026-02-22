@@ -923,6 +923,7 @@
   minLimit: 0
   loadouts:
   - QuartermasterWintercoat
+  - QuartermasterOvercoat # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: QuartermasterShoes
@@ -1134,6 +1135,7 @@
   - StationEngineerJumpsuit
   - StationEngineerJumpskirt
   - StationEngineerHazardsuit
+  - StationEngineerMechanicJumpsuit # Ganimed-Loadouts-Add
   - StationEngineerNTRepairmanJumpsuit # Ganimed-Loadouts-Add
   # ADT tweak start
   # Ganimed-Loadouts-Remove-Start (colored turtlenecks in spare clothing)
@@ -1730,6 +1732,7 @@
   - ChiefMedicalOfficerBeret
   - ChiefMedicalOfficerBeretOriginal # Ganimed-Loadouts-Add
   - CMOMedicalHeadMirror
+  - ChiefMedicalOfficerSurgeryCap # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerJumpsuit
@@ -1743,6 +1746,7 @@
   - ADTCMOJumpsuitHike
   - ADTCMOJumpskirtHike
   # ADT-Loadout-End
+  - ChiefMedicalOfficerScrubs # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerOuterClothing
