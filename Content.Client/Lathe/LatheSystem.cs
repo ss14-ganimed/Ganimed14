@@ -3,6 +3,8 @@ using Content.Shared.Lathe;
 using Content.Shared.Power;
 using Content.Client.Power;
 using Content.Shared.Research.Prototypes;
+using Content.Client._Ganimed.Systems; // Ganimed edit
+using Content.Shared._Ganimed.Components; // Ganimed edit
 
 namespace Content.Client.Lathe;
 
@@ -10,6 +12,7 @@ public sealed class LatheSystem : SharedLatheSystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private readonly LatheAlertLevelRestrictionSystem _alertLevelRestriction = default!; // Ganimed edit
 
     public override void Initialize()
     {
@@ -57,6 +60,19 @@ public sealed class LatheSystem : SharedLatheSystem
     {
         return true;
     }
+
+    // Ganimed edit start
+    public override bool CanProduce(EntityUid uid, LatheRecipePrototype recipe, int amount = 1, LatheComponent? component = null)
+    {
+        if (!base.CanProduce(uid, recipe, amount, component))
+            return false;
+
+        if (HasComp<LatheAlertLevelRestrictionComponent>(uid) && !_alertLevelRestriction.IsRecipeAvailable(uid, recipe))
+            return false;
+
+        return true;
+    }
+    // Ganimed edit end
 }
 
 public enum LatheVisualLayers : byte

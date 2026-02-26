@@ -189,6 +189,42 @@ public sealed partial class LatheMenu : DefaultWindow
         StringBuilder sb = new();
         var multiplier = _entityManager.GetComponent<LatheComponent>(Entity).MaterialUseMultiplier;
 
+        // Ganimed edit start: Show current and required alert level
+        if (!string.IsNullOrEmpty(prototype.RequiredAlertLevel))
+        {
+            // Get required level name
+            var requiredLevelNameKey = $"lathe-menu-alert-level-{prototype.RequiredAlertLevel}";
+            var requiredLevelName = Loc.GetString(requiredLevelNameKey);
+            if (requiredLevelName == requiredLevelNameKey)
+            {
+                var alertLevelKey = $"alert-level-{prototype.RequiredAlertLevel}";
+                requiredLevelName = Loc.GetString(alertLevelKey);
+                if (requiredLevelName == alertLevelKey)
+                    requiredLevelName = prototype.RequiredAlertLevel;
+            }
+
+            // Get current level name
+            var currentLevelName = "???";
+            if (_entityManager.TryGetComponent(Entity, out Content.Shared._Ganimed.Components.LatheAlertLevelRestrictionComponent? restrictionComp)
+                && !string.IsNullOrEmpty(restrictionComp.CurrentAlertLevel))
+            {
+                var currentLevelNameKey = $"lathe-menu-alert-level-{restrictionComp.CurrentAlertLevel}";
+                currentLevelName = Loc.GetString(currentLevelNameKey);
+                if (currentLevelName == currentLevelNameKey)
+                {
+                    var alertLevelKey = $"alert-level-{restrictionComp.CurrentAlertLevel}";
+                    currentLevelName = Loc.GetString(alertLevelKey);
+                    if (currentLevelName == alertLevelKey)
+                        currentLevelName = restrictionComp.CurrentAlertLevel;
+                }
+            }
+
+            sb.AppendLine(Loc.GetString("lathe-menu-alert-level-required", ("level", requiredLevelName)));
+            sb.AppendLine(Loc.GetString("lathe-menu-alert-level-current", ("level", currentLevelName)));
+            sb.AppendLine();
+        }
+        // Ganimed edit end
+
         foreach (var (id, amount) in prototype.Materials)
         {
             if (!_prototypeManager.TryIndex(id, out var proto))
@@ -237,7 +273,8 @@ public sealed partial class LatheMenu : DefaultWindow
         var currentCategories = new List<ProtoId<LatheCategoryPrototype>>();
         foreach (var recipeId in Recipes)
         {
-            var recipe = _prototypeManager.Index(recipeId);
+            if (!_prototypeManager.TryIndex(recipeId, out var recipe))
+                continue;
 
             if (recipe.Categories.Count <= 0)
                 continue;
@@ -281,7 +318,9 @@ public sealed partial class LatheMenu : DefaultWindow
         var idx = 1;
         foreach (var recipeProto in queue)
         {
-            var recipe = _prototypeManager.Index(recipeProto);
+            if (!_prototypeManager.TryIndex(recipeProto, out var recipe))
+                continue;
+
             var queuedRecipeBox = new BoxContainer();
             queuedRecipeBox.Orientation = BoxContainer.LayoutOrientation.Horizontal;
 
@@ -301,7 +340,8 @@ public sealed partial class LatheMenu : DefaultWindow
         if (recipeProto == null)
             return;
 
-        var recipe = _prototypeManager.Index(recipeProto.Value);
+        if (!_prototypeManager.TryIndex(recipeProto.Value, out var recipe))
+            return;
 
         FabricatingDisplayContainer.Children.Clear();
         FabricatingDisplayContainer.AddChild(GetRecipeDisplayControl(recipe));

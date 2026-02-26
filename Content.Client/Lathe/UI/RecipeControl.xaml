@@ -13,6 +13,14 @@
                 MinSize="32 32"
                 />
             <Label Name="RecipeName" HorizontalExpand="True" />
+            <Label
+                Name="AlertLevelLockIcon"
+                Visible="False"
+                Text="(!)"
+                FontColorOverride="#DC143C"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Margin="4 0 0 0"/>
         </BoxContainer>
     </Button>
 </Control>

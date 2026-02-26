@@ -14,11 +14,14 @@ public sealed class LatheUpdateState : BoundUserInterfaceState
 
     public ProtoId<LatheRecipePrototype>? CurrentlyProducing;
 
-    public LatheUpdateState(List<ProtoId<LatheRecipePrototype>> recipes, ProtoId<LatheRecipePrototype>[] queue, ProtoId<LatheRecipePrototype>? currentlyProducing = null)
+    public string? CurrentAlertLevel; // Ganimed edit
+
+    public LatheUpdateState(List<ProtoId<LatheRecipePrototype>> recipes, ProtoId<LatheRecipePrototype>[] queue, ProtoId<LatheRecipePrototype>? currentlyProducing = null, string? currentAlertLevel = null) // Ganimed edit
     {
         Recipes = recipes;
         Queue = queue;
         CurrentlyProducing = currentlyProducing;
+        CurrentAlertLevel = currentAlertLevel; // Ganimed edit
     }
 }
 
