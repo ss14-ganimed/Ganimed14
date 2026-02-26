@@ -146,7 +146,7 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
 
         // when adding a record that already exists use the old one
         // this happens when respawning as the same character
-        if (GetRecordByName(station, name, records) is {} id)
+        if (GetRecordByName(station, name, records) is { } id) // Ganimed-JobAlt-start
         {
             SetIdKey(idUid, new StationRecordKey(id, station));
             return;
@@ -157,12 +157,33 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         if (idUid != null && _idCard.TryFindIdCard(idUid.Value, out var card2))
             card = card2;
         // ADT tweak end
-
+    
+        // Ganimed-JobAlt-start
+        string? jobTitle = null;
+    
+        if (card.HasValue)
+        {
+            var cardComp = card.Value.Comp;
+            if (!string.IsNullOrEmpty(cardComp.LocalizedJobTitle))
+                jobTitle = cardComp.LocalizedJobTitle;
+        }
+        if (string.IsNullOrEmpty(jobTitle) && profile.AlternateJobTitle != null &&
+            _prototypeManager.TryIndex<JobAlternateTitlePrototype>(profile.AlternateJobTitle, out var altTitle))
+        {
+            jobTitle = altTitle.LocalizedName;
+        }
+    
+        if (string.IsNullOrEmpty(jobTitle))
+        {
+            jobTitle = jobPrototype.LocalizedName;
+        }
+        // Ganimed-JobAlt-end
+    
         var record = new GeneralStationRecord()
         {
             Name = name,
             Age = age,
-            JobTitle = card?.Comp.LocalizedJobTitle ?? jobPrototype.LocalizedName, // ADT
+            JobTitle = jobTitle, // Ganimed-JobAlt
             JobIcon = jobPrototype.Icon,
             JobPrototype = jobId,
             Species = species,

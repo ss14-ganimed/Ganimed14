@@ -37,11 +37,18 @@ public sealed partial class CCVars : CVars
     /// </summary>
     public static readonly CVarDef<bool> DebugPow3rDisableParallel =
         CVarDef.Create("debug.pow3r_disable_parallel", false, CVar.SERVERONLY);
-    
+   
     /// Ganimed Edit
     /// <summary>
     ///     When true, you have to press the change speed button to sprint.
     /// </summary>
     public static readonly CVarDef<bool> GamePressToSprint =
         CVarDef.Create("game.press_to_sprint", true, CVar.REPLICATED);
+
+    /// <summary>
+    /// Ganimed-JobAlt
+    /// Enables alternate job titles for players.
+    /// </summary>
+    public static readonly CVarDef<bool> ICAlternateJobTitlesEnable =
+        CVarDef.Create("ic.alternate_job_titles_enable", true, CVar.SERVER | CVar.REPLICATED);
 }
