@@ -319,6 +319,9 @@
   minLimit: 0
   loadouts:
   - PassengerWintercoat
+  # ADT-Loadouts-Start
+  - ADTClothingOuterCoatSpaceAsshole
+  # ADT-Loadouts-End
 
 - type: loadoutGroup
   id: PassengerShoes
@@ -1295,6 +1298,7 @@
   - HeadofSecurityCloak
   - HeadofSecurityMantle
   # ADT-Loadout-Start
+  - HeadOfSecurityWhistle
   - HeadofSecurityMantleShoulder
   - ADTNeckSecBadgeBronze
   - ADTNeckSecBadgeSilver
