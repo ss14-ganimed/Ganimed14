@@ -555,21 +555,17 @@ ent-ADTPlushieAnagiri = плюшевая Плейона
     .suffix = { "Спонсорское, Anagiri" }
 
 
-ent-ADTClothingUniformJumpsuitSaintMadmanClothing = униформа Via-Deus
-    .desc = Униформа компании Via-Deus.
-    .suffix = { "Спонсорское, Saint_madman" }
+ent-ADTClothingUniformJumpsuitSaintMadmanClothing = униформа аристократа
+    .desc = Белая торжественная униформа аристократа. Выглядит величественно.
+    .suffix = { "Именное, Saint_madman" }
 
-ent-ADTClothingOuterCoatSaintMadman = пальто Via-Deus
-    .desc = Черно-красное пальто компании Via-Deus.
-    .suffix = { "Спонсорское, Saint_madman" }
+ent-ADTClothingNeckSaintMadmanMantle = наплечная мантия аристократа
+    .desc = Белая торжественная мантия аристократа. Знак чистой крови.
+    .suffix = { "Именное, Saint_madman" }
 
-ent-ADTClothingOuterCoatViaDeus = торжественное пальто Via-Deus
-    .desc = Пальто для важных персон VD.
-    .suffix = { "Спонсорское, Saint_madman" }
-
-ent-ClothingHeadHatSaintMadmanthingy = монокль
-    .desc = Выглядит довольно элитно.
-    .suffix = { "Спонсорское, Saint_madman" }
+ent-ADTClothingOuterCoatSaintMadman = пальто аристократа
+    .desc = Белое торжественное пальто аристократа. 
+    .suffix = { "Именное, Saint_madman" }
 
 ent-ADTWhistleKringe = "Молящиеся руки"
     .desc = Свисток из неизвестного материала в виде молящихся рук.
@@ -760,8 +756,28 @@ ent-ADTClothingUniformGothic = готическое платье
     .suffix = { "Спонсорское, Faust Netzach" }
 
 ent-ADTClothingHandsCuffsFaust = бархатные манжеты
-    .desc = Специальные манжеты, сжитые из бархатной ткани для какой-то особы королевских кровей. От них пахнет цветами.
+    .desc = Специальные манжеты, сшитые из бархатной ткани для какой-то особы королевских кровей. От них пахнет цветами.
     .suffix = { "Спонсорское, Faust Netzach" }
+
+ent-ADTClothingBeltFaustSheath = ножны для капитанского кортика
+    .desc = Ножны для капитанского кортика из черной кожи, с большим количеством позолоты.
+    .suffix = { "Спонсорское, Faust Netzach" }
+
+ent-ADTFaustDirk = капитанский кортик
+    .desc = Короткий вариант капитанского холодного оружия - сделанный по образцу кортиков моряков из далекого прошлого.
+    .suffix = { "Спонсорское, Faust Netzach" }
+
+ent-ADTClothingHeadHatsFaustCap = гвардейская фуражка
+    .desc = Несмотря на то, что выглядит она достаточно угрожающе, на деле, она принадлежит вполне обычной даме.
+    .suffix = { "Спонсорское, Faust Netzach" }
+
+ent-ADTDrinkFlecheCan = банка Flèche
+    .desc = Освежающее кофе в баночке!
+    .suffix = { "Спонсорское, Faust Netzach" }
+
+fleche-name = Flèche
+fleche-desc = Освежающая жидкость. Выглядит, как растворённое кофе в молоке. Туда инстинктивно хочется закинуть льда. 
+reagent-physical-desc-whitecoffee = кофейно-белое
 
 ent-ADTClothingUniformKimerK = фиолетовый костюм
     .desc = Лёгкая классическая рубашка с галстуком в нежных тонах, дополненная жилетом на пуговицах с V-образным вырезом.
@@ -782,3 +798,15 @@ ent-ADTGoldPlatedDrinkJigger = джиггер с позолотой
 ent-ADTPremiumCaseKimerk = премиальный кейс
     .desc = Роскошный кейс из экзотической кожи, отделанный изнутри красным бархатом с отделениями для каждого инструмента. На крышке видна аккуратная гравюра "Sternenflug", выполненная каллиграфическим почерком.
     .suffix = { "Спонсорское, kimer_k" }
+
+ent-ADTClothingUniformWCTR829 = комбинезон радиотехника
+    .desc = Комбинезон глубокого антрацитового цвета, с белыми вставками на груди, плечах и предплечьях, подчёркивающими строгий технический силуэт.
+    .suffix = { "Спонсорское, WCTR829" }
+
+ent-ADTClothingHandsPangaariBracelet = браслет из синего бисера
+    .desc = Браслет из бисера на прочной леске. Явно выполнен вручную с особой аккуратностью. Чередование обычного и длинного бисера синего цвета складывается в некое послание на азбуке Морзе.
+    .suffix = { "Спонсорское, Pangaari" }
+
+ent-ADTClothingHandsKiwiFruitBracelet = браслет из зелёного бисера
+    .desc = Браслет из бисера на прочной леске. Явно выполнен вручную, и пускай не очень умело, но старательно. Чередование обычного и длинного бисера зелёного цвета складывается в некое послание на азбуке Морзе.
+    .suffix = { "Спонсорское, kiwi_fruit" }

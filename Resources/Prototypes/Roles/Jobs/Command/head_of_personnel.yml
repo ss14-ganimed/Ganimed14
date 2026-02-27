@@ -21,13 +21,13 @@
 #      department: Cargo
 #      time: 18000 #5 hrs # Ganimed-RoleTime
     - !type:OverallPlaytimeRequirement
-      time: 180000 #50 hrs # Corvax-RoleTime
+      time: 50h # Corvax-RoleTime
     - !type:DepartmentTimeRequirement
       department: Command
-      time: 54000 #15 hrs Ganimed-RoleTime
+      time: 15h # Ganimed-RoleTime
     - !type:DepartmentTimeRequirement
       department: Civilian
-      time: 36000 #10 hrs Ganimed-RoleTime
+      time: 10h # Ganimed-RoleTime
 #       ADT tweak start
     - !type:SpeciesRequirement
       inverted: true
@@ -84,8 +84,9 @@
     id: HoPPDA
     gloves: ClothingHandsGlovesHop
     # ears: ClothingHeadsetAltCommand # ADT tweak
-    # belt: BoxFolderClipboard # Ganimed-Loadouts-Remove (Loadout choice)
-#  storage: # Ganimed-Loadouts
+    # belt: BoxFolderClipboardThreePapers # Ganimed-Loadouts-Remove (Loadout choice)
+    # eyes: ClothingEyesHudCommand # Ganimed-Loadouts-Remove (Loadout choice)
+#  storage: # Ganimed-Loadouts-Remove (Loadout choice)
 #    back:
 #    - Flash
 #    - ADTtelescopicBaton #ADT-CustomADTLoadout

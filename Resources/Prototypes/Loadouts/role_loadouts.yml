@@ -20,6 +20,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - CaptainJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -46,6 +47,7 @@
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Survival
   - Trinkets
+  - HoPJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -88,6 +90,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - PassengerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -111,6 +114,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - BartenderJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -132,6 +136,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ServiceWorkerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -150,6 +155,7 @@
   - ChefGlasses # Ganimed-Loadouts-Edit (Glasses)
   - ChefShoes # Ganimed-Loadouts-Add
   # ADT-Tweak-Start
+  - ADTChefPocket1
   - ADTChefPDA
   # ADT-Tweak-End
   # ADT underwear tweak start
@@ -159,6 +165,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ChefJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -179,6 +186,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - LibrarianJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -201,6 +209,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - LawyerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -227,6 +236,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ChaplainJobTrinkets
   - GroupSpeciesBreathTool
   # ADT chaplain update
   # - ADTChaplainBelt # Ganimed-Loadouts-Remove (Vanilla ChaplainBible)
@@ -251,7 +261,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
-  - JanitorPlunger
+  - JanitorJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -275,6 +285,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - BotanistJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -303,6 +314,7 @@
   - TheatricalAttire # Ganimed-Loadouts-Add
   - SurvivalClown
   - Trinkets
+  - ClownJobTrinkets
   - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
@@ -326,10 +338,12 @@
   # ADT underwear tweak end
   - SurvivalMime
   - Trinkets
+  - MimeJobTrinkets
   - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
   id: JobMusician
+  canCustomizeName: true
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
@@ -346,6 +360,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - MusicianJobTrinkets
   - Instruments
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -374,6 +389,7 @@
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Survival
   - Trinkets
+  - QuartermasterJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -388,6 +404,7 @@
   - CargoTechnicianOuterClothing
   - CargoBelt # Ganimed-Loadouts-Add
   - CargoTechnicianShoes
+  # - CargoTechnicianID # ADT tweak - убрал, чтобы не было дубляжа с КПК
   - Glasses
   - ADTCargoPDA # ADT tweak
   # ADT underwear tweak start
@@ -397,6 +414,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - CargoTechnicianJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -406,7 +424,10 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - SalvageSpecialistHead # Ganimed-Loadouts-Add
-  - ADTSalvageSpecialistJumpsuit #ADT Loadouts
+    #ADT Loadouts Start
+  - ADTSalvageSpecialistJumpsuit
+  - ADTSalvageSpecialistNeck
+    #ADT Loadouts End
   - SalvageSpecialistBackpack
   - ADTSalvageSpecialistEars # ADT tweak
   - SalvageSpecialistOuterClothing
@@ -422,6 +443,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - SalvageSpecialistJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -449,6 +471,7 @@
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - SurvivalExtended
   - Trinkets
+  - ChiefEngineerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -467,6 +490,7 @@
   # ADT underwear tweak end
   - SurvivalExtended
   - Trinkets
+  - TechnicalAssistantJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -490,6 +514,7 @@
   # ADT underwear tweak end
   - SurvivalExtended
   - Trinkets
+  - StationEngineerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -515,6 +540,7 @@
   # ADT underwear tweak end
   - SurvivalExtended
   - Trinkets
+  - AtmosphericTechnicianJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -543,6 +569,7 @@
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Survival
   - Trinkets
+  - ResearchDirectorJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -567,6 +594,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ScientistJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -585,6 +613,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ResearchAssistantJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -610,6 +639,7 @@
   - SurvivalSecurity
   - Trinkets
   # - SecurityStar #ADT_Tweak - закомментил это издевательство
+  - HeadofSecurityJobTrinkets
   - GroupSpeciesBreathToolSecurity
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -632,6 +662,7 @@
   # ADT underwear tweak end
   - SurvivalSecurity
   - Trinkets
+  - WardenJobTrinkets
   # - SecurityStar #ADT_Tweak - закомментил это издевательство
   - GroupSpeciesBreathToolSecurity
   - SpareClothing # Ganimed-Loadouts-Add
@@ -656,6 +687,7 @@
   # ADT underwear tweak end
   - SurvivalSecurity
   - Trinkets
+  - SecurityJobTrinkets
   # - SecurityStar #ADT_Tweak - закомментил это издевательство
   - GroupSpeciesBreathToolSecurity
   - SpareClothing # Ganimed-Loadouts-Add
@@ -681,6 +713,7 @@
   # ADT underwear tweak end
   - SurvivalSecurity
   - Trinkets
+  - DetectiveJobTrinkets
   # - SecurityStar #ADT_Tweak - закомментил это издевательство
   - GroupSpeciesBreathToolSecurity
   - SpareClothing # Ganimed-Loadouts-Add
@@ -694,6 +727,7 @@
   - SecurityBackpack
   - SurvivalSecurity
   - Trinkets
+  - SecurityCadetJobTrinkets
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
@@ -728,6 +762,7 @@
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - SurvivalMedical
   - Trinkets
+  - ChiefMedicalOfficerJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -754,6 +789,7 @@
   # ADT underwear tweak end
   - SurvivalMedical
   - Trinkets
+  - MedicalDoctorJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -774,6 +810,7 @@
   # ADT underwear tweak end
   - SurvivalMedical
   - Trinkets
+  - MedicalInternJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -797,6 +834,7 @@
   # ADT underwear tweak end
   - SurvivalMedical
   - Trinkets
+  - ChemistJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -824,6 +862,7 @@
   # ADT underwear tweak end
   - SurvivalMedical
   - Trinkets
+  - ParamedicJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -843,6 +882,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ZookeeperJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -862,6 +902,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ReporterJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -882,6 +923,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - PsychologistJobTrinkets
   - GroupSpeciesBreathToolMedical # Ganimed-Loadouts-Edit (GroupSpeciesBreathTool)
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -903,6 +945,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - BoxerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 

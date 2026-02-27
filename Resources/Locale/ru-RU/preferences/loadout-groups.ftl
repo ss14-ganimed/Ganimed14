@@ -1,7 +1,8 @@
-# Errors
+﻿# Errors
 loadout-group-species-restriction = Этот предмет недоступен для вашего текущего вида.
 # Miscellaneous
 loadout-group-trinkets = Безделушки
+loadout-group-jobtrinkets = Безделушки должности
 loadout-group-glasses = Очки
 loadout-group-backpack = Рюкзак
 loadout-group-instruments = Инструменты
@@ -38,6 +39,7 @@ loadout-group-passenger-neck = Шея пассажира
 loadout-group-bartender-head = Головной убор бармена
 loadout-group-bartender-jumpsuit = Униформа бармена
 loadout-group-bartender-outerclothing = Верхняя одежда бармена
+loadout-group-bartender-shaker = Шейкер бармена
 loadout-group-chef-head = Поварской колпак
 loadout-group-chef-mask = Маска шеф-повара
 loadout-group-chef-jumpsuit = Форма шеф-повара
@@ -85,6 +87,7 @@ loadout-group-cargo-technician-jumpsuit = Комбинезон грузчика
 loadout-group-cargo-technician-backpack = Рюкзак грузчика
 loadout-group-cargo-technician-outerclothing = Верхняя одежда грузчика
 loadout-group-cargo-technician-shoes = Обувь грузчика
+loadout-group-cargo-technician-id = ID грузчика
 loadout-group-salvage-specialist-backpack = Рюкзак утилизатора
 loadout-group-salvage-specialist-outerclothing = Верхняя одежда утилизатора
 loadout-group-salvage-specialist-shoes = Обувь утилизатора

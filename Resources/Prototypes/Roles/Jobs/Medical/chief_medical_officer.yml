@@ -9,15 +9,15 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobChemist
-      time: 21600 #6 hrs Ganimed-RoleTime
+      time: 6h # Ganimed-RoleTime
     - !type:RoleTimeRequirement
       role: JobMedicalDoctor
-      time: 21600 #6 hrs Ganimed-RoleTime
+      time: 6h # animed-RoleTime
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 72000 #20 hrs Ganimed-RoleTime
+      time: 20h # Ganimed-RoleTime
     - !type:OverallPlaytimeRequirement
-      time: 144000 #40 hrs Ganimed-RoleTime
+      time: 40h # Ganimed-RoleTime
     - !type:AgeRequirement # Ganimed-MRP
       requiredAge: 21
   weight: 10

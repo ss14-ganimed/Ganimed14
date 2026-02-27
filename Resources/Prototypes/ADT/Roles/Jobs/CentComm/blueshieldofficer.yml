@@ -21,6 +21,7 @@
       species:
       - Resomi
       - Vox
+      - Shadekin
   # ADT RESTRICT End
     - !type:TraitsRequirement # Ganimed-MRP: BSO undergoes medical examination
       inverted: true

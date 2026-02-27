@@ -6,14 +6,17 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 54000 #15 hrs Ganimed-RoleTime
+    time: 15h # Ganimed-RoleTime
   # ADT Restrict Start
   - !type:SpeciesRequirement
     inverted: true
     species:
     - Resomi
     - Vox
-#    - Shadekin
+  - !type:TraitsRequirement #Corvax-TraitsRequirement
+      inverted: true
+      traits:
+      - Muted
   # ADT RESTRICT End
   startingGear: DetectiveGear
   icon: "JobIconDetective"
@@ -23,10 +26,11 @@
   - Security
   - Brig
   - Maintenance
-  - Service
   - Detective
   - Cryogenics
   - External
+  - GenpopEnter
+  - GenpopLeave
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
