@@ -31549,7 +31549,7 @@ entities:
       pos: 62.721912,-22.515388
       parent: 2
     missingComponents:
-    - OnUseTimerTrigger
+    - TimerTrigger
     - DeviceLinkSink
     - Explosive
     - ExplodeOnTrigger
@@ -105211,7 +105211,7 @@ entities:
     - type: Transform
       pos: -38.53804,46.46303
       parent: 2
-    - type: Food
+    - type: Edible
       transferAmount: 5
     - type: RadiationSource
       intensity: 2

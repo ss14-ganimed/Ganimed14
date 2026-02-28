@@ -43,7 +43,7 @@
 - type: loadout
   id: SponsorLoadoutHaloShivterBeeModsuit
   equipment:
-    outerClothing: ClothingModsuitBackBee
+    back: ClothingModsuitBackBee
   effects:
     - !type:SponsorLoadoutEffect
       tier: 3

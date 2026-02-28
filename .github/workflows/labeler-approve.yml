@@ -1,4 +1,4 @@
-﻿name: "Labels: Approve"
+name: "Labels: Approve"
 
 on:
   pull_request_review:
@@ -16,8 +16,15 @@ jobs:
     if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions-ecosystem/action-remove-labels@v1
-      with:
-        labels: |
-          S: Needs Review
-          S: Awaiting Changes
+      - name: Remove labels
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: |
+            S: Needs Review
+            S: Awaiting Changes
+
+      - name: Add "Approved" label
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: "S: Approved"
+          github_token: ${{ secrets.GITHUB_TOKEN }}

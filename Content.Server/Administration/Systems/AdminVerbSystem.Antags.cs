@@ -1,3 +1,4 @@
+using Content.Server._Harmony.GameTicking.Rules.Components; // Harmony conspirators add
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
@@ -28,12 +29,10 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultNukeOpRule = "LoneOpsSpawn";
     private static readonly EntProtoId DefaultRevsRule = "Revolutionary";
     private static readonly EntProtoId DefaultThiefRule = "Thief";
-    private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
-
+    private static readonly EntProtoId DefaultChangelingRule = "ChangelingGameRule";
+    private static readonly EntProtoId DefaultConspiratorRule = "Conspirators"; // Harmony conspirators add
     private static readonly EntProtoId ParadoxCloneRuleId = "ParadoxCloneSpawn";
-    // ADT-Changeling-Tweak-Start
-    private readonly EntProtoId DefaultChangelingRule = "ChangelingGameRule";
-    // ADT-Changeling-Tweak-End
+    private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
 
 
     // All antag verbs have names so invokeverb works.
@@ -63,7 +62,7 @@ public sealed partial class AdminVerbSystem
                 _antag.ForceMakeAntag<TraitorRuleComponent>(targetPlayer, DefaultTraitorRule);
             },
             Impact = LogImpact.High,
-            Message = string.Join(": ", traitorName,  Loc.GetString("admin-verb-make-traitor")),
+            Message = string.Join(": ", traitorName, Loc.GetString("admin-verb-make-traitor")),
         };
         args.Verbs.Add(traitor);
 
@@ -229,5 +228,22 @@ public sealed partial class AdminVerbSystem
 
         if (HasComp<HumanoidAppearanceComponent>(args.Target)) // only humanoids can be cloned
             args.Verbs.Add(paradox);
+
+        // Harmony conspirators add start
+        var conspiratorName = Loc.GetString("admin-verb-text-make-conspirator");
+        Verb conspirator = new()
+        {
+            Text = conspiratorName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/_Harmony/Interface/Misc/job_icons.rsi"), "Conspirator"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<ConspiratorRuleComponent>(targetPlayer, DefaultConspiratorRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", conspiratorName, Loc.GetString("admin-verb-make-conspirator")),
+        };
+        args.Verbs.Add(conspirator);
+        // Harmony conspirators add end
     }
 }
