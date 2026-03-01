@@ -57,13 +57,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Command
-        time: 36000 # 10 hrs Ganimed-RoleTime
-      - !type:DepartmentTimeRequirement
-        department: Security
-        time: 18000 # 5 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTLeaderGear ]
     - type: RandomMetadata
@@ -82,13 +75,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Command
-        time: 36000 # 10 hrs Ganimed-RoleTime
-      - !type:DepartmentTimeRequirement
-        department: Security
-        time: 18000 # 5 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTLeaderGearEVA ]
 
@@ -114,13 +100,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Command
-        time: 36000 # 10 hrs Ganimed-RoleTime
-      - !type:DepartmentTimeRequirement
-        department: Security
-        time: 18000 # 5 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTLeaderGearEVARiot ]
 
@@ -172,9 +151,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 36000 # 10h Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
       - NamesFirstMilitaryNTPrivates # Ganimed edit (NamesFirstERTEngineer)
@@ -205,9 +181,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 36000 # 10h Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTJanitorGearEVA ]
 
@@ -233,9 +206,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:OverallPlaytimeRequirement
-        time: 36000 # 10h Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTJanitorGearEVARiot ]
 
@@ -287,10 +257,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Engineering
-        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
       - NamesFirstMilitaryNTSpecialistCorporals # Ganimed edit (NamesFirstERTEngineer)
@@ -321,10 +287,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Engineering
-        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTEngineerGearEVA ]
 
@@ -350,10 +312,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Engineering
-        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTEngineerGearEVARiot ]
 
@@ -405,10 +363,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Security
-        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
       - NamesFirstMilitaryNTSergeants # Ganimed edit (NamesFirstERTMilitary)
@@ -439,10 +393,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Security
-        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTSecurityGearEVA ]
 
@@ -464,10 +414,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Security
-        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [  ADTERTSecurityGearEVARiot ]
 
@@ -519,10 +465,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Medical
-        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: RandomMetadata
       nameSegments:
       - NamesFirstMilitaryNTSpecialistCorporals # Ganimed edit (NamesFirstERTMedical)
@@ -553,10 +495,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Medical
-        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTMedicalGearEVA ]
 
@@ -582,10 +520,6 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Medical
-        time: 36000 # 10 hrs Ganimed-RoleTime
     - type: Loadout
       prototypes: [ ADTERTMedicalGearEVARiot ]
 
@@ -634,17 +568,6 @@
       description: ghost-role-information-cmnd-cburn-agent-description
       raffle:
         settings: short
-      # ADT-tweak-start
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Medical
-        time: 18000 # 5h
-      - !type:DepartmentTimeRequirement
-        department: Security
-        time: 36000 # 10h
-      - !type:OverallPlaytimeRequirement
-        time: 90000 # ADT tweak 10h > 25h
-      # ADT-Tweak-end
     - type: GhostTakeoverAvailable
     - type: RandomMetadata
       nameSegments:
@@ -930,7 +853,7 @@
     - BoxSurvivalNitrogen
     - ChemistryBottleNocturine
     - ChemistryBottleNocturine
-  
+
 - type: entity
   name: ADTMobIanHero-name
   parent: MobHuman
@@ -989,7 +912,7 @@
     prototypes: [ADTRoleMobEvilBotGear]
   - type: TTS
     voice: sentrybot
-    
+
 
 - type: startingGear
   id: ADTRoleMobEvilBotGear

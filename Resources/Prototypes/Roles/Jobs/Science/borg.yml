@@ -8,7 +8,7 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: Silicon
-    time: 54000 # 15 hrs Ganimed-RoleTime
+    time: 10h # Ganimed-RoleTime
   canBeAntag: false
   icon: JobIconStationAi
   supervisors: job-supervisors-rd
@@ -28,7 +28,7 @@
   playTimeTracker: JobBorg
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 72000 # 20 hrs Ganimed-RoleTime
+      time: 20h # Ganimed-RoleTime
   canBeAntag: false
   icon: JobIconBorg
   supervisors: job-supervisors-rd

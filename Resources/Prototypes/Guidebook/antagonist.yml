@@ -11,6 +11,7 @@
   - SpaceNinja
   - Wizard
   - Zombies
+  - Xenoborgs
   - Conspirators # Harmony-Conspirators-Add
   - MinorAntagonists
 
@@ -53,3 +54,8 @@
   id: Wizard
   name: guide-entry-wizard
   text: "/ServerInfo/Guidebook/Antagonist/Wizard.xml"
+
+- type: guideEntry
+  id: Xenoborgs
+  name: guide-entry-xenoborgs
+  text: "/ServerInfo/Guidebook/Antagonist/Xenoborgs.xml"

@@ -5,7 +5,7 @@
   playTimeTracker: JobSecurityCadet
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 36000 #10 hrs Ganimed-RoleTime
+      time: 10h # Ganimed-RoleTime
 #    - !type:DepartmentTimeRequirement
 #      department: Security
 #      time: 72000 #20 hrs # Corvax-RoleTime
@@ -33,6 +33,8 @@
   - Service
   - External
   - Cryogenics
+  - GenpopEnter
+  - GenpopLeave
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

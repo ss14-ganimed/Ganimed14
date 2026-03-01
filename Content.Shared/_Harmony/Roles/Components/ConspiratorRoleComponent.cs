@@ -1,4 +1,4 @@
-using Content.Shared.Roles; // should be changed to Content.Shared.Roles.Components with the merge of #39606
+using Content.Shared.Roles.Components;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._Harmony.Roles.Components;
