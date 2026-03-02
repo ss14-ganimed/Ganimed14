@@ -254,6 +254,8 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
 
             _deviceNetworkSystem.QueuePacket(shuttle, null, payload, net.TransmitFrequency);
         }
+
+        _roundEnd.EndRound(countdownTime);
     }
 
     /// <summary>
