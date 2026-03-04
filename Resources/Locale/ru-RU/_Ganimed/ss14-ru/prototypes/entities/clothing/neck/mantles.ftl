@@ -2,7 +2,7 @@ ent-ClothingNeckMantleCaptainWhite = белая мантия капитана
     .desc = Мантия капитана, с белым пухом.
 
 ent-ClothingNeckMantleBridgeOfficer = мантия офицера командования
-    .desc = Элегантная мантия в черных цветах.
+    .desc = Элегантная мантия в чёрных цветах.
 
 ent-ClothingNeckMantleOld = старая накидка
     .desc = Изношенная тканевая обёртка, выцветшая с годами. Слабо пахнет сигарами.
