@@ -255,7 +255,7 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
             _deviceNetworkSystem.QueuePacket(shuttle, null, payload, net.TransmitFrequency);
         }
 
-        _roundEnd.EndRound(countdownTime);
+        _roundEnd.EndRound(countdownTime); // Ganimed-Add: Fix round not ending
     }
 
     /// <summary>
