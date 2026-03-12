@@ -90,6 +90,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - PassengerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -114,6 +115,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - BartenderJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -136,6 +138,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - ServiceWorkerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -165,6 +168,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - ChefJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -186,6 +190,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - LibrarianJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -209,6 +214,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - LawyerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -236,6 +242,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - ChaplainJobTrinkets
   - GroupSpeciesBreathTool
   # ADT chaplain update
@@ -261,6 +268,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - JanitorJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -285,6 +293,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - BotanistJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -314,6 +323,7 @@
   - TheatricalAttire # Ganimed-Loadouts-Add
   - SurvivalClown
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - ClownJobTrinkets
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -338,6 +348,7 @@
   # ADT underwear tweak end
   - SurvivalMime
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - MimeJobTrinkets
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -360,6 +371,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - MusicianJobTrinkets
   - Instruments
   - GroupSpeciesBreathTool
@@ -414,6 +426,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - CargoTechnicianJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -443,6 +456,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - SalvageSpecialistJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -490,6 +504,7 @@
   # ADT underwear tweak end
   - SurvivalExtended
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - TechnicalAssistantJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -514,6 +529,7 @@
   # ADT underwear tweak end
   - SurvivalExtended
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - StationEngineerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -540,6 +556,7 @@
   # ADT underwear tweak end
   - SurvivalExtended
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - AtmosphericTechnicianJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -594,6 +611,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - ScientistJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -613,6 +631,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - ResearchAssistantJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -789,6 +808,7 @@
   # ADT underwear tweak end
   - SurvivalMedical
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - MedicalDoctorJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
@@ -810,6 +830,7 @@
   # ADT underwear tweak end
   - SurvivalMedical
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - MedicalInternJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
@@ -834,6 +855,7 @@
   # ADT underwear tweak end
   - SurvivalMedical
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - ChemistJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
@@ -862,6 +884,7 @@
   # ADT underwear tweak end
   - SurvivalMedical
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - ParamedicJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
@@ -882,6 +905,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - ZookeeperJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -902,6 +926,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - ReporterJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -923,6 +948,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - PsychologistJobTrinkets
   - GroupSpeciesBreathToolMedical # Ganimed-Loadouts-Edit (GroupSpeciesBreathTool)
   - SpareClothing # Ganimed-Loadouts-Add
@@ -945,6 +971,7 @@
   # ADT underwear tweak end
   - Survival
   - Trinkets
+  - ADTSprayPaints # ADT-Tweak
   - BoxerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add

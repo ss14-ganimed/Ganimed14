@@ -49,7 +49,7 @@
   id: QuartermasterGear
   equipment:
     # id: QuartermasterPDA # ADT: different PDAs in loadouts
-    # ears: ClothingHeadsetQM # ADT tweak
+    # ears: ClothingHeadsetQM # ADT tweak - выдаются через loadout ADTQuartermasterEars
     # belt: BoxFolderClipboardThreePapers # Ganimed-Loadouts-Remove (Loadout choice)
     pocket1: AppraisalTool
 #  storage: # Ganimed-Loadouts-Remove (Loadout choice)
