@@ -75,12 +75,9 @@
       rules: ghost-role-information-Death-Squad-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Security
-        time: 36000 # 10 hrs Ganimed-RoleTime
       mindRoles:
       - MindRoleGhostRoleFamiliar
+      job: DeathSquad
     - type: Loadout
       prototypes: [ DeathSquadGear ]
       roleLoadout: [ RoleSurvivalEVA ]
@@ -553,13 +550,7 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Medical
-        time: 18000 # 5 hrs Ganimed-RoleTime
-      - !type:DepartmentTimeRequirement
-        department: Security
-        time: 18000 # 5 hrs Ganimed-RoleTime
+      job: CBURN
     - type: RandomMetadata
       nameSegments:
       - NamesFirstMilitaryNTSergeants # Ganimed edit (ADTNamesFirstMilitaryRXBZZ (OH GOD, WTF IS RXBZZ))
@@ -607,10 +598,7 @@
       rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: default
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Command
-        time: 90000 # 25 hrs Ganimed-RoleTime
+      job: CentralCommandOfficial
     - type: Loadout
       prototypes: [ CentcomGear ]
       roleLoadout: [ RoleSurvivalStandard ]

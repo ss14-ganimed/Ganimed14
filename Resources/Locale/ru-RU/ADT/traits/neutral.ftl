@@ -10,11 +10,30 @@ trait-moth-accent-desc = Ваша несомненная любовь к мол�
 trait-nya-accent-name = Ня-кцент
 trait-nya-accent-desc = Кажется на вас нашло мря-гкое голово-муууррр-жение.
 
+trait-sick-teeth-accent-name = Зубной дефект
+trait-sick-teeth-accent-desc = Проблемы с зубами меняют вашу речь: некоторые согласные звучат иначе.
+
+trait-burriness-accent-name = Картавость
+trait-burriness-accent-desc = Вы не умеете выговаххивать букву "Р" ;w;
+
+
+
 trait-tall-name = Высокий
 trait-tall-desc = Вы выше других представителей своего вида.
 
 trait-short-name = Низкий
 trait-short-desc = Вы ниже других представителей своего вида.
 
-trait-sick-teeth-accent-name = Зубной дефект
-trait-sick-teeth-accent-desc = Проблемы с зубами меняют вашу речь: некоторые согласные звучат иначе.
+
+
+trait-echolalia-name = Эхолалия
+trait-echolalia-desc = Вы неконтролируемо повторяете слова, фразы, звуки или интонации, услышанные от других людей.
+
+trait-dysgraphia-name = Дисграфия
+trait-dysgraphia-desc = Вы не способны излагать свои мысли в письменном виде.
+
+trait-hushed-name = Тихий
+trait-hushed-desc = Ваш голос не способен стать громче шёпота.
+
+trait-pseudobulbar-affect-name = Псевдобульбарный аффект
+trait-pseudobulbar-affect-desc = Неврологическое расстройство из-за которого у вашего персонажа неконтролируемые приступы эмоций, как в речи так и в невербальном поведении.

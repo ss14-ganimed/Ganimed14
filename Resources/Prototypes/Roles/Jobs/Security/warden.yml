@@ -9,8 +9,7 @@
       time: 36000 #10 hrs
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 90000 #25 hrs Ganimed-RoleTime
-  # ADT Restrict Start
+      time: 25h #  Ganimed-RoleTime
     - !type:SpeciesRequirement
       inverted: true
       species:
@@ -29,10 +28,11 @@
   - Brig
   - Armory
   - Maintenance
-  - Service
   - External
   - Detective
   - Cryogenics
+  - GenpopEnter
+  - GenpopLeave
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

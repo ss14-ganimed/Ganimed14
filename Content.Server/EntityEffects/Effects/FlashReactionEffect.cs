@@ -1,10 +1,11 @@
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Content.Shared.EntityEffects;
 
 namespace Content.Shared.EntityEffects.Effects;
 
 [DataDefinition]
-public sealed partial class FlashReactionEffect : EventEntityEffect<FlashReactionEffect>
+public sealed partial class FlashReactionEffect : EntityEffectBase<FlashReactionEffect>
 {
     /// <summary>
     ///     Flash range per unit of reagent.
@@ -43,6 +44,6 @@ public sealed partial class FlashReactionEffect : EventEntityEffect<FlashReactio
     [DataField]
     public SoundSpecifier? Sound = new SoundPathSpecifier("/Audio/Weapons/flash.ogg");
 
-    protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => Loc.GetString("reagent-effect-guidebook-flash-reaction-effect", ("chance", Probability));
 }

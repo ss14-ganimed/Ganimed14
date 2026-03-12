@@ -78,22 +78,15 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
 
         var isExpired = info.ExpireDate.ToLocalTime() <= DateTime.Now;
 
-        if (isExpired && info.AllowJob)
+        // Ganimed-Sponsors start
+        if (isExpired)
         {
-            info = new SponsorInfo
-            {
-                CharacterName = info.CharacterName,
-                Tier = null,
-                OOCColor = null,
-                HavePriorityJoin = false,
-                ExtraSlots = 0,
-                AllowedMarkings = Array.Empty<string>(),
-                ExpireDate = info.ExpireDate,
-                AllowJob = true
-            };
+            _cachedSponsors.Remove(e.UserId);
+            return;
+        // Ganimed-Sponsors end
         }
 
-        else if (isExpired || info.Tier == null)
+        if (info.Tier == null)
         {
             _cachedSponsors.Remove(e.UserId);
             return;

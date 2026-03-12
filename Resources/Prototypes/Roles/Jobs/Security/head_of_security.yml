@@ -7,18 +7,18 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobWarden
-      time: 36000 #10 hrs Ganimed-RoleTime
+      time: 10h # Ganimed-RoleTime
     - !type:RoleTimeRequirement
       role: JobDetective
-      time: 3600 #1 hr, knowing how to use the tools is important
+      time: 1h # knowing how to use the tools is important
     - !type:RoleTimeRequirement
       role: JobSecurityOfficer
-      time: 54000 #15 hrs Ganimed-RoleTime
+      time: 15h # Ganimed-RoleTime
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 108000 #30 hrs Ganimed-RoleTime
+      time: 30h # Ganimed-RoleTime
     - !type:OverallPlaytimeRequirement
-      time: 180000 #50 hrs Ganimed-RoleTime
+      time: 50h # Ganimed-RoleTime
     - !type:TraitsRequirement # Ganimed-MRP: HoS undergoes medical examination
       inverted: true
       traits:
@@ -48,7 +48,6 @@
   - Security
   - Armory
   - Maintenance
-  - Service
   - External
   - Detective
   - Cryogenics
