@@ -12,6 +12,7 @@ using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
+using Content.Shared.Roles;
 using JetBrains.Annotations;
 using Prometheus;
 using Robust.Shared.Asynchronous;
@@ -636,8 +637,26 @@ namespace Content.Server.GameTicking
                         ? roles.First(role => role.Antagonist).Name
                         : roles.FirstOrDefault().Name ?? Loc.GetString("game-ticker-unknown-role"),
                     Antag = antag,
-                    JobPrototypes = roles.Where(role => !role.Antagonist).Select(role => role.Name).ToArray(), // Ganimed edit
-                    AntagPrototypes = roles.Where(role => role.Antagonist).Select(role => role.Name).ToArray(), // Ganimed edit
+                    // Ganimed edit start
+                    JobPrototypes = roles
+                        .Where(role => !role.Antagonist)
+                        .Select(role =>
+                        {
+                            if (_prototypeManager.TryIndex<JobPrototype>(role.Prototype, out var jobProto))
+                                return jobProto.Name;
+                            return role.Prototype;
+                        })
+                        .ToArray(),
+                    AntagPrototypes = roles
+                        .Where(role => role.Antagonist)
+                        .Select(role =>
+                        {
+                            if (_prototypeManager.TryIndex<AntagPrototype>(role.Prototype, out var antagProto))
+                                return antagProto.Name;
+                            return role.Prototype;
+                        })
+                        .ToArray(),
+                    // Ganimed edit end
                     Observer = observer,
                     Connected = connected,
                     // ADT-tweak-start: manifest
