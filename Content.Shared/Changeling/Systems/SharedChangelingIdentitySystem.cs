@@ -64,7 +64,7 @@ public abstract class SharedChangelingIdentitySystem : EntitySystem
     {
         // The last stored identity is being deleted, we can clean up the map.
         if (_net.IsServer && PausedMapId != null && Count<ChangelingStoredIdentityComponent>() <= 1)
-            _map.DeleteMap(PausedMapId.Value);
+            _map.QueueDeleteMap(PausedMapId.Value);
     }
 
     /// <summary>
