@@ -395,9 +395,6 @@ public abstract partial class SharedStationAiSystem : EntitySystem
     // Ganimed-Add-Start
     private void OnExamined(EntityUid uid, StationAiWhitelistComponent component, ExaminedEvent args)
     {
-        if (!component.Enabled)
-            return;
-
         args.PushMarkup(Loc.GetString("station-ai-whitelist-examine"));
     }
     // Ganimed-Add-End
