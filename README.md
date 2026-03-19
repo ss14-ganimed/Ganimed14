@@ -24,11 +24,11 @@
 
 **Space Station 14** — это захватывающая ролевая игра, вдохновлённая культовой Space Station 13.
 Погрузитесь в атмосферу космической станции, где каждое ваше действие может привести к неожиданным последствиям.
-Наш проект предлагает:
-
 - Уникальный геймплей, поддерживаемый целым рядом сообществ.
 - Интенсивное взаимодействие игроков в замкнутом пространстве станции.
 - Постоянное развитие благодаря движку [Robust Toolbox](https://github.com/space-wizards/RobustToolbox), написанный на C#.
+
+**Enterprise** (ранее Ганимед) — это игровой проект небольшого сообщества энтузиастов, что стремится поддерживать повышенный уровень ролевого отыгрыша через внутриигровые инструменты и механики, фокусируясь на неожиданном веселье, интересном повествовании, сюжете и атмосферности. Здесь каждый раунд становится интересной историей.
 
 ---
 
@@ -55,10 +55,19 @@
 
 ---
 
+## Контрибьют
+
+Мы рады принять вклад от любого человека. Заходите в [Discord](https://discord.com/invite/nCn5F3kNyH), если хотите помочь. У нас есть [список проблем](https://github.com/ss14-ganimed/Ganimed14/issues), которые нужно решить, и любой может за них взяться. Не бойтесь просить о помощи!
+Только убедитесь, что ваши изменения и PRы соответствуют [руководству по контрибьюту](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html).
+
+---
+
 ## Лицензия
 
-Большинство ресурсов лицензированы по [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. У ресурсов есть собственная лицензия и информация об авторском праве в метаданных файла. [Пример](https://github.com/AdventureTimeSS14/space_station_ADT/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
+Содержимое, добавленное в этот репозиторий **после** коммита ec1ea3b4a902ba253994b19f228af277dbd34f4e (`2 августа 2024 08:50:00 UTC`), распространяется по лицензии **GNU Affero General Public License версии 3.0**, если не указано иное. См. [LICENSE-AGPLv3](https://github.com/ss14-ganimed/Ganimed14/blob/master/LICENSE-AGPLv3.txt).
 
-Большинство ассетов лицензированы под [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. Ассеты имеют свою лицензию и авторские права в файле метаданных. [Пример](https://github.com/space-syndicate/space-station-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
+Содержимое, добавленное в этот репозиторий **до** коммита ec1ea3b4a902ba253994b19f228af277dbd34f4e (`2 августа 2024 08:50:00 UTC`), распространяется по лицензии **MIT** если не указано иное. См. [LICENSE](https://github.com/ss14-ganimed/Ganimed14/blob/master/LICENSE.TXT).
+
+Большинство ассетов лицензированы под [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. Ассеты имеют свою лицензию и информацию об авторском праве в файле метаданных. [Пример](https://github.com/ss14-ganimed/Ganimed14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
 
 Обратите внимание, что некоторые ассеты лицензированы на некоммерческой основе [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) или аналогичной некоммерческой лицензией, и их необходимо удалить, если вы хотите использовать этот проект в коммерческих целях.
