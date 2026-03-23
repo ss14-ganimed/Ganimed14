@@ -101,7 +101,10 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         // Ganimed sponsor end
 
         // Get all loadout prototypes for this group.
-        var validProtos = groupLoadouts.Select(id => protoMan.Index(id)); // Ganimed sponsor
+        var validProtos = groupLoadouts
+            .Where(id => protoMan.TryIndex<LoadoutPrototype>(id, out _))
+            .Select(id => protoMan.Index(id))
+            .ToList(); // Ganimed sponsor
 
         /*
          * Group the prototypes based on their GroupBy field.
