@@ -79,7 +79,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
         LoadoutsContainer.RemoveAllChildren();
 
-         // Ganimed sponsor start
+        // Ganimed sponsor start
         IEnumerable<ProtoId<LoadoutPrototype>> groupLoadouts = _groupProto.Loadouts;
 
         if (_groupProto.ID == "Inventory")
@@ -101,7 +101,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         // Ganimed sponsor end
 
         // Get all loadout prototypes for this group.
-        var validProtos = _groupProto.Loadouts.Select(id => protoMan.Index(id));
+        var validProtos = groupLoadouts.Select(id => protoMan.Index(id)); // Ganimed sponsor
 
         /*
          * Group the prototypes based on their GroupBy field.
@@ -134,10 +134,17 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
                     .Select(proto =>
                     {
                         var elem = CreateLoadoutUI(proto, profile, loadout, session, collection, loadoutSystem);
+                        if (elem == null) // Ganimed sponsor
+                            return null;
                         elem.HorizontalExpand = true;
                         return elem;
                     })
+                    .Where(e => e != null) // Ganimed sponsor
+                    .Cast<LoadoutContainer>()
                     .ToList();
+
+                if (uiElements.Count == 0) // Ganimed sponsor
+                    continue;
 
                 /*
                 * Determine which element should be displayed first:
@@ -176,9 +183,9 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
             }
             else
             {
-                LoadoutsContainer.AddChild(
-                    CreateLoadoutUI(protos[0], profile, loadout, session, collection, loadoutSystem)
-                );
+                var elem = CreateLoadoutUI(protos[0], profile, loadout, session, collection, loadoutSystem); // Ganimed sponsor
+                if (elem != null)
+                    LoadoutsContainer.AddChild(elem);
             }
         }
     }
@@ -239,7 +246,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
     /// <param name="collection">The dependency injection container.</param>
     /// <param name="loadoutSystem">The loadout system instance.</param>
     /// <returns>A fully initialized LoadoutContainer for UI display.</returns>
-    private LoadoutContainer CreateLoadoutUI(LoadoutPrototype proto, HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession session, IDependencyCollection collection, LoadoutSystem loadoutSystem)
+    private LoadoutContainer? CreateLoadoutUI(LoadoutPrototype proto, HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession session, IDependencyCollection collection, LoadoutSystem loadoutSystem) // Ganimed sponsor
     {
         var selected = loadout.SelectedLoadouts[_groupProto.ID];
 
@@ -250,34 +257,10 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         if (proto.SponsorOnly)
         {
             if (!_sponsorsManager.TryGetInfo(out var sponsor))
-            {
-                var sponsorCont = new LoadoutContainer(proto, true, FormattedMessage.FromUnformatted("Sponsor only"));
-                sponsorCont.Text = loadoutSystem.GetName(proto);
-                sponsorCont.Select.Pressed = false;
-                sponsorCont.Select.OnPressed += args =>
-                {
-                    if (args.Button.Pressed)
-                        OnLoadoutPressed?.Invoke(proto.ID);
-                    else
-                        OnLoadoutUnpressed?.Invoke(proto.ID);
-                };
-                return sponsorCont;
-            }
+                return null;
 
             if (!sponsor.AllowedMarkings.Contains(proto.ID))
-            {
-                var notAllowedCont = new LoadoutContainer(proto, true, FormattedMessage.FromUnformatted("Not in allowed markings"));
-                notAllowedCont.Text = loadoutSystem.GetName(proto);
-                notAllowedCont.Select.Pressed = false;
-                notAllowedCont.Select.OnPressed += args =>
-                {
-                    if (args.Button.Pressed)
-                        OnLoadoutPressed?.Invoke(proto.ID);
-                    else
-                        OnLoadoutUnpressed?.Invoke(proto.ID);
-                };
-                return notAllowedCont;
-            }
+                return null;
         }
         // Ganimed sponsor end
 
