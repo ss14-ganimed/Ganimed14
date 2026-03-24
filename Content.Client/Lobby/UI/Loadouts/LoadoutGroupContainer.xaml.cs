@@ -29,6 +29,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutPressed;
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutUnpressed;
+    public event Action<ProtoId<LoadoutGroupPrototype>, ProtoId<LoadoutPrototype>, List<ProtoId<LoadoutPrototype>>, Dictionary<string, ProtoId<LoadoutGroupPrototype>>>? OnLoadoutPressedWithConflict; // Ganimed Sponsor
 
     public LoadoutGroupContainer(HumanoidCharacterProfile profile, RoleLoadout loadout, LoadoutGroupPrototype groupProto, ICommonSession session, IDependencyCollection collection, bool isSponsor)
     {
@@ -249,11 +250,11 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
     /// <param name="collection">The dependency injection container.</param>
     /// <param name="loadoutSystem">The loadout system instance.</param>
     /// <returns>A fully initialized LoadoutContainer for UI display.</returns>
-    private LoadoutContainer? CreateLoadoutUI(LoadoutPrototype proto, HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession session, IDependencyCollection collection, LoadoutSystem loadoutSystem) // Ganimed sponsor
+    private LoadoutContainer? CreateLoadoutUI(LoadoutPrototype proto, HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession session, IDependencyCollection collection, LoadoutSystem loadoutSystem)
     {
-        var selected = loadout.SelectedLoadouts[_groupProto.ID];
-
-        var pressed = selected.Any(e => e.Prototype == proto.ID);
+        // Проверяем, выбран ли этот лодаут в любой группе
+        var pressed = loadout.SelectedLoadouts.Values.Any(groupLoadouts =>
+            groupLoadouts.Any(l => l.Prototype == proto.ID));
 
         // Ganimed sponsor start
         // Лоадуты с SponsorOnly допускаются только при наличии разрешения в API
@@ -278,9 +279,82 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         cont.Select.OnPressed += args =>
         {
             if (args.Button.Pressed)
-                OnLoadoutPressed?.Invoke(proto.ID);
+            {
+                // При выборе лодаута — снимаем конфликтующие во ВСЕХ группах
+                // Собираем все слоты: equipment + storage
+                var allSlots = new HashSet<string>(proto.Equipment.Keys);
+                foreach (var storageSlot in proto.Storage.Keys)
+                {
+                    allSlots.Add(storageSlot);
+                }
+
+                var toRemove = new List<ProtoId<LoadoutPrototype>>();
+                var conflictingGroupForSlot = new Dictionary<string, ProtoId<LoadoutGroupPrototype>>();
+
+                // Проверяем все выбранные лодауты во всех группах
+                foreach (var (groupId, groupLoadouts) in loadout.SelectedLoadouts)
+                {
+                    foreach (var selectedLoadout in groupLoadouts)
+                    {
+                        if (!collection.Resolve<IPrototypeManager>().TryIndex(selectedLoadout.Prototype, out var selectedProto))
+                            continue;
+
+                        // Проверяем конфликт слотов
+                        // equipment vs equipment — конфликт (сумка vs сумка) — НУЖНО УДАЛЯТЬ
+                        // equipment vs storage — НЕ конфликт (сумка vs предмет в сумке) — предмет просто потеряется
+                        // storage vs equipment — конфликт (предмет в сумке vs сумка) — НУЖНО УДАЛЯТЬ
+                        // storage vs storage — НЕ конфликт (предметы в одной сумке могут сосуществовать)
+                        foreach (var slot in allSlots)
+                        {
+                            bool hasConflict = false;
+
+                            // Если новый лодаут имеет equipment[slot] — он конфликтует ТОЛЬКО с лодаутом, у которого есть equipment[slot]
+                            if (proto.Equipment.ContainsKey(slot))
+                            {
+                                if (selectedProto.Equipment.ContainsKey(slot))
+                                {
+                                    hasConflict = true;
+                                }
+                                // storage[slot] НЕ конфликтует — предмет просто потеряется при замене сумки
+                            }
+                            // Если новый лодаут имеет storage[slot] — он конфликтует ТОЛЬКО с лодаутом, у которого есть equipment[slot] (сама сумка)
+                            else if (proto.Storage.ContainsKey(slot))
+                            {
+                                if (selectedProto.Equipment.ContainsKey(slot))
+                                {
+                                    hasConflict = true;
+                                }
+                                // storage vs storage — НЕ конфликт, предметы могут сосуществовать в одной сумке
+                            }
+
+                            if (hasConflict)
+                            {
+                                toRemove.Add(selectedLoadout.Prototype);
+
+                                // Запоминаем группу для слота (приоритет: equipment > storage)
+                                if (!conflictingGroupForSlot.ContainsKey(slot))
+                                {
+                                    conflictingGroupForSlot[slot] = groupId;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Если есть конфликты — используем специальное событие
+                if (toRemove.Count > 0)
+                {
+                    OnLoadoutPressedWithConflict?.Invoke(_groupProto.ID, proto.ID, toRemove, conflictingGroupForSlot);
+                }
+                else
+                {
+                    OnLoadoutPressed?.Invoke(proto.ID);
+                }
+            }
             else
+            {
                 OnLoadoutUnpressed?.Invoke(proto.ID);
+            }
         };
 
         return cont;
