@@ -280,8 +280,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         {
             if (args.Button.Pressed)
             {
-                // При выборе лодаута — снимаем конфликтующие во ВСЕХ группах
-                // Собираем все слоты: equipment + storage
+                // Ganimed sponsor start
                 var allSlots = new HashSet<string>(proto.Equipment.Keys);
                 foreach (var storageSlot in proto.Storage.Keys)
                 {
@@ -291,7 +290,6 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
                 var toRemove = new List<ProtoId<LoadoutPrototype>>();
                 var conflictingGroupForSlot = new Dictionary<string, ProtoId<LoadoutGroupPrototype>>();
 
-                // Проверяем все выбранные лодауты во всех группах
                 foreach (var (groupId, groupLoadouts) in loadout.SelectedLoadouts)
                 {
                     foreach (var selectedLoadout in groupLoadouts)
@@ -299,39 +297,31 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
                         if (!collection.Resolve<IPrototypeManager>().TryIndex(selectedLoadout.Prototype, out var selectedProto))
                             continue;
 
-                        // Проверяем конфликт слотов
-                        // equipment vs equipment — конфликт (сумка vs сумка) — НУЖНО УДАЛЯТЬ
-                        // equipment vs storage — НЕ конфликт (сумка vs предмет в сумке) — предмет просто потеряется
-                        // storage vs equipment — конфликт (предмет в сумке vs сумка) — НУЖНО УДАЛЯТЬ
-                        // storage vs storage — НЕ конфликт (предметы в одной сумке могут сосуществовать)
                         foreach (var slot in allSlots)
                         {
                             bool hasConflict = false;
 
-                            // Если новый лодаут имеет equipment[slot] — он конфликтует ТОЛЬКО с лодаутом, у которого есть equipment[slot]
                             if (proto.Equipment.ContainsKey(slot))
                             {
                                 if (selectedProto.Equipment.ContainsKey(slot))
                                 {
                                     hasConflict = true;
                                 }
-                                // storage[slot] НЕ конфликтует — предмет просто потеряется при замене сумки
                             }
-                            // Если новый лодаут имеет storage[slot] — он конфликтует ТОЛЬКО с лодаутом, у которого есть equipment[slot] (сама сумка)
+
                             else if (proto.Storage.ContainsKey(slot))
                             {
                                 if (selectedProto.Equipment.ContainsKey(slot))
                                 {
                                     hasConflict = true;
                                 }
-                                // storage vs storage — НЕ конфликт, предметы могут сосуществовать в одной сумке
+
                             }
 
                             if (hasConflict)
                             {
                                 toRemove.Add(selectedLoadout.Prototype);
 
-                                // Запоминаем группу для слота (приоритет: equipment > storage)
                                 if (!conflictingGroupForSlot.ContainsKey(slot))
                                 {
                                     conflictingGroupForSlot[slot] = groupId;
@@ -341,7 +331,6 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
                     }
                 }
 
-                // Если есть конфликты — используем специальное событие
                 if (toRemove.Count > 0)
                 {
                     OnLoadoutPressedWithConflict?.Invoke(_groupProto.ID, proto.ID, toRemove, conflictingGroupForSlot);
@@ -356,6 +345,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
                 OnLoadoutUnpressed?.Invoke(proto.ID);
             }
         };
+        // Ganimed sponsor end
 
         return cont;
     }
