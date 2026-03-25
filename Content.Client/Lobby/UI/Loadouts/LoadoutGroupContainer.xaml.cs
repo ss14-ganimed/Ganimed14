@@ -292,33 +292,23 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
                 foreach (var (groupId, groupLoadouts) in loadout.SelectedLoadouts)
                 {
+                    var resolvedLoadouts = new List<(Loadout Loadout, LoadoutPrototype Proto)>();
                     foreach (var selectedLoadout in groupLoadouts)
                     {
-                        if (!collection.Resolve<IPrototypeManager>().TryIndex(selectedLoadout.Prototype, out var selectedProto))
-                            continue;
+                        if (collection.Resolve<IPrototypeManager>().TryIndex(selectedLoadout.Prototype, out var selectedProto))
+                        {
+                            resolvedLoadouts.Add((selectedLoadout, selectedProto));
+                        }
+                    }
 
+                    foreach (var (selectedLoadout, selectedProto) in resolvedLoadouts)
+                    {
                         foreach (var slot in allSlots)
                         {
-                            bool hasConflict = false;
+                            var newHasSlot = proto.Equipment.ContainsKey(slot) || proto.Storage.ContainsKey(slot);
+                            var selectedHasEquipment = selectedProto.Equipment.ContainsKey(slot);
 
-                            if (proto.Equipment.ContainsKey(slot))
-                            {
-                                if (selectedProto.Equipment.ContainsKey(slot))
-                                {
-                                    hasConflict = true;
-                                }
-                            }
-
-                            else if (proto.Storage.ContainsKey(slot))
-                            {
-                                if (selectedProto.Equipment.ContainsKey(slot))
-                                {
-                                    hasConflict = true;
-                                }
-
-                            }
-
-                            if (hasConflict)
+                            if (newHasSlot && selectedHasEquipment)
                             {
                                 toRemove.Add(selectedLoadout.Prototype);
 
