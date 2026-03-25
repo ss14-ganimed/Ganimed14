@@ -9,7 +9,6 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using System.Linq;
 
 namespace Content.Client.Lobby.UI.Loadouts;
 
@@ -257,7 +256,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
             groupLoadouts.Any(l => l.Prototype == proto.ID));
 
         // Ganimed sponsor start
-        // Лоадуты с SponsorOnly допускаются только при наличии разрешения в API
+         // Лоадуты с SponsorOnly допускаются только при наличии разрешения в API
         if (proto.SponsorOnly)
         {
             if (!_sponsorsManager.TryGetInfo(out var sponsor))
@@ -292,21 +291,16 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
                 foreach (var (groupId, groupLoadouts) in loadout.SelectedLoadouts)
                 {
-                    var resolvedLoadouts = new List<(Loadout Loadout, LoadoutPrototype Proto)>();
-                    foreach (var selectedLoadout in groupLoadouts)
-                    {
-                        if (collection.Resolve<IPrototypeManager>().TryIndex(selectedLoadout.Prototype, out var selectedProto))
-                        {
-                            resolvedLoadouts.Add((selectedLoadout, selectedProto));
-                        }
-                    }
+                    var resolvedLoadouts = groupLoadouts
+                        .Select(l => (Loadout: l, Proto: collection.Resolve<IPrototypeManager>().TryIndex(l.Prototype, out var p) ? p : null))
+                        .Where(x => x.Proto != null)!;
 
                     foreach (var (selectedLoadout, selectedProto) in resolvedLoadouts)
                     {
                         foreach (var slot in allSlots)
                         {
                             var newHasSlot = proto.Equipment.ContainsKey(slot) || proto.Storage.ContainsKey(slot);
-                            var selectedHasEquipment = selectedProto.Equipment.ContainsKey(slot);
+                            var selectedHasEquipment = selectedProto!.Equipment.ContainsKey(slot);
 
                             if (newHasSlot && selectedHasEquipment)
                             {
