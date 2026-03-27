@@ -88,7 +88,7 @@
 
 Содержимое, добавленное в этот репозиторий **после** коммита ec1ea3b4a902ba253994b19f228af277dbd34f4e (`2 августа 2024 08:50:00 UTC`), распространяется по лицензии [**GNU Affero General Public License версии 3.0**](https://github.com/ss14-ganimed/Ganimed14/blob/master/LICENSE.TXT), если не указано иное.
 
-Содержимое, добавленное в этот репозиторий **до** коммита ec1ea3b4a902ba253994b19f228af277dbd34f4e (`2 августа 2024 08:50:00 UTC`), распространяется по лицензии [**MIT**](https://github.com/ss14-ganimed/Ganimed14/blob/master/LICENSE-MIT.TXT) если не указано иное.
+Содержимое, добавленное в этот репозиторий **до** коммита ec1ea3b4a902ba253994b19f228af277dbd34f4e (`2 августа 2024 08:50:00 UTC`), распространяется по лицензии [**MIT**](https://github.com/ss14-ganimed/Ganimed14/blob/master/LICENSE-MIT.TXT), если не указано иное.
 
 Большинство ассетов лицензированы под [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. Ассеты имеют свою лицензию и информацию об авторском праве в файле метаданных. [Пример](https://github.com/ss14-ganimed/Ganimed14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
 
