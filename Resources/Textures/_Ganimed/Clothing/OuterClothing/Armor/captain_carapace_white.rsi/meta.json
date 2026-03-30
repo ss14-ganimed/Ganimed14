@@ -1,18 +1,18 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from shiptest (https://github.com/shiptest-ss13/Shiptest) | Edited by PuroSlavKing (Github)",
+  "copyright": "by OpenWendor",
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
     {
-      "name": "icon"
+      "name": "equipped-OUTERCLOTHING",
+      "directions": 4
     },
     {
-      "name": "equipped-HAND",
-      "directions": 4
+      "name": "icon"
     },
     {
       "name": "inhand-left",

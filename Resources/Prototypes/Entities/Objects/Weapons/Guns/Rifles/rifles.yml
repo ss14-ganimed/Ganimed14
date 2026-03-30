@@ -179,9 +179,9 @@
             - ADTAttachmentAntiLyingWarrior
   - type: AttachableHolderVisuals
     offsets:
-      rmc-aslot-underbarrel: 0.3125, -0.0625
+      rmc-aslot-underbarrel: 0.25, -0.09375 # Ganimed-Resprite-Tweak (0.3125, -0.0625)
       rmc-aslot-rail: 0.0, -0.0325
-      rmc-aslot-barrel: 0.96875, 0
+      rmc-aslot-barrel: 0.96875, -0.03125 # Ganimed-Resprite-Tweak (0.96875, 0)
 # ADT TWEAK END
   - type: ContainerContainer
     containers:
@@ -236,7 +236,7 @@
       gun_chamber: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
-    steps: 5
+    steps: 1 # Ganimed-Resprite-Tweak (5 -> 1)
     zeroVisible: true
   - type: Appearance
 # ADT TWEAK START
@@ -263,9 +263,9 @@
             - ADTAttachmentAntiLyingWarrior
   - type: AttachableHolderVisuals
     offsets:
-      rmc-aslot-underbarrel: 0.3125, -0.0625
-      rmc-aslot-rail: 0.0, -0.0325
-      rmc-aslot-barrel: 0.96875, 0
+      rmc-aslot-underbarrel: 0.3125, -0.125 # Ganimed-Resprite-Tweak (0.3125, -0.0625)
+      rmc-aslot-rail: 0.0, -0.09375 # Ganimed-Resprite-Tweak (0.0, -0.0325)
+      rmc-aslot-barrel: 0.96875, -0.0625 # Ganimed-Resprite-Tweak (0.96875, 0)
 # ADT TWEAK END
 
 - type: entity

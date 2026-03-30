@@ -107,10 +107,10 @@
     #ADT-Tweak-End
 
 - type: entity
-  parent: ClothingOuterStorageFoldableBase # Ganimed-Resprite
+  parent: ClothingOuterStorageFoldableBase # Ganimed-Resprite-Edit (Foldable)
   id: ClothingOuterCoatLabSecurityMedic
   name: security medic labcoat
-  description: A suit that protects against minor chemical spills.
+  description: A white sanitary suit for places where it can easily be stained with red.
   components:
     - type: Sprite
       sprite: Corvax/Clothing/OuterClothing/Coats/labcoat_security_medic.rsi

@@ -186,7 +186,7 @@
     sprite: ADT/Clothing/Head/Hats/beret_brigmedic.rsi
   - type: Clothing
     sprite: ADT/Clothing/Head/Hats/beret_brigmedic.rsi
-  - type: Tag # Ganimed-Resprite
+  - type: Tag # Ganimed-Resprite-Add
     tags:
     - ClothMade
     - HamsterWearable

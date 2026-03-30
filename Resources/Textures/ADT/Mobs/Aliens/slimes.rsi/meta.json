@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from the tgstation at https://github.com/tgstation/tgstation/blob/bb89e65aebb14d6ba0ce7fc43363fbc3f1279e79/icons/mob/simple/slimes.dmi resprite created by discord:LunaLita#0840 for Время Приключений MRP",
+    "copyright": "Taken from the tgstation at https://github.com/tgstation/tgstation/blob/bb89e65aebb14d6ba0ce7fc43363fbc3f1279e79/icons/mob/simple/slimes.dmi resprite created by discord:LunaLita#0840 for Время Приключений MRP. white_adult_slime states by WalterJe taken from CEV-Eris at https://github.com/discordia-space/CEV-Eris/commit/81240a02a14a1e9af4e9d42540ac6f4faaf8f212",
     "size": {
         "x": 32,
         "y": 32
@@ -256,6 +256,24 @@
                     0.1
                 ]
             ]
+        },
+        {
+            "name": "white_adult_slime",
+            "delays": [
+                [
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15
+                ]
+            ]
+        },
+        {
+            "name": "white_adult_slime_dead"
         }
     ]
 }

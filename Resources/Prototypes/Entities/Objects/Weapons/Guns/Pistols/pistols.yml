@@ -132,8 +132,8 @@
           - ADTAttachmentAntiLyingWarrior
   - type: AttachableHolderVisuals
     offsets:
-      rmc-aslot-underbarrel: 0.235, -0.00875
-      rmc-aslot-barrel: 0.84375, 0.09735
+      rmc-aslot-underbarrel: 0.125, -0.0125 # Ganimed-Resprite-Tweak (0.235, -0.00875)
+      rmc-aslot-barrel: 0.8125, 0.0625 # Ganimed-Resprite-Tweak (0.84375, 0.09735)
 # ADT TWEAK END
 
 - type: entity
@@ -297,7 +297,7 @@
   - type: AttachableHolderVisuals
     offsets:
       rmc-aslot-underbarrel: 0.17, -0.014
-      rmc-aslot-barrel: 0.84375, 0.125
+      rmc-aslot-barrel: 0.875, 0.09375 # Ganimed-Resprite-Tweak (0.84375, 0.125)
   - type: Tag
     tags:
     - Sidearm

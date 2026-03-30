@@ -1,7 +1,7 @@
 {
   "version": 2,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from cev-eris and modified by Swept at https://github.com/discordia-space/CEV-Eris/commit/efce5b6c3be75458ce238dcc01510e8f8a653ca6. Uplink radio sprites by Vermidia, derivative of other lisenced sprites in the repo, urist's icon resprite by @mishutka09. old-radio-off made sprite by noctyrnal. Beacon taken from Paradise at https://github.com/ParadiseSS13/Paradise/blob/27087670280de99e2fceb47194aad29a7b99b280/icons/obj/radio.dmi",
+  "copyright": "Taken from cev-eris and modified by Swept at https://github.com/discordia-space/CEV-Eris/commit/efce5b6c3be75458ce238dcc01510e8f8a653ca6. Uplink radio sprites by Vermidia, derivative of other lisenced sprites in the repo, urist's icon resprite by @mishutka09. old-radio-off made sprite by noctyrnal. Beacon taken from Paradise at https://github.com/ParadiseSS13/Paradise/blob/27087670280de99e2fceb47194aad29a7b99b280/icons/obj/radio.dmi, walkie-talkie resprite by xaunto",
   "size": {
     "x": 32,
     "y": 32

@@ -8,17 +8,17 @@
     sprite: _Ganimed/Structures/Furniture/chairs.rsi
     state: passenger
 
-- type: entity # ss14Starlight
-  name: sleek office chair
-  id: ChairOfficeSleek
-  parent: StoolBase
-  components:
-  - type: Sprite
-    sprite: _Ganimed/Structures/Furniture/chairs.rsi
-    state: sleek-office-chair
-  - type: Construction
-    graph: Seat
-    node: stoolBar
+# - type: entity # Temporarily removed as a duplicate
+#   name: sleek office chair
+#   id: ChairOfficeSleek
+#   parent: StoolBase
+#   components:
+#   - type: Sprite
+#     sprite: _Ganimed/Structures/Furniture/chairs.rsi
+#     state: sleek-office-chair
+#   - type: Construction
+#     graph: Seat
+#     node: stoolBar
 
 # Colored comfy chairs
 - type: entity

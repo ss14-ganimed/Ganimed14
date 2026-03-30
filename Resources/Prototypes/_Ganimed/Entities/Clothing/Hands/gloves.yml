@@ -5,9 +5,9 @@
   description: Royal white gloves with gold trim. Gorgeous.
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/Hands/Gloves/white_captain_gloves.rsi
+    sprite: _Ganimed/Clothing/Hands/Gloves/captain_white.rsi
   - type: Clothing
-    sprite: _Ganimed/Clothing/Hands/Gloves/white_captain_gloves.rsi
+    sprite: _Ganimed/Clothing/Hands/Gloves/captain_white.rsi
 
 - type: entity
   parent: ClothingHandsBase

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "made by @sentryprimies and @mcdonaldsobamaburger based on viro design from TGstation",
+  "copyright": "taken from https://github.com/tgstation/tgstation/commit/728faa3e70ab3a13c8111a48591f29e1768565db and modified by HyperB1 (GitHub)",
   "size": {
     "x": 32,
     "y": 32
