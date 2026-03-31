@@ -8,6 +8,10 @@
       department: Security
       time: 10h # Ganimed-RoleTime
   # ADT Restrict Start
+    - !type:TraitsRequirement
+      inverted: true
+      traits:
+      - Muted
     - !type:SpeciesRequirement
       inverted: true
       species:

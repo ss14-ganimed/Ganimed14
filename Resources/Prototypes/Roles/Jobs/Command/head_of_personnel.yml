@@ -80,7 +80,7 @@
 - type: startingGear
   id: HoPGear
   equipment:
-    # shoes: ClothingShoesColorBrown # Ganimed-Loadouts-Remove (Loadout choice)
+    #shoes: ClothingShoesColorBrown ADT-Tweak
     id: HoPPDA
     gloves: ClothingHandsGlovesHop
     # ears: ClothingHeadsetAltCommand # ADT tweak - выдаются через loadout ADTHoP

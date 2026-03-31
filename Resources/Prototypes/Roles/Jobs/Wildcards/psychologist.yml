@@ -20,7 +20,7 @@
 - type: startingGear
   id: PsychologistGear
   equipment:
-    # shoes: ClothingShoesLeather # Ganimed-Loadouts-Remove (Loadout choice)
+    #shoes: ClothingShoesLeather ADT-Tweak
     # id: PsychologistPDA ADT: different PDAs in loadouts
     ears: ClothingHeadsetMedical
   storage:

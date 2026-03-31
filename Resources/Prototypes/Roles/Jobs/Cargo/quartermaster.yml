@@ -16,7 +16,11 @@
       time: 20h # Ganimed-RoleTime
     - !type:OverallPlaytimeRequirement
       time: 40h # Ganimed-RoleTime
-      #ADT tweak start
+      # ADT-Tweak start
+    - !type:TraitsRequirement
+      inverted: true
+      traits:
+      - Muted
 #    - !type:SpeciesRequirement
 #      inverted: true
 #      species:

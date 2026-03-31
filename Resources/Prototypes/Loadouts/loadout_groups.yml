@@ -105,6 +105,10 @@
   - ADTModStorageVoucher
   - ADTClothingGeorgeRibbonPin
   - ADTClothingMaskPaperBlank
+  - ADTFlowerWreath1
+  - ADTFlowerWreath2
+  - ADTFlowerWreath3
+  - ADTFlowerWreath4
   # ADT-Tweak-End
 
 - type: loadoutGroup
@@ -405,6 +409,7 @@
   name: loadout-group-passenger-shoes
   loadouts:
   - BlackShoes
+  - BootsLaceup #ADT-Tweak
   - WinterBoots
 
 - type: loadoutGroup
@@ -519,17 +524,17 @@
   - LibrarianJumpskirt
   - CuratorJumpsuit
   - CuratorJumpskirt
+  # ADT tweak start
+  # - ADTClothingUniformJumpsuitTurtleneckRed # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
+  # - ADTClothingUniformJumpskirtTurtleneckRed # Ganimed-Loadouts-Remove
+  # ADT tweak end
+
 - type: loadoutGroup
   id: LibrarianJobTrinkets
   name: loadout-group-jobtrinkets
   minLimit: 0
   loadouts:
   - LizardPlushieLibrarian
-
-  # ADT tweak start
-  # - ADTClothingUniformJumpsuitTurtleneckRed # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
-  # - ADTClothingUniformJumpskirtTurtleneckRed # Ganimed-Loadouts-Remove
-  # ADT tweak end
 
 # ADT-Loadouts-Start
 - type: loadoutGroup
@@ -1036,6 +1041,7 @@
   # - SalvageBoots # Ganimed-Loadouts-Add
   - LeatherShoesWhitelisted # Ganimed-Loadouts-Add
   # ADT tweak start
+  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
@@ -1101,6 +1107,7 @@
   - CargoWinterBoots
   - WorkBoots # Ganimed-Loadouts-Add
   # ADT tweak start
+  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
@@ -1150,6 +1157,7 @@
   - SalvageBoots
   - CargoWinterBoots
   # ADT tweak start
+  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
@@ -1224,6 +1232,7 @@
   - WorkBoots # Ganimed-Loadouts-Add
   - LeatherShoesWhitelisted # Ganimed-Loadouts-Add
   # ADT tweak start
+  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
@@ -1318,6 +1327,7 @@
   - EngineeringMagBoots
   # Ganimed-Loadouts-Add-End
   # ADT tweak start
+  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
@@ -1385,6 +1395,7 @@
   # Ganimed-Loadouts-Add-End
   - EngineeringWinterBoots
   # ADT tweak start
+  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
@@ -1477,6 +1488,7 @@
   - ScienceMagBoots
   # Ganimed-Loadouts-Add-End
   # ADT tweak start
+  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
@@ -1563,6 +1575,7 @@
   - MonochromeShoes # Ganimed-Loadouts-Add
   - ScienceWinterBoots
   # ADT tweak start
+  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
@@ -1802,6 +1815,7 @@
   - BlackCowboyBoots # Ganimed-Loadouts-Add
   - HighheelBoots # Ganimed-Loadouts-Add
   # ADT tweak start
+  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
@@ -2003,6 +2017,7 @@
   - MedicalWinterBoots
   - ADTCMOHighBoots # ADT tweak
   # ADT tweak start
+  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
@@ -2094,6 +2109,7 @@
   - BlueShoes # Ganimed-Loadouts-Add
   - MedicalWinterBoots
   # ADT tweak start
+  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
@@ -2224,6 +2240,7 @@
   - WhiteShoes
   - MedicalWinterBoots
   # ADT tweak start
+  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW

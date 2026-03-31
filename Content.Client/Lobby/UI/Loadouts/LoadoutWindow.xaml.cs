@@ -21,6 +21,7 @@ public sealed partial class LoadoutWindow : BaseLoadoutWindow   // ADT SAI Custo
     public event Action<string>? OnNameChanged;
     public event Action<ProtoId<LoadoutGroupPrototype>, ProtoId<LoadoutPrototype>>? OnLoadoutPressed;
     public event Action<ProtoId<LoadoutGroupPrototype>, ProtoId<LoadoutPrototype>>? OnLoadoutUnpressed;
+    public event Action<ProtoId<LoadoutGroupPrototype>, ProtoId<LoadoutPrototype>, List<ProtoId<LoadoutPrototype>>, Dictionary<string, ProtoId<LoadoutGroupPrototype>>>? OnLoadoutPressedWithConflict; // Ganimed Sponsor
 
     private List<LoadoutGroupContainer> _groups = new();
 
@@ -90,6 +91,12 @@ public sealed partial class LoadoutWindow : BaseLoadoutWindow   // ADT SAI Custo
                 {
                     OnLoadoutUnpressed?.Invoke(group, args);
                 };
+                // Ganimed Sponsor start
+                container.OnLoadoutPressedWithConflict += (loadoutGroup, loadoutProto, conflicts, conflictingGroups) =>
+                {
+                    OnLoadoutPressedWithConflict?.Invoke(group, loadoutProto, conflicts, conflictingGroups);
+                };
+                // Ganimed Sponsor end
             }
         }
     }

@@ -38,7 +38,7 @@
   - HoPOuterClothing
   - BureaucraticBelt # Ganimed-Loadouts-Add
   - HoPGlasses # Ganimed-Loadouts-Edit (Glasses)
-  - HoPShoes # Ganimed-Loadouts-Add
+  - ADTHoPShoes #ADT-Tweak
   # ADT underwear tweak start
   - ADTTopHOP
   - ADTBottomHOP
@@ -107,6 +107,7 @@
   - BartenderOuterClothing
   - BartenderBelt # Ganimed-Loadouts-Add
   - BartenderGlasses # Ganimed-Loadouts-Edit (Glasses)
+  - ADTBartenderShoes #ADT-Tweak
   - ADTBartenderPDA # ADT tweak
   # ADT underwear tweak start
   - ADTTop
@@ -128,6 +129,7 @@
   - ADTServiceWorkerJumpsuit #ADT-tweak
   - CommonBackpack
   - ADTServiceWorkerGloves #ADT-tweak
+  - ADTServiceWorkerShoes #ADT-Tweak
   - Glasses
   - CommonBelt # Ganimed-Loadouts-Add
   - ADTServiceWorkerPDA # ADT tweak
@@ -153,10 +155,10 @@
   - ChefMask
   - ChefJumpsuit
   - CommonBackpack
-  - ADTChefGloves # ADT-Tweak
   - ChefOuterClothing
+  - ADTChefGloves # ADT-Tweak
   - ChefGlasses # Ganimed-Loadouts-Edit (Glasses)
-  - ChefShoes # Ganimed-Loadouts-Add
+  - ADTChefShoes #ADT-Tweak
   # ADT-Tweak-Start
   - ADTChefPocket1
   - ADTChefPDA
@@ -231,9 +233,9 @@
   - CommonBackpack
   - ChaplainOuterClothing
   - ChaplainGloves # Ganimed-Loadouts-Add
+  - ADTChaplainShoes #ADT-Tweak
   - ChaplainBible
   - Glasses
-  - ChaplainShoes # Ganimed-Loadouts-Add
   - ADTChaplainPDA # ADT tweak
   # ADT underwear tweak start
   - ADTTop
@@ -286,6 +288,7 @@
   - BotanistGloves # Ganimed-Loadouts-Add
   - BotanistShoes # Ganimed-Loadouts-Add
   - ADTBotanistPDA # ADT tweak
+  - ADTBotanistShoes #ADT-Tweak
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
@@ -339,6 +342,7 @@
   - MimeJumpsuit
   - MimeBackpack
   - MimeOuterClothing
+  - ADTMimeShoes #ADT-Tweak
   - MimeBelt
   - Glasses
   # ADT underwear tweak start
@@ -919,6 +923,7 @@
   - CommonBackpack
   - Glasses
   - ADTReporterPDA #ADT-tweak
+  - ADTReporterShoes #ADT-Tweak
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
@@ -941,6 +946,7 @@
   - Glasses
   - PsychologistShoes # Ganimed-Loadouts-Add
   - ADTPsychologistPDA # ADT tweak
+  - ADTPsychologistShoes #ADT-Tweak
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom

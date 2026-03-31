@@ -44,6 +44,13 @@ loadout-group-service-worker-id-adt = ID сервисного работника
 loadout-group-service-worker-jumpsuit-adt = Комбинезон сервисного работника
 loadout-group-chef-gloves-adt = Перчатки шеф-повара
 loadout-group-chef-neck-adt = Платок шеф-повара
+loadout-group-chef-shoes-adt = Обувь шеф-повара
+loadout-group-bartender-shoes-adt = Обувь бармена
+loadout-group-botanist-shoes-adt = Обувь ботаника
+loadout-barber-shoes-adt = Обувь парикмахера
+loadout-group-reporter-shoes-adt = Обувь репортёра
+loadout-group-service-worker-shoes-adt = Обувь сервисного работника
+loadout-group-mime-shoes-adt = Обувь мима
 
 # Cargo
 loadout-group-quartermaster-id-adt = ID квартирмейстера
@@ -65,6 +72,7 @@ loadout-miner-id-adt = ID шахтёра
 # Chaplain
 loadout-chaplain-blessedbook-adt = Священная книга
 loadout-group-chaplain-id-adt = ID священника
+loadout-group-chaplain-shoes-adt = Обувь священника
 
 # Engineering
 loadout-chief-engineer-ears-adt = Гарнитура старшего инженера
@@ -130,6 +138,7 @@ loadout-group-medical-intern-id-adt = ID интерна
 
 # Wildcards
 loadout-group-psychologist-id-adt = ID психолога
+loadout-group-psychologist-shoes-adt = Обувь психолога
 
 # Juridical
 loadout-group-lawyer-id-adt = ID юриста
@@ -139,6 +148,7 @@ loadout-group-lawyer-backpack = Рюкзак магистрата
 # Command
 loadout-captain-ears-adt = Гарнитура капитана
 loadout-HoP-ears-adt = Гарнитура главы персонала
+loadout-HoP-shoes = Обувь главы персонала
 
 # Consultant Centcom
 loadout-ccc-ears-adt = Гарнитура консультанта Центком
