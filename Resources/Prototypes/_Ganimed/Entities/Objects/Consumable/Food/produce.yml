@@ -26,6 +26,7 @@
     tags:
     - Fruit
     - Vegetable
+    - ADTUnderwearB
   - type: MeleeWeapon
     wideAnimationRotation: -135
     damage:
@@ -35,6 +36,8 @@
     entries:
       Burger: CucumberBurger
       Taco: Cucumber
+  - type: Clothing
+    slots: UNDERWEARB
 
 - type: entity
   parent: FoodCucumber

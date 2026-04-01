@@ -117,6 +117,12 @@
         volume: 12
   - type: StaticPrice
     price: 2000
+  - type: Clothing
+    slots: UNDERWEARB
+  - type: Tag
+    tags:
+    - HandGrenade
+    - ADTUnderwearB
 
 - type: entity
   name: self destruct

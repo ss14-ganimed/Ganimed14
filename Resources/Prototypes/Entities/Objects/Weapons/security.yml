@@ -7,6 +7,7 @@
   - type: Tag # goob edit
     tags:
     - Stunbaton
+    - ADTUnderwearB
   - type: Sprite
     sprite: Objects/Weapons/Melee/stunbaton.rsi
     layers:
@@ -65,6 +66,7 @@
     quickEquip: false
     slots:
     - Belt
+    - underwearb
   - type: DisarmMalus
     malus: 0.225
   - type: Appearance

@@ -361,6 +361,9 @@
     tags:
     - Fruit
     - Banana
+    - ADTUnderwearB
+  - type: Clothing
+    slots: UNDERWEARB
   - type: FoodSequenceElement
     entries:
       Burger: Banana
@@ -545,6 +548,9 @@
     tags:
     - Carrot
     - Vegetable
+    - ADTUnderwearB
+  - type: Clothing
+    slots: UNDERWEARB
   - type: SolutionContainerManager
     solutions:
       food:
@@ -2142,9 +2148,12 @@
     butcheringType: Knife
     spawned:
     - id: ClothingHeadHatWatermelon
+  - type: Clothing
+    slots: UNDERWEARB
   - type: Tag
     tags:
     - Fruit
+    - ADTUnderwearB
 
 - type: entity
   name: watermelon slice

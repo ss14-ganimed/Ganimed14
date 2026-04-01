@@ -3,6 +3,7 @@
   files:
     - /Audio/Voice/Human/malescream_1.ogg
     - /Audio/Voice/Human/malescream_2.ogg
+    - /Audio/Voice/Human/wilhelm_scream.ogg
     # - /Audio/Voice/Human/malescream_3.ogg
     # - /Audio/Voice/Human/malescream_4.ogg
     # - /Audio/Voice/Human/malescream_5.ogg
@@ -17,6 +18,7 @@
   files:
     - /Audio/Voice/Human/malescream_1.ogg
     - /Audio/Voice/Human/malescream_2.ogg
+    - /Audio/Voice/Human/wilhelm_scream.ogg
     # - /Audio/Voice/Human/femalescream_3.ogg
     # - /Audio/Voice/Human/femalescream_4.ogg
     # - /Audio/Voice/Human/femalescream_5.ogg
