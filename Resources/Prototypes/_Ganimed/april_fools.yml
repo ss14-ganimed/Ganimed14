@@ -1,0 +1,188 @@
+- type: emote
+  id: Breathe
+  name: дышать
+  category: General
+  available: true
+  icon: Interface/Emotes/laugh.png
+  chatMessages: ["дышит"]
+
+- type: emote
+  id: Heartbeat
+  name: сердечные сокращения
+  category: General
+  available: true
+  icon: Interface/Emotes/laugh.png
+  chatMessages: ["сердце сокращается"]
+
+- type: emote
+  id: Blink
+  name: моргнуть
+  category: General
+  available: true
+  icon: Interface/Emotes/laugh.png
+  chatMessages: ["моргает"]
+
+- type: emote
+  id: Look
+  name: смотреть
+  category: General
+  available: true
+  icon: Interface/Emotes/laugh.png
+  chatMessages: ["смотрит"]
+
+- type: emote
+  id: Exist
+  name: существовать
+  category: General
+  available: true
+  icon: Interface/Emotes/laugh.png
+  chatMessages: ["существует"]
+
+- type: flavor
+  id: hrp
+  flavorType: Complex
+  description: как душниловка
+
+- type: reagent
+  id: HighRolePlay
+  name: высокий уровень ролевого отыгрыша
+  group: Toxins
+  slipData:
+    requiredSlipSpeed: 1.5
+  desc: Наркотик, который пускают по вене педали и РП черви
+  physicalDesc: reagent-physical-desc-wormy
+  flavor: hrp
+  color: "#ffffff"
+  recognizable: true
+  reactiveEffects:
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+             Cellular: -0.1
+      - !type:PopupMessage
+        type: Local
+        visualType: LargeCaution
+        messages: ["вы ощущаете, как ваш уровень РП возрастает"]
+        probability: 0.33
+      - !type:Emote
+        emote: Breathe
+        showInChat: true
+        showInGuidebook: true
+        force: true
+        probability: 0.5
+      - !type:Emote
+        emote: Heartbeat
+        showInChat: true
+        showInGuidebook: true
+        force: true
+        probability: 1
+      - !type:Emote
+        emote: Blink
+        showInChat: true
+        showInGuidebook: true
+        force: true
+        probability: 0.2
+      - !type:Emote
+        emote: Look
+        showInChat: true
+        showInGuidebook: true
+        force: true
+        probability: 0.3
+      - !type:Emote
+        emote: Exist
+        showInChat: true
+        showInGuidebook: true
+        force: true
+        probability: 0.5
+      - !type:Emote
+        emote: Sigh
+        showInChat: true
+        showInGuidebook: true
+        force: true
+        probability: 0.1
+  metabolisms:
+    Poison:
+      metabolismRate: 1
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+             Cellular: -0.1
+      - !type:PopupMessage
+        type: Local
+        visualType: LargeCaution
+        messages: ["вы ощущаете, как ваш уровень РП возрастает"]
+        probability: 0.33
+      - !type:Emote
+        emote: Breathe
+        showInChat: true
+        showInGuidebook: true
+        force: true
+        probability: 0.5
+      - !type:Emote
+        emote: Heartbeat
+        showInChat: true
+        showInGuidebook: true
+        force: true
+        probability: 1
+      - !type:Emote
+        emote: Blink
+        showInChat: true
+        showInGuidebook: true
+        force: true
+        probability: 0.2
+      - !type:Emote
+        emote: Look
+        showInChat: true
+        showInGuidebook: true
+        force: true
+        probability: 0.3
+      - !type:Emote
+        emote: Exist
+        showInChat: true
+        showInGuidebook: true
+        force: true
+        probability: 0.5
+      - !type:Emote
+        emote: Sigh
+        showInChat: true
+        showInGuidebook: true
+        force: true
+        probability: 0.1
+
+- type: reaction
+  id: HighRolePlay
+  reactants:
+    SpaceLube:
+      amount: 1
+    RobustHarvest:
+      amount: 1
+  products:
+    HighRolePlay: 2
+
+- type: entity
+  parent: ClothingMaskClownSecurity
+  id: ClothingMaskClownSecurityUnremoveable
+  name: маска и парик клоуна безопасности
+  description: Спорно оксюморонные, но защитные маска и парик.
+  components:
+  - type: Unremoveable
+
+- type: loadout
+  id: HosMask
+  equipment:
+    mask: ClothingMaskClownSecurityUnremoveable
+
+- type: loadout
+  id: ErrorFuck
+  equipment:
+    mask: ADTPlushieDamn
+
+- type: loadoutGroup
+  id: HosMask
+  name: маска ГСБ
+  loadouts:
+  - HosMask

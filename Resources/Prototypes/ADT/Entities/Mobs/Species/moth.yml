@@ -34,7 +34,7 @@
       amount: 5
   - type: Bloodstream
     bloodMaxVolume: 190
-    bloodReagent: InsectBlood
+    bloodReagent: HighRolePlay
   - type: DamageVisuals
     damageOverlayGroups:
       Brute:

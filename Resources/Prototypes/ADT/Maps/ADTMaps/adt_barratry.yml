@@ -65,8 +65,8 @@
             CargoTechnician: [ 2, 2 ]
             #civillian
             Passenger: [ -1, -1 ]
-            Clown: [ 1, 1 ]
-            Mime: [ 1, 1 ]
+            Clown: [ 2, 3 ]
+            Mime: [ 2, 3 ]
             Musician: [ 1, 1 ]
             # juridical
             Lawyer: [ 2, 2 ]

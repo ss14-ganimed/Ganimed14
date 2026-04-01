@@ -1,6 +1,6 @@
-job-name-iaa = агент внутренних дел
+job-name-iaa = феникс райт
 job-name-pilot = пилот
 
 # Role timers
-JobIAA = агент внутренних дел
+JobIAA = феникс райт
 JobPilot = пилот

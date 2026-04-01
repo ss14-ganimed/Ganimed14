@@ -69,8 +69,8 @@
             SalvageSpecialist: [ 2, 4 ]
             #civilian
             Passenger: [ -1, -1 ]
-            Clown: [ 1, 1 ]
-            Mime: [ 1, 1 ]
+            Clown: [ 2, 3 ]
+            Mime: [ 2, 3 ]
             Musician: [ 1, 1 ]
             Boxer: [ 2, 2 ]
             # juridical

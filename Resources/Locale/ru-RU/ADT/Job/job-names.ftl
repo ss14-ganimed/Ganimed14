@@ -1,8 +1,8 @@
-job-name-ADTPathologist = патологоанатом
-JobADTPathologist = патологоанатом
+job-name-ADTPathologist = анубис
+JobADTPathologist = анубис
 
-job-name-ADTMiner = шахтёр
-JobADTMiner = шахтёр
+job-name-ADTMiner = майнер крипты
+JobADTMiner = майнер крипты
 
 JobRoboticist = робототехник
 
@@ -18,14 +18,14 @@ JobADTSeniorResearcher = старший научный сотрудник
 job-name-senior-engineer = бригадир
 JobADTSeniorEngineer = бригадир
 
-job-name-senior-officer = офицер-инструктор
-JobADTSeniorOfficer = офицер-инструктор
+job-name-senior-officer = хрп-инструктор
+JobADTSeniorOfficer = хрп-инструктор
 
-job-name-ADTCentcomConsultant = консультант центком
-JobADTCentcomConsultant = консультант центком
+job-name-ADTCentcomConsultant = консультант колл центра
+JobADTCentcomConsultant = консультант колл центра
 
-job-name-ADTBlueShieldOfficer = офицер синий щит
-JobADTBlueShieldOfficer = офицер синий щит
+job-name-ADTBlueShieldOfficer = офицер холи щит
+JobADTBlueShieldOfficer = офицер холи щит
 
 job-name-ussp-army-private = Военнослужащий СССП
 job-description-ussp-army-private = Рядовой состав армии СССП. Ваши обязанности включают патрулирование, охрану объектов, поддержание порядка и выполнение боевых или служебных задач согласно уставу и приказам командиров.
@@ -60,24 +60,24 @@ job-name-life-support-tech = техник жизнеобеспечения
 job-name-plasma-scientist = плазмотехнолог
 job-name-electrician = электрик
 job-name-mechanic = механик
-job-name-welder = сварщик
+job-name-welder = сварщик третьего разряда
 
 # Cargo
 
-job-name-postman = почтальон
-job-name-inventory-associate = кладовщик
+job-name-postman = курьер
+job-name-inventory-associate = закладчик
 job-name-intendant = интендант
 
 # Medical
 
-job-name-real-chief-medical-officer = старший медицинский офицер
+job-name-real-chief-medical-officer = ЧМО
 job-name-practical-nurse = фельдшер
 job-name-resident = ординатор
 job-name-clinician = медик
 job-name-traumatologist = травматолог
 job-name-adt-doctor = доктор
 job-name-therapist = терапевт
-job-name-psychiatrist = психиатр
+job-name-psychiatrist = шизолог
 job-name-psychotherapist = психотерапевт
 
 # RnD
@@ -104,7 +104,7 @@ job-name-shepherd = пастор
 job-name-clergyman = священнослужитель
 job-name-tourist = турист
 job-name-student = студент
-job-name-mixologist = миксолог
+job-name-mixologist = магистр права
 job-name-tavernkeep = трактирщик
 job-name-barista = бариста
 job-name-baker = пекарь

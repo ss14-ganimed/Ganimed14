@@ -42,6 +42,8 @@
       prototype: VulpkaninBody
       requiredLegs: 2
     - type: RoarAccent
+    - type: Bloodstream
+      bloodReagent: HighRolePlay
     - type: MeleeWeapon
       hidden: true
       soundHit:

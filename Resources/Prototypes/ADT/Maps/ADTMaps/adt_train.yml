@@ -36,9 +36,9 @@
             Librarian: [ 1, 1 ]
             ServiceWorker: [ 2, 2 ]
             ADTBarber: [ 1, 1 ]
-            Clown: [ 1, 1 ]
+            Clown: [ 2, 3 ]
             Boxer: [ 1, 1 ]
-            Mime: [ 1, 1 ]
+            Mime: [ 2, 3 ]
             Reporter: [ 1, 1 ]
             Musician: [ 1, 1 ]
 

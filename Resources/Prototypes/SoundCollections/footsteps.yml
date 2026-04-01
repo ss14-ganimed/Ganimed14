@@ -136,11 +136,11 @@
 - type: soundCollection
   id: BarestepHard
   files:
-  - /Audio/Effects/Footsteps/hardbarefoot1.ogg
-  - /Audio/Effects/Footsteps/hardbarefoot2.ogg
-  - /Audio/Effects/Footsteps/hardbarefoot3.ogg
-  - /Audio/Effects/Footsteps/hardbarefoot4.ogg
-  - /Audio/Effects/Footsteps/hardbarefoot5.ogg
+  - /Audio/Corvax/Effects/Footsteps/boots1.ogg
+  # - /Audio/Effects/Footsteps/hardbarefoot2.ogg
+  # - /Audio/Effects/Footsteps/hardbarefoot3.ogg
+  # - /Audio/Effects/Footsteps/hardbarefoot4.ogg
+  # - /Audio/Effects/Footsteps/hardbarefoot5.ogg
 
 - type: soundCollection
   id: BarestepCarpet

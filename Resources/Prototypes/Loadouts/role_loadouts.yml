@@ -597,6 +597,7 @@
   id: JobHeadOfSecurity
   groups:
   - Inventory # Corvax-Loadouts
+  - HosMask # Ganimed
   - HeadofSecurityHead
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
