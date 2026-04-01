@@ -1,6 +1,8 @@
 - type: weightedRandom
   id: DynamicRandom
   weights:
+  # Ganimed-Tweak-Start
     DynamicHard: 0.33
     DynamicMedium: 0.34
     DynamicLight: 0.33
+  # Ganimed-Tweak-End

@@ -118,6 +118,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             if (loadout != null)
             {
                 EquipRoleName(jobEntity, loadout, roleProto!);
+                ApplyLoadoutExtras(jobEntity, loadout); // ADT-Tweak
             }
 
             DoJobSpecials(job, jobEntity);
@@ -143,7 +144,6 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
                 // AddComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
                 var flavor = EnsureComp<CharacterFlavorComponent>(entity.Value);
                 flavor.FlavorText = profile.FlavorText;
-                flavor.OOCNotes = profile.OOCNotes;
                 flavor.HeadshotUrl = profile.HeadshotUrl;
                 //возможное TODO: добавить кастомное описание рас
                 //ADT-tweak-end

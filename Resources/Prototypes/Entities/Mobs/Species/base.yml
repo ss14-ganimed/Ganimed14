@@ -83,8 +83,8 @@
   - type: StatusIcon
     bounds: -0.5,-0.5,0.5,0.5
   - type: RotationVisuals
-    defaultRotation: 90
-    horizontalRotation: 90
+    defaultRotation: -90 # ADT-Tweak
+    horizontalRotation: -90 # ADT-Tweak
   - type: HumanoidAppearance
     species: Human
   - type: TypingIndicator
@@ -120,6 +120,12 @@
       Extinguish: [ Touch ]
       Acidic: [Touch, Ingestion]
     reactions:
+    #ADT-Tweak=Start
+    - reagents: [Water, SpaceCleaner]
+      methods: [Touch]
+      effects:
+      - !type:WashStamp
+    #ADT-Tweak-End
     - reagents: [Water, SpaceCleaner]
       methods: [Touch]
       effects:

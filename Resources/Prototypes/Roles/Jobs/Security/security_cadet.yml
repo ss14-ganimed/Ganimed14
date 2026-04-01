@@ -17,7 +17,11 @@
 #      - Resomi
 #      - Vox
 #      - Shadekin
-#    ADT RESTRICT End
+    - !type:TraitsRequirement
+      inverted: true
+      traits:
+      - Muted
+    # ADT-Tweak end
     - !type:AgeRequirement
       inverted: true
       requiredAge: 100 # Ganimed-MRP

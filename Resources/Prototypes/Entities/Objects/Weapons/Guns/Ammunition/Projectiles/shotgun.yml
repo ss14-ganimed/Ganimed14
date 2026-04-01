@@ -26,8 +26,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
-    - state: bullet #just reapplying to here so it can be shaded
-
+    - state: rubber # ADT-Tweak bullet -> rubber
   - type: Projectile
     damage:
       types:
@@ -41,6 +40,12 @@
   categories: [ HideSpawnMenu ]
   parent: BaseBullet
   components:
+  # ADT-Tweak-Start
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: buckshot
+  # ADT-Tweak-End
   - type: Projectile
     damage:
       types:
@@ -64,6 +69,12 @@
   categories: [ HideSpawnMenu ]
   parent: BaseBulletIncendiary
   components:
+  # ADT-Tweak-Start
+  - type: Sprite
+    sprite: ADT/Objects/Weapons/Guns/Projectiles/shotgun-ammo.rsi
+    layers:
+    - state: buckshot-incendiary
+  # ADT-Tweak-End
   - type: Projectile
     damage:
       types:
@@ -89,6 +100,12 @@
   categories: [ HideSpawnMenu ]
   parent: BaseBulletPractice
   components:
+  # ADT-Tweak-Start
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: practice
+  # ADT-Tweak-End
   - type: Projectile
     damage:
       types:
@@ -112,8 +129,10 @@
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    # ADT-Tweak-Start
     layers:
     - state: shard
+    # ADT-Tweak-End
       shader: unshaded
   - type: Projectile
     damage:
@@ -137,6 +156,12 @@
   categories: [ HideSpawnMenu ]
   parent: BaseBulletPractice
   components:
+  # ADT-Tweak-Start
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: piercing
+  # ADT-Tweak-End
   - type: Projectile
     damage:
       types:
@@ -205,6 +230,12 @@
   categories: [ HideSpawnMenu ]
   parent: BaseBulletUranium
   components:
+  #ADT-Tweak-Start
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: uranium
+  #ADT-Tweak-End
   - type: Projectile
     damage:
       types:
