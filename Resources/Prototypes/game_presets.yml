@@ -59,7 +59,7 @@
   - punishment
   name: aller-at-once-title
   description: aller-at-once-description
-  showInVote: false #Please god dont do this
+  showInVote: true #Please god dont do this
   rules:
     - Nukeops
     - Traitor
@@ -139,7 +139,7 @@
     - sandbox
   name: sandbox-title
   description: sandbox-description
-  showInVote: false # Not suitable for use without admin intervention, since entity spamming can quickly crash a server
+  showInVote: true # Not suitable for use without admin intervention, since entity spamming can quickly crash a server
   maxPlayers: 5
   rules:
     - Sandbox
@@ -169,7 +169,7 @@
   name: death-match-title
   description: death-match-description
   maxPlayers: 15
-  showInVote: false # Ganimed-Tweak
+  showInVote: true # Ganimed-Tweak
   supportedMaps: DeathMatchMapPool
   rules:
     - DeathMatch31

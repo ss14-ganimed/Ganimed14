@@ -6,14 +6,14 @@ JobADTMiner = майнер крипты
 
 JobRoboticist = робототехник
 
-job-name-magistrat = магистрат
-JobMagistrat = магистрат
+job-name-magistrat = душнила
+JobMagistrat = душнила
 
 job-name-senior-physician = заведующий врач
 JobADTSeniorPhysician = заведующий врач
 
-job-name-senior-researcher = старший научный сотрудник
-JobADTSeniorResearcher = старший научный сотрудник
+job-name-senior-researcher = снюсолог
+JobADTSeniorResearcher = снюсолог
 
 job-name-senior-engineer = бригадир
 JobADTSeniorEngineer = бригадир
@@ -41,8 +41,8 @@ job-name-ADTSpaceSecPilot = пилот SPACE SEC
 job-name-ADTSpaceSecCommander = командир SPACE SEC
 job-name-ADTSpaceSecService = сотрудник SPACE SEC
 
-job-name-corrections-officer = надзиратель СБ
-ADTCorrectionsOfficer = надзиратель СБ
+job-name-corrections-officer = паноптикум 1984
+ADTCorrectionsOfficer = паноптикум 1984
 
 # Job titles
 cadet-space-sec = кадет SPACE SEC
@@ -56,7 +56,7 @@ job-name-ADTbarber = парикмахер
 
 # Engineering
 
-job-name-life-support-tech = техник жизнеобеспечения
+job-name-life-support-tech = техник смертеобеспечения
 job-name-plasma-scientist = плазмотехнолог
 job-name-electrician = электрик
 job-name-mechanic = механик
@@ -78,7 +78,7 @@ job-name-traumatologist = травматолог
 job-name-adt-doctor = доктор
 job-name-therapist = терапевт
 job-name-psychiatrist = шизолог
-job-name-psychotherapist = психотерапевт
+job-name-psychotherapist = психотерпила
 
 # RnD
 
@@ -104,7 +104,7 @@ job-name-shepherd = пастор
 job-name-clergyman = священнослужитель
 job-name-tourist = турист
 job-name-student = студент
-job-name-mixologist = магистр права
+job-name-mixologist = магистр правоведения
 job-name-tavernkeep = трактирщик
 job-name-barista = бариста
 job-name-baker = пекарь
@@ -120,9 +120,9 @@ job-name-dj = диджей
 job-name-journalist = журналист
 job-name-karateka = каратист
 job-name-kickboxer = кикбоксер
-job-name-savatist = саватист
-job-name-hand-to-hand-combat-master = мастер рукопашного боя
-job-name-mma-fighter = боец ММА
+job-name-savatist = садист
+job-name-hand-to-hand-combat-master = мастер ролевого отыгрыша
+job-name-mma-fighter = боец ХРП
 job-name-judoist = дзюдоист
 job-name-coach = тренер
 job-name-gladiator = гладиатор
@@ -130,7 +130,7 @@ job-name-gladiator = гладиатор
 # Security
 
 job-name-sheriff = шериф
-job-name-investigator = следователь
+job-name-investigator = товарищ майор
 job-name-field-doctor = полевой врач
 
 # Juridical
