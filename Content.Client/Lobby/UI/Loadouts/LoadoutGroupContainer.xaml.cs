@@ -9,7 +9,6 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using System.Linq;
 
 namespace Content.Client.Lobby.UI.Loadouts;
 
@@ -29,6 +28,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutPressed;
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutUnpressed;
+    public event Action<ProtoId<LoadoutGroupPrototype>, ProtoId<LoadoutPrototype>, List<ProtoId<LoadoutPrototype>>, Dictionary<string, ProtoId<LoadoutGroupPrototype>>>? OnLoadoutPressedWithConflict; // Ganimed Sponsor
 
     public LoadoutGroupContainer(HumanoidCharacterProfile profile, RoleLoadout loadout, LoadoutGroupPrototype groupProto, ICommonSession session, IDependencyCollection collection, bool isSponsor)
     {
@@ -79,7 +79,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
         LoadoutsContainer.RemoveAllChildren();
 
-         // Ganimed sponsor start
+        // Ganimed sponsor start
         IEnumerable<ProtoId<LoadoutPrototype>> groupLoadouts = _groupProto.Loadouts;
 
         if (_groupProto.ID == "Inventory")
@@ -101,7 +101,10 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         // Ganimed sponsor end
 
         // Get all loadout prototypes for this group.
-        var validProtos = _groupProto.Loadouts.Select(id => protoMan.Index(id));
+        var validProtos = groupLoadouts
+            .Where(id => protoMan.TryIndex<LoadoutPrototype>(id, out _))
+            .Select(id => protoMan.Index(id))
+            .ToList(); // Ganimed sponsor
 
         /*
          * Group the prototypes based on their GroupBy field.
@@ -134,10 +137,17 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
                     .Select(proto =>
                     {
                         var elem = CreateLoadoutUI(proto, profile, loadout, session, collection, loadoutSystem);
+                        if (elem == null) // Ganimed sponsor
+                            return null;
                         elem.HorizontalExpand = true;
                         return elem;
                     })
+                    .Where(e => e != null) // Ganimed sponsor
+                    .Cast<LoadoutContainer>()
                     .ToList();
+
+                if (uiElements.Count == 0) // Ganimed sponsor
+                    continue;
 
                 /*
                 * Determine which element should be displayed first:
@@ -176,9 +186,9 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
             }
             else
             {
-                LoadoutsContainer.AddChild(
-                    CreateLoadoutUI(protos[0], profile, loadout, session, collection, loadoutSystem)
-                );
+                var elem = CreateLoadoutUI(protos[0], profile, loadout, session, collection, loadoutSystem); // Ganimed sponsor
+                if (elem != null)
+                    LoadoutsContainer.AddChild(elem);
             }
         }
     }
@@ -239,45 +249,21 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
     /// <param name="collection">The dependency injection container.</param>
     /// <param name="loadoutSystem">The loadout system instance.</param>
     /// <returns>A fully initialized LoadoutContainer for UI display.</returns>
-    private LoadoutContainer CreateLoadoutUI(LoadoutPrototype proto, HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession session, IDependencyCollection collection, LoadoutSystem loadoutSystem)
+    private LoadoutContainer? CreateLoadoutUI(LoadoutPrototype proto, HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession session, IDependencyCollection collection, LoadoutSystem loadoutSystem)
     {
-        var selected = loadout.SelectedLoadouts[_groupProto.ID];
-
-        var pressed = selected.Any(e => e.Prototype == proto.ID);
+        // Проверяем, выбран ли этот лодаут в любой группе
+        var pressed = loadout.SelectedLoadouts.Values.Any(groupLoadouts =>
+            groupLoadouts.Any(l => l.Prototype == proto.ID));
 
         // Ganimed sponsor start
-        // Лоадуты с SponsorOnly допускаются только при наличии разрешения в API
+         // Лоадуты с SponsorOnly допускаются только при наличии разрешения в API
         if (proto.SponsorOnly)
         {
             if (!_sponsorsManager.TryGetInfo(out var sponsor))
-            {
-                var sponsorCont = new LoadoutContainer(proto, true, FormattedMessage.FromUnformatted("Sponsor only"));
-                sponsorCont.Text = loadoutSystem.GetName(proto);
-                sponsorCont.Select.Pressed = false;
-                sponsorCont.Select.OnPressed += args =>
-                {
-                    if (args.Button.Pressed)
-                        OnLoadoutPressed?.Invoke(proto.ID);
-                    else
-                        OnLoadoutUnpressed?.Invoke(proto.ID);
-                };
-                return sponsorCont;
-            }
+                return null;
 
             if (!sponsor.AllowedMarkings.Contains(proto.ID))
-            {
-                var notAllowedCont = new LoadoutContainer(proto, true, FormattedMessage.FromUnformatted("Not in allowed markings"));
-                notAllowedCont.Text = loadoutSystem.GetName(proto);
-                notAllowedCont.Select.Pressed = false;
-                notAllowedCont.Select.OnPressed += args =>
-                {
-                    if (args.Button.Pressed)
-                        OnLoadoutPressed?.Invoke(proto.ID);
-                    else
-                        OnLoadoutUnpressed?.Invoke(proto.ID);
-                };
-                return notAllowedCont;
-            }
+                return null;
         }
         // Ganimed sponsor end
 
@@ -292,10 +278,58 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         cont.Select.OnPressed += args =>
         {
             if (args.Button.Pressed)
-                OnLoadoutPressed?.Invoke(proto.ID);
+            {
+                // Ganimed sponsor start
+                var allSlots = new HashSet<string>(proto.Equipment.Keys);
+                foreach (var storageSlot in proto.Storage.Keys)
+                {
+                    allSlots.Add(storageSlot);
+                }
+
+                var toRemove = new List<ProtoId<LoadoutPrototype>>();
+                var conflictingGroupForSlot = new Dictionary<string, ProtoId<LoadoutGroupPrototype>>();
+
+                foreach (var (groupId, groupLoadouts) in loadout.SelectedLoadouts)
+                {
+                    var resolvedLoadouts = groupLoadouts
+                        .Select(l => (Loadout: l, Proto: collection.Resolve<IPrototypeManager>().TryIndex(l.Prototype, out var p) ? p : null))
+                        .Where(x => x.Proto != null)!;
+
+                    foreach (var (selectedLoadout, selectedProto) in resolvedLoadouts)
+                    {
+                        foreach (var slot in allSlots)
+                        {
+                            var newHasSlot = proto.Equipment.ContainsKey(slot) || proto.Storage.ContainsKey(slot);
+                            var selectedHasEquipment = selectedProto!.Equipment.ContainsKey(slot);
+
+                            if (newHasSlot && selectedHasEquipment)
+                            {
+                                toRemove.Add(selectedLoadout.Prototype);
+
+                                if (!conflictingGroupForSlot.ContainsKey(slot))
+                                {
+                                    conflictingGroupForSlot[slot] = groupId;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (toRemove.Count > 0)
+                {
+                    OnLoadoutPressedWithConflict?.Invoke(_groupProto.ID, proto.ID, toRemove, conflictingGroupForSlot);
+                }
+                else
+                {
+                    OnLoadoutPressed?.Invoke(proto.ID);
+                }
+            }
             else
+            {
                 OnLoadoutUnpressed?.Invoke(proto.ID);
+            }
         };
+        // Ganimed sponsor end
 
         return cont;
     }

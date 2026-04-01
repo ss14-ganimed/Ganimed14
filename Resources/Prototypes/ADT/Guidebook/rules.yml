@@ -103,3 +103,10 @@
 #  - type: Sprite
 #    sprite: ADT/Objects/Misc/adventuretime.rsi
 #    state: icon
+
+- type: guideEntry
+  id: FlavorTextRules
+  name: Правила описания персонажа
+  priority: 12
+  ruleEntry: true
+  text: "/ServerInfo/ADT/Guidebook/ServerRules/FlavorTextRules.xml"

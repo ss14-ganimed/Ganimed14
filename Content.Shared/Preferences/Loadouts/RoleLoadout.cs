@@ -115,7 +115,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
         {
             // Ganimed sponsor start
             if (!SelectedLoadouts.ContainsKey(groupProto))
-                SelectedLoadouts[groupProto] = new List<Loadout>(); 
+                SelectedLoadouts[groupProto] = new List<Loadout>();
             // Ganimed sponsor end
         }
 
@@ -153,10 +153,16 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
                 }
 
                 // Malicious client maybe, check the group even has it.
-                if (!groupProto.Loadouts.Contains(loadout.Prototype))
+                // Ganimed Sponsor  start
+                bool isLoadoutInGroup = groupProto.Loadouts.Contains(loadout.Prototype);
+                if (!isLoadoutInGroup)
                 {
-                    loadouts.RemoveAt(i);
-                    continue;
+                    if (!protoManager.TryIndex(loadout.Prototype, out _))
+                    {
+                        loadouts.RemoveAt(i);
+                        continue;
+                    }
+                    // Ganimed Sponsor  end
                 }
 
                 // Validate the loadout can be applied (e.g. points).
@@ -332,39 +338,8 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
     /// </summary>
     public bool AddLoadout(ProtoId<LoadoutGroupPrototype> selectedGroup, ProtoId<LoadoutPrototype> selectedLoadout, IPrototypeManager protoManager)
     {
-        // Ganimed sponsor start
         if (!SelectedLoadouts.TryGetValue(selectedGroup, out var groupLoadouts))
             return false;
-
-        var newProto = protoManager.Index(selectedLoadout);
-
-        var conflictingGroups = new List<ProtoId<LoadoutGroupPrototype>>();
-        foreach (var (groupId, items) in SelectedLoadouts)
-        {
-            if (!protoManager.TryIndex(groupId, out var groupProto))
-                continue;
-
-            foreach (var item in items)
-            {
-                if (!protoManager.TryIndex(item.Prototype, out var otherProto))
-                    continue;
-
-                if (Conflicts(newProto, otherProto))
-                {
-                    conflictingGroups.Add(groupId);
-                    break;
-                }
-            }
-        }
-
-        foreach (var group in conflictingGroups)
-        {
-            if (!SelectedLoadouts.TryGetValue(group, out var items))
-                continue;
-
-            items.Clear();
-        }
-        // Ganimed sponsor end
 
         groupLoadouts.Add(new Loadout()
         {
@@ -373,19 +348,6 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
 
         return true;
     }
-
-    // Ganimed sponsor start
-    private bool Conflicts(LoadoutPrototype a, LoadoutPrototype b)
-    {
-        foreach (var slot in a.Equipment.Keys)
-        {
-            if (b.Equipment.ContainsKey(slot))
-                return true;
-        }
-
-        return false;
-    }
-    // Ganimed sponsor end
 
     public bool RemoveLoadout(ProtoId<LoadoutGroupPrototype> selectedGroup, ProtoId<LoadoutPrototype> selectedLoadout, IPrototypeManager protoManager)
     {
