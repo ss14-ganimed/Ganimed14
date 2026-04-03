@@ -1,7 +1,7 @@
-ent-ClothingBeltWhiteSheath = белые сабельные ножны
+ent-ClothingBeltSheathWhite = белые сабельные ножны
    .desc = Стиль, блеск, всё для лучших сабель во вселенной.
 
-ent-ClothingBeltSheriffSheath = сабельные ножны шерифа
+ent-ClothingBeltSheathSheriff = сабельные ножны шерифа
    .desc = Практичность, прочность, сабля точно не окажется в вашей ноге.
 
 ent-ClothingBeltMilitaryWebbingCMO = пояс главного врача

@@ -1,8 +1,8 @@
 ent-ClothingUniformJumpsuitCommandCaptain = командный костюм капитана
     .desc = Чёрный костюм, на нём видны золотые погоны на плечах.
 
-ent-ClothingUniformJumpsuitCaptainWhite = белый комбинезон капитана
-    .desc = Белый комбинезон капитана символизирующий, что ваша зарплата явно превышает нормы.
+ent-ClothingUniformJumpsuitCaptainWhite = белый костюм капитана
+    .desc = Белый костюм капитана символизирующий, что ваша зарплата явно превышает нормы.
 
 ent-ClothingUniformJumpsuitSheriff = комбинезон шерифа
     .desc = Комбинезон показывающий вашу статусность, как ужасн... великого правителя.
@@ -21,12 +21,6 @@ ent-ClothingUniformJumpsuitMilitary = военный комбинезон
 
 ent-ClothingUniformJumpsuitCargoPostal = почтовый комбинезон
     .desc = Прочная спортивная юбка, выдаваемая сотрудникам грузового отдела для почтовой работы.
-
-ent-ClothingUniformJumpsuitPsychologistOriginal = костюм психолога
-    .desc = Я не теряю вещи. Я кладу вещи в места, которые потом ускользают от меня.
-
-ent-ClothingUniformJumpsuitShortsleeveSuit = брюки и рубашка с коротким рукавом
-    .desc = Костюм, соблюдающий баланс между удобством и стилем.
 
 ent-ClothingUniformJumpsuitCoroner = комбинезон патологоанатома
     .desc = Особая модификация стандартной униформы врача. Носитель легко выделяется как профессионал любой сферы как до, так и после смерти.
@@ -76,9 +70,6 @@ ent-ClothingUniformJumpsuitCentcomOfficerOriginal = комбинезон офи�
 
 ent-ClothingUniformJumpsuitHoSOriginal = яркий комбинезон главы службы безопасности
     .desc = Ещё ярче и еще жестче, идеально для не самого весёлого из глав.
-
-ent-ClothingUniformJumpsuitHoSParadeMaleOriginal = парадная форма главы службы безопасности
-    .desc = Роскошная униформа главы службы безопасности, для особых случаев.
 
 ent-ClothingUniformJumpsuitBrigmedicOriginal = медико-охранный комбинезон
     .desc = Форма простого фасона, выдаваемая персоналу с наклонностями как медицинского, так и боевого характера. Всё еще не самый логичный дизайн.

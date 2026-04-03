@@ -115,7 +115,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
         {
             // Ganimed sponsor start
             if (!SelectedLoadouts.ContainsKey(groupProto))
-                SelectedLoadouts[groupProto] = new List<Loadout>(); 
+                SelectedLoadouts[groupProto] = new List<Loadout>();
             // Ganimed sponsor end
         }
 
@@ -153,14 +153,21 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
                 }
 
                 // Malicious client maybe, check the group even has it.
-                if (!groupProto.Loadouts.Contains(loadout.Prototype))
+                // Ganimed Sponsor  start
+                bool isLoadoutInGroup = groupProto.ID == "Inventory" || groupProto.Loadouts.Contains(loadout.Prototype);
+                if (!isLoadoutInGroup)
                 {
-                    loadouts.RemoveAt(i);
-                    continue;
+                    if (!protoManager.TryIndex(loadout.Prototype, out _))
+                    {
+                        loadouts.RemoveAt(i);
+                        continue;
+                    }
+                    // Ganimed Sponsor  end
                 }
 
                 // Validate the loadout can be applied (e.g. points).
-                if (!IsValid(profile, session, loadout.Prototype, collection, out _))
+                // Ganimed tweak: пропускаем IsValid для Inventory, т.к. элементы уже проверены через API
+                if (groupProto.ID != "Inventory" && !IsValid(profile, session, loadout.Prototype, collection, out _))
                 {
                     loadouts.RemoveAt(i);
                     continue;
@@ -201,6 +208,41 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
 
             SelectedLoadouts[group] = loadouts;
         }
+
+        // Ganimed Sponsor start
+        if (SelectedLoadouts.TryGetValue("Inventory", out var inventoryLoadouts))
+        {
+            var inventoryProtos = inventoryLoadouts
+                .Select(l => protoManager.TryIndex(l.Prototype, out var p) ? p : null)
+                .Where(p => p != null)!
+                .ToList();
+
+            foreach (var (groupId, groupLoadouts) in SelectedLoadouts.ToList())
+            {
+                if (groupId == "Inventory")
+                    continue;
+
+                for (var i = groupLoadouts.Count - 1; i >= 0; i--)
+                {
+                    var loadout = groupLoadouts[i];
+                    if (!protoManager.TryIndex(loadout.Prototype, out var loadoutProto))
+                        continue;
+
+                    foreach (var invProto in inventoryProtos)
+                    {
+                        if (invProto == null)
+                            continue;
+
+                        if (Conflicts(loadoutProto, invProto))
+                        {
+                            groupLoadouts.RemoveAt(i);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        // Ganimed Sponsor end
 
         foreach (var value in groupRemove)
         {
@@ -267,13 +309,13 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             var loadouts = new List<Loadout>();
             SelectedLoadouts[group] = loadouts;
 
-            if (groupProto.MinLimit > 0)
+            if (groupProto.MinLimit > 0 || loadouts.Count < groupProto.DefaultSelected)
             {
                 // Apply any loadouts we can.
                 foreach (var protoId in groupProto.Loadouts)
                 {
                     // Reached the limit, time to stop
-                    if (loadouts.Count >= groupProto.MinLimit)
+                    if (loadouts.Count >= Math.Max(groupProto.MinLimit, groupProto.DefaultSelected))
                         break;
 
                     if (!protoManager.TryIndex(protoId, out var loadoutProto))
@@ -338,31 +380,19 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
 
         var newProto = protoManager.Index(selectedLoadout);
 
-        var conflictingGroups = new List<ProtoId<LoadoutGroupPrototype>>();
-        foreach (var (groupId, items) in SelectedLoadouts)
+        foreach (var (groupId, items) in SelectedLoadouts.ToList())
         {
-            if (!protoManager.TryIndex(groupId, out var groupProto))
-                continue;
-
-            foreach (var item in items)
+            for (var i = items.Count - 1; i >= 0; i--)
             {
+                var item = items[i];
                 if (!protoManager.TryIndex(item.Prototype, out var otherProto))
                     continue;
 
                 if (Conflicts(newProto, otherProto))
                 {
-                    conflictingGroups.Add(groupId);
-                    break;
+                    items.RemoveAt(i);
                 }
             }
-        }
-
-        foreach (var group in conflictingGroups)
-        {
-            if (!SelectedLoadouts.TryGetValue(group, out var items))
-                continue;
-
-            items.Clear();
         }
         // Ganimed sponsor end
 

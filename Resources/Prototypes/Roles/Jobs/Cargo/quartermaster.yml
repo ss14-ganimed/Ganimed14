@@ -7,16 +7,20 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobCargoTechnician
-      time: 21600 #6 hrs # Ganimed-RoleTime
+      time: 6h # Ganimed-RoleTime
     - !type:RoleTimeRequirement
       role: JobSalvageSpecialist
-      time: 21600 #6 hrs # Ganimed-RoleTime
+      time: 6h # Ganimed-RoleTime
     - !type:DepartmentTimeRequirement
       department: Cargo
-      time: 72000 #20 hours # Ganimed-RoleTime
+      time: 20h # Ganimed-RoleTime
     - !type:OverallPlaytimeRequirement
-      time: 144000 #40 hrs Ganimed-RoleTime
-      #ADT tweak start
+      time: 40h # Ganimed-RoleTime
+      # ADT-Tweak start
+    - !type:TraitsRequirement
+      inverted: true
+      traits:
+      - Muted
 #    - !type:SpeciesRequirement
 #      inverted: true
 #      species:
@@ -49,8 +53,8 @@
   id: QuartermasterGear
   equipment:
     # id: QuartermasterPDA # ADT: different PDAs in loadouts
-    # ears: ClothingHeadsetQM # ADT tweak
-    belt: BoxFolderClipboard
+    # ears: ClothingHeadsetQM # ADT tweak - выдаются через loadout ADTQuartermasterEars
+    belt: BoxFolderClipboardThreePapers
     pocket1: AppraisalTool
   storage:
     back:

@@ -182,10 +182,15 @@
   name: brigmedic beret
   description: A robust beret with the medical insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection.
   components:
-    - type: Sprite
-      sprite: ADT/Clothing/Head/Hats/beret_brigmedic.rsi
-    - type: Clothing
-      sprite: ADT/Clothing/Head/Hats/beret_brigmedic.rsi
+  - type: Sprite
+    sprite: ADT/Clothing/Head/Hats/beret_brigmedic.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Head/Hats/beret_brigmedic.rsi
+  - type: Tag # Ganimed-Resprite-Add
+    tags:
+    - ClothMade
+    - HamsterWearable
+    - WhitelistChameleon
 
 - type: entity
   parent: ClothingHeadBase
@@ -476,7 +481,10 @@
     sprite: ADT/Clothing/Head/Hats/drink_cap.rsi
   - type: StaticPrice
     price: 120
-  - type: Drink
+  - type: Edible
+    edible: Drink
+    destroyOnEmpty: false
+    solution: drink
   - type: SolutionContainerManager
     solutions:
       drink:

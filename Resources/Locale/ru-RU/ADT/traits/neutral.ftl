@@ -13,6 +13,9 @@ trait-nya-accent-desc = Кажется на вас нашло мря-гкое г
 trait-sick-teeth-accent-name = Зубной дефект
 trait-sick-teeth-accent-desc = Проблемы с зубами меняют вашу речь: некоторые согласные звучат иначе.
 
+trait-burriness-accent-name = Картавость
+trait-burriness-accent-desc = Вы не умеете выговаххивать букву "Р" ;w;
+
 
 
 trait-tall-name = Высокий
@@ -34,3 +37,12 @@ trait-hushed-desc = Ваш голос не способен стать гром�
 
 trait-pseudobulbar-affect-name = Псевдобульбарный аффект
 trait-pseudobulbar-affect-desc = Неврологическое расстройство из-за которого у вашего персонажа неконтролируемые приступы эмоций, как в речи так и в невербальном поведении.
+
+trait-disproportionate-name = Непропорциональный
+trait-disproportionate-desc = Ваше тело непропорционально, не позволяя носить комбинезоны. Взамен вы снабжены встроенными разъёмами под КПК, карманы, а также датчики.
+
+trait-female-ipc-name = Голосовой модуль (Женский)
+trait-female-ipc-desc = Вы способны издавать звуки женских человеческих особей.
+
+trait-male-ipc-name = Голосовой модуль (Мужской)
+trait-male-ipc-desc = Вы способны издавать звуки мужских человеческих особей.

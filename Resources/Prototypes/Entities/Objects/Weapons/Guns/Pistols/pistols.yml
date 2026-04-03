@@ -16,6 +16,7 @@
     shape:
     - 0,0,1,0
     - 0,1,0,1
+    storedOffset: 0,-4
   - type: Tag
     tags:
     - Sidearm
@@ -131,8 +132,8 @@
           - ADTAttachmentAntiLyingWarrior
   - type: AttachableHolderVisuals
     offsets:
-      rmc-aslot-underbarrel: 0.235, -0.00875
-      rmc-aslot-barrel: 0.84375, 0.09735
+      rmc-aslot-underbarrel: 0.125, -0.0125 # Ganimed-Resprite-Tweak (0.235, -0.00875)
+      rmc-aslot-barrel: 0.8125, 0.0625 # Ganimed-Resprite-Tweak (0.84375, 0.09735)
 # ADT TWEAK END
 
 - type: entity
@@ -170,7 +171,6 @@
     maxCharge: 1000
     startingCharge: 1000
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 25
   - type: AmmoCounter
 
@@ -268,6 +268,8 @@
   # ADT-Tweak-End
   - type: Clothing
     sprite: Objects/Weapons/Guns/Pistols/mk58.rsi
+  - type: Item
+    storedOffset: 0,-2
   - type: Gun
     fireRate: 5
     # ADT: amount of shots while burst
@@ -278,6 +280,8 @@
     - Burst
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/mk58.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
 # ADT TWEAK START
   - type: AttachableHolder
     slots:
@@ -293,7 +297,7 @@
   - type: AttachableHolderVisuals
     offsets:
       rmc-aslot-underbarrel: 0.17, -0.014
-      rmc-aslot-barrel: 0.84375, 0.125
+      rmc-aslot-barrel: 0.875, 0.09375 # Ganimed-Resprite-Tweak (0.84375, 0.125)
   - type: Tag
     tags:
     - Sidearm

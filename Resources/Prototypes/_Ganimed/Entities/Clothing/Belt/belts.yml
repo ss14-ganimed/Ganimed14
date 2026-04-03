@@ -65,15 +65,15 @@
 
 - type: entity
   parent: ClothingBeltSheath
-  id: ClothingBeltWhiteSheath
+  id: ClothingBeltSheathWhite
   name: white sabre sheath
   description: Style, shine, everything for the best sabers in the universe.
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/Belt/white_sheath.rsi
+    sprite: _Ganimed/Clothing/Belt/sheath_white.rsi
     state: sheath
   - type: Clothing
-    sprite: _Ganimed/Clothing/Belt/white_sheath.rsi
+    sprite: _Ganimed/Clothing/Belt/sheath_white.rsi
 
 - type: entity
   parent: ClothingBeltSecurityWebbingFilled

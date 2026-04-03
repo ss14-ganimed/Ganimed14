@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using Content.Shared.ADT.CCVar;
+using Content.Shared.ADT.CharecterFlavor;
 using Content.Shared.ADT.Language;
 using Content.Shared.ADT.SpeechBarks;
 using Content.Shared.CCVar;
@@ -85,7 +86,18 @@ namespace Content.Shared.Preferences
         /// ссылка на хэдшот персонажа
         /// </summary>
         [DataField]
-        public string HeadshotUrl { get; set; } = string.Empty;
+        public string HeadshotUrl { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// Установить URL хэдшота с валидацией.
+        /// Валидация происходит один раз при установке, а не при каждом спавне.
+        /// </summary>
+        public void SetHeadshotUrl(string url, string allowedDomain)
+        {
+            HeadshotUrl = HeadshotHashHelper.IsValidHeadshotUrl(url, allowedDomain)
+                ? url
+                : string.Empty;
+        }
         //ADT-tweak-end
 
         /// <summary>
@@ -262,6 +274,7 @@ namespace Content.Shared.Preferences
             return new()
             {
                 Species = species,
+                Appearance = HumanoidCharacterAppearance.DefaultWithSpecies(species),
                 _languages = proto.Index<SpeciesPrototype>(species).DefaultLanguages.ToHashSet()    // ADT Languages
             };
         }
@@ -516,7 +529,7 @@ namespace Content.Shared.Preferences
             // Category not found so dump it.
             TraitCategoryPrototype? traitCategory = null;
 
-            if (category != null && !protoManager.TryIndex(category, out traitCategory))
+            if (category != null && !protoManager.Resolve(category, out traitCategory))
                 return new(this);
 
             var list = new HashSet<ProtoId<TraitPrototype>>(_traitPreferences) { traitId };
@@ -693,13 +706,6 @@ namespace Content.Shared.Preferences
             {
                 oocNotes = FormattedMessage.RemoveMarkupOrThrow(oocNotes);
             }
-
-            string headshoturl = HeadshotUrl;
-            if (headshoturl.Length > 500 || !HeadshotUrl.Contains(configManager.GetCVar(ADTCCVars.HeadshotUrl))) //чутка хардкод, но это просто чтобы не засирали ссылкками на что угодно
-            {
-                headshoturl = string.Empty;
-            }
-            //максимальная длина ООЦ заметок не больше чем длина флавора
             //ADT-tweak-end
 
             var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex, sponsorPrototypes);
@@ -752,7 +758,7 @@ namespace Content.Shared.Preferences
             FlavorText = flavortext;
             //ADT-tweak-start
             OOCNotes = oocNotes;
-            HeadshotUrl = headshoturl;
+            // HeadshotUrl уже валидирован при установке через SetHeadshotUrl
             //ADT-tweak-end
             Age = age;
             Sex = sex;
@@ -792,6 +798,9 @@ namespace Content.Shared.Preferences
                     continue;
                 }
 
+                // This happens after we verify the prototype exists
+                // These values are set equal in the database and we need to make sure they're equal here too!
+                loadouts.Role = roleName;
                 loadouts.EnsureValid(this, session, collection);
             }
 
@@ -840,7 +849,7 @@ namespace Content.Shared.Preferences
                 }
 
                 // No category so dump it.
-                if (!protoManager.TryIndex(traitProto.Category, out var category))
+                if (!protoManager.Resolve(traitProto.Category, out var category))
                     continue;
 
                 // ADT-Tweak start
@@ -895,10 +904,17 @@ namespace Content.Shared.Preferences
             var namingSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<NamingSystem>();
             return namingSystem.GetName(species, gender);
         }
+        public bool Equals(HumanoidCharacterProfile? other)
+        {
+            if (other is null)
+                return false;
+
+            return ReferenceEquals(this, other) || MemberwiseEquals(other);
+        }
 
         public override bool Equals(object? obj)
         {
-            return ReferenceEquals(this, obj) || obj is HumanoidCharacterProfile other && Equals(other);
+            return obj is HumanoidCharacterProfile other && Equals(other);
         }
 
         public override int GetHashCode()

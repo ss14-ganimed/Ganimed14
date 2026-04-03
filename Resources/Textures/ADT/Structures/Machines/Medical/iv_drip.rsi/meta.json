@@ -1,0 +1,47 @@
+﻿{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/55c7d6c9ece0021e35548c7b1dae1456d23750b5 and modified by HyperB1 (GitHub)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "ivdrip"
+    },
+    {
+      "name": "pack"
+    },
+    {
+      "name": "hooked"
+    },
+    {
+      "name": "beakerlarge100"
+    },
+    {
+      "name": "unhooked"
+    },
+    {
+      "name": "reagent100"
+    },
+    {
+      "name": "reagent80"
+    },
+    {
+      "name": "reagent75"
+    },
+    {
+      "name": "reagent50"
+    },
+    {
+      "name": "reagent25"
+    },
+    {
+      "name": "reagent10"
+    },
+    {
+      "name": "reagent0"
+    }
+  ]
+}

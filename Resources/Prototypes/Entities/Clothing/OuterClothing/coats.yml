@@ -10,7 +10,7 @@
     sprite: Clothing/OuterClothing/Coats/bomber.rsi
 
 - type: entity
-  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, ClothingOuterArmorBasic, BadgeOnClothingWithContainer] #ADT-Tweak
+  parent: [ClothingOuterStorageFoldableBaseOpened, AllowSuitStorageClothing, ClothingOuterArmorBasic, BadgeOnClothingWithContainer] #ADT-Tweak # Ganimed-Edit (ClothingOuterStorageBase -> ClothingOuterStorageFoldableBaseOpened)
   id: ClothingOuterCoatDetective
   name: detective trenchcoat
   description: An 18th-century multi-purpose trenchcoat. Someone who wears this means serious business.
@@ -156,7 +156,7 @@
     modifiers:
       coefficients:
         Slash: 0.95
-  - type: Food
+  - type: Edible
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
     solutions:

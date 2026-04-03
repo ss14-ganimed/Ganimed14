@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Made by GoldenCan(github) based on cargosoft.rsi which was taken from tgstation at commit https://github.com/tgstation/tgstation/commit/4f6190e2895e09116663ef282d3ce1d8b35c032e, repaletted for Space Station 14",
+  "copyright": "Made by GoldenCan(github) based on cargosoft.rsi which was taken from tgstation at commit https://github.com/tgstation/tgstation/commit/4f6190e2895e09116663ef282d3ce1d8b35c032e, repaletted for Space Station 14. icon states and equipped states resprited by HyperB1 (GitHub) based on sprites by discord:prazat911",
   "size": {
     "x": 32,
     "y": 32

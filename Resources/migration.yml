@@ -370,7 +370,7 @@ TravelingChefSpawner: VisitorChefSpawner
 SyndieDisasterVictimSpawner: SyndieVisitorSpawner
 
 # 2024-06-15
-ClothingOuterCoatInspector: ClothingOuterCoatJensen
+# ClothingOuterCoatInspector: ClothingOuterCoatJensen # Ganimed-Remove
 
 # 2024-06-23
 FloorTileItemReinforced: PartRodMetal1
@@ -751,21 +751,26 @@ SpawnHonkBot: SpawnMobHonkBot
 CrateFoodPizzaLarge: CrateFoodPizza
 CrateFoodSoftdrinksLarge: CrateFoodSoftdrinks
 
-# # 2025-06-06
-# MagazineLightRifleMaxim: null
-# MagazineLightRiflePkBox: null
-# MagazineCaselessRifle10x24: null
-# BaseMagazineCaselessRifleShort: null
-# MagazineCaselessRifleShort: null
-# MagazineCaselessRifleShortPractice: null
-# BaseMagazineMagnumSubMachineGun: null
-# MagazineMagnumSubMachineGunEmpty: null
-# MagazineMagnumSubMachineGun: null
-# MagazineMagnumSubMachineGunPractice: null
-# MagazineMagnumSubMachineGunUranium: null
-# MagazineMagnumSubMachineGunPiercing: null
-# BoxMagazineMagnumSubMachineGun: null
-# BoxMagazineMagnumSubMachineGunPractice: null
+# 2025-06-03
+FloorTileItemGCircuit4: FloorTileItemGCircuit
+FloorTileItemBCircuit4: FloorTileItemBCircuit
+FloorTileItemRCircuit4: FloorTileItemRCircuit
+
+# 2025-06-06
+MagazineLightRifleMaxim: null
+MagazineLightRiflePkBox: null
+MagazineCaselessRifle10x24: null
+BaseMagazineCaselessRifleShort: null
+MagazineCaselessRifleShort: null
+MagazineCaselessRifleShortPractice: null
+BaseMagazineMagnumSubMachineGun: null
+MagazineMagnumSubMachineGunEmpty: null
+MagazineMagnumSubMachineGun: null
+MagazineMagnumSubMachineGunPractice: null
+MagazineMagnumSubMachineGunUranium: null
+MagazineMagnumSubMachineGunPiercing: null
+BoxMagazineMagnumSubMachineGun: null
+BoxMagazineMagnumSubMachineGunPractice: null
 
 # 2025-06-09
 BarSignAlignTile: BarSign
@@ -800,6 +805,12 @@ ClothingUniformColorJumpskirtRainbow: ClothingUniformJumpskirtColorRainbow
 
 # 2025-06-21
 ClothingNeckHeadphones: ClothingMultipleHeadphones
+
+# 2025-07-17
+RipleyChassis: null
+HonkerChassis: null
+HamtrChassis: null
+VimChassis: null
 
 # 2025-07-17 Corvax
 DrinkDaiquiriGlass: DrinkDaiquiri
@@ -841,6 +852,34 @@ ADTDrinkBeerCanPack: null
 
 # Ganimed 2026-01-04
 ADTClothingNeckShockCollar: ClothingBackpackElectropack
+ChemDispenser: EnergyChemDispenser
+ChemDispenserEmpty: EnergyChemDispenser
+# 2025-08-01
+FoodDonutJellySlugcat: FoodDonutJellyScurret
+
+# 2025-08-11
+ClothingUniformJumpsuitChiefEngineerNT: ClothingUniformJumpsuitChiefEngineer
+ClothingUniformJumpsuitParamedicNT: ClothingUniformJumpsuitParamedic
+
+# 2025-08-29
+PrefilledSyringe: Syringe
+
+# 2025-10-6
+BibleTanakh: null
+BibleSatanic: null
+
+
+# 2025-10-08
+ClothingBeltAssault: ClothingBeltMilitaryWebbing
+WarpPointBombing: null
+
+# 2025-10-13
+ToyGriffin: ToyFigurineGriffin
+ToyOwlman: ToyFigurineOwlman
+ToySkeleton: ToyFigurineSkeleton
+
+# 2025-10-28
+DrinkKiraSpecial: DrinkOrangeLimeSodaGlass
 
 # ADT 2026-01-06
 ADTSpawnMobXenoBurrower: SpawnMobXenoBurrower
@@ -848,6 +887,44 @@ ADTSpawnMobXenoDrone: SpawnMobXenoDrone
 ADTSpawnMobXenoQueen: SpawnMobXenoQueen
 ADTSpawnMobXenoRavager: SpawnMobXenoRavager
 
+# ADT 2026-03-02
+Bloodpack: ADTBloodPackTransfusionFull
+
+# ADT 2026-02-27
+# BoozeDispenserMachineCircuitboard: ADTEnergyBoozeDispenserMachineCircuitboard
+# BoozeDispenser: ADTEnergyBoozeDispenser
+# BoozeDispenserEmpty: ADTEnergyBoozeDispenser
+# SodaDispenserMachineCircuitboard: ADTEnergySodaDispenserMachineCircuitboard
+# SodaDispenser: ADTEnergySodaDispenser
+# SodaDispenserEmpty: ADTEnergySodaDispenser
+
 # Ganimed 2026-01-24 (No roundstart energy dispensers)
 EnergyChemDispenser: ChemDispenser
 EnergyChemDispenserMachineCircuitboard: ChemDispenserMachineCircuitboard
+
+# Ganimed 2026-03-13
+MobArtificialHuman: MobMonkey
+ADTHumanCube: MonkeyCube
+ADTHumanCubeWrapped: MonkeyCubeWrapped
+ADTHumanCubeBox: MonkeyCubeBox
+ADTCubeGondola: MonkeyCube
+ADTPosterContrabandRoza: RandomPosterContraband
+
+# Ganimed 2026-04-03
+ADTClothingHeadHatGreyFlatCap: ClothingHeadHatGreyFlatcap
+ADTClothingHeadHatCinnamonFlatCap: ClothingHeadHatBrownFlatcap
+ClothingBeltWhiteSheath: ClothingBeltSheathWhite
+ClothingOuterCoatLabBrigmedic: ClothingOuterCoatLabSecurityMedic
+ClothingUniformJumpsuitShortsleeveSuit: ClothingUniformJumpsuitPsychologist
+ClothingUniformJumpskirtShortsleeveSuit: ClothingUniformJumpskirtPsychologist
+ClothingUniformJumpsuitPsychologistOriginal: ClothingUniformJumpsuitPsychologist
+ClothingUniformJumpskirtPsychologistOriginal: ClothingUniformJumpskirtPsychologist
+ClothingUniformJumpsuitHoSParadeMaleOriginal: ClothingUniformJumpsuitHoSParadeMale
+ClothingUniformJumpskirtHoSParadeFemaleOriginal: ClothingUniformJumpskirtHoSParadeMale
+FloorHardCatwalkIron: FloorCatwalkHardSteel
+FloorHardCatwalkFlatwhite: FloorCatwalkHardSteelWhite
+FloorHardCatwalkWhiteIron: FloorCatwalkHardSteelWhite
+FloorHardCatwalkDarkIron: FloorCatwalkHardSteelDark
+FloorHardCatwalkSmothIron: FloorCatwalkHardSteelSmooth
+FloorHardCatwalkTitanium: FloorCatwalkHardTitanium
+FloorHardCatwalkMaint: FloorCatwalkHardMaint
