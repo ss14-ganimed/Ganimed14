@@ -30,7 +30,7 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
     // Ganimed-Sponsors start
     private readonly Dictionary<NetUserId, SponsorInfo> _cachedSponsors = new();
 
-#if DEBUG
+#if !RELEASE
     private DebugSponsorLoader? _debugSponsorLoader;
 #endif
     // Ganimed-Sponsors end
@@ -59,7 +59,7 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
         _sawmill.Info($"[Init] Sponsor API URL (from CVar): '{_apiUrl}'");
 
     // Ganimed-Sponsors start
-#if DEBUG
+#if !RELEASE
         _debugSponsorLoader = new DebugSponsorLoader(_prototypeManager, _sawmill);
         _debugSponsorLoader.Initialize();
 #endif
@@ -74,7 +74,7 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
     public bool TryGetInfoByCkey(string ckey, [NotNullWhen(true)] out SponsorInfo? sponsor)
     {
        // Ganimed-Sponsors start
-#if DEBUG
+#if !RELEASE
         if (_debugSponsorLoader != null)
             return _debugSponsorLoader.TryGetInfoByCkey(ckey, out sponsor);
 #endif
@@ -102,7 +102,7 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
             info = await LoadSponsorInfo(e.UserId);
         }
 
-#if DEBUG
+#if !RELEASE
         // Если не найдено в API, пробуем локальные debug-прототипы
         if (_debugSponsorLoader != null && info == null)
         {
@@ -120,7 +120,7 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
             return;
         }
 
-        var isExpired = info.ExpireDate.ToLocalTime() <= DateTime.Now;
+        var isExpired = info.ExpireDate.ToUniversalTime() <= DateTime.UtcNow;
 
         if (isExpired && info.AllowJob)
         {
@@ -151,14 +151,40 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
         var info = _cachedSponsors.TryGetValue(e.Channel.UserId, out var sponsor) ? sponsor : null;
 
         // Ganimed-Sponsors stat
-#if DEBUG
+#if !RELEASE
         // Если HTTP API спонсорский не указан, ищем локально
         if (_debugSponsorLoader != null && info == null && _playerManager.TryGetSessionById(e.Channel.UserId, out var session))
         {
             _debugSponsorLoader.OnConnectedLoadDebugSponsors(session.Name, ref info);
             if (info != null)
             {
-                _cachedSponsors[e.Channel.UserId] = info;
+                var nowUtc = DateTime.UtcNow;
+                var expireUtc = info.ExpireDate.ToUniversalTime();
+                var isExpired = expireUtc <= nowUtc;
+
+                if (isExpired && info.AllowJob)
+                {
+                    info = new SponsorInfo
+                    {
+                        CharacterName = info.CharacterName,
+                        Tier = null,
+                        OOCColor = null,
+                        HavePriorityJoin = false,
+                        ExtraSlots = 0,
+                        AllowedMarkings = Array.Empty<string>(),
+                        ExpireDate = info.ExpireDate,
+                        AllowJob = true
+                    };
+                }
+                else if (isExpired || info.Tier == null)
+                {
+                    info = null;
+                }
+
+                if (info != null)
+                {
+                    _cachedSponsors[e.Channel.UserId] = info;
+                }
             }
         }
         // Ganimed-Sponsors end

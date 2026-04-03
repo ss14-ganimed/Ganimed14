@@ -1,4 +1,5 @@
-#if DEBUG
+#if !RELEASE
+using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Corvax.Sponsors;
 using Robust.Shared.Prototypes;
@@ -7,7 +8,7 @@ namespace Content.Server.Corvax.Sponsors;
 
 /// <summary>
 /// Загрузчик debug-спонсоров для локальной разработки.
-/// Доступен только в Debug-сборках.
+/// Доступен в Debug и Tools сборках.
 /// </summary>
 internal sealed class DebugSponsorLoader
 {
@@ -38,6 +39,8 @@ internal sealed class DebugSponsorLoader
 
     public bool TryGetInfoByCkey(string ckey, [NotNullWhen(true)] out SponsorInfo? sponsor)
     {
+        LoadDebugSponsors();
+
         if (string.IsNullOrEmpty(ckey))
         {
             sponsor = null;
@@ -68,13 +71,23 @@ internal sealed class DebugSponsorLoader
 
         _ckeyBasedSponsors.Clear();
 
-        var currentDate = DateTime.Now;
+        var currentDate = DateTime.UtcNow;
 
-        if (!_prototypeManager.TryGetInstances<DebugSponsorPrototype>(out var prototypes))
+        FrozenDictionary<string, DebugSponsorPrototype>? prototypes;
+        try
         {
-            _sawmill.Warning("[DebugSponsor] Prototypes not loaded yet.");
+            if (!_prototypeManager.TryGetInstances<DebugSponsorPrototype>(out prototypes))
+            {
+                return;
+            }
+        }
+        catch (InvalidOperationException)
+        {
             return;
         }
+
+        if (prototypes == null)
+            return;
 
         _debugSponsorsLoaded = true;
 
