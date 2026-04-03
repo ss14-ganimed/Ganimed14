@@ -1,11 +1,5 @@
-ent-ClothingUniformJumpskirtCaptainWhite = белая юбка-комбинезон капитана
-    .desc = Белая юбка-комбинезон капитана символизирующая, что ваша зарплата явно превышает нормы.
-
-ent-ClothingUniformJumpskirtPsychologistOriginal = юбка-костюм психолога
-    .desc = Я не теряю вещи. Я кладу вещи в места, которые потом ускользают от меня.
-
-ent-ClothingUniformJumpskirtShortsleeveSuit = юбка и рубашка с коротким рукавом
-    .desc = Костюм, соблюдающий баланс между удобством и стилем.
+ent-ClothingUniformJumpskirtCaptainWhite = белая юбка-костюм капитана
+    .desc = Белый костюм с юбкой капитана символизирующий, что ваша зарплата явно превышает нормы.
 
 ent-ClothingUniformJumpskirtCargoPostal = юбка почтальона
     .desc = Прочная юбка, выдаваямая сотрудникам грузового отдела для работы на почте.
@@ -31,9 +25,6 @@ ent-ClothingUniformJumpskirtMaid = юбка-костюм горничной
 # Old/Original
 ent-ClothingUniformJumpskirtHoSOriginal = яркая юбка-комбинезон главы службы безопасности
     .desc = Ещё ярче и еще жестче, идеально для не самого весёлого из глав.
-
-ent-ClothingUniformJumpskirtHoSParadeFemaleOriginal = парадная форма главы службы безопасности
-    .desc = Роскошная униформа главы службы безопасности, для особых случаев.
 
 ent-ClothingUniformJumpskirtBrigmedicOriginal = медико-охранная юбка-комбинезон
     .desc = Форма простого фасона, выдаваемая персоналу с наклонностями как медицинского, так и боевого характера. Всё еще не самый логичный дизайн.

@@ -29,17 +29,6 @@
 
 - type: entity
   parent: ClothingOuterCoatLab
-  id: ClothingOuterCoatLabBrigmedic
-  name: brig lab coat
-  description: A high-sanity white clothing where it can easily be stained with red.
-  components:
-  - type: Sprite
-    sprite: _Ganimed/Clothing/OuterClothing/Coats/labcoat_brigmedic.rsi
-  - type: Clothing
-    sprite: _Ganimed/Clothing/OuterClothing/Coats/labcoat_brigmedic.rsi
-
-- type: entity
-  parent: ClothingOuterCoatLab
   id: ClothingOuterCoatLabCoroner
   name: coroner lab coat
   description: A slightly sturdier than usual lab coat made not for the laboratories, but for the wet basements.

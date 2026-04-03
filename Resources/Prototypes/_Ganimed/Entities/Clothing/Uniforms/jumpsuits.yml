@@ -267,29 +267,8 @@
   - type: Clothing
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/alt_rnd.rsi
 
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitShortsleeveSuit
-  name: short-sleeve suit
-  description: I don't lose things. I place things in locations which later elude me.
-  components:
-  - type: Sprite
-    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/alt_psychologist.rsi
-  - type: Clothing
-    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/alt_psychologist.rsi
-
 # Old/Original
 - type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitPsychologistOriginal
-  name: psychologist suit
-  description: I don't lose things. I place things in locations which later elude me.
-  components:
-  - type: Sprite
-    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/original_psychologist.rsi
-  - type: Clothing
-    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/original_psychologist.rsi
-
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitCentcomOfficialOriginal
@@ -322,17 +301,6 @@
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/original_hos.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/original_hos.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitHoSParadeMaleOriginal
-  name: head of security's parade uniform
-  description: A male head of security's luxury-wear, for special occasions.
-  components:
-  - type: Sprite
-    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/original_hos_parade.rsi
-  - type: Clothing
-    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/original_hos_parade.rsi
 
 - type: entity
   parent: ClothingUniformBase
