@@ -154,7 +154,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
 
                 // Malicious client maybe, check the group even has it.
                 // Ganimed Sponsor  start
-                bool isLoadoutInGroup = groupProto.Loadouts.Contains(loadout.Prototype);
+                bool isLoadoutInGroup = groupProto.ID == "Inventory" || groupProto.Loadouts.Contains(loadout.Prototype);
                 if (!isLoadoutInGroup)
                 {
                     if (!protoManager.TryIndex(loadout.Prototype, out _))
@@ -166,7 +166,8 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
                 }
 
                 // Validate the loadout can be applied (e.g. points).
-                if (!IsValid(profile, session, loadout.Prototype, collection, out _))
+                // Ganimed tweak: пропускаем IsValid для Inventory, т.к. элементы уже проверены через API
+                if (groupProto.ID != "Inventory" && !IsValid(profile, session, loadout.Prototype, collection, out _))
                 {
                     loadouts.RemoveAt(i);
                     continue;
@@ -207,6 +208,41 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
 
             SelectedLoadouts[group] = loadouts;
         }
+
+        // Ganimed Sponsor start
+        if (SelectedLoadouts.TryGetValue("Inventory", out var inventoryLoadouts))
+        {
+            var inventoryProtos = inventoryLoadouts
+                .Select(l => protoManager.TryIndex(l.Prototype, out var p) ? p : null)
+                .Where(p => p != null)!
+                .ToList();
+
+            foreach (var (groupId, groupLoadouts) in SelectedLoadouts.ToList())
+            {
+                if (groupId == "Inventory")
+                    continue;
+
+                for (var i = groupLoadouts.Count - 1; i >= 0; i--)
+                {
+                    var loadout = groupLoadouts[i];
+                    if (!protoManager.TryIndex(loadout.Prototype, out var loadoutProto))
+                        continue;
+
+                    foreach (var invProto in inventoryProtos)
+                    {
+                        if (invProto == null)
+                            continue;
+
+                        if (Conflicts(loadoutProto, invProto))
+                        {
+                            groupLoadouts.RemoveAt(i);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        // Ganimed Sponsor end
 
         foreach (var value in groupRemove)
         {
@@ -338,8 +374,27 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
     /// </summary>
     public bool AddLoadout(ProtoId<LoadoutGroupPrototype> selectedGroup, ProtoId<LoadoutPrototype> selectedLoadout, IPrototypeManager protoManager)
     {
+        // Ganimed sponsor start
         if (!SelectedLoadouts.TryGetValue(selectedGroup, out var groupLoadouts))
             return false;
+
+        var newProto = protoManager.Index(selectedLoadout);
+
+        foreach (var (groupId, items) in SelectedLoadouts.ToList())
+        {
+            for (var i = items.Count - 1; i >= 0; i--)
+            {
+                var item = items[i];
+                if (!protoManager.TryIndex(item.Prototype, out var otherProto))
+                    continue;
+
+                if (Conflicts(newProto, otherProto))
+                {
+                    items.RemoveAt(i);
+                }
+            }
+        }
+        // Ganimed sponsor end
 
         groupLoadouts.Add(new Loadout()
         {
@@ -348,6 +403,19 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
 
         return true;
     }
+
+    // Ganimed sponsor start
+    private bool Conflicts(LoadoutPrototype a, LoadoutPrototype b)
+    {
+        foreach (var slot in a.Equipment.Keys)
+        {
+            if (b.Equipment.ContainsKey(slot))
+                return true;
+        }
+
+        return false;
+    }
+    // Ganimed sponsor end
 
     public bool RemoveLoadout(ProtoId<LoadoutGroupPrototype> selectedGroup, ProtoId<LoadoutPrototype> selectedLoadout, IPrototypeManager protoManager)
     {

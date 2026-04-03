@@ -1305,31 +1305,7 @@ namespace Content.Client.Lobby.UI
                 ReloadPreview();
             };
 
-            window.OnLoadoutPressedWithConflict += (loadoutGroup, loadoutProto, conflicts, conflictingGroups) => // Ganimed Sponsor start
-            {
-                var targetGroup = conflictingGroups.Values.First();
-
-                foreach (var conflictProto in conflicts)
-                {
-                    foreach (var (groupId, groupLoadouts) in roleLoadout.SelectedLoadouts)
-                    {
-                        if (groupLoadouts.Any(l => l.Prototype == conflictProto))
-                        {
-                            roleLoadout.RemoveLoadout(groupId, conflictProto, _prototypeManager);
-                            break;
-                        }
-                    }
-                }
-
-                roleLoadout.AddLoadout(targetGroup, loadoutProto, _prototypeManager);
-
-                window.RefreshLoadouts(roleLoadout, session, collection);
-                Profile = Profile?.WithLoadout(roleLoadout);
-                ReloadPreview();
-            };
-
             window.OnLoadoutUnpressed += (loadoutGroup, loadoutProto) =>
-            // Ganimed Sponsor end
             {
                 roleLoadout.RemoveLoadout(loadoutGroup, loadoutProto, _prototypeManager);
                 window.RefreshLoadouts(roleLoadout, session, collection);   // ADT SAI Custom tweaked
