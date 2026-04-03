@@ -269,7 +269,6 @@
 
 # Old/Original
 - type: entity
-- type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitCentcomOfficialOriginal
   name: CentCom official's formal jumpsuit
