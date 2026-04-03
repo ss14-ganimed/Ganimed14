@@ -16,6 +16,6 @@
   description: An armored chestplate that provides protection while offering mobility and flexibility. Issued only to the best crewmembers of the station. White color symbolizes cleanliness and order.
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/OuterClothing/Armor/white_captain_carapace.rsi
+    sprite: _Ganimed/Clothing/OuterClothing/Armor/captain_carapace_white.rsi
   - type: Clothing
-    sprite: _Ganimed/Clothing/OuterClothing/Armor/white_captain_carapace.rsi
+    sprite: _Ganimed/Clothing/OuterClothing/Armor/captain_carapace_white.rsi

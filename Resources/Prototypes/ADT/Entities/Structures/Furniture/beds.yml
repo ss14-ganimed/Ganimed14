@@ -115,6 +115,7 @@
     graph: bed
     node: double_bed_complete
   - type: DoubleBed
+    leftOffset: "0, -0.125" # Ganimed-Resprite-Add
   - type: Appearance
   - type: Strap
     position: Down
@@ -153,6 +154,7 @@
     graph: adt_mattress
     node: mattress_clean_full
   - type: DoubleBed
+    leftOffset: "0, -0.125" # Ganimed-Resprite-Add
   - type: Strap
     position: Down
     rotation: -90

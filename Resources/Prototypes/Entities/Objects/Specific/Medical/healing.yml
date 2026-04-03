@@ -126,6 +126,7 @@
     state: brutepack
   - type: Item
     heldPrefix: brutepack
+    storedRotation: -90 # Ganimed-Resprite-Add
   - type: Healing
     damageContainers:
       - Biological

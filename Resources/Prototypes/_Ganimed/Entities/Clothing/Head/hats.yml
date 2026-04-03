@@ -27,9 +27,9 @@
   description: Stylish white cap cap.
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/Head/Hats/white_capcap.rsi
+    sprite: _Ganimed/Clothing/Head/Hats/capcap_white.rsi
   - type: Clothing
-    sprite: _Ganimed/Clothing/Head/Hats/white_capcap.rsi
+    sprite: _Ganimed/Clothing/Head/Hats/capcap_white.rsi
   - type: Tag
     tags:
     - ClothMade
@@ -43,9 +43,9 @@
   description: A white captain beret, an icon of style.
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/Head/Hats/white_beret.rsi
+    sprite: _Ganimed/Clothing/Head/Hats/beret_captain_white.rsi
   - type: Clothing
-    sprite: _Ganimed/Clothing/Head/Hats/white_beret.rsi
+    sprite: _Ganimed/Clothing/Head/Hats/beret_captain_white.rsi
   - type: Tag
     tags:
     - ClothMade

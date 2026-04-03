@@ -1,32 +1,29 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from TGStation at commit https://github.com/tgstation/tgstation/blob/7fbbe066b27e6e95423640c499a5875f8a7b7d95/icons/turf/floors/catwalk_plating.dmi",
+  "copyright": "Taken from TGStation at commit https://github.com/tgstation/tgstation/blob/ddef3443071e0dd6399d3abc7d85fa4ee2a6411b/icons/turf/floors/catwalk_plating.dmi",
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
     {
-      "name": "hardmaint"
+      "name": "hard_steel"
     },
     {
-      "name": "hardsmoothiron"
+      "name": "hard_white_steel"
     },
     {
-      "name": "hardtitanium"
+      "name": "hard_dark_steel"
     },
     {
-      "name": "hardwhiteiron"
+      "name": "hard_smooth_steel"
     },
     {
-      "name": "harddarkiron"
+      "name": "hard_titanium"
     },
     {
-      "name": "hardflatwhite"
-    },
-    {
-      "name": "hardiron"
+      "name": "hard_maint"
     }
   ]
 }

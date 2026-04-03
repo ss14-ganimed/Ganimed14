@@ -48,7 +48,7 @@
       solution: beaker
     - type: Appearance
     - type: SolutionContainerVisuals
-      maxFillLevels: 6
+      maxFillLevels: 9 # Ganimed-Resprite-Tweak (6 -> 9)
       fillBaseName: jug
       inHandsMaxFillLevels: 5
       inHandsFillBaseName: -fill-

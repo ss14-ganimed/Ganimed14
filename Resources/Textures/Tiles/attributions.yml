@@ -98,7 +98,7 @@
 
 - files: ["shuttleblue.png", "shuttleorange.png", "shuttlepurple.png", "shuttlered.png", "shuttlewhite.png", "shuttlegrey.png", "shuttleblack.png"]
   license: "CC-BY-SA-3.0"
-  copyright: "Modified by Flareguy for Space Station 14, resprited by @mishutka09 (discord:1152277579206774854)"
+  copyright: "Modified by Flareguy for Space Station 14, resprited by @mishutka09 (discord:1152277579206774854), modified by HyperB1 (GitHub)"
   source: "https://github.com/ParadiseSS13/Paradise"
 
 - files: ["deprecated.png"]

@@ -5,7 +5,7 @@
   description: Is it your imagination, or is there a stain on it?
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/Back/Satchels/white_captain_satchel.rsi
+    sprite: _Ganimed/Clothing/Back/Satchels/captain_white.rsi
 
 - type: entity
   parent: [ClothingBackpackSatchel, BaseCommandContraband]

@@ -890,15 +890,32 @@
     sprite: Clothing/Uniforms/Jumpsuit/atmos_casual.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, BaseFoldable] # Ganimed-Resprite-Add (BaseFoldable)
   id: ClothingUniformJumpsuitPsychologist
   name: psychologist suit
   description: I don't lose things. I place things in locations which later elude me.
   components:
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpsuit/psychologist.rsi
+  # Ganimed-Resprite-Add-Start
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: shortsleeve-icon
+      map: [ "foldedLayer" ]
+      visible: false
+  # Ganimed-Resprite-Add-End
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/psychologist.rsi
+  # Ganimed-Resprite-Add-Start
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: unfold-pull-down-sleeves-verb
+    foldVerbText: fold-roll-up-sleeves-verb
+  - type: FoldableClothing
+    foldedEquippedPrefix: shortsleeve
+  # Ganimed-Resprite-Add-End
 
 - type: entity
   parent: ClothingUniformBase
