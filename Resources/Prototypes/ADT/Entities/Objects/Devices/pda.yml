@@ -100,14 +100,14 @@
   components:
   - type: Pda
     id: ADTRoboticistIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenScience
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: PdaBorderColor
     borderColor: "#171716"
     accentVColor: "#d90000"
@@ -140,14 +140,14 @@
   components:
   - type: Pda
     id: ADTPathologistIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenMedical1
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: PdaBorderColor
     borderColor: "#d7d7d0"
     accentVColor: "#15616b"
@@ -260,14 +260,14 @@
   components:
   - type: Pda
     id: ADTInvestigatorIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenSecurityBlack
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: PdaBorderColor
     borderColor: "#774705"
   - type: Icon
@@ -330,14 +330,14 @@
   components:
   - type: Pda
     id: ADTCorrectionsOfficerIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenSecurityRed
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: PdaBorderColor
     borderColor: "#774705"
   - type: Icon

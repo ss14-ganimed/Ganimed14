@@ -199,14 +199,14 @@
   components:
   - type: Pda
     id: TechnicalAssistantIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenEngineering
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -226,14 +226,14 @@
   components:
   - type: Pda
     id: MedicalInternIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenMedical2
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -256,14 +256,14 @@
   components:
   - type: Pda
     id: SecurityCadetIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenSecurityRed
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -283,14 +283,14 @@
   components:
   - type: Pda
     id: ResearchAssistantIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenScience
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -310,14 +310,14 @@
   components:
   - type: Pda
     id: ServiceWorkerIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenGreen
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -357,14 +357,14 @@
   components:
   - type: Pda
     id: BotanistIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenHydroponics
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -459,7 +459,7 @@
         components:
         - IdCard
     penSlot:
-      startingItem: PenMime # Ganimed-edit
+      startingItem: PenMime # Ganimed-Edit
       priority: -1
       whitelist:
         tags:
@@ -493,14 +493,14 @@
   components:
   - type: Pda
     id: ChaplainIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenChaplain
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -567,14 +567,14 @@
   components:
   - type: Pda
     id: CargoIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenCargo
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -593,14 +593,14 @@
   components:
   - type: Pda
     id: SalvageIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenCargo
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -631,14 +631,14 @@
   components:
   - type: Pda
     id: BartenderIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenBooze
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -727,14 +727,14 @@
   components:
   - type: Pda
     id: JanitorIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenJanitor
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -829,14 +829,14 @@
   components:
   - type: Pda
     id: EngineeringIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenEngineering
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -884,14 +884,14 @@
   components:
   - type: Pda
     id: MedicalIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenMedical1
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -925,14 +925,14 @@
   components:
   - type: Pda
     id: ParamedicIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenMedical1
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -952,14 +952,14 @@
   components:
   - type: Pda
     id: ChemistIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenChemist
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1007,14 +1007,14 @@
   components:
   - type: Pda
     id: ResearchIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenScience
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1071,14 +1071,14 @@
   components:
   - type: Pda
     id: WardenIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenSecurityFountain
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1098,14 +1098,14 @@
   components:
   - type: Pda
     id: SecurityIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenSecurityBlack
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1247,14 +1247,14 @@
   components:
   - type: Pda
     id: AtmosIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenAtmos
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1568,14 +1568,14 @@
   components:
   - type: Pda
     id: DetectiveIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenSecurityBlack
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1604,14 +1604,14 @@
   components:
   - type: Pda
     id: BrigmedicIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenBrigmedic
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1669,14 +1669,14 @@
   components:
   - type: Pda
     id: SeniorEngineerIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenEngineering
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1696,14 +1696,14 @@
   components:
   - type: Pda
     id: SeniorResearcherIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenScienceOverpriced
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1724,14 +1724,14 @@
   components:
   - type: Pda
     id: SeniorPhysicianIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenMedical1
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1752,14 +1752,14 @@
   components:
   - type: Pda
     id: SeniorOfficerIDCard
-    # Ganimed-edit-start
+    # Ganimed-Add-Start
     penSlot:
       startingItem: PenSecurityRed
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-edit-end
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:

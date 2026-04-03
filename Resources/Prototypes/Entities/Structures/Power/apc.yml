@@ -33,26 +33,26 @@
     - state: display-charging
       shader: unshaded
       map: ["enum.ApcVisualLayers.ChargeState"]
-    - state: lock0-unlocked # Ganimed-Resprite
+    - state: lock0-unlocked # Ganimed-Resprite-Edit (lock0-locked)
       shader: unshaded
       map: ["enum.ApcVisualLayers.InterfaceLock"]
-      visible: true # Ganimed-Resprite
-    - state: lock1-unlocked # Ganimed-Resprite
+      visible: true # Ganimed-Resprite-Tweak
+    - state: lock1-unlocked # Ganimed-Resprite-Edit (lock1-locked)
       shader: unshaded
       map: ["enum.ApcVisualLayers.PanelLock"]
-      visible: true # Ganimed-Resprite
-    - state: channel0-auto_on # Ganimed-Resprite
+      visible: true # Ganimed-Resprite-Tweak
+    - state: channel0-auto_on # Ganimed-Resprite-Edit (lock1-locked)
       shader: unshaded
       map: ["enum.ApcVisualLayers.Equipment"]
-      visible: true # Ganimed-Resprite
-    - state: channel1-auto_on # Ganimed-Resprite
+      visible: true # Ganimed-Resprite-Tweak
+    - state: channel1-auto_on # Ganimed-Resprite-Edit (lock1-locked)
       shader: unshaded
       map: ["enum.ApcVisualLayers.Lighting"]
-      visible: true # Ganimed-Resprite
-    - state: channel2-auto_on # Ganimed-Resprite
+      visible: true # Ganimed-Resprite-Tweak
+    - state: channel2-auto_on # Ganimed-Resprite-Edit (lock1-locked)
       shader: unshaded
       map: ["enum.ApcVisualLayers.Environment"]
-      visible: true # Ganimed-Resprite
+      visible: true # Ganimed-Resprite-Tweak
   - type: Appearance
   - type: ApcVisuals
   - type: Battery
