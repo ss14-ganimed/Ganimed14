@@ -1,8 +1,8 @@
 - type: gameMap
-  id: ENT_CivilStation
+  id: CivilStation
   mapName: 'Civil Station'
-  mapPath: /Maps/_Ganimed/ent_civilstation.yml
-  minPlayers: 10 # Ganimed-Tweak (15 -> 10)
+  mapPath: /Maps/_Ganimed/civilstation.yml
+  minPlayers: 15
   maxPlayers: 50
   stations:
     CivilStation:
