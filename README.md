@@ -4,7 +4,7 @@
 
 <div align="center">
 
-  [![Discord](https://img.shields.io/discord/1203769510599856138?label=Join%20our%20Discord&logo=discord&logoColor=white&style=for-the-badge)](https://discord.com/invite/nCn5F3kNyH)
+  [![Discord](https://img.shields.io/discord/1203769510599856138?label=Join%20our%20Discord&logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/CdJJmU3fGV)
   [![Wiki](https://img.shields.io/badge/Wiki-Explore%20Our%20Wiki-blue?style=for-the-badge)](https://station-enterprise.space/)
   [![Steam](https://img.shields.io/badge/Steam-Play%20on%20Steam-blue?style=for-the-badge)](https://store.steampowered.com/app/1255460/Space_Station_14/)
   [![Client](https://img.shields.io/badge/Download-Client-blue?style=for-the-badge)](https://spacestation14.io/about/nightlies/)
@@ -57,7 +57,7 @@
 
 ## Контрибьют
 
-Мы рады принять вклад от любого человека. Заходите в [Discord](https://discord.com/invite/nCn5F3kNyH), если хотите помочь. У нас есть [список проблем](https://github.com/ss14-ganimed/Ganimed14/issues), которые нужно решить, и любой может за них взяться. Не бойтесь просить о помощи!
+Мы рады принять вклад от любого человека. Заходите в [Discord](https://discord.gg/CdJJmU3fGV), если хотите помочь. У нас есть [список проблем](https://github.com/ss14-ganimed/Ganimed14/issues), которые нужно решить, и любой может за них взяться. Не бойтесь просить о помощи!
 Только убедитесь, что ваши изменения и PRы соответствуют [руководству по контрибьюту](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html).
 
 Любые новые механики, системы, компоненты, прототипы и прочие уникальные нововведения для сервера должны находиться в подпапке `/_Ganimed/` папок `/Resources/*/` или `/Content.*/`. Структура файлов и папок в подпапке `/_Ganimed/` должна приблизительно повторять основную структуру файлов.
