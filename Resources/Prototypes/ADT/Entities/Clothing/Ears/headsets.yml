@@ -47,15 +47,18 @@
     sprite: Clothing/Ears/Headsets/servicesecurity.rsi
 
 - type: entity
-  parent: ClothingHeadsetCentCom
+  parent: [ ClothingHeadset, BaseCentcommContraband ]
   id: ADTClothingHeadsetBlueshield
   name: blueshield headset
   components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyStationMaster
   - type: Sprite
     sprite: ADT/Clothing/Ears/Headsets/blueshield.rsi
   - type: Clothing
     sprite: ADT/Clothing/Ears/Headsets/blueshield.rsi
-
 
 - type: entity
   parent: ClothingHeadset
