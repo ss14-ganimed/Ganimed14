@@ -241,11 +241,11 @@
   id: ADT_cult_school
   mapPath: /Maps/ADTMaps/Salvage/cult_school.yml
   sizeString: salvage-map-wreck-size-medium
-  sizeTag: BigMagnetTargets # Change medium to big
+  sizeTag: MediumMagnetTargets 
 
 - type: salvageMap
   id: ADT_detective
-  mapPath: /Maps/ADTMaps/Salvage/detective.yml #мапперам заменить унику на ревик детектива
+  mapPath: /Maps/ADTMaps/Salvage/detective.yml 
   sizeString: salvage-map-wreck-size-medium
   sizeTag: MediumMagnetTargets
 
@@ -277,7 +277,7 @@
   id: ADT_green
   mapPath: /Maps/ADTMaps/Salvage/green.yml
   sizeString: salvage-map-wreck-size-medium
-  sizeTag: BigMagnetTargets #change medium to big
+  sizeTag: MediumMagnetTargets 
 
 - type: salvageMap
   id: ADT_Grei
@@ -293,7 +293,7 @@
 
 - type: salvageMap
   id: ADT_Honk
-  mapPath: /Maps/ADTMaps/Salvage/Honk.yml # прошу мапперов убрать бехонкера и заменить его на хонк пауков
+  mapPath: /Maps/ADTMaps/Salvage/Honk.yml
   sizeString: salvage-map-wreck-size-medium
   sizeTag: MediumMagnetTargets
 
@@ -307,13 +307,13 @@
   id: ADT_hotel
   mapPath: /Maps/ADTMaps/Salvage/hotel.yml
   sizeString: salvage-map-wreck-size-medium
-  sizeTag: BigMagnetTargets #change medium to big
+  sizeTag: MediumMagnetTargets 
 
 - type: salvageMap
   id: ADT_ice
   mapPath: /Maps/ADTMaps/Salvage/ice.yml
   sizeString: salvage-map-wreck-size-medium
-  sizeTag: BigMagnetTargets #change medium to big
+  sizeTag: MediumMagnetTargets 
 
 - type: salvageMap
   id: ADT_in_rn
@@ -325,13 +325,13 @@
   id: ADT_Kargo
   mapPath: /Maps/ADTMaps/Salvage/Kargo.yml
   sizeString: salvage-map-wreck-size-medium
-  sizeTag: BigMagnetTargets #change medium to big
+  sizeTag: MediumMagnetTargets
 
 - type: salvageMap
   id: ADT_Kargo_sklad
   mapPath: /Maps/ADTMaps/Salvage/Kargo_sklad.yml
   sizeString: salvage-map-wreck-size-medium
-  sizeTag: BigMagnetTargets #change medium to big
+  sizeTag: MediumMagnetTargets 
 
 - type: salvageMap
   id: ADT_Kargos
@@ -349,7 +349,7 @@
   id: ADT_karp_statui
   mapPath: /Maps/ADTMaps/Salvage/karp_statui.yml
   sizeString: salvage-map-wreck-size-medium
-  sizeTag: BigMagnetTargets #change medium to big
+  sizeTag: MediumMagnetTargets
 
 - type: salvageMap
   id: ADT_Kitchen_velpa
