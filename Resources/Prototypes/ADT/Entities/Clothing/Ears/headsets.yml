@@ -51,10 +51,12 @@
   id: ADTClothingHeadsetBlueshield
   name: blueshield headset
   components:
-  - type: ContainerFill # Ganimed-Edit-Start
+  # Ganimed-Edit-Start
+  - type: ContainerFill 
     containers:
       key_slots:
-      - EncryptionKeyStationMaster # Ganimed-Edit-End
+      - EncryptionKeyStationMaster
+  # Ganimed-Edit-End
   - type: Sprite
     sprite: ADT/Clothing/Ears/Headsets/blueshield.rsi
   - type: Clothing
