@@ -241,11 +241,11 @@
   id: ADT_cult_school
   mapPath: /Maps/ADTMaps/Salvage/cult_school.yml
   sizeString: salvage-map-wreck-size-medium
-  sizeTag: MediumMagnetTargets 
+  sizeTag: MediumMagnetTargets
 
 - type: salvageMap
   id: ADT_detective
-  mapPath: /Maps/ADTMaps/Salvage/detective.yml 
+  mapPath: /Maps/ADTMaps/Salvage/detective.yml
   sizeString: salvage-map-wreck-size-medium
   sizeTag: MediumMagnetTargets
 
@@ -277,7 +277,7 @@
   id: ADT_green
   mapPath: /Maps/ADTMaps/Salvage/green.yml
   sizeString: salvage-map-wreck-size-medium
-  sizeTag: MediumMagnetTargets 
+  sizeTag: MediumMagnetTargets
 
 - type: salvageMap
   id: ADT_Grei
@@ -307,13 +307,13 @@
   id: ADT_hotel
   mapPath: /Maps/ADTMaps/Salvage/hotel.yml
   sizeString: salvage-map-wreck-size-medium
-  sizeTag: MediumMagnetTargets 
+  sizeTag: MediumMagnetTargets
 
 - type: salvageMap
   id: ADT_ice
   mapPath: /Maps/ADTMaps/Salvage/ice.yml
   sizeString: salvage-map-wreck-size-medium
-  sizeTag: MediumMagnetTargets 
+  sizeTag: MediumMagnetTargets
 
 - type: salvageMap
   id: ADT_in_rn
@@ -331,7 +331,7 @@
   id: ADT_Kargo_sklad
   mapPath: /Maps/ADTMaps/Salvage/Kargo_sklad.yml
   sizeString: salvage-map-wreck-size-medium
-  sizeTag: MediumMagnetTargets 
+  sizeTag: MediumMagnetTargets
 
 - type: salvageMap
   id: ADT_Kargos
