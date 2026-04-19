@@ -3,12 +3,12 @@
   id: ADTClothingHeadsetAltBlueshield
   name: blueshield over-ear headset
   components:
-  # Ganimed-Edit-Start
+  # Ganimed-Add-Start
   - type: ContainerFill
     containers:
       key_slots:
       - EncryptionKeyStationMaster
-  # Ganimed-Edit-End
+  # Ganimed-Add-End
   - type: Sprite
     sprite: ADT/Clothing/Ears/Headsets/blueshield.rsi
   - type: Clothing
