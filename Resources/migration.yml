@@ -900,6 +900,10 @@ Bloodpack: ADTBloodPackTransfusionFull
 # Ganimed 2026-01-24 (No roundstart energy dispensers)
 EnergyChemDispenser: ChemDispenser
 EnergyChemDispenserMachineCircuitboard: ChemDispenserMachineCircuitboard
+ADTEnergyBoozeDispenserMachineCircuitboard: BoozeDispenserMachineCircuitboard
+ADTEnergyBoozeDispenser: BoozeDispenser
+ADTEnergySodaDispenserMachineCircuitboard: SodaDispenserMachineCircuitboard
+ADTEnergySodaDispenser: SodaDispenser
 
 # Ganimed 2026-03-13
 MobArtificialHuman: MobMonkey
