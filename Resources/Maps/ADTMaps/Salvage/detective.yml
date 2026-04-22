@@ -1,16 +1,16 @@
 meta:
   format: 7
-  category: Grid
+  category: Map
   engineVersion: 268.0.0
-  forkId: SS14_DEV
-  forkVersion: 4d1cdfa089a58a4939fe03914e2fcdd911465e3a
-  time: 02/14/2026 16:08:28
-  entityCount: 146
-maps: []
+  forkId: ""
+  forkVersion: ""
+  time: 04/22/2026 20:35:26
+  entityCount: 147
+maps:
+- 6
 grids:
 - 1
-orphans:
-- 1
+orphans: []
 nullspace: []
 tilemap:
   2: Space
@@ -28,7 +28,7 @@ entities:
       name: grid
     - type: Transform
       pos: 6.3860083,31.196238
-      parent: invalid
+      parent: 6
     - type: MapGrid
       chunks:
         0,0:
@@ -74,6 +74,16 @@ entities:
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: ImplicitRoof
+  - uid: 6
+    components:
+    - type: MetaData
+      name: Map Entity
+    - type: Transform
+    - type: Map
+      mapPaused: True
+    - type: GridTree
+    - type: Broadphase
+    - type: OccluderTree
 - proto: ADTArmchairBrown
   entities:
   - uid: 2
@@ -96,15 +106,6 @@ entities:
     - type: Transform
       pos: -0.4474821,-4.596323
       parent: 1
-- proto: ADTWeaponRevolverLesserUnica
-  entities:
-  - uid: 6
-    components:
-    - type: Transform
-      parent: 5
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: CableApcExtension
   entities:
   - uid: 9
@@ -587,9 +588,9 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 7
+          - 147
           - 8
-          - 6
+          - 7
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -980,4 +981,13 @@ entities:
     - type: Transform
       pos: 6.5,-3.5
       parent: 1
+- proto: WeaponRevolverInspector
+  entities:
+  - uid: 147
+    components:
+    - type: Transform
+      parent: 5
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 ...
