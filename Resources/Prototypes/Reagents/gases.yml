@@ -469,9 +469,9 @@
         minScale: 1
         effectProto: StatusEffectSeeingRainbow
         type: Add
-        time: 50
+        time: 50 # Ganimed-Tweak (500)
       - !type:Drunk
-        boozePower: 50
+        boozePower: 50 # Ganimed-Tweak (500)
         minScale: 1
       - !type:PopupMessage
         type: Local
