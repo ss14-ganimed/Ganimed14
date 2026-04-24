@@ -34,6 +34,7 @@ loadout-group-bartender-belt = Пояс бармена
 loadout-group-service-worker-jumpsuit = Униформа сервисного работника
 
 loadout-group-chef-glasses = Очки шеф-повара
+loadout-group-chef-backpack = Рюкзак шеф-повара
 loadout-group-chef-shoes = Обувь шеф-повара
 
 loadout-group-librarian-belt = Пояс библиотекаря
@@ -50,6 +51,8 @@ loadout-group-theatrical-attire = Театральные костюмы
 loadout-group-mime-neck = Шея мима
 
 # Cargo
+loadout-group-quartermaster-backpack = Рюкзак квартирмейстера
+
 loadout-group-cargo-technician-belt = Пояс грузчика
 
 loadout-group-salvage-specialist-head = Головной убор утилизатора
@@ -62,8 +65,7 @@ loadout-group-salvage-specialist-gloves = Перчатки утилизатор�
 loadout-group-chief-engineer-glasses = Очки старшего инженера
 loadout-group-chief-engineer-gloves = Перчатки старшего инженера
 
-loadout-group-senior-engineer-outerclothing = Верхняя одежда ведущего инженера
-loadout-group-senior-engineer-backpack = Рюкзак ведущего инженера
+loadout-group-senior-engineer-pocket = Инструмент ведущего инженера
 
 loadout-group-atmospheric-technician-glasses = Очки атмосферного техника
 
@@ -75,9 +77,12 @@ loadout-group-research-director-belt = Пояс научного руковод�
 loadout-group-scientist-glasses = Очки учёного
 loadout-group-scientist-headset = Научная гарнитура
 
+loadout-group-roboticist-backpack = Рюкзак робототехника
+
 # Security
 loadout-group-security-sidearm = Табельное оружие
 
+loadout-group-head-of-security-glasses = Очки главы службы безопасности
 loadout-group-head-of-security-gloves = Перчатки главы службы безопасности
 loadout-group-head-of-security-backpack = Рюкзак главы службы безопасности
 loadout-group-head-of-security-belt = Пояс главы службы безопасности
@@ -109,6 +114,7 @@ loadout-group-security-engineer-gloves = Перчатки полевого ин�
 # Medical
 loadout-group-chief-medical-officer-glasses = Очки главного врача
 loadout-group-chief-medical-officer-belt = Пояс главного врача
+loadout-group-chief-medical-officer-backpack = Рюкзак главного врача
 
 loadout-group-senior-physician-glasses = Очки заведующего
 loadout-group-senior-physician-neck = Шея заведующего
@@ -118,8 +124,9 @@ loadout-group-senior-physician-shoes = Обувь заведующего
 loadout-group-medical-doctor-neck = Шея врача
 loadout-group-medical-doctor-headset = Медицинская гарнитура
 loadout-group-medical-doctor-glasses = Очки врача
-
 loadout-group-medical-doctor-belt = Пояс медика
+
+loadout-group-chemist-head = Головной убор химика
 loadout-group-chemist-glasses = Очки химика
 loadout-group-chemist-belt = Пояс химика
 loadout-group-chemist-shoes = Обувь химика

@@ -51,6 +51,15 @@
 
 # Neck
 - type: loadout
+  id: MinerMantle
+  equipment:
+    neck: ClothingNeckMantleMiner
+  effects:
+  # - !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterSalvager
+
+- type: loadout
   id: MinerCloak
   equipment:
     neck: ClothingNeckCloakMiner

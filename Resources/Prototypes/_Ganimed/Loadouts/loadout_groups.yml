@@ -7,14 +7,6 @@
   maxLimit: 3
   loadouts:
   # Head
-  - SpareBlackCap
-  - SpareGreyCap
-  - SpareWhiteCap
-  - SpareRedCap
-  - SpareOrangeCap
-  - SpareYellowCap
-  - SpareGreenCap
-  - SpareBlueCap
   - SpareColorCapVoucher
   - SpareWehcellentCap
   - SpareBlackBandana
@@ -161,6 +153,7 @@
   - SpareJumpsuitFlannel
   - SpareJumpsuitDenim
   - SpareYakuzaOutfit
+  - SpareJumpsuitVault
   - SpareJumpsuitRandom
   - SpareJumpsuitRandomShirt
   - SpareCossackSuit
@@ -182,6 +175,7 @@
   - SpareBlueTurtleneckDress
   - SparePurpleTurtleneckDress
   - SpareYellowOldDress
+  - SpareVintageDress
   - SpareOldDress
   # Gloves
   - SpareGlovesFingerless
@@ -223,23 +217,7 @@
   - SparePurpleScarf
   - SparePinkScarf
   - SpareColorScarfVoucher
-  - SpareLongBlackScarf
-  - SpareLongRedScarf
-  - SpareLongOrangeScarf
-  - SpareLongYellowScarf
-  - SpareLongGreenScarf
-  - SpareLongBlueScarf
-  - SpareLongPurpleScarf
-  - SpareLongPinkScarf
   - SpareLongColorScarfVoucher
-  - SpareFaceScarfBlack
-  - SpareFaceScarfGrey
-  - SpareFaceScarfWhite
-  - SpareFaceScarfRed
-  - SpareFaceScarfOrange
-  - SpareFaceScarfGreen
-  - SpareFaceScarfBlue
-  - SpareFaceScarfPurple
   - SpareColorFaceScarfVoucher
   - SpareOldMantle
   - SpareHideMantle
@@ -293,6 +271,7 @@
   - SpareJensenCoat
   - SpareRedCoat
   - SpareYakuzaCoat
+  - SpareDiscoBlazer
   - SpareBlackHoodieAlt
   - SpareBlackHoodie
   - SpareGreyHoodie
@@ -335,8 +314,8 @@
   id: CaptainGlasses
   name: loadout-group-captain-glasses
   loadouts:
-  - Sunglasses
   - AdministrationSunglasses
+  - Sunglasses
   - AdministrationHud
   - SecurityHud
   - SecurityHudEyepatch
@@ -366,11 +345,11 @@
   - LeatherShoes
   - BlackShoes
   - JackBootsEmpty
+  - CommandWinterBoots
 
 - type: loadoutGroup
   id: HoPGlasses
   name: loadout-group-hop-glasses
-  minLimit: 0
   loadouts:
   - AdministrationHud
   - Sunglasses
@@ -391,8 +370,8 @@
   - BrownShoes
   - BlackShoes
   - LeatherShoes
-  - LaceupShoesWhitelisted
-  # - WinterBootsCommand
+  - LaceupShoes
+  - CommandWinterBoots
 
 - type: loadoutGroup
   id: BureaucraticBelt
@@ -558,6 +537,7 @@
   - WaistBag
   - Bandolier
   - ExtraShoulderHolster
+  - MimeSuspendersBlack
 
 - type: loadoutGroup
   id: ChefGlasses
@@ -575,6 +555,18 @@
   - GlassesSalesman
   - GlassesGar
   - GlassesGarOrange
+
+- type: loadoutGroup
+  id: ChefBackpack
+  name: loadout-group-chef-backpack
+  loadouts:
+  - CommonBackpack
+  - CommonSatchel
+  - CommonDuffel
+  - ADTClothingBackpackSatchelLeather
+  - ADTClothingBackpackBlackLadySatchel
+  - ADTClothingBackpackLeatherLadySatchel
+  - CoolerBagBackpack
 
 - type: loadoutGroup
   id: ChefShoes
@@ -665,6 +657,18 @@
 
 # Cargo
 - type: loadoutGroup
+  id: QuartermasterBackpack
+  name: loadout-group-quartermaster-backpack
+  loadouts:
+  - CargoTechnicianBackpack
+  - CargoTechnicianSatchel
+  - CargoTechnicianDuffel
+  - DarkCargoBackpack
+  - DarkCargoSatchel
+  - DarkCargoDuffel
+  - ADTClothingBackpackSatchelLeather
+
+- type: loadoutGroup
   id: CargoBelt
   name: loadout-group-cargo-technician-belt
   minLimit: 0
@@ -745,6 +749,13 @@
   - AtmosphericTechnicianDuffel
 
 - type: loadoutGroup
+  id: SeniorEngineerPocket
+  name: loadout-group-senior-engineer-pocket
+  loadouts:
+  - PowerDrill
+  - WelderIndustrialAdvanced
+
+- type: loadoutGroup
   id: AtmosphericTechnicianGlasses
   name: loadout-group-atmospheric-technician-glasses
   loadouts:
@@ -819,6 +830,15 @@
   - HeadsetMedicalScience
   - HeadsetRobotics
 
+- type: loadoutGroup
+  id: RoboticistBackpack
+  name: loadout-group-roboticist-backpack
+  loadouts:
+  - RoboticistBackpack
+  - RoboticistSatchel
+  - RoboticistDuffel
+  - LeatherSatchel
+
 # Security
 - type: loadoutGroup
   id: HeadofSecurityGloves
@@ -827,6 +847,13 @@
   - CombatGloves
 #  - HeadofSecurityLeatherGloves # They are not insulated, so can become a noob trap
   - HeadofSecurityTacticalMaidGloves
+
+- type: loadoutGroup
+  id: HeadofSecurityGlasses
+  name: loadout-group-head-of-security-glasses
+  loadouts:
+  - SecurityGlasses
+  - SecurityVisor
 
 - type: loadoutGroup
   id: HeadofSecurityBackpack
@@ -892,6 +919,7 @@
   loadouts:
   - SecurityWhistle
   - SecurityCloak
+  - SecurityMantle
   - SecurityBodyCamera
   - ADTNeckSecBadgeBronze
   - ADTNeckSecBadgeSilver
@@ -1032,12 +1060,13 @@
   - CMOWebbing
 
 - type: loadoutGroup
-  id: MedicalDoctorNeck
-  name: loadout-group-medical-doctor-neck
-  minLimit: 0
+  id: ChiefMedicalOfficerBackpack
+  name: loadout-group-chief-medical-officer-backpack
   loadouts:
-  - Stethoscope
-  - MedicalBedsheet
+  - ChiefMedicalOfficerBackpack
+  - ChiefMedicalOfficerSatchel
+  - ChiefMedicalOfficerDuffel
+  - LeatherSatchel
 
 - type: loadoutGroup
   id: SeniorPhysicianNeck
@@ -1047,35 +1076,6 @@
   - Stethoscope
   - MedicalCloak
   - MedicalBedsheet
-
-- type: loadoutGroup
-  id: MedicalDoctorHeadset
-  name: loadout-group-medical-doctor-headset
-  loadouts:
-  - HeadsetMedical
-  - HeadsetMedicalScience
-
-- type: loadoutGroup
-  id: MedicalBelt
-  name: loadout-group-medical-doctor-belt
-  loadouts:
-  - MedicalBeltTopical
-  - MedicalBeltSurgical
-  - MedicalBeltMedication
-
-- type: loadoutGroup
-  id: MedicalBackpackExtended
-  name: loadout-group-medical-doctor-backpack
-  loadouts:
-  - MedicalDoctorBackpack
-  - MedicalDoctorSatchel
-  - MedicalDoctorDuffel
-  - GeneticsBackpack
-  - GeneticsSatchel
-  - GeneticsDuffel
-  - VirologyBackpack
-  - VirologySatchel
-  - VirologyDuffel
 
 - type: loadoutGroup
   id: SeniorPhysicianBackpack
@@ -1111,6 +1111,50 @@
   - OrangeShoes
   - BlackShoes
   - MedicalWinterBoots
+
+- type: loadoutGroup
+  id: MedicalDoctorNeck
+  name: loadout-group-medical-doctor-neck
+  minLimit: 0
+  loadouts:
+  - Stethoscope
+  - MedicalBedsheet
+
+- type: loadoutGroup
+  id: MedicalDoctorHeadset
+  name: loadout-group-medical-doctor-headset
+  loadouts:
+  - HeadsetMedical
+  - HeadsetMedicalScience
+
+- type: loadoutGroup
+  id: MedicalBelt
+  name: loadout-group-medical-doctor-belt
+  loadouts:
+  - MedicalBeltTopical
+  - MedicalBeltSurgical
+  - MedicalBeltMedication
+
+- type: loadoutGroup
+  id: MedicalBackpackExtended
+  name: loadout-group-medical-doctor-backpack
+  loadouts:
+  - MedicalDoctorBackpack
+  - MedicalDoctorSatchel
+  - MedicalDoctorDuffel
+  - GeneticsBackpack
+  - GeneticsSatchel
+  - GeneticsDuffel
+  - VirologyBackpack
+  - VirologySatchel
+  - VirologyDuffel
+
+- type: loadoutGroup
+  id: ChemistHead
+  name: loadout-group-chemist-head
+  minLimit: 0
+  loadouts:
+  - FaceShield
 
 - type: loadoutGroup
   id: ChemistGlasses

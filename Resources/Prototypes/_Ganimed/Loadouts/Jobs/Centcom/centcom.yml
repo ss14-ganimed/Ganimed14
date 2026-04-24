@@ -175,7 +175,7 @@
 - type: loadout
   id: CentcomClipboard
   equipment:
-    pocket1: BoxFolderCentComClipboard
+    pocket1: BoxFolderCentComClipboardThreePapers
 
 - type: loadout
   id: CentcomTowel

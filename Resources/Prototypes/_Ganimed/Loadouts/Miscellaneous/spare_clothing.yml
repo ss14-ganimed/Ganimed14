@@ -82,69 +82,67 @@
 
 # Head/Hats
 # Soft caps
-- type: loadout
-  id: SpareBlackCap
-  storage:
-    back:
-    - ClothingHeadHatBlacksoft
-  groupBy: "sparehats"
+# - type: loadout
+#   id: SpareBlackCap
+#   storage:
+#     back:
+#     - ClothingHeadHatBlacksoft
+#   groupBy: "sparehats"
 
-- type: loadout
-  id: SpareGreyCap
-  storage:
-    back:
-    - ClothingHeadHatGreysoft
-  groupBy: "sparehats"
+# - type: loadout
+#   id: SpareGreyCap
+#   storage:
+#     back:
+#     - ClothingHeadHatGreysoft
+#   groupBy: "sparehats"
 
-- type: loadout
-  id: SpareWhiteCap
-  storage:
-    back:
-    - ClothingHeadHatMimesoft
-  groupBy: "sparehats"
+# - type: loadout
+#   id: SpareWhiteCap
+#   storage:
+#     back:
+#     - ClothingHeadHatMimesoft
+#   groupBy: "sparehats"
 
-- type: loadout
-  id: SpareRedCap
-  storage:
-    back:
-    - ClothingHeadHatRedsoft
-  groupBy: "sparehats"
+# - type: loadout
+#   id: SpareRedCap
+#   storage:
+#     back:
+#     - ClothingHeadHatRedsoft
+#   groupBy: "sparehats"
 
-- type: loadout
-  id: SpareOrangeCap
-  storage:
-    back:
-    - ClothingHeadHatOrangesoft
-  groupBy: "sparehats"
+# - type: loadout
+#   id: SpareOrangeCap
+#   storage:
+#     back:
+#     - ClothingHeadHatOrangesoft
+#   groupBy: "sparehats"
 
-- type: loadout
-  id: SpareYellowCap
-  storage:
-    back:
-    - ClothingHeadHatYellowsoft
-  groupBy: "sparehats"
+# - type: loadout
+#   id: SpareYellowCap
+#   storage:
+#     back:
+#     - ClothingHeadHatYellowsoft
+#   groupBy: "sparehats"
 
-- type: loadout
-  id: SpareGreenCap
-  storage:
-    back:
-    - ClothingHeadHatGreensoft
-  groupBy: "sparehats"
+# - type: loadout
+#   id: SpareGreenCap
+#   storage:
+#     back:
+#     - ClothingHeadHatGreensoft
+#   groupBy: "sparehats"
 
-- type: loadout
-  id: SpareBlueCap
-  storage:
-    back:
-    - ClothingHeadHatBluesoft
-  groupBy: "sparehats"
+# - type: loadout
+#   id: SpareBlueCap
+#   storage:
+#     back:
+#     - ClothingHeadHatBluesoft
+#   groupBy: "sparehats"
 
 - type: loadout
   id: SpareColorCapVoucher
   storage:
     back:
     - ADTClothingVoucherHatsoft
-  effects:
-  - !type:SponsorLoadoutEffect
   groupBy: "sparehats"
 
 - type: loadout
@@ -1335,6 +1333,15 @@
   groupBy: "spareuniform"
 
 - type: loadout
+  id: SpareJumpsuitVault
+  storage:
+    back:
+    - ClothingUniformJumpsuitVault
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
+
+- type: loadout
   id: SpareJumpsuitRandom
   storage:
     back:
@@ -1524,6 +1531,15 @@
   storage:
     back:
     - ClothingUniformJumpskirtYellowOldDress
+  effects:
+  - !type:SponsorLoadoutEffect
+  groupBy: "spareuniform"
+
+- type: loadout
+  id: SpareVintageDress
+  storage:
+    back:
+    - ADTClothingUniformDressVintage
   effects:
   - !type:SponsorLoadoutEffect
   groupBy: "spareuniform"
@@ -1866,77 +1882,77 @@
   groupBy: "spareneckwear"
 
 # Long scarves
-- type: loadout
-  id: SpareLongBlackScarf
-  storage:
-    back:
-    - ADTClothingNeckScarfLongBlack
-  effects:
-  - !type:SponsorLoadoutEffect
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareLongBlackScarf
+#   storage:
+#     back:
+#     - ADTClothingNeckScarfLongBlack
+#   effects:
+#   - !type:SponsorLoadoutEffect
+#   groupBy: "spareneckwear"
 
-- type: loadout
-  id: SpareLongRedScarf
-  storage:
-    back:
-    - ADTClothingNeckScarfLongRed
-  effects:
-  - !type:SponsorLoadoutEffect
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareLongRedScarf
+#   storage:
+#     back:
+#     - ADTClothingNeckScarfLongRed
+#   effects:
+#   - !type:SponsorLoadoutEffect
+#   groupBy: "spareneckwear"
 
-- type: loadout
-  id: SpareLongOrangeScarf
-  storage:
-    back:
-    - ADTClothingNeckScarfLongOrange
-  effects:
-  - !type:SponsorLoadoutEffect
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareLongOrangeScarf
+#   storage:
+#     back:
+#     - ADTClothingNeckScarfLongOrange
+#   effects:
+#   - !type:SponsorLoadoutEffect
+#   groupBy: "spareneckwear"
 
-- type: loadout
-  id: SpareLongYellowScarf
-  storage:
-    back:
-    - ADTClothingNeckScarfLongYellow
-  effects:
-  - !type:SponsorLoadoutEffect
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareLongYellowScarf
+#   storage:
+#     back:
+#     - ADTClothingNeckScarfLongYellow
+#   effects:
+#   - !type:SponsorLoadoutEffect
+#   groupBy: "spareneckwear"
 
-- type: loadout
-  id: SpareLongGreenScarf
-  storage:
-    back:
-    - ADTClothingNeckScarfLongGreen
-  effects:
-  - !type:SponsorLoadoutEffect
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareLongGreenScarf
+#   storage:
+#     back:
+#     - ADTClothingNeckScarfLongGreen
+#   effects:
+#   - !type:SponsorLoadoutEffect
+#   groupBy: "spareneckwear"
 
-- type: loadout
-  id: SpareLongBlueScarf
-  storage:
-    back:
-    - ADTClothingNeckScarfLongBlue
-  effects:
-  - !type:SponsorLoadoutEffect
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareLongBlueScarf
+#   storage:
+#     back:
+#     - ADTClothingNeckScarfLongBlue
+#   effects:
+#   - !type:SponsorLoadoutEffect
+#   groupBy: "spareneckwear"
 
-- type: loadout
-  id: SpareLongPurpleScarf
-  storage:
-    back:
-    - ADTClothingNeckScarfLongPurple
-  effects:
-  - !type:SponsorLoadoutEffect
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareLongPurpleScarf
+#   storage:
+#     back:
+#     - ADTClothingNeckScarfLongPurple
+#   effects:
+#   - !type:SponsorLoadoutEffect
+#   groupBy: "spareneckwear"
 
-- type: loadout
-  id: SpareLongPinkScarf
-  storage:
-    back:
-    - ADTClothingNeckScarfLongPink
-  effects:
-  - !type:SponsorLoadoutEffect
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareLongPinkScarf
+#   storage:
+#     back:
+#     - ADTClothingNeckScarfLongPink
+#   effects:
+#   - !type:SponsorLoadoutEffect
+#   groupBy: "spareneckwear"
 
 - type: loadout
   id: SpareLongColorScarfVoucher
@@ -1948,85 +1964,85 @@
   groupBy: "spareneckwear"
 
 # Face scarves
-- type: loadout # TODO: Whitelist restriction
-  id: SpareFaceScarfBlack
-  storage:
-    back:
-    - ADTClothingNeckFacescarfBlack
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: FiftyOverall
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareFaceScarfBlack
+#   storage:
+#     back:
+#     - ADTClothingNeckFacescarfBlack
+#   effects:
+#   - !type:GroupLoadoutEffect
+#     proto: FiftyOverall
+#   groupBy: "spareneckwear"
 
-- type: loadout # TODO: Whitelist restriction
-  id: SpareFaceScarfGrey
-  storage:
-    back:
-    - ADTClothingNeckFacescarfGrey
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: FiftyOverall
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareFaceScarfGrey
+#   storage:
+#     back:
+#     - ADTClothingNeckFacescarfGrey
+#   effects:
+#   - !type:GroupLoadoutEffect
+#     proto: FiftyOverall
+#   groupBy: "spareneckwear"
 
-- type: loadout # TODO: Whitelist restriction
-  id: SpareFaceScarfWhite
-  storage:
-    back:
-    - ADTClothingNeckFacescarfWhite
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: FiftyOverall
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareFaceScarfWhite
+#   storage:
+#     back:
+#     - ADTClothingNeckFacescarfWhite
+#   effects:
+#   - !type:GroupLoadoutEffect
+#     proto: FiftyOverall
+#   groupBy: "spareneckwear"
 
-- type: loadout # TODO: Whitelist restriction
-  id: SpareFaceScarfRed
-  storage:
-    back:
-    - ADTClothingNeckFacescarfRed
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: FiftyOverall
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareFaceScarfRed
+#   storage:
+#     back:
+#     - ADTClothingNeckFacescarfRed
+#   effects:
+#   - !type:GroupLoadoutEffect
+#     proto: FiftyOverall
+#   groupBy: "spareneckwear"
 
-- type: loadout # TODO: Whitelist restriction
-  id: SpareFaceScarfOrange
-  storage:
-    back:
-    - ADTClothingNeckFacescarfOrange
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: FiftyOverall
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareFaceScarfOrange
+#   storage:
+#     back:
+#     - ADTClothingNeckFacescarfOrange
+#   effects:
+#   - !type:GroupLoadoutEffect
+#     proto: FiftyOverall
+#   groupBy: "spareneckwear"
 
-- type: loadout # TODO: Whitelist restriction
-  id: SpareFaceScarfGreen
-  storage:
-    back:
-    - ADTClothingNeckFacescarfGreen
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: FiftyOverall
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareFaceScarfGreen
+#   storage:
+#     back:
+#     - ADTClothingNeckFacescarfGreen
+#   effects:
+#   - !type:GroupLoadoutEffect
+#     proto: FiftyOverall
+#   groupBy: "spareneckwear"
 
-- type: loadout # TODO: Whitelist restriction
-  id: SpareFaceScarfBlue
-  storage:
-    back:
-    - ADTClothingNeckFacescarfBlue
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: FiftyOverall
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareFaceScarfBlue
+#   storage:
+#     back:
+#     - ADTClothingNeckFacescarfBlue
+#   effects:
+#   - !type:GroupLoadoutEffect
+#     proto: FiftyOverall
+#   groupBy: "spareneckwear"
 
-- type: loadout # TODO: Whitelist restriction
-  id: SpareFaceScarfPurple
-  storage:
-    back:
-    - ADTClothingNeckFacescarfPurple
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: FiftyOverall
-  groupBy: "spareneckwear"
+# - type: loadout
+#   id: SpareFaceScarfPurple
+#   storage:
+#     back:
+#     - ADTClothingNeckFacescarfPurple
+#   effects:
+#   - !type:GroupLoadoutEffect
+#     proto: FiftyOverall
+#   groupBy: "spareneckwear"
 
 - type: loadout # TODO: Whitelist restriction
   id: SpareColorFaceScarfVoucher
@@ -2435,6 +2451,16 @@
     back:
     - ClothingOuterDameDane
   groupBy: "spareouterclothing"
+
+- type: loadout
+  id: SpareDiscoBlazer
+  storage:
+    back:
+    - ClothingOuterDiscoAssBlazer
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ForensicExpert
 
 - type: loadout
   id: SpareBlackHoodieAlt

@@ -17,6 +17,14 @@
   - !type:GroupLoadoutEffect
     proto: Corpsman
 
+- type: loadout
+  id: FaceShield
+  equipment:
+    head: ClothingHeadFaceshield
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MedicalHeadMirrorTimer
+
 # Neck
 - type: loadout
   id: Stethoscope

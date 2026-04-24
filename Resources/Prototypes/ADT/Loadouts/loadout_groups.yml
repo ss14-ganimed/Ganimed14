@@ -130,7 +130,6 @@
   - WhiteShoes
   - LizardSkinShoes
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
@@ -193,6 +192,7 @@
   - PathologBackpack
   - PathologSatchel
   - PathologDuffel
+  - CoolerBagBackpack # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: PathologWindbreaker
@@ -215,7 +215,7 @@
   - BlueShoes
   - WhiteShoes # Ganimed-Loadouts-Add
   - BlackShoes # Ganimed-Loadouts-Add
-  - BootsLaceup
+  # - BootsLaceup # Ganimed-Loadouts-Remove
   - MedicalWinterBoots
 
 - type: loadoutGroup
@@ -802,7 +802,7 @@
 - type: loadoutGroup
   id: ADTBrigmedicOuterWear
   name: loadout-brigmedic-outerwear-adt
-  minLimit: 0
+  minLimit: 1 # Ganimed-Loadouts-Tweak (0 to 1)
   maxLimit: 1
   loadouts:
   - BrigmedicCoatAMG # Ganimed-Loadouts-Add
@@ -914,6 +914,7 @@
   maxLimit: 1
   loadouts:
   - ADTNeckSalvageSpecialistCape
+  - MinerMantle # Ganimed-Loadouts-Add
 
 # ШАХТЁР
 - type: loadoutGroup
@@ -979,8 +980,8 @@
   loadouts:
   - SalvageBoots
   - CargoWinterBoots
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
@@ -1000,11 +1001,10 @@
   - JackBoots
   - SecurityWinterBoots
   - ADTDetectiveBootsOld
-  - BootsLaceup
   # Ganimed-Loadouts-Add-Start
   - BrownShoes
   - LeatherShoesWhitelisted
-  - LaceupShoesWhitelisted
+  - LaceupShoesWhitelisted # Ganimed-Loadouts-Edit (BootsLaceup)
   - GreenLizardskinShoes
   # Ganimed-Loadouts-Add-End
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
@@ -1032,7 +1032,7 @@
   maxLimit: 1
   loadouts:
   - BlackShoes
-  - BootsLaceup
+  - LaceupShoesWhitelisted # Ganimed-Loadouts-Edit (BootsLaceup)
 
 - type: loadoutGroup
   id: ADTPsychologistShoes
@@ -1050,7 +1050,8 @@
   maxLimit: 1
   loadouts:
   - WhiteShoes
-  - BootsLaceup
+  - BlackShoes # Ganimed-Loadouts-Add
+  - LaceupShoesWhitelisted # Ganimed-Loadouts-Edit (BootsLaceup)
 
 - type: loadoutGroup
   id: ADTBartenderShoes
@@ -1059,7 +1060,8 @@
   maxLimit: 1
   loadouts:
   - BlackShoes
-  - BootsLaceup
+  - BrownShoes # Ganimed-Loadouts-Add
+  - LaceupShoesWhitelisted # Ganimed-Loadouts-Edit (BootsLaceup)
 
 - type: loadoutGroup
   id: ADTBotanistShoes
@@ -1095,7 +1097,8 @@
   maxLimit: 1
   loadouts:
   - WhiteShoes
-  - BootsLaceup
+  - BlackShoes # Ganimed-Loadouts-Edit (BootsLaceup)
+  - MonochromeShoes # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: ADTServiceWorkerShoes
@@ -1104,7 +1107,8 @@
   maxLimit: 1
   loadouts:
   - BlackShoes
-  - BootsLaceup
+  - GreenShoes # Ganimed-Loadouts-Add
+  # - LaceupShoesWhitelisted # Ganimed-Loadouts-Remove
 
 ## Парикмахер
 
@@ -1213,7 +1217,13 @@
   - BartenderJumpsuit
   - BartenderJumpskirt
   - ADTClothingUniformJumpsuitTuxedo
-  - JanimaidUniform # Ganimed-Loadouts-Add
+  # Ganimed-Loadouts-Add-Start
+  - GreenJumpsuit
+  - GreenJumpskirt
+  - DarkGreenJumpsuit
+  - DarkGreenJumpskirt
+  - JanimaidUniform
+  # Ganimed-Loadouts-Add-End
 
 # Боксёр
 
@@ -3029,6 +3039,7 @@
   - FishnetStockings
   - NekoStockings
   - LightBlueStripedStockings
+  - HoSStockings
   - ClothFootWraps
   # Ganimed-Loadouts-Add-End
 

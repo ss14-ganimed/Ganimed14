@@ -13,26 +13,31 @@
   id: HeadofSecurityJumpsuitOld
   equipment:
     jumpsuit: ClothingUniformJumpsuitHoSOld
+  groupBy: "jumpsuit"
 
 - type: loadout
   id: HeadofSecurityJumpsuitGrey
   equipment:
     jumpsuit: ClothingUniformJumpsuitHoSGrey
+  groupBy: "jumpsuit"
 
 - type: loadout
   id: HeadofSecurityJumpsuitBlue
   equipment:
     jumpsuit: ClothingUniformJumpsuitHoSBlue
+  groupBy: "jumpsuit"
 
 - type: loadout
   id: HeadofSecurityJumpsuitOriginal
   equipment:
     jumpsuit: ClothingUniformJumpsuitHoSOriginal
+  groupBy: "jumpsuit"
 
 - type: loadout
   id: HeadofSecurityJumpskirtOriginal
   equipment:
     jumpsuit: ClothingUniformJumpskirtHoSOriginal
+  groupBy: "jumpskirt"
 
 - type: loadout
   id: HeadofSecurityMaleParadeUniform
@@ -42,6 +47,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: MasterHoS
+  groupBy: "jumpsuit"
 
 - type: loadout
   id: HeadofSecurityFemaleParadeUniform
@@ -51,6 +57,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: MasterHoS
+  groupBy: "jumpskirt"
 
 # Neck
 - type: loadout
@@ -81,6 +88,17 @@
   id: DarkRedScarf
   equipment:
     neck: ClothingNeckScarfStripedDarkRed
+
+# Glasses
+- type: loadout
+  id: SecurityGlasses
+  equipment:
+    eyes: ClothingEyesGlassesSecurity
+
+- type: loadout
+  id: SecurityVisor
+  equipment:
+    eyes: ClothingEyesVisorSecurity
 
 # Back
 - type: loadout

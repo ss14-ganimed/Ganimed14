@@ -37,6 +37,9 @@ ent-ClothingHeadHatWideBrim = широкополая шляпа
 ent-ClothingHeadHatFeathered = шляпа с пером
     .desc = Эти улицы принадлежат вам!
 
+ent-ClothingHeadHatDeerstalker = шляпа охотника на оленей
+    .desc = Головной убор легендарного детектива. Значительно изменён для охоты за уликами.
+
 # Old/Original
 ent-ClothingHeadHatBeretCmoOriginal = классический берет главного врача
     .desc = Лазурный берет с зелёным крестом на передней части. Его вид успокаивает и внушает надежду, что вас обязательно вылечат.

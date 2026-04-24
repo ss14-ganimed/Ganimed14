@@ -123,7 +123,7 @@
       HeadTop: HEAD
       HeadSide: HEAD
 
-- type: entity # ss14Starlight
+- type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatWideBrim
   name: wide brimmed hat
@@ -138,7 +138,7 @@
     - ClothMade
     - WhitelistChameleon
 
-- type: entity # ss14Starlight
+- type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatFeathered
   name: feathered hat
@@ -148,6 +148,34 @@
     sprite: _Ganimed/Clothing/Head/Hats/feather_hat.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Head/Hats/feather_hat.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: [ClothingHeadBase, BaseFoldable]
+  id: ClothingHeadHatDeerstalker
+  name: deerstalker
+  description: Headwear of the legendary detective. Heavily modified to stalk clues instead.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Hats/deerstalker.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+      visible: false
+    - state: icon-up
+      map: ["foldedLayer"]
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Hats/deerstalker.rsi
+    equippedPrefix: up
+  - type: Foldable
+    folded: true
+    canFoldInsideContainer: true
+  - type: FoldableClothing
+    foldedEquippedPrefix: up
+  - type: Appearance
   - type: Tag
     tags:
     - ClothMade

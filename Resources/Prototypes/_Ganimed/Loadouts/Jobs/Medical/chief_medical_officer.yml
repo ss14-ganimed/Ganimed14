@@ -53,6 +53,22 @@
   equipment:
     neck: ClothingNeckScarfStripedAzure
 
+# Back
+- type: loadout
+  id: ChiefMedicalOfficerBackpack
+  equipment:
+    back: ClothingBackpackChiefMedicalOfficer
+
+- type: loadout
+  id: ChiefMedicalOfficerSatchel
+  equipment:
+    back: ClothingBackpackSatchelChiefMedicalOfficer
+
+- type: loadout
+  id: ChiefMedicalOfficerDuffel
+  equipment:
+    back: ClothingBackpackDuffelChiefMedicalOfficer
+
 # Outer clothing
 - type: loadout
   id: ChiefMedicalOfficerBioSuit

@@ -65,3 +65,20 @@
     proto: SeniorEngineering
   equipment:
     shoes: ClothingShoesBootsMag
+
+# Pocket
+- type: loadout
+  id: PowerDrill
+  equipment:
+    pocket1: PowerDrill
+#  effects:
+#  - !type:GroupLoadoutEffect
+#    proto: SeniorEngineering
+
+- type: loadout
+  id: WelderIndustrialAdvanced
+  equipment:
+    pocket1: WelderIndustrialAdvanced
+#  effects:
+#  - !type:GroupLoadoutEffect
+#    proto: SeniorEngineering

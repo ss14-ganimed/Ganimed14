@@ -15,3 +15,30 @@
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Back/Satchels/hop.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelChiefMedicalOfficer
+  name: chief medical officer's satchel
+  description: A sterile satchel with barely enough pockets to carry the chief medical officer's equipment.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Back/Satchels/cmo.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelCargoDark
+  name: dark cargo satchel
+  description: A robust satchel for stealing cargo's loot.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Back/Satchels/cargo_dark.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelRobotics
+  name: robotics satchel
+  description: A comfortable, waterproof bag for carrying cyborg modules and parts.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Back/Satchels/robotics.rsi

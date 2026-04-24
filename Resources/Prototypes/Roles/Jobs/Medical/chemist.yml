@@ -20,7 +20,7 @@
   equipment:
     id: ChemistryPDA
     ears: ClothingHeadsetMedical
-    # belt: ADTClothingChemdisBelt #ADT-tweak: так круче # Ganimed-Loadouts-Remove
+    # belt: ADTClothingChemdisBelt #ADT-tweak: так круче # Ganimed-Loadouts-Remove (Loadout choice)
     pocket1: HandLabeler
     # eyes: ClothingEyesGlassesChemical # Ganimed-Loadouts-Remove (Loadout choice)
   #storage:

@@ -7,31 +7,48 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitRecruitNT
 
+- type: loadout
+  id: GreenJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGreen
+
+- type: loadout
+  id: GreenJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorGreen
+
+- type: loadout
+  id: DarkGreenJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorDarkGreen
+
+- type: loadout
+  id: DarkGreenJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorDarkGreen
+
 # Back
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: LeatherSatchel
   equipment:
     back: ClothingBackpackSatchelLeather
   effects:
   - !type:SponsorLoadoutEffect
-  - !type:GroupLoadoutEffect
-    proto: TenOverall
 
 # Belt
-- type: loadout # TODO: Whitelist restriction
+- type: loadout
   id: WaistBag
   equipment:
     belt: ClothingBeltStorageWaistbag
   effects:
-  - !type:SponsorLoadoutEffect
+  # - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
-    proto: TenOverall
+    proto: FiftyOverall
 
 - type: loadout
   id: Clipboard
   equipment:
-    belt: BoxFolderClipboard
+    belt: BoxFolderClipboardThreePapers
   effects:
-  # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: TenOverall

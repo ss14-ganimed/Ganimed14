@@ -28,7 +28,7 @@
   equipment:
     id: SeniorEngineerPDA
     ears: ClothingHeadsetEngineering
-    pocket1: PowerDrill
+    # pocket1: PowerDrill # Ganimed-Loadouts-Remove (Loadout choice)
 
 - type: chameleonOutfit
   id: ADTSeniorEngineerChameleonOutfit

@@ -150,7 +150,7 @@
 - type: loadout
   id: CaptainBeltSabreSheathWhite
   equipment:
-    belt: ClothingBeltWhiteSheath
+    belt: ClothingBeltSheathWhite
   effects:
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
@@ -210,3 +210,8 @@
   id: JackBootsEmpty
   equipment:
     shoes: ClothingShoesBootsJack
+
+- type: loadout
+  id: CommandWinterBoots
+  equipment:
+    shoes: ClothingShoesBootsWinterCommand

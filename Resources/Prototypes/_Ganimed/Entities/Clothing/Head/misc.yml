@@ -40,6 +40,18 @@
     sprite: _Ganimed/Clothing/Head/Misc/bow.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Head/Misc/bow.rsi
-    # slots: # Should quickequip to head but does to neck instead, so turned off for now
-    # - HEAD
-    # - NECK
+    slots: # Should quickequip to head slot but does so to neck, unfortunately
+    - HEAD
+    - NECK
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadFaceshield
+  name: face shield
+  description: A face shield meant to further impede infection vectors and stop debris and dangerous chemicals from damaging your face. Holding this makes you feel uneasy.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Misc/face_shield.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Misc/face_shield.rsi
+  - type: IngestionBlocker

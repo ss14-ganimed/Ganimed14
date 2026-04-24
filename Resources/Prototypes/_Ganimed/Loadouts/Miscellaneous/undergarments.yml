@@ -5,430 +5,685 @@
   id: WhiteShirt
   equipment:
     underweart: ClothingUnderShirtWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BlackShirt
   equipment:
     underweart: ClothingUnderShirtBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BrownShirt
   equipment:
     underweart: ClothingUnderShirtBrown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: RedShirt
   equipment:
     underweart: ClothingUnderShirtRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: YellowShirt
   equipment:
     underweart: ClothingUnderShirtYellow
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: GreenShirt
   equipment:
     underweart: ClothingUnderShirtGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BlueShirt
   equipment:
     underweart: ClothingUnderShirtBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 # Bras
 - type: loadout
   id: WhiteBrassiere
   equipment:
     underweart: ClothingUnderBrassiereWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BlackBrassiere
   equipment:
     underweart: ClothingUnderBrassiereBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BrownBrassiere
   equipment:
     underweart: ClothingUnderBrassiereBrown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: RedBrassiere
   equipment:
     underweart: ClothingUnderBrassiereRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: YellowBrassiere
   equipment:
     underweart: ClothingUnderBrassiereYellow
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: GreenBrassiere
   equipment:
     underweart: ClothingUnderBrassiereGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BlueBrassiere
   equipment:
     underweart: ClothingUnderBrassiereBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: LargeWhiteBrassiere
   equipment:
     underweart: ClothingUnderBrassiereLargeWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: LargeBlackBrassiere
   equipment:
     underweart: ClothingUnderBrassiereLargeBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: LargeBrownBrassiere
   equipment:
     underweart: ClothingUnderBrassiereLargeBrown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: LargeRedBrassiere
   equipment:
     underweart: ClothingUnderBrassiereLargeRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: LargeYellowBrassiere
   equipment:
     underweart: ClothingUnderBrassiereLargeYellow
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: LargeGreenBrassiere
   equipment:
     underweart: ClothingUnderBrassiereLargeGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: LargeBlueBrassiere
   equipment:
     underweart: ClothingUnderBrassiereLargeBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateWhiteBrassiere
   equipment:
     underweart: ClothingUnderBrassiereAlterWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateBlackBrassiere
   equipment:
     underweart: ClothingUnderBrassiereAlterBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateBrownBrassiere
   equipment:
     underweart: ClothingUnderBrassiereAlterBrown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateRedBrassiere
   equipment:
     underweart: ClothingUnderBrassiereAlterRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateYellowBrassiere
   equipment:
     underweart: ClothingUnderBrassiereAlterYellow
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateGreenBrassiere
   equipment:
     underweart: ClothingUnderBrassiereAlterGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateBlueBrassiere
   equipment:
     underweart: ClothingUnderBrassiereAlterBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: CosplayerBrassiere
   equipment:
     underweart: ClothingUnderBrassiereAnime
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: PatternedBrassiere
   equipment:
     underweart: ClothingUnderBrassiereMira
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: HeartsBrassiere
   equipment:
     underweart: ClothingUnderBrassiereHeart
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: FlowersBrassiere
   equipment:
     underweart: ClothingUnderBrassiereFlower
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: NekoBrassiere
   equipment:
     underweart: ClothingUnderBrassiereCat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: ClothBinderBrassiere
   equipment:
     underweart: ClothingClothWraps
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 # Underpants
 - type: loadout
   id: WhiteUnderpants
   equipment:
     underwearb: ClothingUnderPantsWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BlackUnderpants
   equipment:
     underwearb: ClothingUnderPantsBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BrownUnderpants
   equipment:
     underwearb: ClothingUnderPantsBrown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: RedUnderpants
   equipment:
     underwearb: ClothingUnderPantsRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: YellowUnderpants
   equipment:
     underwearb: ClothingUnderPantsYellow
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: GreenUnderpants
   equipment:
     underwearb: ClothingUnderPantsGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BlueUnderpants
   equipment:
     underwearb: ClothingUnderPantsBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: WhitePanties
   equipment:
     underwearb: ClothingUnderPantsFemaleWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BlackPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BrownPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleBrown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: RedPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: YellowPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleYellow
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: GreenPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BluePanties
   equipment:
     underwearb: ClothingUnderPantsFemaleBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: WhiteThong
   equipment:
     underwearb: ClothingUnderPantsFemaleThongWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BlackThong
   equipment:
     underwearb: ClothingUnderPantsFemaleThongBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BrownThong
   equipment:
     underwearb: ClothingUnderPantsFemaleThongBrown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: RedThong
   equipment:
     underwearb: ClothingUnderPantsFemaleThongRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: YellowThong
   equipment:
     underwearb: ClothingUnderPantsFemaleThongYellow
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: GreenThong
   equipment:
     underwearb: ClothingUnderPantsFemaleThongGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BlueThong
   equipment:
     underwearb: ClothingUnderPantsFemaleThongBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateWhitePanties
   equipment:
     underwearb: ClothingUnderPantsFemaleAlterWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateBlackPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleAlterBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateBrownPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleAlterBrown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateRedPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleAlterRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateYellowPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleAlterYellow
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateGreenPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleAlterGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: AlternateBluePanties
   equipment:
     underwearb: ClothingUnderPantsFemaleAlterBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: MilitaryUnderpants
   equipment:
     underwearb: ClothingUnderPantsMilitary
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: NTUnderpants
   equipment:
     underwearb: ClothingUnderPantsNT
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: CosplayerPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleAnime
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: PatternedPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleMira
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: HeartsPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleHeart
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: FlowersPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleFlower
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: NekoPanties
   equipment:
     underwearb: ClothingUnderPantsFemaleCat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: ClothStrappingUnderpants
   equipment:
     underwearb: ClothingClothWraps
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 # Socks
 - type: loadout
   id: WhiteSocks
   equipment:
     socks: ClothingUnderSocksWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BlackSocks
   equipment:
     socks: ClothingUnderSocksBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BrownSocks
   equipment:
     socks: ClothingUnderSocksBrown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: RedSocks
   equipment:
     socks: ClothingUnderSocksRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: YellowSocks
   equipment:
     socks: ClothingUnderSocksYellow
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: GreenSocks
   equipment:
     socks: ClothingUnderSocksGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: BlueSocks
   equipment:
     socks: ClothingUnderSocksBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: DarkLongSocks
   equipment:
     socks: ClothingUnderSocksLongDark
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: WhiteLongSocks
   equipment:
     socks: ClothingUnderSocksLongWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 # Stockings
 - type: loadout
   id: BeelineStockings
   equipment:
     socks: ClothingUnderSocksStockingsBee
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: DarkStockings
   equipment:
     socks: ClothingUnderSocksStockingsDark
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: WhiteStockings
   equipment:
     socks: ClothingUnderSocksStockingsWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: FishnetStockings
   equipment:
     socks: ClothingUnderSocksStockingsFishnets
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: NekoStockings
   equipment:
     socks: ClothingUnderSocksStockingsCat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: LightBlueStripedStockings
   equipment:
     socks: ClothingUnderSocksStockingsSky
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: HoSStockings
@@ -436,6 +691,8 @@
     socks: ClothingUnderSocksStockingsHoS
   effects:
   - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: CentcomStockings
@@ -443,8 +700,13 @@
     socks: ClothingUnderSocksStockingsCentCom
   effects:
   - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions
 
 - type: loadout
   id: ClothFootWraps
   equipment:
     socks: ClothingClothWraps
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ADTUnderwearSpeciesRestrictions

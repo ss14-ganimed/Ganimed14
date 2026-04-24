@@ -7,7 +7,7 @@
   - MagistratNeck
   - MagistratJumpsuit
   - MagistrateOuterClothing # Ganimed-Loadouts-Add
-  - ADTLawyerBackpack # ADT-Tweak
+  - CommonBackpack # ADT-Tweak # Ganimed-Loadouts-Edit (ADTLawyerBackpack)
   # - ADTLawyerGloves # ADT-Tweak # Ganimed-Loadouts-Remove (Gloves in spare clothing)
   - BureaucraticBelt # Ganimed-Loadouts-Add
   - LawyerShoes
@@ -54,7 +54,7 @@
   - RoboticistHead # ADT-Tweak-seniors
   - ScientistNeck
   - RoboticistJumpsuit
-  - ScientistBackpack
+  - RoboticistBackpack # Ganimed-Loadouts-Edit (ScientistBackpack)
   - RoboticistOuterClothing
   - RobohandsGloves
   - ScientistShoes
@@ -180,6 +180,7 @@
   - ADTEngineeringBelt
   - StationEngineerShoes
   - SurvivalExtended
+  - SeniorEngineerPocket # Ganimed-Loadouts-Add
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
   # ADT tweak start

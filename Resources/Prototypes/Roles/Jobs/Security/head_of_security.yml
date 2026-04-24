@@ -70,7 +70,7 @@
 - type: startingGear
   id: HoSGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
+    # eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts-Remove (Loadout choice)
     id: HoSPDA # Ganimed-Loadouts-Readd
     # gloves: ClothingHandsGlovesCombat # Ganimed-Loadouts-Remove (Loadout choice)
     ears: ClothingHeadsetAltSecurity
@@ -87,3 +87,5 @@
   equipment:
     mask: ClothingMaskGasSecurity
     neck: ClothingNeckCloakHos
+    gloves: ClothingHandsGlovesCombat # Ganimed-Loadouts-Add
+    eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts-Add

@@ -38,14 +38,14 @@
   - HoPOuterClothing
   - BureaucraticBelt # Ganimed-Loadouts-Add
   - HoPGlasses # Ganimed-Loadouts-Edit (Glasses)
-  - ADTHoPShoes #ADT-Tweak
+  - HoPShoes # ADT-Tweak # Ganimed-Loadouts-Edit (ADTHoPShoes)
   # ADT underwear tweak start
   - ADTTopHOP
   - ADTBottomHOP
   - ADTSocksHOP
   # ADT underwear tweak end
-  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Survival
+  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Trinkets
   - HoPJobTrinkets
   - GroupSpeciesBreathTool
@@ -154,11 +154,11 @@
   - ADTChefNeck # ADT-Tweak
   - ChefMask
   - ChefJumpsuit
-  - CommonBackpack
+  - ChefBackpack # Ganimed-Loadouts-Edit (CommonBackpack)
   - ChefOuterClothing
   - ADTChefGloves # ADT-Tweak
   - ChefGlasses # Ganimed-Loadouts-Edit (Glasses)
-  - ADTChefShoes #ADT-Tweak
+  - ChefShoes # ADT-Tweak # Ganimed-Loadouts-Edit (ADTChefShoes)
   # ADT-Tweak-Start
   - ADTChefPocket1
   - ADTChefPDA
@@ -233,7 +233,7 @@
   - CommonBackpack
   - ChaplainOuterClothing
   - ChaplainGloves # Ganimed-Loadouts-Add
-  - ADTChaplainShoes #ADT-Tweak
+  - ChaplainShoes # ADT-Tweak # Ganimed-Loadouts-Edit (ADTChaplainShoes)
   - ChaplainBible
   - Glasses
   - ADTChaplainPDA # ADT tweak
@@ -288,7 +288,7 @@
   - BotanistGloves # Ganimed-Loadouts-Add
   - BotanistShoes # Ganimed-Loadouts-Add
   - ADTBotanistPDA # ADT tweak
-  - ADTBotanistShoes #ADT-Tweak
+  - BotanistShoes # ADT-Tweak # Ganimed-Loadouts-Edit (ADTBotanistShoes)
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
@@ -391,7 +391,7 @@
   - ADTQuartermasterEars # ADT tweak
   - QuartermasterNeck
   - QuartermasterJumpsuit
-  - CargoTechnicianBackpack
+  - QuartermasterBackpack # Ganimed-Loadouts-Edit (CargoTechnicianBackpack)
   - QuartermasterOuterClothing
   - BureaucraticBelt # Ganimed-Loadouts-Add
   - QuartermasterShoes
@@ -402,8 +402,8 @@
   - ADTBottomQM
   - ADTSocks
   # ADT underwear tweak end
-  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Survival
+  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Trinkets
   - QuartermasterJobTrinkets
   - GroupSpeciesBreathTool
@@ -486,8 +486,8 @@
   - ADTBottomCE
   - ADTSocks
   # ADT underwear tweak end
-  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - SurvivalExtended
+  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Trinkets
   - ChiefEngineerJobTrinkets
   - GroupSpeciesBreathTool
@@ -587,8 +587,8 @@
   - ADTBottomRD
   - ADTSocks
   # ADT underwear tweak end
-  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Survival
+  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Trinkets
   - ResearchDirectorJobTrinkets
   - GroupSpeciesBreathTool
@@ -648,6 +648,7 @@
   - HeadofSecurityHead
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
+  - HeadofSecurityGlasses # Ganimed-Loadouts-Add
   - HeadofSecurityBackpack # Ganimed-Loadouts-Edit (SecurityBackpack)
   - HeadofSecurityBelt # Ganimed-Loadouts-Edit (SecurityBelt)
   - HeadofSecurityGloves # Ganimed-Loadouts-Add
@@ -769,7 +770,7 @@
   - ChiefMedicalOfficerMedicalMask # Ganimed-Loadouts-Edit (MedicalMask)
   - ChiefMedicalOfficerJumpsuit
   - MedicalGloves
-  - MedicalBackpack
+  - ChiefMedicalOfficerBackpack # Ganimed-Loadouts-Edit (MedicalBackpack)
   - ChiefMedicalOfficerBelt # Ganimed-Loadouts-Edit (ADTMedicalBelt)
   - ChiefMedicalOfficerOuterClothing
   - ChiefMedicalOfficerNeck
@@ -782,8 +783,8 @@
   - ADTBottomCMO
   - ADTSocks
   # ADT underwear tweak end
-  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - SurvivalMedical
+  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Trinkets
   - ChiefMedicalOfficerJobTrinkets
   - GroupSpeciesBreathToolMedical
@@ -844,6 +845,7 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  - ChemistHead # Ganimed-Loadouts-Add
   - MedicalMask
   - ChemistJumpsuit
   - MedicalGloves
@@ -944,9 +946,8 @@
   - PsychologistJumpsuit
   - MedicalBackpack
   - Glasses
-  - PsychologistShoes # Ganimed-Loadouts-Add
   - ADTPsychologistPDA # ADT tweak
-  - ADTPsychologistShoes #ADT-Tweak
+  - PsychologistShoes #ADT-Tweak # Ganimed-Loadouts-Edit (ADTPsychologistShoes)
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom

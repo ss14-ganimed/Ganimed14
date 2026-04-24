@@ -382,7 +382,7 @@
   - CommonSatchel
   - CommonDuffel
   #ADT-Tweak-Start
-  - LeatherSatchel # Ganimed-Loadouts-Edit (ADTClothingBackpackSatchelLeather)
+  - ADTClothingBackpackSatchelLeather
   - ADTClothingBackpackBlackLadySatchel
   - ADTClothingBackpackLeatherLadySatchel
   #ADT-Tweak-End
@@ -409,7 +409,7 @@
   name: loadout-group-passenger-shoes
   loadouts:
   - BlackShoes
-  - BootsLaceup #ADT-Tweak
+  # - BootsLaceup #ADT-Tweak # Ganimed-Loadouts-Remove
   - WinterBoots
 
 - type: loadoutGroup
@@ -857,9 +857,10 @@
   minLimit: 0
   loadouts:
   - MimeHead
-  - MimeFrenchBeret
   - BlackBeret # Ganimed-Loadouts-Add
+  - MimeFrenchBeret
   - MimeCap
+  - BartenderBowler # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
   id: MimeMask
@@ -1020,8 +1021,11 @@
   - QuartermasterCloak
   - QuartermasterCloakAlt # Ganimed-Loadouts-Add
   - QuartermasterMantle
-  - QuartermasterCloakLong # Ganimed-Loadouts-Add
-  - QuartermasterBedsheet # Ganimed-Loadouts-Add
+  # Ganimed-Loadouts-Add-Start
+  - QuartermasterMantleAlt
+  - QuartermasterCloakLong
+  - QuartermasterBedsheet
+  # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
@@ -1036,13 +1040,16 @@
   name: loadout-group-quartermaster-shoes
   loadouts:
   - BrownShoes
-  - BlackShoes # Ganimed-Loadouts-Add
+  # Ganimed-Loadouts-Add-Start
+  - BlackShoes
+  - LeatherShoesWhitelisted
+  - LaceupShoesWhitelisted # Ganimed-Loadouts-Edit (BootsLaceup)
+  # - SalvageBoots
+  # Ganimed-Loadouts-Add-End
   - CargoWinterBoots
-  # - SalvageBoots # Ganimed-Loadouts-Add
-  - LeatherShoesWhitelisted # Ganimed-Loadouts-Add
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
@@ -1076,8 +1083,11 @@
   loadouts:
   - CargoTechnicianJumpsuit
   - CargoTechnicianJumpskirt
-  - CargoTechnicianJumpsuitPostal # Ganimed-Loadouts-Add
-  - CargoTechnicianJumpskirtPostal # Ganimed-Loadouts-Add
+  # Ganimed-Loadouts-Add-Start
+  - CargoTechnicianJumpsuitPostal
+  - CargoTechnicianJumpskirtPostal
+  - CargoJumpsuitAlt
+  # Ganimed-Loadouts-Add-End
   # ADT tweak start
   # - ADTClothingUniformJumpsuitTurtleneckGrey # Ganimed-Loadouts-Remove (colored turtlenecks in spare clothing)
   # - ADTClothingUniformJumpskirtTurtleneckGrey # Ganimed-Loadouts-Remove
@@ -1104,11 +1114,11 @@
   name: loadout-group-cargo-technician-shoes
   loadouts:
   - BlackShoes
-  - CargoWinterBoots
   - WorkBoots # Ganimed-Loadouts-Add
+  - CargoWinterBoots
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
@@ -1157,8 +1167,8 @@
   - SalvageBoots
   - CargoWinterBoots
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
@@ -1194,7 +1204,7 @@
   - ChiefEngineerJumpskirt
   - ChiefEngineerTurtleneck
   - ChiefEngineerTurtleneckSkirt
-  - ChiefEngineerNTJumpsuit # Ganimed-Loadouts-Add
+  # - ChiefEngineerNTJumpsuit # Ganimed-Loadouts-Add (temporarily unused)
 
 - type: loadoutGroup
   id: ChiefEngineerNeck
@@ -1227,13 +1237,14 @@
   - WhiteShoes
   - BlackShoes
   - OrangeShoes
+  - LeatherShoesWhitelisted
+  - LaceupShoesWhitelisted # Ganimed-Loadouts-Edit (BootsLaceup)
+  - WorkBoots
   # Ganimed-Loadouts-Add-End
   - EngineeringWinterBoots
-  - WorkBoots # Ganimed-Loadouts-Add
-  - LeatherShoesWhitelisted # Ganimed-Loadouts-Add
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
@@ -1327,8 +1338,8 @@
   - EngineeringMagBoots
   # Ganimed-Loadouts-Add-End
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
@@ -1395,8 +1406,8 @@
   # Ganimed-Loadouts-Add-End
   - EngineeringWinterBoots
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
@@ -1479,17 +1490,18 @@
   name: loadout-group-research-director-shoes
   loadouts:
   - BrownShoes
-  - BlackShoes # Ganimed-Loadouts-Add
-  - PurpleShoes # Ganimed-Loadouts-Add
-  - ScienceWinterBoots
   # Ganimed-Loadouts-Add-Start
+  - BlackShoes
+  - PurpleShoes
   - MonochromeShoes
   - LeatherShoesWhitelisted
-  - ScienceMagBoots
+  - LaceupShoesWhitelisted # Ganimed-Loadouts-Edit (BootsLaceup)
   # Ganimed-Loadouts-Add-End
+  - ScienceWinterBoots
+  - ScienceMagBoots # Ganimed-Loadouts-Add
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
@@ -1575,8 +1587,8 @@
   - MonochromeShoes # Ganimed-Loadouts-Add
   - ScienceWinterBoots
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
@@ -1766,9 +1778,9 @@
   - TrooperUniform
   # ADT-Loadouts-Start
   - ADTClothingUniformJumpsuitSecBlue
-  - ADTSecurityOfficerMogesBrown
-  - ADTSecurityOfficerMogesBlue
-  - ADTSecurityOfficerMogesGray
+  # - ADTSecurityOfficerMogesBrown # Ganimed-Remove
+  # - ADTSecurityOfficerMogesBlue # Ganimed-Remove
+  # - ADTSecurityOfficerMogesGray # Ganimed-Remove
   # ADT-Loadouts-End
 
 - type: loadoutGroup
@@ -1810,13 +1822,15 @@
   loadouts:
   - JackSecBoots # Corvax
   - JackBoots
-  - CombatBoots # Ganimed-Loadouts-Add
+  # Ganimed-Loadouts-Add-Start
+  - CombatBoots
+  - BlackCowboyBoots
+  - HighheelBoots
+  # Ganimed-Loadouts-Add-End
   - SecurityWinterBoots
-  - BlackCowboyBoots # Ganimed-Loadouts-Add
-  - HighheelBoots # Ganimed-Loadouts-Add
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
@@ -1851,6 +1865,7 @@
   - DetectiveInvestigatorCap
   - ADTDetectiveOldFedora
   # ADT-Loadout-End
+  - DetectiveDeerstalker # Ganimed-Loadouts-Add
   - SecurityBeret # Ganimed-Loadouts-Add
 
 - type: loadoutGroup
@@ -1905,10 +1920,9 @@
   # ADT-Loadouts-End
   # Ganimed-Loadouts-Add-Start
   - DetectiveCoatOriginal
-  - DetectiveCoatDark
   - DetectiveCoatDesertDMC
   - DetectiveCoatBlackDMC
-  - DetectiveDiscoBlazer
+  # - DetectiveDiscoBlazer # No unarmored outher clothing
   # Ganimed-Loadouts-Add-End
 
 - type: loadoutGroup
@@ -2013,12 +2027,13 @@
   - WhiteShoes
   - BlueShoes
   - LeatherShoesWhitelisted
+  - LaceupShoesWhitelisted # Ganimed-Loadouts-Edit (BootsLaceup)
   # Ganimed-Loadouts-Add-End
   - MedicalWinterBoots
   - ADTCMOHighBoots # ADT tweak
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
@@ -2043,6 +2058,7 @@
   - MedicalBeret
   - CorpsmanBeret # Ganimed-Loadouts-Add
   - MedicalHeadMirror
+  - FaceShield # Ganimed-Loadouts-Add
   - BlueSurgeryCap
   - GreenSurgeryCap
   - PurpleSurgeryCap
@@ -2099,7 +2115,7 @@
   - MedicalDoctorBackpack
   - MedicalDoctorSatchel
   - MedicalDoctorDuffel
-  - LeatherSatchel # Ganimed-Loadouts-Add
+  - LeatherSatchel # ADT tweak # Ganimed-Loadouts-Edit (ADTClothingBackpackSatchelLeather)
 
 - type: loadoutGroup
   id: MedicalShoes
@@ -2109,8 +2125,8 @@
   - BlueShoes # Ganimed-Loadouts-Add
   - MedicalWinterBoots
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr
@@ -2221,7 +2237,7 @@
   - ParamedicJumpsuit
   - ParamedicJumpskirt
   - ADTClothingJumpsuitParamedicField # ADT tweak
-  - ParamedicNTJumpsuit # Ganimed-Loadouts-Add
+  # - ParamedicNTJumpsuit # Ganimed-Loadouts-Add (temporarily unused)
 
 - type: loadoutGroup
   id: ParamedicOuterClothing
@@ -2240,8 +2256,8 @@
   - WhiteShoes
   - MedicalWinterBoots
   # ADT tweak start
-  - BootsLaceup
   # Ganimed-Loadouts-Remove-Start (cloth wraps in spare clothing)
+  # - BootsLaceup
   # - ADTFootWrapsW
   # - ADTFootWrapsHighW
   # - ADTFootWrapsBr

@@ -72,6 +72,15 @@
   - !type:GroupLoadoutEffect
     proto: SeniorOfficer
 
+- type: loadout
+  id: SecurityMantle
+  equipment:
+    neck: ClothingNeckMantleSecurity
+  effects:
+  # - !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficer
+
 - type: loadout # TODO: Whitelist restriction
   id: SecurityBodyCamera
   equipment:

@@ -12,6 +12,11 @@
       !type:RoleTimeRequirement
       role: JobCargoTechnician
       time: 36000 # 10 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSalvageSpecialist
+      time: 36000 # 10 hrs
 
 # Head
 - type: loadout
@@ -35,6 +40,17 @@
     jumpsuit: ClothingUniformJumpskirtCargoPostal
   effects:
   - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: CargoJumpsuitAlt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCargoAlt
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobCargoTechnician
+      time: 108000 # 30 hrs
 
 # Belt
 - type: loadout

@@ -124,7 +124,7 @@
   description: A black suit with a charcoal skirt and a red tie. Very formal.
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/two-piece-suit.rsi
+    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/two_piece_suit.rsi
     layers:
     - state: icon
       map: [ "unfoldedLayer" ]
@@ -132,7 +132,7 @@
       map: ["foldedLayer"]
       visible: false
   - type: Clothing
-    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/two-piece-suit.rsi
+    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/two_piece_suit.rsi
   - type: Appearance
   - type: Foldable
     canFoldInsideContainer: true

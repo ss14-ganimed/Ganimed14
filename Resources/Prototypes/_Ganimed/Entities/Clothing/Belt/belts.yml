@@ -264,3 +264,64 @@
         - Hypospray
         - Injector
         - Pill
+
+- type: entity
+  parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase]
+  id: ClothingBeltAssault
+  name: assault belt
+  description: A tactical assault belt.
+  components:
+  - type: Sprite
+    sprite: Clothing/Belt/assault.rsi
+  - type: Clothing
+    sprite: Clothing/Belt/assault.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+  - type: Storage
+    whitelist:
+      tags:
+      - CigPack
+      - Taser
+      - Sidearm
+      - CombatKnife
+      - Truncheon
+      - Grenade
+      - GrenadeFlashBang
+      - SpeedLoaderRifle
+      - SpeedLoaderPistol
+      - SpeedLoaderMagnum
+      - Shiv
+      - Cartridge
+      - Pen
+      - ADTMagazineRifleBibis
+      - ADTCartridgeBibis
+      - ADTBola
+      components:
+      - Stunbaton
+      - FlashOnTrigger
+      - SmokeOnTrigger
+      - ExplodeOnTrigger
+      - Flash
+      - Handcuff
+      - BallisticAmmoProvider
+      - Ammo
+      - CartridgeAmmo
+      - ChemicalPayload
+      - ScatteringGrenade
+      - ProjectileGrenade
+  - type: ItemMapper
+    mapLayers:
+      flashbang:
+        whitelist:
+          components:
+          - FlashOnTrigger
+      stunbaton:
+        whitelist:
+          components:
+          - Stunbaton
+      tear_gas_grenade:
+        whitelist:
+          components:
+          - SmokeOnTrigger
+    sprite: Clothing/Belt/belt_overlay.rsi
+  - type: Appearance

@@ -8,6 +8,15 @@
       role: JobDetective
       time: 72000 # 20 hrs
 
+# Head
+- type: loadout
+  id: DetectiveDeerstalker
+  equipment:
+    head: ClothingHeadHatDeerstalker
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ForensicExpert
+
 # Neck
 - type: loadout
   id: DetectiveHorrificNecktie
@@ -62,15 +71,6 @@
     outerClothing: ClothingOuterCoatBlackDmc
   effects:
   - !type:SponsorLoadoutEffect
-
-- type: loadout
-  id: DetectiveDiscoBlazer
-  equipment:
-    outerClothing: ClothingOuterDiscoAssBlazer
-  effects:
-  - !type:SponsorLoadoutEffect
-  - !type:GroupLoadoutEffect
-    proto: ForensicExpert
 
 # Glasses
 - type: loadout
