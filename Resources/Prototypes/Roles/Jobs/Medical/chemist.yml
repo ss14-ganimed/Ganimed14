@@ -36,3 +36,4 @@
     neck: ClothingNeckStethoscope
     outerClothing: ClothingOuterCoatLabChem
     gloves: ClothingHandsGlovesLatex
+    eyes: ClothingEyesGlassesChemical # Ganimed-Loadouts-Add

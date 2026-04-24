@@ -29,7 +29,7 @@
 - type: chameleonOutfit
   id: ADTSeniorResearcherChameleonOutfit
   job: ADTSeniorResearcher
-  hasMindShield: false # Ganimed-Edit
+  hasMindShield: false # Ganimed-Tweak
   equipment:
     head: ClothingHeadHatBeretRND
     eyes: ClothingEyesGlassesCheapSunglasses
@@ -37,3 +37,4 @@
     neck: ClothingNeckTieSci
     outerClothing: ClothingOuterCoatLabSeniorResearcher
     gloves: ClothingHandsGlovesLatex
+    ears: ClothingHeadsetScience # Ganimed-Loadouts-Add

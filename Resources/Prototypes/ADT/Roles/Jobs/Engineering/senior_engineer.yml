@@ -33,11 +33,11 @@
 - type: chameleonOutfit
   id: ADTSeniorEngineerChameleonOutfit
   job: ADTSeniorEngineer
-  hasMindShield: false # Ganimed-Edit
+  hasMindShield: false # Ganimed-Tweak
   equipment:
     head: ClothingHeadHatBeretEngineering
     mask: ClothingMaskBreath
     neck: ClothingNeckScarfStripedOrange
-    outerClothing: ClothingOuterWinterEngi
+    outerClothing: ClothingOuterWinterSeniorEngineer # Ganimed-Edit (ClothingOuterWinterEngi)
     gloves: ClothingHandsGlovesColorYellow
     shoes: ClothingShoesBootsMag

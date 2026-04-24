@@ -51,4 +51,5 @@
     outerClothing: ClothingOuterWinterMiner
     neck: ClothingNeckScarfStripedBrown
     gloves: ClothingHandsGlovesColorBlack
+    ears: ClothingHeadsetCargo # Ganimed-Loadouts-Add
 

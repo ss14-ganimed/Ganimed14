@@ -35,12 +35,6 @@
 #  - !type:GroupLoadoutEffect
 #    proto: Commander
 
-# Outerclothing
-- type: loadout
-  id: HoPCoat
-  equipment:
-    outerClothing: ClothingOuterCoatHOP
-
 # Belt
 - type: loadout
   id: BureaucraticBelt

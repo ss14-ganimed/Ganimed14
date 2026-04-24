@@ -35,9 +35,9 @@
 - type: chameleonOutfit
   id: ADTSeniorPhysicianChameleonOutfit
   job: ADTSeniorPhysician
-  hasMindShield: false # Ganimed-Edit
+  hasMindShield: false # Ganimed-Tweak
   equipment:
-    ears: ClothingHeadsetMedical # Ganimed-Add
+    ears: ClothingHeadsetMedical # Ganimed-Loadouts-Add
     head: ClothingHeadHatBeretSeniorPhysician
     eyes: ClothingEyesHudMedical
     mask: ClothingMaskSterile

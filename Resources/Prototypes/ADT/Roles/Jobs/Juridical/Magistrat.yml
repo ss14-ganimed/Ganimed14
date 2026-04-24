@@ -71,3 +71,4 @@
   equipment:
     eyes: ClothingEyesGlassesCommand
     ears: ClothingHeadsetMagistrat
+    belt: ClothingBeltStorageWaistbag # Ganimed-Loadouts-Add
