@@ -30,7 +30,7 @@
       traits:
 #     - Monolingual
       - Muted
-      - ADTDeaf
+      - Deaf
   # ADT Restrict Start
     - !type:SpeciesRequirement
       inverted: true
