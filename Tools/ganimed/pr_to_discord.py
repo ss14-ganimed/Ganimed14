@@ -7,9 +7,9 @@ from datetime import datetime
 
 EMOJI_MAP = {
     "add": "🆕",
-    "remove": "⚒️",
-    "tweak": "🐛",
-    "fix": "❌"
+    "remove": "❌",
+    "tweak": "⚒️",
+    "fix": "🐛"
 }
 
 EMOJI_ORDER = ["add", "remove", "tweak", "fix"]
