@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Client.UserInterface.Systems.Chat.Controls;
 using Content.Shared.Chat;
 using Content.Shared.Input;
@@ -151,7 +152,15 @@ public partial class ChatBox : UIWidget
 
     public void Repopulate()
     {
-        Contents.Clear();
+        // ADT-Tweak start
+        foreach (var child in Contents.Children.Cast<Control>().ToArray())
+        {
+            if (child.Name != "_v_scroll")
+            {
+                Contents.RemoveChild(child);
+            }
+        }
+        // ADT-Tweak end
         _chatStackList = new List<ChatStackData>(_chatStackAmount); // Ganimed, EE - Chat stacking
 
         foreach (var message in _controller.History)
@@ -162,7 +171,15 @@ public partial class ChatBox : UIWidget
 
     private void OnChannelFilter(ChatChannel channel, bool active)
     {
-        Contents.Clear();
+        // ADT-Tweak start
+        foreach (var child in Contents.Children.Cast<Control>().ToArray())
+        {
+            if (child.Name != "_v_scroll")
+            {
+                Contents.RemoveChild(child);
+            }
+        }
+        // ADT-Tweak end
 
         foreach (var message in _controller.History)
         {
@@ -186,7 +203,7 @@ public partial class ChatBox : UIWidget
 
         var formatted = new FormattedMessage(4); // Ganimed, EE - Chat stacking - up from
         formatted.PushColor(color);
-        formatted.AddMarkupOrThrow(message);
+        formatted.AddMarkupPermissive(message); // ADT-Tweak
         formatted.Pop();
 
         // Ganimed, EE - Chat stacking
