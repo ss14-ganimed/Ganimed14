@@ -2461,6 +2461,7 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ForensicExpert
+  groupBy: "spareouterclothing"
 
 - type: loadout
   id: SpareBlackHoodieAlt

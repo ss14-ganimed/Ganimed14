@@ -1051,6 +1051,7 @@
   loadouts:
   - WhiteShoes
   - BlackShoes # Ganimed-Loadouts-Add
+  - MonochromeShoes # Ganimed-Loadouts-Add
   - LaceupShoesWhitelisted # Ganimed-Loadouts-Edit (BootsLaceup)
 
 - type: loadoutGroup
