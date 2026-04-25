@@ -5,6 +5,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: GunnerTSF
   jobName: job-name-gunner-tsf
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -13,6 +14,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: GunnerKMT
   jobName: job-name-gunner-kmt
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -21,6 +23,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: CommanderTSF
   jobName: job-name-commander-tsf
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -29,6 +32,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: CommanderKMT
   jobName: job-name-commander-kmt
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -37,6 +41,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: CaptainTSF
   jobName: job-name-captain-tsf
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -45,6 +50,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: CaptainKMT
   jobName: job-name-captain-kmt
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -53,6 +59,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: MarineTSF
   jobName: job-name-marine-tsf
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -61,6 +68,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: MarineKMT
   jobName: job-name-marine-kmt
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -69,6 +77,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: MarineLeutenantTSF
   jobName: job-name-marine-leutenant-tsf
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -77,6 +86,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: MarineLeutenantKMT
   jobName: job-name-marine-leutenant-kmt
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -85,6 +95,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: ExecutionalOfficerTSF
   jobName: job-name-executional-officer-tsf
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -93,6 +104,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: ExecutionalOfficerKMT
   jobName: job-name-executional-officer-kmt
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -101,6 +113,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: ChiefGunnerTSF
   jobName: job-name-chief-gunnner-tsf
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -109,6 +122,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: ChiefGunnerKMT
   jobName: job-name-chief-gunnner-kmt
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -117,6 +131,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: NavigatorTSF
   jobName: job-name-navigator-tsf
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -125,6 +140,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: NavigatorKMT
   jobName: job-name-navigator-kmt
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -133,6 +149,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: PilotTSF
   jobName: job-name-pilot-tsf
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -141,6 +158,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: PilotKMT
   jobName: job-name-pilot-kmt
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -149,6 +167,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: MedicTSF
   jobName: job-name-medic-tsf
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -157,6 +176,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: MedicKMT
   jobName: job-name-medic-kmt
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -165,6 +185,7 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: EngineerTSF
   jobName: job-name-engineer-tsf
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -173,3 +194,4 @@
     sprite: /Textures/ADT/ADTGlobalEvents/ShipBattle/Interface/Misc/job_icons.rsi
     state: EngineerKMT
   jobName: job-name-engineer-kmt
+  allowSelection: false # Ganimed-Add
