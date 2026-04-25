@@ -24,6 +24,7 @@
     noRot: true
     sprite: ADT/Structures/Machines/Medical/iv_drip.rsi
     layers:
+    - state: ivdrip # Ganined-Resprite-Add
     - state: unhooked
       map: ["enum.IVDripVisualLayers.Base"]
     - state: reagent0
@@ -31,10 +32,10 @@
   - type: IVDrip
     reagentStates:
     - 0: reagent0
-    - 10: reagent10
+    - 15: reagent10 # Ganimed-Resprite-Edit (10 -> 15)
     - 25: reagent25
-    - 50: reagent50
-    - 75: reagent75
+    - 40: reagent50 # Ganimed-Resprite-Edit (50 -> 40)
+    - 60: reagent75 # Ganimed-Resprite-Edit (75 -> 60)
     - 80: reagent80
     - 100: reagent100
     ripDamage:
@@ -58,3 +59,12 @@
   - type: Construction
     graph: IVDripGraph
     node: IVDripNode
+  # Ganined-Resprite-Add-Start
+  - type: ItemMapper
+    mapLayers:
+      pack:
+        whitelist:
+          tags:
+          - Bloodpack
+  - type: Appearance
+  # Ganined-Resprite-Add-End

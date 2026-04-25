@@ -35,8 +35,7 @@
 - type: startingGear
   id: PilotGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
-    head: ClothingHeadHatBeretSecurity
+    # eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts-Remove (Loadout choice)
     id: PilotPDA
     ears: ClothingHeadsetSecurity
     neck: ClothingNeckTieRed
@@ -45,6 +44,8 @@
     back:
     - Flash
     - MagazinePistol
+    - WeaponFlareGunSecurity # Ganimed-Add
+    - ShellShotgunFlare # Ganimed-Add
 
 #ADT tweak start
 - type: chameleonOutfit

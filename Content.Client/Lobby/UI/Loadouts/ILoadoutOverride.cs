@@ -8,7 +8,6 @@ namespace Content.Client.Lobby.UI.Loadouts;
 public interface ILoadoutOverride
 {
     public Action<KeyValuePair<string, string>>? OnValueChanged { get; set; }
-    public Action<ProtoId<LoadoutGroupPrototype>, ProtoId<LoadoutPrototype>, List<ProtoId<LoadoutPrototype>>, Dictionary<string, ProtoId<LoadoutGroupPrototype>>>? OnLoadoutPressedWithConflict { get; set; } // Ganimed Sponsor
     HumanoidCharacterProfile? Profile { get; set; }
 
     void Refresh(HumanoidCharacterProfile? profile, RoleLoadout loadout, IPrototypeManager protoMan);

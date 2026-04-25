@@ -203,15 +203,9 @@
           32:
             sprite: Mobs/Species/Reptilian/displacement.rsi
             state: mask
-      # Corvax-Digitigrade-Start
-      shoes:
-        sizeMaps:
-          32:
-            sprite: Corvax/Mobs/Species/displacement.rsi
-            state: shoes
     # ADT-Tweak Start
     # Нам не нужны кривоногие унати
-    #   # Corvax-Digitigrade-Ens
+    #   # Corvax-Digitigrade-Start
     # displacements:
     #   head:
     #     sizeMaps:

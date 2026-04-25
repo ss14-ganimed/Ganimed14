@@ -1,0 +1,52 @@
+# Neck
+- type: loadout
+  id: QuartermasterCloakAlt
+  equipment:
+    neck: ClothingNeckCloakQmAlt
+
+- type: loadout
+  id: QuartermasterCloakLong
+  equipment:
+    neck: ClothingNeckLongCloakQM
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterQM
+
+- type: loadout
+  id: QuartermasterMantleAlt
+  equipment:
+    neck: ClothingNeckMantleQMAlt
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterQM
+
+- type: loadout
+  id: QuartermasterBedsheet
+  equipment:
+    neck: BedsheetQM
+
+# Back
+- type: loadout
+  id: DarkCargoBackpack
+  equipment:
+    back: ClothingBackpackCargoDark
+
+- type: loadout
+  id: DarkCargoSatchel
+  equipment:
+    back: ClothingBackpackSatchelCargoDark
+
+- type: loadout
+  id: DarkCargoDuffel
+  equipment:
+    back: ClothingBackpackDuffelCargoDark
+
+# OuterClothing
+- type: loadout
+  id: QuartermasterOvercoat
+  equipment:
+    outerClothing: ClothingOuterCoatQuartermaster
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterQM

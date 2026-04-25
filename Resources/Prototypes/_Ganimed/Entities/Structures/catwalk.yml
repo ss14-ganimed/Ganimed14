@@ -1,6 +1,6 @@
 # TODO move this to tiles once tile smoothing is supported
 - type: entity
-  id: FloorHardCatwalkIron
+  id: FloorCatwalkHardSteel
   name: hard steel catwalk
   description: A catwalk for easier EVA maneuvering and cable placement.
   placement:
@@ -9,11 +9,11 @@
   - type: Clickable
   - type: Sprite
     sprite: _Ganimed/Structures/single_catwalk.rsi
-    state: hardiron
+    state: hard_steel
     drawdepth: FloorTiles
   - type: Icon
     sprite: _Ganimed/Structures/single_catwalk.rsi
-    state: hardiron
+    state: hard_steel
   - type: Transform
     anchored: true
   - type: FootstepModifier
@@ -23,7 +23,7 @@
         volume: 8
   - type: Tag
     tags:
-      - Catwalk
+    - Catwalk
 #  - type: Construction
 #    graph: Catwalk
 #    node: Catwalk
@@ -56,61 +56,51 @@
     fx: EffectRCDDeconstruct2
 
 - type: entity
-  id: FloorHardCatwalkWhiteIron
-  parent: FloorHardCatwalkIron
+  parent: FloorCatwalkHardSteel
+  id: FloorCatwalkHardSteelWhite
   name: hard white steel catwalk
   components:
   - type: Sprite
-    state: hardwhiteiron
+    state: hard_white_steel
   - type: Icon
-    state: hardwhiteiron
+    state: hard_white_steel
 
 - type: entity
-  id: FloorHardCatwalkDarkIron
-  parent: FloorHardCatwalkIron
+  parent: FloorCatwalkHardSteel
+  id: FloorCatwalkHardSteelDark
   name: hard dark steel catwalk
   components:
   - type: Sprite
-    state: harddarkiron
+    state: hard_dark_steel
   - type: Icon
-    state: harddarkiron
+    state: hard_dark_steel
 
 - type: entity
-  id: FloorHardCatwalkSmothIron
-  parent: FloorHardCatwalkIron
+  parent: FloorCatwalkHardSteel
+  id: FloorCatwalkHardSteelSmooth
   name: hard smooth steel catwalk
   components:
   - type: Sprite
-    state: hardsmoothiron
+    state: hard_smooth_steel
   - type: Icon
-    state: hardsmoothiron
+    state: hard_smooth_steel
 
 - type: entity
-  id: FloorHardCatwalkFlatwhite
-  parent: FloorHardCatwalkIron
-  name: hard flat white catwalk
+  parent: FloorCatwalkHardSteel
+  id: FloorCatwalkHardMaint
+  name: hard maintenance catwalk
   components:
   - type: Sprite
-    state: hardflatwhite
+    state: hard_maint
   - type: Icon
-    state: hardflatwhite
+    state: hard_maint
 
 - type: entity
-  id: FloorHardCatwalkMaint
-  parent: FloorHardCatwalkIron
-  name: hard maint catwalk
-  components:
-  - type: Sprite
-    state: hardmaint
-  - type: Icon
-    state: hardmaint
-
-- type: entity
-  id: FloorHardCatwalkTitanium
-  parent: FloorHardCatwalkIron
+  parent: FloorCatwalkHardSteel
+  id: FloorCatwalkHardTitanium
   name: hard titanium catwalk
   components:
   - type: Sprite
-    state: hardtitanium
+    state: hard_titanium
   - type: Icon
-    state: hardtitanium
+    state: hard_titanium

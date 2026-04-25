@@ -8,7 +8,7 @@ trait-moth-accent-name = Жужжащий акцент
 trait-moth-accent-desc = Ваша несомненная любовь к молям превратилась в подражание их говору.
 
 trait-nya-accent-name = Ня-кцент
-trait-nya-accent-desc = Кажется на вас нашло мря-гкое голово-муууррр-жение.
+trait-nya-accent-desc = Кажется на вас нашло мря-гкое голово-мууу-ррр-жение.
 
 trait-sick-teeth-accent-name = Зубной дефект
 trait-sick-teeth-accent-desc = Проблемы с зубами меняют вашу речь: некоторые согласные звучат иначе.
@@ -16,27 +16,11 @@ trait-sick-teeth-accent-desc = Проблемы с зубами меняют в�
 trait-burriness-accent-name = Картавость
 trait-burriness-accent-desc = Вы не умеете выговаххивать букву "Р" ;w;
 
-
-
 trait-tall-name = Высокий
 trait-tall-desc = Вы выше других представителей своего вида.
 
 trait-short-name = Низкий
 trait-short-desc = Вы ниже других представителей своего вида.
-
-
-
-trait-echolalia-name = Эхолалия
-trait-echolalia-desc = Вы неконтролируемо повторяете слова, фразы, звуки или интонации, услышанные от других людей.
-
-trait-dysgraphia-name = Дисграфия
-trait-dysgraphia-desc = Вы не способны излагать свои мысли в письменном виде.
-
-trait-hushed-name = Тихий
-trait-hushed-desc = Ваш голос не способен стать громче шёпота.
-
-trait-pseudobulbar-affect-name = Псевдобульбарный аффект
-trait-pseudobulbar-affect-desc = Неврологическое расстройство из-за которого у вашего персонажа неконтролируемые приступы эмоций, как в речи так и в невербальном поведении.
 
 trait-disproportionate-name = Непропорциональный
 trait-disproportionate-desc = Ваше тело непропорционально, не позволяя носить комбинезоны. Взамен вы снабжены встроенными разъёмами под КПК, карманы, а также датчики.
@@ -46,3 +30,18 @@ trait-female-ipc-desc = Вы способны издавать звуки жен
 
 trait-male-ipc-name = Голосовой модуль (Мужской)
 trait-male-ipc-desc = Вы способны издавать звуки мужских человеческих особей.
+
+trait-polite-accent-name = Вежливый
+trait-polite-accent-desc = Вы говорите без грубых выражений, которые используют другие.
+
+trait-nerd-accent-name = Ботаник
+trait-nerd-accent-desc = Вы говорите техническим жаргоном чаще, чем кто-либо хочет слышать!
+
+trait-chav-accent-name = Кокни
+trait-chav-accent-desc = Эй, приятель, что ты там сказал про мою бабушку? (Вы будите только мычать, как в наморднике)
+
+trait-archaic-accent-name = Архаичный
+trait-archaic-accent-desc = Вы говорите так, как многие считают устаревшим.
+
+trait-scottish-accent-name = Шотландский акцент
+trait-scottish-accent-desc = Вы говорите, словно собираетесь отправиться к Лох-Несс!

@@ -340,7 +340,7 @@
   - type: AttachableHolderVisuals
     offsets:
       rmc-aslot-underbarrel: 0.25, -0.14
-      rmc-aslot-rail: -0.3, -0.09375
+      rmc-aslot-rail: -0.09375, -0.0625 # Ganimed-Resprite-Tweak (-0.3, -0.09375)
   # ADT TWEAK END
 
 - type: entity
@@ -464,7 +464,7 @@
   - type: AttachableHolderVisuals
     offsets:
       rmc-aslot-underbarrel: 0.25, -0.07
-      rmc-aslot-rail: -0.03125, -0.06
+      rmc-aslot-rail: -0.03125, -0.09375 # Ganimed-Resprite-Tweak (-0.03125, -0.06)
   # ADT-Tweak end
   - type: HitscanBatteryAmmoProvider
     proto: Pulse
@@ -592,8 +592,8 @@
             - ADTAttachmentT2Miniscope
   - type: AttachableHolderVisuals
     offsets:
-      rmc-aslot-underbarrel: 0.25, -0.24
-      rmc-aslot-rail: -0.03125, -0.17
+      rmc-aslot-underbarrel: 0.25, -0.09375 # Ganimed-Resprite-Tweak (0.25, -0.24)
+      rmc-aslot-rail: -0.03125, -0.0625 # Ganimed-Resprite-Tweak (-0.03125, -0.17)
   # ADT-Tweak end
   - type: MagazineVisuals
     magState: mag

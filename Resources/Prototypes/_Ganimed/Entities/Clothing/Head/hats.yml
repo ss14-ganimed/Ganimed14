@@ -27,9 +27,9 @@
   description: Stylish white cap cap.
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/Head/Hats/white_capcap.rsi
+    sprite: _Ganimed/Clothing/Head/Hats/capcap_white.rsi
   - type: Clothing
-    sprite: _Ganimed/Clothing/Head/Hats/white_capcap.rsi
+    sprite: _Ganimed/Clothing/Head/Hats/capcap_white.rsi
   - type: Tag
     tags:
     - ClothMade
@@ -43,9 +43,9 @@
   description: A white captain beret, an icon of style.
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/Head/Hats/white_beret.rsi
+    sprite: _Ganimed/Clothing/Head/Hats/beret_captain_white.rsi
   - type: Clothing
-    sprite: _Ganimed/Clothing/Head/Hats/white_beret.rsi
+    sprite: _Ganimed/Clothing/Head/Hats/beret_captain_white.rsi
   - type: Tag
     tags:
     - ClothMade
@@ -89,6 +89,97 @@
     sprite: _Ganimed/Clothing/Head/Hats/witchunterhat.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Head/Hats/witchunterhat.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatMortarboard
+  name: square academic cap
+  description: It's like you're fresh from graduation. This serves as a proof you've survived tuition hell, unfortunately does not guarantee your survival in the Science department.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Hats/mortarboard.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Hats/mortarboard.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSurgcapTurquoise
+  name: surgical cap
+  description: A turquoise cap the chief medical officer wears during operations. Keeps their hair from tickling your internal organs.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Hats/surgcap_cmo.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Hats/surgcap_cmo.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop: HEAD
+      HeadSide: HEAD
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatWideBrim
+  name: wide brimmed hat
+  description: Keep that bloody sun out of your eyes.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Hats/brim_hat.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Hats/brim_hat.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatFeathered
+  name: feathered hat
+  description: You own these streets.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Hats/feather_hat.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Hats/feather_hat.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: [ClothingHeadBase, BaseFoldable]
+  id: ClothingHeadHatDeerstalker
+  name: deerstalker
+  description: Headwear of the legendary detective. Heavily modified to stalk clues instead.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Hats/deerstalker.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+      visible: false
+    - state: icon-up
+      map: ["foldedLayer"]
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Hats/deerstalker.rsi
+    equippedPrefix: up
+  - type: Foldable
+    folded: true
+    canFoldInsideContainer: true
+  - type: FoldableClothing
+    foldedEquippedPrefix: up
+  - type: Appearance
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
 
 # Old/Original
 - type: entity

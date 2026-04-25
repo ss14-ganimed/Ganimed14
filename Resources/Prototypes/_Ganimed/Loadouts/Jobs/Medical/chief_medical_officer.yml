@@ -1,0 +1,105 @@
+# Head
+- type: loadout
+  id: ChiefMedicalOfficerBeretOriginal
+  equipment:
+    head: ClothingHeadHatBeretCmoOriginal
+
+- type: loadout
+  id: ChiefMedicalOfficerSurgeryCap
+  equipment:
+    head: ClothingHeadHatSurgcapTurquoise
+
+# Jumpsuit
+- type: loadout
+  id: ChiefMedicalOfficerScrubs
+  equipment:
+    jumpsuit: UniformScrubsColorTurquoise
+
+# Neck
+- type: loadout
+  id: ChiefMedicalOfficerCloakAlt
+  equipment:
+    neck: ClothingNeckCloakCmoAlt
+
+- type: loadout
+  id: ChiefMedicalOfficerCloakTurquoise
+  equipment:
+    neck: ClothingNeckCloakCmoTurquoise
+
+- type: loadout
+  id: ChiefMedicalOfficerMantleOriginal
+  equipment:
+    neck: ClothingNeckMantleCMOOriginal
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterCMO
+
+- type: loadout
+  id: ChiefMedicalOfficerCloakLong
+  equipment:
+    neck: ClothingNeckLongCloakCMO
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: MasterCMO
+
+- type: loadout
+  id: ChiefMedicalOfficerBedsheet
+  equipment:
+    neck: BedsheetCMO
+
+- type: loadout
+  id: AzureScarf
+  equipment:
+    neck: ClothingNeckScarfStripedAzure
+
+# Back
+- type: loadout
+  id: ChiefMedicalOfficerBackpack
+  equipment:
+    back: ClothingBackpackChiefMedicalOfficer
+
+- type: loadout
+  id: ChiefMedicalOfficerSatchel
+  equipment:
+    back: ClothingBackpackSatchelChiefMedicalOfficer
+
+- type: loadout
+  id: ChiefMedicalOfficerDuffel
+  equipment:
+    back: ClothingBackpackDuffelChiefMedicalOfficer
+
+# Outer clothing
+- type: loadout
+  id: ChiefMedicalOfficerBioSuit
+  dummyEntity: ClothingOuterBioCmo
+  equipment:
+    outerClothing: ClothingOuterBioCmo
+    head: ClothingHeadHatHoodBioCmo
+
+# Belt
+- type: loadout
+  id: CMOWebbing
+  equipment:
+    belt: ClothingBeltMilitaryWebbingCMOFilled
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterCMO
+
+# Glasses
+- type: loadout
+  id: MedicalSunglasses
+  equipment:
+    eyes: ADTClothingEyesGlassesMed
+  effects:
+  # - !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: Commander
+
+- type: loadout
+  id: MedChemGoggles
+  equipment:
+    eyes: ADTClothingEyesGlassesMedChem
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorPhysician

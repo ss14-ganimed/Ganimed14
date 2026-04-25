@@ -39,3 +39,6 @@
   id: ADTClothingHeadsetAltMedical
   equipment:
     ears: ClothingHeadsetAltMedical
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: Commander

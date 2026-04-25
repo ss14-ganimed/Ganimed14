@@ -1,0 +1,21 @@
+# Back
+- type: loadout
+  id: CoolerBagBackpack
+  equipment:
+    back: ClothingBackpackCoolerBag
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Gloves
+- type: loadout
+  id: BlackNitrileGloves
+  equipment:
+    gloves: ClothingHandsGlovesNitrileBlack
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Shoes
+- type: loadout
+  id: ChefShoes
+  equipment:
+    shoes: ClothingShoesChef

@@ -231,8 +231,8 @@
             - ADTAttachmentT2Miniscope
   - type: AttachableHolderVisuals
     offsets:
-      rmc-aslot-underbarrel: 0.2875, -0.125
-      rmc-aslot-rail: -0.0375, -0.1575
+      rmc-aslot-underbarrel: 0.1875, -0.03125 # Ganimed-Resprite-Tweak (0.2875, -0.125)
+      rmc-aslot-rail: -0.0375, -0.09375 # Ganimed-Resprite-Tweak (-0.0375, -0.1575)
 # ADT TWEAK END
 
 - type: entity
