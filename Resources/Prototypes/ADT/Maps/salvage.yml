@@ -138,7 +138,7 @@
 - type: salvageMap
   id: ADT_arcada
   mapPath: /Maps/ADTMaps/Salvage/arcada.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -174,7 +174,7 @@
 - type: salvageMap
   id: ADT_biblioteka
   mapPath: /Maps/ADTMaps/Salvage/biblioteka.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -204,7 +204,7 @@
 - type: salvageMap
   id: ADT_Brig_crash
   mapPath: /Maps/ADTMaps/Salvage/Brig_crash.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -240,7 +240,7 @@
 - type: salvageMap
   id: ADT_cult_school
   mapPath: /Maps/ADTMaps/Salvage/cult_school.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -258,7 +258,7 @@
 - type: salvageMap
   id: ADT_fire
   mapPath: /Maps/ADTMaps/Salvage/fire.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -276,7 +276,7 @@
 - type: salvageMap
   id: ADT_green
   mapPath: /Maps/ADTMaps/Salvage/green.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -294,7 +294,7 @@
 - type: salvageMap
   id: ADT_Honk
   mapPath: /Maps/ADTMaps/Salvage/Honk.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -306,13 +306,13 @@
 - type: salvageMap
   id: ADT_hotel
   mapPath: /Maps/ADTMaps/Salvage/hotel.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
   id: ADT_ice
   mapPath: /Maps/ADTMaps/Salvage/ice.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -324,19 +324,19 @@
 - type: salvageMap
   id: ADT_Kargo
   mapPath: /Maps/ADTMaps/Salvage/Kargo.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
   id: ADT_Kargo_sklad
   mapPath: /Maps/ADTMaps/Salvage/Kargo_sklad.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
   id: ADT_Kargos
   mapPath: /Maps/ADTMaps/Salvage/Kargos.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -348,7 +348,7 @@
 - type: salvageMap
   id: ADT_karp_statui
   mapPath: /Maps/ADTMaps/Salvage/karp_statui.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -360,7 +360,7 @@
 - type: salvageMap
   id: ADT_komp
   mapPath: /Maps/ADTMaps/Salvage/komp.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -384,13 +384,13 @@
 - type: salvageMap
   id: ADT_Les_mramora
   mapPath: /Maps/ADTMaps/Salvage/Les_mramora.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
   id: ADT_Med
   mapPath: /Maps/ADTMaps/Salvage/Med.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -420,7 +420,7 @@
 - type: salvageMap
   id: ADT_ofis
   mapPath: /Maps/ADTMaps/Salvage/ofis.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -438,13 +438,13 @@
 - type: salvageMap
   id: ADT_Perma1
   mapPath: /Maps/ADTMaps/Salvage/Perma1.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
   id: ADT_perma2
   mapPath: /Maps/ADTMaps/Salvage/perma2.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -492,7 +492,7 @@
 - type: salvageMap
   id: ADT_robotex
   mapPath: /Maps/ADTMaps/Salvage/robotex.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -522,7 +522,7 @@
 - type: salvageMap
   id: ADT_Shool
   mapPath: /Maps/ADTMaps/Salvage/Shool.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -534,7 +534,7 @@
 - type: salvageMap
   id: ADT_shuttlik_broken
   mapPath: /Maps/ADTMaps/Salvage/shuttlik_broken.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -558,13 +558,13 @@
 - type: salvageMap
   id: ADT_studia
   mapPath: /Maps/ADTMaps/Salvage/studia.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
   id: ADT_teatr
   mapPath: /Maps/ADTMaps/Salvage/teatr.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
@@ -642,13 +642,13 @@
 - type: salvageMap
   id: ADT_xeno_ofis
   mapPath: /Maps/ADTMaps/Salvage/xeno_ofis.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 - type: salvageMap
   id: ADT_zoo
   mapPath: /Maps/ADTMaps/Salvage/zoo.yml
-  sizeString: salvage-map-wreck-size-large
+  sizeString: salvage-map-wreck-size-large # Ganimed-Edit (medium -> large)
   sizeTag: BigMagnetTargets #Ganimed-Edit (Medium -> Big)
 
 # """Large""" maps
