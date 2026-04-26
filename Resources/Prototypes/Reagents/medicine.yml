@@ -1194,7 +1194,7 @@
         time: 15 # Ganimed-Tweak (10)
         type: Remove
       - !type:ResetNarcolepsy
-        timerReset: 1000 # Ganimed-Add (buff from base 600)
+        TimerReset: 1000 # Ganimed-Add (buff from base 600)
         conditions:
         - !type:ReagentCondition
           reagent: Diphenylmethylamine
