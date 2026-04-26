@@ -1191,9 +1191,10 @@
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrowsiness
-        time: 10
+        time: 15 # Ganimed-Tweak (10)
         type: Remove
       - !type:ResetNarcolepsy
+        timerReset: 1000 # Ganimed-Add (buff from base 600)
         conditions:
         - !type:ReagentCondition
           reagent: Diphenylmethylamine
