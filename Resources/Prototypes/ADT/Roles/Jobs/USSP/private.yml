@@ -4,7 +4,7 @@
   description: job-description-ussp-army-private
   playTimeTracker: JobADTUSSPArmyPrivate # Заглушка
   setPreference: false
-  icon: "JobIconADTUSSPArmyPrivate"
+  icon: "JobIconUSSPSoldier" # Ganimed-Edit (JobIconADTUSSPArmyPrivate)
   supervisors: job-supervisors-ussp-centcom
   access:
   - Maintenance
