@@ -4,7 +4,7 @@
   description: job-description-ussp-army-officer
   playTimeTracker: JobADTUSSPArmyOfficer # Заглушка
   setPreference: false
-  icon: "JobIconADTUSSPArmyOfficer"
+  icon: "JobIconUSSPOfficer" # Ganimed-Edit (JobIconADTUSSPArmyOfficer)
   access:
   - Maintenance
   - External
