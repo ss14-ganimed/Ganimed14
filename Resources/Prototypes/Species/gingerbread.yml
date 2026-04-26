@@ -1,7 +1,7 @@
 - type: species
   id: Gingerbread
   name: species-name-gingerbread
-  roundStart: false
+  roundStart: true # April-Fools
   prototype: MobGingerbread
   sprites: MobGingerbreadSprites
   markingLimits: MobHumanMarkingLimits
