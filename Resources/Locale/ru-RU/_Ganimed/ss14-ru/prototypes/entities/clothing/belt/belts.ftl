@@ -1,8 +1,5 @@
-ent-ClothingBeltSheathWhite = белые сабельные ножны
-   .desc = Стиль, блеск, всё для лучших сабель во вселенной.
-
-ent-ClothingBeltSheathSheriff = сабельные ножны шерифа
-   .desc = Практичность, прочность, сабля точно не окажется в вашей ноге.
+ent-ClothingBeltAssault = штурмовой пояс
+    .desc = Тактический штурмовой пояс.
 
 ent-ClothingBeltMilitaryWebbingCMO = пояс главного врача
     .desc = Медицинский нагрудник с глубокими карманами, предназначенный для использования парамедиками и медицинскими работниками.
@@ -22,21 +19,6 @@ ent-ClothingBeltOfficerBlackWebbingFilled = { ent-ClothingBeltOfficerBlackWebbin
     .desc = { ent-ClothingBeltOfficerBlackWebbing }
     .suffix = Заполненный
 
-ent-ClothingBeltPouchMedical = медицинский подсумок
-    .desc = Тактический подсумок для хранения медикаментов.
-ent-ClothingBeltPouchMedicalERTFilled = { ent-ClothingBeltPouchMedical }
-    .desc = { ent-ClothingBeltPouchMedical.desc }
-    .suffix = Заполненный, ОБР
-ent-ClothingBeltPouchMedicalCBURNFilled = { ent-ClothingBeltPouchMedical }
-    .desc = { ent-ClothingBeltPouchMedical.desc }
-    .suffix = Заполненный, РХБЗЗ
-
-ent-ClothingBeltPouchUtility = универсальный подсумок
-    .desc = Тактический подсумок для хранения различной мелочёвки.
-
-ent-ClothingBeltPouchFlare = подсумок с сигнальным пистолетом
-    .desc = Тактический подсумок с сигнальным пистолетом и снарядами к нему.
-
 ent-ClothingBeltAmmo = разгрузка для магазинов
     .desc = Удобная разгрузка под любые ваши магазины, идеально подходит для затяжных перестрелок.
 
@@ -52,9 +34,30 @@ ent-ClothingBeltShellShotgun = бандольер для патронов 12х70
 ent-ClothingBeltMedicalMarine = медицинская разгрузка
     .desc = Военная разгрузка с глубокими карманам, предназначенная для оказания медицинской помощи прямо на передовой.
 
+ent-ClothingBeltSheathWhite = белые сабельные ножны
+    .desc = Стиль, блеск, всё для лучших сабель во вселенной.
+
+ent-ClothingBeltSheathSheriff = сабельные ножны шерифа
+    .desc = Практичность, прочность, сабля точно не окажется в вашей ноге.
+
 ent-ClothingBeltMedicalFilledSurgical = { ent-ClothingBeltMedical }
     .desc = { ent-ClothingBeltMedical.desc }
     .suffix = Заполненный, хирургические инструменты
 ent-ClothingBeltMedicalFilledMedication = { ent-ClothingBeltMedical }
     .desc = { ent-ClothingBeltMedical.desc }
     .suffix = Заполненный, медикаменты
+
+ent-ClothingBeltPouchMedical = медицинский подсумок
+    .desc = Тактический подсумок для хранения медикаментов.
+ent-ClothingBeltPouchMedicalERTFilled = { ent-ClothingBeltPouchMedical }
+    .desc = { ent-ClothingBeltPouchMedical.desc }
+    .suffix = Заполненный, ОБР
+ent-ClothingBeltPouchMedicalCBURNFilled = { ent-ClothingBeltPouchMedical }
+    .desc = { ent-ClothingBeltPouchMedical.desc }
+    .suffix = Заполненный, РХБЗЗ
+
+ent-ClothingBeltPouchUtility = универсальный подсумок
+    .desc = Тактический подсумок для хранения различной мелочёвки.
+
+ent-ClothingBeltPouchFlare = подсумок с сигнальным пистолетом
+    .desc = Тактический подсумок с сигнальным пистолетом и снарядами к нему.

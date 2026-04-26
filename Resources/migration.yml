@@ -524,7 +524,7 @@ ClothingOuterArmorHeavyGreen: null
 RiotBulletShield: null
 
 # ADT 2024-08-13
-ClothingHeadHatBeretSecurityMedic: ADTClothingHeadHatBeretBrigmedic
+# ClothingHeadHatBeretSecurityMedic: ADTClothingHeadHatBeretBrigmedic # Ganimed-Edit
 
 # ADT 2024-08-15
 NesBigThruster: ADTBigThruster
@@ -730,7 +730,7 @@ ClothingHeadHelmetHardsuitBasic: null
 SuitStorageBasic: SuitStorageEVA
 
 # 2025-05-18
-ClothingNeckCloakMiner: null
+# ClothingNeckCloakMiner: null # Ganimed-Edit
 
 # 2025-05-22
 MatterBinStockPart: MicroManipulatorStockPart

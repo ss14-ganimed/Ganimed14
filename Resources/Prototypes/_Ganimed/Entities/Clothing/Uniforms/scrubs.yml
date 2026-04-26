@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: UniformScrubsColorTurquoise
+  name: chief medical officer's turquoise scrubs
+  description: A combination of comfort and utility intended to make removing every last organ someone has and selling them to a space robot much more official looking.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Scrubs/cmo.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Scrubs/cmo.rsi

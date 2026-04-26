@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Derived from tgstation at commit https://github.com/tgstation/tgstation/commit/3f51609e62619249b715cdf66a2aebdd955c8afc, modified by HyperB1 (GitHub)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-EYES",
+      "directions": 4
+    }
+  ]
+}

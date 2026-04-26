@@ -1,0 +1,12 @@
+# Shoes
+- type: loadout
+  id: LeatherShoes
+  equipment:
+    shoes: ClothingShoesLeather
+
+- type: loadout
+  id: LeatherShoesWhitelisted
+  equipment:
+    shoes: ClothingShoesLeather
+  effects:
+  - !type:SponsorLoadoutEffect
