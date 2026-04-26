@@ -3,21 +3,12 @@ ent-ClothingBeltAssault = штурмовой пояс
 
 ent-ClothingBeltMilitaryWebbingCMO = пояс главного врача
     .desc = Медицинский нагрудник с глубокими карманами, предназначенный для использования парамедиками и медицинскими работниками.
-ent-ClothingBeltMilitaryWebbingCMOFilled = { ent-ClothingBeltMilitaryWebbingCMO }
-    .desc = { ent-ClothingBeltMilitaryWebbingCMO }
-    .suffix = Заполненный
 
 ent-ClothingBeltMilitaryWebbingCorpsman = пояс бригмедика
     .desc = Боевая медицинская разгрузка с множеством герметичных карманов и подсумков.
-ent-ClothingBeltMilitaryWebbingCorpsmanFilled = { ent-ClothingBeltMilitaryWebbingCorpsman }
-    .desc = { ent-ClothingBeltMilitaryWebbingCorpsman }
-    .suffix = Заполненный
 
 ent-ClothingBeltOfficerBlackWebbing = чёрная офицерская РПС
     .desc = Это довольно удобная и не стесняющая движений РПС.
-ent-ClothingBeltOfficerBlackWebbingFilled = { ent-ClothingBeltOfficerBlackWebbing }
-    .desc = { ent-ClothingBeltOfficerBlackWebbing }
-    .suffix = Заполненный
 
 ent-ClothingBeltAmmo = разгрузка для магазинов
     .desc = Удобная разгрузка под любые ваши магазины, идеально подходит для затяжных перестрелок.
@@ -40,21 +31,8 @@ ent-ClothingBeltSheathWhite = белые сабельные ножны
 ent-ClothingBeltSheathSheriff = сабельные ножны шерифа
     .desc = Практичность, прочность, сабля точно не окажется в вашей ноге.
 
-ent-ClothingBeltMedicalFilledSurgical = { ent-ClothingBeltMedical }
-    .desc = { ent-ClothingBeltMedical.desc }
-    .suffix = Заполненный, хирургические инструменты
-ent-ClothingBeltMedicalFilledMedication = { ent-ClothingBeltMedical }
-    .desc = { ent-ClothingBeltMedical.desc }
-    .suffix = Заполненный, медикаменты
-
 ent-ClothingBeltPouchMedical = медицинский подсумок
     .desc = Тактический подсумок для хранения медикаментов.
-ent-ClothingBeltPouchMedicalERTFilled = { ent-ClothingBeltPouchMedical }
-    .desc = { ent-ClothingBeltPouchMedical.desc }
-    .suffix = Заполненный, ОБР
-ent-ClothingBeltPouchMedicalCBURNFilled = { ent-ClothingBeltPouchMedical }
-    .desc = { ent-ClothingBeltPouchMedical.desc }
-    .suffix = Заполненный, РХБЗЗ
 
 ent-ClothingBeltPouchUtility = универсальный подсумок
     .desc = Тактический подсумок для хранения различной мелочёвки.
