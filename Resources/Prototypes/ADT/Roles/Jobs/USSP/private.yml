@@ -1,6 +1,6 @@
 - type: job
   id: ADTJobUSSPArmyPrivate
-  name: job-title-ussp-soldier # Ganimed-Edit (job-name-ussp-army-private)
+  name: job-name-ussp-soldier # Ganimed-Edit (job-name-ussp-army-private)
   description: job-description-ussp-army-private
   playTimeTracker: JobADTUSSPArmyPrivate # Заглушка
   setPreference: false
