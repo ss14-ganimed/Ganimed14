@@ -102,6 +102,7 @@
     # Corvax-Localization-Start
     - хонк
     # Corvax-Localization-End
+    - хонкает # Ganimed-Localization-Add
 
 - type: emote
   id: Sigh
@@ -417,6 +418,12 @@
     - claps her hands together
     - claps his hands together
     - claps its hands together
+    # Ganimed-Localization-Add-Start
+    - хлопок
+    - одиночный хлопок
+    - делает одиночный хлопок
+    - хлопает один раз
+    # Ganimed-Localization-Add-End
 
 - type: emote
   id: Snap
@@ -497,6 +504,13 @@
     - ударяет хвостом
     - ударяет своим хвостом
     # ADT-emote-end
+    # Ganimed-Localization-Add-Start
+    - бьёт хвостом
+    - бьёт хвостом по полу
+    - бьёт хвостом по земле
+    - ударяет хвостом по полу
+    - ударяет хвостом по земле
+    # Ganimed-Localization-Add-End
 
 - type: emote
   id: Salute
@@ -536,6 +550,7 @@
    - вдыхает
    - жадно глотает воздух
    #ADT-Tweak-End
+   - ловит воздух # Ganimed-Localization-Add
 
 - type: emote
   id: DefaultDeathgasp
