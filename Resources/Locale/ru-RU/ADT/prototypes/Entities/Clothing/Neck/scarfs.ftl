@@ -5,8 +5,8 @@ ent-ADTClothingNeckScarfWindy = ветренный шарф
     .desc = Не похоже, чтобы здесь дуло...
     .suffix = { "" }
 
-ent-ADTClothingNecChefShawl = шейный платок повара
-    .desc = Раньше ими вытирали пот, теперь это для имиджа.
+ent-ADTClothingNecChefShawl = красный шейный платок
+    .desc = Раньше повара вытирали ими пот, теперь их носят для имиджа.
 
 ent-ADTClothingNeckScarfLongWhite = длинный белый шарф
     .desc = Длинный клетчатый шарф. Очень тёплый и приятный на ощупь.

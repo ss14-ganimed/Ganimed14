@@ -16,6 +16,54 @@
 
 - type: jobIcon
   parent: JobIcon
+  id: JobIconSuperpupermattery
+  icon:
+    sprite: /Textures/ADT/Interface/Misc/job_icons.rsi
+    state: Superpupermattery
+  jobName: job-name-machine
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconScavengeator
+  icon:
+    sprite: /Textures/ADT/Interface/Misc/job_icons.rsi
+    state: Scavengeator
+  jobName: job-name-machine
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconAnomalist
+  icon:
+    sprite: /Textures/ADT/Interface/Misc/job_icons.rsi
+    state: Anomalist
+  jobName: job-name-machine
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCargoniator
+  icon:
+    sprite: /Textures/ADT/Interface/Misc/job_icons.rsi
+    state: Cargoniator
+  jobName: job-name-machine
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconProtector
+  icon:
+    sprite: /Textures/ADT/Interface/Misc/job_icons.rsi
+    state: Protector
+  jobName: job-name-machine
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconMachine
+  icon:
+    sprite: /Textures/ADT/Interface/Misc/job_icons.rsi
+    state: Machine
+  jobName: job-name-machine
+
+- type: jobIcon
+  parent: JobIcon
   id: JobIconADTCentcomConsultant
   icon:
     sprite: /Textures/ADT/Interface/Misc/job_icons.rsi
@@ -52,7 +100,8 @@
   icon:
     sprite: /Textures/ADT/Interface/Misc/job_icons.rsi
     state: JobIconUSSPArmyOfficer
-  jobName: job-name-ussp-army-officer
+  jobName: job-name-ussp-officer # Ganimed-Edit (job-name-ussp-army-officer)
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -60,7 +109,8 @@
   icon:
     sprite: /Textures/ADT/Interface/Misc/job_icons.rsi
     state: JobIconUSSPArmyPrivate
-  jobName: job-name-ussp-army-private
+  jobName: job-name-ussp-soldier # Ganimed-Edit (job-name-ussp-army-private)
+  allowSelection: false # Ganimed-Add
 
 #SPACE SEC
 
@@ -71,6 +121,7 @@
     sprite: /Textures/ADT/Interface/Misc/space_sec_icons.rsi
     state: ADTSpaceSecCadetStatusIcon
   jobName: job-name-ADTSpaceSecCadet
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -79,6 +130,7 @@
     sprite: /Textures/ADT/Interface/Misc/space_sec_icons.rsi
     state: ADTSpaceSecOfficerStatusIcon
   jobName: job-name-ADTSpaceSecOfficer
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -87,6 +139,7 @@
     sprite: /Textures/ADT/Interface/Misc/space_sec_icons.rsi
     state: ADTSpaceSecPilotStatusIcon
   jobName: job-name-ADTSpaceSecPilot
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -95,6 +148,7 @@
     sprite: /Textures/ADT/Interface/Misc/space_sec_icons.rsi
     state: ADTSpaceSecCommanderStatusIcon
   jobName: job-name-ADTSpaceSecCommander
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -103,6 +157,7 @@
     sprite: /Textures/ADT/Interface/Misc/space_sec_icons.rsi
     state: ADTSpaceSecServiceStatusIcon
   jobName: job-name-ADTSpaceSecService
+  allowSelection: false # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon

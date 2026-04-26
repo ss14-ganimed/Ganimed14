@@ -1,10 +1,10 @@
 - type: job
   id: ADTJobUSSPArmyPrivate
-  name: job-name-ussp-army-private
+  name: job-name-ussp-soldier # Ganimed-Edit (job-name-ussp-army-private)
   description: job-description-ussp-army-private
   playTimeTracker: JobADTUSSPArmyPrivate # Заглушка
   setPreference: false
-  icon: "JobIconADTUSSPArmyPrivate"
+  icon: "JobIconUSSPSoldier" # Ganimed-Edit (JobIconADTUSSPArmyPrivate)
   supervisors: job-supervisors-ussp-centcom
   access:
   - Maintenance

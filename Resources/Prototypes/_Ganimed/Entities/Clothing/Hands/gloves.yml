@@ -10,6 +10,24 @@
     sprite: _Ganimed/Clothing/Hands/Gloves/captain_white.rsi
 
 - type: entity
+  parent: ClothingHandsGlovesNitrile
+  id: ClothingHandsGlovesNitrileBlack
+  name: black nitrile gloves
+  description: High-quality long black nitrile gloves that provide protection from caustic chemicals, contamination and grease.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Hands/Gloves/nitrile_black.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Hands/Gloves/nitrile_black.rsi
+  - type: Fiber
+    fiberColor: fibers-black
+  - type: DamageOnInteractProtection
+    damageProtection:
+      flatReductions:
+        Heat: 5
+        Caustic: 4
+
+- type: entity
   parent: ClothingHandsBase
   id: ClothingHandsGlovesPaws
   name: black paws gloves

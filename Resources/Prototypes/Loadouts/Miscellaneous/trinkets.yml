@@ -6,7 +6,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Command
-      time: 1h
+      time: 4h # Ganimed-Loadouts-Tweak (1 to 4)
 
 # Flowers
 - type: loadout
