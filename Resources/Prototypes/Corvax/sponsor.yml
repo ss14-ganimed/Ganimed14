@@ -82,6 +82,7 @@
       sprite: Corvax/Clothing/Hands/Accessories/watch.rsi
     - type: Clothing
       sprite: Corvax/Clothing/Hands/Accessories/watch.rsi
+    - type: Clock # Ganimed-Add
 
 # jesuisunfou
 - type: entity
