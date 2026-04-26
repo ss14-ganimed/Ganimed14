@@ -100,7 +100,7 @@
   icon:
     sprite: /Textures/ADT/Interface/Misc/job_icons.rsi
     state: JobIconUSSPArmyOfficer
-  jobName: job-name-ussp-army-officer
+  jobName: job-name-ussp-officer # Ganimed-Edit (job-name-ussp-army-officer)
 
 - type: jobIcon
   parent: JobIcon
@@ -108,7 +108,7 @@
   icon:
     sprite: /Textures/ADT/Interface/Misc/job_icons.rsi
     state: JobIconUSSPArmyPrivate
-  jobName: job-name-ussp-army-private
+  jobName: job-name-ussp-soldier # Ganimed-Edit (job-name-ussp-army-private)
 
 #SPACE SEC
 
