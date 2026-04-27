@@ -21,6 +21,11 @@
       - state: bronze-inhand-left
       right:
       - state: bronze-inhand-right
+  - type: Tag
+    tags:
+    - ADTBadge
+    - ADTBadgeBronze
+    - WhitelistChameleon
 
 - type: entity
   parent: ADTClothingNeckSecBadgeSilver
@@ -44,6 +49,11 @@
       - state: silver-inhand-left
       right:
       - state: silver-inhand-right
+  - type: Tag
+    tags:
+    - ADTBadge
+    - ADTBadgeSilver
+    - WhitelistChameleon
 
 - type: entity
   parent: ADTClothingNeckSecBadgeGold
@@ -67,6 +77,11 @@
       - state: gold-inhand-left
       right:
       - state: gold-inhand-right
+  - type: Tag
+    tags:
+    - ADTBadge
+    - ADTBadgeGolden
+    - WhitelistChameleon
 
 - type: entity
   parent: ClothingNeckSecBadgeOfficerBronze
