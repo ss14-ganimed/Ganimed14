@@ -996,8 +996,8 @@
   minLimit: 1 # Equip badges by default
   loadouts:
   - PilotBronzeBadge
-  - PilotOfficerSilverBadge
-  - PilotOfficerGoldBadge
+  - PilotSilverBadge
+  - PilotGoldBadge
   - SecurityWhistle
   - SecurityMantle
 
