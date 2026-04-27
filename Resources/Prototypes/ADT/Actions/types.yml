@@ -38,3 +38,39 @@
       state: icon
   - type: InstantAction
     event: !type:ToggleModMenuActionEvent
+
+- type: entity
+  id: ADTActionDashMoth
+  name: Wing dash
+  description: Sharply flap your wings, dashing to the side!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 12
+    icon:
+      sprite: Clothing/Neck/Cloaks/moth.rsi
+      state: icon
+    itemIconStyle: NoItem
+    sound: !type:SoundPathSpecifier
+      path: /Audio/ADT/Voice/Moth/moth_flapwings.ogg
+      params:
+        volume: 6.5
+  - type: TargetAction
+    checkCanAccess: false
+    range: 0
+  - type: WorldTargetAction
+    event: !type:DashActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionZombieJump
+  name: zombie jump
+  description:  A powerful leap forward. On collision with a living entity, it will be knocked down!
+  components:
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: Interface/Actions/jump.rsi
+      state: icon
+  - type: InstantAction
+    event: !type:ZombieJumpEvent {}

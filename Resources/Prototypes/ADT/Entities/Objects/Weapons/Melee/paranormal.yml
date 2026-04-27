@@ -259,6 +259,7 @@
   - type: Tool
     qualities:
     - Prying
+  - type: Prying
   - type: Unremoveable
   - type: Clothing
     sprite: ADT/Objects/Weapons/Melee/godhand.rsi
@@ -514,7 +515,7 @@
         map: ["enum.GunVisualLayers.MagUnshaded"]
         shader: unshaded
   - type: Gun
-    projectileSpeed: 50
+    projectileSpeed: 30
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/ship_friendship.ogg
       params:

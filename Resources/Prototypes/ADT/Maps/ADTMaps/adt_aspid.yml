@@ -2,7 +2,7 @@
   id: ADT_Aspid
   mapName: 'Aspid'
   mapPath: /Maps/ADTMaps/ADTStations/adt_aspid.yml
-  minPlayers: 20
+  minPlayers: 15 # Ganimed-Tweak (20 -> 15)
   maxPlayers: 40
   stations:
     ADT_Aspid:
@@ -19,9 +19,11 @@
           path: /Maps/ADTMaps/Shuttles/adt_cargo.yml
         - type: StationJobs
           availableJobs:
+            # centcomm specialsts
+            ADTBlueShieldOfficer: [ 1, 1 ] #ADT-Roles
+            ADTCentcomConsultant: [ 1, 1 ] #ADT-Roles
             # command
             Captain: [ 1, 1 ]
-            ADTBlueShieldOfficer: [ 1, 1 ] #ADT-Roles
             #service
             Bartender: [ 2, 2 ]
             Botanist: [ 2, 2]

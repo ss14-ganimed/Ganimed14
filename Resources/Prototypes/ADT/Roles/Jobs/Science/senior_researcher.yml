@@ -6,7 +6,8 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Science
-      time: 216000 #60 hrs
+      time: 60h
+  weight: 9
   startingGear: SeniorResearcherGear
   icon: "JobIconSeniorResearcher"
   supervisors: job-supervisors-rd
@@ -18,7 +19,7 @@
   id: SeniorResearcherGear
   equipment:
     id: SeniorResearcherPDA
-    ears: ClothingHeadsetScience
+    # ears: ClothingHeadsetScience # Ganimed-Loadouts-Remove (Loadout choice)
     belt: ClothingBeltUtilityFilled
     pocket1: AnomalyLocatorEmpty
   # storage:
@@ -28,6 +29,12 @@
 - type: chameleonOutfit
   id: ADTSeniorResearcherChameleonOutfit
   job: ADTSeniorResearcher
-  hasMindShield: true
+  hasMindShield: false # Ganimed-Tweak
   equipment:
-    ears: ClothingHeadsetScience
+    head: ClothingHeadHatBeretRND
+    eyes: ClothingEyesGlassesCheapSunglasses
+    mask: ClothingMaskGas
+    neck: ClothingNeckTieSci
+    outerClothing: ClothingOuterCoatLabSeniorResearcher
+    gloves: ClothingHandsGlovesLatex
+    ears: ClothingHeadsetScience # Ganimed-Loadouts-Add

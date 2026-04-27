@@ -3,10 +3,10 @@
   name: job-name-serviceworker
   description: job-description-serviceworker
   playTimeTracker: JobServiceWorker
-#  requirements: # Who the hell thought that locking up intern roles is a good idea?
+#  requirements:
 #  - !type:DepartmentTimeRequirement
 #    department: Civilian
-#    time: 1800 #0.5 hr
+#    time: 0.5h
   startingGear: ServiceWorkerGear
   icon: "JobIconServiceWorker"
   supervisors: job-supervisors-service
@@ -21,7 +21,7 @@
 - type: startingGear
   id: ServiceWorkerGear
   equipment:
-    shoes: ClothingShoesColorBlack
+    #shoes: ClothingShoesColorBlack ADT-Tweak
     #id: ServiceWorkerPDA # ADT: different PDAs in loadouts
     ears: ClothingHeadsetService
   #storage:

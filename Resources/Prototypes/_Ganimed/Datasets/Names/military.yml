@@ -16,3 +16,46 @@
   values:
     prefix: names-last-ussp-military-dataset-
     count: 59
+
+# NT SOH faction
+- type: localizedDataset
+  id: NamesFirstMilitaryNTPrivates
+  values:
+    prefix: names-military-nt-privates-first-dataset-
+    count: 3
+
+- type: localizedDataset
+  id: NamesFirstMilitaryNTSpecialistCorporals
+  values:
+    prefix: names-military-nt-specialist-corporals-first-dataset-
+    count: 3
+
+- type: localizedDataset
+  id: NamesFirstMilitaryNTSergeants
+  values:
+    prefix: names-military-nt-sergeants-first-dataset-
+    count: 2
+
+- type: localizedDataset
+  id: NamesFirstMilitaryNTSpecialSergeants
+  values:
+    prefix: names-military-nt-special-sergeants-first-dataset-
+    count: 2
+
+- type: localizedDataset
+  id: NamesFirstMilitaryNTSergeantMajor
+  values:
+    prefix: names-military-nt-sergeant-major-first-dataset-
+    count: 1
+
+- type: localizedDataset
+  id: NamesFirstMilitaryNTEnsign
+  values:
+    prefix: names-military-nt-ensign-officer-first-dataset-
+    count: 1
+
+- type: localizedDataset
+  id: NamesFirstMilitaryNTLieutenants
+  values:
+    prefix: names-military-nt-lieutenant-officers-first-dataset-
+    count: 2

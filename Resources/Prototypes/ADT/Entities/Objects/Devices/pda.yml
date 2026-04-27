@@ -16,9 +16,9 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
-  - type: Tag
-    tags:
-    - ADTPDA
+  # - type: Tag # Это не нужно, если оно уже есть в BasePDA
+  #   tags:
+  #   - ADTPDA
   - type: Icon
     sprite: ADT/Objects/Devices/pda.rsi
 
@@ -64,6 +64,12 @@
   components:
   - type: Pda
     id: MagistratIDCard
+    penSlot:
+      startingItem: PenCentcom
+      priority: -1
+      whitelist:
+        tags:
+        - Write
   - type: Icon
     sprite: ADT/Objects/Devices/pda.rsi
     state: pda-lawyer
@@ -94,6 +100,14 @@
   components:
   - type: Pda
     id: ADTRoboticistIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenScience
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: PdaBorderColor
     borderColor: "#171716"
     accentVColor: "#d90000"
@@ -126,6 +140,14 @@
   components:
   - type: Pda
     id: ADTPathologistIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenMedical1
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: PdaBorderColor
     borderColor: "#d7d7d0"
     accentVColor: "#15616b"
@@ -184,6 +206,14 @@
         visible: false
 
 - type: entity
+  parent: CentcomPDA
+  id: ADTCentcomConsultantPDA
+  name: Centcom consultant PDA
+  components:
+    - type: Pda
+      id: ADTCentcomConsultantIDCard
+
+- type: entity
   parent: ADTBasePDA
   id: ADTGhostPDA
   name: ghost PDA
@@ -230,6 +260,14 @@
   components:
   - type: Pda
     id: ADTInvestigatorIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenSecurityBlack
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: PdaBorderColor
     borderColor: "#774705"
   - type: Icon
@@ -292,6 +330,14 @@
   components:
   - type: Pda
     id: ADTCorrectionsOfficerIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenSecurityRed
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: PdaBorderColor
     borderColor: "#774705"
   - type: Icon
@@ -549,6 +595,26 @@
   components:
   - type: Pda
     id: ADTMechanicIDCard
+
+- type: entity
+  parent: EngineerPDA
+  id: ADTWelderPDA
+  name: welder PDA
+  description: The owner of this PDA can "weld" you some tea.
+  components:
+  - type: Pda
+    id: ADTWelderIDCard
+
+# Quartermaster
+
+- type: entity
+  parent: QuartermasterPDA
+  id: ADTIntendantPDA
+  name: intendant PDA
+  description: intendant PDA.
+  components:
+  - type: Pda
+    id: ADTIntendantIDCard
 
 # Cargo Technician
 
@@ -924,13 +990,3 @@
   components:
   - type: Pda
     id: ADTCMOIDCard
-
-# intendant
-
-- type: entity
-  parent: QuartermasterPDA
-  id: ADTintendantPDA
-  name: Intendant PDA
-  components:
-  - type: Pda
-    id: ADTintendantIDCard

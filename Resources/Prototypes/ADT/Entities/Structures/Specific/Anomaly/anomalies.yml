@@ -282,7 +282,7 @@
     entries:
     - settings:
         spawnOnPulse: true
-        minAmount: 2
+        minAmount: 1
         maxAmount: 4
         minRange: 1.5
         maxRange: 4.5
@@ -293,7 +293,7 @@
       - ADTDemonicMouth
       - ADTDarkRattleSnake
     - settings:
-        spawnOnShutdown: true
+        spawnOnSuperCritical: true
         minAmount: 2
         maxAmount: 2
         minRange: 1.5

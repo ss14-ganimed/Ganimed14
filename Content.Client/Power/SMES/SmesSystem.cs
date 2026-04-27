@@ -27,8 +27,8 @@ public sealed class SmesVisualizerSystem : VisualizerSystem<SmesComponent>
         switch (state)
         {
             case ChargeState.Still:
-                SpriteSystem.LayerSetRsiState((uid, args.Sprite), SmesVisualLayers.Input, $"{comp.InputOverlayPrefix}0");
-                SpriteSystem.LayerSetRsiState((uid, args.Sprite), SmesVisualLayers.Output, $"{comp.OutputOverlayPrefix}1");
+                SpriteSystem.LayerSetRsiState((uid, args.Sprite), SmesVisualLayers.Input, $"{comp.InputOverlayPrefix}2"); // Ganimed-Resprite (0 -> 2)
+                SpriteSystem.LayerSetRsiState((uid, args.Sprite), SmesVisualLayers.Output, $"{comp.OutputOverlayPrefix}0"); // Ganimed-Resprite (1 -> 0)
                 break;
             case ChargeState.Charging:
                 SpriteSystem.LayerSetRsiState((uid, args.Sprite), SmesVisualLayers.Input, $"{comp.InputOverlayPrefix}1");

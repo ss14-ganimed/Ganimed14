@@ -1,7 +1,7 @@
 using Content.Server.Popups;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
-using Content.Shared.Bible.Components;
+using Content.Shared.ADT.Chaplain.Components;
 using Content.Shared.Damage;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
@@ -25,6 +25,7 @@ using Content.Server.EUI;
 using Content.Shared.Mind;
 using Content.Server.Chaplain;
 using Robust.Shared.Player;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Server.Bible;
 

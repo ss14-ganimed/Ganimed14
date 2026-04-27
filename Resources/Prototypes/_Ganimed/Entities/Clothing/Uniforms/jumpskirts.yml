@@ -5,9 +5,9 @@
   description: White captain jumpsuit skirt symbolizing that your salary clearly exceeds the norm.
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/white_captain.rsi
+    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/captain_white.rsi
   - type: Clothing
-    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/white_captain.rsi
+    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/captain_white.rsi
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -52,6 +52,17 @@
     sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/dec.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/dec.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtCentcomOfficialRegular
+  name: dark-green Centcom suit
+  description: Regular dark-mint uniform, worn by mid-ranking Central Command officials. Respectable, but not at all glamorous.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/centcom_uni.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/centcom_uni.rsi
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -107,39 +118,30 @@
     sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/clownskirtsuit.rsi
 
 - type: entity
-  parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtShortsleeveSuit
-  name: short-sleeve suitskirt
-  description: I don't lose things. I place things in locations which later elude me.
+  parent: [ClothingUniformSkirtBase, BaseFoldable]
+  id: ClothingUniformJumpskirtTwoPieceSuit
+  name: two-piece suitskirt
+  description: A black suit with a charcoal skirt and a red tie. Very formal.
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/alt_psychologist.rsi
+    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/two_piece_suit.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: open-icon
+      map: ["foldedLayer"]
+      visible: false
   - type: Clothing
-    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/alt_psychologist.rsi
+    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/two_piece_suit.rsi
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: fold-zip-verb
+    foldVerbText: fold-unzip-verb
+  - type: FoldableClothing
+    foldedEquippedPrefix: open
 
 # Old/Original
-- type: entity
-  parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtPsychologistOriginal
-  name: psychologist suitskirt
-  description: I don't lose things. I place things in locations which later elude me.
-  components:
-  - type: Sprite
-    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/original_psychologist.rsi
-  - type: Clothing
-    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/original_psychologist.rsi
-
-- type: entity
-  parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtHoSParadeFemaleOriginal
-  name: head of security's parade uniform
-  description: A male head of security's luxury-wear, for special occasions.
-  components:
-  - type: Sprite
-    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/original_hos_parade.rsi
-  - type: Clothing
-    sprite: _Ganimed/Clothing/Uniforms/Jumpskirt/original_hos_parade.rsi
-
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtHoSOriginal

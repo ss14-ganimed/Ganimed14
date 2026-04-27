@@ -8,7 +8,13 @@ trait-moth-accent-name = Жужжащий акцент
 trait-moth-accent-desc = Ваша несомненная любовь к молям превратилась в подражание их говору.
 
 trait-nya-accent-name = Ня-кцент
-trait-nya-accent-desc = Кажется на вас нашло мря-гкое голово-муууррр-жение.
+trait-nya-accent-desc = Кажется на вас нашло мря-гкое голово-мууу-ррр-жение.
+
+trait-sick-teeth-accent-name = Зубной дефект
+trait-sick-teeth-accent-desc = Проблемы с зубами меняют вашу речь: некоторые согласные звучат иначе.
+
+trait-burriness-accent-name = Картавость
+trait-burriness-accent-desc = Вы не умеете выговаххивать букву "Р" ;w;
 
 trait-tall-name = Высокий
 trait-tall-desc = Вы выше других представителей своего вида.
@@ -16,5 +22,26 @@ trait-tall-desc = Вы выше других представителей сво
 trait-short-name = Низкий
 trait-short-desc = Вы ниже других представителей своего вида.
 
-trait-sick-teeth-accent-name = Зубной дефект
-trait-sick-teeth-accent-desc = Проблемы с зубами меняют вашу речь: некоторые согласные звучат иначе.
+trait-disproportionate-name = Непропорциональный
+trait-disproportionate-desc = Ваше тело непропорционально, не позволяя носить комбинезоны. Взамен вы снабжены встроенными разъёмами под КПК, карманы, а также датчики.
+
+trait-female-ipc-name = Голосовой модуль (Женский)
+trait-female-ipc-desc = Вы способны издавать звуки женских человеческих особей.
+
+trait-male-ipc-name = Голосовой модуль (Мужской)
+trait-male-ipc-desc = Вы способны издавать звуки мужских человеческих особей.
+
+trait-polite-accent-name = Вежливый
+trait-polite-accent-desc = Вы говорите без грубых выражений, которые используют другие.
+
+trait-nerd-accent-name = Ботаник
+trait-nerd-accent-desc = Вы говорите техническим жаргоном чаще, чем кто-либо хочет слышать!
+
+trait-chav-accent-name = Кокни
+trait-chav-accent-desc = Эй, приятель, что ты там сказал про мою бабушку? (Вы будите только мычать, как в наморднике)
+
+trait-archaic-accent-name = Архаичный
+trait-archaic-accent-desc = Вы говорите так, как многие считают устаревшим.
+
+trait-scottish-accent-name = Шотландский акцент
+trait-scottish-accent-desc = Вы говорите, словно собираетесь отправиться к Лох-Несс!

@@ -7,6 +7,7 @@
   markingLimits: MobVulpkaninMarkingLimits
   dollPrototype: MobVulpkaninDummy
   skinColoration: Hues
+  shortDesc: species-short-desc-vulpakin
   maleFirstNames: firstMaleVulp # ADT-LastnameGender
   femaleFirstNames: firstFemaleVulp # ADT-LastnameGender
   maleLastNames: VulpLast # ADT-LastnameGender
@@ -47,6 +48,7 @@
     RLeg: MobVulpkaninRLeg
     LFoot: MobVulpkaninLFoot
     RFoot: MobVulpkaninRFoot
+    HeadTop: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
 
 - type: markingPoints
@@ -69,6 +71,10 @@
       points: 1
       required: true
       defaultMarkings: [ ADTVulpkanintailAll ]
+    HeadTop:
+      points: 1
+      required: true
+      defaultMarkings: [ ADTVulpkaninear ]
     Head:
       points: 4
       required: false

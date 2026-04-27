@@ -8,7 +8,7 @@
   - type: VentCrawler # ADT tweak
   - type: Sprite
     drawdepth: Mobs
-    sprite: ADT/Mobs/Aliens/slimes.rsi
+    sprite: Mobs/Aliens/slimes.rsi
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: blue_adult_slime
@@ -75,15 +75,14 @@
     - reagents: [ Water, SpaceCleaner ]
       methods: [ Touch ]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
     - reagents: [ Water ]
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        scaleByQuantity: true
         damage:
           types:
-            Heat: 0.15
+            Heat: 0.05 #Same as slime species
       - !type:PopupMessage
         type: Local
         messages: [ "slime-hurt-by-water-popup" ]
@@ -179,6 +178,10 @@
   id: MobAdultSlimesBlueAngry
   suffix: Angry
   components:
+    # Ganimed-Resprite-Add-Start
+    - type: Sprite
+      sprite: ADT/Mobs/Aliens/slimes.rsi
+    # Ganimed-Resprite-Add-End
     - type: NpcFactionMember
       factions:
         - SimpleHostile
@@ -219,6 +222,10 @@
   id: MobAdultSlimesGreenAngry
   suffix: Angry
   components:
+    # Ganimed-Resprite-Add-Start
+    - type: Sprite
+      sprite: ADT/Mobs/Aliens/slimes.rsi
+    # Ganimed-Resprite-Add-End
     - type: NpcFactionMember
       factions:
         - SimpleHostile
@@ -258,6 +265,10 @@
   id: MobAdultSlimesYellowAngry
   suffix: Angry
   components:
+    # Ganimed-Resprite-Add-Start
+    - type: Sprite
+      sprite: ADT/Mobs/Aliens/slimes.rsi
+    # Ganimed-Resprite-Add-End
     - type: NpcFactionMember
       factions:
         - SimpleHostile

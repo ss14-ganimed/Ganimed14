@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from TauCetiClassic at commit https://github.com/TauCetiStation/TauCetiClassic/commit/fd5cfd76acdf5bda9e46413c11006a6e825d51a9 + changed by tamioki:discord",
+  "copyright": "Made by MureixloI (mishutka09) based on sprites from TauCetiClassic at commit https://github.com/TauCetiStation/TauCetiClassic/commit/fd5cfd76acdf5bda9e46413c11006a6e825d51a9 originally for Corvax WL and modified by HyperB1 (GitHub)",
   "size": {
     "x": 32,
     "y": 32
@@ -29,18 +29,26 @@
       "name": "panel_closed"
     },
     {
-      "name": "emergency_open_unlit"
+      "name": "emergency_open_unlit",
+      "delays": [
+        [
+          1.2,
+          1.2
+        ]
+      ]
     },
     {
       "name": "closing",
       "delays": [
         [
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2
+          0.07,
+          0.09,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.09,
+          0.07
       ]
     ]
     },
@@ -48,12 +56,14 @@
       "name": "closing_unlit",
       "delays": [
         [
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2
+          0.07,
+          0.09,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.09,
+          0.07
       ]
     ]
     },
@@ -61,10 +71,14 @@
       "name": "deny_unlit",
       "delays": [
         [
-          0.2,
-          0.2,
-          0.2,
-          0.2
+          0.07,
+          0.09,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.09,
+          0.07
       ]
     ]
     },
@@ -75,12 +89,14 @@
       "name": "opening",
       "delays": [
         [
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2
+          0.07,
+          0.09,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.09,
+          0.07
       ]
     ]
     },
@@ -88,12 +104,14 @@
       "name": "opening_unlit",
       "delays": [
         [
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2
+          0.07,
+          0.09,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.09,
+          0.07
       ]
     ]
     },
@@ -101,12 +119,14 @@
       "name": "panel_closing",
       "delays": [
         [
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2
+          0.07,
+          0.09,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.09,
+          0.07
       ]
     ]
     },
@@ -117,12 +137,14 @@
       "name": "panel_opening",
       "delays": [
         [
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2
+          0.07,
+          0.09,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.09,
+          0.07
       ]
     ]
     },
@@ -133,8 +155,8 @@
       "name": "emergency_unlit",
       "delays": [
         [
-          0.4,
-          0.4
+          1.2,
+          1.2
         ]
       ]
     }

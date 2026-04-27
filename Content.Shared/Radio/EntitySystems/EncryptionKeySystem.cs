@@ -202,22 +202,6 @@ public sealed partial class EncryptionKeySystem : EntitySystem
                     "examine-encryption-channel");
             }
         }
-
-        // Ganimed edit start
-        if (TryComp<HeadsetComponent>(uid, out var headset))
-        {
-            if (headset.RadioTextIncrease > 0)
-            {
-                args.PushMarkup(Loc.GetString("examine-encryption-radio-boost-available"));
-
-                var status = headset.RadioBoostEnabled
-                    ? Loc.GetString("examine-encryption-radio-boost-on")
-                    : Loc.GetString("examine-encryption-radio-boost-off");
-
-                args.PushMarkup(status);
-            }
-        }
-        // Ganimed edit end
     }
 
     private void OnKeyExamined(EntityUid uid, EncryptionKeyComponent component, ExaminedEvent args)
@@ -238,7 +222,7 @@ public sealed partial class EncryptionKeySystem : EntitySystem
     /// <param name="channels">HashSet of channels in headset, encryptionkey or etc.</param>
     /// <param name="protoManager">IPrototypeManager for getting prototypes of channels with their variables.</param>
     /// <param name="channelFTLPattern">String that provide id of pattern in .ftl files to format channel with variables of it.</param>
-    public void AddChannelsExamine(HashSet<string> channels, string? defaultChannel, ExaminedEvent examineEvent, IPrototypeManager protoManager, string channelFTLPattern)
+    public void AddChannelsExamine(HashSet<ProtoId<RadioChannelPrototype>> channels, string? defaultChannel, ExaminedEvent examineEvent, IPrototypeManager protoManager, string channelFTLPattern)
     {
         RadioChannelPrototype? proto;
         foreach (var id in channels)

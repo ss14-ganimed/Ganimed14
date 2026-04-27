@@ -1,0 +1,9 @@
+- type: entity
+  parent: ClothingShoesBaseWinterBoots
+  id: ClothingShoesBootsWinterCommand
+  name: command winter boots
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Shoes/Boots/winterbootscommand.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Shoes/Boots/winterbootscommand.rsi

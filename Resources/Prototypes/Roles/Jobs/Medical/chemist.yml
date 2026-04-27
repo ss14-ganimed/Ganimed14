@@ -6,7 +6,7 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 36000 #10 hrs Ganimed-RoleTime
+      time: 10h # Ganimed-RoleTime
   startingGear: ChemistGear
   icon: "JobIconChemist"
   supervisors: job-supervisors-cmo
@@ -20,9 +20,9 @@
   equipment:
     id: ChemistryPDA
     ears: ClothingHeadsetMedical
-    belt: ADTClothingChemdisBelt #ADT-tweak: так круче
+    # belt: ADTClothingChemdisBelt #ADT-tweak: так круче # Ganimed-Loadouts-Remove (Loadout choice)
     pocket1: HandLabeler
-    eyes: ClothingEyesGlassesChemical
+    # eyes: ClothingEyesGlassesChemical # Ganimed-Loadouts-Remove (Loadout choice)
   #storage:
     #back:
     #- Stuff
@@ -36,3 +36,4 @@
     neck: ClothingNeckStethoscope
     outerClothing: ClothingOuterCoatLabChem
     gloves: ClothingHandsGlovesLatex
+    eyes: ClothingEyesGlassesChemical # Ganimed-Loadouts-Add

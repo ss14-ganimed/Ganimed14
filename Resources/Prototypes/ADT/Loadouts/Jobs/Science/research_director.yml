@@ -18,3 +18,6 @@
   id: ADTClothingHeadsetAltScience
   equipment:
     ears: ClothingHeadsetAltScience
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: Commander

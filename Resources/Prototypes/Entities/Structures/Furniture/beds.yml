@@ -82,6 +82,7 @@
   - type: Construction
     graph: bed
     node: medicalbed
+  - type: InjectorBoost # ADT-Tweak (P4A) Ускорение Шприцов на койках и каталках
   - type: GuideHelp
     guides:
     - MedicalDoctor
@@ -138,6 +139,11 @@
     state: mattress
   - type: Damageable
     damageModifierSet: Inflatable
+  # ADT-Tweak-Start
+  - type: Construction
+    graph: adt_mattress
+    node: mattress
+  # ADT-Tweak-End
 
 - type: entity
   parent: Bed

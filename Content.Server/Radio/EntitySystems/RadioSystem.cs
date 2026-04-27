@@ -1,12 +1,15 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server.Power.Components;
-using Content.Server.Radio.Components;
+using Content.Shared.Access.Components;
+using Content.Shared.ADT.Radio.Components;
+using Content.Shared.ADT.Radio.EntitySystems;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
 using Content.Shared.Speech;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -16,6 +19,7 @@ using Robust.Shared.Replays;
 using Robust.Shared.Utility;
 using Content.Server.ADT.Language;  // ADT Languages
 using Content.Shared.ADT.Language;  // ADT Languages
+using Content.Shared.ADT.Loudspeaker.Events;
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -31,11 +35,13 @@ public sealed class RadioSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly LanguageSystem _language = default!;  // ADT Languages
+    [Dependency] private readonly SharedRadioJobIconSystem _radioJobIcon = default!; // ADT-Tweak
 
     // set used to prevent radio feedback loops.
     private readonly HashSet<string> _messages = new();
 
     private EntityQuery<TelecomExemptComponent> _exemptQuery;
+    private EntityQuery<RadioJobIconComponent> _radioJobIconQuery; // ADT-Tweak
 
     public override void Initialize()
     {
@@ -44,6 +50,7 @@ public sealed class RadioSystem : EntitySystem
         SubscribeLocalEvent<IntrinsicRadioTransmitterComponent, EntitySpokeEvent>(OnIntrinsicSpeak);
 
         _exemptQuery = GetEntityQuery<TelecomExemptComponent>();
+        _radioJobIconQuery = GetEntityQuery<RadioJobIconComponent>(); // ADT-Tweak
     }
 
     private void OnIntrinsicSpeak(EntityUid uid, IntrinsicRadioTransmitterComponent component, EntitySpokeEvent args)
@@ -101,27 +108,39 @@ public sealed class RadioSystem : EntitySystem
         name = FormattedMessage.EscapeText(name);
 
         SpeechVerbPrototype speech;
-        if (evt.SpeechVerb != null && _prototype.TryIndex(evt.SpeechVerb, out var evntProto))
+        if (evt.SpeechVerb != null && _prototype.Resolve(evt.SpeechVerb, out var evntProto))
             speech = evntProto;
         else
             speech = _chat.GetSpeechVerb(messageSource, message);
+
+        // ADT-tweak-start
+        int? loudSpeakFont = null;
+
+        var getLoudspeakerEv = new GetLoudspeakerEvent();
+        RaiseLocalEvent(messageSource, ref getLoudspeakerEv);
+
+        if (getLoudspeakerEv.Loudspeakers != null)
+        {
+            foreach (var loudspeaker in getLoudspeakerEv.Loudspeakers)
+            {
+                var loudSpeakerEv = new GetLoudspeakerDataEvent();
+                RaiseLocalEvent(loudspeaker, ref loudSpeakerEv);
+
+                if (loudSpeakerEv.IsActive && loudSpeakerEv.AffectRadio)
+                {
+                    loudSpeakFont = loudSpeakerEv.FontSize;
+                    break;
+                }
+            }
+        }
+// ADT-Tweak-end
 
         var content = escapeMarkup
             ? FormattedMessage.EscapeText(message)
             : message;
 
-        // ganimed edit start
-        int radioFontSize = speech.FontSize;
-        if (TryComp<WearingHeadsetComponent>(messageSource, out var wearingHeadset) &&
-            TryComp<HeadsetComponent>(wearingHeadset.Headset, out var headsetComp) &&
-            headsetComp.RadioBoostEnabled)
-        {
-            radioFontSize += headsetComp.RadioTextIncrease ?? 0;
-        }
-        // ganimed edit end
-
         // ADT Languages start
-        var languageEncodedContent = _language.ObfuscateMessage(messageSource, content, gen.Replacement, gen.ObfuscateSyllables);
+        var languageEncodedContent = _language.ObfuscateMessage(messageSource, content, gen.Replacement, gen.ObfuscateSyllables, gen.ReplaceEntireMessage);
 
         if (gen.Color != null)
         {
@@ -144,15 +163,17 @@ public sealed class RadioSystem : EntitySystem
             verbStrings = defaultStrings;
         // ADT Languages end
 
+        var nameWithIcon = GetWrappedNameWithJobIcon(messageSource, name); // ADT-Tweak
+
         var wrappedMessage = Loc.GetString("chat-radio-message-wrap",   // ADT Languages tweak - remove bold
             ("color", channel.Color),
             ("fontType", gen.Font ?? speech.FontId),    // ADT Languages tweak speech.FontId -> gen.Font ?? speech.FontId
-            ("fontSize", gen.FontSize ?? radioFontSize),  // ADT Languages tweak speech.FontSize -> gen.FontSize ?? speech.FontSize
+            ("fontSize", loudSpeakFont ?? speech.FontSize), // ADT-Tweak: loudspeaker font size override
             ("verb", Loc.GetString(_random.Pick(verbStrings))), // ADT Languages speech.SpeechVerbStrings -> verbStrings
             ("defaultFont", speech.FontId), // ADT Languages
             ("defaultSize", speech.FontSize),   // ADT Languages
             ("channel", $"\\[{channel.LocalizedName}\\]"),
-            ("name", name),
+            ("name", nameWithIcon), // ADT-Tweak
             ("message", content));
 
         // ADT Languages start
@@ -164,7 +185,7 @@ public sealed class RadioSystem : EntitySystem
             ("defaultFont", speech.FontId),
             ("defaultSize", speech.FontSize),
             ("channel", $"\\[{channel.LocalizedName}\\]"),
-            ("name", name),
+            ("name", nameWithIcon), // ADT-Tweak
             ("message", languageEncodedContent));
         // ADT Languages end
 
@@ -237,6 +258,44 @@ public sealed class RadioSystem : EntitySystem
         _messages.Remove(message);
     }
 
+    // ADT-Tweak start
+    /// <summary>
+    ///     Gets the wrapped name with job icon markup using cached <see cref="RadioJobIconComponent"/>.
+    ///     This is much faster than the previous implementation which did inventory scans on every radio message.
+    /// </summary>
+    private string GetWrappedNameWithJobIcon(EntityUid messageSource, string name)
+    {
+        string iconId;
+        string jobName;
+
+        if (_radioJobIconQuery.TryComp(messageSource, out var radioJobIcon))
+        {
+            iconId = radioJobIcon.JobIconId;
+            jobName = radioJobIcon.JobName;
+        }
+        else
+        {
+            (iconId, jobName) = GetJobIconFallback(messageSource);
+        }
+
+        jobName = FormattedMessage.EscapeText(jobName);
+        return Loc.GetString("chat-radio-name-with-job-icon",
+            ("iconId", iconId),
+            ("jobName", jobName),
+            ("name", name));
+    }
+
+    /// <summary>
+    ///     Fallback job icon lookup for when RadioJobIconComponent doesn't exist yet.
+    ///     This is only used as a safety net - normally the component should always exist.
+    /// </summary>
+    private (string iconId, string jobName) GetJobIconFallback(EntityUid entity)
+    {
+        return _radioJobIcon.GetJobIconPublic(entity);
+    }
+    // ADT-Tweak end
+
+    /// <inheritdoc cref="TelecomServerComponent"/>
     private bool HasActiveServer(MapId mapId, string channelId)
     {
         var servers = EntityQuery<TelecomServerComponent, EncryptionKeyHolderComponent, ApcPowerReceiverComponent, TransformComponent>();

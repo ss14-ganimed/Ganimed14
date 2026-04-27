@@ -17,7 +17,7 @@
       enum.HyperLinkUiKey.Key:
         type: HyperLinkBoundUserInterface
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/corporate-law # Ganimed Tweak
+    url: https://station-enterprise.space/ru/game/corporate-law # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
@@ -37,7 +37,7 @@
     layers:
     - state: KZ
   - type: HyperLink
-    url: https://wiki.adventurestation.space/%D0%9A%D0%BE%D1%80%D0%BF%D0%BE%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD#%D0%9A%D0%BE%D1%80%D0%BF%D0%BE%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD
+    url: https://station-enterprise.space/ru/game/corporate-law # Ganimed Tweak
 
 # procedures
 # procedures
@@ -54,7 +54,7 @@
     layers:
     - state: PCD_SEC
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/sop/security
+    url: https://station-enterprise.space/ru/game/sop/security # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
@@ -74,7 +74,7 @@
     layers:
     - state: PCD_CMD
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/sop/command # Ganimed Tweak
+    url: https://station-enterprise.space/ru/game/sop/command # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
@@ -94,7 +94,7 @@
     layers:
     - state: PCD_JRD
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/sop/law # Ganimed Tweak
+    url: https://station-enterprise.space/ru/game/sop/law # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
@@ -118,7 +118,7 @@
     layers:
     - state: CRP_CMD
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/sop/command # Ganimed Tweak
+    url: https://station-enterprise.space/ru/game/sop/command # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
@@ -138,7 +138,7 @@
     layers:
     - state: CRP_CRG
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/sop/supply # Ganimed Tweak
+    url: https://station-enterprise.space/ru/game/sop/supply # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
@@ -158,7 +158,7 @@
     layers:
     - state: CRP_ENG
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/sop/engineering # Ganimed Tweak
+    url: https://station-enterprise.space/ru/game/sop/engineering # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
@@ -178,7 +178,7 @@
     layers:
     - state: CRP_JRD
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/sop/law # Ganimed Tweak
+    url: https://station-enterprise.space/ru/game/sop/law # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
@@ -198,7 +198,7 @@
     layers:
     - state: CRP_MED
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/sop/medical # Ganimed Tweak
+    url: https://station-enterprise.space/ru/game/sop/medical # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
@@ -218,7 +218,7 @@
     layers:
     - state: CRP_RND
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/sop/science # Ganimed Tweak
+    url: https://station-enterprise.space/ru/game/sop/science # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
@@ -238,7 +238,7 @@
     layers:
     - state: CRP_SEC
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/sop/security # Ganimed Tweak
+    url: https://station-enterprise.space/ru/game/sop/security # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
@@ -258,7 +258,7 @@
     layers:
     - state: CRP_SRV
   - type: HyperLink
-    url: https://wiki.station-enterprise.space/ru/game/sop/service # Ganimed Tweak
+    url: https://station-enterprise.space/ru/game/sop/service # Ganimed Tweak
 # Corvax-HyperLink
   - type: MeleeWeapon # so you can teach using PAIN
     soundHit:
@@ -331,3 +331,4 @@
       - Book
     - type: Paper
       content: book-jail-contents
+

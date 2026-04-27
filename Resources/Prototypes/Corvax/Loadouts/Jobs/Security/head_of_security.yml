@@ -3,11 +3,13 @@
   id: HeadofSecurityJumpsuitBlack
   equipment:
     jumpsuit: ClothingUniformJumpsuitHoSBlack
+  groupBy: "jumpsuit" # Ganimed-Loadouts-Add
 
 - type: loadout
   id: HeadofSecurityJumpskirtBlack
   equipment:
     jumpsuit: ClothingUniformJumpskirtHoSBlack
+  groupBy: "jumpskirt" # Ganimed-Loadouts-Add
 
     #Shoulder Mantle
 - type: loadout

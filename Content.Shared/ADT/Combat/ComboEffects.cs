@@ -4,9 +4,7 @@ using Content.Shared.Damage;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Damage.Systems;
-using Content.Shared.Standing;
 using Content.Shared.Stunnable;
-using Content.Shared.Inventory;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Coordinates;
 using Content.Shared.Hands.Components;
@@ -16,11 +14,17 @@ using Robust.Shared.Audio.Systems;
 using Content.Shared.Speech.Muting;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Flash.Components;
+using Content.Shared.Mobs;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Movement.Pulling.Components;
 using Robust.Shared.Timing;
 using Robust.Shared.Network;
 using Content.Shared.Mobs.Components;
+using Content.Shared.StatusEffectNew;
+using Content.Shared.Administration.Logs;
+using Content.Shared.Database;
+using Robust.Shared.IoC;
+using Robust.Shared.GameObjects;
 
 namespace Content.Shared.ADT.Combat;
 
@@ -42,7 +46,14 @@ public sealed partial class ComboDamageEffect : IComboEffect
     public void DoEffect(EntityUid user, EntityUid target, IEntityManager entMan)
     {
         var damageable = entMan.System<DamageableSystem>();
-        damageable.TryChangeDamage(target, Damage);
+        var damageResult = damageable.ChangeDamage(target, Damage);
+
+        if (damageResult.GetTotal() > 0)
+        {
+            var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+            adminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
+                $"{entMan.ToPrettyString(user):actor} performed combo damage on {entMan.ToPrettyString(target):subject} and dealt {damageResult.GetTotal():damage} damage");
+        }
     }
 }
 
@@ -59,6 +70,10 @@ public sealed partial class ComboStaminaDamageEffect : IComboEffect
     {
         var stun = entMan.System<SharedStaminaSystem>();
         stun.TakeStaminaDamage(target, StaminaDamage);
+
+        var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+        adminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
+            $"{entMan.ToPrettyString(user):actor} performed combo stamina damage on {entMan.ToPrettyString(target):subject} and dealt {StaminaDamage:stamina} stamina damage");
     }
 }
 
@@ -95,7 +110,14 @@ public sealed partial class ComboFallEffect : IComboEffect
     {
         var standing = entMan.System<StandingStateSystem>();
         if (!standing.IsDown(target))
-            standing.Down(target, dropHeldItems: DropItems);
+        {
+            var stun = entMan.System<SharedStunSystem>();
+            stun.TryKnockdown(target, time: null, drop: DropItems, force: false);
+        }
+
+        var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+        adminLogger.Add(LogType.MeleeHit, LogImpact.Low,
+            $"{entMan.ToPrettyString(user):actor} attempted combo fall effect on {entMan.ToPrettyString(target):subject} (dropItems: {DropItems})");
     }
 }
 
@@ -115,7 +137,13 @@ public sealed partial class ComboMoreDamageToDownedEffect : IComboEffect
         var damageable = entMan.System<DamageableSystem>();
         if (down.IsDown(target))
         {
-            damageable.TryChangeDamage(target, Damage, IgnoreResistances);
+            var damageResult = damageable.ChangeDamage(target, Damage, ignoreResistances: IgnoreResistances);
+            if (damageResult.GetTotal() > 0)
+            {
+                var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+                adminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
+                    $"{entMan.ToPrettyString(user):actor} performed combo damage (downed target) on {entMan.ToPrettyString(target):subject} and dealt {damageResult.GetTotal():damage} damage");
+            }
         }
     }
 }
@@ -139,6 +167,15 @@ public sealed partial class ComboStunEffect : IComboEffect
             return;
         var down = entMan.System<SharedStunSystem>();
         down.TryUpdateParalyzeDuration(target, TimeSpan.FromSeconds(StunTime));
+
+        if (Fall)
+        {
+            down.TryKnockdown(target, time: null, drop: DropItems, force: false);
+        }
+
+        var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+        adminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
+            $"{entMan.ToPrettyString(user):actor} attempted combo stun effect on {entMan.ToPrettyString(target):subject} (stunTime: {StunTime}s, fall: {Fall}, dropItems: {DropItems})");
     }
 }
 
@@ -170,28 +207,36 @@ public sealed partial class ComboDropFromHandsEffect : IComboEffect
         if (!entMan.TryGetComponent<HandsComponent>(target, out var hand) || hand.ActiveHandId == null)
             return;
         hands.DoDrop(target, hand.ActiveHandId);
+
+        var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+        adminLogger.Add(LogType.Action, LogImpact.Low,
+            $"{entMan.ToPrettyString(user):actor} attempted combo drop from hands effect on {entMan.ToPrettyString(target):subject}");
     }
 }
 
 /// <summary>
-/// перебрасывает вещи из рук в руки
+/// передаёт вещь из активной руки цели в свободную руку пользователя.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed partial class ComboHamdsRetakeEffect : IComboEffect
+public sealed partial class ComboHandsRetakeEffect : IComboEffect
 {
     public void DoEffect(EntityUid user, EntityUid target, IEntityManager entMan)
     {
         var hands = entMan.System<SharedHandsSystem>();
-        var inventory = entMan.System<InventorySystem>();
-        if (!entMan.TryGetComponent<HandsComponent>(target, out var targetHand) || targetHand.ActiveHandId == null)
+
+        if (!hands.TryGetActiveItem(target, out var activeItem))
             return;
-        if (!entMan.TryGetComponent<HandsComponent>(user, out var userHand) || userHand.ActiveHandId == null)
+        if(!hands.TryDrop(target, activeItem.Value))
             return;
-        if (inventory.TryGetSlotContainer(target, targetHand.ActiveHandId, out var container, out var _))
+        if (!hands.TryGetEmptyHand(user, out var emptyHand))
             return;
-        if (container == null || container.ContainedEntity == null)
+        if(!hands.TryPickup(user, activeItem.Value, emptyHand))
             return;
-        hands.TryDropIntoContainer(user, target, container);
+        hands.SetActiveHand(user, emptyHand);
+
+        var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+        adminLogger.Add(LogType.Action, LogImpact.Medium,
+            $"{entMan.ToPrettyString(user):actor} performed combo hands retake effect on {entMan.ToPrettyString(target):subject}");
     }
 }
 
@@ -219,8 +264,12 @@ public sealed partial class ComboMuteEffect : IComboEffect
 
     public void DoEffect(EntityUid user, EntityUid target, IEntityManager entMan)
     {
-        var status = entMan.System<StatusEffectsSystem>();
+        var status = entMan.System<Content.Shared.StatusEffect.StatusEffectsSystem>();
         status.TryAddStatusEffect<MutedComponent>(target, "Muted", TimeSpan.FromSeconds(Time), false);
+
+        var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+        adminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
+            $"{entMan.ToPrettyString(user):actor} performed combo mute effect on {entMan.ToPrettyString(target):subject} (time: {Time}s)");
     }
 }
 
@@ -232,8 +281,12 @@ public sealed partial class ComboSlowdownEffect : IComboEffect
 
     public void DoEffect(EntityUid user, EntityUid target, IEntityManager entMan)
     {
-        var status = entMan.System<StatusEffectsSystem>();
+        var status = entMan.System<Content.Shared.StatusEffect.StatusEffectsSystem>();
         status.TryAddStatusEffect<StunnedStatusEffectComponent>(target, "SlowedDown", TimeSpan.FromSeconds(Time), false);
+
+        var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+        adminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
+            $"{entMan.ToPrettyString(user):actor} performed combo slowdown effect on {entMan.ToPrettyString(target):subject} (time: {Time}s)");
     }
 }
 
@@ -253,6 +306,10 @@ public sealed partial class ComboMoreStaminaDamageToDownedEffect : IComboEffect
         if (down.IsDown(target))
         {
             stun.TakeStaminaDamage(target, Damage);
+
+            var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+            adminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
+                $"{entMan.ToPrettyString(user):actor} performed combo stamina damage (downed target) on {entMan.ToPrettyString(target):subject} and dealt {Damage:stamina} stamina damage");
         }
     }
 }
@@ -266,12 +323,16 @@ public sealed partial class ComboFlashEffect : IComboEffect
     public float SlowDown;
     public void DoEffect(EntityUid user, EntityUid target, IEntityManager entMan)
     {
-        var status = entMan.System<StatusEffectsSystem>();
+        var status = entMan.System<Content.Shared.StatusEffect.StatusEffectsSystem>();
         var blind = entMan.System<BlindableSystem>();
 
         status.TryAddStatusEffect<FlashedComponent>(target, "Flashed", TimeSpan.FromSeconds(Duration), true);
 
         blind.AdjustEyeDamage(target, 1);
+
+        var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+        adminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
+            $"{entMan.ToPrettyString(user):actor} performed combo flash effect on {entMan.ToPrettyString(target):subject} (duration: {Duration}s)");
     }
 }
 
@@ -288,6 +349,10 @@ public sealed partial class ComboStopGrabEffect : IComboEffect
             pull.TryLowerGrabStageOrStopPulling((user, puller), (target, pulled));
         }
         pull.TryStopPull(target, pulled, user);
+
+        var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+        adminLogger.Add(LogType.Action, LogImpact.Low,
+            $"{entMan.ToPrettyString(user):actor} performed combo stop grab effect on {entMan.ToPrettyString(target):subject}");
     }
 }
 
@@ -304,6 +369,10 @@ public sealed partial class ComboStopTargetGrabEffect : IComboEffect
             pull.TryLowerGrabStageOrStopPulling((target, puller), (user, pulled));
         }
         pull.TryStopPull(user, pulled, target);
+
+        var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+        adminLogger.Add(LogType.Action, LogImpact.Low,
+            $"{entMan.ToPrettyString(user):actor} performed combo stop target grab effect on {entMan.ToPrettyString(target):subject}");
     }
 }
 
@@ -353,6 +422,10 @@ public sealed partial class ComboEffectToDowned : IComboEffect
             {
                 comboEvent.DoEffect(user, target, entMan);
             }
+
+            var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+            adminLogger.Add(LogType.Action, LogImpact.Low,
+                $"{entMan.ToPrettyString(user):actor} performed combo effect to downed on {entMan.ToPrettyString(target):subject} ({ComboEvents.Count} events)");
         }
     }
 }
@@ -416,6 +489,10 @@ public sealed partial class ComboEffectToStuned : IComboEffect
         {
             comboEvent.DoEffect(user, target, entMan);
         }
+
+        var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+        adminLogger.Add(LogType.Action, LogImpact.Low,
+            $"{entMan.ToPrettyString(user):actor} performed combo effect to stunned on {entMan.ToPrettyString(target):subject} ({ComboEvents.Count} events)");
     }
 }
 
@@ -431,6 +508,10 @@ public sealed partial class ComboEffectTeleportOnVictim : IComboEffect
         if (entMan.HasComponent<MobStateComponent>(target))
         {
             transform.SetCoordinates(user, transform.GetMoverCoordinates(target));
+
+            var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+            adminLogger.Add(LogType.Action, LogImpact.Medium,
+                $"{entMan.ToPrettyString(user):actor} performed combo teleport on victim effect to {entMan.ToPrettyString(target):subject}");
         }
     }
 }
@@ -447,7 +528,75 @@ public sealed partial class ComboEffectSwapPostion : IComboEffect
         if (entMan.HasComponent<MobStateComponent>(target))
         {
             transform.SwapPositions(user, target);
+
+            var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+            adminLogger.Add(LogType.Action, LogImpact.Medium,
+                $"{entMan.ToPrettyString(user):actor} performed combo swap position effect with {entMan.ToPrettyString(target):subject}");
         }
     }
 }
 
+/// <summary>
+/// усыпляет цель на N времени
+/// </summary>
+[Serializable, NetSerializable]
+public sealed partial class ComboEffectSleep: IComboEffect
+{
+    [DataField]
+    public int Time;
+
+    public void DoEffect(EntityUid user, EntityUid target, IEntityManager entMan)
+    {
+        var status = entMan.System<Content.Shared.StatusEffectNew.StatusEffectsSystem>();
+
+        status.TryAddStatusEffectDuration(target, "StatusEffectForcedSleeping", out _, TimeSpan.FromSeconds(Time));
+
+        var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+        adminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
+            $"{entMan.ToPrettyString(user):actor} attempted combo sleep effect on {entMan.ToPrettyString(target):subject} (time: {Time}s)");
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed partial class ComboEffectAddToCounter : IComboEffect
+{
+    [DataField("amount")]
+    public int Amount = 1;
+
+    public void DoEffect(EntityUid user, EntityUid target, IEntityManager entMan)
+    {
+        var counter = entMan.System<ComboCounterSystem>();
+
+        if (entMan.TryGetComponent<ComboCounterComponent>(user, out var comp))
+        {
+            counter.AddToCounter(comp, Amount);
+        }
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed partial class ComboEffectCounterDamageBonus : IComboEffect
+{
+    [DataField("damage")]
+    public DamageSpecifier Damage;
+
+    public void DoEffect(EntityUid user, EntityUid target, IEntityManager entMan)
+    {
+        if (entMan.TryGetComponent<MobStateComponent>(target, out var state) && state.CurrentState != MobState.Dead)
+        {
+            if (entMan.TryGetComponent<ComboCounterComponent>(user, out var comp))
+            {
+                var damageable = entMan.System<DamageableSystem>();
+                var newDamage = Damage * comp.ComboCounter;
+                var damageResult = damageable.ChangeDamage(target, newDamage);
+                if (damageResult.GetTotal() > 0)
+                {
+                    var adminLogger = IoCManager.Resolve<ISharedAdminLogManager>();
+                    adminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
+                        $"{entMan.ToPrettyString(user):actor} performed combo counter damage on {entMan.ToPrettyString(target):subject} and dealt {damageResult.GetTotal():damage} damage (counter: {comp.ComboCounter})");
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,84 @@
+# Head
+- type: loadout
+  id: WeldingMask
+  equipment:
+    head: ClothingHeadHatWelding
+
+- type: loadout # TODO: Whitelist restriction
+  id: WeldingMaskPainted
+  equipment:
+    head: ClothingHeadHatWeldingMaskPainted
+
+- type: loadout
+  id: WeldingMaskFlame
+  equipment:
+    head: ClothingHeadHatWeldingMaskFlame
+  effects:
+  - !type:SponsorLoadoutEffect
+
+- type: loadout
+  id: WeldingMaskBlueFlame
+  equipment:
+    head: ClothingHeadHatWeldingMaskFlameBlue
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Jumpsuit
+- type: loadout
+  id: StationEngineerNTRepairmanJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRepairmanNT
+
+- type: loadout
+  id: StationEngineerMechanicJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMechanic
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# OuterClothing
+- type: loadout
+  id: SeniorEngineerWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterSeniorEngineer
+#  effects:
+#  - !type:GroupLoadoutEffect
+#    proto: SeniorEngineering
+
+# Gloves
+- type: loadout
+  id: InsulatedGloves
+  equipment:
+    gloves: ClothingHandsGlovesColorYellow
+
+# Shoes
+- type: loadout
+  id: OrangeShoes
+  equipment:
+    shoes: ClothingShoesColorOrange
+
+- type: loadout
+  id: EngineeringMagBoots
+  effects:
+  # - !type:WhitelistedLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: SeniorEngineering
+  equipment:
+    shoes: ClothingShoesBootsMag
+
+# Pocket
+- type: loadout
+  id: PowerDrill
+  equipment:
+    pocket1: PowerDrill
+#  effects:
+#  - !type:GroupLoadoutEffect
+#    proto: SeniorEngineering
+
+- type: loadout
+  id: WelderIndustrialAdvanced
+  equipment:
+    pocket1: WelderIndustrialAdvanced
+#  effects:
+#  - !type:GroupLoadoutEffect
+#    proto: SeniorEngineering

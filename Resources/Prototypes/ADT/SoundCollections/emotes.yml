@@ -51,6 +51,8 @@
   files:
     - /Audio/ADT/IPC/buzz-two.ogg
 
+# Novakid
+
 - type: soundCollection
   id: NovakidLaugh
   files:
@@ -59,6 +61,26 @@
     - /Audio/ADT/Novakid/novakid_laugh03.ogg
     - /Audio/ADT/Novakid/novakid_laugh04.ogg
     - /Audio/ADT/Novakid/novakid_laugh05.ogg
+
+- type: soundCollection
+  id: NovakidYawn
+  files:
+    - /Audio/ADT/Novakid/novakid_yawn.ogg
+
+- type: soundCollection
+  id: MaleNovakidSneezes
+  files:
+    - /Audio/ADT/Novakid/novakid_sneeze_male.ogg
+
+- type: soundCollection
+  id: FemaleNovakidSneezes
+  files:
+    - /Audio/ADT/Novakid/novakid_sneeze_female.ogg
+
+- type: soundCollection
+  id: NovakidCoughs
+  files:
+    - /Audio/ADT/Novakid/novakid_cough.ogg
 
 - type: soundCollection
   id: TajaranHisses
@@ -240,6 +262,21 @@
   files:
     - /Audio/ADT/Voice/Resomi/resomi_cough.ogg
 
+- type: soundCollection
+  id: ResomiHiss
+  files:
+    - /Audio/ADT/Voice/Resomi/resomi_hiss.ogg
+
+- type: soundCollection
+  id: ResomiCoos
+  files:
+    - /Audio/ADT/Voice/Resomi/resomi_coos.ogg
+
+- type: soundCollection
+  id: ResomiChirps
+  files:
+    - /Audio/ADT/Voice/Resomi/resomi_chirps.ogg
+
 # Other
 - type: soundCollection
   id: HumanSpits
@@ -286,7 +323,11 @@
 - type: soundCollection
   id: SlimeBubbles
   files:
-    - /Audio/ADT/Voice/Slime/s_bubble.ogg
+    - /Audio/ADT/Voice/Slime/s_bubble_1.ogg
+    - /Audio/ADT/Voice/Slime/s_bubble_2.ogg
+    - /Audio/ADT/Voice/Slime/s_bubble_3.ogg
+    - /Audio/ADT/Voice/Slime/s_bubble_4.ogg
+    - /Audio/ADT/Voice/Slime/s_bubble_5.ogg
 
 - type: soundCollection
   id: MaleSlimeCry
@@ -326,6 +367,7 @@
   id: VoxCry
   files:
     - /Audio/ADT/Voice/Vox/voxcry.ogg
+    - /Audio/Voice/Vox/vox_cry.ogg # Wizard`s Den
 
 # Shadekin
 

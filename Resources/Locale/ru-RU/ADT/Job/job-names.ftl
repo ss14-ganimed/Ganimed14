@@ -9,8 +9,10 @@ JobRoboticist = робототехник
 job-name-magistrat = магистрат
 JobMagistrat = магистрат
 
-job-name-senior-physician = заведующий врач
-JobADTSeniorPhysician = заведующий врач
+job-name-machine = Машина
+
+job-name-senior-physician = ведущий врач
+JobADTSeniorPhysician = ведущий врач
 
 job-name-senior-researcher = старший научный сотрудник
 JobADTSeniorResearcher = старший научный сотрудник
@@ -21,10 +23,16 @@ JobADTSeniorEngineer = бригадир
 job-name-senior-officer = офицер-инструктор
 JobADTSeniorOfficer = офицер-инструктор
 
+job-name-ADTCentcomConsultant = консультант центком
+JobADTCentcomConsultant = консультант центком
+
 job-name-ADTBlueShieldOfficer = офицер синий щит
 JobADTBlueShieldOfficer = офицер синий щит
 
 job-name-ussp-army-private = Военнослужащий СССП
+job-description-ussp-army-private = Рядовой состав армии СССП. Ваши обязанности включают патрулирование, охрану объектов, поддержание порядка и выполнение боевых или служебных задач согласно уставу и приказам командиров.
+job-supervisors-ussp-centcom = Вы подчиняетесь офицерам СССП и вышестоящему командованию
+
 job-name-ussp-army-officer = Офицер СССП
 JobADTUSSPArmyPrivate = Военнослужащий СССП
 JobADTUSSPArmyOfficer = Офицер СССП
@@ -54,12 +62,13 @@ job-name-life-support-tech = техник жизнеобеспечения
 job-name-plasma-scientist = плазмотехнолог
 job-name-electrician = электрик
 job-name-mechanic = механик
+job-name-welder = сварщик
 
 # Cargo
 
-job-name-intendant = интендант
 job-name-postman = почтальон
 job-name-inventory-associate = кладовщик
+job-name-intendant = интендант
 
 # Medical
 

@@ -2,10 +2,12 @@ using Content.Server.Atmos.Commands;
 using Content.Server.Chat.Systems;
 using Content.Server.Hands.Systems;
 using Content.Server.Heretic.Components;
+using Content.Server.Heretic.EntitySystems;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Temperature.Components;
 using Content.Server.Temperature.Systems;
 using Content.Shared.ADT.Heretic.Components;
+using Content.Shared.ADT.Chaplain.Components;
 using Content.Shared.Actions;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
@@ -20,6 +22,8 @@ using Content.Shared.Heretic;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Temperature.Components;
+using Content.Shared.Chat;
 using Content.Shared.Mech.Components;
 using Content.Shared.Speech.Muting;
 using Content.Shared.StatusEffect;
@@ -84,7 +88,7 @@ public sealed partial class MansusGraspSystem : EntitySystem
         if ((TryComp<HereticComponent>(args.Target, out var th) && th.CurrentPath == ent.Comp.Path))
             return;
 
-        if (HasComp<StatusEffectsComponent>(target))
+        if (HasComp<StatusEffectsComponent>(target) && !HasComp<MagicImmunityComponent>(target))
         {
             _chat.TrySendInGameICMessage(args.User, Loc.GetString("heretic-speech-mansusgrasp"), InGameICChatType.Speak, false);
             _audio.PlayPvs(new SoundPathSpecifier("/Audio/Items/welder.ogg"), target);
@@ -97,10 +101,10 @@ public sealed partial class MansusGraspSystem : EntitySystem
         // upgraded grasp
         if (hereticComp.CurrentPath != null)
         {
-            if (hereticComp.PathStage >= 2)
+            if (hereticComp.PathStage >= 2 && !HasComp<MagicImmunityComponent>(target))
                 ApplyGraspEffect(args.User, target, hereticComp.CurrentPath!);
 
-            if (hereticComp.PathStage >= 4 && HasComp<StatusEffectsComponent>(target))
+            if (hereticComp.PathStage >= 4 && HasComp<StatusEffectsComponent>(target) && !HasComp<MagicImmunityComponent>(target))
             {
                 var markComp = EnsureComp<HereticCombatMarkComponent>(target);
                 markComp.Path = hereticComp.CurrentPath;
@@ -109,7 +113,7 @@ public sealed partial class MansusGraspSystem : EntitySystem
 
         if (HasComp<MechComponent>(target))
         {
-            _emp.DoEmpEffects(target, 100000, 30);
+            _emp.DoEmpEffects(target, 100000, TimeSpan.FromSeconds(30));
             _chat.TrySendInGameICMessage(args.User, Loc.GetString("heretic-speech-mansusgrasp"), InGameICChatType.Speak, false);
             _audio.PlayPvs(new SoundPathSpecifier("/Audio/Items/welder.ogg"), target);
             _action.SetCooldown(hereticComp.MansusGrasp, ent.Comp.CooldownAfterUse);
@@ -225,6 +229,8 @@ public sealed partial class MansusGraspSystem : EntitySystem
                     {
                         var ghoul = EnsureComp<GhoulComponent>(target);
                         ghoul.BoundHeretic = GetNetEntity(performer);
+                        if (TryComp<GhoulComponent>(target, out var ghoulComp))
+                            EntityManager.System<GhoulSystem>().GhoulifyEntity(new Entity<GhoulComponent>(target, ghoulComp));
                     }
                     break;
                 }
@@ -257,10 +263,13 @@ public sealed partial class MansusGraspSystem : EntitySystem
 
         if (HasComp<StatusEffectsComponent>(target))
         {
-            _audio.PlayPvs(new SoundPathSpecifier("/Audio/Items/welder.ogg"), target);
-            _stun.TryKnockdown(target, TimeSpan.FromSeconds(3f), true);
-            _stamina.TakeStaminaDamage(target, 80f);
-            _language.DoRatvarian(target, TimeSpan.FromSeconds(10f), true);
+            if (!HasComp<MagicImmunityComponent>(target))
+            {
+                _audio.PlayPvs(new SoundPathSpecifier("/Audio/Items/welder.ogg"), target);
+                _stun.TryKnockdown(target, TimeSpan.FromSeconds(3f), true);
+                _stamina.TakeStaminaDamage(target, 80f);
+                _language.DoRatvarian(target, TimeSpan.FromSeconds(10f), true);
+            }
         }
 
         if (TryComp<HandsComponent>(target, out var hands))

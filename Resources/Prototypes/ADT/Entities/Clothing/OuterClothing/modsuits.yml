@@ -1,6 +1,7 @@
 - type: entity
   parent: ClothingOuterHardsuitEVA
   id: ADTClothingOuterModsuitBodyBase
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: base MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -44,6 +45,7 @@
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodyAtmos
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: atmos MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -76,11 +78,12 @@
   - type: ExplosionResistance
     damageCoefficient: 0.7
   - type: FireProtection
-    reduction: 1
+    reduction: 0.8
 
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodyClown
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: clown MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -100,6 +103,8 @@
         Slash: 0.9
         Piercing: 0.9
         Caustic: 0.8
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
   - type: ClothingSpeedModifier
     walkModifier: 1
     sprintModifier: 1
@@ -107,6 +112,7 @@
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodyEngineering
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: engineering MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -125,20 +131,23 @@
         Blunt: 0.9
         Slash: 0.9
         Piercing: 0.9
-        Heat: 0.9
+        Heat: 0.8
         Radiation: 0.3
-        Caustic: 0.5
+        Caustic: 0.7
   - type: StaminaResistance
     damageCoefficient: 0.9
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.85
   - type: FireProtection
-    reduction: 0.9
+    reduction: 0.4
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
 
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodyMedical
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: medical MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -169,6 +178,7 @@
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodyMining
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: mining MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -198,10 +208,11 @@
   - type: ClothingGrantComponent
     component:
     - type: AshStormImmune
-    
+
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodySecurity
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: security MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -229,12 +240,11 @@
     sprintModifier: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.6
-  - type: FireProtection
-    reduction: 0.7
 
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodyScience
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: Science MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -254,19 +264,18 @@
         Slash: 0.85
         Heat: 0.8
         Piercing: 0.8
-        Caustic: 0.7
+        Caustic: 0.2
         Radiation: 0.6
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: ExplosionResistance
-    damageCoefficient: 0.2
-  - type: FireProtection
-    reduction: 0.5
+    damageCoefficient: 0.3
 
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodySafeguard
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: safeguard MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -295,11 +304,12 @@
   - type: ExplosionResistance
     damageCoefficient: 0.2
   - type: FireProtection
-    reduction: 0.8
+    reduction: 0.3
 
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodyBso
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: bso MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -320,19 +330,21 @@
         Heat: 0.6
         Piercing: 0.6
         Caustic: 0.7
+        Radiation: 0.7
   - type: StaminaResistance
     damageCoefficient: 0.75
   - type: ClothingSpeedModifier
     walkModifier: 1
     sprintModifier: 1
   - type: ExplosionResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.6
   - type: FireProtection
-    reduction: 0.8
+    reduction: 0.3
 
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodyAdvanced
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: advanced MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -369,6 +381,7 @@
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodySyndicate
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: syndicate MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -386,8 +399,8 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.6
-        Slash: 0.6
+        Blunt: 0.5
+        Slash: 0.5
         Piercing: 0.4
         Heat: 0.6
         Radiation: 0.3
@@ -399,13 +412,15 @@
     sprintModifier: 1
   - type: FireProtection
     reduction: 0.7
-  - type: ClothingGrantComponent
-    component:
-    - type: GrabProtection
+  - type: ModifyGrabStageTime
+    modifiers:
+      Hard: 2.25
+      Choke: 2
 
 - type: entity
   parent: ADTClothingOuterModsuitBodySyndicate
   id: ADTClothingOuterModsuitBodySyndicateElite
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: elite syndicate MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -421,10 +436,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
+        Blunt: 0.6
+        Slash: 0.6
         Piercing: 0.6
-        Heat: 0.1
+        Heat: 0.2
         Radiation: 0.01
         Caustic: 0.5
   - type: StaminaResistance
@@ -439,10 +454,15 @@
     damageCoefficient: 0.1
   - type: FireProtection
     reduction: 1
+  - type: ModifyGrabStageTime
+    modifiers:
+      Hard: 1.5
+      Choke: 2
 
 - type: entity
   parent: ADTClothingOuterModsuitBodySyndicate
   id: ADTClothingOuterModsuitBodySyndicateCommander
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: commander syndicate MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -473,16 +493,18 @@
     heatingCoefficient: 0.001
     coolingCoefficient: 0.001
   - type: ExplosionResistance
-    damageCoefficient: 0.1
+    damageCoefficient: 0.4
   - type: FireProtection
-    reduction: 0.9
-  - type: ClothingGrantComponent
-    component:
-    - type: GrabProtection
+    reduction: 0.75
+  - type: ModifyGrabStageTime
+    modifiers:
+      Hard: 2.25
+      Choke: 2
 
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodyCMO
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: CMO MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -499,6 +521,8 @@
     modifiers:
       coefficients:
         Caustic: 0.1
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
   - type: ClothingSpeedModifier
     walkModifier: 1
     sprintModifier: 1
@@ -537,6 +561,7 @@
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodyCaptain
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: captain MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -556,6 +581,7 @@
         Slash: 0.4
         Heat: 0.5
         Piercing: 0.5
+        Radiation: 0.5
         Caustic: 0.6
   - type: StaminaResistance
     damageCoefficient: 0.7
@@ -563,13 +589,61 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: ExplosionResistance
-    damageCoefficient: 0.6
+    damageCoefficient: 0.5
   - type: FireProtection
     reduction: 0.6
 
 - type: entity
+  parent: ADTClothingOuterModsuitBodySyndicateCommander
+  id: ADTClothingOuterModsuitBodyCentcom
+  name: Corporate MOD chestplate
+  description: A chestplate for a MODsuit.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Modsuit/centcomm.rsi
+  - type: Clothing
+    equipDelay: 3
+    unequipDelay: 3
+    sprite: ADT/Clothing/OuterClothing/Modsuit/centcomm.rsi
+    slots: [ OUTERCLOTHING ]
+    equipSound: /Audio/Mecha/mechmove03.ogg
+    unequipSound: /Audio/Mecha/mechmove03.ogg
+
+- type: entity
+  parent: ADTClothingOuterModsuitBodyBase
+  id: ADTClothingOuterModsuitBodyCCC
+  name: Corporate MOD chestplate
+  description: A chestplate for a MODsuit.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Modsuit/centcomm.rsi
+  - type: Clothing
+    equipDelay: 3
+    unequipDelay: 3
+    sprite: ADT/Clothing/OuterClothing/Modsuit/centcomm.rsi
+    slots: [ OUTERCLOTHING ]
+    equipSound: /Audio/Mecha/mechmove03.ogg
+    unequipSound: /Audio/Mecha/mechmove03.ogg
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Heat: 0.8
+        Piercing: 0.7
+        Caustic: 0.75
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: FireProtection
+    reduction: 0.7
+
+- type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodyWard
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: warden MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -596,13 +670,14 @@
     walkModifier: 0.85
     sprintModifier: 0.85
   - type: FireProtection
-    reduction: 0.6
+    reduction: 0.4
   - type: ExplosionResistance
     damageCoefficient: 0.35
 
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
   id: ADTClothingOuterModsuitBodyBrigmedic
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: Brigmedic MOD chestplate
   description: A chestplate for a MODsuit.
   components:
@@ -627,10 +702,9 @@
   - type: StaminaResistance
     damageCoefficient: 0.8
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.9
+    sprintModifier: 0.95
   - type: ExplosionResistance
-    damageCoefficient: 0.25
+    damageCoefficient: 0.7
   - type: ItemToggle
     onUse: false
     soundActivate:
@@ -658,3 +732,47 @@
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}
+
+- type: entity
+  parent: ADTClothingOuterModsuitBodyBase
+  id: ADTClothingOuterModsuitBodyAncient
+  name: ancient MOD chestplate
+  description: A chestplate for a MODsuit.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/OuterClothing/Modsuit/ancient.rsi
+  - type: Clothing
+    equipDelay: 3
+    unequipDelay: 3
+    sprite: ADT/Clothing/OuterClothing/Modsuit/ancient.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: unshaded
+    slots: [ OUTERCLOTHING ]
+    equipSound: /Audio/Mecha/mechmove03.ogg
+    unequipSound: /Audio/Mecha/mechmove03.ogg
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.7
+        Cold: 0.7
+        Caustic: 0.5
+        Radiation: 0.4
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
+  - type: PressureProtection
+    highPressureMultiplier: 0
+    lowPressureMultiplier: 0
+  - type: FireProtection
+    reduction: 0.5
+  - type: TemperatureProtection
+    heatingCoefficient: 0.7
+    coolingCoefficient: 0.4

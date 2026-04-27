@@ -45,19 +45,30 @@ public abstract class SharedBedSystem : EntitySystem
 
     private void OnStrapped(Entity<HealOnBuckleComponent> bed, ref StrappedEvent args)
     {
+        // ADT-Tweak: Start (P4A) Сущности с компонентом IgnoreHealOnBuckleComponent больше не лечаться через мебель
+        if (HasComp<IgnoreHealOnBuckleComponent>(args.Buckle))
+            return;
+        // ADT-Tweak: End (P4A)
         EnsureComp<HealOnBuckleHealingComponent>(bed);
         bed.Comp.NextHealTime = Timing.CurTime + TimeSpan.FromSeconds(bed.Comp.HealTime);
         _actionsSystem.AddAction(args.Buckle, ref bed.Comp.SleepAction, SleepingSystem.SleepActionId, bed);
         Dirty(bed);
-
+        /* ADT-Tweak: Deprecated by DoubleBedSystem - cannot assert to just one entity on bed.
         // Single action entity, cannot strap multiple entities to the same bed.
         DebugTools.AssertEqual(args.Strap.Comp.BuckledEntities.Count, 1);
+        */
     }
 
     private void OnUnstrapped(Entity<HealOnBuckleComponent> bed, ref UnstrappedEvent args)
     {
-        _actionsSystem.RemoveAction(args.Buckle.Owner, bed.Comp.SleepAction);
-        _sleepingSystem.TryWaking(args.Buckle.Owner);
+        // If the entity being unbuckled is terminating, we shouldn't try to act upon it, as some components may be gone
+        if (!Terminating(args.Buckle.Owner))
+        {
+            if (_actionsSystem.GetAction(bed.Comp.SleepAction) is { } act && act.Comp.AttachedEntity == args.Buckle.Owner) //ADT-Tweak: Barbell
+                _actionsSystem.RemoveAction(args.Buckle.Owner, bed.Comp.SleepAction);
+            _sleepingSystem.TryWaking(args.Buckle.Owner);
+        }
+
         RemComp<HealOnBuckleHealingComponent>(bed);
     }
 

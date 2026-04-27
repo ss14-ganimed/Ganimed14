@@ -1,8 +1,44 @@
 - type: entity
   id: ClothingBackpackSatchelCaptainWhite
-  parent: ClothingBackpackSatchel
+  parent: [ClothingBackpackSatchel, BaseCommandContraband]
   name: white captain's satchel
   description: Is it your imagination, or is there a stain on it?
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/Back/Satchels/white_captain_satchel.rsi
+    sprite: _Ganimed/Clothing/Back/Satchels/captain_white.rsi
+
+- type: entity
+  parent: [ClothingBackpackSatchel, BaseCommandContraband]
+  id: ClothingBackpackSatchelHop
+  name: head of personnel's satchel
+  description: An exclusive satchel for bureaucracy related needs.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Back/Satchels/hop.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelChiefMedicalOfficer
+  name: chief medical officer's satchel
+  description: A sterile satchel with barely enough pockets to carry the chief medical officer's equipment.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Back/Satchels/cmo.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelCargoDark
+  name: dark cargo satchel
+  description: A robust satchel for stealing cargo's loot.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Back/Satchels/cargo_dark.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelRobotics
+  name: robotics satchel
+  description: A comfortable, waterproof bag for carrying cyborg modules and parts.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Back/Satchels/robotics.rsi

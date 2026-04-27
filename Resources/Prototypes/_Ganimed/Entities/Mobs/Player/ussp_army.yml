@@ -19,6 +19,7 @@
       nameSegments:
       - NamesFirstUSSPMilitary
       - NamesLastUSSPMilitary
+      nameFormat: name-format-standard
     - type: AutoImplant
       implants:
       - NeoRusskiyaTranslatorImplant
@@ -44,6 +45,7 @@
       nameSegments:
       - NamesFirstUSSPMilitaryLeader
       - NamesLastUSSPMilitary
+      nameFormat: name-format-standard
     - type: AutoImplant
       implants:
       - NeoRusskiyaTranslatorImplant
@@ -72,3 +74,4 @@
       nameSegments:
       - NamesFirstUSSPMilitary
       - NamesLastUSSPMilitary
+      nameFormat: name-format-standard

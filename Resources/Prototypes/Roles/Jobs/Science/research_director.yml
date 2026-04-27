@@ -7,12 +7,12 @@
   requirements:
   - !type:RoleTimeRequirement
     role: JobScientist
-    time: 21600 #6 hrs #Ganimed-RoleTime
+    time: 6h # Ganimed-RoleTime
   - !type:DepartmentTimeRequirement
     department: Science
-    time: 72000 #20 hrs Ganimed-RoleTime
+    time: 20h # Ganimed-RoleTime
   - !type:OverallPlaytimeRequirement
-    time: 144000 #40 hrs Ganimed-RoleTime
+    time: 40h # Ganimed-RoleTime
   - !type:AgeRequirement # Ganimed-MRP
     requiredAge: 21
   weight: 10
@@ -41,11 +41,11 @@
   # equipment: # ADT tweak
  #id: RnDPDA # ADT Tweak
     # ears: ClothingHeadsetRD # ADT tweak
-  storage:
-    back:
-    - Flash
-    - ADTtelescopicBaton #ADT-CustomADTLoadoutStart
-    # - ADTHumanCubeWrapped #ADT-CustomADTLoadoutEnd # Ganimed-Remove
+#  storage: # Ganimed-Loadouts-Remove (Loadout choice)
+#    back:
+#    - Flash
+#    - ADTtelescopicBaton #ADT-CustomADTLoadoutStart
+#    - ADTHumanCubeWrapped #ADT-CustomADTLoadoutEnd # Ganimed-Remove
 
 - type: chameleonOutfit
   id: ResearchDirectorChameleonOutfit

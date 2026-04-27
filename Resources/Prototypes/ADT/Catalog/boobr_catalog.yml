@@ -144,6 +144,17 @@
   categories:
   - ADTUplinkERTWeapon
 
+- type: listing
+  id: ADTBoberSteelTonfa
+  name: boobr-steel-tonfa-name
+  description: boobr-steel-tonfa-desc
+  icon: { sprite: ADT/Objects/Weapons/Melee/steel_tonfa.rsi, state: icon-of }
+  productEntity: ADTWeaponTonfaSteel
+  cost:
+    Productunit: 7
+  categories:
+  - ADTUplinkERTWeapon
+
 #region ammo
 
 - type: listing
@@ -466,6 +477,17 @@
   - ADTUplinkERTMisc
 
 - type: listing
+  id: ADTBoberCombatMedkit
+  name: boobr-combat-medkit-name
+  description: boobr-combat-medkit-desc
+  icon: { sprite: Objects/Specific/Medical/firstaidkits.rsi, state: blackkit }
+  productEntity: MedkitCombatFilled
+  cost:
+    Productunit: 2
+  categories:
+  - ADTUplinkERTMisc
+
+- type: listing
   id: ADTBoberSmokeGrenade
   name: boobr-smoke-grenade-name
   description: boobr-smoke-grenade-desc
@@ -576,10 +598,10 @@
   - ADTUplinkERTMisc
 
 - type: listing
-  id: ADTBoberClothingBeltAssault
+  id: ADTBoberClothingBeltMilitaryWebbing
   name: boobr-clothing-belt-assault-name
   description: boobr-clothing-belt-assault-desc
-  productEntity: ClothingBeltAssault
+  productEntity: ClothingBeltMilitaryWebbing
   cost:
     Productunit: 5
   categories:

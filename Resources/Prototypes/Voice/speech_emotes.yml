@@ -92,7 +92,7 @@
     components:
     - Vocal
     tags:
-    - SiliconEmotes
+    - ADTSiliconEmotes #ADT-Tweak
   chatMessages: ["chat-emote-msg-honk"]
   chatTriggers:
     - honk
@@ -102,6 +102,7 @@
     # Corvax-Localization-Start
     - хонк
     # Corvax-Localization-End
+    - хонкает # Ganimed-Localization-Add
 
 - type: emote
   id: Sigh
@@ -126,6 +127,7 @@
     - вздохнул
     - вздохнула
     # Corvax-Localization-End
+    - выдыхает #ADT-Tweak
 
 - type: emote
   id: Whistle
@@ -263,6 +265,114 @@
    - клацает
    # Corvax-Localization-End
 
+# ADT-Tweak: Dublicate ID
+# Vulpkanin
+# - type: emote
+#   id: Bark
+#   name: chat-emote-name-bark
+#   category: Vocal
+#   available: false
+#   whitelist:
+#     components:
+#     - Vocal
+#   blacklist:
+#     tags:
+#     - SiliconEmotes
+#   chatMessages: ["chat-emote-msg-bark"]
+#   chatTriggers:
+#   - bark
+#   - barks
+#   - barked
+#   - barking
+
+- type: emote
+  id: Snarl
+  name: chat-emote-name-snarl
+  category: Vocal
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-snarl"]
+  chatTriggers:
+  - snarl
+  - snarls
+  - snarled
+  - snarling
+
+# ADT-Tweak: Dublicate ID
+# - type: emote
+#   id: Whine
+#   name: chat-emote-name-whine
+#   category: Vocal
+#   available: false
+#   whitelist:
+#     components:
+#     - Vocal
+#   blacklist:
+#     tags:
+#     - SiliconEmotes
+#   chatMessages: ["chat-emote-msg-whine"]
+#   chatTriggers:
+#   - whine
+#   - whines
+#   - whined
+#   - whining
+
+# ADT-Tweak: Dublicate ID
+# - type: emote
+#   id: Howl
+#   name: chat-emote-name-howl
+#   category: Vocal
+#   available: false
+#   whitelist:
+#     components:
+#     - Vocal
+#   blacklist:
+#     tags:
+#     - SiliconEmotes
+#   chatMessages: ["chat-emote-msg-howl"]
+#   chatTriggers:
+#   - howl
+#   - howls
+#   - howling
+#   - howled
+# # Corvax-Localization-Start
+#   - воет
+#   - воет.
+#   - воет!
+#   - завывает
+#   - завывает.
+#   - завывает!
+# # Corvax-Localization-End
+
+# ADT-Tweak: Dublicate ID
+# - type: emote
+#   id: Growl
+#   name: chat-emote-name-growl
+#   category: Vocal
+#   available: false
+#   whitelist:
+#     components:
+#     - Vocal
+#   blacklist:
+#     tags:
+#     - SiliconEmotes
+#   chatMessages: ["chat-emote-msg-growl"]
+#   chatTriggers:
+#   - growl
+#   - growls
+#   - growled
+#   - growling
+#   # Corvax-Localization-Start
+#   - рычит
+#   - рычит.
+#   - рычит!
+#   # Corvax-Localization-End
+
 # hand emotes
 - type: emote
   id: Clap
@@ -308,6 +418,12 @@
     - claps her hands together
     - claps his hands together
     - claps its hands together
+    # Ganimed-Localization-Add-Start
+    - хлопок
+    - одиночный хлопок
+    - делает одиночный хлопок
+    - хлопает один раз
+    # Ganimed-Localization-Add-End
 
 - type: emote
   id: Snap
@@ -388,6 +504,13 @@
     - ударяет хвостом
     - ударяет своим хвостом
     # ADT-emote-end
+    # Ganimed-Localization-Add-Start
+    - бьёт хвостом
+    - бьёт хвостом по полу
+    - бьёт хвостом по земле
+    - ударяет хвостом по полу
+    - ударяет хвостом по земле
+    # Ganimed-Localization-Add-End
 
 - type: emote
   id: Salute
@@ -422,6 +545,12 @@
    - gasp
    - gasps
    - gasped
+   #ADT-Tweak-Start
+   - задыхается
+   - вдыхает
+   - жадно глотает воздух
+   #ADT-Tweak-End
+   - ловит воздух # Ganimed-Localization-Add
 
 - type: emote
   id: DefaultDeathgasp
@@ -430,6 +559,12 @@
   whitelist:
     components:
     - MobState
+  #ADT-Tweak-Start
+  blacklist:
+    components:
+    - MobIpc
+    - BorgChassis # Ganimed-Add
+  #ADT-Tweak-End
   chatMessages: ["chat-emote-msg-deathgasp"]
   chatTriggers:
   - deathgasp
@@ -456,7 +591,7 @@
     components:
     - Vocal
     tags:
-    - SiliconEmotes
+    - ADTSiliconEmotes #ADT-Tweak
   chatMessages: ["chat-emote-msg-buzz"]
   chatTriggers:
     - buzzing
@@ -517,7 +652,7 @@
     components:
     - Vocal
     tags:
-    - SiliconEmotes
+    - ADTSiliconEmotes #ADT-Tweak
   chatMessages: ["chat-emote-msg-beep"]
   chatTriggers:
     - beep
@@ -538,7 +673,7 @@
     components:
     - Vocal
     tags:
-    - SiliconEmotes
+    - ADTSiliconEmotes #ADT-Tweak
   chatMessages: ["chat-emote-msg-chime"]
   chatTriggers:
     - chime
@@ -559,7 +694,7 @@
     components:
     - Vocal
     tags:
-    - SiliconEmotes
+    - ADTSiliconEmotes #ADT-Tweak
   chatMessages: ["chat-emote-msg-buzzestwo"]
   chatTriggers:
     - buzztwice
@@ -591,7 +726,7 @@
     components:
     - Vocal
     tags:
-    - SiliconEmotes
+    - ADTSiliconEmotes #ADT-Tweak
   chatMessages: ["chat-emote-msg-ping"]
   chatTriggers:
     - ping

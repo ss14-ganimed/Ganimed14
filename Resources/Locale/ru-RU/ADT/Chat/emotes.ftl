@@ -2,6 +2,7 @@
 chat-emote-name-synth-yes = утвердительно пискнуть
 chat-emote-name-synth-no = отрицательно пискнуть
 chat-emote-name-sigh-buzz = раздражённо жужжать
+chat-emote-msg-deathgasp-ipc = замирает и недвижимо оседает, { POSS-ADJ($entity) } монитор трескается и выключается...
 
 chat-emote-name-workout = качаться
 chat-emote-name-laugh-apathy = выдавить из себя смех
@@ -33,6 +34,14 @@ chat-emote-msg-purse = поджимает уши
 chat-emote-name-wurble = Урчать
 chat-emote-name-purse = Поджать уши
 
+# Resomi
+chat-emote-name-chirps = трель
+chat-emote-name-coos = воркует
+
 # Moth
 chat-emote-msg-flap-wings = хлопает крыльями
 chat-emote-name-flap-wings = Хлопать крыльями
+
+# Novakid
+chat-emote-msg-fiery-sounds = издаёт пламенные звуки
+chat-emote-name-fiery-sounds = Издать пламенные звуки

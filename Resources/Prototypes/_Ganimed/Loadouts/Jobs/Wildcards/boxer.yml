@@ -1,0 +1,41 @@
+# Timer
+- type: loadoutEffectGroup
+  id: MartialArtist
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBoxer
+      time: 36000 # 10 hrs
+
+# Head
+- type: loadout
+  id: BoxerTacticalHeadband
+  equipment:
+    head: ClothingHeadHatTacticalMaidHeadband
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MartialArtist
+
+- type: loadout
+  id: BoxerCasa
+  equipment:
+    head: ClothingHeadHatCasa
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MartialArtist
+
+# Jumpsuit
+- type: loadout
+  id: BoxerKimono
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitKimono
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MartialArtist
+
+# Gloves
+#- type: loadout
+#  id: BoxingHandBandage
+#  equipment:
+#    gloves: ClothingHandBandage

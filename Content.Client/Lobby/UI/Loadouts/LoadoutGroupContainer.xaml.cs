@@ -8,6 +8,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Client.Lobby.UI.Loadouts;
 
@@ -46,7 +47,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
     {
         var protoMan = collection.Resolve<IPrototypeManager>();
         var loadoutSystem = collection.Resolve<IEntityManager>().System<LoadoutSystem>();
-        RestrictionsContainer.DisposeAllChildren();
+        RestrictionsContainer.RemoveAllChildren();
 
         if (_groupProto.MinLimit > 0)
         {
@@ -66,7 +67,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
             });
         }
 
-        if (protoMan.TryIndex(loadout.Role, out var roleProto) && roleProto.Points != null && loadout.Points != null)
+        if (protoMan.Resolve(loadout.Role, out var roleProto) && roleProto.Points != null && loadout.Points != null)
         {
             RestrictionsContainer.AddChild(new Label()
             {
@@ -75,8 +76,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
             });
         }
 
-        LoadoutsContainer.DisposeAllChildren();
-        // Didn't use options because this is more robust in future.
+        LoadoutsContainer.RemoveAllChildren();
 
         // Ganimed sponsor start
         IEnumerable<ProtoId<LoadoutPrototype>> groupLoadouts = _groupProto.Loadouts;
@@ -99,49 +99,189 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         }
         // Ganimed sponsor end
 
-        var selected = loadout.SelectedLoadouts[_groupProto.ID];
+        // Get all loadout prototypes for this group.
+        var validProtos = groupLoadouts
+            .Where(id => protoMan.TryIndex<LoadoutPrototype>(id, out _))
+            .Select(id => protoMan.Index(id))
+            .ToList(); // Ganimed sponsor
 
-        foreach (var loadoutProto in groupLoadouts) // Ganimed sponsor
+        /*
+         * Group the prototypes based on their GroupBy field.
+         * - If GroupBy is null or empty, fallback to grouping by the prototype ID itself.
+         * - The result is a dictionary where:
+         *   - The key is either GroupBy or ID (if GroupBy is not set).
+         *   - The value is the list of prototypes that belong to that group.
+         *
+         * This allows grouping loadouts into sub-categories within the group.
+         */
+        var groups = validProtos
+        .GroupBy(p => string.IsNullOrEmpty(p.GroupBy)
+                         ? p.ID
+                         : p.GroupBy)
+        .ToDictionary(g => g.Key, g => g.ToList());
+
+        foreach (var kvp in groups)
         {
-            if (!protoMan.TryIndex(loadoutProto, out var loadProto))
-                continue;
+            var protos = kvp.Value;
 
-            // Ganimed sponsor start
-            // Лоадуты с SponsorOnly допускаются только при наличии разрешения в API
-            if (loadProto.SponsorOnly)
+            if (protos.Count > 1)
             {
-                if (!_sponsorsManager.TryGetInfo(out var sponsor))
+                /*
+                 * Build the list of UI elements for each loadout prototype:
+                 * - For each prototype, create its corresponding LoadoutContainer UI element.
+                 * - Set HorizontalExpand to true so elements properly stretch in layout.
+                 * - Collect all UI elements into a list for further processing.
+                 */
+                var uiElements = protos
+                    .Select(proto =>
+                    {
+                        var elem = CreateLoadoutUI(proto, profile, loadout, session, collection, loadoutSystem);
+                        if (elem == null) // Ganimed sponsor
+                            return null;
+                        elem.HorizontalExpand = true;
+                        return elem;
+                    })
+                    .Where(e => e != null) // Ganimed sponsor
+                    .Cast<LoadoutContainer>()
+                    .ToList();
+
+                if (uiElements.Count == 0) // Ganimed sponsor
                     continue;
 
-                if (!sponsor.AllowedMarkings.Contains(loadProto.ID))
-                    continue;
-            }
-            // Ganimed sponsor stop
+                /*
+                * Determine which element should be displayed first:
+                * - If any element is currently selected (its button is pressed), use it.
+                * - Otherwise, fallback to the first element in the list.
+                *
+                * This moves the selected item outside of the sublist for better usability,
+                * making it easier for players to quickly toggle loadout options (e.g. clothing, accessories)
+                * without having to search inside expanded subgroups.
+                */
+                var firstElement = uiElements.FirstOrDefault(e => e.Select.Pressed) ?? uiElements[0];
 
-            var matchingLoadout = selected.FirstOrDefault(e => e.Prototype == loadoutProto);
-            var pressed = matchingLoadout != null;
+                /*
+                 * Get all remaining elements except the first one:
+                 * - Use ReferenceEquals to ensure we exclude the exact instance used as firstElement.
+                 */
+                var otherElements = uiElements.Where(e => !ReferenceEquals(e, firstElement)).ToList();
 
-            var enabled = loadout.IsValid(profile, session, loadoutProto, collection, out var reason);
-            // Ganimed sponsor start
-            var loadoutContainer = new LoadoutContainer(loadoutProto, !enabled, reason)
-            {
-                Select =
+                firstElement.HorizontalExpand = true;
+                var subContainer = new SubLoadoutContainer()
                 {
-                    Pressed = pressed,
-                },
-                Text = loadoutSystem.GetName(loadProto)
-            };
-            // Ganimed sponsor end
+                    Visible = _openedGroups.GetValueOrDefault(kvp.Key, false)
+                };
+                var toggle = CreateToggleButton(kvp, firstElement, subContainer);
 
-            loadoutContainer.Select.OnPressed += args =>
+                LoadoutsContainer.AddChild(firstElement);
+                LoadoutsContainer.AddChild(subContainer);
+
+                var subList = subContainer.Grid;
+                foreach (var proto in otherElements)
+                {
+                    subList.AddChild(proto);
+                }
+                var itemName = firstElement.Text ?? "";
+                UpdateSubGroupSelectedInfo(firstElement, itemName, subList);
+            }
+            else
             {
-                if (args.Button.Pressed)
-                    OnLoadoutPressed?.Invoke(loadoutProto);
-                else
-                    OnLoadoutUnpressed?.Invoke(loadoutProto);
-            };
-
-            LoadoutsContainer.AddChild(loadoutContainer);
+                var elem = CreateLoadoutUI(protos[0], profile, loadout, session, collection, loadoutSystem); // Ganimed sponsor
+                if (elem != null)
+                    LoadoutsContainer.AddChild(elem);
+            }
         }
+    }
+
+    private ToggleLoadoutButton CreateToggleButton(KeyValuePair<string, List<LoadoutPrototype>> kvp, LoadoutContainer firstElement, SubLoadoutContainer subContainer)
+    {
+        var toggle = new ToggleLoadoutButton
+        {
+            Text = ClosedGroupMark
+        };
+
+        toggle.Text = subContainer.Visible ? OpenedGroupMark : ClosedGroupMark;
+        toggle.Pressed = subContainer.Visible;
+
+        toggle.OnPressed += _ =>
+        {
+            var willOpen = !subContainer.Visible;
+            subContainer.Visible = willOpen;
+            toggle.Text = willOpen ? OpenedGroupMark : ClosedGroupMark;
+            toggle.Pressed = willOpen;
+            _openedGroups[kvp.Key] = willOpen;
+        };
+
+        firstElement.AddChild(toggle);
+        toggle.SetPositionFirst();
+        return toggle;
+    }
+
+    private void UpdateSubGroupSelectedInfo(LoadoutContainer loadout, string itemName, BoxContainer subList)
+    {
+        var countSubSelected = subList.Children
+            .OfType<LoadoutContainer>()
+            .Count(c => c.Select.Pressed);
+
+        if (countSubSelected > 0)
+        {
+            loadout.Text = Loc.GetString("loadouts-count-items-in-group", ("item", itemName), ("count", countSubSelected));
+        }
+    }
+
+    /// <summary>
+    /// Creates a UI container for a single Loadout item.
+    ///
+    /// This method was extracted from RefreshLoadouts because the logic for creating
+    /// individual loadout items is used multiple times inside that method, and duplicating
+    /// the code made it harder to maintain.
+    ///
+    /// Logic:
+    /// - Checks if the item is currently selected in the loadout.
+    /// - Checks if the item is valid for selection (IsValid).
+    /// - Creates a LoadoutContainer with the appropriate status (disabled / active).
+    /// - Subscribes to button press events to handle selection and deselection.
+    /// </summary>
+    /// <param name="proto">The loadout item prototype.</param>
+    /// <param name="profile">The humanoid character profile.</param>
+    /// <param name="loadout">The current role loadout for the user.</param>
+    /// <param name="session">The user's session.</param>
+    /// <param name="collection">The dependency injection container.</param>
+    /// <param name="loadoutSystem">The loadout system instance.</param>
+    /// <returns>A fully initialized LoadoutContainer for UI display.</returns>
+    private LoadoutContainer? CreateLoadoutUI(LoadoutPrototype proto, HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession session, IDependencyCollection collection, LoadoutSystem loadoutSystem)
+    {
+        // Проверяем, выбран ли этот лодаут в любой группе
+        var pressed = loadout.SelectedLoadouts.Values.Any(groupLoadouts =>
+            groupLoadouts.Any(l => l.Prototype == proto.ID));
+
+        // Ganimed sponsor start
+         // Лоадуты с SponsorOnly допускаются только при наличии разрешения в API
+        if (proto.SponsorOnly)
+        {
+            if (!_sponsorsManager.TryGetInfo(out var sponsor))
+                return null;
+
+            if (!sponsor.AllowedMarkings.Contains(proto.ID))
+                return null;
+        }
+        // Ganimed sponsor end
+
+        var enabled = loadout.IsValid(profile, session, proto.ID, collection, out var reason);
+
+        var cont = new LoadoutContainer(proto, !enabled, reason);
+
+        cont.Text = loadoutSystem.GetName(proto);
+
+        cont.Select.Pressed = pressed;
+
+        cont.Select.OnPressed += args =>
+        {
+            if (args.Button.Pressed)
+                OnLoadoutPressed?.Invoke(proto.ID);
+            else
+                OnLoadoutUnpressed?.Invoke(proto.ID);
+        };
+
+        return cont;
     }
 }

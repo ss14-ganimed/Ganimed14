@@ -1,0 +1,15 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckBowTieBlack
+  name: bow tie
+  description: A neosilk black bow tie.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Neck/Ties/bowtie.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Neck/Ties/bowtie.rsi
+  - type: Tag
+    tags:
+    - HamsterWearable
+    - WhitelistChameleon
+    - ClothMade

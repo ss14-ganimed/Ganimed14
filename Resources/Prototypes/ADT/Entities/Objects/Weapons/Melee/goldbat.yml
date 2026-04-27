@@ -4,14 +4,20 @@
   id: ADTGoldBaseBallBat
   description: An even robust baseball bat!
   components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 13
+        Structural: 7.5
+    soundHit: "/Audio/ADT/Weapons/Melee/bat.ogg"
   - type: Sprite
     sprite: ADT/Objects/Weapons/Melee/goldbat.rsi
     state: icon
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 15
-        Structural: 15
+        Blunt: 8
+        Structural: 12.5
   - type: UseDelay
     delay: 1
   - type: Construction

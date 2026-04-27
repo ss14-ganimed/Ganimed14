@@ -1,6 +1,7 @@
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ADTClothingHeadHelmetModsuitBase
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: base MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -32,7 +33,7 @@
         Slash: 0.90
         Piercing: 0.95
         Heat: 0.90
-        Radiation: 0.25
+        Radiation: 0.90
   - type: PressureProtection
     highPressureMultiplier: 0.1
     lowPressureMultiplier: 1000
@@ -44,11 +45,11 @@
     energy: 3
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
-    netsync: false
 
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitAtmos
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: atmos MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -79,10 +80,23 @@
     coolingCoefficient: 0.005
   - type: FireProtection
     reduction: 0.8
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+        Slash: 0.90
+        Piercing: 0.95
+        Heat: 0.90
+        Radiation: 0.25
 
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitClown
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: clown MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -97,6 +111,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitEngineering
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: engineering MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -124,10 +139,19 @@
     damageContainers:
     - Inorganic
     - Silicon
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+        Slash: 0.90
+        Piercing: 0.95
+        Heat: 0.90
+        Radiation: 0.25
 
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitMedical
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: medical MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -150,6 +174,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitMining
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: mining MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -161,6 +186,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitSecurity
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: security MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -178,11 +204,12 @@
         Slash: 0.90
         Piercing: 0.95
         Heat: 0.90
-        Radiation: 0.25
+        Radiation: 0.90
 
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitScience
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: Science MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -212,6 +239,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitSafeguard
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: safeguard MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -242,6 +270,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitBso
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: bso MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -271,6 +300,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitAdvanced
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: advanced MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -290,6 +320,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitSyndicate
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: syndicate MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -321,6 +352,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitSyndicateElite
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: syndicate MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -352,6 +384,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitSyndicateCommander
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: syndicate MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -383,6 +416,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitCMO
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: CMO MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -405,6 +439,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitCaptain
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: captain MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -418,13 +453,72 @@
       head:
       - state: equipped-head
       - state: equipped-head-unshaded
+        shader: unshaded
   - type: PointLight
     enabled: false
     color: "#815ccc"
 
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
+  id: ADTClothingHeadHelmetModsuitCCC
+  name: Corporate MOD helmet
+  description: A helmet for a MODsuit.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Head/Modsuit/centcomm.rsi
+    layers:
+    - state: icon
+  - type: Clothing
+    sprite: ADT/Clothing/Head/Modsuit/centcomm.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-head
+      - state: equipped-head-unshaded
+        shader: unshaded
+  - type: PointLight
+    enabled: false
+    color: "#0BB0F4"
+
+- type: entity
+  parent: ADTClothingHeadHelmetModsuitBase
+  id: ADTClothingHeadHelmetModsuitCentcom
+  name: Corporate MOD helmet
+  description: A helmet for a MODsuit.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Head/Modsuit/centcomm.rsi
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - state: equipped-head
+      - state: equipped-head-unshaded
+        shader: unshaded
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+        Radiation: 0.8
+        Caustic: 0.8
+  - type: PointLight
+    enabled: false
+    color: "#0BB0F4"
+  - type: ShowJobIcons
+  - type: ShowMindShieldIcons
+  - type: ShowCriminalRecordIcons
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+  - type: ShowHealthIcons
+    damageContainers:
+    - Biological
+
+- type: entity
+  parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitWard
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: warden MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -444,6 +538,7 @@
 - type: entity
   parent: ADTClothingHeadHelmetModsuitBase
   id: ADTClothingHeadHelmetModsuitBrigmedic
+  categories: [ HideSpawnMenu ] # Ganimed-Edit
   name: Brigmedic MOD helmet
   description: A helmet for a MODsuit.
   components:
@@ -468,3 +563,35 @@
   - type: ShowHealthIcons
     damageContainers:
     - Biological
+
+- type: entity
+  parent: ADTClothingHeadHelmetModsuitBase
+  id: ADTClothingHeadHelmetModsuitAncient
+  name: ancient MOD helmet
+  description: A helmet for a MODsuit.
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Head/Modsuit/ancient.rsi
+    layers:
+    - state: icon
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.85
+        Cold: 0.85
+  - type: PressureProtection
+    highPressureMultiplier: 0
+    lowPressureMultiplier: 0
+  - type: Clothing
+    sprite: ADT/Clothing/Head/Modsuit/ancient.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-head
+      - state: equipped-head-unshaded
+        shader: unshaded
+  - type: PointLight
+    enabled: false
+    color: "#0BB0F4"

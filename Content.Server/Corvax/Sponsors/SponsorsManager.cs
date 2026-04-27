@@ -78,22 +78,15 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
 
         var isExpired = info.ExpireDate.ToLocalTime() <= DateTime.Now;
 
-        if (isExpired && info.AllowJob)
+        // Ganimed-Sponsors start
+        if (isExpired)
         {
-            info = new SponsorInfo
-            {
-                CharacterName = info.CharacterName,
-                Tier = null,
-                OOCColor = null,
-                HavePriorityJoin = false,
-                ExtraSlots = 0,
-                AllowedMarkings = Array.Empty<string>(),
-                ExpireDate = info.ExpireDate,
-                AllowJob = true
-            };
+            _cachedSponsors.Remove(e.UserId);
+            return;
+        // Ganimed-Sponsors end
         }
 
-        else if (isExpired || info.Tier == null)
+        if (info.Tier == null)
         {
             _cachedSponsors.Remove(e.UserId);
             return;
@@ -135,7 +128,7 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
                     var errorText = await response.Content.ReadAsStringAsync();
-                    _sawmill.Error(
+                    _sawmill.Warning(
                         "Failed to get sponsor info from API: [{StatusCode}] {Response}",
                         response.StatusCode,
                         errorText);
@@ -148,12 +141,12 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
             }
             catch (HttpRequestException e)
             {
-                _sawmill.Error($"[Fetch] HttpRequestException: {e.Message}");
+                _sawmill.Warning($"[Fetch] HttpRequestException: {e.Message}");
                 return null;
             }
             catch (Exception e)
             {
-                _sawmill.Error($"[Fetch] Unexpected exception: {e}");
+                _sawmill.Warning($"[Fetch] Unexpected exception: {e}");
                 return null;
             }
         }
