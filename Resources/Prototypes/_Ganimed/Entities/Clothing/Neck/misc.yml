@@ -1,0 +1,384 @@
+# Security badges
+- type: entity
+  parent: ADTClothingNeckSecBadgeBronze
+  id: ClothingNeckSecBadgeOfficerBronze
+  name: bronze security officer badge
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Neck/Misc/sec_badge.rsi
+    layers:
+    - state: officer-icon
+    - state: bronze-icon
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Neck/Misc/sec_badge.rsi
+    clothingVisuals:
+      neck:
+      - state: officer-equipped-NECK
+      - state: bronze-equipped-NECK
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: bronze-inhand-left
+      right:
+      - state: bronze-inhand-right
+
+- type: entity
+  parent: ADTClothingNeckSecBadgeSilver
+  id: ClothingNeckSecBadgeOfficerSilver
+  name: silver security officer badge
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Neck/Misc/sec_badge.rsi
+    layers:
+    - state: officer-icon
+    - state: silver-icon
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Neck/Misc/sec_badge.rsi
+    clothingVisuals:
+      neck:
+      - state: officer-equipped-NECK
+      - state: silver-equipped-NECK
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: silver-inhand-left
+      right:
+      - state: silver-inhand-right
+
+- type: entity
+  parent: ADTClothingNeckSecBadgeGold
+  id: ClothingNeckSecBadgeOfficerGold
+  name: gold security officer badge
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Neck/Misc/sec_badge.rsi
+    layers:
+    - state: officer-icon
+    - state: gold-icon
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Neck/Misc/sec_badge.rsi
+    clothingVisuals:
+      neck:
+      - state: officer-equipped-NECK
+      - state: gold-equipped-NECK
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: gold-inhand-left
+      right:
+      - state: gold-inhand-right
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerBronze
+  id: ClothingNeckSecBadgeCadetBronze
+  name: bronze security cadet badge
+  components:
+  - type: Sprite
+    layers:
+    - state: cadet-icon
+    - state: bronze-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: cadet-equipped-NECK
+      - state: bronze-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerSilver
+  id: ClothingNeckSecBadgeCadetSilver
+  name: silver security cadet badge
+  components:
+  - type: Sprite
+    layers:
+    - state: cadet-icon
+    - state: silver-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: cadet-equipped-NECK
+      - state: silver-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerGold
+  id: ClothingNeckSecBadgeCadetGold
+  name: gold security cadet badge
+  components:
+  - type: Sprite
+    layers:
+    - state: cadet-icon
+    - state: gold-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: cadet-equipped-NECK
+      - state: gold-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerBronze
+  id: ClothingNeckSecBadgePilotBronze
+  name: bronze security pilot badge
+  components:
+  - type: Sprite
+    layers:
+    - state: pilot-icon
+    - state: bronze-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: pilot-equipped-NECK
+      - state: bronze-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerSilver
+  id: ClothingNeckSecBadgePilotSilver
+  name: silver security pilot badge
+  components:
+  - type: Sprite
+    layers:
+    - state: pilot-icon
+    - state: silver-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: pilot-equipped-NECK
+      - state: silver-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerGold
+  id: ClothingNeckSecBadgePilotGold
+  name: gold security pilot badge
+  components:
+  - type: Sprite
+    layers:
+    - state: pilot-icon
+    - state: gold-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: pilot-equipped-NECK
+      - state: gold-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerBronze
+  id: ClothingNeckSecBadgeDetectiveBronze
+  name: bronze detective badge
+  components:
+  - type: Sprite
+    layers:
+    - state: detective-icon
+    - state: bronze-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: detective-equipped-NECK
+      - state: bronze-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerSilver
+  id: ClothingNeckSecBadgeDetectiveSilver
+  name: silver detective badge
+  components:
+  - type: Sprite
+    layers:
+    - state: detective-icon
+    - state: silver-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: detective-equipped-NECK
+      - state: silver-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerGold
+  id: ClothingNeckSecBadgeDetectiveGold
+  name: gold detective badge
+  components:
+  - type: Sprite
+    layers:
+    - state: detective-icon
+    - state: gold-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: detective-equipped-NECK
+      - state: gold-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerBronze
+  id: ClothingNeckSecBadgeBrigmedicBronze
+  name: bronze brigmedic badge
+  components:
+  - type: Sprite
+    layers:
+    - state: brigmedic-icon
+    - state: bronze-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: brigmedic-equipped-NECK
+      - state: bronze-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerSilver
+  id: ClothingNeckSecBadgeBrigmedicSilver
+  name: silver brigmedic badge
+  components:
+  - type: Sprite
+    layers:
+    - state: brigmedic-icon
+    - state: silver-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: brigmedic-equipped-NECK
+      - state: silver-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerGold
+  id: ClothingNeckSecBadgeBrigmedicGold
+  name: gold brigmedic badge
+  components:
+  - type: Sprite
+    layers:
+    - state: brigmedic-icon
+    - state: gold-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: brigmedic-equipped-NECK
+      - state: gold-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerBronze
+  id: ClothingNeckSecBadgeSeniorOfficerBronze
+  name: bronze senior officer badge
+  components:
+  - type: Sprite
+    layers:
+    - state: senior-icon
+    - state: bronze-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: senior-equipped-NECK
+      - state: bronze-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerSilver
+  id: ClothingNeckSecBadgeSeniorOfficerSilver
+  name: silver senior officer badge
+  components:
+  - type: Sprite
+    layers:
+    - state: senior-icon
+    - state: silver-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: senior-equipped-NECK
+      - state: silver-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerGold
+  id: ClothingNeckSecBadgeSeniorOfficerGold
+  name: gold senior officer badge
+  components:
+  - type: Sprite
+    layers:
+    - state: senior-icon
+    - state: gold-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: senior-equipped-NECK
+      - state: gold-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerBronze
+  id: ClothingNeckSecBadgeWardenBronze
+  name: bronze warden badge
+  components:
+  - type: Sprite
+    layers:
+    - state: warden-icon
+    - state: bronze-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: warden-equipped-NECK
+      - state: bronze-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerSilver
+  id: ClothingNeckSecBadgeWardenSilver
+  name: silver warden badge
+  components:
+  - type: Sprite
+    layers:
+    - state: warden-icon
+    - state: silver-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: warden-equipped-NECK
+      - state: silver-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerGold
+  id: ClothingNeckSecBadgeWardenGold
+  name: gold warden badge
+  components:
+  - type: Sprite
+    layers:
+    - state: warden-icon
+    - state: gold-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: warden-equipped-NECK
+      - state: gold-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerBronze
+  id: ClothingNeckSecBadgeHosBronze
+  name: bronze head of security badge
+  components:
+  - type: Sprite
+    layers:
+    - state: hos-icon
+    - state: bronze-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: hos-equipped-NECK
+      - state: bronze-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerSilver
+  id: ClothingNeckSecBadgeHosSilver
+  name: silver head of security badge
+  components:
+  - type: Sprite
+    layers:
+    - state: hos-icon
+    - state: silver-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: hos-equipped-NECK
+      - state: silver-equipped-NECK
+
+- type: entity
+  parent: ClothingNeckSecBadgeOfficerGold
+  id: ClothingNeckSecBadgeHosGold
+  name: gold head of security badge
+  components:
+  - type: Sprite
+    layers:
+    - state: hos-icon
+    - state: gold-icon
+  - type: Clothing
+    clothingVisuals:
+      neck:
+      - state: hos-equipped-NECK
+      - state: gold-equipped-NECK
