@@ -220,7 +220,7 @@
 
 # HackerEasy
 - type: entity
-  parent: ADTClothingModsuitBackBrigmedic
+  parent: ADTClothingModsuitBackMedical
   id: ClothingModsuitBackResuscitator
   name: resuscitator MOD control unit
   description: Reanimate it!
@@ -237,7 +237,7 @@
       shoes: ClothingModsuitShoesResuscitator
       
 - type: entity
-  parent: ADTClothingHeadHelmetModsuitBrigmedic
+  parent: ADTClothingHeadHelmetModsuitMedical
   id: ClothingHeadHelmetModsuitResuscitator
   categories: [ HideSpawnMenu ]
   name: resuscitator MOD helmet
@@ -265,7 +265,7 @@
   - type: Appearance
   
 - type: entity
-  parent: ADTClothingOuterModsuitBodyBrigmedic
+  parent: ADTClothingOuterModsuitBodyMedical
   id: ClothingOuterModsuitBodyResuscitator
   categories: [ HideSpawnMenu ]
   name: resuscitator MOD chestplate
@@ -277,7 +277,7 @@
     sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/body_chestplate.rsi
 
 - type: entity
-  parent: ADTClothingHandsModsuitBrigmedic
+  parent: ADTClothingHandsModsuitMedical
   id: ClothingHandsModsuitResuscitator
   categories: [ HideSpawnMenu ]
   name: resuscitator MOD gauntlets
@@ -289,7 +289,7 @@
     sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/gauntlets.rsi
 
 - type: entity
-  parent: ADTClothingModsuitShoesBrigmedic
+  parent: ADTClothingModsuitShoesMedical
   id: ClothingModsuitShoesResuscitator
   categories: [ HideSpawnMenu ]
   name: bee lover MOD boots
