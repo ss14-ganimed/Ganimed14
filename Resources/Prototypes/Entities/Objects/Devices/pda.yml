@@ -1445,7 +1445,6 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - ADTWalletCartridge
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NanoTaskCartridge
@@ -1456,7 +1455,7 @@
       - AstroNavCartridge
       - NanoChatCartridge # ADT-tweak: Наночат
       - ADTWalletCartridge # ADT-Economy
-    diskSpace: 11 # Ganimed tweak
+    diskSpace: 10 # Ganimed-Tweak
   # Ganimed-Add-End
 
 - type: entity
@@ -1869,6 +1868,10 @@
         type: HealthAnalyzerBoundUserInterface
       enum.ChameleonUiKey.Key:
         type: ChameleonBoundUserInterface
+      # Ganimed-Add-Start
+      enum.GasAnalyzerUiKey.Key:
+        type: GasAnalyzerBoundUserInterface
+      # Ganimed-Add-End
 
 - type: entity
   parent: BaseWidePDA
