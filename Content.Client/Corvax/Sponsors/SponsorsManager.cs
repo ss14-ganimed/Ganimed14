@@ -22,7 +22,13 @@ public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
     }
 
     // Ganimed-Sponsors start
-    bool ISponsorsManager.TryGetInfo(Robust.Shared.Network.NetUserId userId, [NotNullWhen(true)] out SponsorInfo? sponsor)
+    bool ISponsorsManager.TryGetInfo(NetUserId userId, [NotNullWhen(true)] out SponsorInfo? sponsor)
+    {
+        sponsor = null;
+        return false;
+    }
+
+    bool ISponsorsManager.TryGetInfoByCkey(string ckey, [NotNullWhen(true)] out SponsorInfo? sponsor)
     {
         sponsor = null;
         return false;
