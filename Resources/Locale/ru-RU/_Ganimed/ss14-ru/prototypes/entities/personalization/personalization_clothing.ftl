@@ -38,5 +38,5 @@ ent-ClothingOuterModsuitBodyResuscitator = оболочка МОДа "Реани
     .desc = { ent-ADTClothingOuterModsuitBodyBase.desc }
 ent-ClothingHandsModsuitResuscitator = перчатки МОДа "Реаниматолог"
     .desc = { ent-ADTClothingHandsModsuitBase.desc }
-ent-ClothingModsuitShoesResuscitator = ботинки  МОДа "Реаниматолог"
+ent-ClothingModsuitShoesResuscitator = ботинки МОДа "Реаниматолог"
     .desc = { ent-ADTClothingModsuitShoesBase.desc }

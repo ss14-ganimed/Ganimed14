@@ -292,7 +292,7 @@
   parent: ADTClothingModsuitShoesMedical
   id: ClothingModsuitShoesResuscitator
   categories: [ HideSpawnMenu ]
-  name: bee lover MOD boots
+  name: resuscitator MOD boots
   suffix: sponsor, HackerEasy, Ganimed
   components:
   - type: Sprite
