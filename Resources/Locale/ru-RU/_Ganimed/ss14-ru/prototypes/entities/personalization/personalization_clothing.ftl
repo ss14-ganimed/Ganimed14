@@ -28,3 +28,15 @@ ent-ClothingHandsModsuitBee = перчатки пчелиного МОДа
     .desc = { ent-ADTClothingHandsModsuitBase.desc }
 ent-ClothingModsuitShoesBee = ботинки пчелиного МОДа
     .desc = { ent-ADTClothingModsuitShoesBase.desc }
+
+ent-ClothingModsuitBackResuscitator = МОД реаниматолога
+    .desc = Передовой экспериментальный МОД для сотрудников медицинской службы, действующих в нестандартных условиях
+    .suffix = { "Спонсорское, HackerEasy, Ganimed" }
+ent-ClothingHeadHelmetModsuitResuscitator = шлем МОДа реаниматолога
+    .desc = { ent-ADTClothingHeadHelmetModsuitBase.desc }
+ent-ClothingOuterModsuitBodyResuscitator = оболочка МОДа реаниматолога
+    .desc = { ent-ADTClothingOuterModsuitBodyBase.desc }
+ent-ClothingHandsModsuitResuscitator = перчатки МОДа реаниматолога
+    .desc = { ent-ADTClothingHandsModsuitBase.desc }
+ent-ClothingModsuitShoesResuscitator = ботинки  МОДа реаниматолога
+    .desc = { ent-ADTClothingModsuitShoesBase.desc }
