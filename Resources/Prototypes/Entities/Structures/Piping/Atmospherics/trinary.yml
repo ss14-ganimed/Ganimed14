@@ -27,7 +27,6 @@
           !type:PipeNode
           nodeGroupID: Pipe
           pipeDirection: South
-    - type: ChildBlockVision # Ganimed-Add
 
 - type: entity
   parent: GasTrinaryBase
