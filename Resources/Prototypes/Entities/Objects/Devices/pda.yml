@@ -110,6 +110,10 @@
         type: InstrumentBoundUserInterface
       enum.HealthAnalyzerUiKey.Key:
         type: HealthAnalyzerBoundUserInterface
+      # Ganimed-Add-Start
+      enum.GasAnalyzerUiKey.Key:
+        type: GasAnalyzerBoundUserInterface
+      # Ganimed-Add-End
   - type: Tag
     tags:
     - DoorBumpOpener
@@ -820,6 +824,18 @@
     accentHColor: "#447987"
   - type: Icon
     state: pda-ce
+  # Ganimed-Add-Start
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - AtmosTekCartridge # Gas analyzer
+    - NanoChatCartridge # ADT-tweak: Наночат
+    - ADTWalletCartridge # ADT-Economy
+    diskSpace: 8 # ADT tweak
+  # Ganimed-Add-End
 
 - type: entity
   parent: BasePDA
@@ -1425,6 +1441,23 @@
   components:
   - type: Pda
     id: ERTEngineerIDCard
+  # Ganimed-Add-Start
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - ADTWalletCartridge
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - AtmosTekCartridge # Gas analyzer
+      - WantedListCartridge
+      - LogProbeCartridge
+      - AstroNavCartridge
+      - NanoChatCartridge # ADT-tweak: Наночат
+      - ADTWalletCartridge # ADT-Economy
+    diskSpace: 11 # Ganimed tweak
+  # Ganimed-Add-End
 
 - type: entity
   parent: ERTLeaderPDA
