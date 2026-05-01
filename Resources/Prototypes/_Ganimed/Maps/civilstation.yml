@@ -38,7 +38,7 @@
             #engineering
             ChiefEngineer: [ 1, 1 ]
             AtmosphericTechnician: [ 2, 2 ]
-            StationEngineer: [ 2, 2 ]
+            StationEngineer: [ 2, 3 ]
             TechnicalAssistant: [ 2, 2 ]
             ADTSeniorEngineer: [ 1, 1 ] # ADT-roles
             #medical
