@@ -53,7 +53,7 @@
             ResearchDirector: [ 1, 1 ]
             Scientist: [ 3, 3 ]
             ResearchAssistant: [ 2, 2 ]
-            ADTRoboticist: [ 2, 2 ] #ADT-Roles
+            ADTRoboticist: [ 1, 2 ] #ADT-Roles
             ADTSeniorResearcher: [ 1, 1 ] # ADT-roles
             #security
             HeadOfSecurity: [ 1, 1 ]
