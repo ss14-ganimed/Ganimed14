@@ -30,13 +30,14 @@
   - ADT_Train
 # Lowpop 20 - 35
   - ADT_Bagel
+  - ENTCivilStation # Ganimed-Tweak
   - ADT_Saltern
   - ADT_Aspid
   - ADT_Cluster
 # Micropop 0 - 20
   - ADT_Reach
   - ADT_Silly
-  - ENTCivilStation # Ganimed-Tweak
+
 
 # ADT Maps Выведенные на переработку
   # - ADT_Gate пока минока не начнёт нормально работать
