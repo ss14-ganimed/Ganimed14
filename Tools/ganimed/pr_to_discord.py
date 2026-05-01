@@ -6,10 +6,10 @@ import requests
 from datetime import datetime
 
 EMOJI_MAP = {
-    "add": "<:new1:1376955864698585248>",
-    "remove": "<:remove1:1376955857438376036>",
-    "tweak": "<:tweak:1376955868028993658>",
-    "fix": "<:fix:1376955860030459985>"
+    "add": "🆕",
+    "remove": "❌",
+    "tweak": "⚒️",
+    "fix": "🐛"
 }
 
 EMOJI_ORDER = ["add", "remove", "tweak", "fix"]
@@ -23,7 +23,7 @@ CHANGELOG_RE = re.compile(
 TIMEOUT = 620  # seconds
 
 
-def smart_capitalize(text):
+def smart_capitalize(text): # currently unused
     text = text.strip()
     parts = re.split(r'([.!?])', text)
     result = []
@@ -67,7 +67,7 @@ def extract_changelog(text):
         line_content = line[1:].strip()
         for key in EMOJI_MAP:
             if line_content.lower().startswith(f"{key}:"):
-                desc = smart_capitalize(line_content[len(key) + 1:].strip())
+                desc = line_content[len(key) + 1:].strip()
                 groups[key].append(f"{EMOJI_MAP[key]} {desc}")
                 break
 

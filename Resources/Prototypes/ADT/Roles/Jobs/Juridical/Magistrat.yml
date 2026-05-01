@@ -52,10 +52,10 @@
 - type: startingGear
   id: MagistratGear
   equipment:
-    eyes: ClothingEyesGlassesCommand
+    # eyes: ClothingEyesGlassesCommand # Ganimed-Loadouts-Remove (Loadout choice)
     id: MagistratPDA
     ears: ClothingHeadsetMagistrat
-    belt: ClothingBeltStorageWaistbag
+    # belt: ClothingBeltStorageWaistbag # Ganimed-Loadouts-Remove (Loadout choice)
     pocket2: RubberStampMagisrat
   storage:
     back:
@@ -71,3 +71,4 @@
   equipment:
     eyes: ClothingEyesGlassesCommand
     ears: ClothingHeadsetMagistrat
+    belt: ClothingBeltStorageWaistbag # Ganimed-Loadouts-Add

@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ ClothingHeadHelmetBase, BaseMajorContraband ]
+  parent: [ ClothingHeadHelmetArmoredBase, BaseMajorContraband ]
   id: ClothingHeadHelmetMercMedic
   name: mercenary medic helmet
   description: The combat helmet is commonly used by mercenaries, is strong, light and smells like gunpowder and the jungle.
@@ -10,7 +10,7 @@
     sprite: _Ganimed/Clothing/Head/Helmets/merc_medic_helmets.rsi
 
 - type: entity
-  parent: ClothingHeadHelmetBase
+  parent: ClothingHeadHelmetArmoredBase
   id: ClothingHeadHelmetPilot
   name: pilot helmet
   description: This helmet keeps the heads of those who are capable of enduring high g-force while navigating through asteroid fields intact.
@@ -30,7 +30,7 @@
     damageCoefficient: 0.9
 
 - type: entity
-  parent: ClothingHeadHelmetBase
+  parent: ClothingHeadHelmetArmoredBase
   id: ClothingHeadHelmetCorpsman
   name: corpsman helmet
   description: An extremely robust helmet of the combat medic. It features a white cross, a vivid symbol of hope for the wounded soldier. Don't expect it to dissuade enemy fire though.
@@ -45,8 +45,35 @@
         Blunt: 0.85
         Slash: 0.9
         Piercing: 0.85
-        Heat: 0.85
+        Heat: 0.9
         Caustic: 0.9
+
+- type: entity
+  parent: ClothingHeadHelmetArmoredBase
+  id: ClothingHeadHelmetPress
+  name: press helmet
+  description: A blue helmet used to distinguish non-combatant "PRESS" members, like if anyone cares.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Helmets/press.rsi
+    layers:
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Helmets/press.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+      - state: equipped-HELMET-unshaded
+        shader: unshaded
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.95
 
 - type: entity
   parent: [ClothingHeadBase, BaseMajorContraband]

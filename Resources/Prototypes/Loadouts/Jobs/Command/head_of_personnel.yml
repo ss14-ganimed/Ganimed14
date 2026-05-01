@@ -6,7 +6,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobHeadOfPersonnel
-      time: 40h #ADT-tweak
+      time: 20h # Ganimed-Tweak
 
 # Professional HoP Time
 - type: loadoutEffectGroup

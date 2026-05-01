@@ -10,6 +10,7 @@
     state: icon
   - type: Item
     size: Small
+    storedRotation: -90 # Ganimed-Add
   - type: Inducer
     availableTransferRates:
     - 500

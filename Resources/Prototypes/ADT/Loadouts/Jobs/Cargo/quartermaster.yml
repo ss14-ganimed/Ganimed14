@@ -36,6 +36,9 @@
   id: ADTClothingHeadsetAltCargo
   equipment:
     ears: ClothingHeadsetAltCargo
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: Commander
 
 # PDA
 

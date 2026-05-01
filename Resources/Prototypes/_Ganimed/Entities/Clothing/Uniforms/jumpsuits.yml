@@ -36,7 +36,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitJumpsuitOfficerDark
+  id: ClothingUniformJumpsuitOfficerDark
   name: officer's dark jumpsuit
   description: Pretty nice formal suit made with elastic materials.
   components:
@@ -84,13 +84,24 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitCentcomOfficialRegular
-  name: dark-green centcom suit
+  name: dark-green Centcom suit
   description: Regular dark-mint uniform, worn by mid-ranking Central Command officials. Respectable, but not at all glamorous.
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/centcom_uni.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/centcom_uni.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitCentcomOfficerAlt
+  name: Centcom officer uniform
+  description: Central Command officer's uniform. There are ranks visible on the shoulder straps.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/alt_centcom_officer.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/alt_centcom_officer.rsi
 
 #- type: entity
 #  parent: ClothingUniformBase
@@ -121,7 +132,7 @@
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitCoronerBlack
   name: black coroner jumpsuit
-  description: Total overhaul vastly different from the usual coroner uniform. Personel freak out when they can't see you from the shadows.
+  description: Total overhaul vastly different from the usual coroner uniform. Personnel freak out when they can't see you from the shadows.
   components:
   - type: Sprite
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/blackcoroner.rsi
@@ -247,6 +258,39 @@
 
 - type: entity
   parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitVault
+  name: vault jumpsuit
+  description: A rugged form-fitting jumpsuit of a vault dweller. How did it get in here?
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/vault.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/vault.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitMechanic
+  name: mechanic's jumpsuit
+  description: An orange jumpsuit with dark blue denim overalls for when you feel the urge to fix and tinker machinery.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/mechanic.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/mechanic.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  id: ClothingUniformJumpsuitCargoAlt
+  name: cargo jumpsuit
+  description: A full cargo jumpsuit with large utilitarian pockets made for logistics workers who seek functionality and tactical look.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/alt_cargo.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/alt_cargo.rsi
+
+- type: entity
+  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitSalvageSpecialistAlt
   name: grimy shaft miner's jumpsuit
   description: Salvager's jumpsuit with a sturdy set of dark overalls. It's very dirty and covered with cosmic dust and ash.
@@ -267,7 +311,64 @@
   - type: Clothing
     sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/alt_rnd.rsi
 
+- type: entity
+  parent: [ClothingUniformBase, BaseFoldable]
+  id: ClothingUniformJumpsuitTwoPieceSuit
+  name: two-piece suit
+  description: A black suit with charcoal pants and a red tie. Very formal.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/two_piece_suit.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: open-icon
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/two_piece_suit.rsi
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: fold-zip-verb
+    foldVerbText: fold-unzip-verb
+  - type: FoldableClothing
+    foldedEquippedPrefix: open
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitDarkLight
+  name: dark and light suit
+  description: Ivory trousers and a black shirt flip the classic style upside-down.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/black_white.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/black_white.rsi
+
 # Old/Original
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitParamedicNT
+  name: paramedic jumpsuit
+  description: A basic white & blue jumpsuit made for Nanotrasen paramedics stationed in combat sectors.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/paramedic_nt.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/paramedic_nt.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitChiefEngineerNT
+  name: chief engineer jumpsuit
+  description: It is often joked that the role of the combat-sector Chief Engineer is where the actual, logistically-minded engineers are promoted to. Good luck.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/ce_nt.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Uniforms/Jumpsuit/ce_nt.rsi
+
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitCentcomOfficialOriginal
@@ -377,7 +478,7 @@
       coefficients:
         Caustic: 0.9
     staminaModifier: 0.9
-        
+
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitERTLeaderOriginal

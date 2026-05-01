@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
   - name: Предложение
-    url: https://discord.com/invite/nCn5F3kNyH
+    url: https://discord.com/channels/1476896243660624046/1476915848923840564
     about: Свои предложения можете оставлять в соответствующем канале Discord.
   - name: Сообщить об уязвимости
-    url: https://discord.com/invite/nCn5F3kNyH
+    url: https://discord.com/channels/1476896243660624046/1476915848923840564
     about: Пожалуйста, сообщайте о серьезных эксплойтах и уязвимостях безопасности mathemat1ka (571697093618565132) в Discord.

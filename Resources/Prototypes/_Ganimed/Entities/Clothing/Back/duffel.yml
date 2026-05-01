@@ -1,0 +1,35 @@
+- type: entity
+  parent: [ClothingBackpackDuffel, BaseCommandContraband]
+  id: ClothingBackpackDuffelHop
+  name: head of personnel's duffel bag
+  description: A large duffel bag for holding extra bureaucratic goods.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Back/Duffels/hop.rsi
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelChiefMedicalOfficer
+  name: chief medical officer's duffel bag
+  description: A large sterile duffel bag for handling the duties of the entire medical department at once.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Back/Duffels/cmo.rsi
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelCargoDark
+  name: dark cargo duffel bag
+  description: A large duffel bag for stealing cargo's precious loot.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Back/Duffels/cargo_dark.rsi
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelRobotics
+  name: robotics backpack
+  description: A spacious duffel bag that will for sure endure the rise of the machines.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Back/Duffels/robotics.rsi
