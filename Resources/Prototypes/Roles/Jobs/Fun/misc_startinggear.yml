@@ -163,8 +163,10 @@
     # Ganimed-Add-Start
     - Omnitool
     - DoorRemoteAll
+    - AnomalyScanner
     - HandTeleporterAdmemeShadowAnomaly
     - ImplanterAdmeme
+    - ClothingEyesHudMultiversal
     - RubberStampCentcom
     - RubberStampApproved
     - RubberStampDenied
