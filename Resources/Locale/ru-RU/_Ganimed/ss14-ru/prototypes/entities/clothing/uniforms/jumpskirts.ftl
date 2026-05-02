@@ -19,8 +19,14 @@ ent-ClothingUniformJumpskirtBrigmedicBlack = тёмная юбка-комбин�
 ent-ClothingUniformJumpskirtDetectiveGrayAlt = серая юбка-костюм детектива
     .desc = Серая юбка с рубашкой, пахнет тайной!
 
+ent-ClothingUniformJumpskirtCentcomOfficialRegular = тёмно-зелёный костюм Центком
+    .desc = Обычная тёмно-мятная униформа, носимая чинами ЦК среднего ранга. Респектабельно, но вовсе не роскошно.
+
 ent-ClothingUniformJumpskirtMaid = юбка-костюм горничной
     .desc = Элегантное платье горничной. В нем вы будете чувствовать себя комфортно, в безопасности и чистоте.
+
+ent-ClothingUniformJumpskirtTwoPieceSuit = деловой костюм с юбкой
+    .desc = Весьма строгий чёрный костюм с юбкой угольного цвета и красным галстуком.
 
 # Old/Original
 ent-ClothingUniformJumpskirtHoSOriginal = яркая юбка-комбинезон главы службы безопасности

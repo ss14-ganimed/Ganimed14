@@ -28,16 +28,16 @@
   equipment:
     id: SeniorEngineerPDA
     ears: ClothingHeadsetEngineering
-    pocket1: PowerDrill
+    # pocket1: PowerDrill # Ganimed-Loadouts-Remove (Loadout choice)
 
 - type: chameleonOutfit
   id: ADTSeniorEngineerChameleonOutfit
   job: ADTSeniorEngineer
-  hasMindShield: true
+  hasMindShield: false # Ganimed-Tweak
   equipment:
     head: ClothingHeadHatBeretEngineering
     mask: ClothingMaskBreath
     neck: ClothingNeckScarfStripedOrange
-    outerClothing: ClothingOuterWinterEngi
+    outerClothing: ClothingOuterWinterSeniorEngineer # Ganimed-Edit (ClothingOuterWinterEngi)
     gloves: ClothingHandsGlovesColorYellow
     shoes: ClothingShoesBootsMag

@@ -420,8 +420,8 @@ entity-effect-guidebook-movespeed-modifier =
 
 entity-effect-guidebook-reset-narcolepsy =
     { $chance ->
-        [1] Времеенно останавливает
-        *[other] времеенно останавливает
+        [1] Временно останавливает
+        *[other] временно останавливает
     } нарколесию
 
 entity-effect-guidebook-wash-cream-pie-reaction =

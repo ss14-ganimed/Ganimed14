@@ -1,5 +1,5 @@
 
-#Чипсеки
+# Чипсеки
 
 ent-ADTFoodSnackChipsOnionAndSourcream = чипсы со вкусом зелёного лука и сметана
     .desc = Золотая классика.
@@ -13,7 +13,7 @@ ent-ADTFoodSnackChipsSpace = космомические Чипсы
 ent-ADTFoodSnackChipsSpicy = чипсы ФлеймиХат
     .desc = Эти чипсы очень хороши, если вы хотите превратить свой желудок в Адское пекло. Тем, у кого проблемы с желудком, лучше их не есть...
 
-#Сушеное мясо
+# Сушеное мясо
 
 ent-ADTFoodSnackDriedBeef = вяленая говядина
     .desc = Толстые куски вяленой говядины. Очень долго хранится, а в мясе много белка, хороший вещь для похода
@@ -27,7 +27,7 @@ ent-ADTFoodSnackDriedHorse = сушеная конина
 ent-ADTFoodSnackDriedPig = вяленая свинина
     .desc = Впринципе хорошая закуска.
 
-#Мусор
+# Мусор
 
 ent-ADTFoodPacketChipsOnionAndSourcreamTrash = пустая упаковка от чипсов со вкусом зелёного лука и сметана
     .desc = Мусор
@@ -44,7 +44,7 @@ ent-ADTFoodPacketSpicyTrash = пустая упаковка от чипсов Ф
 ent-ADTFoodPacketBeefTrash = пустая упаковка от вяленой говядины
     .desc = Мусор
 
-ent-ADTFoodPacketChickenTrash = пустая упаковка от сушеного куриного мяся
+ent-ADTFoodPacketChickenTrash = пустая упаковка от сушеного куриного мяса
     .desc = Мусор
 
 ent-ADTFoodPacketHorseTrash = пустая упаковка от сушеной конины

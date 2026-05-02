@@ -19,3 +19,49 @@
     sprite: _Ganimed/Clothing/OuterClothing/Armor/captain_carapace_white.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/OuterClothing/Armor/captain_carapace_white.rsi
+
+- type: entity # TODO: add the ability to install different anomaly cores that give it differect functionality
+  parent: [BaseGrandTheftContraband, ClothingOuterArmorBase]
+  id: ClothingOuterArmorReactive
+  name: reactive armor
+  suffix: DO NOT MAP
+  description: An experimental suit of armor, awaiting installation of an anomaly core.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/OuterClothing/Armor/reactive.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/OuterClothing/Armor/reactive.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.8
+        Radiation: 0.8
+        Caustic: 0.8
+    staminaModifier: 0.8
+  - type: ItemSlots
+    slots:
+      core_slot:
+        name: anomaly-gorilla-core-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        whitelist:
+          components:
+          - AnomalyCore
+  - type: ContainerContainer
+    containers:
+      core_slot: !type:ContainerSlot
+  - type: Appearance
+  # - type: Tag
+  #   tags:
+  #   - WhitelistChameleon
+  #   - HighRiskItem
+  # - type: StealTarget
+  #   stealGroup: ReactiveArmor
+  # - type: ClothingGrant
+  #   component:
+  #   - type: DamageTeleport

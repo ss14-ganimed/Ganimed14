@@ -2,7 +2,7 @@
   id: USSPGearSoldier
   equipment:
     jumpsuit: ADTParatrooperUSSPUniform
-    back: ClothingMilitaryBackpack
+    back: ADTClothingBackpackOR80L
     shoes: ClothingShoesBootsCombatFilled
     mask: ADTClothingMaskGasUSSP
     head: ADTClothingHeadHelmetUSSPSfera

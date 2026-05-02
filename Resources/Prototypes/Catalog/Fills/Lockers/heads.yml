@@ -204,6 +204,7 @@
     # ADT-Tweak-Start
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
+    - id: ADTHyperNobCore # Ganimed-Readd
     - id: ClothingNeckCloakCe
     - id: ADTClothingMaskGasCE
     - id: ADTUniversalPipeDispenserCircuitboard
@@ -291,7 +292,7 @@
     - id: ADTBookSRPmed
     # - id: ADTBookPCDcmd # Ganimed-Remove
     - id: ADTtelescopicBaton
-    - id: OpporozidoneBeakerSmall
+    # - id: OpporozidoneBeakerSmall # Ganimed-Remove
     - id: ADTClothingEyesGlassesMedChem
     # ADT tweak End
     # # ADT-Economy-Start
