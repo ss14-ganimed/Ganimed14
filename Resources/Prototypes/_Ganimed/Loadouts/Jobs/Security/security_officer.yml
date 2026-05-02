@@ -1,3 +1,60 @@
+# Timers
+- type: loadoutEffectGroup
+  id: SecurityOfficerSilverBadgeTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 360000 # 100 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSecurityOfficer
+      time: 72000 # 20 hrs
+
+- type: loadoutEffectGroup
+  id: SecurityOfficerGoldBadgeTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 1080000 # 300 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSecurityOfficer
+      time: 216000 # 60 hrs
+
+- type: loadoutEffectGroup
+  id: SeniorOfficerSilverBadgeTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 360000 # 100 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobADTSeniorOfficer
+      time: 72000 # 20 hrs
+
+- type: loadoutEffectGroup
+  id: SeniorOfficerGoldBadgeTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 1080000 # 300 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobADTSeniorOfficer
+      time: 216000 # 60 hrs
+
 # Head
 - type: loadout
   id: SecurityCap
@@ -85,6 +142,48 @@
   id: SecurityBodyCamera
   equipment:
     neck: ADTClothingNeckBodyCamera
+
+- type: loadout
+  id: SecurityOfficerBronzeBadge
+  equipment:
+    neck: ClothingNeckSecBadgeOfficerBronze
+
+- type: loadout
+  id: SecurityOfficerSilverBadge
+  equipment:
+    neck: ClothingNeckSecBadgeOfficerSilver
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SecurityOfficerSilverBadgeTimer
+
+- type: loadout
+  id: SecurityOfficerGoldBadge
+  equipment:
+    neck: ClothingNeckSecBadgeOfficerGold
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SecurityOfficerGoldBadgeTimer
+
+- type: loadout
+  id: SeniorOfficerBronzeBadge
+  equipment:
+    neck: ClothingNeckSecBadgeSeniorOfficerBronze
+
+- type: loadout
+  id: SeniorOfficerSilverBadge
+  equipment:
+    neck: ClothingNeckSecBadgeSeniorOfficerSilver
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficerSilverBadgeTimer
+
+- type: loadout
+  id: SeniorOfficerGoldBadge
+  equipment:
+    neck: ClothingNeckSecBadgeSeniorOfficerGold
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficerGoldBadgeTimer
 
 # Glasses
 - type: loadout

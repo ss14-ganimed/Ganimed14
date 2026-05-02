@@ -1,3 +1,32 @@
+# Timers
+- type: loadoutEffectGroup
+  id: HeadofSecuritySilverBadgeTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 360000 # 100 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobHeadOfSecurity
+      time: 72000 # 20 hrs
+
+- type: loadoutEffectGroup
+  id: HeadofSecurityGoldBadgeTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 1080000 # 300 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobHeadOfSecurity
+      time: 216000 # 60 hrs
+
 # Head
 - type: loadout
   id: HeadofSecurityLeatherCap
@@ -88,6 +117,27 @@
   id: DarkRedScarf
   equipment:
     neck: ClothingNeckScarfStripedDarkRed
+
+- type: loadout
+  id: HeadofSecurityBronzeBadge
+  equipment:
+    neck: ClothingNeckSecBadgeHosBronze
+
+- type: loadout
+  id: HeadofSecuritySilverBadge
+  equipment:
+    neck: ClothingNeckSecBadgeHosSilver
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: HeadofSecuritySilverBadgeTimer
+
+- type: loadout
+  id: HeadofSecurityGoldBadge
+  equipment:
+    neck: ClothingNeckSecBadgeHosGold
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: HeadofSecurityGoldBadgeTimer
 
 # Glasses
 - type: loadout

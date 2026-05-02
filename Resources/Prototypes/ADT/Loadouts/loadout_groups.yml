@@ -622,37 +622,38 @@
 - type: loadoutGroup
   id: WardenNeckADT
   name: loadout-warden-neck-adt
-  minLimit: 0
+  minLimit: 1 # Ganimed-Loadouts-Tweak (0 to 1, mandatory badges)
   loadouts:
   # - ADTWardenNeck
+  - WardenBronzeBadge # Ganimed-Loadouts-Edit (ADTNeckSecBadgeBronze)
+  - WardenSilverBadge # Ganimed-Loadouts-Edit (ADTNeckSecBadgeSilver)
+  - WardenGoldBadge # Ganimed-Loadouts-Edit (ADTNeckSecBadgeGold)
   - NeckBinoculars # Ganimed-Loadouts-Add
-  - ADTNeckSecBadgeBronze
-  - ADTNeckSecBadgeSilver
-  - ADTNeckSecBadgeGold
 
 # SECURITY OFFICER
 
 - type: loadoutGroup
   id: SecurityOfficerNeckADT
   name: loadout-security-officer-neck-adt
-  minLimit: 0
+  minLimit: 1 # Ganimed-Loadouts-Tweak (0 to 1, mandatory badges)
   loadouts:
   # - ADTSecurityOfficerNeck
-  - ADTNeckSecBadgeBronze
-  - ADTNeckSecBadgeSilver
-  - ADTNeckSecBadgeGold
+  - SecurityOfficerBronzeBadge # Ganimed-Loadouts-Edit (ADTNeckSecBadgeBronze)
+  - SecurityOfficerSilverBadge # Ganimed-Loadouts-Edit (ADTNeckSecBadgeSilver)
+  - SecurityOfficerGoldBadge # Ganimed-Loadouts-Edit (ADTNeckSecBadgeGold)
+  - SecurityBodyCamera # Ganimed-Loadouts-Add
 
 # CADET
 
 - type: loadoutGroup
   id: SecurityCadetNeckADT
   name: loadout-security-cadet-neck-adt
-  minLimit: 0
+  minLimit: 1 # Ganimed-Loadouts-Tweak (0 to 1, mandatory badges)
   loadouts:
   # - ADTSecurityCadetNeck
-  - ADTNeckSecBadgeBronze
-  - ADTNeckSecBadgeSilver
-  - ADTNeckSecBadgeGold
+  - CadetBronzeBadge # Ganimed-Loadouts-Edit (ADTNeckSecBadgeBronze)
+  - CadetSilverBadge # Ganimed-Loadouts-Edit (ADTNeckSecBadgeSilver)
+  - CadetGoldBadge # Ganimed-Loadouts-Edit (ADTNeckSecBadgeGold)
 
 #Плащ, берет и маска атмосианина
 
@@ -741,13 +742,13 @@
 - type: loadoutGroup
   id: ADTBrigmedicNeck
   name: loadout-brigmedic-neck-adt
-  minLimit: 0
+  minLimit: 1 # Ganimed-Loadouts-Tweak (0 to 1, mandatory badges)
   maxLimit: 1
   loadouts:
   # - ADTNeckSecBadge
-  - ADTNeckSecBadgeBronze
-  - ADTNeckSecBadgeSilver
-  - ADTNeckSecBadgeGold
+  - BrigmedicBronzeBadge # Ganimed-Loadouts-Edit (ADTNeckSecBadgeBronze)
+  - BrigmedicSilverBadge # Ganimed-Loadouts-Edit (ADTNeckSecBadgeSilver)
+  - BrigmedicGoldBadge # Ganimed-Loadouts-Edit (ADTNeckSecBadgeGold)
   - BrigmedicBedsheet # Ganimed-Loadouts-Add
 
   #back
