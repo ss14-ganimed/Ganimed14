@@ -832,9 +832,10 @@
     - NanoTaskCartridge
     - NewsReaderCartridge
     - AtmosTekCartridge # Gas analyzer
+    - NetProbeCartridge
     - NanoChatCartridge # ADT-tweak: Наночат
     - ADTWalletCartridge # ADT-Economy
-    diskSpace: 8 # ADT tweak
+    diskSpace: 9 # Ganimed-Tweak (8)
   # Ganimed-Add-End
 
 - type: entity
@@ -1281,6 +1282,18 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-atmos
+  # Ganimed-Add-Start
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - AtmosTekCartridge # Gas analyzer
+    - NanoChatCartridge # ADT-tweak: Наночат
+    - ADTWalletCartridge # ADT-Economy
+    diskSpace: 8 # ADT tweak
+  # Ganimed-Add-End
 
 - type: entity
   parent: BasePDA
@@ -1701,14 +1714,24 @@
   components:
   - type: Pda
     id: SeniorEngineerIDCard
-    # Ganimed-Add-Start
+  # Ganimed-Add-Start
     penSlot:
       startingItem: PenEngineering
       priority: -1
       whitelist:
         tags:
         - Write
-    # Ganimed-Add-End
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - AtmosTekCartridge # Gas analyzer
+    - NanoChatCartridge # ADT-tweak: Наночат
+    - ADTWalletCartridge # ADT-Economy
+    diskSpace: 8 # ADT tweak
+  # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
