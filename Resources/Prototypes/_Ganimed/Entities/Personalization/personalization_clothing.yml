@@ -220,7 +220,7 @@
 
 # HackerEasy
 - type: entity
-  parent: ADTClothingModsuitBackMedical
+  parent: [ADTClothingModsuitBackMedical, BaseMedicalContraband]
   id: ClothingModsuitBackResuscitator
   name: resuscitator MOD control unit
   description: Reanimate it!
@@ -283,13 +283,22 @@
       path: /Audio/Items/flashlight_off.ogg
   - type: ItemToggleActiveSound
     activeSound:
-      path: /Audio/Effects/Vehicle/policesiren.ogg
+      path: /Audio/Effects/Vehicle/ambulancesiren.ogg
       params:
         volume: -4
   - type: UseDelay
     delay: 1.0
   - type: ToggleClothing
-    action: ActionToggleBrigmediccSiren
+    action: ActionToggleParamedicSiren
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 2
+    energy: 2
+    color: blue
+    mask: /Textures/Effects/LightMasks/double_cone.png
+  - type: RotatingLight
+    speed: 360
 
 - type: entity
   parent: ADTClothingHandsModsuitMedical
