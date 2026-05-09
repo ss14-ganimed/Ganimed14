@@ -2,15 +2,15 @@ meta:
   format: 7
   category: Grid
   engineVersion: 268.0.0
-  forkId: ""
-  forkVersion: ""
-  time: 04/18/2026 13:11:35
-  entityCount: 86
-maps:
-- 64
+  forkId: SS14_DEV
+  forkVersion: 4d1cdfa089a58a4939fe03914e2fcdd911465e3a
+  time: 02/14/2026 15:52:44
+  entityCount: 85
+maps: []
 grids:
 - 1
-orphans: []
+orphans:
+- 1
 nullspace: []
 tilemap:
   4: Space
@@ -28,7 +28,7 @@ entities:
       name: grid
     - type: Transform
       pos: 134.73788,22.666412
-      parent: 64
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -74,16 +74,6 @@ entities:
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: ImplicitRoof
-  - uid: 64
-    components:
-    - type: MetaData
-      name: Map Entity
-    - type: Transform
-    - type: Map
-      mapPaused: True
-    - type: GridTree
-    - type: Broadphase
-    - type: OccluderTree
 - proto: ADTBananahilator
   entities:
   - uid: 2
@@ -442,12 +432,12 @@ entities:
       parent: 1
 - proto: SpawnMobSpiderSalvage
   entities:
-  - uid: 85
+  - uid: 64
     components:
     - type: Transform
       pos: 0.5,-1.5
       parent: 1
-  - uid: 86
+  - uid: 85
     components:
     - type: Transform
       pos: 1.5,1.5
