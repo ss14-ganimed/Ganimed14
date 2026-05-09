@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "license": "CC-BY-NC-SA-4.0",
-  "copyright": "calisto, erhard, ave, graff, kiss_1, kiss_2, mensk, mira, morgan, qm, bex, lazarus_1, lazarus_2 sprites by Effin (Discord: thedusteffin); metaku, hart, and reesa made by Bezdnaa (Discord: bezdna8416), inhand and equipped-HELMET derivatives by HyperB1 (GitHub). All sprites are made for Ganimed/Enterprise",
+  "license": "CC-BY-SA-4.0",
+  "copyright": "calisto, erhard, ave, graff, kiss_1, kiss_2, mensk, mira, morgan, qm, bex, lazarus_1, lazarus_2 states made by Effin (Discord: thedusteffin); andrew state made by SilverBear (Discord: zamiatis) based on sprites made by Effin; ocion, suren_1, suren_2 states made by Sephira (Discord: s3ph1ra); metaku, hart, reesa states made by Bezdnaa (Discord: bezdna8416), inhand and equipped-HELMET derivatives by HyperB1 (GitHub). All sprites are made for Ganimed/Enterprise server",
   "size": {
     "x": 32,
     "y": 32
