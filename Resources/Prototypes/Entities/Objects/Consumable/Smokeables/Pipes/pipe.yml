@@ -37,9 +37,9 @@
         tags:
           - Smokable
       insertSound:
-        path: /Audio/Weapons/Guns/Empty/empty.ogg
+        path: /Audio/_Ganimed/Weapons/Guns/Empty/empty.ogg # Ganimed-Edit
       ejectSound:
-        path: /Audio/Weapons/Guns/Empty/empty.ogg
+        path: /Audio/_Ganimed/Weapons/Guns/Empty/empty.ogg # Ganimed-Edit
   # ADT Tweak Start
   - type: StaticPrice
     price: 100
@@ -64,9 +64,9 @@
         tags:
           - Smokable
       insertSound:
-        path: /Audio/Weapons/Guns/Empty/empty.ogg
+        path: /Audio/_Ganimed/Weapons/Guns/Empty/empty.ogg # Ganimed-Edit
       ejectSound:
-        path: /Audio/Weapons/Guns/Empty/empty.ogg
+        path: /Audio/_Ganimed/Weapons/Guns/Empty/empty.ogg # Ganimed-Edit
 
 - type: entity
   id: SmokingPipeFilledCannabisRainbow
@@ -87,6 +87,6 @@
         tags:
           - Smokable
       insertSound:
-        path: /Audio/Weapons/Guns/Empty/empty.ogg
+        path: /Audio/_Ganimed/Weapons/Guns/Empty/empty.ogg # Ganimed-Edit
       ejectSound:
-        path: /Audio/Weapons/Guns/Empty/empty.ogg
+        path: /Audio/_Ganimed/Weapons/Guns/Empty/empty.ogg # Ganimed-Edit

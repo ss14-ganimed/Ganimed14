@@ -230,9 +230,9 @@
 - type: soundCollection
   id: FootstepBorg
   files:
-  - /Audio/ADT/Effects/Footsteps/borgwalk1.ogg #ADT borgs
-  - /Audio/ADT/Effects/Footsteps/borgwalk2.ogg #ADT borgs
-  - /Audio/ADT/Effects/Footsteps/borgwalk3.ogg #ADT borgs
+  - /Audio/Effects/Footsteps/borgwalk1.ogg # Ganimed-Edit (ADT -> vanilla sound)
+  # - /Audio/ADT/Effects/Footsteps/borgwalk2.ogg #ADT borgs # Ganimed-Remove
+  # - /Audio/ADT/Effects/Footsteps/borgwalk3.ogg #ADT borgs # Ganimed-Remove
 
 - type: soundCollection
   id: FootstepXenoborg

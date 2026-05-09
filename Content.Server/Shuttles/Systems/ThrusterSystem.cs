@@ -326,7 +326,7 @@ public sealed class ThrusterSystem : EntitySystem
             _light.SetEnabled(uid, true, pointLightComponent);
         }
 
-        _ambient.SetAmbience(uid, true);
+        // _ambient.SetAmbience(uid, true); // Ganimed-Remove (Enable ambience only with thrust)
         RefreshCenter(uid, shuttleComponent);
     }
 
@@ -414,7 +414,7 @@ public sealed class ThrusterSystem : EntitySystem
             _light.SetEnabled(uid, false, pointLightComponent);
         }
 
-        _ambient.SetAmbience(uid, false);
+        // _ambient.SetAmbience(uid, false); // Ganimed-Remove (Enable ambience only with thrust)
 
         if (TryComp(uid, out PhysicsComponent? physicsComponent))
         {
@@ -522,6 +522,7 @@ public sealed class ThrusterSystem : EntitySystem
             comp.Firing = true;
             appearanceQuery.TryGetComponent(uid, out var appearance);
             _appearance.SetData(uid, ThrusterVisualState.Thrusting, true, appearance);
+            _ambient.SetAmbience(uid, true); // Ganimed-Add
         }
     }
 
@@ -547,6 +548,7 @@ public sealed class ThrusterSystem : EntitySystem
             appearanceQuery.TryGetComponent(uid, out var appearance);
             comp.Firing = false;
             _appearance.SetData(uid, ThrusterVisualState.Thrusting, false, appearance);
+            _ambient.SetAmbience(uid, false); // Ganimed-Add
         }
     }
 
@@ -575,6 +577,7 @@ public sealed class ThrusterSystem : EntitySystem
                 appearanceQuery.TryGetComponent(uid, out var appearance);
                 comp.Firing = true;
                 _appearance.SetData(uid, ThrusterVisualState.Thrusting, true, appearance);
+                _ambient.SetAmbience(uid, true); // Ganimed-Add
             }
         }
         else
@@ -587,6 +590,7 @@ public sealed class ThrusterSystem : EntitySystem
                 appearanceQuery.TryGetComponent(uid, out var appearance);
                 comp.Firing = false;
                 _appearance.SetData(uid, ThrusterVisualState.Thrusting, false, appearance);
+                _ambient.SetAmbience(uid, false); // Ganimed-Add
             }
         }
     }
