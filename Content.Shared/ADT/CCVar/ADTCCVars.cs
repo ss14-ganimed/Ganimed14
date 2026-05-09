@@ -266,7 +266,7 @@ public sealed class ADTCCVars
     /// Кол-во предыдущих карт, которые будут исключены из голосования.
     /// </summary>
     public static readonly CVarDef<int> MapVoteRecentBanDepth =
-        CVarDef.Create("game.map_vote_recent_ban_depth", 3, CVar.SERVER | CVar.ARCHIVE);
+        CVarDef.Create("game.map_vote_recent_ban_depth", 1, CVar.SERVER | CVar.ARCHIVE); // Ganimed-Tweak (3 -> 1)
 
 
     public static readonly CVarDef<float> BookPrinterUploadCooldown =
