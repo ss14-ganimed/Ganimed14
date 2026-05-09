@@ -49,3 +49,14 @@
     tier: 3
   - !type:JobRestrictedLoadoutEffect
     whitelistJobs: [ Quartermaster, SalvageSpecialist ]
+
+# HackerEasy
+- type: loadout
+  id: SponsorLoadoutHackerEasyResuscitatorModsuit
+  inhand:
+  - ClothingModsuitBackResuscitator
+  effects:
+  - !type:SponsorLoadoutEffect
+    tier: 3
+  - !type:JobRestrictedLoadoutEffect
+    whitelistJobs: [ Paramedic ]

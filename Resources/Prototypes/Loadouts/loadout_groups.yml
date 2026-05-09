@@ -1676,8 +1676,13 @@
 - type: loadoutGroup
   id: HeadofSecurityNeck
   name: loadout-group-head-of-security-neck
-  minLimit: 0
+  minLimit: 1 # Ganimed-Loadouts-Tweak (0 to 1, mandatory badges)
   loadouts:
+  # Ganimed-Loadouts-Add-Start
+  - HeadofSecurityBronzeBadge
+  - HeadofSecuritySilverBadge
+  - HeadofSecurityGoldBadge
+  # Ganimed-Loadouts-Add-End
   - HeadofSecurityCloak
   - HeadofSecurityCloakOriginal # Ganimed-Loadouts-Add
   - HeadofSecurityCloakAlt # Ganimed-Loadouts-Add
@@ -1690,10 +1695,12 @@
   # Ganimed-Loadouts-Add-End
   # ADT-Loadout-Start
   - HeadOfSecurityWhistle
-  # - HeadofSecurityMantleShoulder # Ganimed-Loadouts-Remove (duplicate)
-  - ADTNeckSecBadgeBronze
-  - ADTNeckSecBadgeSilver
-  - ADTNeckSecBadgeGold
+  # Ganimed-Loadouts-Remove-Start
+  # - HeadofSecurityMantleShoulder (duplicate)
+  # - ADTNeckSecBadgeBronze (Replaced with job-specific variants, moved to the top)
+  # - ADTNeckSecBadgeSilver
+  # - ADTNeckSecBadgeGold
+  # Ganimed-Loadouts-Remove-End
   # - HeadofSecurityShoulderMantle # Corvax-Loadouts
   # ADT-Loadout-End
 
@@ -1871,15 +1878,22 @@
 - type: loadoutGroup
   id: DetectiveNeck
   name: loadout-group-detective-neck
-  minLimit: 0
+  minLimit: 1 # Ganimed-Loadouts-Tweak (0 to 1, mandatory badges)
   loadouts:
+  # Ganimed-Loadouts-Add-Start
+  - DetectiveBronzeBadge
+  - DetectiveSilverBadge
+  - DetectiveGoldBadge
+  # Ganimed-Loadouts-Add-End
   - DetectiveTie
   - DetectiveHorrificNecktie # Ganimed-Loadouts-Add
   # ADT-Loadout-Start
   - ADTClothingInvestigatorShoulderNeck
-  - ADTNeckSecBadgeBronze
-  - ADTNeckSecBadgeSilver
-  - ADTNeckSecBadgeGold
+  # Ganimed-Loadouts-Remove-Start (Replaced with job-specific variants, moved to the top)
+  # - ADTNeckSecBadgeBronze
+  # - ADTNeckSecBadgeSilver
+  # - ADTNeckSecBadgeGold
+  # Ganimed-Loadouts-Remove-End
   # ADT-Loadout-End
 
 - type: loadoutGroup

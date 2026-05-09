@@ -913,17 +913,17 @@
   # - Bandolier
 
 - type: loadoutGroup
-  id: SecurityNeck
+  id: SecurityNeck # Used by senior officer as of now
   name: loadout-group-security-neck
-  minLimit: 0
+  minLimit: 1 # Equip badges by default
   loadouts:
+  - SeniorOfficerBronzeBadge
+  - SeniorOfficerSilverBadge
+  - SeniorOfficerGoldBadge
   - SecurityWhistle
   - SecurityCloak
   - SecurityMantle
   - SecurityBodyCamera
-  - ADTNeckSecBadgeBronze
-  - ADTNeckSecBadgeSilver
-  - ADTNeckSecBadgeGold
   - SecStar
 
 - type: loadoutGroup
@@ -989,6 +989,17 @@
   # - WeaponRevolverR44
   # - WeaponRevolverNY
   # - WeaponRevolverRebota
+
+- type: loadoutGroup
+  id: PilotNeck
+  name: loadout-group-pilot-neck
+  minLimit: 1 # Equip badges by default
+  loadouts:
+  - PilotBronzeBadge
+  - PilotSilverBadge
+  - PilotGoldBadge
+  - SecurityWhistle
+  - SecurityMantle
 
 - type: loadoutGroup
   id: PilotGloves

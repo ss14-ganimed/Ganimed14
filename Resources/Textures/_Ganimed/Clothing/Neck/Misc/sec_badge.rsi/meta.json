@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Derived from CEV-Eris at commit https://github.com/discordia-space/CEV-Eris/commit/0e21cfeaf95edaac2cfd7860de9a14437ee3df4b by thevandie, resprite by Kill_Me_I_Noobs; Gold, Silver and Bronze by discord:combatbibis and modified by jokiwhat; All states modified by HyperB1 (GitHub)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "gold-icon"
+    },
+    {
+      "name": "silver-icon"
+    },
+    {
+      "name": "bronze-icon"
+    },
+    {
+      "name": "hos-icon"
+    },
+    {
+      "name": "warden-icon"
+    },
+    {
+      "name": "senior-icon"
+    },
+    {
+      "name": "detective-icon"
+    },
+    {
+      "name": "pilot-icon"
+    },
+    {
+      "name": "officer-icon"
+    },
+    {
+      "name": "brigmedic-icon"
+    },
+    {
+      "name": "cadet-icon"
+    },
+    {
+      "name": "gold-equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "silver-equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "bronze-equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "hos-equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "warden-equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "senior-equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "detective-equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "pilot-equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "officer-equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "brigmedic-equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "cadet-equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "gold-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "gold-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "silver-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "silver-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "bronze-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "bronze-inhand-right",
+      "directions": 4
+    }
+  ]
+}

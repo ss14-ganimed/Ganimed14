@@ -8,6 +8,34 @@
       role: JobDetective
       time: 72000 # 20 hrs
 
+- type: loadoutEffectGroup
+  id: DetectiveSilverBadgeTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 360000 # 100 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobDetective
+      time: 72000 # 20 hrs
+
+- type: loadoutEffectGroup
+  id: DetectiveGoldBadgeTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 1080000 # 300 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobDetective
+      time: 216000 # 60 hrs
+
 # Head
 - type: loadout
   id: DetectiveDeerstalker
@@ -26,6 +54,27 @@
   - !type:SponsorLoadoutEffect
   - !type:GroupLoadoutEffect
     proto: ForensicExpert
+
+- type: loadout
+  id: DetectiveBronzeBadge
+  equipment:
+    neck: ClothingNeckSecBadgeDetectiveBronze
+
+- type: loadout
+  id: DetectiveSilverBadge
+  equipment:
+    neck: ClothingNeckSecBadgeDetectiveSilver
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DetectiveSilverBadgeTimer
+
+- type: loadout
+  id: DetectiveGoldBadge
+  equipment:
+    neck: ClothingNeckSecBadgeDetectiveGold
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DetectiveGoldBadgeTimer
 
 # Jumpsuit
 - type: loadout

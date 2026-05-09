@@ -217,3 +217,110 @@
     state: icon
   - type: Clothing
     sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/boots.rsi
+
+# HackerEasy
+- type: entity
+  parent: [ADTClothingModsuitBackMedical, BaseMedicalContraband]
+  id: ClothingModsuitBackResuscitator
+  name: resuscitator MOD control unit
+  description: Reanimate it!
+  suffix: sponsor, HackerEasy, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/back_control_unit.rsi
+    state: icon
+  - type: ModSuit
+    clothingPrototypes:
+      head: ClothingHeadHelmetModsuitResuscitator
+      gloves: ClothingHandsModsuitResuscitator
+      outerClothing: ClothingOuterModsuitBodyResuscitator
+      shoes: ClothingModsuitShoesResuscitator
+      
+- type: entity
+  parent: ADTClothingHeadHelmetModsuitMedical
+  id: ClothingHeadHelmetModsuitResuscitator
+  categories: [ HideSpawnMenu ]
+  name: resuscitator MOD helmet
+  suffix: sponsor, HackerEasy, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/helmet.rsi
+    layers:
+    - state: icon
+    - state: light-overlay
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/helmet.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-head
+  - type: ToggleableVisuals
+    spriteLayer: light
+    clothingVisuals:
+      head:
+      - state: equipped-head-light
+        shader: unshaded
+  - type: Appearance
+  
+- type: entity
+  parent: ADTClothingOuterModsuitBodyMedical
+  id: ClothingOuterModsuitBodyResuscitator
+  categories: [ HideSpawnMenu ]
+  name: resuscitator MOD chestplate
+  suffix: sponsor, HackerEasy, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/body_chestplate.rsi
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/body_chestplate.rsi
+  - type: ItemToggle
+    onUse: false
+    soundActivate:
+      path: /Audio/Items/flashlight_on.ogg
+    soundDeactivate:
+      path: /Audio/Items/flashlight_off.ogg
+  - type: ItemToggleActiveSound
+    activeSound:
+      path: /Audio/Effects/Vehicle/ambulancesiren.ogg
+      params:
+        volume: -4
+  - type: UseDelay
+    delay: 1.0
+  - type: ToggleClothing
+    action: ActionToggleParamedicSiren
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 2
+    energy: 2
+    color: blue
+    mask: /Textures/Effects/LightMasks/double_cone.png
+  - type: RotatingLight
+    speed: 360
+
+- type: entity
+  parent: ADTClothingHandsModsuitMedical
+  id: ClothingHandsModsuitResuscitator
+  categories: [ HideSpawnMenu ]
+  name: resuscitator MOD gauntlets
+  suffix: sponsor, HackerEasy, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/gauntlets.rsi
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/gauntlets.rsi
+
+- type: entity
+  parent: ADTClothingModsuitShoesMedical
+  id: ClothingModsuitShoesResuscitator
+  categories: [ HideSpawnMenu ]
+  name: resuscitator MOD boots
+  suffix: sponsor, HackerEasy, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/boots.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/boots.rsi

@@ -217,6 +217,7 @@
     - id: ADTEngineeringBudgetCard
     - id: ADTEngineeringBudgetPinPaper
     # # ADT-Tweak-End
+    - id: AtmosTekCartridge # Ganimed-Add
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
