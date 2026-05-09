@@ -59,6 +59,7 @@
         - Candle
   - type: AnimatedEmotes
   # ADT-tweak-end
+  - type: ParentCanBlockVision # Ganimed-Add
  
 
 # The progenitor. This should only container the most basic components possible.

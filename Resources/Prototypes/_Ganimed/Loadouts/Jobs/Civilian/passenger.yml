@@ -1,0 +1,54 @@
+# Jumpsuits
+- type: loadout
+  id: RecruitJumpsuit
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: GreyTider
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRecruitNT
+
+- type: loadout
+  id: GreenJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGreen
+
+- type: loadout
+  id: GreenJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorGreen
+
+- type: loadout
+  id: DarkGreenJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorDarkGreen
+
+- type: loadout
+  id: DarkGreenJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorDarkGreen
+
+# Back
+- type: loadout
+  id: LeatherSatchel
+  equipment:
+    back: ClothingBackpackSatchelLeather
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Belt
+- type: loadout
+  id: WaistBag
+  equipment:
+    belt: ClothingBeltStorageWaistbag
+  effects:
+  # - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
+
+- type: loadout
+  id: Clipboard
+  equipment:
+    belt: BoxFolderClipboardThreePapers
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TenOverall

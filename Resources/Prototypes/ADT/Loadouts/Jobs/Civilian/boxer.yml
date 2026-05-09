@@ -51,6 +51,9 @@
   id: ADTClothingUniformJumpsuitGladiator
   equipment:
     jumpsuit: ClothingUniformJumpsuitGladiator
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: MartialArtist
 
 # Head
 
@@ -58,3 +61,6 @@
   id: ADTClothingHeadHatGladiator
   equipment:
     head: ClothingHeadHatGladiator
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: MartialArtist

@@ -6,7 +6,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobLibrarian
-      time: 1h # for being the biggest nerd on the station
+      time: 2h # for being the biggest nerd on the station # Ganimed-Loadouts-Tweak (1 to 2)
 
 - type: loadoutEffectGroup
   id: JensenTimer

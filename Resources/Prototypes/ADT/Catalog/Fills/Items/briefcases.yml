@@ -45,7 +45,8 @@
       - id: ADTMorphineBottle
       - id: ADTDyloveneBiomicineBottle
       - id: ChemistryBottleEpinephrine
-      - id: ADTOmnizineBottle
+      - id: ChemistryBottleOmnizine # Ganimed-Edit (ADTOmnizineBottle)
+      - id: ChemistryBottleOpporozidone # Ganimed-Add
 
 - type: entity
   id: ADTBriefcaseBrownHikingCmoFilled

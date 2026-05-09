@@ -29,6 +29,39 @@
 
 - type: entity
   parent: ClothingNeckBase
+  id: ClothingNeckMantleSecurity
+  name: security mantle
+  description: Honorary mantle of a security service veteran.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Neck/Mantles/security_mantle.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Neck/Mantles/security_mantle.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckMantleQMAlt
+  name: quartermaster's classic mantle
+  description: A snug and comfortable looking shoulder covering garment, it has an air of rebellion and independence. Or annoyance and delusions, your call.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Neck/Mantles/alt_qmmantle.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Neck/Mantles/alt_qmmantle.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckMantleMiner
+  name: miner's mantle
+  description: A tattered piece of fabric designed to protect the wearer from debris. In reality, it mostly just serves as a convenient shroud for the next of kin to identify the body.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Neck/Mantles/mining_mantle.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Neck/Mantles/mining_mantle.rsi
+
+- type: entity
+  parent: ClothingNeckBase
   id: ClothingNeckMantleUnathi
   name: hide mantle
   description: A rather grisly selection of cured hides and skin, sewn together to form a ragged mantle.

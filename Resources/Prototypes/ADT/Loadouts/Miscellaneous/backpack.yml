@@ -2,3 +2,6 @@
   id: ADTClothingBackpackSatchelLeather
   equipment:
     back: ClothingBackpackSatchelLeather
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall

@@ -34,11 +34,17 @@
   id: ADTClothingBackpackBlackLadySatchel
   equipment:
     back: ADTClothingBackpackBlackLadySatchel
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
 
 - type: loadout
   id: ADTClothingBackpackLeatherLadySatchel
   equipment:
     back: ADTClothingBackpackLeatherLadySatchel
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: FiftyOverall
 
 # Jumpsuit
 - type: loadout

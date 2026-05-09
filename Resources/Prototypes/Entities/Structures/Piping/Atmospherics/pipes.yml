@@ -78,6 +78,7 @@
   - type: OverpressurePipeDamage
     limitPressure: 10000
   # ADT-PipePressureDamage-End
+  - type: ChildBlockVision # Ganimed-Add
 
 - type: entity
   abstract: true
@@ -101,6 +102,7 @@
     - type: ContainerContainer
       containers:
         VentCrawlerHolderComponent: !type:Container # ADT tweak end
+    - type: ChildBlockVision # Ganimed-Add
 #Note: The PipeDirection of the PipeNode should be the south-facing version, because the entity starts at an angle of 0 (south)
 
 - type: entity

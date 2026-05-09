@@ -21,4 +21,4 @@
   - ADTMomsimov2
   - ADTMomsimov3
   obeysTo: laws-owner-crew
-  roundstart: true
+  roundstart: false # Ganimed-Tweak

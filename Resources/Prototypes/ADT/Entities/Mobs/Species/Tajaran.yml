@@ -123,6 +123,23 @@
             32:
               sprite: Corvax/Mobs/Species/displacement.rsi
               state: jumpsuit
+        # Ganimed-Add-Start (Sprites-Fix)
+        underweart:
+          sizeMaps:
+            32:
+              sprite: Corvax/Mobs/Species/displacement.rsi
+              state: jumpsuit-female
+        underwearb:
+          sizeMaps:
+            32:
+              sprite: Corvax/Mobs/Species/displacement.rsi
+              state: jumpsuit-female
+        socks:
+          sizeMaps:
+            32:
+              sprite: Corvax/Mobs/Species/displacement.rsi
+              state: shoes
+        # Ganimed-Add-End
       displacements:
         jumpsuit:
           sizeMaps:
@@ -139,6 +156,23 @@
             32:
               sprite: Corvax/Mobs/Species/displacement.rsi
               state: jumpsuit
+        # Ganimed-Add-Start (Sprites-Fix)
+        underweart:
+          sizeMaps:
+            32:
+              sprite: Corvax/Mobs/Species/displacement.rsi
+              state: jumpsuit
+        underwearb:
+          sizeMaps:
+            32:
+              sprite: Corvax/Mobs/Species/displacement.rsi
+              state: jumpsuit
+        socks:
+          sizeMaps:
+            32:
+              sprite: Corvax/Mobs/Species/displacement.rsi
+              state: shoes
+        # Ganimed-Add-End
 
 - type: entity
   save: false
@@ -174,6 +208,23 @@
             32:
               sprite: Corvax/Mobs/Species/displacement.rsi
               state: jumpsuit
+        # Ganimed-Add-Start (Sprites-Fix)
+        underweart:
+          sizeMaps:
+            32:
+              sprite: Corvax/Mobs/Species/displacement.rsi
+              state: jumpsuit-female
+        underwearb:
+          sizeMaps:
+            32:
+              sprite: Corvax/Mobs/Species/displacement.rsi
+              state: jumpsuit-female
+        socks:
+          sizeMaps:
+            32:
+              sprite: Corvax/Mobs/Species/displacement.rsi
+              state: shoes
+        # Ganimed-Add-End
       displacements:
         jumpsuit:
           sizeMaps:
@@ -190,3 +241,20 @@
             32:
               sprite: Corvax/Mobs/Species/displacement.rsi
               state: jumpsuit
+        # Ganimed-Add-Start (Sprites-Fix)
+        underweart:
+          sizeMaps:
+            32:
+              sprite: Corvax/Mobs/Species/displacement.rsi
+              state: jumpsuit
+        underwearb:
+          sizeMaps:
+            32:
+              sprite: Corvax/Mobs/Species/displacement.rsi
+              state: jumpsuit
+        socks:
+          sizeMaps:
+            32:
+              sprite: Corvax/Mobs/Species/displacement.rsi
+              state: shoes
+        # Ganimed-Add-End

@@ -44,7 +44,7 @@ public sealed class BlindableSystem : EntitySystem
     }
 
     [PublicAPI]
-    public void UpdateIsBlind(Entity<BlindableComponent?> blindable)
+    public void UpdateIsBlind(Entity<BlindableComponent?> blindable, bool bypass = false) // Ganimed-Edit: add bypass option
     {
         if (!Resolve(blindable, ref blindable.Comp, false))
             return;
@@ -52,7 +52,7 @@ public sealed class BlindableSystem : EntitySystem
         var old = blindable.Comp.IsBlind;
 
         // Don't bother raising an event if the eye is too damaged.
-        if (blindable.Comp.EyeDamage >= blindable.Comp.MaxDamage)
+        if ((blindable.Comp.EyeDamage >= blindable.Comp.MaxDamage) && !bypass) // Ganimed-Edit: add bypass option
         {
             blindable.Comp.IsBlind = true;
         }

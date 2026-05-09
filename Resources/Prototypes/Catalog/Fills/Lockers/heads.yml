@@ -204,6 +204,7 @@
     # ADT-Tweak-Start
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
+    - id: ADTHyperNobCore # Ganimed-Readd
     - id: ClothingNeckCloakCe
     - id: ADTClothingMaskGasCE
     - id: ADTUniversalPipeDispenserCircuitboard
@@ -216,6 +217,7 @@
     - id: ADTEngineeringBudgetCard
     - id: ADTEngineeringBudgetPinPaper
     # # ADT-Tweak-End
+    - id: AtmosTekCartridge # Ganimed-Add
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -291,7 +293,7 @@
     - id: ADTBookSRPmed
     # - id: ADTBookPCDcmd # Ganimed-Remove
     - id: ADTtelescopicBaton
-    - id: OpporozidoneBeakerSmall
+    # - id: OpporozidoneBeakerSmall # Ganimed-Remove
     - id: ADTClothingEyesGlassesMedChem
     # ADT tweak End
     # # ADT-Economy-Start

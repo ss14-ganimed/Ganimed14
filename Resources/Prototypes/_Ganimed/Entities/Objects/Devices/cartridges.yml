@@ -1,0 +1,17 @@
+﻿- type: entity
+  parent: BasePDACartridge
+  id: AtmosTekCartridge
+  name: AtmosTek cartridge
+  description: A program that reports current gas levels in the environment.
+  components:
+  - type: Sprite
+    state: cart-y
+  - type: Icon
+    sprite: Objects/Devices/cartridge.rsi
+    state: cart-y
+  - type: Cartridge
+    programName: atmos-tek-program-name
+    icon:
+      sprite: Objects/Specific/Atmos/gasanalyzer.rsi
+      state: icon
+  - type: AtmosTekCartridge

@@ -22,4 +22,16 @@ ent-ADTTendrilNightmareSpider = { ent-ADTTendrilBase }
 ent-ADTTendrilShockSpider = { ent-ADTTendrilBase }
     .desc = { ent-ADTTendrilBase.desc }
 
+ent-ADTTendrilBScrab = { ent-ADTTendrilBase }
+    .desc = { ent-ADTTendrilBase.desc }
+
+ent-ADTTendrilBloated = { ent-ADTTendrilBase }
+    .desc = { ent-ADTTendrilBase.desc }
+
+ent-ADTTendrilDeath = { ent-ADTTendrilBase }
+    .desc = { ent-ADTTendrilBase.desc }
+
+ent-ADTTendrilHypertrophied = { ent-ADTTendrilBase }
+    .desc = { ent-ADTTendrilBase.desc }
+
 tendril-destruction-popup = Земля под шипом обваливается!
