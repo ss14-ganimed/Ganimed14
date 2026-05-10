@@ -11,8 +11,8 @@ JobMagistrat = магистрат
 
 job-name-machine = Машина
 
-job-name-senior-physician = ведущий врач
-JobADTSeniorPhysician = ведущий врач
+job-name-senior-physician = заведующий врач
+JobADTSeniorPhysician = заведующий врач
 
 job-name-senior-researcher = старший научный сотрудник
 JobADTSeniorResearcher = старший научный сотрудник
