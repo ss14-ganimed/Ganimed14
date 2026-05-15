@@ -70,3 +70,4 @@
   - type: BloodCough
     postingSayDamage: blood-cough
   - type: TimeDespawnDamage
+  - type: CritHeartbeat # Ganimed-Audio-Add

@@ -316,6 +316,7 @@
     postingSayDamage: blood-cough
   - type: TimeDespawnDamage
   # End-ADT Tweak
+  - type: CritHeartbeat # Ganimed-Audio-Add
 
 - type: entity
   save: false
