@@ -2,23 +2,19 @@
   name: ABZ-84
   parent: [BaseWeaponRifle, ADTBaseMagneticGun]
   id: WeaponRifleABZ
-  description: Bobrovskyi-Zamyatin assault rifle model 2854. State-of-the-art rifle designed in USSP, "balanced" operating system and increased rate of fire. Uses .30 rifle ammo.
+  description: Bobrovskyi-Zamyatin assault rifle model 2584. State-of-the-art rifle designed in USSP, "balanced" operating system and increased rate of fire. Uses .30 rifle ammo.
   components:
   - type: Sprite
     sprite: _Ganimed/Objects/Weapons/Guns/Rifles/abz.rsi
     layers:
-      - state: base
-        map: ["enum.GunVisualLayers.Base"]
-      - state: mag-0
-        map: ["enum.GunVisualLayers.Mag"]
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
     sprite: _Ganimed/Objects/Weapons/Guns/Rifles/abz.rsi
   - type: Gun
     fireRate: 6
-    selectedMode: FullAuto
-    availableModes:
-    - SemiAuto
-    - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/rifle2.ogg
   - type: ChamberMagazineAmmoProvider
@@ -35,6 +31,7 @@
         whitelist:
           tags:
             - MagazineLightRifle
+        whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
         startingItem: CartridgeLightRifle
@@ -42,15 +39,10 @@
         whitelist:
           tags:
             - CartridgeLightRifle
-  - type: ContainerContainer
-    containers:
-      gun_magazine: !type:ContainerSlot
-      gun_chamber: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 1
     zeroVisible: true
-  - type: Appearance
   - type: AttachableHolder
     slots:
       rmc-aslot-underbarrel:
@@ -65,24 +57,17 @@
       rmc-aslot-rail:
         startingAttachable: ADTAttachmentT2Miniscope
         whitelist:
-            tags:
-            - ADTAttachmentMagneticHarness
-            - ADTAttachmentReflexSight
-            - ADTAttachmentT2Miniscope
+          tags:
+          - ADTAttachmentMagneticHarness
+          - ADTAttachmentReflexSight
+          - ADTAttachmentT2Miniscope
       rmc-aslot-barrel:
         whitelist:
-            tags:
-            - ADTAttachmentSuppressor
-            - ADTAttachmentAntiLyingWarrior
+          tags:
+          - ADTAttachmentSuppressor
+          - ADTAttachmentAntiLyingWarrior
   - type: AttachableHolderVisuals
     offsets:
       rmc-aslot-underbarrel: 0.3125, 0.0
       rmc-aslot-rail: -0.0940, -0.0325
       rmc-aslot-barrel: 0.96875, 0.055
-  - type: ItemSizeChange
-  - type: UserInterface
-    interfaces:
-      enum.AttachmentUI.StripKey:
-        type: AttachmentStripBui
-      enum.AttachmentUI.ChooseSlotKey:
-        type: AttachmentChooseSlotBui
