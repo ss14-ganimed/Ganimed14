@@ -1,0 +1,300 @@
+- type: researchExperiment
+  id: ExperimentAmeUnsafeInject
+  group: ADTExperiments
+  name: experiment-order-ame-name
+  description: experiment-order-ame-desc
+  rewardPoints: 10000
+  condition: !type:ThresholdInjectionExperimentCondition
+    safeInjection: 2
+    requirePowered: true
+
+- type: researchExperiment
+  id: ExperimentSpeciesSafeReagent
+  group: ADTExperiments
+  name: experiment-order-species-safe-name
+  description: experiment-order-species-safe-desc
+  rewardPoints: 10000
+  condition: !type:SpeciesReagentExperimentCondition
+    solutionName: chemicals
+    reagents:
+    - Ipecac
+    - Cryptobiolin
+    - Mannitol
+    - Psicodine
+    - Charcoal
+
+- type: researchExperiment
+  id: ExperimentSpeciesUnSafeReagent
+  group: ADTExperiments
+  name: experiment-order-species-unsafe-name
+  description: experiment-order-species-unsafe-desc
+  rewardPoints: 35000
+  condition: !type:SpeciesReagentExperimentCondition
+    solutionName: chemicals
+    reagents:
+    - Desoxyephedrine
+    - Razorium
+    - UnstableMutagen
+    - Plasma
+    - SpaceDrugs
+    - WeldingFuel
+    - HeartbreakerToxin
+    - Impedrezene
+    - Radium
+
+- type: researchExperiment
+  id: ExperimentVomitPuddle
+  group: ADTExperiments
+  name: experiment-order-vomit-name
+  description: experiment-order-vomit-desc
+  rewardPoints: 3500
+  condition: !type:SolutionReagentExperimentCondition
+    solutionName: puddle
+    reagent: Vomit
+
+- type: researchExperiment
+  id: ExperimentFullRipley
+  group: ADTExperiments
+  name: experiment-order-ripley-name
+  description: experiment-order-ripley-desc
+  rewardPoints: 3500
+  condition: !type:FullEquipmentExperimentCondition
+    allowedPrototypes:
+    - MechRipley
+    - ADTMechRipleyMk2
+
+- type: researchExperiment
+  id: ExperimentRandomPet
+  group: ADTExperiments
+  name: experiment-order-pet-name
+  description: experiment-order-pet-desc
+  rewardPoints: 7500
+  condition: !type:PrototypeSelectionExperimentCondition
+    allowedPrototypes:
+    - MobCatException
+    - MobCow
+    - MobSpiderShiva
+    - MobGorillaLargo
+    - MobFoxRenault
+
+- type: researchExperiment
+  id: ExperimentRandomXeno
+  group: ADTExperiments
+  name: experiment-order-xeno-name
+  description: experiment-order-xeno-desc
+  rewardPoints: 30000
+  condition: !type:PrototypeSelectionExperimentCondition
+    allowedPrototypes:
+    - MobXenoDrone
+    - MobGoliath
+    - MobShark
+    - MobCarp
+    - MobBearSpace
+    - MobSpiderSpace
+    - MobWatcherLavaland
+
+- type: researchExperiment
+  id: ExperimentVendingRescan
+  group: ADTExperiments
+  name: experiment-order-vending-name
+  description: experiment-order-vending-desc
+  rewardPoints: 15000
+  condition: !type:DelayedRescanExperimentCondition
+    rescanDelay: 600
+    departmentVendingPrototypes:
+      Engineering:
+      - VendingMachineEngivend
+      Medical:
+      - VendingMachineMedical
+      - VendingMachineWallMedical
+      - VendingMachineChemicals
+      Security:
+      - VendingMachineSec
+      - VendingMachineSecDrobe
+      Service:
+      - VendingMachineDinnerware
+      - VendingMachineChefvend
+
+- type: researchExperiment
+  id: ExperimentMeatDishes
+  group: ADTExperiments
+  name: experiment-order-meat-name
+  description: experiment-order-meat-desc
+  rewardPoints: 7500
+  condition: !type:TagCountExperimentCondition
+    requiredCount: 5
+    requiredTags:
+    - Meat
+    forbiddenTags:
+    - Steak
+
+- type: researchExperiment
+  id: ExperimentMicrowavedId
+  group: ADTExperiments
+  name: experiment-order-id-name
+  description: experiment-order-id-desc
+  rewardPoints: 5000
+  condition: !type:ComponentFlagExperimentCondition
+    requiredComponents:
+    - IdCard
+    - MicrowavedIdCard
+
+- type: researchExperiment
+  id: ExperimentBatonPlasma
+  group: ADTExperiments
+  name: experiment-order-baton-name
+  description: experiment-order-baton-desc
+  rewardPoints: 15000
+  condition: !type:TaggedSolutionReagentExperimentCondition
+    solutionName: battery
+    requiredTags:
+    - Stunbaton
+    reagent: Plasma
+    quantity: 5
+
+- type: researchExperiment
+  id: ExperimentMutatedSeedPacket
+  group: ADTExperiments
+  name: experiment-order-seed-name
+  description: experiment-order-seed-desc
+  rewardPoints: 15000
+  condition: !type:PrototypeSelectionExperimentCondition
+    allowedPrototypes:
+    - BlueTomatoSeeds
+    - BloodTomatoSeeds
+    - KillerTomatoSeeds
+    - RainbowCannabisSeeds
+    - DeathNettleSeeds
+    - HolymelonSeeds
+    - ShashamberSeeds
+
+- type: researchExperiment
+  id: ExperimentRadiationCollectorRads
+  group: ADTExperiments
+  name: experiment-order-radcollector-name
+  description: experiment-order-radcollector-desc
+  rewardPoints: 15000
+  condition: !type:RadiationLevelExperimentCondition
+    requiredComponents:
+    - RadiationCollector
+    minRadiation: 6
+
+- type: researchExperiment
+  id: ExperimentCanisterTargetGas
+  group: ADTExperiments
+  name: experiment-order-canister-gas-name
+  description: experiment-order-canister-gas-desc
+  rewardPoints: 30000
+  condition: !type:GasMolesExperimentCondition
+    requiredComponents:
+    - GasCanister
+    minMoles: 500
+    allowedGases:
+    - Tritium
+    - Frezon
+    - BZ
+
+- type: researchExperiment
+  id: ExperimentCaptainId
+  group: ADTExperiments
+  name: experiment-order-captain-id-name
+  description: experiment-order-captain-id-desc
+  rewardPoints: 7500
+  condition: !type:PrototypeSelectionExperimentCondition
+    allowedPrototypes:
+    - CaptainIDCard
+
+- type: researchExperiment
+  id: ExperimentRandomWeapon
+  group: ADTExperiments
+  name: experiment-order-weapon-name
+  description: experiment-order-weapon-desc
+  rewardPoints: 10000
+  condition: !type:PrototypeSelectionExperimentCondition
+    allowedPrototypes:
+    - WeaponRifleLecter
+    - WeaponShotgunKammerer
+    - WeaponSubMachineGunDrozd
+    - WeaponLaserCarbine
+
+- type: researchExperiment
+  id: ExperimentPaperSignatures
+  group: ADTExperiments
+  name: experiment-order-paper-signatures-name
+  description: experiment-order-paper-signatures-desc
+  rewardPoints: 10000
+  condition: !type:SignatureDiversityExperimentCondition
+    requiredComponents:
+    - Paper
+    minUniqueSignatures: 5
+
+- type: researchExperiment
+  id: ExperimentBibleItem
+  group: ADTExperiments
+  name: experiment-order-bible-name
+  description: experiment-order-bible-desc
+  rewardPoints: 5000
+  condition: !type:ComponentFlagExperimentCondition
+    requiredComponents:
+    - Bible
+
+- type: researchExperiment
+  id: ExperimentFruitDishes
+  group: ADTExperiments
+  name: experiment-order-fruit-dishes-name
+  description: experiment-order-fruit-dishes-desc
+  rewardPoints: 6000
+  condition: !type:TagCountExperimentCondition
+    requiredCount: 3
+    requiredTags:
+    - Fruit
+
+- type: researchExperiment
+  id: ExperimentSoupDishes
+  group: ADTExperiments
+  name: experiment-order-soups-name
+  description: experiment-order-soups-desc
+  rewardPoints: 7000
+  condition: !type:TagCountExperimentCondition
+    requiredCount: 5
+    requiredTags:
+    - Soup
+
+- type: researchExperiment
+  id: ExperimentGravityGeneratorWorking
+  group: ADTExperiments
+  name: experiment-order-gravity-name
+  description: experiment-order-gravity-desc
+  rewardPoints: 7500
+  condition: !type:PoweredStateExperimentCondition
+    requiredComponents:
+    - GravityGenerator
+    requirePowered: true
+    requireGravityActive: true
+
+- type: researchExperiment
+  id: ExperimentCombatMechFullEquipment
+  group: ADTExperiments
+  name: experiment-order-combat-mech-name
+  description: experiment-order-combat-mech-desc
+  rewardPoints: 7500
+  condition: !type:FullEquipmentExperimentCondition
+    allowedPrototypes:
+    - ADTMechPhazon
+    - ADTMechDurand
+    - ADTMechGygax
+
+- type: researchExperiment
+  id: ExperimentRandomMaterial
+  group: ADTExperiments
+  name: experiment-order-material-name
+  description: experiment-order-material-desc
+  rewardPoints: 8000
+  condition: !type:PrototypeSelectionExperimentCondition
+    allowedPrototypes:
+    - MaterialBananium1
+    - SheetBrass1
+    - MaterialSheetMeat1
+    - MaterialBananium
+    - SheetBrass
+    - MaterialSheetMeat

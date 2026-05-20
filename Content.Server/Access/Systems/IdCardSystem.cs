@@ -12,6 +12,7 @@ using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Server.Kitchen.EntitySystems;
+using Content.Server._Ganimed.Research.Components;
 
 namespace Content.Server.Access.Systems;
 
@@ -63,6 +64,8 @@ public sealed class IdCardSystem : SharedIdCardSystem
                 _microwave.Explode((args.Microwave, micro));
                 return;
             }
+
+            EnsureComp<MicrowavedIdCardComponent>(uid);
 
             // If they're unlucky, brick their ID
             if (randomPick <= 0.25f)

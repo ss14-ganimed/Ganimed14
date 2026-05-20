@@ -1,0 +1,27 @@
+- type: entity
+  parent: BaseItem
+  id: ADTExperimentScanner
+  name: experiment scanner
+  description: A research scanner that issues and tracks field experiments.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Xenoarchaeology/node_scanner.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Specific/Xenoarchaeology/node_scanner.rsi
+  - type: ResearchClient
+  - type: ExperimentScanner
+    experimentGroup: ADTExperiments
+    visibleOrders: 7
+  - type: ActivatableUI
+    key: enum.ExperimentScannerUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.ExperimentScannerUiKey.Key:
+        type: ExperimentScannerBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: Tag
+    tags:
+    - DoorBumpOpener
