@@ -3088,7 +3088,7 @@ entities:
             5272: 50,21
         - node:
             zIndex: 100
-            color: '#D4D4D496'
+            color: '#E6E6E6FF'
             id: HalfTileOverlayGreyscale
           decals:
             5512: 47,6
@@ -3103,7 +3103,7 @@ entities:
             5290: 46,9
         - node:
             zIndex: 100
-            color: '#D4D4D496'
+            color: '#E6E6E6FF'
             id: HalfTileOverlayGreyscale180
           decals:
             5557: 46,24
@@ -3150,7 +3150,7 @@ entities:
             1135: 27,31
         - node:
             zIndex: 100
-            color: '#515255FF'
+            color: '#787878FF'
             id: MarkupRectangle1x2
           decals:
             5552: 46,24
@@ -3161,7 +3161,7 @@ entities:
         - node:
             zIndex: 100
             angle: 3.141592653589793 rad
-            color: '#515255FF'
+            color: '#787878FF'
             id: MarkupRectangle1x2
           decals:
             5507: 47,6
