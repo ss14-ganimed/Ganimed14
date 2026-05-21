@@ -565,6 +565,8 @@ public sealed class ExperimentScannerSystem : EntitySystem
                         continue;
                     if (!_proto.TryIndex<SpeciesPrototype>(humanoid.Species, out var speciesProto) || !speciesProto.RoundStart)
                         continue;
+                    if (species.ExcludedSpecies.Contains(humanoid.Species))
+                        continue;
                     presentSpecies.Add(humanoid.Species);
                 }
 

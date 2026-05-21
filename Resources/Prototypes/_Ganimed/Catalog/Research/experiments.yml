@@ -16,6 +16,8 @@
   rewardPoints: 10000
   condition: !type:SpeciesReagentExperimentCondition
     solutionName: chemicals
+    excludedSpecies:
+    - IPC
     reagents:
     - Ipecac
     - Cryptobiolin
@@ -31,6 +33,8 @@
   rewardPoints: 35000
   condition: !type:SpeciesReagentExperimentCondition
     solutionName: chemicals
+    excludedSpecies:
+    - IPC
     reagents:
     - Desoxyephedrine
     - Razorium

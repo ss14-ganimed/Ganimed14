@@ -24,6 +24,9 @@ public sealed partial class SpeciesReagentExperimentCondition : ResearchExperime
 
     [DataField]
     public string SolutionName = "chemicals";
+
+    [DataField]
+    public List<string> ExcludedSpecies = new();
 }
 
 [DataDefinition, Serializable, NetSerializable]
