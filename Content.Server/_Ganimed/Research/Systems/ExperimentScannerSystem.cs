@@ -115,8 +115,12 @@ public sealed class ExperimentScannerSystem : EntitySystem
     {
         if (!TryComp(ent, out ExperimentScannerDatabaseComponent? db))
             return;
-        if (_station.GetOwningStation(ent) is not { } station || !TryComp(station, out ExperimentStationDatabaseComponent? stationDb))
+
+        if (!TryGetStationDb(ent, out _, out var stationDb))
+        {
+            Deny(ent, args.Actor, "experiment-scanner-popup-no-station");
             return;
+        }
 
         if (db.ActiveOrder == null)
         {
