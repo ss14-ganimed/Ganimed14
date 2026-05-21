@@ -56,6 +56,7 @@ public sealed class ExperimentScannerSystem : EntitySystem
         SubscribeLocalEvent<ExperimentScannerComponent, ExperimentAbandonOrderMessage>(OnOrderAbandoned);
         SubscribeLocalEvent<ExperimentScannerComponent, ExperimentSkipOrderMessage>(OnOrderSkipped);
         SubscribeLocalEvent<ExperimentScannerComponent, AfterInteractEvent>(OnAfterInteract);
+        SubscribeLocalEvent<MetaDataComponent, InteractUsingEvent>(OnEntityInteractUsing);
     }
 
     private void OnUiOpened(Entity<ExperimentScannerComponent> ent, ref BoundUIOpenedEvent args)
@@ -168,13 +169,27 @@ public sealed class ExperimentScannerSystem : EntitySystem
         if (args.Target is not { } target || !args.CanReach)
             return;
 
+        TryScanTarget(ent, args.User, target);
+    }
+
+    private void OnEntityInteractUsing(Entity<MetaDataComponent> ent, ref InteractUsingEvent args)
+    {
+        if (!TryComp<ExperimentScannerComponent>(args.Used, out var scannerComp))
+            return;
+
+        var scanner = (args.Used, scannerComp);
+        TryScanTarget(scanner, args.User, args.Target);
+    }
+
+    private void TryScanTarget(Entity<ExperimentScannerComponent> ent, EntityUid user, EntityUid target)
+    {
         if (!TryComp(ent, out ExperimentScannerDatabaseComponent? db) ||
             db.ActiveOrder == null)
             return;
 
         if (!TryGetStationDb(ent, out var station, out var stationDb))
         {
-            Deny(ent, args.User, "experiment-scanner-popup-no-station");
+            Deny(ent, user, "experiment-scanner-popup-no-station");
             return;
         }
 
@@ -185,7 +200,7 @@ public sealed class ExperimentScannerSystem : EntitySystem
         {
             _popup.PopupClient(Loc.GetString("experiment-scanner-progress-popup",
                 ("current", db.ActiveOrder.ProgressCurrent),
-                ("target", db.ActiveOrder.ProgressTarget)), args.User, args.User);
+                ("target", db.ActiveOrder.ProgressTarget)), user, user);
             _audio.PlayPvs(ent.Comp.ProgressSound, ent);
             UpdateUi(ent, stationDb, db);
             return;
@@ -201,10 +216,10 @@ public sealed class ExperimentScannerSystem : EntitySystem
             var disk = Spawn("ResearchDisk", Transform(ent).Coordinates);
             if (TryComp<ResearchDiskComponent>(disk, out var diskComp))
                 diskComp.Points = proto.RewardPoints;
-            _popup.PopupClient(Loc.GetString("experiment-scanner-disk-fallback-popup", ("points", proto.RewardPoints)), args.User, args.User);
+            _popup.PopupClient(Loc.GetString("experiment-scanner-disk-fallback-popup", ("points", proto.RewardPoints)), user, user);
         }
 
-        _popup.PopupClient(Loc.GetString("experiment-scanner-complete-popup"), args.User, args.User);
+        _popup.PopupClient(Loc.GetString("experiment-scanner-complete-popup"), user, user);
         _audio.PlayPvs(ent.Comp.CompleteSound, ent);
         stationDb.UsedOrders.Add(db.ActiveOrder.Prototype);
         db.ActiveOrder = null;
@@ -257,7 +272,17 @@ public sealed class ExperimentScannerSystem : EntitySystem
             case FullEquipmentExperimentCondition ripley:
                 if (!TryComp<MechComponent>(target, out var mech) || !TryComp<MetaDataComponent>(target, out var meta))
                     return false;
-                if ((meta.EntityPrototype == null || !ripley.AllowedPrototypes.Contains(meta.EntityPrototype.ID)))
+                if (meta.EntityPrototype == null)
+                    return false;
+                if (order.SelectedPrototype != null)
+                {
+                    var fullMatchesSelected = meta.EntityPrototype.ID == order.SelectedPrototype;
+                    var fullMatchesAlias = ripley.PrototypeAliases.TryGetValue(order.SelectedPrototype, out var fullAliases) &&
+                                           fullAliases.Contains(meta.EntityPrototype.ID);
+                    if (!fullMatchesSelected && !fullMatchesAlias)
+                        return false;
+                }
+                else if (!ripley.AllowedPrototypes.Contains(meta.EntityPrototype.ID))
                     return false;
                 if (mech.EquipmentContainer.ContainedEntities.Count >= mech.MaxEquipmentAmount)
                 {
@@ -266,10 +291,16 @@ public sealed class ExperimentScannerSystem : EntitySystem
                 }
                 break;
 
-            case PrototypeSelectionExperimentCondition:
+            case PrototypeSelectionExperimentCondition selected:
                 if (order.SelectedPrototype == null || !TryComp<MetaDataComponent>(target, out var mobMeta))
                     return false;
-                if (mobMeta.EntityPrototype?.ID == order.SelectedPrototype)
+                if (mobMeta.EntityPrototype?.ID is not { } scannedProto)
+                    return false;
+
+                var protoMatchesSelected = scannedProto == order.SelectedPrototype;
+                var protoMatchesAlias = selected.PrototypeAliases.TryGetValue(order.SelectedPrototype, out var protoAliases) &&
+                                        protoAliases.Contains(scannedProto);
+                if (protoMatchesSelected || protoMatchesAlias)
                 {
                     order.ProgressCurrent = 1;
                     return true;
@@ -509,6 +540,11 @@ public sealed class ExperimentScannerSystem : EntitySystem
                 if (mob.AllowedPrototypes.Count == 0)
                     return false;
                 order.SelectedPrototype = _random.Pick(mob.AllowedPrototypes);
+                break;
+            case FullEquipmentExperimentCondition full:
+                if (full.AllowedPrototypes.Count == 0)
+                    return false;
+                order.SelectedPrototype = _random.Pick(full.AllowedPrototypes);
                 break;
             case DelayedRescanExperimentCondition vending:
             {

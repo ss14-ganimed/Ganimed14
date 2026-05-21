@@ -9,15 +9,15 @@
         </BoxContainer>
         <TabContainer Name="MainTabs" HorizontalExpand="True" VerticalExpand="True">
             <BoxContainer Orientation="Vertical" Name="AvailableTab" Margin="6">
-                <ScrollContainer HorizontalExpand="True" VerticalExpand="True">
-                    <BoxContainer Name="AvailableContainer" Orientation="Vertical"/>
+                <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
+                    <BoxContainer Name="AvailableContainer" Orientation="Vertical" HorizontalExpand="True"/>
                 </ScrollContainer>
             </BoxContainer>
             <BoxContainer Orientation="Vertical" Name="ActiveTab" Margin="6">
                 <Label Name="NoActiveLabel" Text="{Loc 'experiment-scanner-no-active'}"/>
-                <BoxContainer Name="ActiveContainer" Orientation="Vertical" Visible="False">
+                <BoxContainer Name="ActiveContainer" Orientation="Vertical" Visible="False" HorizontalExpand="True">
                     <RichTextLabel Name="ActiveNameLabel"/>
-                    <RichTextLabel Name="ActiveDescLabel"/>
+                    <RichTextLabel Name="ActiveDescLabel" HorizontalExpand="True"/>
                     <RichTextLabel Name="ActiveProgressLabel"/>
                     <RichTextLabel Name="ActiveRewardLabel"/>
                     <RichTextLabel Name="ActiveTimeLabel"/>

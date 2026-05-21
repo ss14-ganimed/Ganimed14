@@ -1,6 +1,6 @@
 - type: researchExperiment
   id: ExperimentAmeUnsafeInject
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-ame-name
   description: experiment-order-ame-desc
   rewardPoints: 10000
@@ -10,7 +10,7 @@
 
 - type: researchExperiment
   id: ExperimentSpeciesSafeReagent
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-species-safe-name
   description: experiment-order-species-safe-desc
   rewardPoints: 10000
@@ -25,7 +25,7 @@
 
 - type: researchExperiment
   id: ExperimentSpeciesUnSafeReagent
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-species-unsafe-name
   description: experiment-order-species-unsafe-desc
   rewardPoints: 35000
@@ -44,7 +44,7 @@
 
 - type: researchExperiment
   id: ExperimentVomitPuddle
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-vomit-name
   description: experiment-order-vomit-desc
   rewardPoints: 3500
@@ -54,18 +54,22 @@
 
 - type: researchExperiment
   id: ExperimentFullRipley
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-ripley-name
   description: experiment-order-ripley-desc
   rewardPoints: 3500
   condition: !type:FullEquipmentExperimentCondition
     allowedPrototypes:
     - MechRipley
-    - ADTMechRipleyMk2
+    prototypeAliases:
+      MechRipley:
+      - ADTMechRipleyMk2
+      - ADTMechRipleyMk2Battery
+      - MechRipleyBattery
 
 - type: researchExperiment
   id: ExperimentRandomPet
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-pet-name
   description: experiment-order-pet-desc
   rewardPoints: 7500
@@ -79,7 +83,7 @@
 
 - type: researchExperiment
   id: ExperimentRandomXeno
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-xeno-name
   description: experiment-order-xeno-desc
   rewardPoints: 30000
@@ -92,10 +96,31 @@
     - MobBearSpace
     - MobSpiderSpace
     - MobWatcherLavaland
+    prototypeAliases:
+      MobXenoDrone:
+      - ADTMobXenoDroneNoGhost
+      MobShark:
+      - MobSharkSalvage
+      MobCarp:
+      - ADTMobCarpNukie
+      - ADTMobCarpPirate
+      - ADTChurchMobCarp
+      - MobCarpDragon
+      - MobCarpSalvage
+      - MobCarpDungeon
+      - MobCarpMagic
+      - MobCarpRainbow
+      MobBearSpace:
+      - MobBearSpaceSalvage
+      - ADTMobBearSpaceSponge
+      MobSpiderSpace:
+      - MobSpiderSpaceSalvage
+      - ADTMobSpiderSpaceSponge
+
 
 - type: researchExperiment
   id: ExperimentVendingRescan
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-vending-name
   description: experiment-order-vending-desc
   rewardPoints: 15000
@@ -117,7 +142,7 @@
 
 - type: researchExperiment
   id: ExperimentMeatDishes
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-meat-name
   description: experiment-order-meat-desc
   rewardPoints: 7500
@@ -130,7 +155,7 @@
 
 - type: researchExperiment
   id: ExperimentMicrowavedId
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-id-name
   description: experiment-order-id-desc
   rewardPoints: 5000
@@ -141,7 +166,7 @@
 
 - type: researchExperiment
   id: ExperimentBatonPlasma
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-baton-name
   description: experiment-order-baton-desc
   rewardPoints: 15000
@@ -154,7 +179,7 @@
 
 - type: researchExperiment
   id: ExperimentMutatedSeedPacket
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-seed-name
   description: experiment-order-seed-desc
   rewardPoints: 15000
@@ -167,10 +192,20 @@
     - DeathNettleSeeds
     - HolymelonSeeds
     - ShashamberSeeds
+    - ExtradimensionalOrangeSeeds
+    - GoldenAppleSeeds
+    - LemoonSeeds
+    - BloonionSeeds
+    - MimanaSeeds
+    - PyrottonSeeds
+    - DeathNettleSeeds
+    - GlasstleSeeds
+    - ChillySeeds
+    - AmbrosiaDeusSeeds
 
 - type: researchExperiment
   id: ExperimentRadiationCollectorRads
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-radcollector-name
   description: experiment-order-radcollector-desc
   rewardPoints: 15000
@@ -181,7 +216,7 @@
 
 - type: researchExperiment
   id: ExperimentCanisterTargetGas
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-canister-gas-name
   description: experiment-order-canister-gas-desc
   rewardPoints: 30000
@@ -196,7 +231,7 @@
 
 - type: researchExperiment
   id: ExperimentCaptainId
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-captain-id-name
   description: experiment-order-captain-id-desc
   rewardPoints: 7500
@@ -206,7 +241,7 @@
 
 - type: researchExperiment
   id: ExperimentRandomWeapon
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-weapon-name
   description: experiment-order-weapon-desc
   rewardPoints: 10000
@@ -219,7 +254,7 @@
 
 - type: researchExperiment
   id: ExperimentPaperSignatures
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-paper-signatures-name
   description: experiment-order-paper-signatures-desc
   rewardPoints: 10000
@@ -230,7 +265,7 @@
 
 - type: researchExperiment
   id: ExperimentBibleItem
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-bible-name
   description: experiment-order-bible-desc
   rewardPoints: 5000
@@ -240,7 +275,7 @@
 
 - type: researchExperiment
   id: ExperimentFruitDishes
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-fruit-dishes-name
   description: experiment-order-fruit-dishes-desc
   rewardPoints: 6000
@@ -251,7 +286,7 @@
 
 - type: researchExperiment
   id: ExperimentSoupDishes
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-soups-name
   description: experiment-order-soups-desc
   rewardPoints: 7000
@@ -262,7 +297,7 @@
 
 - type: researchExperiment
   id: ExperimentGravityGeneratorWorking
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-gravity-name
   description: experiment-order-gravity-desc
   rewardPoints: 7500
@@ -274,7 +309,7 @@
 
 - type: researchExperiment
   id: ExperimentCombatMechFullEquipment
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-combat-mech-name
   description: experiment-order-combat-mech-desc
   rewardPoints: 7500
@@ -283,10 +318,17 @@
     - ADTMechPhazon
     - ADTMechDurand
     - ADTMechGygax
+    prototypeAliases:
+      ADTMechPhazon:
+      - ADTMechPhazonBattery
+      ADTMechDurand:
+      - ADTMechDurandBattery
+      ADTMechGygax:
+      - ADTMechGygaxBattery
 
 - type: researchExperiment
   id: ExperimentRandomMaterial
-  group: ADTExperiments
+  group: Experiments
   name: experiment-order-material-name
   description: experiment-order-material-desc
   rewardPoints: 8000
@@ -295,6 +337,11 @@
     - MaterialBananium1
     - SheetBrass1
     - MaterialSheetMeat1
-    - MaterialBananium
-    - SheetBrass
-    - MaterialSheetMeat
+    prototypeAliases:
+      MaterialBananium1:
+      - MaterialBananium
+      SheetBrass1:
+      - SheetBrass
+      - SheetBrass10
+      MaterialSheetMeat1:
+      - MaterialSheetMeat

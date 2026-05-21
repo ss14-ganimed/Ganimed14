@@ -52,10 +52,16 @@ public sealed partial class ExperimentScannerMenu : FancyWindow
             var panel = new BoxContainer
             {
                 Orientation = BoxContainer.LayoutOrientation.Vertical,
-                Margin = new Thickness(0, 0, 0, 8)
+                Margin = new Thickness(0, 0, 0, 8),
+                HorizontalExpand = true
             };
-            panel.AddChild(new RobustRichTextLabel { Text = order.Name });
-            var desc = new RobustRichTextLabel();
+            var name = new RobustRichTextLabel();
+            name.SetMessage(FormattedMessage.FromMarkupPermissive($"[bold]{order.Name}[/bold]"));
+            panel.AddChild(name);
+            var desc = new RobustRichTextLabel
+            {
+                HorizontalExpand = true
+            };
             desc.SetMessage(FormattedMessage.FromMarkupPermissive(order.Description));
             panel.AddChild(desc);
             panel.AddChild(new RobustRichTextLabel { Text = Loc.GetString("experiment-scanner-progress", ("current", order.ProgressCurrent), ("target", order.ProgressTarget)) });
@@ -97,7 +103,7 @@ public sealed partial class ExperimentScannerMenu : FancyWindow
 
         NoActiveLabel.Visible = false;
         ActiveContainer.Visible = true;
-        ActiveNameLabel.Text = state.Active.Name;
+        ActiveNameLabel.SetMessage(FormattedMessage.FromMarkupPermissive($"[bold]{state.Active.Name}[/bold]"));
         ActiveDescLabel.SetMessage(FormattedMessage.FromMarkupPermissive(state.Active.Description));
         ActiveProgressLabel.Text = Loc.GetString("experiment-scanner-progress", ("current", state.Active.ProgressCurrent), ("target", state.Active.ProgressTarget));
         ActiveRewardLabel.SetMessage(FormattedMessage.FromMarkupPermissive(Loc.GetString("experiment-scanner-reward", ("points", state.Active.RewardPoints))));

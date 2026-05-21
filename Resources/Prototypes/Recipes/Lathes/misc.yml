@@ -120,6 +120,16 @@
     Copper: 50  #ADT-BFUU-Tweak
 
 - type: latheRecipe
+  parent: BaseToolRecipe
+  id: ExperimentScanner
+  result: ExperimentScanner
+  materials:
+    Steel: 150
+    Plastic: 100
+    Glass: 50
+    Copper: 100
+
+- type: latheRecipe
   id: AirTank
   result: AirTank
   completetime: 4

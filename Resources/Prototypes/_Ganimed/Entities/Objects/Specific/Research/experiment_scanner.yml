@@ -1,17 +1,17 @@
 - type: entity
   parent: BaseItem
-  id: ADTExperimentScanner
+  id: ExperimentScanner
   name: experiment scanner
   description: A research scanner that issues and tracks field experiments.
   components:
   - type: Sprite
-    sprite: Objects/Specific/Xenoarchaeology/node_scanner.rsi
+    sprite: _Ganimed/Objects/Specific/Research/experimentscanner.rsi
     state: icon
   - type: Item
-    sprite: Objects/Specific/Xenoarchaeology/node_scanner.rsi
+    sprite: _Ganimed/Objects/Specific/Research/experimentscanner.rsi
   - type: ResearchClient
   - type: ExperimentScanner
-    experimentGroup: ADTExperiments
+    experimentGroup: Experiments
     visibleOrders: 7
   - type: ActivatableUI
     key: enum.ExperimentScannerUiKey.Key

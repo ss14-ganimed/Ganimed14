@@ -41,6 +41,9 @@ public sealed partial class FullEquipmentExperimentCondition : ResearchExperimen
 {
     [DataField(required: true)]
     public List<string> AllowedPrototypes = new();
+
+    [DataField]
+    public Dictionary<string, List<string>> PrototypeAliases = new();
 }
 
 [DataDefinition, Serializable, NetSerializable]
@@ -48,6 +51,9 @@ public sealed partial class PrototypeSelectionExperimentCondition : ResearchExpe
 {
     [DataField(required: true)]
     public List<string> AllowedPrototypes = new();
+
+    [DataField]
+    public Dictionary<string, List<string>> PrototypeAliases = new();
 }
 
 [DataDefinition, Serializable, NetSerializable]
