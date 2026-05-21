@@ -1,6 +1,8 @@
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
+using Content.Shared.Radio;
 
 namespace Content.Shared._Ganimed.Research.Components;
 
@@ -33,6 +35,9 @@ public sealed partial class ExperimentScannerComponent : Component
 
     [DataField]
     public SoundSpecifier DenySound = new SoundPathSpecifier("/Audio/Effects/Cargo/buzz_two.ogg");
+
+    [DataField]
+    public ProtoId<RadioChannelPrototype> AnnouncementChannel = "Science";
 }
 
 [Serializable, NetSerializable]

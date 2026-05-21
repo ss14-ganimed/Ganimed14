@@ -1,9 +1,11 @@
 using System.Linq;
+using Content.Server.Administration.Logs;
 using Content.Server._Ganimed.Research.Components;
 using Content.Server.Ame;
 using Content.Server.Ame.Components;
 using Content.Server.NodeContainer;
 using Content.Server.Power.EntitySystems;
+using Content.Server.Radio.EntitySystems;
 using Content.Server.Radiation.Components;
 using Content.Server.Research.Disk;
 using Content.Server.Research.Systems;
@@ -12,12 +14,14 @@ using Content.Shared._Ganimed.Research.Prototypes;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Atmos.Prototypes;
+using Content.Shared.Database;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Gravity;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Interaction;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Mech.Components;
 using Content.Shared.Paper;
 using Content.Shared.Popups;
@@ -48,6 +52,8 @@ public sealed class ExperimentScannerSystem : EntitySystem
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
 
     public override void Initialize()
     {
@@ -94,7 +100,11 @@ public sealed class ExperimentScannerSystem : EntitySystem
             stationDb.AvailableOrders.RemoveAt(i);
             _audio.PlayPvs(ent.Comp.SelectSound, ent);
             if (args.Actor is { Valid: true } user)
+            {
                 _popup.PopupClient(Loc.GetString("experiment-scanner-popup-selected"), user, user);
+                _adminLogger.Add(LogType.Action, LogImpact.Low,
+                    $"{ToPrettyString(user):user} accepted experiment order [id:{db.ActiveOrder.Id}, prototype:{db.ActiveOrder.Prototype}] with scanner {ToPrettyString(ent):entity}");
+            }
             break;
         }
 
@@ -114,11 +124,16 @@ public sealed class ExperimentScannerSystem : EntitySystem
             return;
         }
 
-        stationDb.AvailableOrders.Add(db.ActiveOrder);
+        var abandonedOrder = db.ActiveOrder;
+        stationDb.AvailableOrders.Add(abandonedOrder);
         db.ActiveOrder = null;
         _audio.PlayPvs(ent.Comp.SelectSound, ent);
         if (args.Actor is { Valid: true } user)
+        {
             _popup.PopupClient(Loc.GetString("experiment-scanner-popup-abandoned"), user, user);
+            _adminLogger.Add(LogType.Action, LogImpact.Low,
+                $"{ToPrettyString(user):user} abandoned experiment order [id:{abandonedOrder.Id}, prototype:{abandonedOrder.Prototype}] with scanner {ToPrettyString(ent):entity}");
+        }
         UpdateUi(ent, stationDb, db);
     }
 
@@ -160,7 +175,11 @@ public sealed class ExperimentScannerSystem : EntitySystem
         db.NextSkipTime = _timing.CurTime + db.SkipDelay;
         _audio.PlayPvs(ent.Comp.SkipSound, ent);
         if (args.Actor is { Valid: true } user)
+        {
             _popup.PopupClient(Loc.GetString("experiment-scanner-popup-skipped"), user, user);
+            _adminLogger.Add(LogType.Action, LogImpact.Low,
+                $"{ToPrettyString(user):user} skipped experiment order [id:{removed.Id}, prototype:{removed.Prototype}] with scanner {ToPrettyString(ent):entity}");
+        }
         UpdateUi(ent, stationDb, db);
     }
 
@@ -196,6 +215,9 @@ public sealed class ExperimentScannerSystem : EntitySystem
         if (!TryProcessScan(station, db.ActiveOrder, target))
             return;
 
+        _adminLogger.Add(LogType.Action, LogImpact.Low,
+            $"{ToPrettyString(user):user} advanced experiment order [id:{db.ActiveOrder.Id}, prototype:{db.ActiveOrder.Prototype}, progress:{db.ActiveOrder.ProgressCurrent}/{db.ActiveOrder.ProgressTarget}] by scanning {ToPrettyString(target):entity} with scanner {ToPrettyString(ent):entity}");
+
         if (db.ActiveOrder.ProgressCurrent < db.ActiveOrder.ProgressTarget)
         {
             _popup.PopupClient(Loc.GetString("experiment-scanner-progress-popup",
@@ -206,10 +228,13 @@ public sealed class ExperimentScannerSystem : EntitySystem
             return;
         }
 
-        var proto = _proto.Index(db.ActiveOrder.Prototype);
+        var completedOrder = db.ActiveOrder;
+        var proto = _proto.Index(completedOrder.Prototype);
         if (TryGetAssignedServer(ent, out var server, out var serverComp))
         {
             _research.ModifyServerPoints(server, proto.RewardPoints, serverComp);
+            _adminLogger.Add(LogType.Action, LogImpact.Medium,
+                $"{ToPrettyString(user):user} completed experiment order [id:{completedOrder.Id}, prototype:{completedOrder.Prototype}] and awarded {proto.RewardPoints} points to research server {ToPrettyString(server):entity} using scanner {ToPrettyString(ent):entity}");
         }
         else
         {
@@ -217,11 +242,21 @@ public sealed class ExperimentScannerSystem : EntitySystem
             if (TryComp<ResearchDiskComponent>(disk, out var diskComp))
                 diskComp.Points = proto.RewardPoints;
             _popup.PopupClient(Loc.GetString("experiment-scanner-disk-fallback-popup", ("points", proto.RewardPoints)), user, user);
+            _adminLogger.Add(LogType.Action, LogImpact.Medium,
+                $"{ToPrettyString(user):user} completed experiment order [id:{completedOrder.Id}, prototype:{completedOrder.Prototype}] without server link; spawned fallback research disk {ToPrettyString(disk):entity} with {proto.RewardPoints} points using scanner {ToPrettyString(ent):entity}");
         }
 
         _popup.PopupClient(Loc.GetString("experiment-scanner-complete-popup"), user, user);
+        var identityInfo = new TryGetIdentityShortInfoEvent(ent, user);
+        RaiseLocalEvent(identityInfo);
+        var performer = identityInfo.Title ?? Loc.GetString("experiment-scanner-complete-radio-unknown");
+        var message = Loc.GetString("experiment-scanner-complete-radio-broadcast",
+            ("order", Loc.GetString(proto.Name)),
+            ("performer", performer),
+            ("points", proto.RewardPoints));
+        _radio.SendRadioMessage(ent, message, ent.Comp.AnnouncementChannel, ent, escapeMarkup: false);
         _audio.PlayPvs(ent.Comp.CompleteSound, ent);
-        stationDb.UsedOrders.Add(db.ActiveOrder.Prototype);
+        stationDb.UsedOrders.Add(completedOrder.Prototype);
         db.ActiveOrder = null;
         FillAvailableOrders(station, ent.Comp, stationDb);
         UpdateUi(ent, stationDb, db);
