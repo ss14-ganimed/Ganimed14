@@ -3,20 +3,24 @@ using Robust.Shared.GameStates;
 namespace Content.Shared.ADT.Sprite.EdgeConnections;
 
 /// <summary>
-/// Marks entities that should visually connect to adjacent peers with the same key.
+/// Enables visual edge connections between entities when placed adjacent to each other.
+/// Entities with matching connection keys will form connections.
+/// Works with GenericVisualizer to update sprites based on neighbor state.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class EdgeConnectionComponent : Component
 {
     /// <summary>
-    /// Only entities with equal keys can form a visual connection.
+    /// Key used to identify which entities can connect to each other.
+    /// Only entities with matching keys will form connections.
     /// </summary>
     [DataField]
     public string ConnectionKey = "default";
 
     /// <summary>
-    /// Relative directions this entity can connect in.
-    /// These directions are rotated by the entity transform.
+    /// Which directions are allowed to form connections.
+    /// Must be set explicitly - defaults to None (no connections).
+    /// Entities will only connect if they have matching rotations.
     /// </summary>
     [DataField]
     public EdgeConnectionDirections AllowedDirections = EdgeConnectionDirections.None;
