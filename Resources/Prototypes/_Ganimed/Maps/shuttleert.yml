@@ -1,0 +1,17 @@
+- type: gameMap
+  id: shuttleert
+  mapName: ERT-Shuttle
+  mapPath: /Maps/_Ganimed/shuttleert.yml
+  minPlayers: 0
+  stations:
+    shuttleert:
+      stationProto: StandardStationArena
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: "NT-ERT-Shuttle"
+        - type: StationJobs
+          availableJobs:
+            ERTLeader: [ 1, 1 ]
+            ERTEngineer: [ 4, 4 ]
+            ERTMedical: [ 4, 4 ]
+            ERTSecurity: [ -1, -1 ]
