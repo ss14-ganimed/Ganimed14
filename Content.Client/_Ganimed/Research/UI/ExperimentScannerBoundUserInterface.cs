@@ -35,6 +35,11 @@ public sealed class ExperimentScannerBoundUserInterface(EntityUid owner, Enum ui
         if (!disposing)
             return;
 
-        _menu?.Dispose();
+        if (_menu == null)
+            return;
+
+        _menu.OnClose -= Close;
+        _menu.Dispose();
+        _menu = null;
     }
 }

@@ -97,6 +97,7 @@ public sealed class ExperimentScannerSystem : EntitySystem
                 continue;
 
             db.ActiveOrder = stationDb.AvailableOrders[i];
+            db.ActiveOrder.HadServerOnAccept = TryGetAssignedServer(ent, out _, out _);
             stationDb.AvailableOrders.RemoveAt(i);
             _audio.PlayPvs(ent.Comp.SelectSound, ent);
             if (args.Actor is { Valid: true } user)
@@ -240,7 +241,7 @@ public sealed class ExperimentScannerSystem : EntitySystem
             _adminLogger.Add(LogType.Action, LogImpact.Medium,
                 $"{ToPrettyString(user):user} completed experiment order [id:{completedOrder.Id}, prototype:{completedOrder.Prototype}] and awarded {proto.RewardPoints} points to research server {ToPrettyString(server):entity} using scanner {ToPrettyString(ent):entity}");
         }
-        else
+        else if (!completedOrder.HadServerOnAccept)
         {
             var disk = Spawn("ResearchDisk", Transform(ent).Coordinates);
             if (TryComp<ResearchDiskComponent>(disk, out var diskComp))
@@ -248,6 +249,11 @@ public sealed class ExperimentScannerSystem : EntitySystem
             _popup.PopupClient(Loc.GetString("experiment-scanner-disk-fallback-popup", ("points", proto.RewardPoints)), user, user);
             _adminLogger.Add(LogType.Action, LogImpact.Medium,
                 $"{ToPrettyString(user):user} completed experiment order [id:{completedOrder.Id}, prototype:{completedOrder.Prototype}] without server link; spawned fallback research disk {ToPrettyString(disk):entity} with {proto.RewardPoints} points using scanner {ToPrettyString(ent):entity}");
+        }
+        else
+        {
+            Deny(ent, user, "experiment-scanner-popup-no-server");
+            return;
         }
 
         _popup.PopupClient(Loc.GetString("experiment-scanner-complete-popup"), user, user);
@@ -272,11 +278,16 @@ public sealed class ExperimentScannerSystem : EntitySystem
         switch (proto.Condition)
         {
             case ThresholdInjectionExperimentCondition ame:
-                if (TryComp<AmeControllerComponent>(target, out var controller) &&
-                    TryGetAmeCoreCount(target, out var coreCount) &&
-                    coreCount > 0 &&
-                    (!ame.RequirePowered || this.IsPowered(target, EntityManager)) &&
-                    controller.InjectionAmount > ame.SafeInjection * coreCount)
+                if (!TryComp<AmeControllerComponent>(target, out var controller))
+                    break;
+
+                if (!TryGetAmeCoreCount(target, out var coreCount) || coreCount <= 0)
+                    break;
+
+                if (ame.RequirePowered && !this.IsPowered(target, EntityManager))
+                    break;
+
+                if (controller.InjectionAmount > ame.SafeInjection * coreCount)
                 {
                     order.ProgressCurrent = 1;
                     return true;
@@ -631,7 +642,16 @@ public sealed class ExperimentScannerSystem : EntitySystem
 
     private ExperimentOrderUiData ToUiData(StationExperimentOrderData order)
     {
-        var proto = _proto.Index(order.Prototype);
+        if (!_proto.TryIndex(order.Prototype, out var proto))
+        {
+            return new ExperimentOrderUiData
+            {
+                Id = order.Id,
+                ProgressCurrent = order.ProgressCurrent,
+                ProgressTarget = order.ProgressTarget
+            };
+        }
+
         var speciesName = GetSpeciesName(order.SelectedSpecies);
         var reagentName = GetReagentOrGasName(order.SelectedReagent);
         var targetName = GetEntityPrototypeName(order.SelectedPrototype);
@@ -674,8 +694,9 @@ public sealed class ExperimentScannerSystem : EntitySystem
         if (_proto.TryIndex<ReagentPrototype>(reagentId, out var reagent))
             return reagent.LocalizedName;
 
-        if (Enum.TryParse<Gas>(reagentId, true, out var gas))
-            return Loc.GetString(_proto.Index<GasPrototype>(gas.ToString()).Name);
+        if (Enum.TryParse<Gas>(reagentId, true, out var gas) &&
+            _proto.TryIndex<GasPrototype>(gas.ToString(), out var gasProto))
+            return Loc.GetString(gasProto.Name);
 
         return null;
     }

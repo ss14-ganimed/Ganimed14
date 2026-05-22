@@ -30,7 +30,7 @@
   group: Experiments
   name: experiment-order-species-unsafe-name
   description: experiment-order-species-unsafe-desc
-  rewardPoints: 35000
+  rewardPoints: 30000
   condition: !type:SpeciesReagentExperimentCondition
     solutionName: chemicals
     excludedSpecies:
@@ -121,13 +121,12 @@
       - MobSpiderSpaceSalvage
       - ADTMobSpiderSpaceSponge
 
-
 - type: researchExperiment
   id: ExperimentVendingRescan
   group: Experiments
   name: experiment-order-vending-name
   description: experiment-order-vending-desc
-  rewardPoints: 15000
+  rewardPoints: 10000
   condition: !type:DelayedRescanExperimentCondition
     rescanDelay: 600
     departmentVendingPrototypes:
@@ -233,6 +232,11 @@
     - Tritium
     - Frezon
     - BZ
+    - Pluoxium
+    - Nitrium
+    - Healium
+    - Hyper-Noblium
+    - Proto-Nitrate
 
 - type: researchExperiment
   id: ExperimentCaptainId

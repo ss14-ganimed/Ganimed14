@@ -68,4 +68,11 @@ public sealed partial class StationExperimentOrderData
 
     [DataField]
     public List<EntityUid> ScannedEntities = new();
+
+    /// <summary>
+    /// Whether a research server was linked when the order was accepted.
+    /// Used to prevent disk fallback abuse after disconnecting mid-order.
+    /// </summary>
+    [DataField]
+    public bool HadServerOnAccept;
 }
