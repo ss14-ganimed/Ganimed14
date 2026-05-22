@@ -149,7 +149,7 @@
   group: Experiments
   name: experiment-order-meat-name
   description: experiment-order-meat-desc
-  rewardPoints: 7500
+  rewardPoints: 7000
   condition: !type:TagCountExperimentCondition
     requiredCount: 5
     requiredTags:
@@ -163,10 +163,12 @@
   name: experiment-order-id-name
   description: experiment-order-id-desc
   rewardPoints: 5000
-  condition: !type:ComponentFlagExperimentCondition
+  condition: !type:TagCountExperimentCondition
+    requiredCount: 1
+    requiredTags:
+    - MicrowavedIdCard
     requiredComponents:
     - IdCard
-    - MicrowavedIdCard
 
 - type: researchExperiment
   id: ExperimentBatonPlasma
@@ -260,7 +262,7 @@
   group: Experiments
   name: experiment-order-paper-signatures-name
   description: experiment-order-paper-signatures-desc
-  rewardPoints: 10000
+  rewardPoints: 7500
   condition: !type:SignatureDiversityExperimentCondition
     requiredComponents:
     - Paper
@@ -283,7 +285,7 @@
   description: experiment-order-fruit-dishes-desc
   rewardPoints: 6000
   condition: !type:TagCountExperimentCondition
-    requiredCount: 3
+    requiredCount: 5
     requiredTags:
     - Fruit
 

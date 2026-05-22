@@ -64,7 +64,7 @@
   cost: 5000
   recipeUnlocks:
   - TechDiskComputerCircuitboard
-  - ExperimentScanner
+  - ExperimentScanner # Ganimed-Add
   position: 2,0 # ADT Research Console Rework end
 
 - type: technology

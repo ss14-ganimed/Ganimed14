@@ -1,0 +1,9 @@
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: ExperimentScanner
+  result: ExperimentScanner
+  materials:
+    Steel: 150
+    Plastic: 100
+    Glass: 50
+    Copper: 100
