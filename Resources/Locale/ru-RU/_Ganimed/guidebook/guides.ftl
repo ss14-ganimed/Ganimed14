@@ -2,10 +2,12 @@ guide-entry-conspirators = Заговорщики
 
 # Rules
 guide-entry-rules-enterprise = Правила сервера Enterprise
+
 guide-entry-rules-enterprise-0-0 = Правило 0-0
 guide-entry-rules-enterprise-0-1 = Правило 0-1
 guide-entry-rules-enterprise-0-2 = Правило 0-2
 guide-entry-rules-enterprise-0-3 = Правило 0-3
+
 guide-entry-rules-enterprise-1-0 = Правило 1-0
 guide-entry-rules-enterprise-1-1 = Правило 1-1
 guide-entry-rules-enterprise-1-2 = Правило 1-2
@@ -22,6 +24,7 @@ guide-entry-rules-enterprise-1-12 = Правило 1-12
 guide-entry-rules-enterprise-1-13 = Правило 1-13
 guide-entry-rules-enterprise-1-14 = Правило 1-14
 guide-entry-rules-enterprise-1-15 = Правило 1-15
+
 guide-entry-rules-enterprise-2-0 = Правило 2-0
 guide-entry-rules-enterprise-2-1 = Правило 2-1
 guide-entry-rules-enterprise-2-2 = Правило 2-2
