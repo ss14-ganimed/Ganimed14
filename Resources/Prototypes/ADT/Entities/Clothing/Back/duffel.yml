@@ -34,7 +34,7 @@
     - 0,0,8,4 # Ganimed-Tweak (0,0,9,4)
   - type: ClothingSpeedModifier
     walkModifier: 1
-    sprintModifier: 0.95 # Ganimed-Tweak (0.9)
+    sprintModifier: 0.95 # Ganimed-Tweak (1)
   - type: Construction
     graph: DuffelDurathead
     node: DuffelDurathead
