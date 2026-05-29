@@ -1,9 +1,9 @@
 - type: gameMap
   id: ENTFearohStation
-  mapName: 'Fearoh Station'
+  mapName: 'Fearoh'
   mapPath: /Maps/_Ganimed/fearohstation.yml
   minPlayers: 0
-  maxPlayers: 10 # Ganimed-Tweak (20 -> 10)
+  maxPlayers: 10
   stations:
     FearohStation:
       stationProto: StandardNanotrasenStation
@@ -26,8 +26,8 @@
             Captain: [ 1, 1 ]
             # cargo
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 3, 3 ]
-            ADTMiner: [ 2, 2 ] #ADT-Roles
+            SalvageSpecialist: [ 2, 3 ]
+            ADTMiner: [ 1, 2 ] #ADT-Roles
             CargoTechnician: [ 3, 3 ]
             # engineering
             ChiefEngineer: [ 1, 1 ]
