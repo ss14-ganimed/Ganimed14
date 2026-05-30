@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ent-PenAtmos = ручка атмосферного техника
    .desc = Не слишком сложная в использовании ручка. Имеет вашу цветовую схему, поэтому вы её и используете.
 ent-PenBooze = алкогольная ручка

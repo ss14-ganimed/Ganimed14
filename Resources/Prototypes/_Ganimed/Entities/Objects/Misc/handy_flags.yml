@@ -1,14 +1,21 @@
+# SPDX-FileCopyrightText: 2024 Gorox221 <139872389+Gorox221@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 AltMapper <141431347+AltMapper@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent: BaseItem
-  id: FlagHandyElysium
-  name: Elysium handheld flag
-  description: "Go kill some xenos!"
+  id: FlagHandyTSF
+  name: TSF handheld flag
+  description: "It looks technologically advanced."
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Misc/Handy_Flags/Elysium_handy_flag.rsi
+    sprite: _Ganimed/Objects/Misc/Handy_Flags/TSF_handy_flag.rsi
     state: icon
   - type: Item
-    sprite: _Ganimed/Objects/Misc/Handy_Flags/Elysium_handy_flag.rsi
+    sprite: _Ganimed/Objects/Misc/Handy_Flags/TSF_handy_flag.rsi
 
 - type: entity
   parent: BaseItem
@@ -24,12 +31,12 @@
 
 - type: entity
   parent: BaseItem
-  id: FlagHandyTSF
-  name: TSF handheld flag
-  description: "It looks technologically advanced."
+  id: FlagHandyElysium
+  name: Elysium handheld flag
+  description: "Go kill some xenos!"
   components:
   - type: Sprite
-    sprite: _Ganimed/Objects/Misc/Handy_Flags/TSF_handy_flag.rsi
+    sprite: _Ganimed/Objects/Misc/Handy_Flags/Elysium_handy_flag.rsi
     state: icon
   - type: Item
-    sprite: _Ganimed/Objects/Misc/Handy_Flags/TSF_handy_flag.rsi
+    sprite: _Ganimed/Objects/Misc/Handy_Flags/Elysium_handy_flag.rsi

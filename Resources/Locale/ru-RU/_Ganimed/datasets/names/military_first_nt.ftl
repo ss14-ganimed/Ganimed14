@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Yuoko <128321596+Yuoko@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Enlisted - Privates ranks (E-1, E-2, E-3): ERT Janitor, ERT Clown
 names-military-nt-privates-first-dataset-1 = Рядовой
 names-military-nt-privates-first-dataset-2 = Рядовой 2кл.

@@ -1,16 +1,20 @@
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
-  name: reliable container
   parent: BaseBeakerMetallic
-  description: "Advanced container for storing medical products."
   id: ReliableContainer
+  name: reliable container
+  description: "Advanced container for storing medical products."
   components:
   - type: Sprite
     sprite: _Ganimed/Objects/Specific/Chemistry/kit.rsi
     layers:
-      - state: kit
-      - state: fill1
-        map: ["enum.SolutionContainerLayers.Fill"]
-        visible: false
+    - state: kit
+    - state: fill1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
   - type: Item
     sprite: _Ganimed/Objects/Specific/Chemistry/kit.rsi
   - type: SolutionContainerManager

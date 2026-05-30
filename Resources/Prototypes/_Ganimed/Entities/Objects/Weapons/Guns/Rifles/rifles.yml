@@ -1,7 +1,12 @@
+# SPDX-FileCopyrightText: 2025 AltMapper <141431347+AltMapper@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
-  name: ABZ-84
   parent: [BaseWeaponRifle, ADTBaseMagneticGun]
   id: WeaponRifleABZ
+  name: ABZ-84
   description: Bobrovskyi-Zamyatin assault rifle model 2584. State-of-the-art rifle designed in USSP, "balanced" operating system and increased rate of fire. Uses .30 rifle ammo.
   components:
   - type: Sprite
@@ -30,7 +35,7 @@
         priority: 2
         whitelist:
           tags:
-            - MagazineLightRifle
+          - MagazineLightRifle
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
@@ -38,7 +43,7 @@
         priority: 1
         whitelist:
           tags:
-            - CartridgeLightRifle
+          - CartridgeLightRifle
   - type: MagazineVisuals
     magState: mag
     steps: 1

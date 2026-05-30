@@ -1,6 +1,10 @@
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
-  id: AirlockGlassDouble
   parent: AirlockGlass
+  id: AirlockGlassDouble
   name: double glass airlock
   description: It opens, it closes, it maybe crushes you, and it's bigger than normal.
   components:

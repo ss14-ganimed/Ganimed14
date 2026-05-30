@@ -1,13 +1,9 @@
-- type: entity
-  parent: BaseFlag
-  id: FlagElysium
-  name: Elizium flag
-  description: "Go kill some xenos!"
-  components:
-  - type: Sprite
-    drawdepth: WallTops
-    sprite: _Ganimed/Structures/Wallmounts/flags.rsi
-    state: elysium
+# SPDX-FileCopyrightText: 2024 Gorox221 <139872389+Gorox221@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 AltMapper <141431347+AltMapper@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
   parent: BaseFlag
@@ -24,9 +20,20 @@
   parent: BaseFlag
   id: FlagUSSP
   name: USSP flag
-  description: "Сranberry."
+  description: "Workers of the world, unite!"
   components:
   - type: Sprite
     drawdepth: WallTops
     sprite: _Ganimed/Structures/Wallmounts/flags.rsi
     state: ussp
+
+- type: entity
+  parent: BaseFlag
+  id: FlagElysium
+  name: Elysium flag
+  description: "Go kill some xenos!"
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Ganimed/Structures/Wallmounts/flags.rsi
+    state: elysium

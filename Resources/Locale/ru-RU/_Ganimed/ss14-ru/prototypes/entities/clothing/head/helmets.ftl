@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2025 AltMapper <141431347+AltMapper@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ent-ClothingHeadHelmetMercMedic = армейский тяжёлый медицинский шлем
     .desc = Боевой шлем обычно используется полевыми медиками, он прочный, лёгкий и пахнет кровью раненных в перемешку с прилётами на "нуле".
     .suffix = Наёмника
