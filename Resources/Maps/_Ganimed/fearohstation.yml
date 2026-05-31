@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/29/2026 12:38:48
-  entityCount: 11786
+  time: 05/31/2026 10:13:41
+  entityCount: 11801
 maps:
 - 1
 grids:
@@ -6677,6 +6677,31 @@ entities:
       rot: 3.141592653589793 rad
       pos: 21.5,-9.5
       parent: 2
+- proto: ADTATM
+  entities:
+  - uid: 11789
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 14.5,-9.5
+      parent: 2
+  - uid: 11790
+    components:
+    - type: Transform
+      pos: -21.5,-45.5
+      parent: 2
+  - uid: 11791
+    components:
+    - type: Transform
+      pos: 8.5,-31.5
+      parent: 2
+- proto: ADTATMOutdoor
+  entities:
+  - uid: 11788
+    components:
+    - type: Transform
+      pos: -6.5,14.5
+      parent: 2
 - proto: ADTBarbell
   entities:
   - uid: 4431
@@ -6704,6 +6729,10 @@ entities:
     - type: Transform
       parent: 4427
   - uid: 98
+    components:
+    - type: Transform
+      parent: 4427
+  - uid: 147
     components:
     - type: Transform
       parent: 4427
@@ -6803,6 +6832,10 @@ entities:
     components:
     - type: Transform
       parent: 4429
+  - uid: 11787
+    components:
+    - type: Transform
+      parent: 4429
 - proto: ADTBarbellChair
   entities:
   - uid: 4429
@@ -6830,6 +6863,13 @@ entities:
     components:
     - type: Transform
       pos: 8.5,-55.5
+      parent: 2
+- proto: ADTBarmenKettle
+  entities:
+  - uid: 11801
+    components:
+    - type: Transform
+      pos: 16.5,-16.5
       parent: 2
 - proto: ADTBathBroom
   entities:
@@ -7268,6 +7308,30 @@ entities:
     - type: Transform
       pos: 2.499598,-64.45914
       parent: 2
+- proto: ADTEftpos
+  entities:
+  - uid: 11792
+    components:
+    - type: Transform
+      pos: 13.4503565,-15.516018
+      parent: 2
+  - uid: 11793
+    components:
+    - type: Transform
+      pos: 10.527056,-15.410936
+      parent: 2
+  - uid: 11794
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -11.499748,-28.602793
+      parent: 2
+  - uid: 11799
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.494579,-6.7221837
+      parent: 2
 - proto: ADTEncryptionKeyLawyer
   entities:
   - uid: 9882
@@ -7479,6 +7543,13 @@ entities:
     components:
     - type: Transform
       pos: -48.5,2.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11798
+    components:
+    - type: Transform
+      pos: 15.5,-40.5
       parent: 2
     - type: Fixtures
       fixtures: {}
@@ -9791,7 +9862,7 @@ entities:
       pos: -8.5,-17.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -9538.309
+      secondsUntilStateChange: -11171.717
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -58510,7 +58581,7 @@ entities:
       pos: 10.5,-91.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -28243.559
+      secondsUntilStateChange: -29876.967
       state: Closing
     - type: Forensics
       residues: []
@@ -59822,6 +59893,28 @@ entities:
       rot: 3.141592653589793 rad
       pos: -17.037693,-56.455917
       parent: 2
+  - uid: 11797
+    components:
+    - type: MetaData
+      name: важное сообщение
+    - type: Transform
+      pos: 15.497742,-41.555668
+      parent: 2
+    - type: Paper
+      stampState: paper_stamp-greytide
+      stampedBy:
+      - stampedColor: '#323232FF'
+        stampedName: stamp-component-stamped-name-greytide
+      content: >2+
+
+
+
+
+
+
+                    Закрой "Гештальт", оденься как мужчина.
+
+
 - proto: PaperBin20
   entities:
   - uid: 1262
@@ -60533,11 +60626,6 @@ entities:
       parent: 2
 - proto: PottedPlantRandom
   entities:
-  - uid: 147
-    components:
-    - type: Transform
-      pos: -6.5,14.5
-      parent: 2
   - uid: 148
     components:
     - type: Transform
@@ -62444,6 +62532,13 @@ entities:
     components:
     - type: Transform
       pos: -2.5,-37.5
+      parent: 2
+- proto: RagItem
+  entities:
+  - uid: 11800
+    components:
+    - type: Transform
+      pos: 16.549824,-15.606428
       parent: 2
 - proto: Railing
   entities:
@@ -68208,6 +68303,18 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -1.5,-40.5
+      parent: 2
+  - uid: 11795
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.5,-27.5
+      parent: 2
+  - uid: 11796
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.5,-26.5
       parent: 2
 - proto: StoolBar
   entities:

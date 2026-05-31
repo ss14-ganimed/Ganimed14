@@ -1,6 +1,6 @@
 - type: gameMap
   id: ENTFearohStation
-  mapName: 'Fearoh'
+  mapName: 'Fearoh Station'
   mapPath: /Maps/_Ganimed/fearohstation.yml
   minPlayers: 0
   maxPlayers: 10
@@ -9,7 +9,7 @@
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: '{0} FRH {1}'
+          mapNameTemplate: '{0}FRH {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '-'
