@@ -22,7 +22,7 @@
   - ADTLauncherSyringe
   - ADTMiniSyringe
   - ADTTourniquet
-  - ADTPatchLepo
+  # - ADTPatchLepo Ganimed-edit
 
 - type: latheRecipePack
   id: ADTAdvancedMedical
@@ -45,11 +45,13 @@
 - type: latheRecipePack
   id: ADTCryoTech
   recipes:
-  - ADTPatchCryo
+  # - ADTPatchCryo Ganimed-edit
   - CryostasisBeaker
   - SyringeCryostasis
 
-- type: latheRecipePack
-  id: ADTThermoTech
-  recipes:
-  - ADTPatchThermo
+# Ganimed-edit start
+# - type: latheRecipePack
+#   id: ADTThermoTech
+#   recipes:
+#   - ADTPatchThermo
+# Ganimed-edit end
