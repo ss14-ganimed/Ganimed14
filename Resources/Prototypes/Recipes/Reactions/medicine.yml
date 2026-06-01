@@ -58,29 +58,25 @@
   id: Cryoxadone
   maxTemp: 175 # ADT tweak
   reactants:
-    Tricordrazine: # ADT tweak Не, нафиг растения для крио --QWERTY--(Может сделать новое особое растение для крио, но это лишь в планах
+    Dexalin:
       amount: 1
-    DexalinPlus: # ADT tweak
-      amount: 2 # ADT tweak
     Water:
-      amount: 2 # ADT tweak
+      amount: 1
+    Oxygen:
+      amount: 1
   products:
-    Cryoxadone: 5 # ADT tweak
+    Cryoxadone: 3
 
 - type: reaction
   id: Doxarubixadone
   maxTemp: 150 # ADT tweak
   reactants:
-  # ADT tweak Start
     Cryoxadone:
       amount: 1
     UnstableMutagen:
       amount: 1
-    Phalanximine:
-      amount: 2
-  # ADT tweak End
   products:
-    Doxarubixadone: 4 # ADT tweak
+    Doxarubixadone: 2
 
 - type: reaction
   id: Epinephrine

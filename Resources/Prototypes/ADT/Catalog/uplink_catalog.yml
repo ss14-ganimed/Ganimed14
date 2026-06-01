@@ -710,15 +710,17 @@
 #       tags:
 #       - NukeOpsUplink
 
-- type: listing
-  id: ADTUplinkInvisibleCloak
-  name: uplink-invisible-cloak-name
-  description: uplink-invisible-cloak-desc
-  productEntity: ADTClothingNeckInvisibleCloak
-  cost:
-    Telecrystal: 5
-  categories:
-    - UplinkWearables
+# Ganimed-edit start
+# - type: listing
+#   id: ADTUplinkInvisibleCloak
+#   name: uplink-invisible-cloak-name
+#   description: uplink-invisible-cloak-desc
+#   productEntity: ADTClothingNeckInvisibleCloak
+#   cost:
+#     Telecrystal: 5
+#   categories:
+#     - UplinkWearables
+# Ganimed-edit end
 
 - type: listing
   id: ADTUplinkNightVision
@@ -736,7 +738,7 @@
   description: uplink-thermal-desc
   productEntity: ADTClothingEyesGlassesThermalChameleon
   cost:
-    Telecrystal: 2
+    Telecrystal: 5 # Ganimed-edit 2>5
   categories:
     - UplinkWearables
 

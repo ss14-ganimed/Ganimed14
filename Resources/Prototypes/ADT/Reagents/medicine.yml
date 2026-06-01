@@ -492,7 +492,7 @@
   physicalDesc: reagent-physical-desc-murky
   flavor: medicine
   color: "#9575c7"
-  worksOnTheDead: true
+  worksOnTheDead: false # Ganimed-edit
   metabolisms:
     Medicine:
       metabolismRate : 0.75
@@ -519,7 +519,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: medicine
   color: "#ff6d05"
-  worksOnTheDead: true
+  worksOnTheDead: false # Ganimed-edit
   metabolisms:
     Medicine:
       metabolismRate : 0.5
@@ -540,7 +540,7 @@
   physicalDesc: reagent-physical-desc-acrid
   flavor: medicine
   color: "#47061a"
-  worksOnTheDead: true
+  worksOnTheDead: false # Ganimed-edit
   metabolisms:
     Medicine:
       metabolismRate : 0.5
@@ -568,7 +568,7 @@
   physicalDesc: reagent-physical-desc-exotic-smelling
   flavor: medicine
   color: "#b315c2"
-  worksOnTheDead: true
+  worksOnTheDead: false # Ganimed-edit
   metabolisms:
     Medicine:
       metabolismRate : 0.5
@@ -595,7 +595,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: medicine
   color: "#111b30"
-  worksOnTheDead: true
+  worksOnTheDead: false # Ganimed-edit
   metabolisms:
     Medicine:
       metabolismRate : 0.5
@@ -669,7 +669,7 @@
   physicalDesc: reagent-physical-desc-sickly
   flavor: acid
   color: "#213200"
-  worksOnTheDead: true
+  worksOnTheDead: false # Ganimed-edit
   metabolisms:
     Medicine:
       effects:

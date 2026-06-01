@@ -60,29 +60,31 @@
     Gold: 250
     Silver: 400
 
-- type: latheRecipe
-  id: ADTPatchLepo
-  result: ADTPatchLepo
-  completetime: 0.5
-  materials:
-    Copper: 20
-    Glass: 20
+# Ganimed-edit start
+# - type: latheRecipe
+#   id: ADTPatchLepo
+#   result: ADTPatchLepo
+#   completetime: 0.5
+#   materials:
+#     Copper: 20
+#     Glass: 20
 
-- type: latheRecipe
-  id: ADTPatchCryo
-  result: ADTPatchCryo
-  completetime: 0.5
-  materials:
-    Copper: 50
-    Glass: 100
+# - type: latheRecipe
+#   id: ADTPatchCryo
+#   result: ADTPatchCryo
+#   completetime: 0.5
+#   materials:
+#     Copper: 50
+#     Glass: 100
 
-- type: latheRecipe
-  id: ADTPatchThermo
-  result: ADTPatchThermo
-  completetime: 0.5
-  materials:
-    Copper: 100
-    Glass: 50
+# - type: latheRecipe
+#  id: ADTPatchThermo
+#  result: ADTPatchThermo
+#  completetime: 0.5
+#  materials:
+#    Copper: 100
+#    Glass: 50
+# Ganimed-edit end
 
 - type: latheRecipe
   id: ADTAutoSurgeon
