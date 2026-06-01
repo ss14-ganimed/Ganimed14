@@ -449,7 +449,7 @@
   id: AdjutantHead
   name: loadout-group-adjutant-head
   minLimit: 0
-  loadouts: 
+  loadouts:
   - CommandCap
   - CommandBeret
   - BridgeOfficerBeret
@@ -458,7 +458,7 @@
   id: CommandOfficerNeck
   name: loadout-group-command-officer-neck
   minLimit: 0
-  loadouts: 
+  loadouts:
   - BridgeOfficerMantle
 
 - type: loadoutGroup

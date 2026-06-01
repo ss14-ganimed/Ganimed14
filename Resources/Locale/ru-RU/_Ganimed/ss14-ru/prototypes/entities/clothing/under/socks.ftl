@@ -1,43 +1,42 @@
 # SPDX-FileCopyrightText: 2024 Gorox221 <139872389+Gorox221@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 AltMapper <141431347+AltMapper@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ent-ClothingUnderSocksWhite = белые носки
-   .desc = Куда пропал ещё один?
+    .desc = Куда пропал ещё один?
 ent-ClothingUnderSocksBlack = чёрные носки
-   .desc = { ent-ClothingUnderSocksWhite.desc }
+    .desc = { ent-ClothingUnderSocksWhite.desc }
 ent-ClothingUnderSocksBlue = синие носки
-   .desc = { ent-ClothingUnderSocksWhite.desc }
+    .desc = { ent-ClothingUnderSocksWhite.desc }
 ent-ClothingUnderSocksBrown = коричневые носки
-   .desc = { ent-ClothingUnderSocksWhite.desc }
+    .desc = { ent-ClothingUnderSocksWhite.desc }
 ent-ClothingUnderSocksGreen = зелёные носки
-   .desc = { ent-ClothingUnderSocksWhite.desc }
+    .desc = { ent-ClothingUnderSocksWhite.desc }
 ent-ClothingUnderSocksRed = красные носки
-   .desc = { ent-ClothingUnderSocksWhite.desc }
+    .desc = { ent-ClothingUnderSocksWhite.desc }
 ent-ClothingUnderSocksYellow = жёлтые носки
-   .desc = { ent-ClothingUnderSocksWhite.desc }
+    .desc = { ent-ClothingUnderSocksWhite.desc }
 
 ent-ClothingUnderSocksStockingsBee = полосатые чулки
-   .desc = От их вида хочется жжужжать. Ж-жу-жу-жу.
+    .desc = От их вида хочется жжужжать. Ж-жу-жу-жу.
 ent-ClothingUnderSocksStockingsCentCom = чулки центкома
-   .desc = Их любят властные женщины и их игрушки.
+    .desc = Их любят властные женщины и их игрушки.
 ent-ClothingUnderSocksStockingsDark = тёмные чулки
-   .desc = Тёмные и прозрачные, подчёркивают красоту ваших ног.
+    .desc = Тёмные и прозрачные, подчёркивают красоту ваших ног.
 ent-ClothingUnderSocksStockingsFishnets = клетчатые чулки
-   .desc = Клетчатые и прозрачные, подчёркивают красоту ваших ног.
+    .desc = Клетчатые и прозрачные, подчёркивают красоту ваших ног.
 ent-ClothingUnderSocksStockingsHoS = чулки главы службы безопасности
-   .desc = Полосатые чулки, подчёркивают ваш статус и имплант лояльности.
+    .desc = Полосатые чулки, подчёркивают ваш статус и имплант лояльности.
 ent-ClothingUnderSocksStockingsWhite = светлые чулки
-   .desc = Светлые и прозрачные, подчёркивают красоту ваших ног.
+    .desc = Светлые и прозрачные, подчёркивают красоту ваших ног.
 ent-ClothingUnderSocksStockingsSky = светлые полосатые чулки
-   .desc = Светлые и непрозрачные, подчёркивают красоту ваших ног. Они в толстую полосочку.
+    .desc = Светлые и непрозрачные, подчёркивают красоту ваших ног. Они в толстую полосочку.
 ent-ClothingUnderSocksStockingsCat = чулки с ушками
-   .desc = С ушками и в полосочку, подчёркивают ваше желание замурчать.	
+    .desc = С ушками и в полосочку, подчёркивают ваше желание замурчать.
 
 ent-ClothingUnderSocksLongDark = тёмные гольфы
-   .desc = Длинные и тёмные гольфы. Они призваны подчеркнуть элегантность ваших ног.
+    .desc = Длинные и тёмные гольфы. Они призваны подчеркнуть элегантность ваших ног.
 ent-ClothingUnderSocksLongWhite = светлые гольфы
-   .desc = Длинные и светлые гольфы. Они призваны подчеркнуть элегантность ваших ног.
+    .desc = Длинные и светлые гольфы. Они призваны подчеркнуть элегантность ваших ног.

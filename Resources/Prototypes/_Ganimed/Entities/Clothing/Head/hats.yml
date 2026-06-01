@@ -72,7 +72,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatBeretUSSP
-  name: ussp army beret 
+  name: ussp army beret
   description: It's military beret, it belongs to the USSP
   components:
   - type: Sprite

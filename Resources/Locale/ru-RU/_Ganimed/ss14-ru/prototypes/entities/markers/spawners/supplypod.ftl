@@ -3,5 +3,5 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-ent-SpawnStraySupplyPod = спавнер бродячая капсула 
+ent-SpawnStraySupplyPod = спавнер бродячая капсула
 ent-SpawnStraySupplyPodSyndicate = спавнер бродячая капсула синдиката

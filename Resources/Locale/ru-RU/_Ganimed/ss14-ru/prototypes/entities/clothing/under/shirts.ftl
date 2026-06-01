@@ -1,77 +1,76 @@
 # SPDX-FileCopyrightText: 2024 Gorox221 <139872389+Gorox221@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 AltMapper <141431347+AltMapper@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ent-ClothingUnderShirtWhite = белая футболка
-   .desc = Сделана на 50% из хлопка.
+    .desc = Сделана на 50% из хлопка.
 ent-ClothingUnderShirtBlack = чёрная футболка
-   .desc = { ent-ClothingUnderShirtWhite.desc }
+    .desc = { ent-ClothingUnderShirtWhite.desc }
 ent-ClothingUnderShirtBlue = синия футболка
-   .desc = { ent-ClothingUnderShirtWhite.desc }
+    .desc = { ent-ClothingUnderShirtWhite.desc }
 ent-ClothingUnderShirtBrown = коричневая футболка
-   .desc = { ent-ClothingUnderShirtWhite.desc }
+    .desc = { ent-ClothingUnderShirtWhite.desc }
 ent-ClothingUnderShirtGreen = зелёная футболка
-   .desc = { ent-ClothingUnderShirtWhite.desc }
+    .desc = { ent-ClothingUnderShirtWhite.desc }
 ent-ClothingUnderShirtRed = красная футболка
-   .desc = { ent-ClothingUnderShirtWhite.desc }
+    .desc = { ent-ClothingUnderShirtWhite.desc }
 ent-ClothingUnderShirtYellow = жёлтая футболка
-   .desc = { ent-ClothingUnderShirtWhite.desc }
+    .desc = { ent-ClothingUnderShirtWhite.desc }
 
 ent-ClothingUnderBrassiereWhite = белый лифчик
-   .desc = Сделан на 50% из хлопка.
+    .desc = Сделан на 50% из хлопка.
 ent-ClothingUnderBrassiereBlack = чёрный лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereBlue = синий лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereBrown = коричневый лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereGreen = зелёный лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereRed = красный лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereYellow = жёлтый лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 
 ent-ClothingUnderBrassiereLargeWhite = белый лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereLargeBlack = чёрный лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereLargeBlue = синий лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereLargeBrown = коричневый лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereLargeGreen = зелёный лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereLargeRed = красный лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereLargeYellow = жёлтый лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 
 ent-ClothingUnderBrassiereAlterWhite = белый лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereAlterBlack = чёрный лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereAlterBlue = синий лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereAlterBrown = коричневый лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereAlterGreen = зелёный лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereAlterRed = красный лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereAlterYellow = жёлтый лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 
 ent-ClothingUnderBrassiereAnime = лифчик косплеера
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereCat = неко лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereFlower = цветочный лифчик
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }
 ent-ClothingUnderBrassiereHeart = лифчик с сердечками
-   .desc = Сделан на 50% из любви.
+    .desc = Сделан на 50% из любви.
 ent-ClothingUnderBrassiereMira = лифчик с узором
-   .desc = { ent-ClothingUnderBrassiereWhite.desc }
+    .desc = { ent-ClothingUnderBrassiereWhite.desc }

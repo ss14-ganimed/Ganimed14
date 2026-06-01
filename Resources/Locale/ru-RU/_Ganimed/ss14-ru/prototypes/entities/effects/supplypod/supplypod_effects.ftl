@@ -9,7 +9,7 @@ ent-BaseTargetCircle = красный круг
 ent-BaseSupplyPodTargetCircle = { ent-BaseTargetCircle }
     .desc = { ent-BaseTargetCircle.desc }
     .suffix = Пустой, обычный
-    
+
 ent-BaseSupplyPodFallingAnimation = {""}
     .desc = { ent-BaseTargetCircle.desc }
 

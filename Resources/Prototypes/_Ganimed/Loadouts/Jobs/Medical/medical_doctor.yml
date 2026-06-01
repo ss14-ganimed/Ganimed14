@@ -91,7 +91,7 @@
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout 
+- type: loadout
   id: CoronerJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitCoroner
@@ -100,7 +100,7 @@
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout 
+- type: loadout
   id: CoronerJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtCoroner
@@ -109,7 +109,7 @@
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout 
+- type: loadout
   id: BlackCoronerJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitCoronerBlack
@@ -118,7 +118,7 @@
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout 
+- type: loadout
   id: BlackCoronerJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtCoronerBlack
@@ -183,7 +183,7 @@
     proto: ClinicalSpecialist
 
 # OuterClothing
-- type: loadout 
+- type: loadout
   id: SeniorPhysicianWintercoat
   equipment:
     outerClothing: ClothingOuterWinterSeniorPhysician
@@ -209,7 +209,7 @@
   - !type:GroupLoadoutEffect
     proto: ClinicalSpecialist
 
-- type: loadout 
+- type: loadout
   id: CoronerLabCoat
   equipment:
     outerClothing: ClothingOuterCoatLabCoroner

@@ -1,82 +1,81 @@
 # SPDX-FileCopyrightText: 2024 Gorox221 <139872389+Gorox221@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 AltMapper <141431347+AltMapper@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ent-ClothingUnderPantsNT = мужские трусы НТ
-   .desc = Сделаны на 1% из хлопка.
+    .desc = Сделаны на 1% из хлопка.
 ent-ClothingUnderPantsMilitary = военные мужские трусы
-   .desc = На тот случай, когда вам нужно отправиться на войну.
+    .desc = На тот случай, когда вам нужно отправиться на войну.
 
 ent-ClothingUnderPantsWhite = белые мужские трусы
-   .desc = Сделаны на 50% из хлопка.
+    .desc = Сделаны на 50% из хлопка.
 ent-ClothingUnderPantsBlack = чёрные мужские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsBlue = синие мужские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsBrown = коричневые мужские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsGreen = зелёные мужские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsRed = красные мужские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsYellow = жёлтые мужские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 
 ent-ClothingUnderPantsFemaleWhite = белые женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleBlack = чёрные женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleBlue = синие женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleBrown = коричневые женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleGreen = зелёные женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleRed = красные женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleYellow = жёлтые женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 
 ent-ClothingUnderPantsFemaleThongWhite = белые женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleThongBlack = чёрные женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleThongBlue = синие женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleThongBrown = коричневые женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleThongGreen = зелёные женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleThongRed = красные женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleThongYellow = жёлтые женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 
 ent-ClothingUnderPantsFemaleAlterWhite = белые женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleAlterBlack = чёрные женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleAlterBlue = синие женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleAlterBrown = коричневые женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleAlterGreen = зелёные женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleAlterRed = красные женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleAlterYellow = жёлтые женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 
 ent-ClothingUnderPantsFemaleAnime = женские трусы косплеера
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleCat = неко женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleFlower = цветочные женские трусы
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }
 ent-ClothingUnderPantsFemaleHeart = женские трусы с сердечками
-   .desc = Сделаны на 50% из любви.
+    .desc = Сделаны на 50% из любви.
 ent-ClothingUnderPantsFemaleMira = женские трусы с узором
-   .desc = { ent-ClothingUnderPantsWhite.desc }
+    .desc = { ent-ClothingUnderPantsWhite.desc }

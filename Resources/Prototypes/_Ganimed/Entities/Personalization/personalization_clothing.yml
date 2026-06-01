@@ -240,7 +240,7 @@
       gloves: ClothingHandsModsuitResuscitator
       outerClothing: ClothingOuterModsuitBodyResuscitator
       shoes: ClothingModsuitShoesResuscitator
-      
+
 - type: entity
   parent: ADTClothingHeadHelmetModsuitMedical
   id: ClothingHeadHelmetModsuitResuscitator
@@ -268,7 +268,7 @@
       - state: equipped-head-light
         shader: unshaded
   - type: Appearance
-  
+
 - type: entity
   parent: ADTClothingOuterModsuitBodyMedical
   id: ClothingOuterModsuitBodyResuscitator

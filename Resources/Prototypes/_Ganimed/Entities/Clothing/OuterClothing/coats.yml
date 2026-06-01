@@ -270,7 +270,7 @@
   - type: Sprite
     sprite: _Ganimed/Clothing/OuterClothing/WinterCoats/wintercoatseniorphysican.rsi
   - type: Clothing
-    sprite: _Ganimed/Clothing/OuterClothing/WinterCoats/wintercoatseniorphysican.rsi 
+    sprite: _Ganimed/Clothing/OuterClothing/WinterCoats/wintercoatseniorphysican.rsi
   - type: Armor
     modifiers:
       coefficients:

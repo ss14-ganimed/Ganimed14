@@ -1,6 +1,5 @@
 # SPDX-FileCopyrightText: 2024 Gorox221 <139872389+Gorox221@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 AltMapper <141431347+AltMapper@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -30,8 +29,8 @@
     sprite: _Ganimed/Clothing/Under/Socks/socks.rsi
     clothingVisuals:
       socks:
-        - state: equipped-SOCKS
-          color: "#3f3f3f"
+      - state: equipped-SOCKS
+        color: "#3f3f3f"
 
 - type: entity
   parent: ADTClothingUnderwearSocksBase
@@ -46,8 +45,8 @@
     sprite: _Ganimed/Clothing/Under/Socks/socks.rsi
     clothingVisuals:
       socks:
-        - state: equipped-SOCKS
-          color: "#0089EF"
+      - state: equipped-SOCKS
+        color: "#0089EF"
 
 - type: entity
   parent: ADTClothingUnderwearSocksBase
@@ -62,8 +61,8 @@
     sprite: _Ganimed/Clothing/Under/Socks/socks.rsi
     clothingVisuals:
       socks:
-        - state: equipped-SOCKS
-          color: "#723A02"
+      - state: equipped-SOCKS
+        color: "#723A02"
 
 - type: entity
   parent: ADTClothingUnderwearSocksBase
@@ -78,8 +77,8 @@
     sprite: _Ganimed/Clothing/Under/Socks/socks.rsi
     clothingVisuals:
       socks:
-        - state: equipped-SOCKS
-          color: "#5ABF2F"
+      - state: equipped-SOCKS
+        color: "#5ABF2F"
 
 - type: entity
   parent: ADTClothingUnderwearSocksBase
@@ -94,8 +93,8 @@
     sprite: _Ganimed/Clothing/Under/Socks/socks.rsi
     clothingVisuals:
       socks:
-        - state: equipped-SOCKS
-          color: "#940000"
+      - state: equipped-SOCKS
+        color: "#940000"
 
 - type: entity
   parent: ADTClothingUnderwearSocksBase
@@ -110,8 +109,8 @@
     sprite: _Ganimed/Clothing/Under/Socks/socks.rsi
     clothingVisuals:
       socks:
-        - state: equipped-SOCKS
-          color: "#EBE216"
+      - state: equipped-SOCKS
+        color: "#EBE216"
 
 # Misc
 - type: entity
@@ -124,7 +123,7 @@
     sprite: _Ganimed/Clothing/Under/Socks/stockings/bee.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Under/Socks/stockings/bee.rsi
-        
+
 - type: entity
   parent: ADTClothingUnderwearSocksBase
   id: ClothingUnderSocksStockingsCentCom
@@ -179,7 +178,7 @@
     sprite: _Ganimed/Clothing/Under/Socks/stockings/white.rsi
   - type: Clothing
     sprite: _Ganimed/Clothing/Under/Socks/stockings/white.rsi
-        
+
 - type: entity
   parent: ADTClothingUnderwearSocksBase
   id: ClothingUnderSocksStockingsSky

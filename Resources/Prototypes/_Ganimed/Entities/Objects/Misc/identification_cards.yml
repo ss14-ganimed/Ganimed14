@@ -69,5 +69,5 @@
   - type: Item
     heldPrefix: red
   - type: IdCard
-    jobTitle: job-title-ussp-officer 
+    jobTitle: job-title-ussp-officer
     jobIcon: JobIconUSSPOfficer
