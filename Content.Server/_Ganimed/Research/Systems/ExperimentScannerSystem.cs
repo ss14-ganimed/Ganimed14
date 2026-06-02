@@ -28,7 +28,6 @@ using Content.Shared.Popups;
 using Content.Shared.Research.Components;
 using Content.Shared.NodeContainer;
 using Content.Shared.Tag;
-using Content.Shared.UserInterface;
 using Content.Shared.VendingMachines;
 using Content.Server.Station.Systems;
 using Robust.Shared.GameObjects;
@@ -48,7 +47,6 @@ public sealed class ExperimentScannerSystem : EntitySystem
     [Dependency] private readonly ResearchSystem _research = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -99,7 +97,6 @@ public sealed class ExperimentScannerSystem : EntitySystem
             db.ActiveOrder = stationDb.AvailableOrders[i];
             db.ActiveOrder.HadServerOnAccept = TryGetAssignedServer(ent, out _, out _);
             stationDb.AvailableOrders.RemoveAt(i);
-            _audio.PlayPvs(ent.Comp.SelectSound, ent);
             if (args.Actor is { Valid: true } user)
             {
                 _popup.PopupClient(Loc.GetString("experiment-scanner-popup-selected"), user, user);
@@ -132,7 +129,6 @@ public sealed class ExperimentScannerSystem : EntitySystem
         var abandonedOrder = db.ActiveOrder;
         stationDb.AvailableOrders.Add(abandonedOrder);
         db.ActiveOrder = null;
-        _audio.PlayPvs(ent.Comp.SelectSound, ent);
         if (args.Actor is { Valid: true } user)
         {
             _popup.PopupClient(Loc.GetString("experiment-scanner-popup-abandoned"), user, user);
@@ -178,7 +174,6 @@ public sealed class ExperimentScannerSystem : EntitySystem
         }
 
         db.NextSkipTime = _timing.CurTime + db.SkipDelay;
-        _audio.PlayPvs(ent.Comp.SkipSound, ent);
         if (args.Actor is { Valid: true } user)
         {
             _popup.PopupClient(Loc.GetString("experiment-scanner-popup-skipped"), user, user);
@@ -637,7 +632,8 @@ public sealed class ExperimentScannerSystem : EntitySystem
             serverName = serverComp.ServerName;
         }
         var state = new ExperimentScannerState(available, active, untilNextSkip, hasServer, serverName);
-        _ui.SetUiState(scanner.Owner, ExperimentScannerUiKey.Key, state);
+        scanner.Comp.UiState = state;
+        Dirty(scanner);
     }
 
     private ExperimentOrderUiData ToUiData(StationExperimentOrderData order)

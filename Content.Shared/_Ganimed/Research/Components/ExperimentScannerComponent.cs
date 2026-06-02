@@ -3,10 +3,11 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Content.Shared.Radio;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared._Ganimed.Research.Components;
 
-[RegisterComponent, AutoGenerateComponentPause]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), AutoGenerateComponentPause]
 public sealed partial class ExperimentScannerComponent : Component
 {
     [DataField]
@@ -38,6 +39,9 @@ public sealed partial class ExperimentScannerComponent : Component
 
     [DataField]
     public ProtoId<RadioChannelPrototype> AnnouncementChannel = "Science";
+
+    [DataField, AutoNetworkedField]
+    public ExperimentScannerState? UiState;
 }
 
 [Serializable, NetSerializable]
