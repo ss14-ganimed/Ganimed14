@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ent-BaseTargetCircle = красный круг
-   .desc = {""}
+    .desc = {""}
 
 ent-BaseSupplyPodTargetCircle = { ent-BaseTargetCircle }
     .desc = { ent-BaseTargetCircle.desc }

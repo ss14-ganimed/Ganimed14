@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ent-BaseRocket = ракета
-   .desc = Оно сейчас взорвётся... Чёрт...
+    .desc = Оно сейчас взорвётся... Чёрт...
 
 ent-Rocket = { ent-BaseRocket }
     .desc = { ent-BaseRocket.desc }

@@ -9,9 +9,9 @@
   id: RocketMediumExplosionCircle
   suffix: Explosion, medium
   components:
-    - type: TimedSpawner
-      prototypes:
-        -  RocketMediumExplosionFallingAnimation
+  - type: TimedSpawner
+    prototypes:
+    -  RocketMediumExplosionFallingAnimation
 
 # Syndicate rocket, medium explosion
 - type: entity
@@ -19,6 +19,6 @@
   id: RocketSyndicateMediumExplosionCircle
   suffix: Explosion, medium
   components:
-    - type: TimedSpawner
-      prototypes:
-        -  RocketSyndicateMediumExplosionFallingAnimation
+  - type: TimedSpawner
+    prototypes:
+    -  RocketSyndicateMediumExplosionFallingAnimation

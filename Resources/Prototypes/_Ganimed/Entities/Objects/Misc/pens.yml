@@ -365,7 +365,7 @@
 - type: entity
   name: cargo fountain pen
   parent: Pen
-  id: PenCargo1QM
+  id: PenCargoQM
   description: The quartermaster's fountain pen, it seems to be gilded. Your employees shouldn't know where you got it from.
   components:
   - type: Sprite

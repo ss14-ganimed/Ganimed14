@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -90,7 +91,7 @@
         tableId: BeltSecurityEntityTable
 
 # Pouches
-#- type: entity #ERT
+#- type: entity # ERT
 #  parent: ClothingBeltPouchMedical
 #  id: ClothingBeltPouchMedicalERTFilled
 #  # categories: [ HideSpawnMenu ]
@@ -106,7 +107,7 @@
 #    - id: CombatMedipen
 #    - id: EmergencyMedipen
 
-#- type: entity #CBURN
+#- type: entity # CBURN
 #  parent: ClothingBeltPouchMedical
 #  id: ClothingBeltPouchMedicalCBURNFilled
 #  # categories: [ HideSpawnMenu ]

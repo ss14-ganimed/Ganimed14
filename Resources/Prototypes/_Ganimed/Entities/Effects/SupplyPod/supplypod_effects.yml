@@ -1,5 +1,4 @@
 # SPDX-FileCopyrightText: 2025 CrimeMoot <wakeafa@gmail.com>
-# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -9,9 +8,9 @@
   categories: [ HideSpawnMenu ]
   id: SupplyPodDefaultFallingAnimation
   components:
-    - type: Sprite
-      layers:
-        - state: default_falling_animation
+  - type: Sprite
+    layers:
+    - state: default_falling_animation
 
 # Bluespace
 - type: entity
@@ -19,9 +18,9 @@
   categories: [ HideSpawnMenu ]
   id: SupplyPodBluespaceFallingAnimation
   components:
-    - type: Sprite
-      layers:
-        - state: bluespace_falling_animation
+  - type: Sprite
+    layers:
+    - state: bluespace_falling_animation
 
 # Cult
 - type: entity
@@ -29,9 +28,9 @@
   categories: [ HideSpawnMenu ]
   id: SupplyPodCultFallingAnimation
   components:
-    - type: Sprite
-      layers:
-        - state: cult_falling_animation
+  - type: Sprite
+    layers:
+    - state: cult_falling_animation
 
 # Honk
 - type: entity
@@ -39,9 +38,9 @@
   categories: [ HideSpawnMenu ]
   id: SupplyPodHonkFallingAnimation
   components:
-    - type: Sprite
-      layers:
-        - state: honk_falling_animation
+  - type: Sprite
+    layers:
+    - state: honk_falling_animation
 
 # NanoTrasen
 - type: entity
@@ -49,9 +48,9 @@
   categories: [ HideSpawnMenu ]
   id: SupplyPodNanoTrasenFallingAnimation
   components:
-    - type: Sprite
-      layers:
-        - state: nanotrasen_falling_animation
+  - type: Sprite
+    layers:
+    - state: nanotrasen_falling_animation
 
 # Squad
 - type: entity
@@ -59,9 +58,9 @@
   categories: [ HideSpawnMenu ]
   id: SupplyPodSquadFallingAnimation
   components:
-    - type: Sprite
-      layers:
-        - state: squad_falling_animation
+  - type: Sprite
+    layers:
+    - state: squad_falling_animation
 
 # Syndicate
 - type: entity
@@ -69,6 +68,6 @@
   categories: [ HideSpawnMenu ]
   id: SupplyPodSyndicateFallingAnimation
   components:
-    - type: Sprite
-      layers:
-        - state: syndicate_falling_animation
+  - type: Sprite
+    layers:
+    - state: syndicate_falling_animation

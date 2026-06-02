@@ -10,5 +10,5 @@
   components:
   - type: StorageFill
     contents:
-      - id: SheetUranium
-        amount: 3
+    - id: SheetUranium
+      amount: 3

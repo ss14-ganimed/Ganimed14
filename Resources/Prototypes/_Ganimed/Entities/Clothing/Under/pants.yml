@@ -1,11 +1,10 @@
 # SPDX-FileCopyrightText: 2024 Gorox221 <139872389+Gorox221@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 AltMapper <141431347+AltMapper@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-#color
+# Color
 - type: entity
   parent: ADTClothingUnderwearBottomBase
   id: ClothingUnderPantsWhite
@@ -30,8 +29,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Male/white.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#3f3f3f"
+      - state: equipped-UNDERWEARB
+        color: "#3f3f3f"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -46,8 +45,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Male/white.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#0089EF"
+      - state: equipped-UNDERWEARB
+        color: "#0089EF"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -62,8 +61,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Male/white.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#723A02"
+      - state: equipped-UNDERWEARB
+        color: "#723A02"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -78,8 +77,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Male/white.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#5ABF2F"
+      - state: equipped-UNDERWEARB
+        color: "#5ABF2F"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -94,8 +93,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Male/white.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#940000"
+      - state: equipped-UNDERWEARB
+        color: "#940000"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -110,10 +109,10 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Male/white.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#EBE216"
+      - state: equipped-UNDERWEARB
+        color: "#EBE216"
 
-#Female
+# Female
 - type: entity
   parent: ADTClothingUnderwearBottomBase
   id: ClothingUnderPantsFemaleWhite
@@ -138,8 +137,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/white.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#3f3f3f"
+      - state: equipped-UNDERWEARB
+        color: "#3f3f3f"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -154,8 +153,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/white.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#0089EF"
+      - state: equipped-UNDERWEARB
+        color: "#0089EF"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -170,8 +169,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/white.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#723A02"
+      - state: equipped-UNDERWEARB
+        color: "#723A02"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -186,8 +185,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/white.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#5ABF2F"
+      - state: equipped-UNDERWEARB
+        color: "#5ABF2F"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -202,8 +201,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/white.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#940000"
+      - state: equipped-UNDERWEARB
+        color: "#940000"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -218,10 +217,10 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/white.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#EBE216"
+      - state: equipped-UNDERWEARB
+        color: "#EBE216"
 
-#strings
+# Thongs
 - type: entity
   parent: ADTClothingUnderwearBottomBase
   id: ClothingUnderPantsFemaleThongWhite
@@ -246,8 +245,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/whitestring.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#3f3f3f"
+      - state: equipped-UNDERWEARB
+        color: "#3f3f3f"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -262,8 +261,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/whitestring.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#0089EF"
+      - state: equipped-UNDERWEARB
+        color: "#0089EF"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -278,8 +277,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/whitestring.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#723A02"
+      - state: equipped-UNDERWEARB
+        color: "#723A02"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -294,8 +293,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/whitestring.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#5ABF2F"
+      - state: equipped-UNDERWEARB
+        color: "#5ABF2F"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -310,8 +309,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/whitestring.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#940000"
+      - state: equipped-UNDERWEARB
+        color: "#940000"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -326,10 +325,10 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/whitestring.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#EBE216"
+      - state: equipped-UNDERWEARB
+        color: "#EBE216"
 
-#Alter
+# Alternate
 - type: entity
   parent: ADTClothingUnderwearBottomBase
   id: ClothingUnderPantsFemaleAlterWhite
@@ -354,8 +353,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/alterwhite.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#3f3f3f"
+      - state: equipped-UNDERWEARB
+        color: "#3f3f3f"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -370,8 +369,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/alterwhite.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#0089EF"
+      - state: equipped-UNDERWEARB
+        color: "#0089EF"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -386,8 +385,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/alterwhite.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#723A02"
+      - state: equipped-UNDERWEARB
+        color: "#723A02"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -402,8 +401,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/alterwhite.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#5ABF2F"
+      - state: equipped-UNDERWEARB
+        color: "#5ABF2F"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -418,8 +417,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/alterwhite.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#940000"
+      - state: equipped-UNDERWEARB
+        color: "#940000"
 
 - type: entity
   parent: ADTClothingUnderwearBottomBase
@@ -434,8 +433,8 @@
     sprite: _Ganimed/Clothing/Under/Underpants/Female/alterwhite.rsi
     clothingVisuals:
       underwearb:
-        - state: equipped-UNDERWEARB
-          color: "#EBE216"
+      - state: equipped-UNDERWEARB
+        color: "#EBE216"
 
 #Misc
 - type: entity

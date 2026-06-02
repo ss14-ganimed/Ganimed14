@@ -21,8 +21,8 @@
       outerClothing: ClothingOuterModsuitBodyCMO
       shoes: ClothingModsuitShoesCMO
     startingModules:
-      - ADTModsuitModStorage
-      - ADTModsuitModLight
+    - ADTModsuitModStorage
+    - ADTModsuitModLight
 
 # нр
 - type: entity
@@ -44,10 +44,10 @@
       outerClothing: ClothingOuterModsuitBodyRD
       shoes: ClothingModsuitShoesRD
     startingModules:
-      - ADTModsuitModStorage
-      - ADTModsuitModWelding
-      - ADTModsuitModLight
-      - ADTModsuitModRadiationProtection
+    - ADTModsuitModStorage
+    - ADTModsuitModWelding
+    - ADTModsuitModLight
+    - ADTModsuitModRadiationProtection
   - type: StealTarget
     stealGroup: ClothingOuterHardsuitRd
   - type: Tag
@@ -74,8 +74,8 @@
       outerClothing: ClothingOuterModsuitBodyMagnate
       shoes: ClothingModsuitShoesMagnate
     startingModules:
-      - ADTModsuitModStorage
-      - ADTModsuitModLight
+    - ADTModsuitModStorage
+    - ADTModsuitModLight
 
 # ЦК
 - type: entity
@@ -97,8 +97,8 @@
       outerClothing: ClothingOuterModsuitBodyCorporate
       shoes: ClothingModsuitShoesCorporate
     startingModules:
-      - ADTModsuitModStorageLarge
-      - ADTModsuitModLight
-      - ADTModsuitModRadiationProtection
-      - ADTModsuitModIsulation
-      - ADTModsuitModWelding
+    - ADTModsuitModStorageLarge
+    - ADTModsuitModLight
+    - ADTModsuitModRadiationProtection
+    - ADTModsuitModIsulation
+    - ADTModsuitModWelding
