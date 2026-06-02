@@ -12,16 +12,16 @@
 /Content.*/_Ganimed/ @CrimeMoot
 
 # YAML and prototypes
-*.yml @CrimeMoot @RedSpyy @HyperB1
-/Resources/Prototypes/ @CrimeMoot @RedSpyy @HyperB1
+*.yml @HyperB1
+/Resources/Prototypes/ @HyperB1
 
 # Localization
 *.ftl @HyperB1
 /Resources/Locale/ru-RU/ @HyperB1
 
 # Administration
-/Resources/ConfigPresets/ @CrimeMoot @RedSpyy @Yuoko
-/Content.*/Administration/ @CrimeMoot @RedSpyy @Yuoko
+/Resources/ConfigPresets/ @CrimeMoot @Yuoko
+/Content.*/Administration/ @CrimeMoot @Yuoko
 
 # Head Mapper
 /Resources/Maps/** @AltMapper
@@ -44,13 +44,13 @@
 # Other unique content
 /Resources/Prototypes/Traits/ @CrimeMoot @HyperB1
 /Resources/Prototypes/*/Traits/ @CrimeMoot @HyperB1
-/Resources/Prototypes/Roles/ @HyperB1 @RedSpyy @Yuoko @AltMapper
-/Resources/Prototypes/*/Roles/ @HyperB1 @RedSpyy @Yuoko @AltMapper
+/Resources/Prototypes/Roles/ @HyperB1 @Yuoko @AltMapper
+/Resources/Prototypes/*/Roles/ @HyperB1 @Yuoko @AltMapper
 /Resources/Prototypes/Loadouts/ @HyperB1
 /Resources/Prototypes/*/Loadouts/ @HyperB1
 /Resources/Prototypes/_Ganimed/Entities/Clothing/ @AltMapper @HyperB1
-/Resources/Prototypes/Entities/Objects/Weapons/ @RedSpyy
-/Resources/Prototypes/*/Entities/Objects/Weapons/ @RedSpyy
+# /Resources/Prototypes/Entities/Objects/Weapons/ @RedSpyy
+# /Resources/Prototypes/*/Entities/Objects/Weapons/ @RedSpyy
 /Resources/Prototypes/GameRules/ @HyperB1 @AltMapper @CrimeMoot @Yuoko
 
 # Lore, Wiki, Guidebook & Rules
