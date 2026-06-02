@@ -13,6 +13,14 @@
   name: guide-entry-technologies
   text: "/ServerInfo/Guidebook/Science/Technologies.xml"
   filterEnabled: True
+  children:
+  - ExperimentScannerGuide
+
+- type: guideEntry
+  id: ExperimentScannerGuide
+  name: guide-entry-experiment-scanner
+  text: "/ServerInfo/Guidebook/Science/ExperimentScanner.xml"
+  filterEnabled: True
 
 - type: guideEntry
   id: AnomalousResearch
