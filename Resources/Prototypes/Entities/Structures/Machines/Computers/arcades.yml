@@ -33,6 +33,10 @@
         computerLayerBody:
           None: { state: arcade, sprite: Structures/Machines/arcade.rsi }
   # ADT-Tweak end
+  # Ganimed-Add-Fix-Start
+  - type: EdgeConnection
+    connectionKey: other
+  # Ganimed-Add-Fix-End
   - type: WiresPanel
   - type: Wires
     layoutId: Arcade

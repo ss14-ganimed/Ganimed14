@@ -4,26 +4,17 @@ using Robust.Shared.Map.Components;
 namespace Content.Server.ADT.Sprite.EdgeConnections;
 
 /// <summary>
-/// Calculates edge-connection masks for anchored entities on grids.
+/// Handles visual edge connections between entities placed adjacent to each other.
+/// Updates appearance data based on neighboring entities with matching connection keys.
 /// </summary>
 public sealed class EdgeConnectionSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
 
-    private static readonly (Vector2i Offset, EdgeConnectionDirections Direction, EdgeConnectionDirections Opposite)[] CardinalOffsets =
-    [
-        (new Vector2i(1, 0), EdgeConnectionDirections.East, EdgeConnectionDirections.West),
-        (new Vector2i(-1, 0), EdgeConnectionDirections.West, EdgeConnectionDirections.East),
-        (new Vector2i(0, 1), EdgeConnectionDirections.North, EdgeConnectionDirections.South),
-        (new Vector2i(0, -1), EdgeConnectionDirections.South, EdgeConnectionDirections.North),
-    ];
-
-    private EntityQuery<EdgeConnectionComponent> _edgeQuery;
-
     public override void Initialize()
     {
-        _edgeQuery = GetEntityQuery<EdgeConnectionComponent>();
+        base.Initialize();
 
         SubscribeLocalEvent<EdgeConnectionComponent, ComponentInit>(OnConnectionInit);
         SubscribeLocalEvent<EdgeConnectionComponent, ComponentShutdown>(OnConnectionShutdown);
@@ -39,195 +30,201 @@ public sealed class EdgeConnectionSystem : EntitySystem
 
     private void OnAnchorChanged(Entity<EdgeConnectionComponent> ent, ref AnchorStateChangedEvent args)
     {
-        if (args.Detaching)
-        {
-            _appearance.SetData(ent, EdgeConnectionVisuals.ConnectionMask, EdgeConnectionDirections.None);
-            RecalculateNeighborsAtCoordinates(args.Transform);
-            return;
-        }
-
         RecalculateEntity(ent);
         RecalculateNeighbors(ent);
     }
 
     private void OnConnectionShutdown(Entity<EdgeConnectionComponent> ent, ref ComponentShutdown args)
-    {
-        _appearance.SetData(ent, EdgeConnectionVisuals.ConnectionMask, EdgeConnectionDirections.None);
-        RecalculateNeighbors(ent);
-    }
+        // Update neighbors when this entity is removed
+        => RecalculateNeighbors(ent);
 
     private void OnConnectionMoved(Entity<EdgeConnectionComponent> ent, ref MoveEvent args)
     {
-        var movedToNewTile = args.OldPosition.EntityId != args.NewPosition.EntityId
-                            || args.OldPosition.Position.Floored() != args.NewPosition.Position.Floored();
-
-        if (!movedToNewTile && args.OldRotation.EqualsApprox(args.NewRotation))
-            return;
-
-        RecalculateEntity(ent);
-        RecalculateNeighbors(ent);
+        // Only update if rotation changed
+        if (!args.OldRotation.EqualsApprox(args.NewRotation))
+        {
+            RecalculateEntity(ent);
+            RecalculateNeighbors(ent);
+        }
     }
 
     private void RecalculateEntity(Entity<EdgeConnectionComponent> ent)
     {
         var xform = Transform(ent);
 
-        if (!TryGetGridTile(xform, out var gridUid, out var grid, out var tile))
+        if (!xform.Anchored || !TryComp<MapGridComponent>(xform.GridUid, out var grid))
         {
             _appearance.SetData(ent, EdgeConnectionVisuals.ConnectionMask, EdgeConnectionDirections.None);
             return;
         }
 
-        var worldAllowed = RotateDirections(ent.Comp.AllowedDirections, xform.LocalRotation, clockwise: true);
         var mask = EdgeConnectionDirections.None;
+        var tile = _map.TileIndicesFor(xform.GridUid.Value, grid, xform.Coordinates);
+        var allowed = ent.Comp.AllowedDirections;
+        var rotation = xform.LocalRotation;
 
-        foreach (var (offset, direction, opposite) in CardinalOffsets)
+        // Transform allowed directions to world space
+        var worldAllowed = RotateDirections(allowed, rotation);
+
+        // Check each world direction if it's allowed after rotation
+        if ((worldAllowed & EdgeConnectionDirections.East) != 0)
         {
-            if ((worldAllowed & direction) == 0)
-                continue;
-
-            if (HasMatchingNeighbor(ent, xform.LocalRotation, gridUid, grid, tile + offset, ent.Comp.ConnectionKey, opposite))
-                mask |= direction;
+            if (HasMatchingNeighbor(ent, xform.GridUid.Value, grid, tile + new Vector2i(1, 0), ent.Comp.ConnectionKey, EdgeConnectionDirections.West))
+                mask |= EdgeConnectionDirections.East;
         }
 
-        var localMask = RotateDirections(mask, xform.LocalRotation, clockwise: false);
+        if ((worldAllowed & EdgeConnectionDirections.West) != 0)
+        {
+            if (HasMatchingNeighbor(ent, xform.GridUid.Value, grid, tile + new Vector2i(-1, 0), ent.Comp.ConnectionKey, EdgeConnectionDirections.East))
+                mask |= EdgeConnectionDirections.West;
+        }
 
-        if (GetQuarterTurns(xform.LocalRotation) % 2 != 0)
-            localMask = FlipEastWest(localMask);
+        if ((worldAllowed & EdgeConnectionDirections.North) != 0)
+        {
+            if (HasMatchingNeighbor(ent, xform.GridUid.Value, grid, tile + new Vector2i(0, 1), ent.Comp.ConnectionKey, EdgeConnectionDirections.South))
+                mask |= EdgeConnectionDirections.North;
+        }
+
+        if ((worldAllowed & EdgeConnectionDirections.South) != 0)
+        {
+            if (HasMatchingNeighbor(ent, xform.GridUid.Value, grid, tile + new Vector2i(0, -1), ent.Comp.ConnectionKey, EdgeConnectionDirections.North))
+                mask |= EdgeConnectionDirections.South;
+        }
+
+        // Transform mask back to local space for sprite state selection
+        var localMask = RotateDirectionsInverse(mask, rotation);
 
         _appearance.SetData(ent, EdgeConnectionVisuals.ConnectionMask, localMask);
     }
 
-    private bool HasMatchingNeighbor(EntityUid self, Angle selfLocalRotation, EntityUid gridUid, MapGridComponent grid, Vector2i tile, string key, EdgeConnectionDirections requiredDirection)
+    /// <summary>
+    /// Rotates direction flags by the given angle (in 90-degree increments).
+    /// Used to convert entity-local directions to world-space directions.
+    /// </summary>
+    private EdgeConnectionDirections RotateDirections(EdgeConnectionDirections flags, Angle rotation)
+        => RotateDirectionsImpl(flags, rotation, clockwise: true);
+
+    /// <summary>
+    /// Rotates direction flags by the inverse of the given angle.
+    /// Used to convert world-space directions back to entity-local directions.
+    /// </summary>
+    private EdgeConnectionDirections RotateDirectionsInverse(EdgeConnectionDirections flags, Angle rotation)
+        => RotateDirectionsImpl(flags, rotation, clockwise: false);
+
+    private EdgeConnectionDirections RotateDirectionsImpl(EdgeConnectionDirections flags, Angle rotation, bool clockwise)
     {
-        var anchored = _map.GetAnchoredEntitiesEnumerator(gridUid, grid, tile);
-        var selfQuarterTurns = GetQuarterTurns(selfLocalRotation);
+        // Normalize angle to 0-360
+        var degrees = (int)Math.Round(rotation.Degrees) % 360;
+        if (degrees < 0) degrees += 360;
 
-        while (anchored.MoveNext(out var otherNullable))
-        {
-            if (otherNullable is not { } other)
-                continue;
+        // Round to nearest 90 degrees
+        var quarterTurns = (int)Math.Round(degrees / 90.0) % 4;
 
-            if (other == self)
-                continue;
-
-            if (!_edgeQuery.TryComp(other, out var edge) || edge.ConnectionKey != key)
-                continue;
-
-            var otherXform = Transform(other);
-            if (!otherXform.Anchored)
-                continue;
-
-            var otherQuarterTurns = GetQuarterTurns(otherXform.LocalRotation);
-            if (selfQuarterTurns % 2 != otherQuarterTurns % 2)
-                continue;
-
-            var otherAllowed = RotateDirections(edge.AllowedDirections, otherXform.LocalRotation, clockwise: true);
-            if ((otherAllowed & requiredDirection) != 0)
-                return true;
-        }
-
-        return false;
-    }
-
-    private void RecalculateNeighbors(Entity<EdgeConnectionComponent> ent)
-    {
-        var xform = Transform(ent);
-        if (!TryGetGridTile(xform, out var gridUid, out var grid, out var tile))
-            return;
-
-        foreach (var (offset, _, _) in CardinalOffsets)
-        {
-            var anchored = _map.GetAnchoredEntitiesEnumerator(gridUid, grid, tile + offset);
-            while (anchored.MoveNext(out var otherNullable))
-            {
-                if (otherNullable is not { } other)
-                    continue;
-
-                if (!_edgeQuery.TryComp(other, out var edgeComp))
-                    continue;
-
-                RecalculateEntity((other, edgeComp));
-            }
-        }
-    }
-
-    private void RecalculateNeighborsAtCoordinates(TransformComponent xform)
-    {
-        if (xform.GridUid is not { } gridUid || !TryComp(gridUid, out MapGridComponent? grid))
-            return;
-
-        var tile = _map.TileIndicesFor(gridUid, grid, xform.Coordinates);
-
-        foreach (var (offset, _, _) in CardinalOffsets)
-        {
-            var anchored = _map.GetAnchoredEntitiesEnumerator(gridUid, grid, tile + offset);
-            while (anchored.MoveNext(out var otherNullable))
-            {
-                if (otherNullable is not { } other)
-                    continue;
-
-                if (!_edgeQuery.TryComp(other, out var edgeComp))
-                    continue;
-
-                RecalculateEntity((other, edgeComp));
-            }
-        }
-    }
-
-    private bool TryGetGridTile(TransformComponent xform, out EntityUid gridUid, out MapGridComponent grid, out Vector2i tile)
-    {
-        gridUid = default;
-        grid = default!;
-        tile = default;
-
-        if (!xform.Anchored || xform.GridUid is not { } gridId || !TryComp(gridId, out MapGridComponent? gridComp))
-            return false;
-
-        grid = gridComp;
-        gridUid = gridId;
-        tile = _map.TileIndicesFor(gridUid, grid, xform.Coordinates);
-        return true;
-    }
-
-    private static EdgeConnectionDirections RotateDirections(EdgeConnectionDirections flags, Angle rotation, bool clockwise)
-    {
-        var quarterTurns = GetQuarterTurns(rotation);
+        // Invert if counterclockwise
         if (!clockwise)
             quarterTurns = (4 - quarterTurns) % 4;
 
-        for (var i = 0; i < quarterTurns; i++)
+        if (quarterTurns == 0)
+            return flags;
+
+        for (int i = 0; i < quarterTurns; i++)
         {
             var rotated = EdgeConnectionDirections.None;
-            if ((flags & EdgeConnectionDirections.North) != 0)
-                rotated |= EdgeConnectionDirections.East;
-            if ((flags & EdgeConnectionDirections.East) != 0)
-                rotated |= EdgeConnectionDirections.South;
-            if ((flags & EdgeConnectionDirections.South) != 0)
-                rotated |= EdgeConnectionDirections.West;
-            if ((flags & EdgeConnectionDirections.West) != 0)
-                rotated |= EdgeConnectionDirections.North;
+
+            if (clockwise)
+            {
+                // Clockwise: North→East→South→West
+                if ((flags & EdgeConnectionDirections.North) != 0) rotated |= EdgeConnectionDirections.East;
+                if ((flags & EdgeConnectionDirections.East) != 0) rotated |= EdgeConnectionDirections.South;
+                if ((flags & EdgeConnectionDirections.South) != 0) rotated |= EdgeConnectionDirections.West;
+                if ((flags & EdgeConnectionDirections.West) != 0) rotated |= EdgeConnectionDirections.North;
+            }
+            else
+            {
+                // Counterclockwise: North→West→South→East
+                if ((flags & EdgeConnectionDirections.North) != 0) rotated |= EdgeConnectionDirections.West;
+                if ((flags & EdgeConnectionDirections.West) != 0) rotated |= EdgeConnectionDirections.South;
+                if ((flags & EdgeConnectionDirections.South) != 0) rotated |= EdgeConnectionDirections.East;
+                if ((flags & EdgeConnectionDirections.East) != 0) rotated |= EdgeConnectionDirections.North;
+            }
+
             flags = rotated;
         }
 
         return flags;
     }
 
-    private static int GetQuarterTurns(Angle rotation)
+    /// <summary>
+    /// Checks if there's a matching neighbor at the given tile that can connect.
+    /// Neighbors must have matching connection keys, support the required direction,
+    /// and have the same rotation as the source entity.
+    /// </summary>
+    private bool HasMatchingNeighbor(EntityUid entity, EntityUid gridUid, MapGridComponent grid, Vector2i tile, string key, EdgeConnectionDirections requiredDirection)
     {
-        return ((int) Math.Round(rotation.Degrees / 90.0) % 4 + 4) % 4;
+        var anchored = _map.GetAnchoredEntitiesEnumerator(gridUid, grid, tile);
+        var entityXform = Transform(entity);
+
+        while (anchored.MoveNext(out var other))
+        {
+            if (other == entity)
+                continue;
+
+            if (!TryComp<EdgeConnectionComponent>(other, out var comp) || comp.ConnectionKey != key)
+                continue;
+
+            var otherXform = Transform(other.Value);
+            if (!otherXform.Anchored)
+                continue;
+
+            // Check if neighbor allows connections in the required world-space direction
+            var otherWorldAllowed = RotateDirections(comp.AllowedDirections, otherXform.LocalRotation);
+            if ((otherWorldAllowed & requiredDirection) == 0)
+                continue;
+
+            // Only connect if both entities have the same rotation
+            var entityDegrees = (((int)Math.Round(entityXform.LocalRotation.Degrees) % 360) + 360) % 360;
+            var otherDegrees = (((int)Math.Round(otherXform.LocalRotation.Degrees) % 360) + 360) % 360;
+
+            if (entityDegrees == otherDegrees)
+                return true;
+        }
+
+        return false;
     }
 
-    private static EdgeConnectionDirections FlipEastWest(EdgeConnectionDirections flags)
+    /// <summary>
+    /// Updates all neighboring entities edge connections when this entity changes.
+    /// </summary>
+    private void RecalculateNeighbors(Entity<EdgeConnectionComponent> ent)
     {
-        var result = flags & ~(EdgeConnectionDirections.East | EdgeConnectionDirections.West);
+        if (!TryComp(ent, out TransformComponent? xform))
+            return;
 
-        if ((flags & EdgeConnectionDirections.East) != 0)
-            result |= EdgeConnectionDirections.West;
+        if (!TryComp<MapGridComponent>(xform.GridUid, out var grid))
+            return;
 
-        if ((flags & EdgeConnectionDirections.West) != 0)
-            result |= EdgeConnectionDirections.East;
+        var tile = _map.TileIndicesFor(xform.GridUid.Value, grid, xform.Coordinates);
 
-        return result;
+        // Update all potentially affected neighbors
+        UpdateNeighborsAtTile(xform.GridUid.Value, grid, tile + new Vector2i(1, 0));
+        UpdateNeighborsAtTile(xform.GridUid.Value, grid, tile + new Vector2i(-1, 0));
+        UpdateNeighborsAtTile(xform.GridUid.Value, grid, tile + new Vector2i(0, 1));
+        UpdateNeighborsAtTile(xform.GridUid.Value, grid, tile + new Vector2i(0, -1));
+    }
+
+    /// <summary>
+    /// Updates edge connections for all entities at a specific tile.
+    /// </summary>
+    private void UpdateNeighborsAtTile(EntityUid gridUid, MapGridComponent grid, Vector2i tile)
+    {
+        var anchored = _map.GetAnchoredEntitiesEnumerator(gridUid, grid, tile);
+
+        while (anchored.MoveNext(out var other))
+        {
+            if (TryComp<EdgeConnectionComponent>(other, out var comp))
+            {
+                RecalculateEntity((other.Value, comp));
+            }
+        }
     }
 }
