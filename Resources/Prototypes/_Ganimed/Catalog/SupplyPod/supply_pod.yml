@@ -29,8 +29,8 @@
   components:
   - type: EntityTableContainerFill
     containers:
-    entity_storage: !type:NestedSelector
-      tableId: SurplusCargoTable
+      entity_storage: !type:NestedSelector
+        tableId: SurplusCargoTable
 
 # Stray syndicate surplus 5TC
 - type: entity
