@@ -1,9 +1,9 @@
+#!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-#!/usr/bin/env python3
 # apply_reuse_headers.py - A script to add REUSE headers to source code files
 
 import os

@@ -8,7 +8,7 @@ import os
 import json
 import re
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 
 EMOJI_MAP = {
     "add": "🆕",
@@ -148,7 +148,7 @@ def create_embeds(changelog, author_name, author_avatar, branch, coauthors=None)
             "description": f"\u200b\n{part}",
             "color": DEFAULT_COLOR,
             "footer": {
-                "text": f"{footer_text}, {datetime.utcnow().strftime('%d.%m.%Y %H:%M UTC')}",
+                "text": f"{footer_text}, {datetime.now(timezone.utc).strftime('%d.%m.%Y %H:%M UTC')}",
                 "icon_url": author_avatar
             }
         }
