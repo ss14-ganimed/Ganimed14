@@ -1,0 +1,5 @@
+- type: guideEntry
+  id: ExperimentScannerGuide
+  name: guide-entry-experiment-scanner
+  text: "/ServerInfo/Guidebook/Science/ExperimentScanner.xml"
+  filterEnabled: True

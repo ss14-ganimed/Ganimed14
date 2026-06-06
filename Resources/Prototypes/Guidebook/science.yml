@@ -16,12 +16,6 @@
   filterEnabled: True
 
 - type: guideEntry
-  id: ExperimentScannerGuide
-  name: guide-entry-experiment-scanner
-  text: "/ServerInfo/Guidebook/Science/ExperimentScanner.xml"
-  filterEnabled: True
-
-- type: guideEntry
   id: AnomalousResearch
   name: guide-entry-anomalous-research
   text: "/ServerInfo/Guidebook/Science/AnomalousResearch.xml"
