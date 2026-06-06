@@ -1,0 +1,21 @@
+- type: reagent
+  id: AcidicBuffer
+  name: reagent-name-acidic-buffer
+  group: Chemicals
+  desc: reagent-desc-acidic-buffer
+  physicalDesc: reagent-physical-desc-acidic
+  flavor: bitter
+  color: "#f05c5c"
+  pH: 0.0
+  reactionAgent: true
+
+- type: reagent
+  id: BasicBuffer
+  name: reagent-name-basic-buffer
+  group: Chemicals
+  desc: reagent-desc-basic-buffer
+  physicalDesc: reagent-physical-desc-alkaline
+  flavor: bitter
+  color: "#5c8ff0"
+  pH: 14.0
+  reactionAgent: true

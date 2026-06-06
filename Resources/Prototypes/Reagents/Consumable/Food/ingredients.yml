@@ -132,6 +132,7 @@
   physicalDesc: reagent-physical-desc-sour
   flavor: bitter
   color: tan
+  pH: 2.5
   recognizable: true
   metabolisms:
     Food:

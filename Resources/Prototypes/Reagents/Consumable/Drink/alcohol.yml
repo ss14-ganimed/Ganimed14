@@ -180,6 +180,7 @@
   parent: BaseAlcohol
   desc: reagent-desc-ethanol
   physicalDesc: reagent-physical-desc-strong-smelling
+  pH: 7.3
   flavor: alcohol
   color: "#b05b3c"
   boilingPoint: 78.2

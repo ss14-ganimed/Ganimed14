@@ -21,6 +21,7 @@ guidebook-reagent-effects-metabolism-group-rate = [bold]{$group}[/bold] [color=g
 guidebook-reagent-plant-metabolisms-header = Plant Metabolism
 guidebook-reagent-plant-metabolisms-rate = [bold]Plant Metabolism[/bold] [color=gray](1 unit every 3 seconds as base)[/color]
 guidebook-reagent-physical-description = [italic]Seems to be {$description}.[/italic]
+guidebook-reagent-ph = [color=gray]pH: {$ph}[/color]
 guidebook-reagent-recipes-mix-info = {$minTemp ->
     [0] {$hasMax ->
             [true] {CAPITALIZE($verb)} below {NATURALFIXED($maxTemp, 2)}K
@@ -30,4 +31,4 @@ guidebook-reagent-recipes-mix-info = {$minTemp ->
             [true] between {NATURALFIXED($minTemp, 2)}K and {NATURALFIXED($maxTemp, 2)}K
             *[false] above {NATURALFIXED($minTemp, 2)}K
         }
-}
+} [color=gray](pH {$minPH}-{$maxPH})[/color]

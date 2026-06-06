@@ -1,6 +1,7 @@
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Database;
 using Content.Shared.EntityEffects;
+using Content.Shared._Ganimed.Chemistry;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -56,6 +57,25 @@ namespace Content.Shared.Chemistry.Reaction
         /// </summary>
         [DataField("products", customTypeSerializer:typeof(PrototypeIdDictionarySerializer<FixedPoint2, ReagentPrototype>))]
         public Dictionary<string, FixedPoint2> Products = new();
+
+        /// <summary>
+        /// The minimum solution pH required for this reaction to occur.
+        /// </summary>
+        [DataField("minPH")]
+        public float MinimumPH = 0f;
+
+        /// <summary>
+        /// The maximum solution pH required for this reaction to occur.
+        /// </summary>
+        [DataField("maxPH")]
+        public float MaximumPH = 14f;
+
+        /// <summary>
+        ///     Maximum amount of reaction units processed per reaction pass.
+        ///     Reactions may override this in YAML for slower or faster chemistry.
+        /// </summary>
+        [DataField("reactionRate")]
+        public FixedPoint2 ReactionRate = FixedPoint2.New(5);
 
         /// <summary>
         /// Effects to be triggered when the reaction occurs.

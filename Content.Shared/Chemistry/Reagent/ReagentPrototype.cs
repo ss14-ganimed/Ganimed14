@@ -4,6 +4,7 @@ using Content.Shared.FixedPoint;
 using System.Text.Json.Serialization;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.Chemistry.Reaction;
+using Content.Shared._Ganimed.Chemistry;
 using Content.Shared.Contraband;
 using Content.Shared.EntityEffects;
 using Content.Shared.Localizations;
@@ -128,6 +129,12 @@ namespace Content.Shared.Chemistry.Reagent
         /// </summary>
         [DataField]
         public SlipperyEffectEntry? SlipData;
+
+        [DataField("pH")]
+        public float PH { get; private set; } = ChemistryPH.NeutralPH;
+
+        [DataField]
+        public bool ReactionAgent { get; private set; }
 
         /// <summary>
         /// The speed at which the reagent evaporates over time.

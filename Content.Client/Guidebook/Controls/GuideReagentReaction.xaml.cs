@@ -200,7 +200,9 @@ public sealed partial class GuideReagentReaction : BoxContainer, ISearchableCont
             ("verb", mixingVerb),
             ("minTemp", minTemp),
             ("maxTemp", maxTemp),
-            ("hasMax", !float.IsPositiveInfinity(maxTemp)));
+            ("hasMax", !float.IsPositiveInfinity(maxTemp)),
+            ("minPH", prototype?.MinimumPH.ToString("0.0") ?? "0.0"),
+            ("maxPH", prototype?.MaximumPH.ToString("0.0") ?? "14.0"));
 
         MixLabel.SetMarkup(text);
     }

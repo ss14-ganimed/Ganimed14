@@ -1,0 +1,59 @@
+- type: reaction
+  id: AcidicBuffer
+  minTemp: 250
+  minPH: 0
+  maxPH: 14
+  reactants:
+    Ethanol:
+      amount: 2
+    Hydrogen:
+      amount: 2
+    Sodium:
+      amount: 2
+    Water:
+      amount: 2
+  products:
+    AcidicBuffer: 8
+
+- type: reaction
+  id: BasicBuffer
+  minTemp: 250
+  minPH: 0
+  maxPH: 14
+  reactants:
+    Ammonia:
+      amount: 3
+    Chlorine:
+      amount: 2
+    Hydrogen:
+      amount: 2
+    Oxygen:
+      amount: 2
+  products:
+    BasicBuffer: 9
+
+- type: reaction
+  id: AcidicBufferPHAdjustment
+  priority: 100
+  minPH: 0
+  maxPH: 14
+  reactants:
+    AcidicBuffer:
+      amount: 1
+  effects:
+  - !type:AdjustSolutionPHReactionEffect
+    targetPH: 0
+    strengthPerUnit: 1
+
+- type: reaction
+  id: BasicBufferPHAdjustment
+  priority: 100
+  minPH: 0
+  maxPH: 14
+  reactants:
+    BasicBuffer:
+      amount: 1
+  effects:
+  - !type:AdjustSolutionPHReactionEffect
+    targetPH: 14
+    strengthPerUnit: 1

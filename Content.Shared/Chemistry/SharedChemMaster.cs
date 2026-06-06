@@ -274,6 +274,8 @@ namespace Content.Shared.Chemistry
 
         public List<ReagentQuantity>? Reagents { get; init; }
 
+        public float? SolutionPH { get; init; }
+
         public ContainerInfo(string displayName, FixedPoint2 currentVolume, FixedPoint2 maxVolume)
         {
             DisplayName = displayName;

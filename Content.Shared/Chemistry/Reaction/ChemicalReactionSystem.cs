@@ -1,6 +1,7 @@
 using System.Collections.Frozen;
 using System.Linq;
 using Content.Shared.Administration.Logs;
+using Content.Shared._Ganimed.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Database;
@@ -113,6 +114,13 @@ namespace Content.Shared.Chemistry.Reaction
                 return false;
             }
 
+            var ph = ChemistryPH.GetSolutionPH(solution, _prototypeManager);
+            if (ph < reaction.MinimumPH || ph > reaction.MaximumPH)
+            {
+                lowestUnitReactions = FixedPoint2.Zero;
+                return false;
+            }
+
             if ((mixerComponent == null && reaction.MixingCategories != null) ||
                 mixerComponent != null && reaction.MixingCategories != null && reaction.MixingCategories.Except(mixerComponent.ReactionTypes).Any())
             {
@@ -220,14 +228,22 @@ namespace Content.Shared.Chemistry.Reaction
                 _audio.PlayPvs(reaction.Sound, soln);
         }
 
+        private enum ReactionProcessResult : byte
+        {
+            None,
+            ReactedInstant,
+            ReactedRateLimited,
+            QueuedRateLimited,
+        }
+
         /// <summary>
-        ///     Performs all chemical reactions that can be run on a solution.
-        ///     Removes the reactants from the solution, then returns a solution with all products.
+        ///     Performs one available reaction, or queues a rate-limited reaction for active ticking.
         ///     WARNING: Does not trigger reactions between solution and new products.
         /// </summary>
-        private bool ProcessReactions(Entity<SolutionComponent> soln, SortedSet<ReactionPrototype> reactions, ReactionMixerComponent? mixerComponent)
+        private ReactionProcessResult ProcessReactions(Entity<SolutionComponent> soln, SortedSet<ReactionPrototype> reactions, ReactionMixerComponent? mixerComponent, bool processRateLimited)
         {
             List<string>? products = null;
+            var processResult = ReactionProcessResult.None;
 
             // attempt to perform any applicable reaction
             foreach (var reaction in reactions)
@@ -237,16 +253,27 @@ namespace Content.Shared.Chemistry.Reaction
                     continue;
                 }
 
+                var reactionRate = GetReactionRate(reaction);
+                if (!processRateLimited && reactionRate < FixedPoint2.MaxValue)
+                    return ReactionProcessResult.QueuedRateLimited;
+
+                unitReactions = FixedPoint2.Min(unitReactions, reactionRate);
+                if (unitReactions <= FixedPoint2.Zero)
+                    continue;
+
+                processResult = reactionRate < FixedPoint2.MaxValue
+                    ? ReactionProcessResult.ReactedRateLimited
+                    : ReactionProcessResult.ReactedInstant;
                 products = PerformReaction(soln, reaction, unitReactions);
                 break;
             }
 
             // did any reaction occur?
             if (products == null)
-                return false;
+                return ReactionProcessResult.None;
 
             if (products.Count == 0)
-                return true;
+                return processResult;
 
             // Add any reactions associated with the new products. This may re-add reactions that were already iterated
             // over previously. The new product may mean the reactions are applicable again and need to be processed.
@@ -256,13 +283,22 @@ namespace Content.Shared.Chemistry.Reaction
                     reactions.UnionWith(reactantReactions);
             }
 
-            return true;
+            return processResult;
+        }
+
+        private static FixedPoint2 GetReactionRate(ReactionPrototype reaction)
+        {
+            // Effect-only reactions such as smoke, foam, and explosions must happen immediately.
+            if (reaction.Products.Count == 0 && reaction.Effects.Length > 0)
+                return FixedPoint2.MaxValue;
+
+            return reaction.ReactionRate;
         }
 
         /// <summary>
         ///     Continually react a solution until no more reactions occur, with a volume constraint.
         /// </summary>
-        public void FullyReactSolution(Entity<SolutionComponent> soln, ReactionMixerComponent? mixerComponent = null)
+        public bool FullyReactSolution(Entity<SolutionComponent> soln, ReactionMixerComponent? mixerComponent = null, bool processRateLimited = false)
         {
             // construct the initial set of reactions to check.
             SortedSet<ReactionPrototype> reactions = new();
@@ -276,11 +312,19 @@ namespace Content.Shared.Chemistry.Reaction
             // exceed the iteration limit.
             for (var i = 0; i < MaxReactionIterations; i++)
             {
-                if (!ProcessReactions(soln, reactions, mixerComponent))
-                    return;
+                var result = ProcessReactions(soln, reactions, mixerComponent, processRateLimited);
+                switch (result)
+                {
+                    case ReactionProcessResult.None:
+                        return false;
+                    case ReactionProcessResult.QueuedRateLimited:
+                    case ReactionProcessResult.ReactedRateLimited:
+                        return true;
+                }
             }
 
             Log.Error($"{nameof(Solution)} {soln.Owner} could not finish reacting in under {MaxReactionIterations} loops.");
+            return false;
         }
     }
 
