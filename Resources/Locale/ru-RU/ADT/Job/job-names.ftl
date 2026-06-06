@@ -57,8 +57,8 @@ job-name-ADTbarber = парикмахер
 # Engineering
 
 job-name-life-support-tech = техник смертеобеспечения
-job-name-plasma-scientist = плазмотехнолог
-job-name-electrician = электрик
+job-name-plasma-scientist = плазмофлудильщик
+job-name-electrician = электрик две молнии
 job-name-mechanic = механик
 job-name-welder = сварщик третьего разряда
 
@@ -73,10 +73,10 @@ job-name-intendant = интендант
 job-name-real-chief-medical-officer = ЧМО
 job-name-practical-nurse = фельдшер
 job-name-resident = ординатор
-job-name-clinician = медик
+job-name-clinician = педик
 job-name-traumatologist = травматолог
-job-name-adt-doctor = доктор
-job-name-therapist = терапевт
+job-name-adt-doctor = диктор
+job-name-therapist = терпила
 job-name-psychiatrist = шизолог
 job-name-psychotherapist = психотерпила
 
@@ -96,15 +96,15 @@ job-name-maid = горничная
 job-name-gardener = садовод
 job-name-ecologist = эколог
 job-name-mythologist = мифолог
-job-name-ethnologist = этнолог
+job-name-ethnologist = расист
 job-name-exorcist = экзорцист
 job-name-monk = монах
 job-name-priest = жрец
 job-name-shepherd = пастор
 job-name-clergyman = священнослужитель
-job-name-tourist = турист
+job-name-tourist = урист
 job-name-student = студент
-job-name-mixologist = магистр правоведения
+job-name-mixologist = магистр философии
 job-name-tavernkeep = трактирщик
 job-name-barista = бариста
 job-name-baker = пекарь
@@ -114,10 +114,10 @@ job-name-confectioner = кондитер
 job-name-waiter = официант
 job-name-performer = исполнитель
 job-name-concertmaster = концертмейстер
-job-name-composer = композитор
-job-name-bard = бард
-job-name-dj = диджей
-job-name-journalist = журналист
+job-name-composer = компостер
+job-name-bard = бард 2 ур.
+job-name-dj = Джей Ди Вэнс
+job-name-journalist = экстремист
 job-name-karateka = каратист
 job-name-kickboxer = кикбоксер
 job-name-savatist = садист
@@ -135,4 +135,4 @@ job-name-field-doctor = полевой врач
 
 # Juridical
 
-job-name-adt-lawyer = адвокат
+job-name-adt-lawyer = адекват
