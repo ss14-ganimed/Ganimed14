@@ -3,6 +3,8 @@
 #bicaridine
 - type: reaction
   id: ADTSodiumizole
+  minPH: 7
+  maxPH: 10
   reactants:
     Bicaridine:
       amount: 1
@@ -15,6 +17,8 @@
 
 - type: reaction
   id: ADTNitrofurfoll
+  minPH: 6
+  maxPH: 9
   reactants:
     Bicaridine:
       amount: 1
@@ -27,6 +31,8 @@
 
 - type: reaction
   id: ADTPeroHydrogen
+  minPH: 3
+  maxPH: 7
   reactants:
     Bicaridine:
       amount: 1
@@ -40,6 +46,8 @@
 #Dermaline
 - type: reaction
   id: ADTAnelgesin
+  minPH: 5
+  maxPH: 8
   reactants:
     Dermaline:
       amount: 1
@@ -52,6 +60,8 @@
 
 - type: reaction
   id: ADTMinoxide
+  minPH: 6
+  maxPH: 9
   reactants:
     Dermaline:
       amount: 1
@@ -65,6 +75,8 @@
 #Dylovene
 - type: reaction
   id: ADTBiomicine
+  minPH: 6
+  maxPH: 8
   reactants:
     Dylovene:
       amount: 1
@@ -78,6 +90,8 @@
 #DexalinPlus
 - type: reaction
   id: ADTNikematide
+  minPH: 6
+  maxPH: 8.5
   reactants:
     DexalinPlus:
       amount: 1
@@ -90,6 +104,8 @@
 
 - type: reaction
   id: ADTDiethamilate
+  minPH: 3.5
+  maxPH: 7
   reactants:
     DexalinPlus:
       amount: 1
@@ -103,6 +119,8 @@
 # Дополнения
 - type: reaction
   id: Vitamin
+  minPH: 5
+  maxPH: 8
   reactants:
     Benzene:
       amount: 2
@@ -115,6 +133,8 @@
 
 - type: reaction
   id: ADTMorphine
+  minPH: 6
+  maxPH: 9
   minTemp: 370
   reactants:
     ADTOpium:
@@ -128,6 +148,8 @@
 
 - type: reaction
   id: ADTFormalin
+  minPH: 2.5
+  maxPH: 6
   minTemp: 370
   reactants:
     Water:
@@ -143,6 +165,8 @@
 #Кровоостанавливающая пудра
 - type: reaction
   id: ADTStypticPowder
+  minPH: 0
+  maxPH: 4
   reactants:
     Aluminium:
       amount: 1
@@ -155,6 +179,8 @@
 #Сульфадиазин серебра
 - type: reaction
   id: ADTSilverSulfadiazine
+  minPH: 5
+  maxPH: 9
   reactants:
     Ammonia:
       amount: 1
@@ -172,6 +198,8 @@
 # КриоПрепараты
 - type: reaction
   id: ADTDetoxisol
+  minPH: 6
+  maxPH: 9
   reactants:
     Diethylamine:
       amount: 1
@@ -186,6 +214,8 @@
 
 - type: reaction
   id: ADTArazine
+  minPH: 6
+  maxPH: 10
   maxTemp: 213
   reactants:
     Arithrazine:
@@ -201,6 +231,8 @@
 
 - type: reaction
   id: ADTMezadrozine
+  minPH: 5
+  maxPH: 8
   reactants:
     Razorium:
       amount: 1
@@ -215,6 +247,8 @@
 
 - type: reaction
   id: ADTAlomicine
+  minPH: 5
+  maxPH: 8
   maxTemp: 270
   reactants:
     Insuzine:
@@ -230,6 +264,8 @@
 
 - type: reaction
   id: ADTMiadinol
+  minPH: 5
+  maxPH: 8
   reactants:
     Kelotane:
       amount: 1
@@ -244,6 +280,8 @@
 
 - type: reaction
   id: ADTDevazigon
+  minPH: 8
+  maxPH: 12
   reactants:
     Diethylamine:
       amount: 1
@@ -256,6 +294,8 @@
 
 - type: reaction
   id: ADTSanallergium
+  minPH: 6
+  maxPH: 8.5
   reactants:
     Diphenhydramine:
       amount: 2
@@ -266,6 +306,8 @@
 
 - type: reaction
   id: ADTDiphalazidone
+  minPH: 4
+  maxPH: 7
   minTemp: 400
   reactants:
     Diphenhydramine:
@@ -283,6 +325,8 @@
 
 - type: reaction
   id: ADTOmnizineBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge

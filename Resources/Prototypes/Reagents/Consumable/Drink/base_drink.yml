@@ -2,6 +2,7 @@
   id: BaseDrink
   group: Drinks
   abstract: true
+  pH: 7.0
   slipData:
     requiredSlipSpeed: 3.5
   metabolisms:
@@ -25,6 +26,7 @@
   id: BaseSoda
   parent: BaseDrink
   abstract: true
+  pH: 3.2
   metabolisms:
     Drink:
       effects:
@@ -45,6 +47,7 @@
   id: BaseAlcohol
   group: Drinks
   abstract: true
+  pH: 4.5
   slipData:
     requiredSlipSpeed: 3.5
   friction: 0.4
@@ -75,5 +78,6 @@
   parent: BaseDrink
   abstract: true
   flavor: sweet
+  pH: 4.0
   footstepSound:
     collection: FootstepSlime

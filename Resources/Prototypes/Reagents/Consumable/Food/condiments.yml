@@ -6,6 +6,7 @@
   physicalDesc: reagent-physical-desc-sugary
   flavor: sweet
   color: aquamarine
+  pH: 6.0
   recognizable: true
 
 - type: reagent
@@ -16,6 +17,7 @@
   physicalDesc: reagent-physical-desc-gloopy
   flavor: sweet
   color: darkred
+  pH: 4.0
   recognizable: true
 
 - type: reagent
@@ -26,6 +28,7 @@
   physicalDesc: reagent-physical-desc-cold
   flavor: cold
   color: skyblue
+  pH: 6.5
 
 - type: reagent
   id: Cornoil
@@ -35,6 +38,7 @@
   physicalDesc: reagent-physical-desc-oily
   flavor: oily
   color: yellow
+  pH: 6.5
   recognizable: true
 
 - type: reagent
@@ -45,6 +49,7 @@
   physicalDesc: reagent-physical-desc-overpowering
   flavor: spicy
   color: gray
+  pH: 5.0
   recognizable: true
 
 - type: reagent
@@ -55,6 +60,7 @@
   physicalDesc: reagent-physical-desc-spicy
   flavor: spicy
   color: red
+  pH: 3.5
   recognizable: true
 
 - type: reagent
@@ -65,6 +71,7 @@
   physicalDesc: reagent-physical-desc-tangy
   flavor: tomato
   color: red
+  pH: 3.9
   recognizable: true
 
 - type: reagent
@@ -75,6 +82,7 @@
   physicalDesc: reagent-physical-desc-saucey
   flavor: ketchunaise
   color: "#fba399"
+  pH: 4.2
   recognizable: true
 
 - type: reagent
@@ -85,6 +93,7 @@
   physicalDesc: reagent-physical-desc-funny
   flavor: sweet
   color: "#803280"
+  pH: 6.0
   recognizable: true
 
 - type: reagent
@@ -95,6 +104,7 @@
   physicalDesc: reagent-physical-desc-thick
   flavor: mayonnaise
   color: "#f9f5e5"
+  pH: 4.1
   recognizable: true
 
 - type: reagent
@@ -105,6 +115,7 @@
   physicalDesc: reagent-physical-desc-thick
   flavor: mustard
   color: "#ffdb58"
+  pH: 3.8
   recognizable: true
 
 - type: reagent
@@ -115,6 +126,7 @@
   physicalDesc: reagent-physical-desc-sour
   flavor: sour
   color: "#efdaae"
+  pH: 3.2
   recognizable: true
 
 - type: reagent
@@ -125,6 +137,7 @@
   physicalDesc: reagent-physical-desc-salty
   flavor: salty
   color: saddlebrown
+  pH: 4.8
   recognizable: true
   metabolisms:
     Food:
@@ -142,6 +155,7 @@
   physicalDesc: reagent-physical-desc-grainy
   flavor: salty
   color: "#cfd1d0"
+  pH: 7.0
   recognizable: true
   boilingPoint: 1465.0
   meltingPoint: 800.7
@@ -172,6 +186,7 @@
   desc: reagent-desc-syrup
   flavor: sweet
   color: "#fb7125"
+  pH: 5.5
   recognizable: true
   physicalDesc: reagent-physical-desc-sticky
   viscosity: 0.55 #Start using syrup to attach your remote recievers to your microwaves!

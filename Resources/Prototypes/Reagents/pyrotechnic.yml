@@ -1,5 +1,6 @@
 ﻿- type: reagent
   id: BasePyrotechnic
+  pH: 7.0
   group: Pyrotechnic
   abstract: true
   reactiveEffects:
@@ -22,6 +23,7 @@
   contrabandSeverity: Minor
   flavor: bitter
   color: "#757245"
+  pH: 8.5
   boilingPoint: 2977.0 # Aluminum oxide
   meltingPoint: 2030.0
   tileReactions:
@@ -62,6 +64,7 @@
   contrabandSeverity: Major
   flavor: bitter
   color: "#FA00AF"
+  pH: 6.0
   reactiveEffects:
     Flammable:
       methods: [ Touch ]
@@ -108,6 +111,7 @@
   contrabandSeverity: Major
   flavor: bitter
   color: "#D4872A"
+  pH: 4.5
   metabolisms:
     Poison:
       effects:
@@ -149,6 +153,7 @@
   contrabandSeverity: Major
   flavor: bitter
   color: "#FFC8C8"
+  pH: 1.0
   tileReactions:
   - !type:PryTileReaction
   metabolisms:
@@ -199,6 +204,7 @@
   physicalDesc: reagent-physical-desc-foamy
   flavor: bitter
   color: "#215263"
+  pH: 8.0
   boilingPoint: 418.0 # I went with ammonium lauryl sulfate as the basis for this
   meltingPoint: 7.4 # I made this up
 
@@ -213,6 +219,7 @@
   flavor: bitter
   flavorMinimum: 0.01
   color: "#a76b1c"
+  pH: 5.5
   recognizable: true
   boilingPoint: -84.7 # Acetylene. Close enough.
   meltingPoint: -80.7
@@ -261,5 +268,6 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: bitter
   color: "#9e6b38"
+  pH: 3.5
   boilingPoint: 190.0 # Perfluorooctanoic Acid.
   meltingPoint: 45.0

@@ -9,6 +9,7 @@
   physicalDesc: reagent-physical-desc-translucent
   flavor: medicine
   color: "#ba4d16"
+  pH: 7.8
   metabolisms:
     Medicine:
       effects:
@@ -38,6 +39,7 @@
   physicalDesc: reagent-physical-desc-translucent
   flavor: medicine
   color: "#fcf27c"
+  pH: 6.2
   metabolisms:
     Medicine:
       effects:
@@ -70,6 +72,7 @@
   physicalDesc: reagent-physical-desc-translucent
   flavor: medicine
   color: "#d1d1d155"
+  pH: 3.8
   reactiveEffects:
     Acidic:
       methods: [ Touch ]
@@ -111,6 +114,7 @@
   physicalDesc: reagent-physical-desc-translucent
   flavor: medicine
   color: "#5b79ab"
+  pH: 5.6
   metabolisms:
     Medicine:
       effects:
@@ -141,6 +145,7 @@
   physicalDesc: reagent-physical-desc-soothing
   flavor: medicine
   color: "#e3fcff"
+  pH: 7.4
   metabolisms:
     Medicine:
       effects:
@@ -185,6 +190,7 @@
   physicalDesc: reagent-physical-desc-translucent
   flavor: medicine
   color: "#d1d1d155"
+  pH: 7.0
   metabolisms:
     Medicine:
       effects:
@@ -222,6 +228,7 @@
   physicalDesc: reagent-physical-desc-translucent
   flavor: medicine
   color: "#c98928"
+  pH: 7.2
   metabolisms:
     Medicine:
       effects:
@@ -283,6 +290,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: medicine
   color: "#f5c6dc"
+  pH: 4.0
   reactiveEffects:
     Acidic:
       methods: [ Touch ]
@@ -321,6 +329,7 @@
   flavor: bitter
   physicalDesc: reagent-physical-desc-skunky
   color: "#ffd478"
+  pH: 3.5
   worksOnTheDead: true
   metabolisms:
     Medicine:
@@ -345,6 +354,7 @@
   physicalDesc: reagent-physical-desc-viscous
   flavor: bitter
   color: "#c98928"
+  pH: 8.8
   metabolisms:
     Medicine:
       metabolismRate: 1
@@ -441,6 +451,7 @@
   desc: reagent-desc-styptic-powder
   flavor: medicine
   color: "#c8a2c8"
+  pH: 6.0
   physicalDesc: reagent-physical-desc-powdery
   metabolisms:
     Medicine:
@@ -467,6 +478,7 @@
   desc: reagent-desc-silver-sulfadiazine
   flavor: medicine
   color: "#c8a2c8"
+  pH: 6.5
   physicalDesc: reagent-physical-desc-powdery
   metabolisms:
     Medicine:
@@ -492,6 +504,7 @@
   physicalDesc: reagent-physical-desc-murky
   flavor: medicine
   color: "#9575c7"
+  pH: 6.8
   worksOnTheDead: true
   metabolisms:
     Medicine:
@@ -519,6 +532,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: medicine
   color: "#ff6d05"
+  pH: 4.5
   worksOnTheDead: true
   metabolisms:
     Medicine:
@@ -540,6 +554,7 @@
   physicalDesc: reagent-physical-desc-acrid
   flavor: medicine
   color: "#47061a"
+  pH: 6.0
   worksOnTheDead: true
   metabolisms:
     Medicine:
@@ -568,6 +583,7 @@
   physicalDesc: reagent-physical-desc-exotic-smelling
   flavor: medicine
   color: "#b315c2"
+  pH: 7.8
   worksOnTheDead: true
   metabolisms:
     Medicine:
@@ -595,6 +611,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: medicine
   color: "#111b30"
+  pH: 6.2
   worksOnTheDead: true
   metabolisms:
     Medicine:
@@ -621,6 +638,7 @@
   physicalDesc: reagent-physical-desc-murky
   flavor: medicine
   color: "#FF00FF"
+  pH: 7.4
   metabolisms:
     Medicine:
       metabolismRate : 0.5
@@ -651,6 +669,7 @@
   flavor: medicine
   physicalDesc: reagent-physical-desc-skunky
   color: "#7ba854"
+  pH: 6.8
   worksOnTheDead: true
   metabolisms:
     Medicine:
@@ -669,6 +688,7 @@
   physicalDesc: reagent-physical-desc-sickly
   flavor: acid
   color: "#213200"
+  pH: 3.0
   worksOnTheDead: true
   metabolisms:
     Medicine:

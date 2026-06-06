@@ -4,6 +4,7 @@
   desc: reagent-desc-copper-nitride
   physicalDesc: reagent-physical-desc-crystalline
   color: "#09590a"
+  pH: 7.0
   boilingPoint: 300
   meltingPoint: 300
 
@@ -13,6 +14,7 @@
   desc: reagent-desc-methylamine
   flavor: bitter
   color: "#c5c5c5"
+  pH: 11.0
   physicalDesc: reagent-physical-desc-opaque
   plantMetabolism:
   - !type:PlantAdjustToxins
@@ -33,6 +35,7 @@
   desc: reagent-desc-methanol
   flavor: bitter
   color: "#7cff70"
+  pH: 7.0
   physicalDesc: reagent-physical-desc-strong-smelling
   plantMetabolism:
   - !type:PlantAdjustToxins
@@ -72,6 +75,7 @@
   desc: reagent-desc-plutonium
   physicalDesc: reagent-physical-desc-metallic
   color: "#09590a"
+  pH: 6.5
   boilingPoint: 1500
   meltingPoint: 2500
 
@@ -83,6 +87,7 @@
   physicalDesc: reagent-physical-desc-burning
   flavor: peppery
   color: "#ff5f00"
+  pH: 6.5
   metabolisms:
     Medicine:
       effects:

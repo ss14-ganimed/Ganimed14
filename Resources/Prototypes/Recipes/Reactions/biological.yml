@@ -1,5 +1,7 @@
 - type: reaction
   id: BloodBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge
@@ -15,6 +17,8 @@
 
 - type: reaction
   id: InsectBloodBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge
@@ -30,6 +34,8 @@
 
 - type: reaction
   id: SlimeBloodBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge
@@ -43,6 +49,8 @@
 
 - type: reaction
   id: SapBloodBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge
@@ -55,6 +63,8 @@
 
 - type: reaction
   id: CopperBloodBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge
@@ -70,6 +80,8 @@
 
 - type: reaction
   id: AmmoniaBloodBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge
@@ -84,6 +96,8 @@
 
 - type: reaction
   id: ZombieBloodBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge

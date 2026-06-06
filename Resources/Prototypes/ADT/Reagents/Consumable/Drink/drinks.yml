@@ -8,6 +8,7 @@
   physicalDesc: reagent-physical-desc-refreshing
   flavor: adt_summershade
   color: "#FF2B2B"
+  pH: 3.6
   recognizable: false
   metabolisms:
     Drink:
@@ -34,6 +35,7 @@
   physicalDesc: reagent-physical-desc-milky
   flavor: adt_wintersun
   color: "#edccab"
+  pH: 6.0
   recognizable: false
   metabolisms:
     Drink:
@@ -60,6 +62,7 @@
   physicalDesc: reagent-physical-desc-exhilarating
   flavor: adt_hungoverangel
   color: "#FBEC5D"
+  pH: 4.5
   recognizable: false
   metabolisms:
     Drink:
@@ -99,6 +102,7 @@
   physicalDesc: reagent-physical-desc-citric
   flavor: adt_citrusbalance
   color: "#F8D568"
+  pH: 3.0
   recognizable: false
   metabolisms:
     Drink:
@@ -120,6 +124,7 @@
   physicalDesc: reagent-physical-desc-sour
   flavor: adt_dobtyidrink
   color: "#955F20"
+  pH: 3.4
   recognizable: false
   metabolisms:
     Drink:
@@ -141,6 +146,7 @@
   physicalDesc: reagent-physical-desc-refreshing
   flavor: adt_milkeclipse
   color: "#D8DEBA"
+  pH: 6.2
   recognizable: false
   metabolisms:
     Drink:
@@ -167,6 +173,7 @@
   physicalDesc: reagent-physical-desc-refreshing
   flavor: adt_arcticexlposion
   color: "#c5e3e2"
+  pH: 4.0
   recognizable: false
   metabolisms:
     Drink:
@@ -193,6 +200,7 @@
   physicalDesc: reagent-physical-desc-orangetea
   flavor: ADTOrangeTeaReg
   color: "#FF8C00"
+  pH: 4.2
   metabolisms:
     Drink:
       effects:
@@ -212,6 +220,7 @@
   physicalDesc: reagent-physical-desc-cherrytea
   flavor: ADTCherryTeaReg
   color: "#FFB6C1"
+  pH: 4.0
   metabolisms:
     Drink:
       effects:
@@ -231,6 +240,7 @@
   physicalDesc: reagent-physical-desc-watermelontea
   flavor: ADTWatermelonTeaReg
   color: "#F08080"
+  pH: 5.0
   metabolisms:
     Drink:
       effects:
@@ -250,6 +260,7 @@
   physicalDesc: reagent-physical-desc-orangepack
   flavor: sweet
   color: "#FF8C00"
+  pH: 3.8
   metabolisms:
     Drink:
       effects:
@@ -264,6 +275,7 @@
   physicalDesc: reagent-physical-desc-cherrypack
   flavor: sweet
   color: "#FFB6C1"
+  pH: 3.7
   metabolisms:
     Drink:
       effects:
@@ -278,6 +290,7 @@
   physicalDesc: reagent-physical-desc-watermelonpack
   flavor: sweet
   color: "#F08080"
+  pH: 4.8
   metabolisms:
     Drink:
       effects:
@@ -292,6 +305,7 @@
   physicalDesc: reagent-physical-desc-coffeebonbon
   flavor: ADTCoffeeBonBon
   color: "#5f341c"
+  pH: 5.8
   metamorphicSprite:
     sprite: ADT/Objects/Consumable/Drinks/cocoa_drink.rsi
     state: icon_empty
@@ -325,6 +339,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: coffee
   color: "#3d2200"
+  pH: 5.0
   metabolisms:
     Drink:
       effects:
@@ -361,6 +376,7 @@
   physicalDesc: reagent-physical-desc-strawberryjuice
   flavor: ADTStrawberryFlavor
   color: "#cf554c"
+  pH: 3.5
   metabolisms:
     Drink:
       effects:
@@ -377,6 +393,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: ADTYupiDryApple
   color: "#e7191e"
+  pH: 3.0
   metabolisms:
     Drink:
       effects:
@@ -392,6 +409,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: ADTYupiDryBerries
   color: "#600a72"
+  pH: 3.0
 
 - type: reagent
   id: ADTYupiDryCherry
@@ -401,6 +419,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: ADTYupiDryCherry
   color: "#a92337"
+  pH: 3.0
 
 - type: reagent
   id: ADTYupiDryMango
@@ -410,6 +429,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: ADTYupiDryMango
   color: "#ffc736"
+  pH: 3.8
 
 - type: reagent
   id: ADTYupiDryOrange
@@ -419,6 +439,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: ADTYupiDryOrange
   color: "#ffa600"
+  pH: 3.2
 
 - type: reagent
   id: ADTYupiDryPeach
@@ -428,6 +449,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: ADTYupiDryPeach
   color: "#fece2b"
+  pH: 3.8
 
 - type: reagent
   id: ADTYupiDryPineapple
@@ -437,6 +459,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: ADTYupiDryPineapple
   color: "#ffed69"
+  pH: 3.3
 
 - type: reagent
   id: ADTYupiDryRaspberry
@@ -446,6 +469,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: ADTYupiDryRaspberry
   color: "#9d2050"
+  pH: 3.0
 
 - type: reagent
   id: ADTYupiDryStrawberry
@@ -455,6 +479,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: ADTYupiDryStrawberry
   color: "#ef302e"
+  pH: 3.2
 
 - type: reagent
   id: ADTYupiDryWatermelon
@@ -464,6 +489,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: ADTYupiDryWatermelon
   color: "#e04b4f"
+  pH: 4.8
 
 - type: reagent
   id: ADTYupiApple
@@ -473,6 +499,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: ADTYupiApple
   color: "#e7191e"
+  pH: 3.4
 
 - type: reagent
   id: ADTYupiBerries
@@ -482,6 +509,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: ADTYupiBerries
   color: "#600a72"
+  pH: 3.2
 
 - type: reagent
   id: ADTYupiCherry
@@ -491,6 +519,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: ADTYupiCherry
   color: "#a92337"
+  pH: 3.3
 
 - type: reagent
   id: ADTYupiMango
@@ -500,6 +529,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: ADTYupiMango
   color: "#ffc736"
+  pH: 3.8
 
 - type: reagent
   id: ADTYupiOrange
@@ -509,6 +539,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: ADTYupiOrange
   color: "#ffa600"
+  pH: 3.2
 
 - type: reagent
   id: ADTYupiPeach
@@ -518,6 +549,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: ADTYupiPeach
   color: "#fece2b"
+  pH: 3.8
 
 - type: reagent
   id: ADTYupiPineapple
@@ -527,6 +559,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: ADTYupiPineapple
   color: "#ffed69"
+  pH: 3.3
 
 - type: reagent
   id: ADTYupiRaspberry
@@ -536,6 +569,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: ADTYupiRaspberry
   color: "#9d2050"
+  pH: 3.0
 
 - type: reagent
   id: ADTYupiStrawberry
@@ -545,6 +579,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: ADTYupiStrawberry
   color: "#ef302e"
+  pH: 3.2
 
 - type: reagent
   id: ADTYupiWatermelon
@@ -554,3 +589,4 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: ADTYupiWatermelon
   color: "#e04b4f"
+  pH: 4.8

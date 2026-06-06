@@ -12,6 +12,7 @@
   physicalDesc: reagent-physical-desc-eldritch
   flavor: eldritch
   color: "#1f8016"
+  pH: 7.7
   metabolisms:
     Medicine:
       effects:

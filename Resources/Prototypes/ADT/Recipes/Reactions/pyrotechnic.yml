@@ -1,5 +1,7 @@
 ﻿- type: reaction
   id: ADTLiquidDarkMatter
+  minPH: 4
+  maxPH: 8
   reactants:
     Uranium:
       amount: 1
@@ -12,6 +14,8 @@
 
 - type: reaction
   id: ADTSingularityExplosion
+  minPH: 0
+  maxPH: 14
   minTemp: 473
   impact: Low
   quantized: true

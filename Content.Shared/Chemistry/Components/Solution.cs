@@ -89,6 +89,10 @@ namespace Content.Shared.Chemistry.Components
             if (!prototypeManager.TryIndex(id.Prototype, out ReagentPrototype? proto))
                 return;
 
+            // Reaction agents (e.g. pH buffers) adjust pH via their dedicated reaction effect, not by mixing in.
+            if (proto.ReactionAgent)
+                return;
+
             PHOverride = ChemistryPH.GetMixedPH(PHOverride.Value, Volume, proto.PH, quantity);
         }
 

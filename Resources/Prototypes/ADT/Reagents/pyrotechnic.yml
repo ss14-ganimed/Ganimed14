@@ -5,6 +5,7 @@
   desc: reagent-desc-liquiddarkmatter
   flavor: nothing
   color: "#782088"
+  pH: 6.0
   physicalDesc: reagent-physical-desc-opaque
   plantMetabolism:
   - !type:PlantAdjustToxins

@@ -6,6 +6,7 @@
   physicalDesc: reagent-physical-desc-aromatic
   flavor: coffee
   color: "#664300"
+  pH: 5.0
   recognizable: true
   metabolisms:
     Drink:
@@ -49,6 +50,7 @@
   physicalDesc: reagent-physical-desc-aromatic
   flavor: chocolate
   color: "#664300"
+  pH: 6.5
   recognizable: true
   metabolisms:
     Drink:
@@ -74,6 +76,7 @@
   physicalDesc: reagent-physical-desc-creamy
   flavor: creamy
   color: "#DFD7AF"
+  pH: 6.7
   metabolisms:
     Drink:
       effects:
@@ -88,6 +91,7 @@
   physicalDesc: reagent-physical-desc-milky
   flavor: nutty
   color: "#f4eadb"
+  pH: 5.2
   metabolisms:
     Drink:
       effects:
@@ -102,6 +106,7 @@
   physicalDesc: reagent-physical-desc-syrupy
   flavor: creamy
   color: "#FFEABF"
+  pH: 6.0
   metabolisms:
     Drink:
       effects:
@@ -116,6 +121,7 @@
   physicalDesc: reagent-physical-desc-creamy
   flavor: creamy
   color: "#664300"
+  pH: 5.8
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/cafe_latte.rsi
     state: icon
@@ -155,6 +161,7 @@
   physicalDesc: reagent-physical-desc-aromatic
   flavor: tea
   color: "#7EB626"
+  pH: 7.0
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/greenteaglass.rsi
     state: icon_empty
@@ -188,6 +195,7 @@
   physicalDesc: reagent-physical-desc-dark-red
   flavor: bitter
   color: "#EA1D26"
+  pH: 3.0
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/grenadineglass.rsi
     state: icon_empty
@@ -205,6 +213,7 @@
   physicalDesc: reagent-physical-desc-aromatic
   flavor: coffee
   color: "#102838"
+  pH: 5.0
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/icedcoffeeglass.rsi
     state: icon_empty
@@ -248,6 +257,7 @@
   physicalDesc: reagent-physical-desc-aromatic
   flavor: icedtea
   color: "#5B821B"
+  pH: 6.8
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/icedgreenteaglass.rsi
     state: icon_empty
@@ -273,6 +283,7 @@
   physicalDesc: reagent-physical-desc-aromatic
   flavor: icedtea
   color: "#6C3916"
+  pH: 5.5
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/icedteaglass.rsi
     state: icon_empty
@@ -304,6 +315,7 @@
   physicalDesc: reagent-physical-desc-sickly
   flavor: bitter
   color: "#6600CC"
+  pH: 3.5
   metabolisms:
     Drink:
       effects:
@@ -324,6 +336,7 @@
   physicalDesc: reagent-physical-desc-tart
   flavor: sweet
   color: "#FFFF00"
+  pH: 2.7
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/lemonadeglass.rsi
     state: icon_empty
@@ -351,6 +364,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: milk
   color: "#DFDFDF"
+  pH: 6.6
   recognizable: true
   plantMetabolism:
     - !type:PlantAdjustNutrition
@@ -365,6 +379,7 @@
 
 - type: reagent
   id: MilkGoat
+  pH: 6.6
   parent: Milk
   name: reagent-name-milk-goat
   desc: reagent-desc-milk-goat
@@ -377,6 +392,7 @@
   physicalDesc: reagent-physical-desc-refreshing
   flavor: oats
   color: "#DEDACD"
+  pH: 6.5
   recognizable: true
   metabolisms:
     Drink:
@@ -392,6 +408,7 @@
   physicalDesc: reagent-physical-desc-refreshing
   flavor: soy
   color: "#D2C29D"
+  pH: 6.8
 
 - type: reagent
   id: MilkSpoiled
@@ -401,6 +418,7 @@
   physicalDesc: reagent-physical-desc-putrid
   flavor: terrible
   color: "#faffba"
+  pH: 4.5
   metabolisms:
     Drink:
       effects:
@@ -413,6 +431,7 @@
   desc: reagent-desc-nothing
   group: Drinks
   physicalDesc: reagent-physical-desc-nothing
+  pH: 7.0
   metabolisms:
     Drink:
       effects:
@@ -429,6 +448,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: atomiccola
   color: "#100800"
+  pH: 2.5
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/nuclear_colaglass.rsi
     state: icon_empty
@@ -471,6 +491,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: fizzy
   color: "#619494"
+  pH: 4.0
   fizziness: 0.8
 
 - type: reagent
@@ -481,6 +502,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: soy
   color: "#664300"
+  pH: 5.8
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/soy_latte.rsi
     state: icon_empty
@@ -505,6 +527,7 @@
   physicalDesc: reagent-physical-desc-aromatic
   flavor: tea
   color: "#8a5a3a"
+  pH: 5.5
   recognizable: true
   metabolisms:
     Drink:
@@ -550,6 +573,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: tonicwater
   color: "#0064C8"
+  pH: 3.2
   fizziness: 0.4
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/tonicglass.rsi
@@ -611,6 +635,7 @@
   physicalDesc: reagent-physical-desc-frosty
   flavor: cold
   color: "#bed8e6"
+  pH: 7.0
   recognizable: true
   meltingPoint: 0.0
   boilingPoint: 100.0
@@ -643,6 +668,7 @@
   physicalDesc: reagent-physical-desc-wormy
   flavor: cheapnoodles
   color: "#664300"
+  pH: 6.5
   metabolisms:
     Food:
       effects:
@@ -657,6 +683,7 @@
   physicalDesc: reagent-physical-desc-wormy
   flavor: cheapnoodles
   color: "#664300"
+  pH: 6.5
   metabolisms:
     Food:
       effects:
@@ -678,6 +705,7 @@
   physicalDesc: reagent-physical-desc-sweet
   flavor: arnoldpalmer
   color: "#d8cc5d"
+  pH: 3.5
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/arnoldpalmer.rsi
     state: icon_empty
@@ -708,6 +736,7 @@
   physicalDesc: reagent-physical-desc-creamy
   flavor: pilk
   color: "#e7c69f"
+  pH: 4.8
   metabolisms:
     Drink:
       effects:
@@ -723,6 +752,7 @@
   physicalDesc: reagent-physical-desc-sour
   flavor: bitter
   color: "#B3B599"
+  pH: 3.0
 
 - type: reagent
   id: OrangeLimeSoda
@@ -732,6 +762,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: sweet
   color: "#CCCC99"
+  pH: 3.2
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/orangelime_soda.rsi
     state: icon_empty
@@ -748,6 +779,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: sweet
   color: "#485000"
+  pH: 4.0
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/rewriter.rsi
     state: icon_empty
@@ -778,6 +810,7 @@
   physicalDesc: reagent-physical-desc-murky
   flavor: mopwata
   color: "#59502b"
+  pH: 7.5
   metabolisms:
     Drink:
       effects:
@@ -792,6 +825,7 @@
   physicalDesc: reagent-physical-desc-sweet
   flavor: tortuga
   color: "#1c8c40"
+  pH: 4.2
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/tortuga.rsi
     state: icon_empty

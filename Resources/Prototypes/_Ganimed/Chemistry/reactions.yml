@@ -1,5 +1,6 @@
 - type: reaction
   id: AcidicBuffer
+  instant: true
   minTemp: 250
   minPH: 0
   maxPH: 14
@@ -17,6 +18,7 @@
 
 - type: reaction
   id: BasicBuffer
+  instant: true
   minTemp: 250
   minPH: 0
   maxPH: 14
@@ -35,6 +37,7 @@
 - type: reaction
   id: AcidicBufferPHAdjustment
   priority: 100
+  reactionRate: 1
   minPH: 0
   maxPH: 14
   reactants:
@@ -43,11 +46,12 @@
   effects:
   - !type:AdjustSolutionPHReactionEffect
     targetPH: 0
-    strengthPerUnit: 1
+    strengthPerUnit: 0.5
 
 - type: reaction
   id: BasicBufferPHAdjustment
   priority: 100
+  reactionRate: 1
   minPH: 0
   maxPH: 14
   reactants:
@@ -56,4 +60,4 @@
   effects:
   - !type:AdjustSolutionPHReactionEffect
     targetPH: 14
-    strengthPerUnit: 1
+    strengthPerUnit: 0.5

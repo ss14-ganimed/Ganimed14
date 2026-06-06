@@ -1,5 +1,7 @@
 - type: reaction
   id: CreateSoapRegular
+  minPH: 11
+  maxPH: 14
   impact: Low
   quantized: true
   minTemp: 373 # Water boiling point. We are boiling it
@@ -17,6 +19,8 @@
 
 - type: reaction
   id: CreateSoapNT
+  minPH: 11
+  maxPH: 14
   impact: Low
   quantized: true
   minTemp: 373
@@ -35,6 +39,8 @@
 
 - type: reaction
   id: CreateSoapDeluxe
+  minPH: 10
+  maxPH: 14
   impact: Low
   quantized: true
   minTemp: 373
@@ -53,6 +59,8 @@
 
 - type: reaction
   id: CreateSoapBlood
+  minPH: 10
+  maxPH: 14
   impact: Low
   quantized: true
   minTemp: 373
@@ -71,6 +79,8 @@
 
 - type: reaction
   id: CreateSoapSyndie
+  minPH: 10
+  maxPH: 14
   impact: Medium
   quantized: true
   minTemp: 373
@@ -89,6 +99,8 @@
 
 - type: reaction
   id: CreateSoapOmega
+  minPH: 9
+  maxPH: 14
   impact: Medium
   quantized: true
   minTemp: 373

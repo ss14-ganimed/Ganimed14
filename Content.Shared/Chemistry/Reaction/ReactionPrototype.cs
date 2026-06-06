@@ -78,6 +78,12 @@ namespace Content.Shared.Chemistry.Reaction
         public FixedPoint2 ReactionRate = FixedPoint2.New(5);
 
         /// <summary>
+        ///     If true, the reaction completes immediately instead of waiting for slow reaction ticks.
+        /// </summary>
+        [DataField]
+        public bool Instant;
+
+        /// <summary>
         /// Effects to be triggered when the reaction occurs.
         /// </summary>
         [DataField("effects")] public EntityEffect[] Effects = [];

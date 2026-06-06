@@ -286,11 +286,21 @@ namespace Content.Shared.Chemistry.Reaction
             return processResult;
         }
 
+        private static readonly FixedPoint2 DefaultReactionRate = FixedPoint2.New(5);
+
         private static FixedPoint2 GetReactionRate(ReactionPrototype reaction)
         {
-            // Effect-only reactions such as smoke, foam, and explosions must happen immediately.
-            if (reaction.Products.Count == 0 && reaction.Effects.Length > 0)
+            if (reaction.Instant)
                 return FixedPoint2.MaxValue;
+
+            // Effect-only reactions run immediately unless a custom reaction rate is set in YAML.
+            if (reaction.Products.Count == 0 && reaction.Effects.Length > 0)
+            {
+                if (reaction.ReactionRate != DefaultReactionRate)
+                    return reaction.ReactionRate;
+
+                return FixedPoint2.MaxValue;
+            }
 
             return reaction.ReactionRate;
         }

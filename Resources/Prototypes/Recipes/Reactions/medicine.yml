@@ -1,5 +1,7 @@
 - type: reaction
   id: Dylovene
+  minPH: 6
+  maxPH: 10
   reactants:
     Silicon:
       amount: 1
@@ -12,6 +14,8 @@
 
 - type: reaction
   id: Ethylredoxrazine
+  minPH: 6
+  maxPH: 9
   reactants:
     Oxygen:
       amount: 1
@@ -24,6 +28,8 @@
 
 - type: reaction
   id: Cryptobiolin
+  minPH: 7
+  maxPH: 12
   reactants:
     Potassium:
       amount: 1
@@ -36,6 +42,8 @@
 
 - type: reaction
   id: Arithrazine
+  minPH: 4
+  maxPH: 8
   reactants:
     Hyronalin:
       amount: 1
@@ -46,6 +54,8 @@
 
 - type: reaction
   id: Bicaridine
+  minPH: 6
+  maxPH: 8.2
   reactants:
     Inaprovaline:
       amount: 1
@@ -56,6 +66,8 @@
 
 - type: reaction
   id: Cryoxadone
+  minPH: 6
+  maxPH: 8
   maxTemp: 175 # ADT tweak
   reactants:
     Tricordrazine: # ADT tweak Не, нафиг растения для крио --QWERTY--(Может сделать новое особое растение для крио, но это лишь в планах
@@ -69,6 +81,8 @@
 
 - type: reaction
   id: Doxarubixadone
+  minPH: 5
+  maxPH: 8
   maxTemp: 150 # ADT tweak
   reactants:
   # ADT tweak Start
@@ -84,6 +98,8 @@
 
 - type: reaction
   id: Epinephrine
+  minPH: 8
+  maxPH: 13
   reactants:
     Phenol:
       amount: 1
@@ -98,6 +114,8 @@
 
 - type: reaction
   id: Dermaline
+  minPH: 4.5
+  maxPH: 7.5
   reactants:
     Kelotane:
       amount: 1
@@ -110,6 +128,8 @@
 
 - type: reaction
   id: Dexalin
+  minPH: 6
+  maxPH: 8
   reactants:
     Oxygen:
       amount: 2
@@ -121,6 +141,8 @@
 
 - type: reaction
   id: DexalinPlus
+  minPH: 6
+  maxPH: 8.5
   reactants:
     Dexalin:
       amount: 1
@@ -133,6 +155,8 @@
 
 - type: reaction
   id: Hyronalin
+  minPH: 5
+  maxPH: 9
   reactants:
     Radium:
       amount: 1
@@ -143,6 +167,8 @@
 
 - type: reaction
   id: Inaprovaline
+  minPH: 5.5
+  maxPH: 7.8
   reactants:
     Oxygen:
       amount: 1
@@ -155,6 +181,8 @@
 
 - type: reaction
   id: Ipecac
+  minPH: 9
+  maxPH: 12.5
   reactants:
     Potassium:
       amount: 1
@@ -167,6 +195,8 @@
 
 - type: reaction
   id: TranexamicAcid
+  minPH: 2
+  maxPH: 5.5
   reactants:
     Inaprovaline:
       amount: 1
@@ -179,6 +209,8 @@
 
 - type: reaction
   id: Kelotane
+  minPH: 5.5
+  maxPH: 8
   reactants:
     Silicon:
       amount: 1
@@ -189,6 +221,8 @@
 
 - type: reaction
   id: Leporazine
+  minPH: 5.5
+  maxPH: 8.5
   reactants:
     Copper:
       amount: 1
@@ -202,6 +236,8 @@
 
 - type: reaction
   id: Phalanximine
+  minPH: 5
+  maxPH: 8
   reactants:
     Hyronalin:
       amount: 1
@@ -214,6 +250,8 @@
 
 - type: reaction
   id: Ambuzol
+  minPH: 6
+  maxPH: 10
   reactants:
     Dylovene:
       amount: 1
@@ -226,6 +264,8 @@
 
 - type: reaction
   id: AmbuzolPlus
+  minPH: 6
+  maxPH: 8
   reactants:
     Ambuzol:
       amount: 5
@@ -236,6 +276,8 @@
 
 - type: reaction
   id: Synaptizine
+  minPH: 7
+  maxPH: 12
   reactants:
     Lithium:
       amount: 1
@@ -248,6 +290,8 @@
 
 - type: reaction
   id: Tricordrazine
+  minPH: 6
+  maxPH: 8
   reactants:
     Inaprovaline:
       amount: 1
@@ -258,6 +302,8 @@
 
 - type: reaction
   id: HeartbreakerToxin
+  minPH: 5
+  maxPH: 8
   maxTemp: 173 ### ADT Tweak
   reactants:
     DexalinPlus:
@@ -269,6 +315,8 @@
 
 - type: reaction
   id: Impedrezene
+  minPH: 6
+  maxPH: 8
   minTemp: 370
   reactants:
     Mercury:
@@ -282,6 +330,8 @@
 
 - type: reaction
   id: Lexorin
+  minPH: 5
+  maxPH: 8
   impact: High
   reactants:
     HeartbreakerToxin:
@@ -295,6 +345,8 @@
 
 - type: reaction
   id: Lipozine
+  minPH: 5.5
+  maxPH: 8
   reactants:
     TableSalt:
       amount: 1
@@ -307,6 +359,8 @@
 
 - type: reaction
   id: Mannitol
+  minPH: 6
+  maxPH: 8
   reactants:
     Hydrogen:
       amount: 1
@@ -319,6 +373,8 @@
 
 - type: reaction
   id: MindbreakerToxin
+  minPH: 5
+  maxPH: 8
   minTemp: 370
   reactants:
     Silicon:
@@ -332,6 +388,8 @@
 
 - type: reaction
   id: SpaceDrugs
+  minPH: 7
+  maxPH: 12
   reactants:
     Mercury:
       amount: 1
@@ -344,6 +402,8 @@
 
 - type: reaction
   id: Ultravasculine
+  minPH: 6.5
+  maxPH: 9
   reactants:
     Histamine:
       amount: 2
@@ -355,6 +415,8 @@
 
 - type: reaction
   id: Oculine
+  minPH: 9
+  maxPH: 13
   reactants:
     TableSalt:
       amount: 1
@@ -367,6 +429,8 @@
 
 - type: reaction
   id: Siderlac
+  minPH: 5.5
+  maxPH: 8
   reactants:
     Aloe:
       amount: 1
@@ -377,6 +441,8 @@
 
 - type: reaction
   id: Cognizine
+  minPH: 5
+  maxPH: 7.5
   reactants:
     CarpoToxin:
       amount: 1
@@ -389,6 +455,8 @@
 
 - type: reaction
   id: Sigynate
+  minPH: 10
+  maxPH: 14
   impact: Medium
   minTemp: 370
   reactants:
@@ -407,6 +475,8 @@
 
 - type: reaction
   id: Saline
+  minPH: 6
+  maxPH: 8
   reactants:
     Water:
       amount: 4
@@ -417,6 +487,8 @@
 
 - type: reaction
   id: Lacerinol
+  minPH: 6.5
+  maxPH: 8.5
   impact: Medium
   minTemp: 335
   reactants:
@@ -429,6 +501,8 @@
 
 - type: reaction
   id: Puncturase
+  minPH: 9.5
+  maxPH: 12.5
   impact: Medium
   minTemp: 325
   reactants:
@@ -441,6 +515,8 @@
 
 - type: reaction
   id: Bruizine
+  minPH: 7.5
+  maxPH: 10.5
   impact: Medium
   reactants:
     Bicaridine: # Bicaridine is a conflicting brute medication and if mixed incorrectly will make Razorium. This is intended.
@@ -454,6 +530,8 @@
 
 - type: reaction
   id: BicarLacerinol # mixing any two brute medications will make Razorium
+  minPH: 0
+  maxPH: 4.8
   impact: Medium
   reactants:
     Lacerinol:
@@ -465,6 +543,8 @@
 
 - type: reaction
   id: BicarPuncturase # mixing any two brute medications will make Razorium
+  minPH: 11.4
+  maxPH: 14
   impact: Medium
   reactants:
     Puncturase:
@@ -476,6 +556,8 @@
 
 - type: reaction
   id: BicarBruizine # mixing any two brute medications will make Razorium
+  minPH: 0
+  maxPH: 3.8
   impact: Medium
   reactants:
     Bruizine:
@@ -487,6 +569,8 @@
 
 - type: reaction
   id: BruizineLacerinol # mixing any two brute medications will make Razorium
+  minPH: 0
+  maxPH: 4.5
   impact: Medium
   reactants:
     Lacerinol:
@@ -498,6 +582,8 @@
 
 - type: reaction
   id: BruizinePuncturase # mixing any two brute medications will make Razorium
+  minPH: 10.8
+  maxPH: 14
   impact: Medium
   reactants:
     Puncturase:
@@ -509,6 +595,8 @@
 
 - type: reaction
   id: PuncturaseLacerinol # mixing any two brute medications will make Razorium
+  minPH: 10.8
+  maxPH: 14
   impact: Medium
   reactants:
     Lacerinol:
@@ -520,6 +608,8 @@
 
 - type: reaction
   id: Diphenhydramine
+  minPH: 8
+  maxPH: 12
   impact: Medium
   minTemp: 377.59
   reactants:
@@ -538,6 +628,8 @@
 
 - type: reaction
   id: Pyrazine
+  minPH: 4
+  maxPH: 7
   impact: Medium
   minTemp: 540
   reactants:
@@ -552,6 +644,8 @@
 
 - type: reaction
   id: Insuzine
+  minPH: 5.5
+  maxPH: 8.5
   impact: Medium
   minTemp: 433
   reactants:
@@ -566,6 +660,8 @@
 
 - type: reaction
   id: Opporozidone
+  minPH: 4
+  maxPH: 7
   minTemp: 400 #Maybe if a method of reducing reagent temp exists one day, this could be -50
   reactants:
     Cognizine:
@@ -579,6 +675,8 @@
 
 - type: reaction
   id: Necrosol
+  minPH: 6
+  maxPH: 8
   impact: Medium
   minTemp: 370
   reactants:
@@ -593,6 +691,8 @@
 
 - type: reaction
   id: Aloxadone
+  minPH: 5
+  maxPH: 8
   impact: Medium
   maxTemp: 200 # ADT tweak
   reactants:
@@ -609,6 +709,8 @@
 
 - type: reaction
   id: Psicodine
+  minPH: 6
+  maxPH: 8
   impact: Medium
   maxTemp: 270 # ADT tweak
   reactants:
@@ -623,6 +725,8 @@
 
 - type: reaction
   id: Lipolicide
+  minPH: 8
+  maxPH: 12
   reactants:
     Ephedrine:
       amount: 1
@@ -635,6 +739,8 @@
 
 - type: reaction
   id: Happiness
+  minPH: 6
+  maxPH: 9
   reactants:
     Laughter:
       amount: 2
@@ -650,6 +756,8 @@
 
 - type: reaction
   id: PotassiumIodide
+  minPH: 5
+  maxPH: 8
   reactants:
     Potassium:
       amount: 1
@@ -660,6 +768,8 @@
 
 - type: reaction
   id: Haloperidol
+  minPH: 7
+  maxPH: 11
   reactants:
     Aluminium:
       amount: 1

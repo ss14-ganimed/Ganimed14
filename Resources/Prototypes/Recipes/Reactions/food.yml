@@ -1,5 +1,7 @@
 - type: reaction
   id: Curdling
+  minPH: 3
+  maxPH: 6
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -15,6 +17,8 @@
 
 - type: reaction
   id: ChevreCurdling
+  minPH: 3
+  maxPH: 6
   impact: low
   quantized: true
   conserveEnergy: false
@@ -30,6 +34,8 @@
 
 - type: reaction
   id: CreateDough
+  minPH: 5
+  maxPH: 8
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -44,6 +50,8 @@
 
 - type: reaction
   id: CreateCornmealDough
+  minPH: 5
+  maxPH: 8
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -60,6 +68,8 @@
 
 - type: reaction
   id: CreateTortillaDough
+  minPH: 5
+  maxPH: 8
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -74,6 +84,8 @@
 
 - type: reaction
   id: CreateDoughCotton
+  minPH: 5
+  maxPH: 8
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -90,6 +102,8 @@
 
 - type: reaction
   id: CreateCakeBatter
+  minPH: 5.5
+  maxPH: 8
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -108,6 +122,8 @@
 
 - type: reaction
   id: CreateButter
+  minPH: 5.5
+  maxPH: 8
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -123,6 +139,8 @@
 
 - type: reaction
   id: CreatePieDough
+  minPH: 5
+  maxPH: 8
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -142,6 +160,8 @@
 # Maybe change this if you want to do allergies or something
 - type: reaction
   id: CreateVeganCakeBatter
+  minPH: 5.5
+  maxPH: 8
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -158,6 +178,8 @@
 
 - type: reaction
   id: CreateTofu
+  minPH: 5
+  maxPH: 8
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -173,6 +195,8 @@
 
 - type: reaction
   id: CreateMeatball
+  minPH: 6
+  maxPH: 8
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -189,6 +213,8 @@
 
 - type: reaction
   id: CreateChocolate
+  minPH: 5
+  maxPH: 7
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -207,6 +233,8 @@
 
 - type: reaction
   id: CookingKetchup
+  minPH: 3
+  maxPH: 6
   reactants:
     JuiceTomato:
       amount: 2
@@ -217,6 +245,8 @@
 
 - type: reaction
   id: CookingMayoVinegar
+  minPH: 3
+  maxPH: 6
   reactants:
     Vinegar:
       amount: 5
@@ -229,6 +259,8 @@
 
 - type: reaction
   id: CookingMayoLemon
+  minPH: 2
+  maxPH: 6
   reactants:
     JuiceLemon:
       amount: 5
@@ -242,6 +274,8 @@
 # Gas not included
 - type: reaction
   id: CookingMustard
+  minPH: 8
+  maxPH: 13
   reactants:
     Bleach:
       amount: 1
@@ -252,6 +286,8 @@
 
 - type: reaction
   id: CookingKetchunaise
+  minPH: 3
+  maxPH: 6
   reactants:
     Ketchup:
       amount: 1
@@ -262,6 +298,8 @@
 
 - type: reaction
   id: CookingBbqSauce
+  minPH: 3
+  maxPH: 6
   reactants:
     Ketchup:
       amount: 1
@@ -274,6 +312,8 @@
 
 - type: reaction
   id: CookingHotsauce
+  minPH: 2
+  maxPH: 6
   reactants:
     JuiceTomato:
       amount: 1
@@ -286,6 +326,8 @@
 
 - type: reaction
   id: CookingColdsauce
+  minPH: 5
+  maxPH: 8
   reactants:
     JuiceTomato:
       amount: 1
@@ -298,6 +340,8 @@
 
 - type: reaction
   id: CookingVinegar
+  minPH: 2
+  maxPH: 5
   reactants:
     Ethanol:
       amount: 1
@@ -308,6 +352,8 @@
 
 - type: reaction
   id: CookingSoysauce
+  minPH: 2
+  maxPH: 6
   reactants:
     MilkSoy:
       amount: 2
@@ -318,6 +364,8 @@
 
 - type: reaction
   id: CookingVinaigrette
+  minPH: 2
+  maxPH: 5
   reactants:
     Vinegar:
       amount: 1
@@ -330,6 +378,8 @@
 
 - type: reaction
   id: BananaBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge
@@ -342,6 +392,8 @@
 
 - type: reaction
   id: OilBreakdown
+  minPH: 0
+  maxPH: 14
   requiredMixerCategories:
   - Centrifuge
   reactants:
@@ -366,6 +418,8 @@
 
 - type: reaction
   id: AllicinBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge
@@ -379,6 +433,8 @@
 
 - type: reaction
   id: NutrimentBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge
@@ -392,6 +448,8 @@
 
 - type: reaction
   id: FatBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Electrolysis
@@ -406,6 +464,8 @@
 # Proteins are hydrocarbons
 - type: reaction
   id: UncookedAnimalProteinBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Electrolysis
@@ -420,6 +480,8 @@
 
 - type: reaction
   id: ProteinBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Electrolysis
@@ -435,6 +497,8 @@
 # Vitamin = Healthy = Green = Nitrogenous
 - type: reaction
   id: VitaminBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge
@@ -448,6 +512,8 @@
 
 - type: reaction
   id: ReduceMilk #makes Cream renewable
+  minPH: 6
+  maxPH: 8
   minTemp: 320
   requiredMixerCategories:
   - Shake

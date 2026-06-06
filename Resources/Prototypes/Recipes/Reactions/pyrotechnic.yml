@@ -1,5 +1,7 @@
 ﻿- type: reaction
   id: Napalm
+  minPH: 4
+  maxPH: 8
   reactants:
     Oil:
       amount: 1
@@ -12,6 +14,8 @@
 
 - type: reaction
   id: Phlogiston
+  minPH: 0
+  maxPH: 4
   reactants:
     Phosphorus:
       amount: 1
@@ -31,6 +35,8 @@
 
 - type: reaction
   id: ChlorineTrifluoride
+  minPH: 0
+  maxPH: 4
   minTemp: 370
   priority: 20
   reactants:
@@ -54,6 +60,8 @@
 
 - type: reaction
   id: Ash
+  minPH: 0
+  maxPH: 14
   minTemp: 520
   reactants:
     Oil:
@@ -63,6 +71,8 @@
 
 - type: reaction
   id: WeldingFuelBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge

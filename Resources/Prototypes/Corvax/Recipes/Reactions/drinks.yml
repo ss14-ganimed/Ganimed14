@@ -1,5 +1,7 @@
 - type: reaction
   id: Yorsh
+  minPH: 4
+  maxPH: 7
   reactants:
     Beer:
       amount: 4
@@ -10,6 +12,8 @@
 
 - type: reaction
   id: Alexander
+  minPH: 5
+  maxPH: 7
   reactants:
     Cognac:
       amount: 1
@@ -22,6 +26,8 @@
 
 - type: reaction
   id: MojitoAlt
+  minPH: 2.5
+  maxPH: 6
   reactants:
     Daiquiri:
       amount: 6
@@ -36,6 +42,8 @@
 
 - type: reaction
   id: Negroni
+  minPH: 3
+  maxPH: 6
   reactants:
     Martini:
       amount: 3
@@ -48,6 +56,8 @@
 
 - type: reaction
   id: OldFashioned
+  minPH: 3.5
+  maxPH: 7
   reactants:
     Whiskey:
       amount: 7
@@ -78,6 +88,8 @@
 #ADT - tweak end
 - type: reaction
   id: Bramble
+  minPH: 3
+  maxPH: 6
   reactants:
     JuiceBerry:
       amount: 1
@@ -92,6 +104,8 @@
 
 - type: reaction
   id: MaiTai
+  minPH: 3
+  maxPH: 6
   reactants: # Orgeat may be added
     Rum:
       amount: 3
@@ -106,6 +120,8 @@
 
 - type: reaction
   id: Paloma
+  minPH: 2.5
+  maxPH: 6
   reactants:
     Tequila:
       amount: 1
@@ -116,6 +132,8 @@
 
 - type: reaction
   id: Boyarsky
+  minPH: 3
+  maxPH: 7
   reactants:
     Vodka:
       amount: 3

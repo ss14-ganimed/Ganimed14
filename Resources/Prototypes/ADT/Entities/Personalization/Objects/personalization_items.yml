@@ -3109,6 +3109,7 @@
 
 - type: reagent
   id: ADTFlecheDrink
+  pH: 5.8
   name: fleche-name
   parent: BaseDrink
   desc: fleche-desc

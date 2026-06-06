@@ -8,6 +8,7 @@
   - Chemist
   flavor: bitter
   color: "#a1000b"
+  pH: 12.5
   boilingPoint: 111.0
   meltingPoint: -5.0
   metabolisms:
@@ -54,6 +55,7 @@
   physicalDesc: reagent-physical-desc-soapy
   flavor: clean
   color: "#c8dfc9"
+  pH: 10.0
   recognizable: true
   boilingPoint: 100.0
   meltingPoint: 60.0
@@ -119,6 +121,7 @@
   physicalDesc: reagent-physical-desc-shiny
   flavor: funny
   color: "#77b58e"
+  pH: 7.5
   recognizable: true
   boilingPoint: 290.0 # Glycerin
   meltingPoint: 18.2
@@ -133,6 +136,7 @@
   physicalDesc: reagent-physical-desc-sticky
   flavor: glue
   color: "#ffffff"
+  pH: 6.0
   boilingPoint: 250.0
   meltingPoint: 380.0
   tileReactions:

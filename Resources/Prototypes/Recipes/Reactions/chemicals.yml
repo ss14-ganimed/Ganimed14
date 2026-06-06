@@ -1,5 +1,7 @@
 - type: reaction
   id: Ammonia
+  minPH: 6
+  maxPH: 10
   reactants:
     Hydrogen:
       amount: 3
@@ -10,6 +12,8 @@
 
 - type: reaction
   id: CelluloseBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Electrolysis
@@ -22,6 +26,8 @@
 
 - type: reaction
   id: Diethylamine
+  minPH: 8
+  maxPH: 12
   reactants:
     Ammonia:
       amount: 1
@@ -32,6 +38,8 @@
 
 - type: reaction
   id: Phenol
+  minPH: 8
+  maxPH: 13
   reactants:
     Hydroxide:
       amount: 1
@@ -42,6 +50,8 @@
 
 - type: reaction
   id: Acetone
+  minPH: 5
+  maxPH: 8
   reactants:
     Oil:
       amount: 1
@@ -54,6 +64,8 @@
 
 - type: reaction
   id: FoamingAgent
+  minPH: 8
+  maxPH: 12
   reactants:
     Lithium:
       amount: 1
@@ -64,6 +76,8 @@
 
 - type: reaction
   id: PolytrinicAcid
+  minPH: 0
+  maxPH: 3
   reactants:
     SulfuricAcid:
       amount: 1
@@ -76,6 +90,8 @@
 
 - type: reaction
   id: SulfuricAcid
+  minPH: 0
+  maxPH: 5
   reactants:
     Hydrogen:
       amount: 1
@@ -88,6 +104,8 @@
 
 - type: reaction
   id: FluorosulfuricAcid
+  minPH: 0
+  maxPH: 2
   reactants:
     Fluorine:
       amount: 1
@@ -102,6 +120,8 @@
 
 - type: reaction
   id: PotassiumExplosion
+  minPH: 5
+  maxPH: 9
   impact: High
   priority: 20
   conserveEnergy: false
@@ -120,6 +140,8 @@
 
 - type: reaction
   id: Smoke
+  minPH: 6
+  maxPH: 11
   priority: -10
   impact: High
   conserveEnergy: false
@@ -139,6 +161,8 @@
 
 - type: reaction
   id: Foam
+  minPH: 4
+  maxPH: 8
   priority: -10
   impact: High
   conserveEnergy: false
@@ -156,6 +180,8 @@
 
 - type: reaction
   id: IronMetalFoam
+  minPH: 0
+  maxPH: 4
   impact: High
   priority: -10
   conserveEnergy: false
@@ -175,6 +201,8 @@
 
 - type: reaction
   id: AluminiumMetalFoam
+  minPH: 0
+  maxPH: 4
   impact: High
   priority: -10
   conserveEnergy: false
@@ -194,6 +222,8 @@
 
 - type: reaction
   id: UraniumEmpExplosion
+  minPH: 5
+  maxPH: 9
   impact: High
   priority: 20
   conserveEnergy: false
@@ -213,6 +243,8 @@
 
 - type: reaction
   id: Flash
+  minPH: 6
+  maxPH: 11
   impact: High
   priority: 20
   conserveEnergy: false
@@ -228,6 +260,8 @@
 
 - type: reaction
   id: TableSalt
+  minPH: 4
+  maxPH: 9
   minTemp: 370
   reactants:
     Chlorine:
@@ -239,6 +273,8 @@
 
 - type: reaction
   id: TableSaltBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Electrolysis
@@ -251,6 +287,8 @@
 
 - type: reaction
   id: Thermite
+  minPH: 5
+  maxPH: 9
   impact: Medium
   maxTemp: 237
   reactants:
@@ -265,6 +303,8 @@
 
 - type: reaction
   id: UnstableMutagen
+  minPH: 3
+  maxPH: 7
   reactants:
     Radium:
       amount: 1
@@ -277,6 +317,8 @@
 
 - type: reaction
   id: Oil
+  minPH: 5
+  maxPH: 8
   reactants:
     WeldingFuel:
       amount: 1
@@ -289,6 +331,8 @@
 
 - type: reaction
   id: Fluorosurfactant
+  minPH: 0
+  maxPH: 4
   impact: Medium
   reactants:
     Carbon:
@@ -302,6 +346,8 @@
 
 - type: reaction
   id: Desoxyephedrine
+  minPH: 7
+  maxPH: 11
   impact: Medium
   minTemp: 370
   reactants:
@@ -318,6 +364,8 @@
 
 - type: reaction
   id: Stimulants
+  minPH: 7
+  maxPH: 11
   impact: Medium
   minTemp: 370
   reactants:
@@ -332,6 +380,8 @@
 
 - type: reaction
   id: Ephedrine
+  minPH: 8
+  maxPH: 12
   impact: Medium
   reactants:
     Oil:
@@ -347,6 +397,8 @@
 
 - type: reaction
   id: MuteToxin
+  minPH: 5
+  maxPH: 8
   impact: Medium
   minTemp: 370
   reactants:
@@ -361,6 +413,8 @@
 
 - type: reaction
   id: ChloralHydrate
+  minPH: 4
+  maxPH: 8
   impact: Medium
   maxTemp: 233
   reactants:
@@ -375,6 +429,8 @@
 
 - type: reaction
   id: Pax
+  minPH: 6
+  maxPH: 8
   impact: Medium
   reactants:
     MindbreakerToxin:
@@ -388,6 +444,8 @@
 
 - type: reaction
   id: Charcoal
+  minPH: 6
+  maxPH: 10
   reactants:
     Carbon:
       amount: 1
@@ -398,6 +456,8 @@
 
 - type: reaction
   id: NorepinephricAcid
+  minPH: 2
+  maxPH: 6
   impact: Medium
   reactants:
     Uranium:
@@ -409,6 +469,8 @@
 
 - type: reaction
   id: Ethyloxyephedrine
+  minPH: 7
+  maxPH: 11
   impact: Medium
   reactants:
     Desoxyephedrine:
@@ -420,6 +482,8 @@
 
 - type: reaction
   id: Diphenylmethylamine
+  minPH: 8
+  maxPH: 12
   impact: Medium
   reactants:
     Ethyloxyephedrine:
@@ -433,6 +497,8 @@
 
 - type: reaction
   id: SodiumCarbonate
+  minPH: 8
+  maxPH: 12.5
   impact: Medium
   reactants:
     Ammonia:
@@ -448,6 +514,8 @@
 
 - type: reaction
   id: Benzene
+  minPH: 5
+  maxPH: 8
   minTemp: 310
   reactants:
     Hydrogen:
@@ -460,6 +528,8 @@
 - type: reaction
   minTemp: 310
   id: Hydroxide
+  minPH: 8
+  maxPH: 14
   priority: -1 #needs to be here due to how sulfuric acid reaction words
   reactants:
     Oxygen:
@@ -471,6 +541,8 @@
 
 - type: reaction
   id: SodiumHydroxide
+  minPH: 10
+  maxPH: 14
   reactants:
     Hydroxide:
       amount: 1
@@ -482,6 +554,8 @@
 - type: reaction
   minTemp: 310
   id: Fersilicite
+  minPH: 5
+  maxPH: 9
   reactants:
     Iron:
       amount: 1
@@ -492,6 +566,8 @@
 
 - type: reaction
   id: SodiumPolyacrylate
+  minPH: 7
+  maxPH: 11
   impact: Medium
   maxTemp: 233
   reactants:
@@ -506,6 +582,8 @@
 
 - type: reaction
   id: Nocturine
+  minPH: 5
+  maxPH: 8
   impact: High
   reactants:
     Impedrezene:
@@ -517,6 +595,8 @@
 
 - type: reaction
   id: Tazinide
+  minPH: 7
+  maxPH: 11
   impact: Medium
   maxTemp: 233
   reactants:
@@ -529,6 +609,8 @@
 
 - type: reaction
   id: ArtifactGlue
+  minPH: 5
+  maxPH: 8
   reactants:
     SpaceGlue:
       amount: 1
@@ -539,6 +621,8 @@
 
 - type: reaction
   id: Lye
+  minPH: 9
+  maxPH: 14
   reactants:
     Water:
       amount: 1

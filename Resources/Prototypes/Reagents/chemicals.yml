@@ -34,6 +34,7 @@
   desc: reagent-desc-charcoal
   physicalDesc: reagent-physical-desc-porous
   color: "#22282b"
+  pH: 8.0
   boilingPoint: 4200.0
   meltingPoint: 3550.0
   metabolisms:
@@ -53,6 +54,7 @@
   desc: reagent-desc-ash
   physicalDesc: reagent-physical-desc-powdery
   color: white
+  pH: 6.5
 
 - type: reagent
   id: Lye
@@ -61,6 +63,7 @@
   flavor: alkaline
   physicalDesc: reagent-physical-desc-alkaline
   color: "#e5420b"
+  pH: 13.0
   metabolisms:
     Poison:
       effects:
@@ -75,6 +78,7 @@
   desc: reagent-desc-sodium-carbonate
   physicalDesc: reagent-physical-desc-powdery
   color: white
+  pH: 11.4
   #ADT-tweak-start
   reactiveEffects:
     Acidic:
@@ -106,6 +110,7 @@
   allowedDepartments:
   - Science
   color: "#776291"
+  pH: 4.5
   metabolisms:
     Poison:
       effects:
@@ -128,6 +133,7 @@
   flavor: artifactglue
   physicalDesc: reagent-physical-desc-non-newtonian
   color: "#827394"
+  pH: 6.0
   reactiveEffects:
     Acidic:
       methods: [ Touch ]
@@ -143,6 +149,7 @@
   allowedJobs:
   - Chemist
   color: "#E7EA91"
+  pH: 7.0
   boilingPoint: 353.2
   meltingPoint: 278.7
   metabolisms:
@@ -159,6 +166,7 @@
   desc: reagent-desc-hydroxide
   physicalDesc: reagent-physical-desc-alkaline
   color: "white"
+  pH: 13.0
   boilingPoint: 1661.0
   meltingPoint: 596.0
   #ADT-tweak-start
@@ -189,6 +197,7 @@
   desc: reagent-desc-sodium-hydroxide
   physicalDesc: reagent-physical-desc-alkaline
   color: "white"
+  pH: 14.0
   boilingPoint: 1661.0
   meltingPoint: 596.0
   #ADT-tweak-start
@@ -231,6 +240,7 @@
   physicalDesc: reagent-physical-desc-crystalline
   flavor: metallic
   color: "#434b4d"
+  pH: 7.5
   boilingPoint: 2962.0
   meltingPoint: 1638.0
 
@@ -241,6 +251,7 @@
   flavor: bitter
   physicalDesc: reagent-physical-desc-grainy
   color: "#F0F0F0"
+  pH: 7.5
   metabolisms:
     Poison:
       effects:
@@ -259,6 +270,7 @@
   desc: reagent-desc-cellulose
   flavor: bitter
   color: "#E6E6DA"
+  pH: 7.0
   physicalDesc: reagent-physical-desc-crystalline
 
 - type: reagent
@@ -269,6 +281,7 @@
   flavor: tingly
   physicalDesc: reagent-physical-desc-refreshing
   color: "#bf1365"
+  pH: 8.0
   metabolisms:
     Medicine:
       effects:
