@@ -3,6 +3,7 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Content.Shared._Ganimed.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reaction;
@@ -1038,6 +1039,9 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
                 , ("amount", quantity)));
         }
 
+        msg.PushNewline();
+        msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-ph",
+            ("ph", ChemistryPH.GetSolutionPH(solution, PrototypeManager).ToString("0.0"))));
         msg.PushNewline();
         msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-temperature", ("temperature", Math.Round(solution.Temperature))));
 
