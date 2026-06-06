@@ -1,20 +1,29 @@
-using System.Linq;
+using Content.Client.UserInterface;
 using Content.Shared._Ganimed.Research.Components;
+using Content.Shared._Ganimed.Research.Systems;
 using Content.Shared.Research.Components;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Audio;
+using Robust.Client.Timing;
 using Robust.Client.UserInterface;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.IoC;
 
 namespace Content.Client._Ganimed.Research.UI;
 
 public sealed class ExperimentScannerBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
+    [Dependency] private readonly IClientGameTiming _gameTiming = default!;
+
     private ExperimentScannerMenu? _menu;
-    private ExperimentScannerState? _predictedState;
+    private BuiPredictionState? _pred;
+    private ExperimentScannerState? _displayState;
 
     protected override void Open()
     {
+        IoCManager.InjectDependencies(this);
         base.Open();
+
+        _pred = new BuiPredictionState(this, _gameTiming);
 
         _menu = this.CreateWindow<ExperimentScannerMenu>();
         _menu.OpenCentered();
@@ -22,7 +31,7 @@ public sealed class ExperimentScannerBoundUserInterface(EntityUid owner, Enum ui
         _menu.OnSelectOrder += OnSelectOrder;
         _menu.OnAbandonOrder += OnAbandonOrder;
         _menu.OnSkipOrder += OnSkipOrder;
-        _menu.OnSelectServer += () => SendPredictedMessage(new ConsoleServerSelectionMessage());
+        _menu.OnSelectServer += () => _pred!.SendMessage(new ConsoleServerSelectionMessage());
 
         if (EntMan.TryGetComponent(Owner, out ExperimentScannerComponent? scanner))
             RefreshFromComponent(scanner);
@@ -33,8 +42,7 @@ public sealed class ExperimentScannerBoundUserInterface(EntityUid owner, Enum ui
         if (state is not ExperimentScannerState scannerState)
             return;
 
-        _predictedState = CloneState(scannerState);
-        _menu?.UpdateState(_predictedState);
+        RefreshFromState(scannerState);
     }
 
     public void RefreshFromComponent(ExperimentScannerComponent scanner)
@@ -42,8 +50,7 @@ public sealed class ExperimentScannerBoundUserInterface(EntityUid owner, Enum ui
         if (scanner.UiState == null)
             return;
 
-        _predictedState = CloneState(scanner.UiState);
-        _menu?.UpdateState(_predictedState);
+        RefreshFromState(scanner.UiState);
     }
 
     protected override void Dispose(bool disposing)
@@ -58,84 +65,53 @@ public sealed class ExperimentScannerBoundUserInterface(EntityUid owner, Enum ui
         _menu.OnClose -= Close;
         _menu.Dispose();
         _menu = null;
-        _predictedState = null;
+        _pred = null;
+        _displayState = null;
+    }
+
+    private void RefreshFromState(ExperimentScannerState serverState)
+    {
+        var state = SharedExperimentScannerSystem.CloneState(serverState);
+
+        if (_pred != null && EntMan.TryGetComponent(Owner, out ExperimentScannerComponent? scanner))
+        {
+            foreach (var message in _pred.MessagesToReplay())
+                SharedExperimentScannerSystem.ApplyPredictedMessage(state, message, scanner.OrderSkipDelay);
+        }
+
+        _displayState = state;
+        _menu?.UpdateState(state);
     }
 
     private void OnSelectOrder(string id)
     {
         PlayImmediateSound(comp => comp.SelectSound);
-        SendPredictedMessage(new ExperimentSelectOrderMessage(id));
-
-        if (_predictedState == null || _predictedState.Active != null)
-            return;
-
-        var idx = _predictedState.Available.FindIndex(o => o.Id == id);
-        if (idx < 0)
-            return;
-
-        _predictedState.Active = _predictedState.Available[idx];
-        _predictedState.Available.RemoveAt(idx);
-        _menu?.UpdateState(_predictedState);
+        ApplyPredictedMessage(new ExperimentSelectOrderMessage(id));
     }
 
     private void OnAbandonOrder()
     {
         PlayImmediateSound(comp => comp.SelectSound);
-        SendPredictedMessage(new ExperimentAbandonOrderMessage());
-
-        if (_predictedState?.Active == null)
-            return;
-
-        _predictedState.Available.Add(_predictedState.Active);
-        _predictedState.Active = null;
-        _menu?.UpdateState(_predictedState);
+        ApplyPredictedMessage(new ExperimentAbandonOrderMessage());
     }
 
     private void OnSkipOrder(string id)
     {
         PlayImmediateSound(comp => comp.SkipSound);
-        SendPredictedMessage(new ExperimentSkipOrderMessage(id));
-
-        if (_predictedState == null)
-            return;
-
-        var idx = _predictedState.Available.FindIndex(o => o.Id == id);
-        if (idx < 0)
-            return;
-
-        _predictedState.Available.RemoveAt(idx);
-
-        // Keep feedback immediate: visually start skip cooldown until server state arrives.
-        if (_predictedState.UntilNextSkip <= TimeSpan.Zero)
-            _predictedState.UntilNextSkip = TimeSpan.FromMinutes(10);
-
-        _menu?.UpdateState(_predictedState);
+        ApplyPredictedMessage(new ExperimentSkipOrderMessage(id));
     }
 
-    private static ExperimentScannerState CloneState(ExperimentScannerState state)
+    private void ApplyPredictedMessage(BoundUserInterfaceMessage message)
     {
-        var available = state.Available.Select(CloneOrder).ToList();
-        var active = state.Active == null ? null : CloneOrder(state.Active);
-        return new ExperimentScannerState(
-            available,
-            active,
-            state.UntilNextSkip,
-            state.HasSelectedServer,
-            state.SelectedServerName);
-    }
+        if (_displayState == null || !EntMan.TryGetComponent(Owner, out ExperimentScannerComponent? scanner))
+            return;
 
-    private static ExperimentOrderUiData CloneOrder(ExperimentOrderUiData order)
-    {
-        return new ExperimentOrderUiData
-        {
-            Id = order.Id,
-            Name = order.Name,
-            Description = order.Description,
-            RewardPoints = order.RewardPoints,
-            ProgressCurrent = order.ProgressCurrent,
-            ProgressTarget = order.ProgressTarget,
-            TimeRemaining = order.TimeRemaining
-        };
+        _pred!.SendMessage(message);
+
+        var state = SharedExperimentScannerSystem.CloneState(_displayState);
+        SharedExperimentScannerSystem.ApplyPredictedMessage(state, message, scanner.OrderSkipDelay);
+        _displayState = state;
+        _menu?.UpdateState(state);
     }
 
     private void PlayImmediateSound(Func<ExperimentScannerComponent, SoundSpecifier?> selector)

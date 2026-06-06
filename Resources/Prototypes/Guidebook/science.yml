@@ -7,14 +7,13 @@
   - AnomalousResearch
   - Xenoarchaeology
   - Robotics
+  - ExperimentScannerGuide
 
 - type: guideEntry
   id: Technologies
   name: guide-entry-technologies
   text: "/ServerInfo/Guidebook/Science/Technologies.xml"
   filterEnabled: True
-  children:
-  - ExperimentScannerGuide
 
 - type: guideEntry
   id: ExperimentScannerGuide

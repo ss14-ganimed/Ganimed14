@@ -11,6 +11,7 @@ using Content.Server.Research.Disk;
 using Content.Server.Research.Systems;
 using Content.Shared._Ganimed.Research.Components;
 using Content.Shared._Ganimed.Research.Prototypes;
+using Content.Shared._Ganimed.Research.Systems;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Atmos.Prototypes;
@@ -39,7 +40,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Ganimed.Research.Systems;
 
-public sealed class ExperimentScannerSystem : EntitySystem
+public sealed partial class ExperimentScannerSystem : SharedExperimentScannerSystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -55,12 +56,25 @@ public sealed class ExperimentScannerSystem : EntitySystem
 
     public override void Initialize()
     {
+        base.Initialize();
+
         SubscribeLocalEvent<ExperimentScannerComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<ExperimentScannerComponent, ExperimentSelectOrderMessage>(OnOrderSelected);
         SubscribeLocalEvent<ExperimentScannerComponent, ExperimentAbandonOrderMessage>(OnOrderAbandoned);
         SubscribeLocalEvent<ExperimentScannerComponent, ExperimentSkipOrderMessage>(OnOrderSkipped);
-        SubscribeLocalEvent<ExperimentScannerComponent, AfterInteractEvent>(OnAfterInteract);
-        SubscribeLocalEvent<MetaDataComponent, InteractUsingEvent>(OnEntityInteractUsing);
+    }
+
+    protected override void HandleAfterInteract(Entity<ExperimentScannerComponent> ent, ref AfterInteractEvent args)
+    {
+        TryScanTarget(ent, args.User, args.Target!.Value);
+    }
+
+    protected override void HandleInteractUsing(Entity<MetaDataComponent> ent, ref InteractUsingEvent args)
+    {
+        if (!TryComp<ExperimentScannerComponent>(args.Used, out var scannerComp))
+            return;
+
+        TryScanTarget((args.Used, scannerComp), args.User, args.Target);
     }
 
     private void OnUiOpened(Entity<ExperimentScannerComponent> ent, ref BoundUIOpenedEvent args)
@@ -181,23 +195,6 @@ public sealed class ExperimentScannerSystem : EntitySystem
                 $"{ToPrettyString(user):user} skipped experiment order [id:{removed.Id}, prototype:{removed.Prototype}] with scanner {ToPrettyString(ent):entity}");
         }
         UpdateUi(ent, stationDb, db);
-    }
-
-    private void OnAfterInteract(Entity<ExperimentScannerComponent> ent, ref AfterInteractEvent args)
-    {
-        if (args.Target is not { } target || !args.CanReach)
-            return;
-
-        TryScanTarget(ent, args.User, target);
-    }
-
-    private void OnEntityInteractUsing(Entity<MetaDataComponent> ent, ref InteractUsingEvent args)
-    {
-        if (!TryComp<ExperimentScannerComponent>(args.Used, out var scannerComp))
-            return;
-
-        var scanner = (args.Used, scannerComp);
-        TryScanTarget(scanner, args.User, args.Target);
     }
 
     private void TryScanTarget(Entity<ExperimentScannerComponent> ent, EntityUid user, EntityUid target)

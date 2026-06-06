@@ -16,6 +16,9 @@ public sealed partial class ExperimentScannerComponent : Component
     [DataField]
     public int VisibleOrders = 7;
 
+    [DataField]
+    public TimeSpan OrderSkipDelay = TimeSpan.FromMinutes(10);
+
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     public TimeSpan NextDenySoundTime = TimeSpan.Zero;
 
