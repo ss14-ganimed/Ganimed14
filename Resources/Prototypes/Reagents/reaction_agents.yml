@@ -1,0 +1,43 @@
+- type: reagent
+  id: PrefactorA
+  name: reagent-name-prefactor-a
+  group: Special
+  desc: reagent-desc-prefactor-a
+  physicalDesc: reagent-physical-desc-sharp-smelling
+  color: "#bafa69"
+  pH: 7
+  unreactedPurity: 0.75
+  inverseThreshold: 0.25
+
+- type: reagent
+  id: PrefactorB
+  name: reagent-name-prefactor-b
+  group: Special
+  desc: reagent-desc-prefactor-b
+  physicalDesc: reagent-physical-desc-sharp-smelling
+  color: "#8a3aa9"
+  pH: 6.5
+  unreactedPurity: 0.75
+  inverseThreshold: 0.35
+
+- type: reagent
+  id: PurityTesterReagent
+  name: reagent-name-purity-tester-reagent
+  group: Special
+  desc: reagent-desc-purity-tester-reagent
+  physicalDesc: reagent-physical-desc-sharp-smelling
+  color: "#ffffff"
+  pH: 3
+  reactionAgent: true
+
+- type: reagent
+  id: Tempomyocin
+  name: reagent-name-tempomyocin
+  group: Special
+  desc: reagent-desc-tempomyocin
+  physicalDesc: reagent-physical-desc-sharp-smelling
+  color: "#e61f82"
+  pH: 7
+  unreactedPurity: 0.75
+  inverseThreshold: 0.25
+  reactionAgent: true

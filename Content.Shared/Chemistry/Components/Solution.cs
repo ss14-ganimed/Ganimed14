@@ -74,6 +74,18 @@ namespace Content.Shared.Chemistry.Components
         public float? PHOverride;
 
         /// <summary>
+        ///     Temporary multiplier applied to rate-limited reactions (e.g. reaction-rate agents).
+        /// </summary>
+        [ViewVariables]
+        public float ReactionRateMultiplier = 1f;
+
+        /// <summary>
+        ///     Set while a reaction agent is being poured into a non-empty vessel (tg-style transfer activation).
+        /// </summary>
+        [ViewVariables]
+        public (string Prototype, FixedPoint2 Quantity)? PendingReactionAgentTransfer;
+
+        /// <summary>
         ///     Checks if a solution can fit into the container.
         /// </summary>
         public bool CanAddSolution(Solution solution)
@@ -214,6 +226,7 @@ namespace Content.Shared.Chemistry.Components
             MaxVolume = solution.MaxVolume;
             Temperature = solution.Temperature;
             PHOverride = solution.PHOverride;
+            ReactionRateMultiplier = solution.ReactionRateMultiplier;
             CanReact = solution.CanReact;
             _heatCapacity = solution._heatCapacity;
             _heatCapacityDirty = solution._heatCapacityDirty;

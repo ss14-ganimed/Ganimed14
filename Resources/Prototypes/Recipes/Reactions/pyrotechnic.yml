@@ -1,4 +1,4 @@
-﻿- type: reaction
+- type: reaction
   id: Napalm
   minPH: 4
   maxPH: 8
@@ -68,6 +68,38 @@
       amount: 1
   products:
     Ash: 1
+
+- type: reaction
+  id: Pyrosium
+  minPH: 0
+  maxPH: 14
+  reactants:
+    Plasma:
+      amount: 1
+    Radium:
+      amount: 1
+    Phosphorus:
+      amount: 1
+  products:
+    Pyrosium: 3
+  effects:
+  - !type:SetSolutionTemperature
+    temperature: 20
+
+- type: reaction
+  id: PyrosiumOxygen
+  instant: true
+  minPH: 0
+  maxPH: 14
+  reactants:
+    Pyrosium:
+      amount: 1
+      catalyst: true
+    Oxygen:
+      amount: 1
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: 10
 
 - type: reaction
   id: WeldingFuelBreakdown

@@ -1,4 +1,4 @@
-﻿- type: reagent
+- type: reagent
   id: BasePyrotechnic
   pH: 7.0
   group: Pyrotechnic
@@ -259,6 +259,33 @@
         - !type:MetabolizerTypeCondition
           type: [ Novakid ]
         # ADT-Tweak End
+
+- type: reagent
+  id: Pyrosium
+  name: reagent-name-pyrosium
+  parent: BasePyrotechnic
+  desc: reagent-desc-pyrosium
+  physicalDesc: reagent-physical-desc-cold
+  contrabandSeverity: Minor
+  flavor: bitter
+  color: "#64FAC8"
+  pH: 7
+  metabolisms:
+    Poison:
+      effects:
+      - !type:AdjustReagent
+        reagent: Oxygen
+        amount: -0.5
+        conditions:
+        - !type:ReagentCondition
+          reagent: Oxygen
+          min: 0.5
+      - !type:AdjustTemperature
+        amount: 15
+        conditions:
+        - !type:ReagentCondition
+          reagent: Oxygen
+          min: 0.5
 
 - type: reagent
   id: Fluorosurfactant

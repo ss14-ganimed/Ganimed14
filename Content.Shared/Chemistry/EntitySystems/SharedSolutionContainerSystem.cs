@@ -500,16 +500,31 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         if (acceptedQuantity <= 0)
             return reagentQuantity.Quantity == 0;
 
-        if (temperature == null)
+        var hadOtherReagents = solution.Volume > FixedPoint2.Zero &&
+            solution.Contents.Any(r =>
+                r.Quantity > FixedPoint2.Zero && r.Reagent.Prototype != reagentQuantity.Reagent.Prototype);
+
+        if (reagentProto.ReactionAgent && acceptedQuantity > FixedPoint2.Zero && hadOtherReagents)
+            solution.PendingReactionAgentTransfer = (reagentQuantity.Reagent.Prototype, acceptedQuantity);
+
+        try
         {
-            solution.AddReagent(reagentQuantity.Reagent, acceptedQuantity);
+            if (temperature == null)
+            {
+                solution.AddReagent(reagentQuantity.Reagent, acceptedQuantity);
+            }
+            else
+            {
+                solution.AddReagent(reagentProto, acceptedQuantity, temperature.Value, PrototypeManager);
+            }
+
+            UpdateChemicals(soln);
         }
-        else
+        finally
         {
-            solution.AddReagent(reagentProto, acceptedQuantity, temperature.Value, PrototypeManager);
+            solution.PendingReactionAgentTransfer = null;
         }
 
-        UpdateChemicals(soln);
         return acceptedQuantity == reagentQuantity.Quantity;
     }
 

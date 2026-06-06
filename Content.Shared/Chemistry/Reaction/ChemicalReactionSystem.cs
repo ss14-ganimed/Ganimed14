@@ -272,7 +272,7 @@ namespace Content.Shared.Chemistry.Reaction
                     continue;
                 }
 
-                var reactionRate = GetReactionRate(reaction);
+                var reactionRate = GetReactionRate(reaction, soln.Comp.Solution);
                 if (!processRateLimited && reactionRate < FixedPoint2.MaxValue)
                     return ReactionProcessResult.QueuedRateLimited;
 
@@ -331,21 +331,28 @@ namespace Content.Shared.Chemistry.Reaction
 
         private static readonly FixedPoint2 DefaultReactionRate = FixedPoint2.New(5);
 
-        private static FixedPoint2 GetReactionRate(ReactionPrototype reaction)
+        private static FixedPoint2 GetReactionRate(ReactionPrototype reaction, Solution solution)
         {
+            FixedPoint2 rate;
+
             if (reaction.Instant)
-                return FixedPoint2.MaxValue;
-
-            // Effect-only reactions run immediately unless a custom reaction rate is set in YAML.
-            if (reaction.Products.Count == 0 && reaction.Effects.Length > 0)
+                rate = FixedPoint2.MaxValue;
+            else if (reaction.Products.Count == 0 && reaction.Effects.Length > 0)
             {
-                if (reaction.ReactionRate != DefaultReactionRate)
-                    return reaction.ReactionRate;
-
-                return FixedPoint2.MaxValue;
+                // Effect-only reactions run immediately unless a custom reaction rate is set in YAML.
+                rate = reaction.ReactionRate != DefaultReactionRate
+                    ? reaction.ReactionRate
+                    : FixedPoint2.MaxValue;
+            }
+            else
+            {
+                rate = reaction.ReactionRate;
             }
 
-            return reaction.ReactionRate;
+            if (solution.ReactionRateMultiplier <= 0f || Math.Abs(solution.ReactionRateMultiplier - 1f) < 1e-6f)
+                return rate;
+
+            return rate * FixedPoint2.New(solution.ReactionRateMultiplier);
         }
 
         /// <summary>
