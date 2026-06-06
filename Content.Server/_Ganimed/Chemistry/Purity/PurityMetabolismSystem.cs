@@ -23,7 +23,9 @@ public sealed class PurityMetabolismSystem : EntitySystem
             return;
 
         var purity = ChemistryPurity.GetCreationPurity(ev.Reagent, proto);
-        ev.EffectScale *= ChemistryPurity.GetEffectivenessMultiplier(purity, proto);
+
+        if (!proto.IsInverseReagent)
+            ev.EffectScale *= ChemistryPurity.GetEffectivenessMultiplier(purity, proto);
 
         if (purity >= 1f || proto.IsInverseReagent)
             return;

@@ -19,6 +19,14 @@
   pH: 2
   unreactedPurity: 1
   isInverseReagent: true
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 3
+            Caustic: 1
 
 - type: reagent
   id: ViscousSludge
@@ -49,6 +57,14 @@
   color: "#9B2D30"
   pH: 12.5
   isInverseReagent: true
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 4
+            Caustic: 1.5
 
 - type: reagent
   id: Libitoil
