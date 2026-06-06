@@ -154,6 +154,11 @@
   flavor: medicine
   color: "#ffaa00"
   pH: 8.0
+  unreactedPurity: 0.75
+  inverseThreshold: 0.30
+  inverseReagent: ToxicMonomers
+  failedReagent: InsolventMedicinalPrecipitate
+  retainsVolumeOnSplit: true
   metabolisms:
     Medicine:
       effects:
@@ -609,7 +614,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#731024"
-  pH: 5.5
+  pH: 4.5
   metabolisms:
     Medicine:
       metabolismRate: 0.1 # Smaller doses stabilize critical people for longer. Gives it a specific usecase as to not be entirely outclassed by dex+
@@ -655,6 +660,9 @@
   flavor: medicine
   color: "#bf3d19"
   pH: 5.5
+  unreactedPurity: 0.75
+  inverseThreshold: 0.25
+  retainsVolumeOnSplit: true
   metabolisms:
     Medicine:
       effects:

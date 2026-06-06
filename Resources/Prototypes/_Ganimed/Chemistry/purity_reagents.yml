@@ -1,0 +1,62 @@
+- type: reagent
+  id: ChemicalIsomers
+  name: reagent-name-chemical-isomers
+  group: Special
+  desc: reagent-desc-chemical-isomers
+  physicalDesc: reagent-physical-desc-impure
+  color: "#B4A04A"
+  pH: 3
+  unreactedPurity: 1
+  isInverseReagent: false
+
+- type: reagent
+  id: ToxicMonomers
+  name: reagent-name-toxic-monomers
+  group: Special
+  desc: reagent-desc-toxic-monomers
+  physicalDesc: reagent-physical-desc-toxic
+  color: "#8B1A1A"
+  pH: 2
+  unreactedPurity: 1
+  isInverseReagent: true
+
+- type: reagent
+  id: ViscousSludge
+  name: reagent-name-viscous-sludge
+  group: Special
+  desc: reagent-desc-viscous-sludge
+  physicalDesc: reagent-physical-desc-sludge
+  color: "#4A3B2A"
+  pH: 1.5
+  unreactedPurity: 1
+  isInverseReagent: false
+
+- type: reagent
+  id: InsolventMedicinalPrecipitate
+  name: reagent-name-insolvent-medicinal-precipitate
+  group: Special
+  desc: reagent-desc-insolvent-medicinal-precipitate
+  physicalDesc: reagent-physical-desc-precipitate
+  color: "#7A6A8A"
+  pH: 11
+  unreactedPurity: 1
+
+- type: reagent
+  id: HelgraspInverse
+  parent: ToxicMonomers
+  name: reagent-name-helgrasp-inverse
+  desc: reagent-desc-helgrasp-inverse
+  color: "#9B2D30"
+  pH: 12.5
+  isInverseReagent: true
+
+- type: reagent
+  id: Libitoil
+  name: reagent-name-libitoil
+  group: Medicine
+  desc: reagent-desc-libitoil
+  physicalDesc: reagent-physical-desc-oily
+  color: "#C9A227"
+  pH: 3.3
+  unreactedPurity: 1
+  isInverseReagent: false

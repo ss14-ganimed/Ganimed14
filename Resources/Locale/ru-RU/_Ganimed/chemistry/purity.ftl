@@ -1,0 +1,20 @@
+reagent-name-chemical-isomers = химические изомеры
+reagent-desc-chemical-isomers = Нечистые изомеры из неоптимальных реакций. Наносит лёгкий урон печени.
+reagent-name-toxic-monomers = токсичные мономеры
+reagent-desc-toxic-monomers = Обратный реагент по умолчанию при падении чистоты ниже порога инверсии.
+reagent-name-viscous-sludge = вязкий шлам
+reagent-desc-viscous-sludge = Шлам провалившейся реакции при критически низкой чистоте.
+reagent-name-insolvent-medicinal-precipitate = нерастворимый медицинский осадок
+reagent-desc-insolvent-medicinal-precipitate = Нестабильный осадок при провале реакции.
+reagent-name-libitoil = либитоил
+reagent-desc-libitoil = Маслянистая примесь бикаридина.
+reagent-name-helgrasp-inverse = хелграсп
+reagent-desc-helgrasp-inverse = Инвертированный побочный продукт брут-медицины.
+reagent-name-tempomyocin = темпомиоцин
+reagent-desc-tempomyocin = Конкурентный катализатор для равновесных реакций.
+
+reagent-physical-desc-impure = пахнет нечистым
+reagent-physical-desc-toxic = едкий запах
+reagent-physical-desc-sludge = пахнет шламом
+reagent-physical-desc-precipitate = выглядит как осадок
+reagent-physical-desc-sharp-smelling = резкий запах

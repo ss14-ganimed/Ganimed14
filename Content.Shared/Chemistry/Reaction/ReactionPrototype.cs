@@ -2,6 +2,7 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Database;
 using Content.Shared.EntityEffects;
 using Content.Shared._Ganimed.Chemistry;
+using Content.Shared._Ganimed.Chemistry.Purity;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -69,6 +70,48 @@ namespace Content.Shared.Chemistry.Reaction
         /// </summary>
         [DataField("maxPH")]
         public float MaximumPH = 14f;
+
+        /// <summary>
+        /// Minimum purity required for a stable product.
+        /// </summary>
+        [DataField]
+        public float MinimumProductPurity;
+
+        /// <summary>
+        /// Below this purity the reaction is unstable and may produce failed products.
+        /// </summary>
+        [DataField]
+        public float UnstablePurity = 0.15f;
+
+        [DataField]
+        public ProtoId<ReagentPrototype>? FailedProduct;
+
+        /// <summary>
+        /// Split impure products in the vessel when the reaction completes.
+        /// </summary>
+        [DataField]
+        public bool ClearImpureAtEnd;
+
+        /// <summary>
+        /// Convert the entire product into its inverse reagent when purity is too low.
+        /// </summary>
+        [DataField]
+        public bool ClearInverseAtEnd;
+
+        /// <summary>
+        /// Competing equilibrium reaction that can run in reverse.
+        /// </summary>
+        [DataField]
+        public ProtoId<ReactionPrototype>? CompetingReaction;
+
+        [DataField]
+        public CompetingReactionFavor CompetingFavor;
+
+        /// <summary>
+        /// Temperature or pH threshold used by <see cref="CompetingFavor"/>.
+        /// </summary>
+        [DataField]
+        public float CompetingThreshold = 320f;
 
         /// <summary>
         ///     Maximum amount of reaction units processed per reaction pass.

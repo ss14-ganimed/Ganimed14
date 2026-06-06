@@ -1,0 +1,20 @@
+reagent-name-chemical-isomers = chemical isomers
+reagent-desc-chemical-isomers = Impure chemical isomers from inoptimal reactions. Causes mild liver damage.
+reagent-name-toxic-monomers = toxic monomers
+reagent-desc-toxic-monomers = Default inverse reagent created when purity falls below the inversion threshold.
+reagent-name-viscous-sludge = viscous sludge
+reagent-desc-viscous-sludge = Failed reaction sludge created when purity is critically low.
+reagent-name-insolvent-medicinal-precipitate = insolvent medicinal precipitate
+reagent-desc-insolvent-medicinal-precipitate = Unstable medicinal precipitate from failed reactions.
+reagent-name-libitoil = libitoil
+reagent-desc-libitoil = Oily bicaridine impurity.
+reagent-name-helgrasp-inverse = helgrasp
+reagent-desc-helgrasp-inverse = Inverted brute medicine byproduct.
+reagent-name-tempomyocin = tempomyocin
+reagent-desc-tempomyocin = Competitive catalyst used in equilibrium reactions.
+
+reagent-physical-desc-impure = smells impure
+reagent-physical-desc-toxic = smells acrid
+reagent-physical-desc-sludge = smells like sludge
+reagent-physical-desc-precipitate = looks precipitated
+reagent-physical-desc-sharp-smelling = smells sharp

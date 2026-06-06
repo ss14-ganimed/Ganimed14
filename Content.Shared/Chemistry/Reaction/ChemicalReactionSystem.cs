@@ -2,6 +2,7 @@ using System.Collections.Frozen;
 using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared._Ganimed.Chemistry;
+using Content.Shared._Ganimed.Chemistry.Purity;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Database;
@@ -181,6 +182,7 @@ namespace Content.Shared.Chemistry.Reaction
             var solution = comp.Solution;
 
             var energy = reaction.ConserveEnergy ? solution.GetThermalEnergy(_prototypeManager) : 0;
+            var productPurity = ChemistryPurity.CalculateReactionPurity(solution, reaction, _prototypeManager);
 
             //Remove reactants
             foreach (var reactant in reaction.Reactants)
@@ -197,7 +199,21 @@ namespace Content.Shared.Chemistry.Reaction
             foreach (var product in reaction.Products)
             {
                 products.Add(product.Key);
-                solution.AddReagent(product.Key, product.Value * unitReactions);
+
+                if (!_prototypeManager.TryIndex(product.Key, out ReagentPrototype? productProto))
+                {
+                    solution.AddReagent(product.Key, product.Value * unitReactions);
+                    continue;
+                }
+
+                ChemistryPurity.ResolvePurityProduct(
+                    solution,
+                    product.Key,
+                    product.Value * unitReactions,
+                    productPurity,
+                    productProto,
+                    reaction,
+                    _prototypeManager);
             }
 
             if (reaction.ConserveEnergy)
@@ -248,6 +264,9 @@ namespace Content.Shared.Chemistry.Reaction
             // attempt to perform any applicable reaction
             foreach (var reaction in reactions)
             {
+                if (ShouldSkipCompetingReaction(reaction, soln, mixerComponent))
+                    continue;
+
                 if (!CanReact(soln, reaction, mixerComponent, out var unitReactions))
                 {
                     continue;
@@ -284,6 +303,30 @@ namespace Content.Shared.Chemistry.Reaction
             }
 
             return processResult;
+        }
+
+        private bool ShouldSkipCompetingReaction(
+            ReactionPrototype reaction,
+            Entity<SolutionComponent> soln,
+            ReactionMixerComponent? mixerComponent)
+        {
+            if (reaction.CompetingReaction is not { } competingId
+                || !_prototypeManager.TryIndex(competingId, out var competing))
+            {
+                return false;
+            }
+
+            if (!CanReact(soln, competing, mixerComponent, out _))
+                return false;
+
+            var solution = soln.Comp.Solution;
+            var favorsThis = ChemistryPurity.FavorsCompetingReaction(reaction, solution, _prototypeManager);
+            var favorsCompeting = ChemistryPurity.FavorsCompetingReaction(competing, solution, _prototypeManager);
+
+            if (favorsThis == favorsCompeting)
+                return string.CompareOrdinal(reaction.ID, competing.ID) > 0;
+
+            return !favorsThis;
         }
 
         private static readonly FixedPoint2 DefaultReactionRate = FixedPoint2.New(5);

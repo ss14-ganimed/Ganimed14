@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using Content.Shared._Ganimed.Chemistry;
+using Content.Shared._Ganimed.Chemistry.Purity;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
@@ -413,10 +414,18 @@ namespace Content.Shared.Chemistry.Components
             for (var i = 0; i < Contents.Count; i++)
             {
                 var (reagent, existingQuantity) = Contents[i];
-                if (reagent != id)
+                if (reagent == id)
+                {
+                    Contents[i] = new ReagentQuantity(id, existingQuantity + quantity);
+                    ValidateSolution();
+                    return;
+                }
+
+                if (!ChemistryPurity.CanMergeByPrototype(reagent, id))
                     continue;
 
-                Contents[i] = new ReagentQuantity(id, existingQuantity + quantity);
+                var mergedId = ChemistryPurity.MergeReagentIds(reagent, existingQuantity, id, quantity);
+                Contents[i] = new ReagentQuantity(mergedId, existingQuantity + quantity);
                 ValidateSolution();
                 return;
             }

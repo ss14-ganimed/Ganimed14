@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared._Ganimed.Chemistry;
+using Content.Shared._Ganimed.Chemistry.Purity;
 using Content.Shared.Contraband;
 using Content.Shared.EntityEffects;
 using Content.Shared.Localizations;
@@ -135,6 +136,39 @@ namespace Content.Shared.Chemistry.Reagent
 
         [DataField]
         public bool ReactionAgent { get; private set; }
+
+        /// <summary>
+        /// Default purity for roundstart / dispensed reagents.
+        /// </summary>
+        [DataField]
+        public float UnreactedPurity { get; private set; } = ChemistryPurity.DefaultUnreactedPurity;
+
+        /// <summary>
+        /// Below this purity the reagent fully inverts on consumption or at reaction end.
+        /// </summary>
+        [DataField]
+        public float InverseThreshold { get; private set; } = ChemistryPurity.DefaultInverseThreshold;
+
+        [DataField]
+        public ProtoId<ReagentPrototype> ImpureReagent { get; private set; } = "ChemicalIsomers";
+
+        [DataField]
+        public ProtoId<ReagentPrototype> InverseReagent { get; private set; } = "ToxicMonomers";
+
+        [DataField]
+        public ProtoId<ReagentPrototype>? FailedReagent { get; private set; }
+
+        /// <summary>
+        /// Whether this prototype is an inverse reagent that cannot be purified.
+        /// </summary>
+        [DataField]
+        public bool IsInverseReagent { get; private set; }
+
+        /// <summary>
+        /// Impure splitting does not reduce the effective dose of the parent medicine.
+        /// </summary>
+        [DataField]
+        public bool RetainsVolumeOnSplit { get; private set; }
 
         /// <summary>
         /// The speed at which the reagent evaporates over time.

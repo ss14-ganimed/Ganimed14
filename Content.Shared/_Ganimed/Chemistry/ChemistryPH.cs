@@ -19,21 +19,29 @@ public static class ChemistryPH
         if (solution.Volume <= 0)
             return NeutralPH;
 
-        var volume = solution.Volume.Float();
         var hydrogen = 0d;
         var hydroxide = 0d;
+        var countedVolume = 0f;
 
         foreach (var (reagent, quantity) in solution.Contents)
         {
             if (!prototypeManager.TryIndex(reagent.Prototype, out ReagentPrototype? proto))
                 continue;
 
+            // Reaction agents (pH buffers) adjust pH via their reaction effect, not by their prototype pH.
+            if (proto.ReactionAgent)
+                continue;
+
             var ph = Math.Clamp(proto.PH, MinPH, MaxPH);
             var amount = quantity.Float();
+            countedVolume += amount;
 
             hydrogen += Math.Pow(10d, -ph) * amount;
             hydroxide += Math.Pow(10d, ph - MaxPH) * amount;
         }
+
+        if (countedVolume <= 0f)
+            return NeutralPH;
 
         var net = hydrogen - hydroxide;
         if (Math.Abs(net) <= double.Epsilon)
@@ -42,11 +50,11 @@ public static class ChemistryPH
         float result;
         if (net > 0)
         {
-            result = (float) -Math.Log10(net / volume);
+            result = (float) -Math.Log10(net / countedVolume);
         }
         else
         {
-            result = (float) (MaxPH + Math.Log10(-net / volume));
+            result = (float) (MaxPH + Math.Log10(-net / countedVolume));
         }
 
         return Math.Clamp(result, MinPH, MaxPH);

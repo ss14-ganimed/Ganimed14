@@ -4,6 +4,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Content.Shared._Ganimed.Chemistry;
+using Content.Shared._Ganimed.Chemistry.Purity;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reaction;
@@ -1033,10 +1034,13 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         foreach (var (proto, quantity) in sortedReagentPrototypes)
         {
             msg.PushNewline();
-            msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-chemical"
+            var reagentQuantity = solution.Contents.FirstOrDefault(x => x.Reagent.Prototype == proto.ID);
+            var purity = ChemistryPurity.GetPurity(reagentQuantity.Reagent, proto);
+            msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-chemical-with-purity"
                 , ("type", proto.LocalizedName)
                 , ("color", proto.SubstanceColor.ToHexNoAlpha())
-                , ("amount", quantity)));
+                , ("amount", quantity)
+                , ("purity", (purity * 100f).ToString("0"))));
         }
 
         msg.PushNewline();
