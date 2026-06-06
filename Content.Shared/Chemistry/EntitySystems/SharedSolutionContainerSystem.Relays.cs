@@ -24,6 +24,12 @@ public record struct SolutionContainerChangedEvent
 }
 
 /// <summary>
+/// Raised on a dispenser machine when a <see cref="FitsInDispenserComponent"/> container inserted into it changes solution.
+/// </summary>
+[ByRefEvent]
+public readonly record struct DispenserInsertedContainerSolutionChangedEvent(string SlotId);
+
+/// <summary>
 /// An event raised when more reagents are added to a (managed) solution than it can hold.
 /// </summary>
 [ByRefEvent]

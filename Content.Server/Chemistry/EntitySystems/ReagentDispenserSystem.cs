@@ -45,6 +45,7 @@ namespace Content.Server.Chemistry.EntitySystems
             SubscribeLocalEvent<ReagentDispenserComponent, EntInsertedIntoContainerMessage>(SubscribeUpdateUiState, after: [typeof(SharedStorageSystem)]);
             SubscribeLocalEvent<ReagentDispenserComponent, EntRemovedFromContainerMessage>(SubscribeUpdateUiState, after: [typeof(SharedStorageSystem)]);
             SubscribeLocalEvent<ReagentDispenserComponent, BoundUIOpenedEvent>(SubscribeUpdateUiState);
+            SubscribeLocalEvent<ReagentDispenserComponent, DispenserInsertedContainerSolutionChangedEvent>(OnDispenserContainerSolutionChanged);
 
             SubscribeLocalEvent<ReagentDispenserComponent, ReagentDispenserSetDispenseAmountMessage>(OnSetDispenseAmountMessage);
             SubscribeLocalEvent<ReagentDispenserComponent, ReagentDispenserDispenseReagentMessage>(OnDispenseReagentMessage);
@@ -56,6 +57,14 @@ namespace Content.Server.Chemistry.EntitySystems
 
         private void SubscribeUpdateUiState<T>(Entity<ReagentDispenserComponent> ent, ref T ev)
         {
+            UpdateUiState(ent);
+        }
+
+        private void OnDispenserContainerSolutionChanged(Entity<ReagentDispenserComponent> ent, ref DispenserInsertedContainerSolutionChangedEvent ev)
+        {
+            if (ev.SlotId != SharedReagentDispenser.OutputSlotName)
+                return;
+
             UpdateUiState(ent);
         }
 

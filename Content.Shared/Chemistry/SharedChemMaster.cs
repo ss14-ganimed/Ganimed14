@@ -291,6 +291,7 @@ namespace Content.Shared.Chemistry
         ContainerInfo? containerInfo,
         IReadOnlyList<ReagentQuantity> bufferReagents,
         FixedPoint2 bufferCurrentVolume,
+        float? bufferSolutionPH,
         uint selectedPillType,
         uint pillDosageLimit,
         uint bottleDosageLimit,
@@ -324,6 +325,7 @@ namespace Content.Shared.Chemistry
         public readonly ChemMasterMode Mode = mode;
 
         public readonly FixedPoint2? BufferCurrentVolume = bufferCurrentVolume;
+        public readonly float? BufferSolutionPH = bufferSolutionPH;
         public readonly uint SelectedPillType = selectedPillType;
 
         public readonly uint PillDosageLimit = pillDosageLimit;

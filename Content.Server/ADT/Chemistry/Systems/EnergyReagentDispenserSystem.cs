@@ -36,9 +36,6 @@ namespace Content.Server.ADT.Chemistry.EntitySystems
         [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly BatterySystem _battery = default!;
-        [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-        [Dependency] private readonly ReagentDispenserSystem _reagentDispenser = default!;
-
         public override void Initialize()
         {
             base.Initialize();
@@ -48,7 +45,7 @@ namespace Content.Server.ADT.Chemistry.EntitySystems
             SubscribeLocalEvent<EnergyReagentDispenserComponent, EntInsertedIntoContainerMessage>(SubscribeUpdateUiState);
             SubscribeLocalEvent<EnergyReagentDispenserComponent, EntRemovedFromContainerMessage>(SubscribeUpdateUiState);
             SubscribeLocalEvent<EnergyReagentDispenserComponent, BoundUIOpenedEvent>(SubscribeUpdateUiState);
-            SubscribeLocalEvent<FitsInDispenserComponent, SolutionContainerChangedEvent>(OnInsertedContainerSolutionChanged);
+            SubscribeLocalEvent<EnergyReagentDispenserComponent, DispenserInsertedContainerSolutionChangedEvent>(OnDispenserContainerSolutionChanged);
 
             SubscribeLocalEvent<EnergyReagentDispenserComponent, EnergyReagentDispenserSetDispenseAmountMessage>(OnSetDispenseAmountMessage);
             SubscribeLocalEvent<EnergyReagentDispenserComponent, EnergyReagentDispenserDispenseReagentMessage>(OnDispenseReagentMessage);
@@ -62,23 +59,12 @@ namespace Content.Server.ADT.Chemistry.EntitySystems
         private void SubscribeUpdateUiState<T>(Entity<EnergyReagentDispenserComponent> ent, ref T ev) =>
             UpdateUiState(ent);
 
-        private void OnInsertedContainerSolutionChanged(Entity<FitsInDispenserComponent> ent, ref SolutionContainerChangedEvent ev)
+        private void OnDispenserContainerSolutionChanged(Entity<EnergyReagentDispenserComponent> ent, ref DispenserInsertedContainerSolutionChangedEvent ev)
         {
-            if (!_containerSystem.TryGetContainingContainer(ent.Owner, out var container))
+            if (ev.SlotId != SharedEnergyReagentDispenser.OutputSlotName)
                 return;
 
-            if (container.ID == SharedEnergyReagentDispenser.OutputSlotName &&
-                TryComp<EnergyReagentDispenserComponent>(container.Owner, out var dispenser))
-            {
-                UpdateUiState((container.Owner, dispenser));
-                return;
-            }
-
-            if (container.ID == SharedReagentDispenser.OutputSlotName &&
-                TryComp<ReagentDispenserComponent>(container.Owner, out var reagentDispenser))
-            {
-                _reagentDispenser.UpdateUiState((container.Owner, reagentDispenser));
-            }
+            UpdateUiState(ent);
         }
 
         private void UpdateUiState(Entity<EnergyReagentDispenserComponent> reagentDispenser)
