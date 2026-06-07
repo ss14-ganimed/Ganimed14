@@ -154,6 +154,18 @@ namespace Content.Shared.Chemistry.Reaction
         public int Priority;
 
         /// <summary>
+        /// When true, reaction-agent catalysis only proceeds if the vessel contains reagents besides the catalyst(s).
+        /// </summary>
+        [DataField]
+        public bool ReactionAgentRequiresMixedSolution;
+
+        /// <summary>
+        /// When true, reaction-agent activation only applies during tg-style transfer (agent poured into a mix).
+        /// </summary>
+        [DataField]
+        public bool ReactionAgentRequiresTransfer;
+
+        /// <summary>
         /// Determines whether or not this reaction creates a new chemical (false) or if it's a breakdown for existing chemicals (true)
         /// Used in the chemistry guidebook to make divisions between recipes and reaction sources.
         /// </summary>

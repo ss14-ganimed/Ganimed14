@@ -82,6 +82,8 @@
   priority: 99
   minPH: 0
   maxPH: 14
+  reactionAgentRequiresMixedSolution: true
+  reactionAgentRequiresTransfer: true
   reactants:
     Tempomyocin:
       amount: 1
@@ -96,6 +98,8 @@
   priority: 98
   minPH: 0
   maxPH: 14
+  reactionAgentRequiresMixedSolution: true
+  reactionAgentRequiresTransfer: true
   reactants:
     PurityTesterReagent:
       amount: 1
