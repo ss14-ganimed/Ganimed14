@@ -45,8 +45,8 @@ public sealed class NyaAccentSystem : EntitySystem
     private static readonly IReadOnlyList<string> Ending = new List<string> {
         "ня",
         "мяу",
-        "мевп",
-        "мев",
+        "мряу",
+        "мяв",
         "мррр"
     }.AsReadOnly();
 
