@@ -1,7 +1,7 @@
 - type: reaction
   id: Dylovene
-  minPH: 6.0
-  maxPH: 11.6
+  minPH: 5.8
+  maxPH: 10.2
   reactants:
     Silicon:
       amount: 1
@@ -54,8 +54,9 @@
 
 - type: reaction
   id: Bicaridine
-  minPH: 6
-  maxPH: 8.2
+  minTemp: 335
+  minPH: 5
+  maxPH: 7.1
   unstablePurity: 0.10
   minimumProductPurity: 0.25
   clearInverseAtEnd: true
@@ -121,8 +122,8 @@
 
 - type: reaction
   id: Dermaline
-  minPH: 4.5
-  maxPH: 14.0
+  minPH: 6
+  maxPH: 10
   reactants:
     Kelotane:
       amount: 1
@@ -136,7 +137,7 @@
 - type: reaction
   id: Dexalin
   minPH: 6
-  maxPH: 14.0
+  maxPH: 11
   reactants:
     Oxygen:
       amount: 2
@@ -148,8 +149,8 @@
 
 - type: reaction
   id: DexalinPlus
-  minPH: 6
-  maxPH: 14.0
+  minPH: 5
+  maxPH: 9.5
   reactants:
     Dexalin:
       amount: 1
@@ -162,8 +163,8 @@
 
 - type: reaction
   id: Hyronalin
-  minPH: 5
-  maxPH: 9.7
+  minPH: 5.5
+  maxPH: 8.5
   reactants:
     Radium:
       amount: 1
@@ -174,8 +175,8 @@
 
 - type: reaction
   id: Inaprovaline
-  minPH: 5.5
-  maxPH: 6.5
+  minPH: 4.8
+  maxPH: 9
   reactants:
     Oxygen:
       amount: 1
@@ -219,8 +220,8 @@
 
 - type: reaction
   id: Kelotane
-  minPH: 5.5
-  maxPH: 7.0
+  minPH: 4.5
+  maxPH: 12
   reactants:
     Silicon:
       amount: 1
@@ -485,8 +486,8 @@
 
 - type: reaction
   id: Saline
-  minPH: 6.0
-  maxPH: 9.0
+  minPH: 6
+  maxPH: 10
   reactants:
     Water:
       amount: 4
@@ -497,10 +498,10 @@
 
 - type: reaction
   id: Lacerinol
-  minPH: 6.5
-  maxPH: 11.5
+  minPH: 6
+  maxPH: 10
   impact: Medium
-  minTemp: 335
+  minTemp: 350
   reactants:
     Bicaridine: # Bicaridine is a conflicting brute medication and if mixed incorrectly will make Razorium. This is intended.
       amount: 1
@@ -510,14 +511,14 @@
     Lacerinol: 2
   competingReaction: Bruizine
   competingFavor: Hot
-  competingThreshold: 335
+  competingThreshold: 350
 
 - type: reaction
   id: Puncturase
-  minPH: 9.5
-  maxPH: 13.0
+  minPH: 5
+  maxPH: 9.5
   impact: Medium
-  minTemp: 325
+  minTemp: 350
   reactants:
     Bicaridine: # Bicaridine is a conflicting brute medication and if mixed incorrectly will make Razorium. This is intended.
       amount: 1
@@ -531,9 +532,10 @@
 
 - type: reaction
   id: Bruizine
-  minPH: 7.5
-  maxPH: 10.7
+  minPH: 4.8
+  maxPH: 9
   impact: Medium
+  minTemp: 350
   reactants:
     Bicaridine: # Bicaridine is a conflicting brute medication and if mixed incorrectly will make Razorium. This is intended.
       amount: 1
@@ -551,6 +553,7 @@
   id: BicarLacerinol # mixing any two brute medications will make Razorium
   minPH: 0
   maxPH: 4.8
+  maxTemp: 349
   impact: Medium
   reactants:
     Lacerinol:
@@ -564,6 +567,7 @@
   id: BicarPuncturase # mixing any two brute medications will make Razorium
   minPH: 11.4
   maxPH: 14
+  maxTemp: 349
   impact: Medium
   reactants:
     Puncturase:
@@ -577,6 +581,7 @@
   id: BicarBruizine # mixing any two brute medications will make Razorium
   minPH: 0
   maxPH: 3.8
+  maxTemp: 349
   impact: Medium
   reactants:
     Bruizine:
@@ -590,6 +595,7 @@
   id: BruizineLacerinol # mixing any two brute medications will make Razorium
   minPH: 0
   maxPH: 4.5
+  maxTemp: 349
   impact: Medium
   reactants:
     Lacerinol:
@@ -603,6 +609,7 @@
   id: BruizinePuncturase # mixing any two brute medications will make Razorium
   minPH: 10.8
   maxPH: 14
+  maxTemp: 349
   impact: Medium
   reactants:
     Puncturase:
@@ -616,6 +623,7 @@
   id: PuncturaseLacerinol # mixing any two brute medications will make Razorium
   minPH: 10.8
   maxPH: 14
+  maxTemp: 349
   impact: Medium
   reactants:
     Lacerinol:

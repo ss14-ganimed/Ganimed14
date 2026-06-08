@@ -60,13 +60,13 @@ namespace Content.Shared.Chemistry.Reaction
         public Dictionary<string, FixedPoint2> Products = new();
 
         /// <summary>
-        /// The minimum solution pH required for this reaction to occur.
+        /// Optimal solution pH window. Deviations reduce product purity instead of blocking the reaction.
         /// </summary>
         [DataField("minPH")]
         public float MinimumPH = 0f;
 
         /// <summary>
-        /// The maximum solution pH required for this reaction to occur.
+        /// Optimal solution pH window. Deviations reduce product purity instead of blocking the reaction.
         /// </summary>
         [DataField("maxPH")]
         public float MaximumPH = 14f;

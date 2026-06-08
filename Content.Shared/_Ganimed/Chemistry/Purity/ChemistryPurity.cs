@@ -174,15 +174,45 @@ public static class ChemistryPurity
         }
 
         var phFactor = GetPHFactor(solution, reaction, prototypeManager);
-        var baseline = DefaultUnreactedPurity;
-        // Cubic curve: sloppy in-range brew ~55%, 75% needs tuned pH, 100% at optimum.
-        var phPurity = 0.55f + 0.45f * phFactor * phFactor * phFactor;
+        // Cubic curve in-range: sloppy brew ~55%, 75% needs tuned pH, 100% at optimum.
+        // Outside the optimal window the factor goes negative and pulls purity below that floor.
+        var phPurity = GetPHPurityMultiplier(phFactor);
 
         if (totalWeight <= 0f)
             return Math.Clamp(phPurity, 0f, 1f);
 
+        var baseline = DefaultUnreactedPurity;
         var reactantAverage = weightedPurity / totalWeight;
         return Math.Clamp(reactantAverage / baseline * phPurity, 0f, 1f);
+    }
+
+    /// <summary>
+    /// Returns 1 at the optimal pH, 0 at the window edge, negative outside the window.
+    /// </summary>
+    public static float GetPHFactor(Solution solution, ReactionPrototype reaction, IPrototypeManager prototypeManager)
+    {
+        var ph = ChemistryPH.GetSolutionPH(solution, prototypeManager);
+        var center = (reaction.MinimumPH + reaction.MaximumPH) * 0.5f;
+        var halfRange = Math.Max((reaction.MaximumPH - reaction.MinimumPH) * 0.5f, 0.1f);
+
+        if (ph < reaction.MinimumPH)
+            return 1f - (1f + (reaction.MinimumPH - ph) / halfRange);
+
+        if (ph > reaction.MaximumPH)
+            return 1f - (1f + (ph - reaction.MaximumPH) / halfRange);
+
+        return 1f - Math.Abs(ph - center) / halfRange;
+    }
+
+    /// <summary>
+    /// Maps <see cref="GetPHFactor"/> to a purity multiplier.
+    /// </summary>
+    public static float GetPHPurityMultiplier(float phFactor)
+    {
+        if (phFactor >= 0f)
+            return 0.55f + 0.45f * phFactor * phFactor * phFactor;
+
+        return 0.55f * (1f - Math.Clamp(-phFactor, 0f, 1f));
     }
 
     public static float GetAveragePrototypePurity(Solution solution, string prototype, IPrototypeManager prototypeManager)
@@ -211,15 +241,6 @@ public static class ChemistryPurity
         }
 
         return weighted / total.Float();
-    }
-
-    public static float GetPHFactor(Solution solution, ReactionPrototype reaction, IPrototypeManager prototypeManager)
-    {
-        var ph = ChemistryPH.GetSolutionPH(solution, prototypeManager);
-        var center = (reaction.MinimumPH + reaction.MaximumPH) * 0.5f;
-        var halfRange = Math.Max((reaction.MaximumPH - reaction.MinimumPH) * 0.5f, 0.1f);
-        var deviation = Math.Abs(ph - center) / halfRange;
-        return Math.Clamp(1f - deviation, 0f, 1f);
     }
 
     public static ReagentPurityType GetPurityType(ReagentId id, ReagentPrototype proto)

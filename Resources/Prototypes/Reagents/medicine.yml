@@ -153,7 +153,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#ffaa00"
-  pH: 8.0
+  pH: 6.1
   unreactedPurity: 0.75
   inverseThreshold: 0.30
   inverseReagent: ToxicMonomers
@@ -286,7 +286,7 @@
   physicalDesc: reagent-physical-desc-translucent
   flavor: medicine
   color: "#215263"
-  pH: 5.6
+  pH: 8.0
   metabolisms:
     Medicine:
       effects:
@@ -340,7 +340,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#0041a8"
-  pH: 7.0
+  pH: 8.5
   metabolisms:
     Medicine:
       effects:
@@ -386,7 +386,7 @@
   physicalDesc: reagent-physical-desc-cloudy
   flavor: medicine
   color: "#4da0bd"
-  pH: 7.2
+  pH: 7.3
   metabolisms:
     Medicine:
       effects:
@@ -561,7 +561,7 @@
   physicalDesc: reagent-physical-desc-cloudy
   flavor: medicine
   color: "#4cb580"
-  pH: 5.4
+  pH: 7.0
   metabolisms:
     Medicine:
       effects:
@@ -614,7 +614,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#731024"
-  pH: 4.5
+  pH: 5.5
   metabolisms:
     Medicine:
       metabolismRate: 0.1 # Smaller doses stabilize critical people for longer. Gives it a specific usecase as to not be entirely outclassed by dex+
@@ -659,7 +659,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: medicine
   color: "#bf3d19"
-  pH: 5.5
+  pH: 7.5
   unreactedPurity: 0.75
   inverseThreshold: 0.25
   retainsVolumeOnSplit: true
@@ -1318,7 +1318,7 @@
   physicalDesc: reagent-physical-desc-viscous
   flavor: syrupy
   color: "#283332"
-  pH: 5.4
+  pH: 8.0
   metabolisms:
     Medicine:
       metabolismRate: 0.1 # ADT-Tweak 0.25 -> 0.1
@@ -1328,6 +1328,12 @@
           types:
             Slash: -0.6 # ADT-Tweak 6 per u
             Heat: 0.2 # ADT-Tweak 2 per u
+      - !type:AdjustReagent
+        conditions:
+        - !type:TemperatureCondition
+          min: 350
+        reagent: ToxicMonomers
+        amount: 0.1
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -1345,7 +1351,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: fizzy
   color: "#b9bf93"
-  pH: 10.8
+  pH: 7.5
   metabolisms:
     Medicine:
       metabolismRate: 0.1 # ADT-Tweak 0.25 -> 0.1
@@ -1356,6 +1362,12 @@
       # ADT-Tweak-Start
             Piercing: -0.8
             Blunt: 0.15
+      - !type:AdjustReagent
+        conditions:
+        - !type:TemperatureCondition
+          min: 350
+        reagent: ToxicMonomers
+        amount: 0.1
       - !type:Vomit
         conditions:
         - !type:ReagentCondition
@@ -1380,7 +1392,7 @@
   physicalDesc: reagent-physical-desc-mucus-like
   flavor: sour
   color: "#ff3636"
-  pH: 4.2
+  pH: 6.5
   metabolisms:
     Medicine:
       metabolismRate: 0.1 # ADT-Tweak 0.25 -> 0.1
@@ -1391,6 +1403,12 @@
       # ADT-Tweak-Start
             Blunt: -1.4
             Piercing: 0.15
+      - !type:AdjustReagent
+        conditions:
+        - !type:TemperatureCondition
+          min: 350
+        reagent: ToxicMonomers
+        amount: 0.1
       - !type:Vomit
         conditions:
         - !type:ReagentCondition

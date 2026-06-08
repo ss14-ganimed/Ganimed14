@@ -91,7 +91,7 @@
 - type: reaction
   id: SulfuricAcid
   minPH: 0
-  maxPH: 5
+  maxPH: 7
   reactants:
     Hydrogen:
       amount: 1
@@ -120,8 +120,8 @@
 
 - type: reaction
   id: PotassiumExplosion
-  minPH: 5
-  maxPH: 9
+  minPH: 0
+  maxPH: 14
   impact: High
   priority: 20
   conserveEnergy: false
@@ -140,8 +140,8 @@
 
 - type: reaction
   id: Smoke
-  minPH: 6
-  maxPH: 11
+  minPH: 0
+  maxPH: 14
   priority: -10
   impact: High
   conserveEnergy: false
@@ -161,8 +161,8 @@
 
 - type: reaction
   id: Foam
-  minPH: 4
-  maxPH: 8
+  minPH: 0
+  maxPH: 14
   priority: -10
   impact: High
   conserveEnergy: false
@@ -181,7 +181,7 @@
 - type: reaction
   id: IronMetalFoam
   minPH: 0
-  maxPH: 4
+  maxPH: 14
   impact: High
   priority: -10
   conserveEnergy: false
@@ -202,7 +202,7 @@
 - type: reaction
   id: AluminiumMetalFoam
   minPH: 0
-  maxPH: 4
+  maxPH: 14
   impact: High
   priority: -10
   conserveEnergy: false
@@ -222,8 +222,8 @@
 
 - type: reaction
   id: UraniumEmpExplosion
-  minPH: 5
-  maxPH: 9
+  minPH: 0
+  maxPH: 14
   impact: High
   priority: 20
   conserveEnergy: false
@@ -243,8 +243,8 @@
 
 - type: reaction
   id: Flash
-  minPH: 6
-  maxPH: 11
+  minPH: 0
+  maxPH: 14
   impact: High
   priority: 20
   conserveEnergy: false
@@ -261,7 +261,7 @@
 - type: reaction
   id: TableSalt
   minPH: 4
-  maxPH: 9
+  maxPH: 12
   minTemp: 370
   reactants:
     Chlorine:
@@ -346,8 +346,8 @@
 
 - type: reaction
   id: Desoxyephedrine
-  minPH: 7
-  maxPH: 11
+  minPH: 6.5
+  maxPH: 7.5
   impact: Medium
   minTemp: 370
   reactants:
@@ -380,8 +380,8 @@
 
 - type: reaction
   id: Ephedrine
-  minPH: 8
-  maxPH: 12
+  minPH: 7
+  maxPH: 9
   impact: Medium
   reactants:
     Oil:
@@ -457,7 +457,7 @@
 - type: reaction
   id: NorepinephricAcid
   minPH: 2
-  maxPH: 6
+  maxPH: 7
   impact: Medium
   reactants:
     Uranium:
@@ -528,7 +528,7 @@
 - type: reaction
   minTemp: 310
   id: Hydroxide
-  minPH: 8
+  minPH: 7
   maxPH: 14
   priority: -1 #needs to be here due to how sulfuric acid reaction words
   reactants:

@@ -115,13 +115,6 @@ namespace Content.Shared.Chemistry.Reaction
                 return false;
             }
 
-            var ph = ChemistryPH.GetSolutionPH(solution, _prototypeManager);
-            if (ph < reaction.MinimumPH || ph > reaction.MaximumPH)
-            {
-                lowestUnitReactions = FixedPoint2.Zero;
-                return false;
-            }
-
             if ((mixerComponent == null && reaction.MixingCategories != null) ||
                 mixerComponent != null && reaction.MixingCategories != null && reaction.MixingCategories.Except(mixerComponent.ReactionTypes).Any())
             {
