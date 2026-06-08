@@ -163,6 +163,7 @@
     # ADT-Druglordupdate-Start
       - id: ADTChemistryColdplateFlatpack
     # ADT-Druglordupdate-End
+      - id: HplcFlatpack
 
 - type: entity
   id: LockerParamedicFilled

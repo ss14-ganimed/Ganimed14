@@ -1050,12 +1050,13 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         {
             msg.PushNewline();
             var reagentQuantity = solution.Contents.FirstOrDefault(x => x.Reagent.Prototype == proto.ID);
-            var purity = ChemistryPurity.GetPurity(reagentQuantity.Reagent, proto);
-            msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-chemical-with-purity"
+            var tier = ChemistryPurity.GetDisplayTier(reagentQuantity.Reagent, proto);
+            msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-chemical-with-tier"
                 , ("type", proto.LocalizedName)
                 , ("color", proto.SubstanceColor.ToHexNoAlpha())
                 , ("amount", quantity)
-                , ("purity", (purity * 100f).ToString("0"))));
+                , ("tierColor", ChemistryPurity.GetDisplayTierColor(tier))
+                , ("tier", Loc.GetString(ChemistryPurity.GetDisplayTierLocale(tier)))));
         }
 
         msg.PushNewline();

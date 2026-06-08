@@ -1,0 +1,76 @@
+- type: entity
+  id: MachineHplc  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  name: high-performance liquid chromatography machine
+  description: Separates and partially purifies reagents by chromatography. Requires input and output beakers. Cannot raise purity above 70%.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/Medical/electrolysis.rsi
+    snapCardinals: true
+    offset: 0,0.35
+    layers:
+    - state: base
+    - state: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+      shader: unshaded
+  - type: Icon
+    sprite: Structures/Machines/Medical/electrolysis.rsi
+    state: base
+  - type: Hplc
+  - type: ItemMapper
+    containerWhitelist: [beakerSlot, outputBeakerSlot]
+    mapLayers:
+      panel:
+        whitelist:
+          components:
+          - FitsInDispenser
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: ActivatableUI
+    key: enum.HplcUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.HplcUiKey.Key:
+        type: HplcBoundUserInterface
+  - type: ApcPowerReceiver
+    powerLoad: 300
+  - type: Machine
+    board: HplcMachineCircuitboard
+  - type: ContainerContainer
+    containers:
+      beakerSlot: !type:ContainerSlot
+      outputBeakerSlot: !type:ContainerSlot
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: ItemSlots
+    slots:
+      beakerSlot:
+        whitelist:
+          components:
+          - FitsInDispenser
+      outputBeakerSlot:
+        name: hplc-output-slot
+        whitelist:
+          components:
+          - FitsInDispenser
+  - type: GuideHelp
+    guides:
+    - Chemicals
+    - Chemist
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.35,-0.2,0.35,0.55"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer

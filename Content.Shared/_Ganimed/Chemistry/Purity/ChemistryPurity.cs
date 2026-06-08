@@ -10,6 +10,7 @@ public static class ChemistryPurity
 {
     public const float DefaultUnreactedPurity = 0.75f;
     public const float DefaultInverseThreshold = 0.25f;
+    public const float MaxHplcPurifiablePurity = 0.70f;
 
     private static readonly HashSet<string> PurityExcludedGroups = new()
     {
@@ -256,6 +257,110 @@ public static class ChemistryPurity
             return ReagentPurityType.Impurity;
 
         return ReagentPurityType.Clean;
+    }
+
+    public static ReagentPurityDisplayTier GetDisplayTier(float purity, ReagentPrototype proto)
+    {
+        if (proto.IsInverseReagent || purity < 0.25f)
+            return ReagentPurityDisplayTier.Inverted;
+
+        if (purity < 0.55f)
+            return ReagentPurityDisplayTier.Contaminated;
+
+        if (purity < 0.90f)
+            return ReagentPurityDisplayTier.Clean;
+
+        return ReagentPurityDisplayTier.Purest;
+    }
+
+    public static ReagentPurityDisplayTier GetDisplayTier(ReagentId id, ReagentPrototype proto) =>
+        GetDisplayTier(GetPurity(id, proto), proto);
+
+    public static string GetDisplayTierLocale(ReagentPurityDisplayTier tier) => tier switch
+    {
+        ReagentPurityDisplayTier.Inverted => "chemistry-purity-tier-inverted",
+        ReagentPurityDisplayTier.Contaminated => "chemistry-purity-tier-contaminated",
+        ReagentPurityDisplayTier.Clean => "chemistry-purity-tier-clean",
+        ReagentPurityDisplayTier.Purest => "chemistry-purity-tier-purest",
+        _ => "chemistry-purity-tier-clean",
+    };
+
+    public static string GetDisplayTierColor(ReagentPurityDisplayTier tier) => tier switch
+    {
+        ReagentPurityDisplayTier.Inverted => "#DE3A3A",
+        ReagentPurityDisplayTier.Contaminated => "#E69500",
+        ReagentPurityDisplayTier.Clean => "#4CAF50",
+        ReagentPurityDisplayTier.Purest => "#00E5A0",
+        _ => "#4CAF50",
+    };
+
+    public static bool CanPurifyInHplc(float purity, ReagentPrototype proto)
+    {
+        if (proto.IsInverseReagent || IsPurityExcludedGroup(proto.Group))
+            return false;
+
+        if (purity < 0.25f || purity >= MaxHplcPurifiablePurity)
+            return false;
+
+        return true;
+    }
+
+    /// <summary>
+    /// Splits an HPLC input volume into purified product (capped at <see cref="MaxHplcPurifiablePurity"/>)
+    /// and impure byproduct. A fraction of the input is lost as process waste.
+    /// </summary>
+    public static bool TryCalculateHplcSplit(
+        FixedPoint2 inputAmount,
+        float inputPurity,
+        float processLossFraction,
+        ReagentPrototype proto,
+        out FixedPoint2 purifiedAmount,
+        out FixedPoint2 impureAmount,
+        out FixedPoint2 wasteAmount)
+    {
+        purifiedAmount = FixedPoint2.Zero;
+        impureAmount = FixedPoint2.Zero;
+        wasteAmount = FixedPoint2.Zero;
+
+        if (inputAmount <= FixedPoint2.Zero || !CanPurifyInHplc(inputPurity, proto))
+            return false;
+
+        processLossFraction = Math.Clamp(processLossFraction, 0f, 0.5f);
+        wasteAmount = inputAmount * processLossFraction;
+        var remaining = inputAmount - wasteAmount;
+
+        if (remaining <= FixedPoint2.Zero)
+            return false;
+
+        purifiedAmount = remaining * (inputPurity / MaxHplcPurifiablePurity);
+        impureAmount = remaining - purifiedAmount;
+
+        return purifiedAmount > FixedPoint2.Zero;
+    }
+
+    public static void ApplyHplcPurification(
+        Solution input,
+        Solution output,
+        ReagentId reagent,
+        FixedPoint2 amount,
+        float inputPurity,
+        float processLossFraction,
+        ReagentPrototype proto)
+    {
+        if (!TryCalculateHplcSplit(amount, inputPurity, processLossFraction, proto, out var purifiedAmount, out var impureAmount, out _))
+            return;
+
+        var creation = GetCreationPurity(reagent, proto);
+        input.RemoveReagent(reagent, amount);
+
+        if (purifiedAmount > FixedPoint2.Zero)
+        {
+            var purified = WithPurity(reagent, MaxHplcPurifiablePurity, creation);
+            output.AddReagent(purified, purifiedAmount);
+        }
+
+        if (impureAmount > FixedPoint2.Zero)
+            output.AddReagent(new ReagentId(proto.ImpureReagent, CreatePurityData(1f, creation)), impureAmount);
     }
 
     public static void ResolvePurityProduct(
