@@ -62,7 +62,7 @@
   parent: BaseVariationPass
   components:
   - type: EntitySpawnVariationPass
-    tilesPerEntityAverage: 120
+    tilesPerEntityAverage: 80 # Ganimed-Tweak (120)
     tilesPerEntityStdDev: 5
     entities:
     - id: DecalSpawnerGraffiti
@@ -148,7 +148,7 @@
   parent: BaseVariationPass
   components:
   - type: PuddleMessVariationPass
-    tilesPerSpillAverage: 150
+    tilesPerSpillAverage: 100 # Ganimed-Tweak (150)
     tilesPerSpillStdDev: 10
     randomPuddleSolutionFill: RandomFillTrashPuddleBloodbath
 
