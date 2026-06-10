@@ -80,6 +80,8 @@
     time: 10
   - type: Airlock
     openUnlitVisible: true # Corvax-Resprite-Airlocks
+    poweredPryModifier: 10 # Ganimed-Add (9, buff highsec doors)
+    boltedPryModifier: 3.5 # Ganimed-Add (3, buff highsec doors)
   - type: NavMapDoor
   - type: DoorBolt
   - type: AccessReader
