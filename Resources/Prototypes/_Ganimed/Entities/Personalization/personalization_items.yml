@@ -147,7 +147,7 @@
     quickEquip: false
     slots:
     - Belt
-    - Suitstorage
+    - suitStorage
   - type: Item
     sprite: _Ganimed/Personalization/Objects/safno_lethal_katana.rsi
     storedRotation: -90
