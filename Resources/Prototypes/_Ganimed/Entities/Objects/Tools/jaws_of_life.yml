@@ -1,0 +1,46 @@
+- type: entity
+  parent: [JawsOfLife, PowerCellSlotMediumItem]
+  id: EmergencyJawsOfLife
+  name: emergency jaws of life
+  description: A set of Jaws of Life. EMTs may use them to pry open powered airlocks in an emergency. # A set of jaws of life, for pulling the injured out of whatever mess they put themselves in. # A specialized version of the jaws of life, primarily to be used by paramedics to recover the injured and the recently deceased. Rather than a cutting arm, this tool has a bonesetting apparatus. Cannot access certain high security areas due to safety concerns.
+  suffix: paramedic jaws of life, EMT jaws of life, jaws of recovery
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Objects/Tools/jaws_of_life.rsi
+    state: emt_jaws_pry
+  - type: Clothing
+    sprite: _Ganimed/Objects/Tools/jaws_of_life.rsi
+    slots:
+    - Belt
+    - suitStorage
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: emt_inhand-left
+      right:
+      - state: emt_inhand-right
+    size: Normal
+  - type: ToolTileCompatible
+    delay: 1 # from 0.5
+  - type: Prying
+    speedModifier: 1 # from 1.5
+    # useSoundOnDoafter: /Audio/Machines/airlock_creaking.ogg
+    # playSoundOnDoafter: true
+  - type: MultipleTool
+    entries:
+    - behavior: Prying
+      sprite:
+        sprite: _Ganimed/Objects/Tools/jaws_of_life.rsi
+        state: emt_jaws_pry
+      useSound: /Audio/Items/jaws_pry.ogg
+      # changeSound: /Audio/Items/change_jaws.ogg
+  # - type: PryingRequiresPower
+  #   powerCost: 144 # 5 uses from medium power cell
+  # - type: InteractRestriction
+  #   blacklist:
+  #     tags:
+  #     - HighSecDoor
+  #     # - AirlockCommand
+  # - type: SurgeryTool # TODO: Add bonesetter functionality when surgery is done
+  - type: StaticPrice
+    price: 100
