@@ -4,6 +4,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Content.Shared._Ganimed.Chemistry;
+using Content.Shared._Ganimed.Chemistry.Reagents;
 using Content.Shared._Ganimed.Chemistry.Purity;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
@@ -489,7 +490,7 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         var solution = comp.Solution;
 
         var reagentProto = PrototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
-        var canBypassVolume = reagentProto.ReactionAgent &&
+        var canBypassVolume = ReagentBehaviorHelper.ShouldBypassVolumeWhenMixed(reagentProto) &&
             solution.Volume > FixedPoint2.Zero &&
             solution.Contents.Any(reagent => reagent.Reagent.Prototype != reagentQuantity.Reagent.Prototype);
 
@@ -504,8 +505,8 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
             solution.Contents.Any(r =>
                 r.Quantity > FixedPoint2.Zero && r.Reagent.Prototype != reagentQuantity.Reagent.Prototype);
 
-        if (reagentProto.ReactionAgent && acceptedQuantity > FixedPoint2.Zero && hadOtherReagents)
-            solution.PendingReactionAgentTransfer = (reagentQuantity.Reagent.Prototype, acceptedQuantity);
+        if (ReagentBehaviorHelper.ShouldTrackTransferWhenMixed(reagentProto) && acceptedQuantity > FixedPoint2.Zero && hadOtherReagents)
+            solution.PendingReagentTransfer = (reagentQuantity.Reagent.Prototype, acceptedQuantity);
 
         try
         {
@@ -518,11 +519,17 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
                 solution.AddReagent(reagentProto, acceptedQuantity, temperature.Value, PrototypeManager);
             }
 
+            if (solution.PendingReagentTransfer is { } pending)
+            {
+                var transferred = new SolutionReagentTransferredEvent(soln, pending.Prototype, pending.Quantity);
+                RaiseLocalEvent(soln, ref transferred);
+            }
+
             UpdateChemicals(soln);
         }
         finally
         {
-            solution.PendingReactionAgentTransfer = null;
+            solution.PendingReagentTransfer = null;
         }
 
         return acceptedQuantity == reagentQuantity.Quantity;

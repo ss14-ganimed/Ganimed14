@@ -40,9 +40,9 @@
   maxPH: 12
   reactants:
     PrefactorB:
-      amount: 5
+      amount: 1
   products:
-    PrefactorA: 5
+    PrefactorA: 1
   competingReaction: PrefactorB
   competingFavor: Cold
   competingThreshold: 400
@@ -55,11 +55,11 @@
   minimumProductPurity: 0.25
   reactants:
     PrefactorA:
-      amount: 5
+      amount: 1
     Plasma:
-      amount: 5
+      amount: 1
   products:
-    PurityTesterReagent: 5
+    PurityTesterReagent: 1
 
 - type: reaction
   id: TempomyocinSynth
@@ -70,27 +70,11 @@
   minimumProductPurity: 0.35
   reactants:
     PrefactorB:
-      amount: 5
-    Plasma:
-      amount: 5
-  products:
-    Tempomyocin: 5
-
-- type: reaction
-  id: ReactionRateAgentActivation
-  instant: true
-  priority: 99
-  minPH: 0
-  maxPH: 14
-  reactionAgentRequiresMixedSolution: true
-  reactionAgentRequiresTransfer: true
-  reactants:
-    Tempomyocin:
       amount: 1
-      catalyst: true
-  effects:
-  - !type:BoostSolutionReactionRateEffect
-    reagent: Tempomyocin
+    Plasma:
+      amount: 1
+  products:
+    Tempomyocin: 1
 
 - type: reaction
   id: PurityTestAgentActivation
@@ -98,8 +82,6 @@
   priority: 98
   minPH: 0
   maxPH: 14
-  reactionAgentRequiresMixedSolution: true
-  reactionAgentRequiresTransfer: true
   reactants:
     PurityTesterReagent:
       amount: 1

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using Content.Shared._Ganimed.Chemistry;
 using Content.Shared._Ganimed.Chemistry.Purity;
+using Content.Shared._Ganimed.Chemistry.Reagents;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
@@ -82,8 +83,11 @@ namespace Content.Shared.Chemistry.Components
         /// <summary>
         ///     Set while a reaction agent is being poured into a non-empty vessel (tg-style transfer activation).
         /// </summary>
+        /// <summary>
+        /// Recently transferred reagent used by pour-in activation and boost behaviors.
+        /// </summary>
         [ViewVariables]
-        public (string Prototype, FixedPoint2 Quantity)? PendingReactionAgentTransfer;
+        public (string Prototype, FixedPoint2 Quantity)? PendingReagentTransfer;
 
         /// <summary>
         ///     Checks if a solution can fit into the container.
@@ -102,8 +106,7 @@ namespace Content.Shared.Chemistry.Components
             if (!prototypeManager.TryIndex(id.Prototype, out ReagentPrototype? proto))
                 return;
 
-            // Reaction agents (e.g. pH buffers) adjust pH via their dedicated reaction effect, not by mixing in.
-            if (proto.ReactionAgent)
+            if (ReagentBehaviorHelper.ShouldSkipPhContribution(proto))
                 return;
 
             PHOverride = ChemistryPH.GetMixedPH(PHOverride.Value, Volume, proto.PH, quantity);

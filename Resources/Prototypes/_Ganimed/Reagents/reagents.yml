@@ -7,7 +7,12 @@
   flavor: bitter
   color: "#f05c5c"
   pH: 0.0
-  reactionAgent: true
+  solutionAdd:
+    bypassVolumeWhenMixed: true
+    skipPhBlendOnAdd: true
+    trackTransferWhenMixed: true
+  phBuffer:
+    requiresMixedSolution: true
 
 - type: reagent
   id: BasicBuffer
@@ -18,4 +23,9 @@
   flavor: bitter
   color: "#5c8ff0"
   pH: 14.0
-  reactionAgent: true
+  solutionAdd:
+    bypassVolumeWhenMixed: true
+    skipPhBlendOnAdd: true
+    trackTransferWhenMixed: true
+  phBuffer:
+    requiresMixedSolution: true

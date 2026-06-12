@@ -36,8 +36,8 @@
 
 - type: reaction
   id: AcidicBufferPHAdjustment
+  instant: true
   priority: 100
-  reactionRate: 1
   minPH: 0
   maxPH: 14
   reactants:
@@ -50,8 +50,8 @@
 
 - type: reaction
   id: BasicBufferPHAdjustment
+  instant: true
   priority: 100
-  reactionRate: 1
   minPH: 0
   maxPH: 14
   reactants:

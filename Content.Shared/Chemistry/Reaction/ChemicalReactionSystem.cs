@@ -162,6 +162,10 @@ namespace Content.Shared.Chemistry.Reaction
             if (reaction.Quantized)
                 lowestUnitReactions = (int) lowestUnitReactions;
 
+            // Effect-only reactions with catalyst reactants should run once per processing pass.
+            if (lowestUnitReactions == FixedPoint2.MaxValue)
+                lowestUnitReactions = FixedPoint2.New(1);
+
             return lowestUnitReactions > 0;
         }
 
@@ -217,6 +221,9 @@ namespace Content.Shared.Chemistry.Reaction
             }
 
             OnReaction(soln, reaction, null, unitReactions);
+
+            var performed = new SolutionReactionPerformedEvent(reaction, soln, unitReactions);
+            RaiseLocalEvent(soln, ref performed);
 
             return products;
         }
@@ -324,11 +331,25 @@ namespace Content.Shared.Chemistry.Reaction
 
         private static readonly FixedPoint2 DefaultReactionRate = FixedPoint2.New(5);
 
+        private static bool RequiresManualMix(ReactionPrototype reaction)
+        {
+            if (reaction.MixingCategories is not { } categories)
+                return false;
+
+            foreach (var category in categories)
+            {
+                if (category == "Shake" || category == "Stir")
+                    return true;
+            }
+
+            return false;
+        }
+
         private static FixedPoint2 GetReactionRate(ReactionPrototype reaction, Solution solution)
         {
             FixedPoint2 rate;
 
-            if (reaction.Instant)
+            if (reaction.Instant || RequiresManualMix(reaction))
                 rate = FixedPoint2.MaxValue;
             else if (reaction.Products.Count == 0 && reaction.Effects.Length > 0)
             {
@@ -394,4 +415,22 @@ namespace Content.Shared.Chemistry.Reaction
         public readonly Entity<SolutionComponent> Solution = Solution;
         public bool Cancelled = false;
     }
+
+    /// <summary>
+    /// Raised after a reaction has been applied to a solution.
+    /// </summary>
+    [ByRefEvent]
+    public readonly record struct SolutionReactionPerformedEvent(
+        ReactionPrototype Reaction,
+        Entity<SolutionComponent> Solution,
+        FixedPoint2 UnitReactions);
+
+    /// <summary>
+    /// Raised after a tracked reagent transfer was added to a solution, before reactions are processed.
+    /// </summary>
+    [ByRefEvent]
+    public readonly record struct SolutionReagentTransferredEvent(
+        Entity<SolutionComponent> Solution,
+        string ReagentId,
+        FixedPoint2 Quantity);
 }

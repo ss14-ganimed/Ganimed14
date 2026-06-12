@@ -1,3 +1,4 @@
+using Content.Shared._Ganimed.Chemistry.Reagents;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
@@ -28,8 +29,7 @@ public static class ChemistryPH
             if (!prototypeManager.TryIndex(reagent.Prototype, out ReagentPrototype? proto))
                 continue;
 
-            // Reaction agents (pH buffers) adjust pH via their reaction effect, not by their prototype pH.
-            if (proto.ReactionAgent)
+            if (ReagentBehaviorHelper.ShouldSkipPhContribution(proto))
                 continue;
 
             var ph = Math.Clamp(proto.PH, MinPH, MaxPH);

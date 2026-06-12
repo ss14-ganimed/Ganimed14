@@ -6,6 +6,7 @@ using Content.Shared.Body.Prototypes;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared._Ganimed.Chemistry;
 using Content.Shared._Ganimed.Chemistry.Purity;
+using Content.Shared._Ganimed.Chemistry.Reagents;
 using Content.Shared.Contraband;
 using Content.Shared.EntityEffects;
 using Content.Shared.Localizations;
@@ -134,8 +135,29 @@ namespace Content.Shared.Chemistry.Reagent
         [DataField("pH")]
         public float PH { get; private set; } = ChemistryPH.NeutralPH;
 
+        /// <summary>
+        /// Optional behavior when this reagent is added to an existing solution.
+        /// </summary>
         [DataField]
-        public bool ReactionAgent { get; private set; }
+        public ReagentSolutionAddBehavior? SolutionAdd;
+
+        /// <summary>
+        /// Optional pour-in activation rules for catalyst reactions.
+        /// </summary>
+        [DataField]
+        public ReagentTransferActivationBehavior? TransferActivation;
+
+        /// <summary>
+        /// Optional pH buffer rules for adjustment reactions using this reagent.
+        /// </summary>
+        [DataField]
+        public ReagentPhBufferBehavior? PhBuffer;
+
+        /// <summary>
+        /// Optional reaction-rate boost rules for this reagent.
+        /// </summary>
+        [DataField]
+        public ReagentReactionRateBoostBehavior? ReactionRateBoost;
 
         /// <summary>
         /// Default purity for roundstart / dispensed reagents.

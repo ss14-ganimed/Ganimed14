@@ -28,7 +28,13 @@
   physicalDesc: reagent-physical-desc-sharp-smelling
   color: "#ffffff"
   pH: 3
-  reactionAgent: true
+  solutionAdd:
+    bypassVolumeWhenMixed: true
+    skipPhBlendOnAdd: true
+    trackTransferWhenMixed: true
+  transferActivation:
+    requiresMixedSolution: true
+    requiresRecentTransfer: true
 
 - type: reagent
   id: Tempomyocin
@@ -40,4 +46,13 @@
   pH: 7
   unreactedPurity: 0.75
   inverseThreshold: 0.25
-  reactionAgent: true
+  solutionAdd:
+    skipPhBlendOnAdd: true
+    trackTransferWhenMixed: true
+  reactionRateBoost:
+    trigger: OnReactionStart
+    useTransferredAmount: false
+    consumedAmount: 1
+    skipWhenSelfTransferred: true
+    skipActivationReactions: true
+    skipPhAdjustmentReactions: true
