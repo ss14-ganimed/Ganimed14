@@ -57,7 +57,7 @@
   desc: reagent-desc-chloral-hydrate
   flavor: bitter
   color: "#000067"
-  pH: 6.0
+  pH: 11
   physicalDesc: reagent-physical-desc-nondescript
   allowedDepartments:
   - Medical
@@ -210,7 +210,7 @@
   contrabandSeverity: Minor
   flavor: acid
   color: "#5050ff"
-  pH: 0.2
+  pH: 0
   boilingPoint: 165
   meltingPoint: -87
   reactiveEffects:
@@ -252,7 +252,7 @@
   - Chemist
   flavor: acid
   color: "#BF8C00"
-  pH: 0.3
+  pH: 2.75
   recognizable: true
   boilingPoint: 337.0
   meltingPoint: 10.31
@@ -303,7 +303,7 @@
   - Botanist
   flavor: bitter
   color: "#00ff5f"
-  pH: 6.5
+  pH: 2.3
   boilingPoint: 340282300000000000000000000000000000000 # Ethidium bromide, which doesn't boil.
   meltingPoint: 261.0
   plantMetabolism:
@@ -359,7 +359,7 @@
   physicalDesc: reagent-physical-desc-pungent
   contrabandSeverity: Syndicate
   color: "#6b0007"
-  pH: 4.5
+  pH: 1.2
   metabolisms:
     Poison:
       effects:
@@ -393,7 +393,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: bitter
   color: "#77b58e"
-  pH: 6.0
+  pH: 11
   plantMetabolism:
   - !type:PlantAdjustToxins
     amount: 10

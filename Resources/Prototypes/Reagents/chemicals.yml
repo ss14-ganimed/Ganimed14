@@ -5,7 +5,7 @@
   physicalDesc: reagent-physical-desc-acidic
   flavor: bitter
   color: "#AF14B7"
-  pH: 5.0
+  pH: 7.0
   boilingPoint: 55.5
   meltingPoint: -50.0
 
@@ -16,7 +16,7 @@
   physicalDesc: reagent-physical-desc-acidic
   flavor: bitter
   color: "#E7EA91"
-  pH: 5.0
+  pH: 5.5
   boilingPoint: 55.5
   meltingPoint: -50.0
   metabolisms:
@@ -63,7 +63,7 @@
   flavor: alkaline
   physicalDesc: reagent-physical-desc-alkaline
   color: "#e5420b"
-  pH: 13.0
+  pH: 11.9
   metabolisms:
     Poison:
       effects:

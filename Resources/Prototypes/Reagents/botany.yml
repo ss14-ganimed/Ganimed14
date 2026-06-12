@@ -302,7 +302,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: bitter
   color: "#a1000b"
-  pH: 11.2
+  pH: 12
   boilingPoint: 55.5
   meltingPoint: -50.0
   #ADT-tweak-start

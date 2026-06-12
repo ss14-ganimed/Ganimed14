@@ -1,7 +1,7 @@
 - type: reaction
   id: Ammonia
-  minPH: 6
-  maxPH: 10
+  minPH: 1
+  maxPH: 12
   reactants:
     Hydrogen:
       amount: 3
@@ -26,8 +26,8 @@
 
 - type: reaction
   id: Diethylamine
-  minPH: 8
-  maxPH: 12
+  minPH: 5
+  maxPH: 9
   reactants:
     Ammonia:
       amount: 1
@@ -38,8 +38,8 @@
 
 - type: reaction
   id: Phenol
-  minPH: 8
-  maxPH: 13
+  minPH: 5
+  maxPH: 9
   reactants:
     Hydroxide:
       amount: 1
@@ -51,7 +51,7 @@
 - type: reaction
   id: Acetone
   minPH: 5
-  maxPH: 8
+  maxPH: 9
   reactants:
     Oil:
       amount: 1
@@ -77,7 +77,7 @@
 - type: reaction
   id: PolytrinicAcid
   minPH: 0
-  maxPH: 3
+  maxPH: 4.1
   reactants:
     SulfuricAcid:
       amount: 1
@@ -260,8 +260,8 @@
 
 - type: reaction
   id: TableSalt
-  minPH: 4
-  maxPH: 12
+  minPH: 5
+  maxPH: 9
   minTemp: 370
   reactants:
     Chlorine:
@@ -304,7 +304,7 @@
 - type: reaction
   id: UnstableMutagen
   minPH: 3
-  maxPH: 7
+  maxPH: 9
   reactants:
     Radium:
       amount: 1
@@ -318,7 +318,7 @@
 - type: reaction
   id: Oil
   minPH: 5
-  maxPH: 8
+  maxPH: 9
   reactants:
     WeldingFuel:
       amount: 1
@@ -413,8 +413,8 @@
 
 - type: reaction
   id: ChloralHydrate
-  minPH: 4
-  maxPH: 8
+  minPH: 7
+  maxPH: 9
   impact: Medium
   maxTemp: 233
   reactants:
@@ -621,8 +621,8 @@
 
 - type: reaction
   id: Lye
-  minPH: 9
-  maxPH: 14
+  minPH: 5
+  maxPH: 9
   reactants:
     Water:
       amount: 1
