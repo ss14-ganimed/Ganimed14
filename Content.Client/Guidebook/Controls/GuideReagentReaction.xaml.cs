@@ -180,6 +180,27 @@ public sealed partial class GuideReagentReaction : BoxContainer, ISearchableCont
         SetMixingCategory(foo, prototype, sysMan);
     }
 
+    private static readonly HashSet<string> PhysicalMixCategoryIds = new()
+    {
+        "DummyGrind",
+        "DummyJuice",
+        "DummyCondense",
+    };
+
+    private static bool ShouldShowPhRange(ReactionPrototype? prototype, IReadOnlyList<MixingCategoryPrototype> mixingCategories)
+    {
+        if (prototype == null)
+            return false;
+
+        if (mixingCategories.Count > 0 && mixingCategories.All(c => PhysicalMixCategoryIds.Contains(c.ID)))
+            return false;
+
+        if (prototype.MinimumPH <= 0f && prototype.MaximumPH >= 14f)
+            return false;
+
+        return true;
+    }
+
     private void SetMixingCategory(IReadOnlyList<MixingCategoryPrototype> mixingCategories, ReactionPrototype? prototype, IEntitySystemManager sysMan)
     {
         if (mixingCategories.Count == 0)
@@ -196,7 +217,9 @@ public sealed partial class GuideReagentReaction : BoxContainer, ISearchableCont
 
         var minTemp = prototype?.MinimumTemperature ?? 0;
         var maxTemp = prototype?.MaximumTemperature ?? float.PositiveInfinity;
-        var text = Loc.GetString("guidebook-reagent-recipes-mix-info",
+        var showPh = ShouldShowPhRange(prototype, mixingCategories);
+        var locId = showPh ? "guidebook-reagent-recipes-mix-info" : "guidebook-reagent-recipes-mix-info-no-ph";
+        var text = Loc.GetString(locId,
             ("verb", mixingVerb),
             ("minTemp", minTemp),
             ("maxTemp", maxTemp),
