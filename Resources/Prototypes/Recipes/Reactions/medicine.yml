@@ -498,10 +498,11 @@
 
 - type: reaction
   id: Lacerinol
-  minPH: 6
+  instant: true
+  minPH: 6.4
   maxPH: 10
   impact: Medium
-  minTemp: 350
+  minTemp: 335
   reactants:
     Bicaridine: # Bicaridine is a conflicting brute medication and if mixed incorrectly will make Razorium. This is intended.
       amount: 1
@@ -515,10 +516,11 @@
 
 - type: reaction
   id: Puncturase
-  minPH: 5
-  maxPH: 9.5
+  instant: true
+  minPH: 9.5
+  maxPH: 13
   impact: Medium
-  minTemp: 350
+  minTemp: 325
   reactants:
     Bicaridine: # Bicaridine is a conflicting brute medication and if mixed incorrectly will make Razorium. This is intended.
       amount: 1
@@ -532,10 +534,10 @@
 
 - type: reaction
   id: Bruizine
-  minPH: 4.8
-  maxPH: 9
+  instant: true
+  minPH: 9.8
+  maxPH: 12.5
   impact: Medium
-  minTemp: 350
   reactants:
     Bicaridine: # Bicaridine is a conflicting brute medication and if mixed incorrectly will make Razorium. This is intended.
       amount: 1
@@ -553,7 +555,6 @@
   id: BicarLacerinol # mixing any two brute medications will make Razorium
   minPH: 0
   maxPH: 4.8
-  maxTemp: 349
   impact: Medium
   reactants:
     Lacerinol:
@@ -567,7 +568,6 @@
   id: BicarPuncturase # mixing any two brute medications will make Razorium
   minPH: 11.4
   maxPH: 14
-  maxTemp: 349
   impact: Medium
   reactants:
     Puncturase:
@@ -581,7 +581,6 @@
   id: BicarBruizine # mixing any two brute medications will make Razorium
   minPH: 0
   maxPH: 3.8
-  maxTemp: 349
   impact: Medium
   reactants:
     Bruizine:
@@ -595,7 +594,6 @@
   id: BruizineLacerinol # mixing any two brute medications will make Razorium
   minPH: 0
   maxPH: 4.5
-  maxTemp: 349
   impact: Medium
   reactants:
     Lacerinol:
@@ -609,7 +607,6 @@
   id: BruizinePuncturase # mixing any two brute medications will make Razorium
   minPH: 10.8
   maxPH: 14
-  maxTemp: 349
   impact: Medium
   reactants:
     Puncturase:
@@ -623,7 +620,6 @@
   id: PuncturaseLacerinol # mixing any two brute medications will make Razorium
   minPH: 10.8
   maxPH: 14
-  maxTemp: 349
   impact: Medium
   reactants:
     Lacerinol:

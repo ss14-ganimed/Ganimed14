@@ -274,7 +274,7 @@ public static class ChemistryPurity
     }
 
     public static ReagentPurityDisplayTier GetDisplayTier(ReagentId id, ReagentPrototype proto) =>
-        GetDisplayTier(GetPurity(id, proto), proto);
+        GetDisplayTier(GetCreationPurity(id, proto), proto);
 
     public static string GetDisplayTierLocale(ReagentPurityDisplayTier tier) => tier switch
     {
@@ -378,32 +378,20 @@ public static class ChemistryPurity
             return;
         }
 
-        if (reaction.ClearInverseAtEnd && purity < productProto.InverseThreshold)
+        if (reaction.ClearInverseAtEnd && purity <= productProto.InverseThreshold)
         {
             solution.AddReagent(new ReagentId(productProto.InverseReagent, CreatePurityData(purity, purity)), amount);
-            return;
-        }
-
-        if (reaction.ClearImpureAtEnd && purity < 1f && purity >= productProto.InverseThreshold)
-        {
-            var cleanFraction = purity;
-            var impureFraction = 1f - purity;
-            var cleanAmount = amount * cleanFraction;
-            var impureAmount = amount * impureFraction;
-
-            if (cleanAmount > FixedPoint2.Zero)
-                solution.AddReagent(new ReagentId(productId, CreatePurityData(1f, purity)), cleanAmount);
-
-            if (impureAmount > FixedPoint2.Zero)
-                solution.AddReagent(new ReagentId(productProto.ImpureReagent, CreatePurityData(1f, purity)), impureAmount);
-
             return;
         }
 
         solution.AddReagent(new ReagentId(productId, CreatePurityData(purity, purity)), amount);
     }
 
-    public static void ApplyConsumptionSplit(
+    /// <summary>
+    /// Converts metabolized dose into the inverse reagent when creation purity is at or below the inverse threshold.
+    /// Returns whether the consumed volume was handled here (caller should skip normal removal).
+    /// </summary>
+    public static bool ApplyConsumptionSplit(
         Solution solution,
         ReagentId reagent,
         FixedPoint2 amount,
@@ -411,34 +399,13 @@ public static class ChemistryPurity
         IPrototypeManager prototypeManager)
     {
         var purity = GetCreationPurity(reagent, proto);
-        if (purity >= 1f)
-            return;
 
-        if (purity < proto.InverseThreshold)
-        {
-            solution.RemoveReagent(reagent, amount);
-            solution.AddReagent(new ReagentId(proto.InverseReagent, CreatePurityData(1f, purity)), amount);
-            return;
-        }
-
-        if (proto.RetainsVolumeOnSplit)
-            return;
-
-        var cleanFraction = purity;
-        var impureFraction = 1f - purity;
-        var cleanAmount = amount * cleanFraction;
-        var impureAmount = amount * impureFraction;
+        if (purity > proto.InverseThreshold)
+            return false;
 
         solution.RemoveReagent(reagent, amount);
-
-        if (cleanAmount > FixedPoint2.Zero)
-        {
-            var cleanId = WithPurity(reagent, 1f, purity);
-            solution.AddReagent(cleanId, cleanAmount);
-        }
-
-        if (impureAmount > FixedPoint2.Zero)
-            solution.AddReagent(new ReagentId(proto.ImpureReagent, CreatePurityData(1f, purity)), impureAmount);
+        solution.AddReagent(new ReagentId(proto.InverseReagent, CreatePurityData(purity, purity)), amount);
+        return true;
     }
 
     public static bool FavorsCompetingReaction(

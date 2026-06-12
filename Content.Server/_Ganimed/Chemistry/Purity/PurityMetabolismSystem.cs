@@ -27,10 +27,10 @@ public sealed class PurityMetabolismSystem : EntitySystem
         if (!proto.IsInverseReagent)
             ev.EffectScale *= ChemistryPurity.GetEffectivenessMultiplier(purity, proto);
 
-        if (purity >= 1f || proto.IsInverseReagent)
+        if (proto.IsInverseReagent)
             return;
 
-        ChemistryPurity.ApplyConsumptionSplit(ev.Solution.Comp.Solution, ev.Reagent, ev.Amount, proto, _prototypeManager);
-        ev.Amount = FixedPoint2.Zero;
+        if (ChemistryPurity.ApplyConsumptionSplit(ev.Solution.Comp.Solution, ev.Reagent, ev.Amount, proto, _prototypeManager))
+            ev.Amount = FixedPoint2.Zero;
     }
 }

@@ -8,6 +8,14 @@
   pH: 3
   unreactedPurity: 1
   isInverseReagent: false
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 1
+            Caustic: 0.5
 
 - type: reagent
   id: ToxicMonomers
@@ -25,7 +33,7 @@
       - !type:HealthChange
         damage:
           types:
-            Poison: 3
+            Poison: 2
             Caustic: 1
 
 - type: reagent
@@ -38,6 +46,14 @@
   pH: 1.5
   unreactedPurity: 1
   isInverseReagent: false
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 1
+            Caustic: 0.5
 
 - type: reagent
   id: InsolventMedicinalPrecipitate

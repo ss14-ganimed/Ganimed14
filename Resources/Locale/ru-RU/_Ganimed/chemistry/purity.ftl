@@ -9,7 +9,7 @@ reagent-desc-insolvent-medicinal-precipitate = Нестабильный осад
 reagent-name-libitoil = либитоил
 reagent-desc-libitoil = Маслянистая примесь бикаридина.
 reagent-name-helgrasp-inverse = хелграсп
-reagent-desc-helgrasp-inverse = Инвертированный побочный продукт брут-медицины. Сильно токсичен.
+reagent-desc-helgrasp-inverse = Считается, что это редкое и запретное зелье приближает вас к власти скандинавской богини Хель.
 reagent-name-prefactor-a = префактор A
 reagent-desc-prefactor-a = Промежуточный продукт для синтеза тестера чистоты. Стабилен при низкой температуре.
 reagent-name-prefactor-b = префактор B
@@ -21,8 +21,8 @@ reagent-desc-tempomyocin = Реагент-агент. Мгновенно уск�
 
 chemistry-purity-tester-fizzle = Раствор бурлит — в колбе обнаружена грязная или инвертированная примесь!
 
-reagent-physical-desc-impure = пахнет нечистым
-reagent-physical-desc-toxic = едкий запах
-reagent-physical-desc-sludge = пахнет шламом
-reagent-physical-desc-precipitate = выглядит как осадок
-reagent-physical-desc-sharp-smelling = резкий запах
+reagent-physical-desc-impure = грязное
+reagent-physical-desc-toxic = противное
+reagent-physical-desc-sludge = шламовое
+reagent-physical-desc-precipitate = осадочное
+reagent-physical-desc-sharp-smelling = резкий

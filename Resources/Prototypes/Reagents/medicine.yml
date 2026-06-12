@@ -1328,12 +1328,6 @@
           types:
             Slash: -0.6 # ADT-Tweak 6 per u
             Heat: 0.2 # ADT-Tweak 2 per u
-      - !type:AdjustReagent
-        conditions:
-        - !type:TemperatureCondition
-          min: 350
-        reagent: ToxicMonomers
-        amount: 0.1
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -1362,12 +1356,6 @@
       # ADT-Tweak-Start
             Piercing: -0.8
             Blunt: 0.15
-      - !type:AdjustReagent
-        conditions:
-        - !type:TemperatureCondition
-          min: 350
-        reagent: ToxicMonomers
-        amount: 0.1
       - !type:Vomit
         conditions:
         - !type:ReagentCondition
@@ -1403,12 +1391,6 @@
       # ADT-Tweak-Start
             Blunt: -1.4
             Piercing: 0.15
-      - !type:AdjustReagent
-        conditions:
-        - !type:TemperatureCondition
-          min: 350
-        reagent: ToxicMonomers
-        amount: 0.1
       - !type:Vomit
         conditions:
         - !type:ReagentCondition
