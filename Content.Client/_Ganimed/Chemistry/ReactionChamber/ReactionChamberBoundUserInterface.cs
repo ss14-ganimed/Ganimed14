@@ -3,6 +3,8 @@ using Content.Shared._Ganimed.Chemistry.ReactionChamber;
 using Content.Shared.Containers.ItemSlots;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
+using Robust.Client.UserInterface.Controls;
+using static Robust.Client.UserInterface.Controls.BaseButton;
 
 namespace Content.Client._Ganimed.Chemistry.ReactionChamber;
 
@@ -20,22 +22,16 @@ public sealed class ReactionChamberBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
+        UnbindWindow();
+
         _window = this.CreateWindow<ReactionChamberWindow>();
-        _window.TransferRequested += (prototype, fromBuffer, transferAll) =>
-            SendMessage(new ReactionChamberTransferMessage
-            {
-                ReagentPrototype = prototype,
-                FromBuffer = fromBuffer,
-                TransferAll = transferAll,
-            });
-        _window.TransferAmountChanged += amount =>
-            SendMessage(new ReactionChamberSetTransferAmountMessage { Amount = amount });
+        _window.TransferRequested += OnTransferRequested;
+        _window.TransferAmountChanged += OnTransferAmountChanged;
         _window.ConfigureProgramsRequested += OpenProgramEditor;
-        _window.ProgramSelected += index => SendMessage(new ReactionChamberSelectProgramMessage { ProgramIndex = index });
-        _window.StartRequested += () => SendMessage(new ReactionChamberStartProgramMessage());
-        _window.StopRequested += () => SendMessage(new ReactionChamberStopProgramMessage());
-        _window.EjectButton.OnPressed += _ =>
-            SendMessage(new ItemSlotButtonPressedEvent(SharedReactionChamber.BeakerSlotName));
+        _window.ProgramSelected += OnProgramSelected;
+        _window.StartRequested += OnStartRequested;
+        _window.StopRequested += OnStopRequested;
+        _window.EjectButton.OnPressed += OnEjectPressed;
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -52,9 +48,8 @@ public sealed class ReactionChamberBoundUserInterface : BoundUserInterface
             return;
 
         _programWindow = new ReactionChamberProgramWindow();
-        _programWindow.OnClose += () => _programWindow = null;
-        _programWindow.ProgramsSaved += programs =>
-            SendMessage(new ReactionChamberSetProgramsMessage { Programs = programs });
+        _programWindow.OnClose += OnProgramWindowClosed;
+        _programWindow.ProgramsSaved += OnProgramsSaved;
 
         if (_window != null && State is ReactionChamberBoundUserInterfaceState chamberState)
             _programWindow.SetPrograms(chamberState.ProgramDefinitions);
@@ -62,14 +57,73 @@ public sealed class ReactionChamberBoundUserInterface : BoundUserInterface
         _programWindow.OpenCentered();
     }
 
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
+    private void OnTransferRequested(string prototype, bool fromBuffer, bool transferAll) =>
+        SendMessage(new ReactionChamberTransferMessage
+        {
+            ReagentPrototype = prototype,
+            FromBuffer = fromBuffer,
+            TransferAll = transferAll,
+        });
 
-        if (!disposing)
+    private void OnTransferAmountChanged(int amount) =>
+        SendMessage(new ReactionChamberSetTransferAmountMessage { Amount = amount });
+
+    private void OnProgramSelected(int index) =>
+        SendMessage(new ReactionChamberSelectProgramMessage { ProgramIndex = index });
+
+    private void OnStartRequested() =>
+        SendMessage(new ReactionChamberStartProgramMessage());
+
+    private void OnStopRequested() =>
+        SendMessage(new ReactionChamberStopProgramMessage());
+
+    private void OnEjectPressed(ButtonEventArgs _) =>
+        SendMessage(new ItemSlotButtonPressedEvent(SharedReactionChamber.BeakerSlotName));
+
+    private void OnProgramsSaved(List<ReactionChamberProgram> programs) =>
+        SendMessage(new ReactionChamberSetProgramsMessage { Programs = programs });
+
+    private void OnProgramWindowClosed()
+    {
+        UnbindProgramWindow();
+        _programWindow = null;
+    }
+
+    private void UnbindWindow()
+    {
+        if (_window == null)
             return;
 
-        _programWindow?.Close();
-        _programWindow = null;
+        _window.TransferRequested -= OnTransferRequested;
+        _window.TransferAmountChanged -= OnTransferAmountChanged;
+        _window.ConfigureProgramsRequested -= OpenProgramEditor;
+        _window.ProgramSelected -= OnProgramSelected;
+        _window.StartRequested -= OnStartRequested;
+        _window.StopRequested -= OnStopRequested;
+        _window.EjectButton.OnPressed -= OnEjectPressed;
+    }
+
+    private void UnbindProgramWindow()
+    {
+        if (_programWindow == null)
+            return;
+
+        _programWindow.OnClose -= OnProgramWindowClosed;
+        _programWindow.ProgramsSaved -= OnProgramsSaved;
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            UnbindProgramWindow();
+            _programWindow?.Close();
+            _programWindow = null;
+
+            UnbindWindow();
+            _window = null;
+        }
+
+        base.Dispose(disposing);
     }
 }

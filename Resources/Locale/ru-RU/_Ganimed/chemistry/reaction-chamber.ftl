@@ -41,7 +41,7 @@ reaction-chamber-program-step-up = Переместить шаг вверх
 reaction-chamber-program-step-down = Переместить шаг вниз
 
 reaction-chamber-step-add-buffer = Добавить из буфера в контейнер
-reaction-chamber-step-take-buffer = Забрать из контейнер в буфер
+reaction-chamber-step-take-buffer = Забрать из контейнера в буфер
 reaction-chamber-step-stop = Остановить реакции в мензурке
 reaction-chamber-step-resume = Возобновить реакции в мензурке
 reaction-chamber-step-wait-seconds = Подождать (секунды)

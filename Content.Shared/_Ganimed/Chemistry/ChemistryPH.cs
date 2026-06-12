@@ -12,6 +12,8 @@ public static class ChemistryPH
     public const float MinPH = 0f;
     public const float MaxPH = 14f;
 
+    private const double NeutralityTolerance = 1e-12;
+
     public static float GetSolutionPH(Solution solution, IPrototypeManager prototypeManager)
     {
         if (solution.PHOverride is { } phOverride)
@@ -44,7 +46,7 @@ public static class ChemistryPH
             return NeutralPH;
 
         var net = hydrogen - hydroxide;
-        if (Math.Abs(net) <= double.Epsilon)
+        if (Math.Abs(net) <= NeutralityTolerance)
             return NeutralPH;
 
         float result;
@@ -73,7 +75,7 @@ public static class ChemistryPH
         hydroxide += Math.Pow(10d, Math.Clamp(secondPH, MinPH, MaxPH) - MaxPH) * secondVolume.Float();
 
         var net = hydrogen - hydroxide;
-        if (Math.Abs(net) <= double.Epsilon)
+        if (Math.Abs(net) <= NeutralityTolerance)
             return NeutralPH;
 
         var result = net > 0

@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Content.Client.UserInterface.Controls;
@@ -339,7 +340,7 @@ public sealed class ReactionChamberProgramWindow : DefaultWindow
         {
             var amountEdit = new LineEdit
             {
-                Text = step.Amount.ToString("0.##"),
+                Text = step.Amount.ToString("0.##", CultureInfo.InvariantCulture),
                 MinSize = new Vector2(60, 0),
                 PlaceHolder = step.Type switch
                 {
@@ -350,7 +351,7 @@ public sealed class ReactionChamberProgramWindow : DefaultWindow
             };
             amountEdit.OnTextChanged += _ =>
             {
-                if (!float.TryParse(amountEdit.Text, out var amount))
+                if (!float.TryParse(amountEdit.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out var amount))
                     return;
 
                 if (step.Type == ReactionChamberStepType.SetBeakerTemperature)
