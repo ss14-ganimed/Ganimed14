@@ -1,0 +1,29 @@
+- type: entity
+  id: ChemistryBottleBasicBuffer
+  suffix: basic buffer
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-basic-buffer
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: BasicBuffer
+          Quantity: 30
+
+- type: entity
+  id: ChemistryBottleAcidicBuffer
+  suffix: acidic buffer
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-acidic-buffer
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: AcidicBuffer
+          Quantity: 30
