@@ -7,7 +7,8 @@ scannable-solution-chemical-with-tier = - { $amount } ед. [color={ $color }]{ 
 
 hplc-window-title = Высокоэффективная жидкостная хроматография
 
-hplc-window-input-label = Входная колбаhplc-window-output-label = Выходная колба
+hplc-window-input-label = Входная колба
+hplc-window-output-label = Выходная колба
 hplc-window-no-input-beaker = Входная колба не установлена.
 hplc-window-beaker-empty = Пусто.
 hplc-window-fill-with-ph = { $volume }/{ $max }, pH { $ph }

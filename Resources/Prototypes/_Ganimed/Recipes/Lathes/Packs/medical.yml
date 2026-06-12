@@ -2,3 +2,4 @@
   id: HplcBoardsStatic
   recipes:
   - HplcMachineCircuitboard
+  - ReactionChamberMachineCircuitboard

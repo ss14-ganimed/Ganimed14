@@ -1,4 +1,4 @@
-﻿- type: reaction
+- type: reaction
   id: ADTLiquidDarkMatter
   minPH: 4
   maxPH: 8

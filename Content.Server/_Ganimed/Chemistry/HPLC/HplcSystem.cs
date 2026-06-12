@@ -39,6 +39,7 @@ public sealed class HplcSystem : SharedHplcSystem
         SubscribeLocalEvent<HplcComponent, EntInsertedIntoContainerMessage>(OnContainerChanged);
         SubscribeLocalEvent<HplcComponent, EntRemovedFromContainerMessage>(OnContainerChanged);
         SubscribeLocalEvent<HplcComponent, SolutionContainerChangedEvent>(OnSolutionChanged);
+        SubscribeLocalEvent<HplcComponent, DispenserInsertedContainerSolutionChangedEvent>(OnDispenserSolutionChanged);
         SubscribeLocalEvent<HplcComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<HplcComponent, HplcSelectReagentMessage>(OnSelectReagent);
         SubscribeLocalEvent<HplcComponent, HplcStartMessage>(OnStart);
@@ -54,10 +55,16 @@ public sealed class HplcSystem : SharedHplcSystem
         var query = EntityQueryEnumerator<HplcComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            if (comp.Processing && _timing.CurTime >= comp.ProcessEndTime)
+            if (!comp.Processing)
+                continue;
+
+            if (_timing.CurTime >= comp.ProcessEndTime)
+            {
                 FinishProcessing((uid, comp));
-            else if (comp.Processing && (int)_timing.CurTime.TotalSeconds % 1 == 0)
-                UpdateUi((uid, comp));
+                continue;
+            }
+
+            UpdateUi((uid, comp));
         }
     }
 
@@ -66,6 +73,14 @@ public sealed class HplcSystem : SharedHplcSystem
     private void OnContainerChanged<T>(Entity<HplcComponent> ent, ref T args) => UpdateUi(ent);
 
     private void OnSolutionChanged(Entity<HplcComponent> ent, ref SolutionContainerChangedEvent args) => UpdateUi(ent);
+
+    private void OnDispenserSolutionChanged(Entity<HplcComponent> ent, ref DispenserInsertedContainerSolutionChangedEvent args)
+    {
+        if (args.SlotId != ent.Comp.InputSlot && args.SlotId != ent.Comp.OutputSlot)
+            return;
+
+        UpdateUi(ent);
+    }
 
     private void OnUiOpened(Entity<HplcComponent> ent, ref BoundUIOpenedEvent args) => UpdateUi(ent);
 

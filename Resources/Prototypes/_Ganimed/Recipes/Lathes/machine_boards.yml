@@ -2,3 +2,8 @@
   parent: [ BaseCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
   id: HplcMachineCircuitboard
   result: HplcMachineCircuitboard
+
+- type: latheRecipe
+  parent: [ BaseCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
+  id: ReactionChamberMachineCircuitboard
+  result: ReactionChamberMachineCircuitboard

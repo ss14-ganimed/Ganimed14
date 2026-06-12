@@ -1,4 +1,4 @@
-﻿- type: reaction
+- type: reaction
   id: CarbonDioxideBreakdown
   minPH: 0
   maxPH: 14

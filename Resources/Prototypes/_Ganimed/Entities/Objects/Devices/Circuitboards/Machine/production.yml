@@ -16,3 +16,22 @@
       GlassBeaker:
         amount: 1
         defaultPrototype: Beaker
+
+- type: entity
+  id: ReactionChamberMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: reaction chamber machine board
+  description: A machine printed circuit board for a programmable reaction chamber.
+  components:
+  - type: Sprite
+    state: medical
+  - type: MachineBoard
+    prototype: MachineReactionChamber
+    stackRequirements:
+      Manipulator: 2
+      Glass: 2
+      Cable: 2
+    tagRequirements:
+      GlassBeaker:
+        amount: 1
+        defaultPrototype: Beaker

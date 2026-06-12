@@ -18,13 +18,7 @@
     sprite: _Ganimed/Structures/Machines/hplc.rsi
     state: hplc_base
   - type: Hplc
-  - type: ItemMapper
-    containerWhitelist: [beakerSlot, outputBeakerSlot]
-    mapLayers:
-      panel:
-        whitelist:
-          components:
-          - FitsInDispenser
+  - type: Appearance
   - type: GenericVisualizer
     visuals:
       enum.PowerDeviceVisuals.Powered:
@@ -40,6 +34,7 @@
         type: HplcBoundUserInterface
   - type: ApcPowerReceiver
     powerLoad: 300
+  - type: WiresPanel
   - type: Machine
     board: HplcMachineCircuitboard
   - type: ContainerContainer
