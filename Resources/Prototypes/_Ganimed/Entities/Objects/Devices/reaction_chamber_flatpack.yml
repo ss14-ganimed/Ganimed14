@@ -1,0 +1,15 @@
+- type: entity
+  parent: BaseFlatpack
+  id: ReactionChamberFlatpack
+  name: reaction chamber flatpack
+  description: A flatpack used for constructing a reaction chamber.
+  components:
+  - type: Flatpack
+    entity: MachineReactionChamber
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#52B4E9FF"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: icon-default

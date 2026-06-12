@@ -7,20 +7,17 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: Structures/Machines/mixer.rsi
+    sprite: _Ganimed/Structures/Machines/reaction_chamber.rsi
     snapCardinals: true
     layers:
-    - state: mixer_empty
-    - state: mixer_screens
-      shader: unshaded
-      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: chamber_empty
   - type: Icon
-    sprite: Structures/Machines/mixer.rsi
-    state: mixer_empty
+    sprite: _Ganimed/Structures/Machines/reaction_chamber.rsi
+    state: chamber_empty
   - type: ItemMapper
     containerWhitelist: [beakerSlot]
     mapLayers:
-      mixer_loaded:
+      chamber_loaded:
         whitelist:
           components:
           - FitsInDispenser
@@ -49,12 +46,6 @@
   - type: ApcPowerReceiver
     powerLoad: 300
   - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.PowerDeviceVisuals.Powered:
-        enum.PowerDeviceVisualLayers.Powered:
-          True: { visible: true }
-          False: { visible: false }
   - type: WiresPanel
   - type: Machine
     board: ReactionChamberMachineCircuitboard
