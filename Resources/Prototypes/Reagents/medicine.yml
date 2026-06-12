@@ -453,7 +453,7 @@
   physicalDesc: reagent-physical-desc-odorless
   flavor: medicine
   color: "#d2fffa"
-  pH: 8.6
+  pH: 7
   metabolisms:
     Medicine:
       effects:
@@ -1166,7 +1166,7 @@
   physicalDesc: reagent-physical-desc-translucent
   flavor: medicine
   color: "#404040"
-  pH: 7.4
+  pH: 10
   metabolisms:
     Medicine:
       effects:
@@ -1628,7 +1628,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: sweet
   color: "#A0A0A0"
-  pH: 6.0
+  pH: 10.4
   metabolisms:
     Medicine:
       effects:

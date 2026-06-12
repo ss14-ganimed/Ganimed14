@@ -106,8 +106,8 @@
 
 - type: reaction
   id: Epinephrine
-  minPH: 8
-  maxPH: 12.4
+  minPH: 5
+  maxPH: 10
   reactants:
     Phenol:
       amount: 1
@@ -287,7 +287,7 @@
 
 - type: reaction
   id: Synaptizine
-  minPH: 7
+  minPH: 5
   maxPH: 10.6
   reactants:
     Lithium:
@@ -370,8 +370,8 @@
 
 - type: reaction
   id: Mannitol
-  minPH: 6
-  maxPH: 14.0
+  minPH: 5
+  maxPH: 7.5
   reactants:
     Hydrogen:
       amount: 1
@@ -426,8 +426,8 @@
 
 - type: reaction
   id: Oculine
-  minPH: 9
-  maxPH: 12.7
+  minPH: 4.8
+  maxPH: 8.5
   reactants:
     TableSalt:
       amount: 1
@@ -631,7 +631,7 @@
 
 - type: reaction
   id: Diphenhydramine
-  minPH: 8
+  minPH: 5
   maxPH: 10.6
   impact: Medium
   minTemp: 377.59
@@ -732,8 +732,8 @@
 
 - type: reaction
   id: Psicodine
-  minPH: 6
-  maxPH: 7.3
+  minPH: 5
+  maxPH: 10
   impact: Medium
   maxTemp: 270 # ADT tweak
   reactants:
@@ -791,8 +791,8 @@
 
 - type: reaction
   id: Haloperidol
-  minPH: 3.3
-  maxPH: 11
+  minPH: 5
+  maxPH: 10
   reactants:
     Aluminium:
       amount: 1
