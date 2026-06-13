@@ -1,8 +1,10 @@
 using Content.Server._Ganimed.BloodWorm.Components;
 using Content.Server._Ganimed.BloodWorm.Objectives.Components;
+using Content.Server.Bed.Cryostorage;
 using Content.Server.Revolutionary.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
+using Content.Shared.ADT.Silicon.Components;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Roles;
@@ -18,6 +20,7 @@ public sealed class BloodWormTeamEscapeConditionSystem : EntitySystem
     [Dependency] private readonly SharedRoleSystem _roles = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly CryostorageSystem _cryo = default!;
 
     public override void Initialize()
     {
@@ -40,6 +43,10 @@ public sealed class BloodWormTeamEscapeConditionSystem : EntitySystem
             if (station != null && _station.GetOwningStation(commandUid) != station)
                 continue;
 
+            // Synthetic command members do not count towards this objective.
+            if (HasComp<SiliconComponent>(commandUid))
+                continue;
+
             commandCount++;
         }
 
@@ -55,7 +62,26 @@ public sealed class BloodWormTeamEscapeConditionSystem : EntitySystem
 
     private void OnGetProgress(Entity<BloodWormTeamEscapeConditionComponent> ent, ref ObjectiveGetProgressEvent args)
     {
+        var station = _station.GetOwningStation(args.Mind.OwnedEntity);
         var escaped = 0;
+
+        if (ent.Comp.RequireCommandHost)
+        {
+            var command = EntityQueryEnumerator<CommandStaffComponent, TransformComponent>();
+            while (command.MoveNext(out var commandUid, out _, out var xform))
+            {
+                if (station != null && _station.GetOwningStation(commandUid) != station)
+                    continue;
+
+                if (HasComp<SiliconComponent>(commandUid))
+                    continue;
+
+                // A command member who entered cryo is considered neutralized.
+                if (_cryo.IsInPausedMap((commandUid, xform)))
+                    escaped++;
+            }
+        }
+
         var query = EntityQueryEnumerator<MindComponent>();
         while (query.MoveNext(out var mindUid, out var mind))
         {
@@ -77,6 +103,9 @@ public sealed class BloodWormTeamEscapeConditionSystem : EntitySystem
                 continue;
 
             if (ent.Comp.RequireCommandHost && !HasComp<CommandStaffComponent>(owned))
+                continue;
+
+            if (ent.Comp.RequireCommandHost && HasComp<SiliconComponent>(owned))
                 continue;
 
             if (!_shuttle.IsTargetEscaping(owned))
