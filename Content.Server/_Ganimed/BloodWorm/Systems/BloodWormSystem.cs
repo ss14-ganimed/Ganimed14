@@ -344,7 +344,7 @@ public sealed class BloodWormSystem : EntitySystem
             return;
         }
 
-        if (!HasComp<HumanoidAppearanceComponent>(target) || !TryComp(target, out BloodstreamComponent? bloodstream))
+        if (!TryComp(target, out BloodstreamComponent? bloodstream))
         {
             _popup.PopupEntity(Loc.GetString("blood-worm-invade-invalid"), uid, uid);
             return;
