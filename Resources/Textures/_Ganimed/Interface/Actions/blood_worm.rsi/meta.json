@@ -1,0 +1,32 @@
+{
+  "copyright" : "Taken from https://github.com/tgstation/tgstation/pull/93787",
+  "license" : "CC-BY-SA-3.0",
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+        "name": "invade_corpse"
+    },
+    {
+        "name": "leave_host"
+    },
+    {
+        "name": "mature_hatcling"
+    },
+    {
+        "name": "mature_juveline"
+    },
+    {
+        "name": "leech_blood"
+    },
+    {
+        "name": "reproduce"
+    },
+    {
+        "name": "spit_blood"
+    }
+  ]
+}

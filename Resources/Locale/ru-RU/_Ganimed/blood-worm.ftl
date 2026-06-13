@@ -1,0 +1,33 @@
+blood-worm-target-no-blood = У цели нет кровотока.
+blood-worm-target-occupied = Этого носителя уже занимает другой кровавый червь.
+blood-worm-target-empty = У цели больше нет крови.
+blood-worm-not-enough-host-blood = В этом теле слишком мало крови для контроля.
+blood-worm-leech-success = Вы высасываете кровь из {$target}.
+blood-worm-enter-host = Вы проникаете в тело {$target}.
+blood-worm-leave-host = Кровавый червь покидает носителя.
+blood-worm-cannot-while-hosted = Нельзя использовать это внутри носителя.
+blood-worm-cannot-mature-in-host = Покиньте носителя перед созреванием.
+blood-worm-not-ready = Пока рано: {$progress}/{$required}.
+blood-worm-out-of-blood = У вас закончилась кровь.
+blood-worm-inject-success = Вы вводите кровь в ткани носителя.
+blood-worm-revive-success = Вы запускаете кровообращение носителя.
+blood-worm-invade-invalid = Проникать можно только в гуманоидов с кровью.
+blood-worm-invade-only-dead = Проникать можно только в мертвых носителей.
+blood-worm-invade-no-silicon = Нельзя проникать в IPC и боргов.
+blood-worm-synthetic-full = полностью синтетическая
+blood-worm-synthetic-none = не синтетическая
+blood-worm-examine-target = Кровь: {$volume}u, потенциальный рост: {$potential}u, синтетика: {$synthetic}.
+alerts-blood-worm-health-name = Живучесть червя
+alerts-blood-worm-health-desc = Показывает здоровье кровавого червя при управлении носителем.
+alerts-blood-worm-blood-name = Запас крови
+alerts-blood-worm-blood-desc = Показывает текущий ресурс крови.
+
+blood-worm-round-end-agent-name = кровавый червь
+objective-issuer-blood-worm = [color=#9f2222]Улей кровавых червей[/color]
+blood-worm-role-briefing = Вы Кровавый Червь. Питайтесь, созревайте через коконы и распространяйтесь через носителей.
+objective-blood-worm-growth-title = Улей должен поглотить {$count} единиц кровавого роста.
+objective-blood-worm-growth-description = Достигните суммарно {$count} накопленного роста от крови среди всех червей.
+objective-blood-worm-team-escape-title = Обеспечьте эвакуацию червей.
+objective-blood-worm-team-escape-description = Хотя бы один кровавый червь должен улететь живым на шаттле эвакуации.
+language-BloodWorm-name = Кровешепот
+language-BloodWorm-description = Шипящий язык кровавых червей. Для непосвященных звучит как влажный скрежет и пульсирующий шепот.

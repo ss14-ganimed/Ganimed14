@@ -1,0 +1,49 @@
+- type: alert
+  id: BloodWormHealth
+  category: Health
+  minSeverity: 0
+  icons:
+  - sprite: /Textures/ADT/Interface/Alerts/human_alive.rsi
+    state: health0
+  - sprite: /Textures/ADT/Interface/Alerts/human_alive.rsi
+    state: health1
+  - sprite: /Textures/ADT/Interface/Alerts/human_alive.rsi
+    state: health2
+  - sprite: /Textures/ADT/Interface/Alerts/human_alive.rsi
+    state: health3
+  - sprite: /Textures/ADT/Interface/Alerts/human_alive.rsi
+    state: health4
+  - sprite: /Textures/ADT/Interface/Alerts/human_alive.rsi
+    state: health5
+  - sprite: /Textures/ADT/Interface/Alerts/human_alive.rsi
+    state: health6
+  maxSeverity: 6
+  name: alerts-blood-worm-health-name
+  description: alerts-blood-worm-health-desc
+
+- type: alert
+  id: BloodWormBlood
+  icons:
+  - sprite: /Textures/_Ganimed/Interface/Alerts/blood_counter.rsi
+    state: blood0
+  alertViewEntity: AlertBloodWormBloodSpriteView
+  name: alerts-blood-worm-blood-name
+  description: alerts-blood-worm-blood-desc
+
+- type: entity
+  id: AlertBloodWormBloodSpriteView
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GenericCounterAlert
+    centerGlyph: false
+    hideLeadingZeroes: false
+  - type: Sprite
+    sprite: /Textures/_Ganimed/Interface/Alerts/blood_counter.rsi
+    layers:
+    - map: [ "enum.AlertVisualLayers.Base" ]
+    - map: [ "1" ]
+      offset: 0.125, 0
+    - map: [ "10" ]
+      offset: 0, 0
+    - map: [ "100" ]
+      offset: -0.125, 0

@@ -1,0 +1,249 @@
+- type: entity
+  id: MobBloodWormHatchling
+  parent: SimpleMobBase
+  name: blood worm hatchling
+  description: A freshly hatched blood worm that desperately seeks blood and a host.
+  components:
+  - type: Body
+    prototype: Mouse
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _Ganimed/Mobs/Aliens/Blood_Worms/blood_worm_hatchling.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: base
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 100
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MobState
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      45: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5
+  - type: Bloodstream
+    bloodMaxVolume: 250
+  - type: BloodWormResource
+  - type: LanguageSpeaker
+    languages:
+      GalacticCommon: Understand
+      BloodWorm: Speak
+  - type: NightVision
+  - type: VentCrawler
+  - type: CombatMode
+  - type: MeleeWeapon
+    angle: 30
+    animation: WeaponArcBite
+    damage:
+      types:
+        Piercing: 10
+  - type: Damageable
+    damageContainer: Biological
+  - type: NpcFactionMember
+    factions:
+    - BloodWorm
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: BloodWorm
+    stage: Hatchling
+    maxBloodResource: 80
+    bloodResource: 80
+    spitProjectile: BulletBloodWormSpit
+    regenPerSecond: 0.3
+    hostDrainPerSecond: 12
+    hostBleedDamageMultiplier: 4
+    leechAction: ActionBloodWormLeechHatchling
+    invadeAction: ActionBloodWormInvade
+    matureAction: ActionBloodWormMature
+    leaveHostAction: ActionBloodWormLeaveHost
+
+- type: entity
+  id: MobBloodWormCocoonJuvenile
+  parent: MobBloodWormHatchling
+  name: blood worm cocoon
+  description: A pulsing cocoon. Something inside is about to hatch.
+  components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0
+    baseSprintSpeed: 0
+  - type: BloodWorm
+    stage: Cocoon
+    maxBloodResource: 120
+    bloodResource: 120
+    regenPerSecond: 0
+    hostDrainPerSecond: 0
+    leechAction: null
+    invadeAction: null
+    spitAction: null
+    matureAction: null
+    injectAction: null
+    leaveHostAction: null
+    reviveHostAction: null
+    cocoonHatchPrototype: MobBloodWormJuvenile
+    cocoonHatchDelay: 30
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Ganimed/Mobs/Aliens/Blood_Worms/blood_worm_cocoon.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: small
+
+- type: entity
+  id: MobBloodWormCocoonAdult
+  parent: MobBloodWormCocoonJuvenile
+  name: blood worm cocoon
+  description: A dense cocoon close to bursting.
+  components:
+  - type: BloodWorm
+    maxBloodResource: 180
+    bloodResource: 180
+    cocoonHatchPrototype: MobBloodWormAdult
+    cocoonHatchDelay: 30
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Ganimed/Mobs/Aliens/Blood_Worms/blood_worm_cocoon.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: medium
+
+- type: entity
+  id: MobBloodWormCocoonReproduction
+  parent: MobBloodWormCocoonJuvenile
+  name: blood worm brood cocoon
+  description: This cocoon writhes with multiple larvae.
+  components:
+  - type: BloodWorm
+    maxBloodResource: 100
+    bloodResource: 100
+    cocoonHatchPrototype: MobBloodWormHatchling
+    cocoonHatchDelay: 30
+    cocoonSpawnHatchlings: 3
+    cocoonResetProgress: true
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Ganimed/Mobs/Aliens/Blood_Worms/blood_worm_cocoon.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: reproduce
+
+- type: entity
+  id: MobBloodWormJuvenile
+  parent: MobBloodWormHatchling
+  name: blood worm juvenile
+  description: A mid-sized blood worm with a ravenous appetite.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Ganimed/Mobs/Aliens/Blood_Worms/blood_worm_juvenile.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: base
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        density: 1000
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.7
+    baseSprintSpeed: 3.7
+  - type: Bloodstream
+    bloodMaxVolume: 400
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 16
+  - type: BloodWorm
+    stage: Juvenile
+    maxBloodResource: 120
+    bloodResource: 120
+    regenPerSecond: 0.4
+    hostDrainPerSecond: 18
+    hostBleedDamageMultiplier: 4.5
+    leechAction: ActionBloodWormLeechJuvenile
+    invadeAction: ActionBloodWormInvade
+    spitAction: ActionBloodWormSpitJuvenile
+    matureAction: ActionBloodWormMature
+    leaveHostAction: ActionBloodWormLeaveHost
+
+- type: entity
+  id: MobBloodWormAdult
+  parent: MobBloodWormHatchling
+  name: blood worm adult
+  description: A massive blood worm evolved for predation, control, and propagation.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Ganimed/Mobs/Aliens/Blood_Worms/blood_worm_adult.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: base
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        density: 1000
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      180: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.2
+    baseSprintSpeed: 3.2
+  - type: Bloodstream
+    bloodMaxVolume: 550
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 22
+  - type: BloodWorm
+    stage: Adult
+    maxBloodResource: 180
+    bloodResource: 180
+    regenPerSecond: 0.5
+    hostDrainPerSecond: 24
+    hostBleedDamageMultiplier: 5
+    leechAction: ActionBloodWormLeechAdult
+    invadeAction: ActionBloodWormInvade
+    spitAction: ActionBloodWormSpitAdult
+    matureAction: ActionBloodWormMature
+    leaveHostAction: ActionBloodWormLeaveHost

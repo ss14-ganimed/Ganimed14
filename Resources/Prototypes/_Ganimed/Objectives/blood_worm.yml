@@ -1,0 +1,39 @@
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseBloodWormObjective
+  components:
+  - type: Objective
+    issuer: objective-issuer-blood-worm
+  - type: RoleRequirement
+    roles:
+    - BloodWormRole
+
+- type: entity
+  parent: BaseBloodWormObjective
+  id: BloodWormGrowthObjective
+  components:
+  - type: Objective
+    difficulty: 1.8
+    unique: true
+    icon:
+      sprite: _Ganimed/Interface/Actions/blood_worm.rsi
+      state: leech_blood
+  - type: NumberObjective
+    min: 6000
+    max: 10000
+    title: objective-blood-worm-growth-title
+    description: objective-blood-worm-growth-description
+  - type: BloodWormGrowthCondition
+
+- type: entity
+  parent: BaseBloodWormObjective
+  id: BloodWormTeamEscapeObjective
+  components:
+  - type: Objective
+    difficulty: 1.6
+    unique: true
+    icon:
+      sprite: Structures/Furniture/chairs.rsi
+      state: shuttle
+  - type: BloodWormTeamEscapeCondition

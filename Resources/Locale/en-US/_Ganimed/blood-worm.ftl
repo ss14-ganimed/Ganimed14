@@ -1,0 +1,33 @@
+blood-worm-target-no-blood = This target has no bloodstream.
+blood-worm-target-occupied = Another blood worm already occupies this host.
+blood-worm-target-empty = This target has no blood left.
+blood-worm-not-enough-host-blood = This body has too little blood for control.
+blood-worm-leech-success = You leech blood from {$target}.
+blood-worm-enter-host = You invade {$target}'s body.
+blood-worm-leave-host = The blood worm leaves its host.
+blood-worm-cannot-while-hosted = You cannot use this while inside a host.
+blood-worm-cannot-mature-in-host = Leave your host before maturing.
+blood-worm-not-ready = You are not ready yet: {$progress}/{$required}.
+blood-worm-out-of-blood = You are out of blood.
+blood-worm-inject-success = You inject blood into your host.
+blood-worm-revive-success = You restart your host's circulation.
+blood-worm-invade-invalid = You can only invade humanoids with blood.
+blood-worm-invade-only-dead = You can only invade dead hosts.
+blood-worm-invade-no-silicon = You cannot invade IPCs or borgs.
+blood-worm-synthetic-full = fully synthetic
+blood-worm-synthetic-none = not synthetic
+blood-worm-examine-target = Blood: {$volume}u, potential growth: {$potential}u, synthetic: {$synthetic}.
+alerts-blood-worm-health-name = Worm Vitality
+alerts-blood-worm-health-desc = Shows your blood worm health while piloting a host.
+alerts-blood-worm-blood-name = Blood Reserve
+alerts-blood-worm-blood-desc = Shows your current blood resource.
+
+blood-worm-round-end-agent-name = blood worm
+objective-issuer-blood-worm = [color=#9f2222]Blood Worm Hive[/color]
+blood-worm-role-briefing = You are a Blood Worm. Feed, evolve through cocoons, and spread through hosts.
+objective-blood-worm-growth-title = As a hive, consume {$count} blood growth.
+objective-blood-worm-growth-description = Reach a total of {$count} consumed blood across all blood worms.
+objective-blood-worm-team-escape-title = Ensure blood worm evacuation.
+objective-blood-worm-team-escape-description = At least one blood worm must escape alive on the emergency shuttle.
+language-BloodWorm-name = Blood Whisper
+language-BloodWorm-description = The hissing language of blood worms, sounding like wet scraping and pulsing whispers.

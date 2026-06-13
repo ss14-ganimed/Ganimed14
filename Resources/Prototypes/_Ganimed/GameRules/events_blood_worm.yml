@@ -1,0 +1,31 @@
+- type: entity
+  parent: BaseGameRule
+  id: BloodWormSpawn
+  components:
+  - type: StationEvent
+    weight: 7
+    earliestStart: 35
+    reoccurrenceDelay: 30
+    minimumPlayers: 15
+    duration: null
+  - type: VentCrittersRule
+  - type: AntagSpawner
+    prototype: MobBloodWormHatchling
+  - type: AntagObjectives
+    objectives:
+    - BloodWormGrowthObjective
+    - BloodWormTeamEscapeObjective
+  - type: AntagSelection
+    agentName: blood-worm-round-end-agent-name
+    definitions:
+    - spawnerPrototype: SpawnPointGhostBloodWorm
+      min: 2
+      max: 2
+      pickPlayer: false
+      mindRoles:
+      - MindRoleBloodWorm
+      briefing:
+        text: blood-worm-role-briefing
+        color: Red
+  - type: DynamicRuleCost
+    cost: 100

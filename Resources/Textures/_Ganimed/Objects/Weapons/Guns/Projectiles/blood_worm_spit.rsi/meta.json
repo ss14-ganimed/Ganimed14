@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-4.0",
+  "copyright": "Taken from https://github.com/tgstation/tgstation/pull/93787",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "worm_spit"
+    }
+  ]
+}
