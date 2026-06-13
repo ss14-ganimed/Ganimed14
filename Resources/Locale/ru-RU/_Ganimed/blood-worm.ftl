@@ -1,5 +1,6 @@
 blood-worm-target-no-blood = У цели нет кровотока.
 blood-worm-target-occupied = Этого носителя уже занимает другой кровавый червь.
+blood-worm-target-is-worm = Кровавые черви не могут высасывать кровь друг у друга.
 blood-worm-target-empty = У цели больше нет крови.
 blood-worm-leech-success = Вы высасываете кровь из {$target}.
 blood-worm-enter-host = Вы проникаете в тело {$target}.

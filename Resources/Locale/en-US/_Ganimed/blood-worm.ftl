@@ -1,5 +1,6 @@
 blood-worm-target-no-blood = This target has no bloodstream.
 blood-worm-target-occupied = Another blood worm already occupies this host.
+blood-worm-target-is-worm = Blood worms cannot leech blood from each other.
 blood-worm-target-empty = This target has no blood left.
 blood-worm-not-enough-host-blood = This body has too little blood for control.
 blood-worm-leech-success = You leech blood from {$target}.

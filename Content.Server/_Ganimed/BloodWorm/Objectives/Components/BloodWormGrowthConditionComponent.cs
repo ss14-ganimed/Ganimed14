@@ -6,5 +6,11 @@ namespace Content.Server._Ganimed.BloodWorm.Objectives.Components;
 public sealed partial class BloodWormGrowthConditionComponent : Component
 {
     [DataField]
-    public float TargetConsumedBlood = 2000f;
+    public float TargetConsumedBlood;
+
+    [DataField]
+    public int MinTargetConsumedBlood = 6000;
+
+    [DataField]
+    public int MaxTargetConsumedBlood = 10000;
 }

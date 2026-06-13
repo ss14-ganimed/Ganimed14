@@ -298,6 +298,12 @@ public sealed class BloodWormSystem : EntitySystem
             return;
         }
 
+        if (HasComp<BloodWormComponent>(args.Target))
+        {
+            _popup.PopupEntity(Loc.GetString("blood-worm-target-is-worm"), uid, uid);
+            return;
+        }
+
         if (!_solution.ResolveSolution(args.Target, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution))
             return;
 
@@ -982,6 +988,7 @@ public sealed class BloodWormSystem : EntitySystem
         }
 
         if (!TryComp(target, out BloodstreamComponent? bloodstream) ||
+            HasComp<BloodWormComponent>(target) ||
             HasComp<BloodWormHostComponent>(target) ||
             !_solution.ResolveSolution(target, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var blood))
         {
