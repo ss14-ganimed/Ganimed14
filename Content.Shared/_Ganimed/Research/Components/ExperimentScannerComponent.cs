@@ -25,6 +25,11 @@ public sealed partial class ExperimentScannerComponent : Component
     [DataField]
     public TimeSpan DenySoundDelay = TimeSpan.FromSeconds(2);
 
+    /// <summary>
+    /// Client-side throttle for predicted scan-attempt feedback sounds.
+    /// </summary>
+    public TimeSpan NextScanAttemptSoundTime = TimeSpan.Zero;
+
     [DataField]
     public SoundSpecifier SelectSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
 

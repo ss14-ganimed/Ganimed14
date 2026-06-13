@@ -14,7 +14,6 @@ public abstract class SharedExperimentScannerSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
-    private TimeSpan _nextScanAttemptSound = TimeSpan.Zero;
     private static readonly TimeSpan AttemptSoundDelay = TimeSpan.FromMilliseconds(150);
 
     public override void Initialize()
@@ -56,10 +55,10 @@ public abstract class SharedExperimentScannerSystem : EntitySystem
         if (!Net.IsClient || !_timing.IsFirstTimePredicted)
             return;
 
-        if (_timing.CurTime < _nextScanAttemptSound)
+        if (_timing.CurTime < scanner.Comp.NextScanAttemptSoundTime)
             return;
 
-        _nextScanAttemptSound = _timing.CurTime + AttemptSoundDelay;
+        scanner.Comp.NextScanAttemptSoundTime = _timing.CurTime + AttemptSoundDelay;
         _audio.PlayPvs(scanner.Comp.SelectSound, scanner);
     }
 
