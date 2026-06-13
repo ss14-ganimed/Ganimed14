@@ -245,8 +245,11 @@ public sealed class BloodWormSystem : EntitySystem
 
     private void OnHostBleedModifier(EntityUid uid, BloodWormHostComponent hostComp, ref BleedModifierEvent args)
     {
-        // Hosted bodies bleed 50% stronger than normal.
-        args.BleedAmount *= 1.5f;
+        if (!TryComp(hostComp.Worm, out BloodWormComponent? wormComp))
+            return;
+
+        // Use per-stage prototype tuning (e.g. hatchling/juvenile/adult differences).
+        args.BleedAmount *= wormComp.HostBleedDamageMultiplier;
     }
 
     private void OnHostStunned(EntityUid uid, BloodWormHostComponent hostComp, ref StunnedEvent args)
@@ -461,6 +464,9 @@ public sealed class BloodWormSystem : EntitySystem
         }
 
         HealEntityTotalDamage(host, args.HealAmount);
+
+        if (args.BloodHealAmount > 0f && TryComp(host, out BloodstreamComponent? bloodstream))
+            _bloodstream.TryModifyBloodLevel((host, bloodstream), FixedPoint2.New(args.BloodHealAmount));
 
         PopupToWorm(worm, comp, "blood-worm-inject-success");
         return true;
