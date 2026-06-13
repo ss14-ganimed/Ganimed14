@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "license": "CC-BY-NC-SA-4.0",
+    "copyright": "Taken from https://github.com/tgstation/tgstation/pull/93787",
+    "size": {
+        "x": 8,
+        "y": 8
+    },
+    "states": [
+        {
+            "name": "HudBlood100"
+        },
+        {
+            "name": "HudBlood75"
+        },
+        {
+            "name": "HudBlood50"
+        },
+        {
+            "name": "HudBlood25"
+        },
+        {
+            "name": "HudBlood0"
+        }
+    ]
+}

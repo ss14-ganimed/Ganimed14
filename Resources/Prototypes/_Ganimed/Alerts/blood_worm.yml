@@ -16,7 +16,7 @@
   - sprite: /Textures/ADT/Interface/Alerts/human_alive.rsi
     state: health5
   - sprite: /Textures/ADT/Interface/Alerts/human_alive.rsi
-    state: health6
+    state: health5
   maxSeverity: 6
   name: alerts-blood-worm-health-name
   description: alerts-blood-worm-health-desc

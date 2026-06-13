@@ -28,7 +28,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      45: Dead
+      80: Dead
   - type: DamageStateVisuals
     states:
       Alive:
@@ -53,7 +53,7 @@
     animation: WeaponArcBite
     damage:
       types:
-        Piercing: 10
+        Piercing: 12
   - type: Damageable
     damageContainer: Biological
   - type: NpcFactionMember
@@ -66,6 +66,12 @@
     stage: Hatchling
     maxBloodResource: 80
     bloodResource: 80
+    enterHostSound: /Audio/Weapons/Xeno/alien_claw_flesh1.ogg
+    leaveHostSound: /Audio/Effects/gib2.ogg
+    spitSound: /Audio/Weapons/Xeno/alien_spitacid.ogg
+    cocoonFormSound: /Audio/Effects/Changeling/devour_windup.ogg
+    cocoonHatchSound: /Audio/Effects/gib1.ogg
+    leechTickSound: /Audio/Effects/Fluids/blood1.ogg
     spitProjectile: BulletBloodWormSpit
     regenPerSecond: 0.3
     hostDrainPerSecond: 12
@@ -73,7 +79,9 @@
     leechAction: ActionBloodWormLeechHatchling
     invadeAction: ActionBloodWormInvade
     matureAction: ActionBloodWormMature
+    injectAction: ActionBloodWormInject
     leaveHostAction: ActionBloodWormLeaveHost
+    reviveHostAction: ActionBloodWormReviveHost
 
 - type: entity
   id: MobBloodWormCocoonJuvenile
@@ -170,7 +178,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      120: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 3.7
     baseSprintSpeed: 3.7
@@ -179,7 +187,7 @@
   - type: MeleeWeapon
     damage:
       types:
-        Piercing: 16
+        Piercing: 20
   - type: BloodWorm
     stage: Juvenile
     maxBloodResource: 120
@@ -191,7 +199,9 @@
     invadeAction: ActionBloodWormInvade
     spitAction: ActionBloodWormSpitJuvenile
     matureAction: ActionBloodWormMature
+    injectAction: ActionBloodWormInject
     leaveHostAction: ActionBloodWormLeaveHost
+    reviveHostAction: ActionBloodWormReviveHost
 
 - type: entity
   id: MobBloodWormAdult
@@ -234,7 +244,7 @@
   - type: MeleeWeapon
     damage:
       types:
-        Piercing: 22
+        Piercing: 30
   - type: BloodWorm
     stage: Adult
     maxBloodResource: 180
@@ -246,4 +256,6 @@
     invadeAction: ActionBloodWormInvade
     spitAction: ActionBloodWormSpitAdult
     matureAction: ActionBloodWormMature
+    injectAction: ActionBloodWormInject
     leaveHostAction: ActionBloodWormLeaveHost
+    reviveHostAction: ActionBloodWormReviveHost

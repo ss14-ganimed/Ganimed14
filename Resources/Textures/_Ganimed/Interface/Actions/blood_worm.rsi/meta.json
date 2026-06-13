@@ -27,6 +27,12 @@
     },
     {
         "name": "spit_blood"
+    },
+    {
+        "name": "inject_blood"
+    },
+    {
+        "name": "revive_host"
     }
   ]
 }

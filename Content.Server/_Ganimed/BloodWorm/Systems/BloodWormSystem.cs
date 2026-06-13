@@ -1,7 +1,10 @@
 using Content.Server._Ganimed.BloodWorm.Components;
 using Content.Server.ADT.Language;
 using Content.Server.Body.Systems;
+using Content.Server.Ghost.Roles.Components;
 using Content.Server.Mind;
+using Content.Server.NPC.Components;
+using Content.Server.NPC.Systems;
 using Content.Server.Stunnable;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared._Ganimed.BloodWorm;
@@ -22,6 +25,8 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
+using Content.Shared.NPC;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
@@ -38,6 +43,8 @@ using Content.Shared.Alert;
 using Content.Shared.Damage.Components;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Player;
 using System.Linq;
 using System.Numerics;
 
@@ -62,6 +69,8 @@ public sealed class BloodWormSystem : EntitySystem
     [Dependency] private readonly SharedRoleSystem _roles = default!;
     [Dependency] private readonly LanguageSystem _language = default!;
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
+    [Dependency] private readonly NPCSystem _npc = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     private readonly List<EntityUid> _pendingCocoonHatches = new();
     private static readonly ProtoId<NpcFactionPrototype> BloodWormFaction = "BloodWorm";
 
@@ -71,6 +80,7 @@ public sealed class BloodWormSystem : EntitySystem
 
         SubscribeLocalEvent<BloodWormComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<BloodWormComponent, ComponentShutdown>(OnShutdown);
+        SubscribeLocalEvent<BloodWormComponent, MindAddedMessage>(OnWormMindAdded);
         SubscribeLocalEvent<BloodWormComponent, MobStateChangedEvent>(OnWormStateChanged);
 
         SubscribeLocalEvent<BloodWormHostComponent, ComponentShutdown>(OnHostShutdown);
@@ -93,7 +103,6 @@ public sealed class BloodWormSystem : EntitySystem
 
         SubscribeLocalEvent<BloodWormComponent, BloodWormInvadeDoAfterEvent>(OnInvadeDoAfter);
         SubscribeLocalEvent<BloodWormComponent, BloodWormLeaveHostDoAfterEvent>(OnLeaveDoAfter);
-        SubscribeLocalEvent<BloodWormComponent, BloodWormReviveDoAfterEvent>(OnReviveDoAfter);
         SubscribeLocalEvent<BloodWormComponent, BloodWormLeechDoAfterEvent>(OnLeechDoAfter);
         SubscribeLocalEvent<BloodWormComponent, MeleeHitEvent>(OnWormMeleeHit);
 
@@ -132,19 +141,6 @@ public sealed class BloodWormSystem : EntitySystem
                 LeaveHost(uid, comp, true);
                 continue;
             }
-
-            if (hostBloodstream.BleedAmount > 0)
-            {
-                comp.BloodResource -= hostBloodstream.BleedAmount * comp.HostBleedDamageMultiplier * frameTime;
-                if (comp.BloodResource <= 0f)
-                {
-                    DieWorm(uid);
-                    continue;
-                }
-            }
-
-            SyncHostDamageToWorm(comp);
-            UpdateHealthHud(comp);
         }
 
         foreach (var cocoonUid in _pendingCocoonHatches)
@@ -187,6 +183,20 @@ public sealed class BloodWormSystem : EntitySystem
             LeaveHost(uid, comp, false);
     }
 
+    private void OnWormMindAdded(Entity<BloodWormComponent> ent, ref MindAddedMessage args)
+    {
+        if (!_roles.MindHasRole<BloodWormRoleComponent>(args.Mind))
+            _roles.MindAddRole(args.Mind, "MindRoleBloodWorm", mind: args.Mind.Comp, silent: true);
+
+        Entity<MindComponent?> mind = (args.Mind.Owner, args.Mind.Comp);
+
+        if (!_mind.TryFindObjective(mind, "BloodWormGrowthObjective", out _))
+            _mind.TryAddObjective(args.Mind.Owner, args.Mind.Comp, "BloodWormGrowthObjective");
+
+        if (!_mind.TryFindObjective(mind, "BloodWormTeamEscapeObjective", out _))
+            _mind.TryAddObjective(args.Mind.Owner, args.Mind.Comp, "BloodWormTeamEscapeObjective");
+    }
+
     private void OnHostShutdown(EntityUid uid, BloodWormHostComponent hostComp, ComponentShutdown args)
     {
         if (!TryComp(hostComp.Worm, out BloodWormComponent? wormComp))
@@ -223,15 +233,10 @@ public sealed class BloodWormSystem : EntitySystem
         if (transfer.Empty)
             return;
 
-        var transferred = transfer.GetTotal().Float();
-        if (transferred <= 0)
-            return;
+        _damageable.TryChangeDamage(hostComp.Worm, transfer, ignoreResistances: true, interruptsDoAfters: false);
 
-        wormComp.BloodResource -= transferred;
-        if (wormComp.BloodResource <= 0f)
-            DieWorm(hostComp.Worm);
-
-        _damageable.TryChangeDamage(uid, NegateDamage(transfer), ignoreResistances: true, interruptsDoAfters: false);
+        // Do not negate host damage here: hosted body should keep burn/bloodloss damage,
+        // while the worm additionally suffers mirrored damage.
         UpdateHealthHud(wormComp, hostComp.Worm);
     }
 
@@ -370,6 +375,13 @@ public sealed class BloodWormSystem : EntitySystem
             return;
 
         CancelLeech(comp);
+        if (_mobState.IsDead(host))
+        {
+            LeaveHost(uid, comp, true);
+            args.Handled = true;
+            return;
+        }
+
         StartLeaveDoAfter(uid, uid, host, args.Delay);
         args.Handled = true;
     }
@@ -378,6 +390,13 @@ public sealed class BloodWormSystem : EntitySystem
     {
         if (args.Handled || !TryComp(hostComp.Worm, out BloodWormComponent? wormComp) || wormComp.Host is not { } host)
             return;
+
+        if (_mobState.IsDead(host))
+        {
+            LeaveHost(hostComp.Worm, wormComp, true);
+            args.Handled = true;
+            return;
+        }
 
         StartLeaveDoAfter(hostComp.Worm, uid, host, args.Delay);
         args.Handled = true;
@@ -426,20 +445,13 @@ public sealed class BloodWormSystem : EntitySystem
 
     private bool TryInject(EntityUid worm, EntityUid host, BloodWormComponent comp, BloodWormInjectActionEvent args)
     {
-        if (!TrySpendBlood((worm, comp), args.BloodCost))
+        if (!TrySpendConsumedBlood((worm, comp), args.BloodCost))
         {
             PopupToWorm(worm, comp, "blood-worm-out-of-blood");
             return false;
         }
 
-        var damage = new DamageSpecifier(_proto.Index<DamageTypePrototype>("Blunt"), -args.HealAmount);
-        _damageable.TryChangeDamage(host, damage, interruptsDoAfters: false);
-
-        if (TryComp(host, out BloodstreamComponent? bloodstream))
-        {
-            _bloodstream.TryModifyBloodLevel((host, bloodstream), FixedPoint2.New(args.BloodHealAmount));
-            _bloodstream.TryModifyBleedAmount((host, bloodstream), -2.0f);
-        }
+        HealEntityTotalDamage(host, args.HealAmount);
 
         PopupToWorm(worm, comp, "blood-worm-inject-success");
         return true;
@@ -490,6 +502,7 @@ public sealed class BloodWormSystem : EntitySystem
             direction = Vector2.Normalize(toTarget);
 
         _gun.ShootProjectile(projectile, direction, Vector2.Zero, shooter, shooter, comp.SpitProjectileSpeed);
+        _audio.PlayPvs(comp.SpitSound, shooter);
         return true;
     }
 
@@ -513,25 +526,18 @@ public sealed class BloodWormSystem : EntitySystem
             return;
 
         comp.ConsumedBlood = MathF.Max(0f, comp.ConsumedBlood - GetMatureCost(comp));
+        _audio.PlayPvs(comp.CocoonFormSound, uid);
         TransformWorm(uid, comp, cocoonProto, grantBloodBonus: false);
         args.Handled = true;
     }
 
     private void OnReviveActionFromWorm(EntityUid uid, BloodWormComponent comp, BloodWormReviveHostActionEvent args)
     {
-        if (args.Handled || comp.Host is not { } host || !_mobState.IsDead(host))
+        if (args.Handled || comp.Host is not { } host)
             return;
 
         CancelLeech(comp);
-
-        if (!TrySpendBlood((uid, comp), args.BloodCost))
-        {
-            PopupToWorm(uid, comp, "blood-worm-out-of-blood");
-            return;
-        }
-
-        StartReviveDoAfter(uid, uid, host, args.Delay);
-        args.Handled = true;
+        args.Handled = TryReviveHost(uid, host, comp);
     }
 
     private void OnReviveActionFromHost(EntityUid uid, BloodWormHostComponent hostComp, BloodWormReviveHostActionEvent args)
@@ -539,40 +545,18 @@ public sealed class BloodWormSystem : EntitySystem
         if (args.Handled || !TryComp(hostComp.Worm, out BloodWormComponent? wormComp))
             return;
 
-        if (wormComp.Host is not { } host || !_mobState.IsDead(host))
+        if (wormComp.Host is not { } host)
             return;
 
-        if (!TrySpendBlood((hostComp.Worm, wormComp), args.BloodCost))
-        {
-            PopupToWorm(hostComp.Worm, wormComp, "blood-worm-out-of-blood");
-            return;
-        }
-
-        StartReviveDoAfter(hostComp.Worm, uid, host, args.Delay);
-        args.Handled = true;
+        args.Handled = TryReviveHost(hostComp.Worm, host, wormComp);
     }
 
-    private void StartReviveDoAfter(EntityUid worm, EntityUid performer, EntityUid host, float delay)
+    private bool TryReviveHost(EntityUid worm, EntityUid host, BloodWormComponent comp)
     {
-        var doAfter = new DoAfterArgs(EntityManager, performer, delay, new BloodWormReviveDoAfterEvent(), worm, target: host)
-        {
-            BreakOnDamage = true,
-            BreakOnMove = false,
-            BreakOnWeightlessMove = false,
-            AttemptFrequency = AttemptFrequency.StartAndEnd
-        };
-
-        _doAfter.TryStartDoAfter(doAfter);
-    }
-
-    private void OnReviveDoAfter(EntityUid uid, BloodWormComponent comp, BloodWormReviveDoAfterEvent args)
-    {
-        if (args.Handled || args.Cancelled || comp.Host is not { } host || !_mobState.IsDead(host))
-            return;
-
-        args.Handled = true;
-        RaiseLocalEvent(host, new RejuvenateEvent());
-        PopupToWorm(uid, comp, "blood-worm-revive-success");
+        HealEntityTotalDamage(host, 150f);
+        _mobState.ChangeMobState(host, MobState.Alive);
+        PopupToWorm(worm, comp, "blood-worm-revive-success");
+        return true;
     }
 
     private bool EnterHost(EntityUid worm, EntityUid host, BloodWormComponent comp)
@@ -584,6 +568,7 @@ public sealed class BloodWormSystem : EntitySystem
         hostComp.Worm = worm;
         hostComp.OriginalMind = null;
         hostComp.HadBloodWormFaction = false;
+        hostComp.WormNpcWasAwake = HasComp<ActiveNPCComponent>(worm);
         EnsureComp<BloodWormInfectedComponent>(host);
         hostComp.CachedDamage = TryComp(host, out DamageableComponent? damageable)
             ? new DamageSpecifier(damageable.Damage)
@@ -612,33 +597,33 @@ public sealed class BloodWormSystem : EntitySystem
                 _language.AddSpokenLanguage(host, "BloodWorm", LanguageKnowledge.Speak, hostLanguages);
         }
 
-        if (_mind.TryGetMind(worm, out var wormMindId, out _))
+        if (_mind.TryGetMind(worm, out var wormMindId, out var wormMind))
+        {
+            hostComp.WormMind = wormMindId;
+            hostComp.WormMindPreventGhosting = wormMind.PreventGhosting;
+            hostComp.WormMindPreventGhostingSendMessage = wormMind.PreventGhostingSendMessage;
+            wormMind.PreventGhosting = true;
+            wormMind.PreventGhostingSendMessage = false;
             _mind.TransferTo(wormMindId, host);
+        }
+
+        // Worm should not keep NPC aggro logic while hidden in a host.
+        _npc.SleepNPC(worm);
 
         comp.Host = host;
-        comp.BloodResource = comp.MaxBloodResource;
 
         if (TryComp(host, out BloodstreamComponent? bloodstream) &&
             _solution.ResolveSolution(host, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var blood))
         {
             hostComp.CachedBloodLossThreshold = bloodstream.BloodlossThreshold;
             hostComp.CachedBleedAmount = bloodstream.BleedAmount;
+            hostComp.CachedBloodVolume = (float) blood.Volume;
             var missing = (float) (blood.MaxVolume - blood.Volume);
             if (missing > 0)
                 _bloodstream.TryModifyBloodLevel((host, bloodstream), FixedPoint2.New(missing));
-
-            // Host bloodloss should not immediately punish the worm after takeover.
-            _bloodstream.SetBloodLossThreshold((host, bloodstream), 0f);
-            _bloodstream.TryModifyBleedAmount((host, bloodstream), -bloodstream.BleedAmount);
         }
 
-        if (TryComp(host, out DamageableComponent? hostedDamage))
-            _damageable.SetAllDamage((host, hostedDamage), FixedPoint2.Zero);
-
-        _mobState.ChangeMobState(host, MobState.Alive);
-
-        _stun.TryKnockdown(host, TimeSpan.FromSeconds(2), refresh: true, autoStand: true, drop: false, force: true);
-
+        _audio.PlayPvs(comp.EnterHostSound, host);
         _popup.PopupEntity(Loc.GetString("blood-worm-enter-host", ("target", Identity.Entity(host, EntityManager))), host, host);
         return true;
     }
@@ -659,15 +644,10 @@ public sealed class BloodWormSystem : EntitySystem
             RemoveAction(host, hostComp.SpitActionEntity);
             if (TryComp(host, out BloodstreamComponent? hostBloodstream))
             {
-                _bloodstream.SetBloodLossThreshold((host, hostBloodstream), hostComp.CachedBloodLossThreshold);
-                _bloodstream.TryModifyBleedAmount((host, hostBloodstream), hostComp.CachedBleedAmount - hostBloodstream.BleedAmount);
-            }
-
-            if (TryComp(host, out DamageableComponent? hostDamage))
-            {
-                hostComp.SuppressDamageRelay = true;
-                _damageable.SetDamage((host, hostDamage), new DamageSpecifier(hostComp.CachedDamage));
-                hostComp.SuppressDamageRelay = false;
+                var currentBlood = GetCurrentBlood((host, hostBloodstream));
+                var bloodDelta = hostComp.CachedBloodVolume - currentBlood;
+                if (MathF.Abs(bloodDelta) > 0.01f)
+                    _bloodstream.TryModifyBloodLevel((host, hostBloodstream), FixedPoint2.New(bloodDelta));
             }
 
             if (hostComp.OriginalMind is { } originalMind &&
@@ -693,6 +673,16 @@ public sealed class BloodWormSystem : EntitySystem
             if (!hostComp.HadBloodWormFaction)
                 _npcFaction.RemoveFaction((host, CompOrNull<NpcFactionMemberComponent>(host)), BloodWormFaction);
 
+            if (hostComp.WormMind is { } wormMindId &&
+                TryComp(wormMindId, out MindComponent? wormMind))
+            {
+                wormMind.PreventGhosting = hostComp.WormMindPreventGhosting;
+                wormMind.PreventGhostingSendMessage = hostComp.WormMindPreventGhostingSendMessage;
+            }
+
+            if (hostComp.WormNpcWasAwake && !HasComp<ActorComponent>(worm))
+                _npc.WakeNPC(worm);
+
             RemComp<BloodWormHostComponent>(host);
         }
 
@@ -700,7 +690,9 @@ public sealed class BloodWormSystem : EntitySystem
         _container.Remove(worm, container);
         _transform.SetCoordinates(worm, Transform(host).Coordinates);
 
+        _audio.PlayPvs(comp.LeaveHostSound, host);
         _popup.PopupEntity(Loc.GetString("blood-worm-leave-host"), host, host);
+        _mobState.ChangeMobState(host, MobState.Dead);
         comp.Host = null;
         RemCompDeferred<BloodWormInfectedComponent>(host);
         _alerts.ClearAlert(host, "BloodWormHealth");
@@ -752,6 +744,8 @@ public sealed class BloodWormSystem : EntitySystem
         if (comp.CocoonHatchPrototype == null)
             return;
 
+        _audio.PlayPvs(comp.CocoonHatchSound, uid);
+
         // QueueDel is deferred; clear hatch data first to prevent duplicate hatches.
         var hatchProto = comp.CocoonHatchPrototype.Value;
         comp.CocoonHatchPrototype = null;
@@ -759,7 +753,14 @@ public sealed class BloodWormSystem : EntitySystem
         var coords = Transform(uid).Coordinates;
         for (var i = 0; i < comp.CocoonSpawnHatchlings; i++)
         {
-            Spawn("MobBloodWormHatchling", coords);
+            var hatchling = Spawn("MobBloodWormHatchling", coords);
+            var ghostRole = EnsureComp<GhostRoleComponent>(hatchling);
+            ghostRole.RoleName = "ghost-role-information-blood-worm-name";
+            ghostRole.RoleDescription = "ghost-role-information-blood-worm-description";
+            ghostRole.RoleRules = "ghost-role-information-rules-team-antagonist";
+            ghostRole.MindRoles.Clear();
+            ghostRole.MindRoles.Add("MindRoleBloodWorm");
+            EnsureComp<GhostTakeoverAvailableComponent>(hatchling);
         }
 
         var newWorm = TransformWorm(uid, comp, hatchProto);
@@ -850,6 +851,18 @@ public sealed class BloodWormSystem : EntitySystem
         return true;
     }
 
+    private bool TrySpendConsumedBlood(Entity<BloodWormComponent> worm, float amount)
+    {
+        if (amount <= 0f)
+            return true;
+
+        if (worm.Comp.ConsumedBlood < amount)
+            return false;
+
+        worm.Comp.ConsumedBlood -= amount;
+        return true;
+    }
+
     private float GetCurrentBlood(Entity<BloodstreamComponent> bloodstream)
     {
         if (!_solution.ResolveSolution(bloodstream.Owner, bloodstream.Comp.BloodSolutionName, ref bloodstream.Comp.BloodSolution, out var blood))
@@ -874,53 +887,40 @@ public sealed class BloodWormSystem : EntitySystem
         return (float) drained.Volume;
     }
 
-    private static DamageSpecifier NegateDamage(DamageSpecifier damage)
-    {
-        var negated = new DamageSpecifier();
-
-        foreach (var (type, amount) in damage.DamageDict)
-        {
-            if (amount == 0)
-                continue;
-
-            negated.DamageDict[type] = -amount;
-        }
-
-        return negated;
-    }
-
-    private void SyncHostDamageToWorm(BloodWormComponent comp)
-    {
-        if (comp.Host is not { } host ||
-            !TryComp(host, out BloodWormHostComponent? hostComp) ||
-            !TryComp(host, out DamageableComponent? damageable))
-        {
-            return;
-        }
-
-        var damageTypes = Math.Max(1, damageable.Damage.DamageDict.Count);
-        var totalDamage = Math.Max(0f, comp.MaxBloodResource - comp.BloodResource);
-        var perType = FixedPoint2.New(totalDamage / damageTypes);
-
-        hostComp.SuppressDamageRelay = true;
-        _damageable.SetAllDamage((host, damageable), perType);
-        hostComp.SuppressDamageRelay = false;
-    }
-
     private void UpdateHealthHud(BloodWormComponent comp, EntityUid? worm = null)
     {
         var target = comp.Host ?? worm;
         if (target == null)
             return;
 
-        var ratio = comp.MaxBloodResource <= 0f ? 0f : Math.Clamp(comp.BloodResource / comp.MaxBloodResource, 0f, 1f);
-        var severity = (short) Math.Clamp((int) MathF.Round((1f - ratio) * 6f), 0, 6);
-        _alerts.ShowAlert(target.Value, "BloodWormHealth", severity);
-
         var resource = EnsureComp<BloodWormResourceComponent>(target.Value);
         resource.BloodAmount = (int) MathF.Round(MathF.Max(comp.ConsumedBlood, 0f));
         Dirty(target.Value, resource);
         _alerts.ShowAlert(target.Value, resource.BloodAlert);
+    }
+
+    private void HealEntityTotalDamage(EntityUid uid, float healAmount)
+    {
+        if (healAmount <= 0f || !TryComp(uid, out DamageableComponent? damageable))
+            return;
+
+        var total = damageable.TotalDamage.Float();
+        if (total <= 0f)
+            return;
+
+        var healed = MathF.Min(total, healAmount);
+        var ratio = MathF.Max(0f, (total - healed) / total);
+        var scaled = new DamageSpecifier();
+
+        foreach (var (type, amount) in damageable.Damage.DamageDict)
+        {
+            if (amount <= 0)
+                continue;
+
+            scaled.DamageDict[type] = amount * ratio;
+        }
+
+        _damageable.SetDamage((uid, damageable), scaled);
     }
 
     private void PopupToWorm(EntityUid worm, BloodWormComponent comp, string key)
@@ -1011,6 +1011,7 @@ public sealed class BloodWormSystem : EntitySystem
         }
 
         GainBlood((uid, comp), drained, synth);
+        _audio.PlayPvs(comp.LeechTickSound, uid);
 
         if (!_mobState.IsDead(target))
         {

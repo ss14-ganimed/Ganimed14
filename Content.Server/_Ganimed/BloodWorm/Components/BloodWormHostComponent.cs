@@ -19,8 +19,13 @@ public sealed partial class BloodWormHostComponent : Component
     public EntityUid? ReviveActionEntity;
     public bool HadBloodWormLanguage = false;
     public bool HadBloodWormFaction = false;
+    public bool WormNpcWasAwake = false;
+    public EntityUid? WormMind;
+    public bool WormMindPreventGhosting = false;
+    public bool WormMindPreventGhostingSendMessage = true;
 
     public float CachedBloodLossThreshold = 0.8f;
+    public float CachedBloodVolume = 0f;
 
     public float CachedBleedAmount = 0f;
 

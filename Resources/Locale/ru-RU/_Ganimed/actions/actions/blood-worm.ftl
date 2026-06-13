@@ -8,3 +8,7 @@ action-name-blood-worm-mature = Созреть
 action-description-blood-worm-mature = Мгновенно сформируйте кокон и вылупитесь в следующую стадию через 30 секунд.
 action-name-blood-worm-leave-host = Покинуть носителя
 action-description-blood-worm-leave-host = С силой вырвитесь из тела носителя.
+action-name-blood-worm-heal-host = Исцелить носителя
+action-description-blood-worm-heal-host = Потратьте поглощенную кровь, чтобы исцелить тело носителя на 65 урона.
+action-name-blood-worm-revive-host = Воскресить носителя
+action-description-blood-worm-revive-host = Верните тело носителя к жизни и восстановите до 150 суммарного урона.

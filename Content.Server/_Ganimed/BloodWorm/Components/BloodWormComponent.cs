@@ -1,5 +1,6 @@
 using Robust.Shared.Prototypes;
 using Content.Shared.DoAfter;
+using Robust.Shared.Audio;
 
 namespace Content.Server._Ganimed.BloodWorm.Components;
 
@@ -106,4 +107,22 @@ public sealed partial class BloodWormComponent : Component
     public EntityUid? MatureActionEntity;
 
     public DoAfterId? LeechDoAfter;
+
+    [DataField]
+    public SoundSpecifier EnterHostSound = new SoundPathSpecifier("/Audio/Weapons/Xeno/alien_claw_flesh2.ogg");
+
+    [DataField]
+    public SoundSpecifier LeaveHostSound = new SoundPathSpecifier("/Audio/Effects/gib2.ogg");
+
+    [DataField]
+    public SoundSpecifier SpitSound = new SoundPathSpecifier("/Audio/Weapons/Xeno/alien_spitacid.ogg");
+
+    [DataField]
+    public SoundSpecifier CocoonFormSound = new SoundPathSpecifier("/Audio/Effects/Chemistry/bubbles.ogg");
+
+    [DataField]
+    public SoundSpecifier CocoonHatchSound = new SoundPathSpecifier("/Audio/Effects/gib1.ogg");
+
+    [DataField]
+    public SoundSpecifier LeechTickSound = new SoundPathSpecifier("/Audio/Effects/Fluids/slosh.ogg");
 }

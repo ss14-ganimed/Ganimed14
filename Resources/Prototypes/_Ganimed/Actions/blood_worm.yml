@@ -133,3 +133,42 @@
   - type: InstantAction
     event: !type:BloodWormLeaveHostActionEvent
       delay: 3
+
+- type: entity
+  id: ActionBloodWormInject
+  name: action-name-blood-worm-heal-host
+  description: action-description-blood-worm-heal-host
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon:
+      sprite: _Ganimed/Interface/Actions/blood_worm.rsi
+      state: inject_blood
+    itemIconStyle: BigAction
+    useDelay: 30
+    checkCanInteract: false
+    checkConsciousness: false
+  - type: InstantAction
+    event: !type:BloodWormInjectActionEvent
+      bloodCost: 65
+      healAmount: 65
+      bloodHealAmount: 0
+
+- type: entity
+  id: ActionBloodWormReviveHost
+  name: action-name-blood-worm-revive-host
+  description: action-description-blood-worm-revive-host
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon:
+      sprite: _Ganimed/Interface/Actions/blood_worm.rsi
+      state: revive_host
+    itemIconStyle: BigAction
+    useDelay: 300
+    checkCanInteract: false
+    checkConsciousness: false
+  - type: InstantAction
+    event: !type:BloodWormReviveHostActionEvent
+      bloodCost: 0
+      delay: 6
