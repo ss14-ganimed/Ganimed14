@@ -198,6 +198,12 @@ public sealed class BloodWormSystem : EntitySystem
 
         if (!_mind.TryFindObjective(mind, "BloodWormTeamEscapeObjective", out _))
             _mind.TryAddObjective(args.Mind.Owner, args.Mind.Comp, "BloodWormTeamEscapeObjective");
+
+        if (!_mind.TryFindObjective(mind, "BloodWormReproductionObjective", out _))
+            _mind.TryAddObjective(args.Mind.Owner, args.Mind.Comp, "BloodWormReproductionObjective");
+
+        if (!_mind.TryFindObjective(mind, "BloodWormCommandHostEscapeObjective", out _))
+            _mind.TryAddObjective(args.Mind.Owner, args.Mind.Comp, "BloodWormCommandHostEscapeObjective");
     }
 
     private void OnHostShutdown(EntityUid uid, BloodWormHostComponent hostComp, ComponentShutdown args)

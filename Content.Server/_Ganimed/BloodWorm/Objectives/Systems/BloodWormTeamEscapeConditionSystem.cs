@@ -1,6 +1,8 @@
 using Content.Server._Ganimed.BloodWorm.Components;
 using Content.Server._Ganimed.BloodWorm.Objectives.Components;
+using Content.Server.Revolutionary.Components;
 using Content.Server.Shuttles.Systems;
+using Content.Server.Station.Systems;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Roles;
@@ -15,16 +17,45 @@ public sealed class BloodWormTeamEscapeConditionSystem : EntitySystem
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SharedRoleSystem _roles = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
+    [Dependency] private readonly StationSystem _station = default!;
 
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<BloodWormTeamEscapeConditionComponent, ObjectiveAssignedEvent>(OnAssigned);
         SubscribeLocalEvent<BloodWormTeamEscapeConditionComponent, ObjectiveGetProgressEvent>(OnGetProgress);
         SubscribeLocalEvent<BloodWormTeamEscapeConditionComponent, ObjectiveAfterAssignEvent>(OnAfterAssign);
     }
 
+    private void OnAssigned(Entity<BloodWormTeamEscapeConditionComponent> ent, ref ObjectiveAssignedEvent args)
+    {
+        if (!ent.Comp.RequireCommandHost)
+            return;
+
+        var station = _station.GetOwningStation(args.Mind.OwnedEntity);
+        var commandCount = 0;
+        var query = EntityQueryEnumerator<CommandStaffComponent>();
+        while (query.MoveNext(out var commandUid, out _))
+        {
+            if (station != null && _station.GetOwningStation(commandUid) != station)
+                continue;
+
+            commandCount++;
+        }
+
+        // Do not assign this objective if there is no command staff.
+        if (commandCount <= 0)
+        {
+            args.Cancelled = true;
+            return;
+        }
+
+        ent.Comp.RequiredEscaped = commandCount;
+    }
+
     private void OnGetProgress(Entity<BloodWormTeamEscapeConditionComponent> ent, ref ObjectiveGetProgressEvent args)
     {
+        var escaped = 0;
         var query = EntityQueryEnumerator<MindComponent>();
         while (query.MoveNext(out var mindUid, out var mind))
         {
@@ -37,22 +68,30 @@ public sealed class BloodWormTeamEscapeConditionSystem : EntitySystem
             if (_mind.IsCharacterDeadIc(mind))
                 continue;
 
-            if (!HasComp<BloodWormComponent>(owned) && !HasComp<BloodWormHostComponent>(owned))
+            var isWorm = HasComp<BloodWormComponent>(owned);
+            var isHostedBody = HasComp<BloodWormHostComponent>(owned);
+            if (!isWorm && !isHostedBody)
                 continue;
 
-            if (_shuttle.IsTargetEscaping(owned))
-            {
-                args.Progress = 1f;
-                return;
-            }
+            if (ent.Comp.RequireHostedBody && !isHostedBody)
+                continue;
+
+            if (ent.Comp.RequireCommandHost && !HasComp<CommandStaffComponent>(owned))
+                continue;
+
+            if (!_shuttle.IsTargetEscaping(owned))
+                continue;
+
+            escaped++;
         }
 
-        args.Progress = 0f;
+        var required = Math.Max(1, ent.Comp.RequiredEscaped);
+        args.Progress = Math.Clamp(escaped / (float) required, 0f, 1f);
     }
 
     private void OnAfterAssign(EntityUid uid, BloodWormTeamEscapeConditionComponent comp, ref ObjectiveAfterAssignEvent args)
     {
-        _meta.SetEntityName(uid, Loc.GetString("objective-blood-worm-team-escape-title"), args.Meta);
-        _meta.SetEntityDescription(uid, Loc.GetString("objective-blood-worm-team-escape-description"), args.Meta);
+        _meta.SetEntityName(uid, Loc.GetString(comp.Title, ("count", comp.RequiredEscaped)), args.Meta);
+        _meta.SetEntityDescription(uid, Loc.GetString(comp.Description, ("count", comp.RequiredEscaped)), args.Meta);
     }
 }

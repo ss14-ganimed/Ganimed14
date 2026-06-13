@@ -23,9 +23,13 @@ alerts-blood-worm-blood-desc = Показывает текущий ресурс 
 blood-worm-round-end-agent-name = кровавый червь
 objective-issuer-blood-worm = [color=#9f2222]Улей кровавых червей[/color]
 blood-worm-role-briefing = Вы Кровавый Червь. Питайтесь, созревайте через коконы и распространяйтесь через носителей.
-objective-blood-worm-growth-title = Улей должен поглотить {$count} единиц крови.
+objective-blood-worm-growth-title = Улей должен поглотить {$count} единиц крови, дабы утолить наш голод.
 objective-blood-worm-growth-description = Достигните суммарно {$count} накопленного роста от крови среди всех червей.
 objective-blood-worm-team-escape-title = Заразить станцию центрального командования.
-objective-blood-worm-team-escape-description = Хотя бы один кровавый червь должен улететь живым на шаттле эвакуации, дабы распространить выводок на другие станции.
+objective-blood-worm-team-escape-description = Минимум {$count} кровавых червя должны улететь живыми на шаттле эвакуации, для распространения выводка на другие станции.
+objective-blood-worm-command-host-escape-title = Побег в телах командования.
+objective-blood-worm-command-host-escape-description = Минимум {$count} кровавых червя должны улететь, контролируя тела командования станции.
+objective-blood-worm-reproduction-title = Размножить выводок.
+objective-blood-worm-reproduction-description = Увеличьте численность улья минимум до {$count} кровавых червей.
 language-BloodWorm-name = Кровешепот
 language-BloodWorm-description = Шипящий язык кровавых червей. Для непосвященных звучит как влажный скрежет и пульсирующий шепот.
