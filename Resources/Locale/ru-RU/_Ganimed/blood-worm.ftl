@@ -1,7 +1,6 @@
 blood-worm-target-no-blood = У цели нет кровотока.
 blood-worm-target-occupied = Этого носителя уже занимает другой кровавый червь.
 blood-worm-target-empty = У цели больше нет крови.
-blood-worm-not-enough-host-blood = В этом теле слишком мало крови для контроля.
 blood-worm-leech-success = Вы высасываете кровь из {$target}.
 blood-worm-enter-host = Вы проникаете в тело {$target}.
 blood-worm-leave-host = Кровавый червь покидает носителя.
@@ -17,17 +16,15 @@ blood-worm-invade-no-silicon = Нельзя проникать в IPC и бор�
 blood-worm-synthetic-full = полностью синтетическая
 blood-worm-synthetic-none = не синтетическая
 blood-worm-examine-target = Кровь: {$volume}u, потенциальный рост: {$potential}u, синтетика: {$synthetic}.
-alerts-blood-worm-health-name = Живучесть червя
-alerts-blood-worm-health-desc = Показывает здоровье кровавого червя при управлении носителем.
 alerts-blood-worm-blood-name = Запас крови
 alerts-blood-worm-blood-desc = Показывает текущий ресурс крови.
 
 blood-worm-round-end-agent-name = кровавый червь
 objective-issuer-blood-worm = [color=#9f2222]Улей кровавых червей[/color]
 blood-worm-role-briefing = Вы Кровавый Червь. Питайтесь, созревайте через коконы и распространяйтесь через носителей.
-objective-blood-worm-growth-title = Улей должен поглотить {$count} единиц кровавого роста.
+objective-blood-worm-growth-title = Улей должен поглотить {$count} единиц крови.
 objective-blood-worm-growth-description = Достигните суммарно {$count} накопленного роста от крови среди всех червей.
-objective-blood-worm-team-escape-title = Обеспечьте эвакуацию червей.
-objective-blood-worm-team-escape-description = Хотя бы один кровавый червь должен улететь живым на шаттле эвакуации.
+objective-blood-worm-team-escape-title = Заразить станцию центрального командования.
+objective-blood-worm-team-escape-description = Хотя бы один кровавый червь должен улететь живым на шаттле эвакуации, дабы распространить выводок на другие станции.
 language-BloodWorm-name = Кровешепот
 language-BloodWorm-description = Шипящий язык кровавых червей. Для непосвященных звучит как влажный скрежет и пульсирующий шепот.

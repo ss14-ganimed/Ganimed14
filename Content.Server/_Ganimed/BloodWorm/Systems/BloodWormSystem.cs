@@ -185,6 +185,9 @@ public sealed class BloodWormSystem : EntitySystem
 
     private void OnWormMindAdded(Entity<BloodWormComponent> ent, ref MindAddedMessage args)
     {
+        if (TryComp(ent.Owner, out LanguageSpeakerComponent? speaker))
+            _language.SelectDefaultLanguage(ent.Owner, speaker);
+
         if (!_roles.MindHasRole<BloodWormRoleComponent>(args.Mind))
             _roles.MindAddRole(args.Mind, "MindRoleBloodWorm", mind: args.Mind.Comp, silent: true);
 

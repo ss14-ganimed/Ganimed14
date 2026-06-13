@@ -41,6 +41,9 @@
   - type: Bloodstream
     bloodMaxVolume: 250
   - type: BloodWormResource
+  - type: Speech
+    speechVerb: SmallMob
+  - type: Emoting
   - type: LanguageSpeaker
     languages:
       GalacticCommon: Understand
@@ -202,6 +205,12 @@
     injectAction: ActionBloodWormInject
     leaveHostAction: ActionBloodWormLeaveHost
     reviveHostAction: ActionBloodWormReviveHost
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 3
+    useSound:
+      path: /Audio/Items/crowbar.ogg
 
 - type: entity
   id: MobBloodWormAdult
@@ -259,3 +268,9 @@
     injectAction: ActionBloodWormInject
     leaveHostAction: ActionBloodWormLeaveHost
     reviveHostAction: ActionBloodWormReviveHost
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 5
+    useSound:
+      path: /Audio/Items/crowbar.ogg
