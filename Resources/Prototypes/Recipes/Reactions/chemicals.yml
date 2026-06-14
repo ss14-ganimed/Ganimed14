@@ -2,6 +2,7 @@
   id: Ammonia
   minPH: 1
   maxPH: 12
+  reactionRate: 6
   reactants:
     Hydrogen:
       amount: 3
@@ -28,6 +29,7 @@
   id: Diethylamine
   minPH: 5
   maxPH: 9
+  reactionRate: 8
   reactants:
     Ammonia:
       amount: 1
@@ -40,6 +42,7 @@
   id: Phenol
   minPH: 5
   maxPH: 9
+  reactionRate: 8
   reactants:
     Hydroxide:
       amount: 1
@@ -52,6 +55,7 @@
   id: Acetone
   minPH: 5
   maxPH: 9
+  reactionRate: 8
   reactants:
     Oil:
       amount: 1
@@ -319,6 +323,7 @@
   id: Oil
   minPH: 5
   maxPH: 9
+  reactionRate: 7
   reactants:
     WeldingFuel:
       amount: 1
@@ -350,6 +355,7 @@
   maxPH: 7.5
   impact: Medium
   minTemp: 370
+  reactionRate: 10
   reactants:
     Ephedrine:
       amount: 1
@@ -368,6 +374,7 @@
   maxPH: 11
   impact: Medium
   minTemp: 370
+  reactionRate: 8
   reactants:
     Ephedrine:
       amount: 1
@@ -383,6 +390,7 @@
   minPH: 7
   maxPH: 9
   impact: Medium
+  reactionRate: 9
   reactants:
     Oil:
       amount: 1
@@ -401,6 +409,7 @@
   maxPH: 8
   impact: Medium
   minTemp: 370
+  reactionRate: 8
   reactants:
     Uranium:
       amount: 1
@@ -417,6 +426,7 @@
   maxPH: 9
   impact: Medium
   maxTemp: 233
+  reactionRate: 8
   reactants:
     Chlorine:
       amount: 3
@@ -432,6 +442,7 @@
   minPH: 6
   maxPH: 8
   impact: Medium
+  reactionRate: 8
   reactants:
     MindbreakerToxin:
       amount: 1
@@ -459,6 +470,7 @@
   minPH: 2
   maxPH: 7
   impact: Medium
+  reactionRate: 8
   reactants:
     Uranium:
       amount: 1
@@ -472,6 +484,7 @@
   minPH: 7
   maxPH: 11
   impact: Medium
+  reactionRate: 9
   reactants:
     Desoxyephedrine:
       amount: 1
@@ -485,6 +498,7 @@
   minPH: 8
   maxPH: 12
   impact: Medium
+  reactionRate: 9
   reactants:
     Ethyloxyephedrine:
       amount: 1
@@ -517,6 +531,7 @@
   minPH: 5
   maxPH: 8
   minTemp: 310
+  reactionRate: 7
   reactants:
     Hydrogen:
       amount: 1
@@ -585,6 +600,7 @@
   minPH: 5
   maxPH: 8
   impact: High
+  reactionRate: 8
   reactants:
     Impedrezene:
       amount: 2
@@ -599,6 +615,7 @@
   maxPH: 11
   impact: Medium
   maxTemp: 233
+  reactionRate: 8
   reactants:
     Licoxide:
       amount: 1
@@ -611,6 +628,7 @@
   id: ArtifactGlue
   minPH: 5
   maxPH: 8
+  reactionRate: 7
   reactants:
     SpaceGlue:
       amount: 1

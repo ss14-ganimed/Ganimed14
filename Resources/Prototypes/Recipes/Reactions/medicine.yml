@@ -2,6 +2,7 @@
   id: Dylovene
   minPH: 5.8
   maxPH: 10.2
+  reactionRate: 7
   reactants:
     Silicon:
       amount: 1
@@ -30,6 +31,7 @@
   id: Cryptobiolin
   minPH: 7
   maxPH: 11.6
+  reactionRate: 7
   reactants:
     Potassium:
       amount: 1
@@ -44,6 +46,7 @@
   id: Arithrazine
   minPH: 4
   maxPH: 14.0
+  reactionRate: 7
   reactants:
     Hyronalin:
       amount: 1
@@ -108,6 +111,7 @@
   id: Epinephrine
   minPH: 5
   maxPH: 10
+  reactionRate: 9
   reactants:
     Phenol:
       amount: 1
@@ -151,6 +155,7 @@
   id: DexalinPlus
   minPH: 5
   maxPH: 9.5
+  reactionRate: 7
   reactants:
     Dexalin:
       amount: 1
@@ -234,6 +239,7 @@
   id: Leporazine
   minPH: 5.5
   maxPH: 14.0
+  reactionRate: 7
   reactants:
     Copper:
       amount: 1
@@ -289,6 +295,7 @@
   id: Synaptizine
   minPH: 5
   maxPH: 10.6
+  reactionRate: 8
   reactants:
     Lithium:
       amount: 1
@@ -329,6 +336,7 @@
   minPH: 6
   maxPH: 11.0
   minTemp: 370
+  reactionRate: 9
   reactants:
     Mercury:
       amount: 1
@@ -372,6 +380,7 @@
   id: Mannitol
   minPH: 5
   maxPH: 7.5
+  reactionRate: 8
   reactants:
     Hydrogen:
       amount: 1
@@ -387,6 +396,7 @@
   minPH: 5
   maxPH: 7.1
   minTemp: 370
+  reactionRate: 9
   reactants:
     Silicon:
       amount: 1
@@ -401,6 +411,7 @@
   id: SpaceDrugs
   minPH: 7
   maxPH: 10.6
+  reactionRate: 8
   reactants:
     Mercury:
       amount: 1
@@ -454,6 +465,7 @@
   id: Cognizine
   minPH: 5
   maxPH: 6.3
+  reactionRate: 8
   reactants:
     CarpoToxin:
       amount: 1
@@ -635,6 +647,7 @@
   maxPH: 10.6
   impact: Medium
   minTemp: 377.59
+  reactionRate: 9
   reactants:
     Diethylamine:
       amount: 1
@@ -736,6 +749,7 @@
   maxPH: 10
   impact: Medium
   maxTemp: 270 # ADT tweak
+  reactionRate: 8
   reactants:
     Mannitol:
       amount: 2
@@ -764,6 +778,7 @@
   id: Happiness
   minPH: 6
   maxPH: 8.3
+  reactionRate: 8
   reactants:
     Laughter:
       amount: 2
@@ -793,6 +808,7 @@
   id: Haloperidol
   minPH: 5
   maxPH: 10
+  reactionRate: 8
   reactants:
     Aluminium:
       amount: 1

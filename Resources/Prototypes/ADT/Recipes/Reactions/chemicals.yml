@@ -15,6 +15,7 @@
   minPH: 5
   maxPH: 8
   minTemp: 370
+  reactionRate: 8
   reactants:
     Benzene:
       amount: 2
@@ -30,6 +31,7 @@
   id: ADTMethylamine
   minPH: 8
   maxPH: 12
+  reactionRate: 8
   reactants:
     Ammonia:
       amount: 1
@@ -47,6 +49,7 @@
   maxPH: 11
   impact: Medium
   minTemp: 370
+  reactionRate: 10
   reactants:
     Ephedrine:
       amount: 1

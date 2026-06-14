@@ -330,6 +330,7 @@ namespace Content.Shared.Chemistry.Reaction
         }
 
         private static readonly FixedPoint2 DefaultReactionRate = FixedPoint2.New(5);
+        private const float BaselineReactionTemperature = 293.15f;
 
         private static bool RequiresManualMix(ReactionPrototype reaction)
         {
@@ -362,6 +363,12 @@ namespace Content.Shared.Chemistry.Reaction
             {
                 rate = reaction.ReactionRate;
             }
+
+            // Reaction speed scales linearly with absolute temperature.
+            // Examples: at 2x baseline temperature, 5u -> ~10u; at 0.5x, 5u -> ~2.5u.
+            var temperatureMultiplier = Math.Max(0f, solution.Temperature / BaselineReactionTemperature);
+            if (Math.Abs(temperatureMultiplier - 1f) > 1e-6f)
+                rate *= FixedPoint2.New(temperatureMultiplier);
 
             if (solution.ReactionRateMultiplier <= 0f || Math.Abs(solution.ReactionRateMultiplier - 1f) < 1e-6f)
                 return rate;
