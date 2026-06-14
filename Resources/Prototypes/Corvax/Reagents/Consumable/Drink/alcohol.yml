@@ -6,6 +6,7 @@
   physicalDesc: reagent-physical-desc-bubbly
   flavor: alcohol
   color: "#f7f3eb"
+  pH: 6.0
   metamorphicSprite:
     sprite: Corvax/Objects/Consumable/Drinks/alexander.rsi
     state: icon_empty
@@ -52,6 +53,7 @@
   physicalDesc: reagent-physical-desc-bubbly
   flavor: alcohol
   color: "#ea394a"
+  pH: 3.5
   metamorphicSprite:
     sprite: Corvax/Objects/Consumable/Drinks/boyarsky.rsi
     state: icon_empty
@@ -75,6 +77,7 @@
   physicalDesc: reagent-physical-desc-bubbly
   flavor: alcohol
   color: "#dbb7b2"
+  pH: 3.4
   metamorphicSprite:
     sprite: Corvax/Objects/Consumable/Drinks/bramble.rsi
     state: icon_empty
@@ -98,6 +101,7 @@
   physicalDesc: reagent-physical-desc-bubbly
   flavor: alcohol
   color: "#da2059"
+  pH: 4.0
   metabolisms:
     Drink:
       effects:
@@ -115,6 +119,7 @@
   physicalDesc: reagent-physical-desc-bubbly
   flavor: alcohol
   color: "#e9c886"
+  pH: 3.5
   metamorphicSprite:
     sprite: Corvax/Objects/Consumable/Drinks/maiTai.rsi
     state: icon_empty
@@ -138,6 +143,7 @@
   physicalDesc: reagent-physical-desc-bubbly
   flavor: alcohol
   color: "#af1700"
+  pH: 4.0
   metamorphicSprite:
     sprite: Corvax/Objects/Consumable/Drinks/negroni.rsi
     state: icon_empty
@@ -161,6 +167,7 @@
   physicalDesc: reagent-physical-desc-bubbly
   flavor: alcohol
   color: "#f49c18"
+  pH: 4.3
   metamorphicSprite:
     sprite: Corvax/Objects/Consumable/Drinks/oldFashioned.rsi
     state: icon_empty
@@ -184,6 +191,7 @@
   physicalDesc: reagent-physical-desc-bubbly
   flavor: alcohol
   color: "#d5dcd3"
+  pH: 3.2
   metamorphicSprite:
     sprite: Corvax/Objects/Consumable/Drinks/paloma.rsi
     state: icon_empty
@@ -207,6 +215,7 @@
   physicalDesc: reagent-physical-desc-bubbly
   flavor: alcohol
   color: "#b05b3c"
+  pH: 4.4
   metamorphicSprite:
     sprite: Corvax/Objects/Consumable/Drinks/yorsh.rsi
     state: icon_empty

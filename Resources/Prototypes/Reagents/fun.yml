@@ -6,6 +6,7 @@
   physicalDesc: reagent-physical-desc-fibrous
   flavor: carpet
   color: "#800000"
+  pH: 7.0
   tileReactions:
   - !type:CreateEntityTileReaction
     entity: Carpet
@@ -52,6 +53,7 @@
   physicalDesc: reagent-physical-desc-fibrous
   flavor: fiber
   color: "#808080"
+  pH: 6.8
   metabolisms:
     Food:
       effects:
@@ -69,6 +71,7 @@
   contrabandSeverity: Minor
   flavor: bee
   color: "#FFD35D"
+  pH: 5.0
   tileReactions:
   - !type:CreateEntityTileReaction
     entity: MobBee
@@ -162,6 +165,7 @@
   physicalDesc: reagent-physical-desc-bee-guts
   flavor: bee
   color: "#86530E"
+  pH: 6.2
 
 - type: reagent
   id: Saxoite
@@ -170,6 +174,7 @@
   physicalDesc: reagent-physical-desc-ground-brass
   flavor: sax
   color: "#B8A603"
+  pH: 7.0
 
 - type: reagent
   id: Licoxide
@@ -180,6 +185,7 @@
   contrabandSeverity: Minor
   flavor: shocking
   color: "#FDD023"
+  pH: 8.5
   metabolisms:
     Poison:
       effects:
@@ -196,6 +202,7 @@
   physicalDesc: reagent-physical-desc-reflective
   flavor: sharp
   color: "#e3fffb"
+  pH: 2.5
   reactiveEffects:
     Acidic:
       methods: [ Touch ]
@@ -237,6 +244,7 @@
   - Medical
   flavor: cold
   color: "#b3f1ff"
+  pH: 5.5
   boilingPoint: 50.0
   meltingPoint: 45.0
   tileReactions:
@@ -327,6 +335,7 @@
   physicalDesc: reagent-physical-desc-funny
   flavor: funny
   color: "#FF4DD2"
+  pH: 8.0
   slipData:
     requiredSlipSpeed: 3.5 #clown juice gotta slip
   metabolisms:
@@ -350,6 +359,7 @@
   physicalDesc: reagent-physical-desc-vibrant
   flavor: weh
   color: "#59b23a"
+  pH: 7.5
   metabolisms:
     Poison:
       metabolismRate: 0.25
@@ -385,6 +395,7 @@
   physicalDesc: reagent-physical-desc-inversed
   flavor: hew
   color: "#a64dc5"
+  pH: 7.5
   metabolisms:
     Poison:
       metabolismRate: 0.25
@@ -420,6 +431,7 @@
   physicalDesc: reagent-physical-desc-fluffy
   flavor: dogfood
   color: "#ed9715"
+  pH: 6.0
   metabolisms:
     Poison:
       metabolismRate: 0.2
@@ -454,6 +466,7 @@
   physicalDesc: reagent-physical-desc-milky
   flavor: cannedtuna
   color: "#d8bed8"
+  pH: 6.2
   metabolisms:
     Poison:
       metabolismRate: 0.2
@@ -509,6 +522,7 @@
   physicalDesc: reagent-physical-desc-bubbly
   flavor: dogfood
   color: "#b87333"
+  pH: 6.2
   metabolisms:
     Poison:
       metabolismRate: 0.2

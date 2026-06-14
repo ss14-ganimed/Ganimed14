@@ -41,6 +41,7 @@
 
 - type: reagent
   id: ADTAppleLiqueur
+  pH: 4.0
   name: apple-liqueur-name
   parent: ADTSugarKnight
   desc: apple-liqueur-desc
@@ -67,6 +68,7 @@
 
 - type: reagent
   id: ADTSugarKnight
+  pH: 5.2
   name: sugar-knight-name
   parent: BaseAlcohol
   desc: sugar-knight-desc
@@ -90,6 +92,7 @@
 
 - type: reagent
   id: ADTGrapeLady
+  pH: 5.0
   name: grape-lady-name
   parent: ADTSugarKnight
   desc: grape-lady-desc
@@ -113,6 +116,7 @@
 
 - type: reagent
   id: ADTSaturdayBaron
+  pH: 3.6
   name: saturday-baron-name
   parent: ADTSugarKnight
   desc: saturday-baron-desc
@@ -136,6 +140,7 @@
 
 - type: reagent
   id: ADTArcticLatte
+  pH: 5.8
   name: artic-latte-name
   parent: ADTSugarKnight
   desc: artic-latte-desc
@@ -164,6 +169,7 @@
 
 - type: reagent
   id: ADTSpecialTeaOolong
+  pH: 5.4
   name: special-teaoolong-name
   parent: ADTSugarKnight
   desc: special-teaoolong-desc
@@ -187,6 +193,7 @@
 
 - type: reagent
   id: ADTAzureBlue
+  pH: 3.8
   name: azure-blue-name
   parent: ADTSugarKnight
   desc: azure-blue-desc
@@ -210,6 +217,7 @@
 
 - type: reagent
   id: ADTPenetrationDrink
+  pH: 3.5
   name: penetration-drink-name
   parent: ADTSugarKnight
   desc: penetration-drink-desc
@@ -233,6 +241,7 @@
 
 - type: reagent
   id: ADTEclipsedEclispe
+  pH: 4.2
   name: eclipsed-eclipse-name
   parent: ADTSugarKnight
   desc: eclipsed-eclipse-desc
@@ -256,6 +265,7 @@
 
 - type: reagent
   id: ADTSpaceBush
+  pH: 3.4
   name: space-bush-name
   parent: ADTSugarKnight
   desc: space-bush-desc
@@ -279,6 +289,7 @@
 
 - type: reagent
   id: ADTBusinessConversation
+  pH: 6.0
   name: business-conversation-name
   parent: ADTSugarKnight
   desc: business-conversation-desc
@@ -305,6 +316,7 @@
 
 - type: reagent
   id: ADTAppleMartini
+  pH: 3.8
   name: apple-martini-name
   parent: ADTSugarKnight
   desc: apple-martini-desc
@@ -328,6 +340,7 @@
 
 - type: reagent
   id: ADTBacardiApple
+  pH: 4.2
   name: bacardi-apple-name
   parent: ADTSugarKnight
   desc: bacardi-apple-desc
@@ -351,6 +364,7 @@
 
 - type: reagent
   id: ADTElderGuards
+  pH: 3.2
   name: elder-guards-name
   parent: ADTSugarKnight
   desc: elder-guards-desc
@@ -374,6 +388,7 @@
 
 - type: reagent
   id: ADTLimeShade
+  pH: 4.0
   name: lime-shade-name
   parent: BaseAlcohol
   desc: lime-shade-desc
@@ -403,6 +418,7 @@
 
 - type: reagent
   id: ADTTeqilaOldFashion
+  pH: 4.5
   name: teqila-oldfashioned-name
   parent: BaseAlcohol
   desc: teqila-oldfashioned-desc
@@ -426,6 +442,7 @@
 
 - type: reagent
   id: ADTJackieWelles
+  pH: 3.5
   name: jackie-welles-name
   parent: BaseAlcohol
   desc: jackie-welles-desc
@@ -467,6 +484,7 @@
 
 - type: reagent
   id: ADTTheSilverhand
+  pH: 3.8
   name: the-silverhand-name
   parent: BaseAlcohol
   desc: the-silverhand-desc

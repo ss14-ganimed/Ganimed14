@@ -1,4 +1,5 @@
 guide-entry-conspirators = Заговорщики
+guide-entry-ganimed-chemistry = Чистота и pH
 
 # Rules
 guide-entry-rules-enterprise = Правила сервера Enterprise

@@ -4,6 +4,9 @@ using Content.Shared.FixedPoint;
 using System.Text.Json.Serialization;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.Chemistry.Reaction;
+using Content.Shared._Ganimed.Chemistry;
+using Content.Shared._Ganimed.Chemistry.Purity;
+using Content.Shared._Ganimed.Chemistry.Reagents;
 using Content.Shared.Contraband;
 using Content.Shared.EntityEffects;
 using Content.Shared.Localizations;
@@ -128,6 +131,66 @@ namespace Content.Shared.Chemistry.Reagent
         /// </summary>
         [DataField]
         public SlipperyEffectEntry? SlipData;
+
+        [DataField("pH")]
+        public float PH { get; private set; } = ChemistryPH.NeutralPH;
+
+        /// <summary>
+        /// Optional behavior when this reagent is added to an existing solution.
+        /// </summary>
+        [DataField]
+        public ReagentSolutionAddBehavior? SolutionAdd;
+
+        /// <summary>
+        /// Optional pour-in activation rules for catalyst reactions.
+        /// </summary>
+        [DataField]
+        public ReagentTransferActivationBehavior? TransferActivation;
+
+        /// <summary>
+        /// Optional pH buffer rules for adjustment reactions using this reagent.
+        /// </summary>
+        [DataField]
+        public ReagentPhBufferBehavior? PhBuffer;
+
+        /// <summary>
+        /// Optional reaction-rate boost rules for this reagent.
+        /// </summary>
+        [DataField]
+        public ReagentReactionRateBoostBehavior? ReactionRateBoost;
+
+        /// <summary>
+        /// Default purity for roundstart / dispensed reagents.
+        /// </summary>
+        [DataField]
+        public float UnreactedPurity { get; private set; } = ChemistryPurity.DefaultUnreactedPurity;
+
+        /// <summary>
+        /// Below this purity the reagent fully inverts on consumption or at reaction end.
+        /// </summary>
+        [DataField]
+        public float InverseThreshold { get; private set; } = ChemistryPurity.DefaultInverseThreshold;
+
+        [DataField]
+        public ProtoId<ReagentPrototype> ImpureReagent { get; private set; } = "ChemicalIsomers";
+
+        [DataField]
+        public ProtoId<ReagentPrototype> InverseReagent { get; private set; } = "ToxicMonomers";
+
+        [DataField]
+        public ProtoId<ReagentPrototype>? FailedReagent { get; private set; }
+
+        /// <summary>
+        /// Whether this prototype is an inverse reagent that cannot be purified.
+        /// </summary>
+        [DataField]
+        public bool IsInverseReagent { get; private set; }
+
+        /// <summary>
+        /// Impure splitting does not reduce the effective dose of the parent medicine.
+        /// </summary>
+        [DataField]
+        public bool RetainsVolumeOnSplit { get; private set; }
 
         /// <summary>
         /// The speed at which the reagent evaporates over time.

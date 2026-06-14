@@ -1,5 +1,7 @@
 - type: reaction
   id: ADTCopperNitride
+  minPH: 6
+  maxPH: 9
   reactants:
     Copper:
       amount: 3
@@ -10,7 +12,10 @@
 
 - type: reaction
   id: ADTMethanol
+  minPH: 5
+  maxPH: 8
   minTemp: 370
+  reactionRate: 8
   reactants:
     Benzene:
       amount: 2
@@ -24,6 +29,9 @@
 
 - type: reaction
   id: ADTMethylamine
+  minPH: 8
+  maxPH: 12
+  reactionRate: 8
   reactants:
     Ammonia:
       amount: 1
@@ -37,8 +45,11 @@
 
 - type: reaction
   id: ADTBlueSkyDesoxyephedrine
+  minPH: 7
+  maxPH: 11
   impact: Medium
   minTemp: 370
+  reactionRate: 10
   reactants:
     Ephedrine:
       amount: 1
@@ -53,6 +64,8 @@
 
 - type: reaction
   id: ADTDesoxyephedrineCrystalSpawn
+  minPH: 0
+  maxPH: 14
   maxTemp: 270
   impact: Medium
   quantized: true
@@ -65,6 +78,8 @@
 
 - type: reaction
   id: ADTBlueSkyDesoxyephedrineCrystalSpawn
+  minPH: 0
+  maxPH: 14
   maxTemp: 270
   impact: Medium
   quantized: true
@@ -77,6 +92,8 @@
 
 - type: reaction
   id: ADTAntiNobCreation
+  minPH: 0
+  maxPH: 14
   quantized: true
   reactants:
     ADTPlutoniumReactant:

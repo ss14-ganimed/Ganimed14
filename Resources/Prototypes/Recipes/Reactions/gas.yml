@@ -1,5 +1,7 @@
-﻿- type: reaction
+- type: reaction
   id: CarbonDioxideBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Electrolysis
@@ -12,6 +14,8 @@
 
 - type: reaction
   id: NitrousOxideBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Electrolysis

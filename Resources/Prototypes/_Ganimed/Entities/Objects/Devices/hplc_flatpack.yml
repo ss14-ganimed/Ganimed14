@@ -1,0 +1,15 @@
+- type: entity
+  parent: BaseFlatpack
+  id: HplcFlatpack
+  name: HPLC flatpack
+  description: A flatpack used for constructing a high-performance liquid chromatography machine.
+  components:
+  - type: Flatpack
+    entity: MachineHplc
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#52B4E9"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: icon-default

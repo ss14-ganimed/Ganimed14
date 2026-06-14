@@ -19,7 +19,22 @@ guidebook-reagent-effects-header = Эффекты
 guidebook-reagent-effects-metabolism-group-rate = [bold]{ $group }[/bold] [color=gray]({ $rate } единиц в секунду)[/color]
 guidebook-reagent-plant-metabolisms-header = Метаболизм растений
 guidebook-reagent-plant-metabolisms-rate = [bold]Метаболизм растений[/bold] [color=gray](1 единица каждые 3 секунды базово)[/color]
+guidebook-reagent-ph = [color=gray]pH: { $ph }[/color]
 guidebook-reagent-recipes-mix-info =
+    { $minTemp ->
+        [0]
+            { $hasMax ->
+                [true] { CAPITALIZE($verb) } ниже { $maxTemp }K
+               *[false] { CAPITALIZE($verb) }
+            }
+       *[other]
+            { CAPITALIZE($verb) } { $hasMax ->
+                [true] между { $minTemp }K и { $maxTemp }K
+               *[false] выше { $minTemp }K
+            }
+    } [color=gray](pH { $minPH }-{ $maxPH })[/color]
+
+guidebook-reagent-recipes-mix-info-no-ph =
     { $minTemp ->
         [0]
             { $hasMax ->

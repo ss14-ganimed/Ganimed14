@@ -6,6 +6,7 @@
   physicalDesc: reagent-physical-desc-gloopy
   flavor: adtconsideredmilk
   color: "#fcfcf2"
+  pH: 6.5
   recognizable: true
   metabolisms:
     Food:

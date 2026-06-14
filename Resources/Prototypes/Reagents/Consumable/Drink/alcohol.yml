@@ -3,6 +3,7 @@
 
 - type: reagent
   id: Absinthe
+  pH: 5.8
   name: reagent-name-absinthe
   parent: BaseAlcohol
   desc: reagent-desc-absinthe
@@ -48,6 +49,7 @@
 
 - type: reagent
   id: Ale
+  pH: 4.4
   name: reagent-name-ale
   parent: BaseAlcohol
   desc: reagent-desc-ale
@@ -75,6 +77,7 @@
 
 - type: reagent
   id: Beer
+  pH: 4.3
   name: reagent-name-beer
   parent: BaseAlcohol
   desc: reagent-desc-beer
@@ -102,6 +105,7 @@
 
 - type: reagent
   id: BlueCuracao
+  pH: 3.6
   name: reagent-name-blue-curacao
   parent: BaseAlcohol
   desc: reagent-desc-blue-curacao
@@ -129,6 +133,7 @@
 
 - type: reagent
   id: Cognac
+  pH: 4.0
   name: reagent-name-cognac
   parent: BaseAlcohol
   desc: reagent-desc-cognac
@@ -153,6 +158,7 @@
 
 - type: reagent
   id: DeadRum
+  pH: 4.2
   name: reagent-name-dead-rum
   parent: BaseAlcohol
   desc: reagent-desc-dead-rum
@@ -180,6 +186,7 @@
   parent: BaseAlcohol
   desc: reagent-desc-ethanol
   physicalDesc: reagent-physical-desc-strong-smelling
+  pH: 7.3
   flavor: alcohol
   color: "#b05b3c"
   boilingPoint: 78.2
@@ -235,6 +242,7 @@
 
 - type: reagent
   id: Gin
+  pH: 6.0
   name: reagent-name-gin
   parent: BaseAlcohol
   desc: reagent-desc-gin
@@ -259,6 +267,7 @@
 
 - type: reagent
   id: CoffeeLiqueur
+  pH: 5.0
   name: reagent-name-coffeeliqueur
   parent: BaseAlcohol
   desc: reagent-desc-coffeeliqueur
@@ -284,6 +293,7 @@
 
 - type: reagent
   id: MelonLiquor
+  pH: 4.5
   name: reagent-name-melon-liquor
   parent: BaseAlcohol
   desc: reagent-desc-melon-liquor
@@ -309,6 +319,7 @@
 
 - type: reagent
   id: NTCahors
+  pH: 3.6
   name: reagent-name-n-t-cahors
   parent: BaseAlcohol
   desc: reagent-desc-n-t-cahors
@@ -334,6 +345,7 @@
 
 - type: reagent
   id: PoisonWine
+  pH: 3.4
   name: reagent-name-poison-wine
   parent: BaseAlcohol
   desc: reagent-desc-poison-wine
@@ -363,6 +375,7 @@
 
 - type: reagent
   id: Rum
+  pH: 4.2
   name: reagent-name-rum
   parent: BaseAlcohol
   desc: reagent-desc-rum
@@ -398,6 +411,7 @@
 
 - type: reagent
   id: Sake
+  pH: 4.5
   name: reagent-name-sake
   parent: BaseAlcohol
   desc: reagent-desc-sake
@@ -440,6 +454,7 @@
 
 - type: reagent
   id: Tequila
+  pH: 4.0
   name: reagent-name-tequila
   parent: BaseAlcohol
   desc: reagent-desc-tequila
@@ -463,6 +478,7 @@
 
 - type: reagent
   id: Vermouth
+  pH: 3.5
   name: reagent-name-vermouth
   parent: BaseAlcohol
   desc: reagent-desc-vermouth
@@ -488,6 +504,7 @@
 
 - type: reagent
   id: Vodka
+  pH: 6.5
   name: reagent-name-vodka
   parent: BaseAlcohol
   desc: reagent-desc-vodka
@@ -520,6 +537,7 @@
 
 - type: reagent
   id: Whiskey
+  pH: 4.2
   name: reagent-name-whiskey
   parent: BaseAlcohol
   desc: reagent-desc-whiskey
@@ -544,6 +562,7 @@
 
 - type: reagent
   id: Wine
+  pH: 3.5
   name: reagent-name-wine
   parent: BaseAlcohol
   desc: reagent-desc-wine
@@ -568,6 +587,7 @@
 
 - type: reagent
   id: Champagne
+  pH: 3.2
   name: reagent-name-champagne
   parent: BaseAlcohol
   desc: reagent-desc-champagne
@@ -597,6 +617,7 @@
 
 - type: reagent
   id: AcidSpit
+  pH: 1.5
   name: reagent-name-acid-spit
   parent: BaseAlcohol
   desc: reagent-desc-acid-spit
@@ -625,6 +646,7 @@
 
 - type: reagent
   id: AlienBrainHemorrhage
+  pH: 4.2
   name: reagent-name-alien-brain-hemorrhage
   parent: BaseAlcohol
   desc: reagent-desc-alien-brain-hemorrhage
@@ -640,6 +662,7 @@
 
 - type: reagent
   id: AlliesCocktail
+  pH: 5.2
   name: reagent-name-allies-cocktail
   parent: BaseAlcohol
   desc: reagent-desc-allies-cocktail
@@ -655,6 +678,7 @@
 
 - type: reagent
   id: Aloe
+  pH: 5.0
   name: reagent-name-aloe
   parent: BaseAlcohol
   desc: reagent-desc-aloe
@@ -670,6 +694,7 @@
 
 - type: reagent
   id: Amasec
+  pH: 5.0
   name: reagent-name-amasec
   parent: BaseAlcohol
   desc: reagent-desc-amasec
@@ -685,6 +710,7 @@
 
 - type: reagent
   id: Andalusia
+  pH: 3.8
   name: reagent-name-andalusia
   parent: BaseAlcohol
   desc: reagent-desc-andalusia
@@ -703,6 +729,7 @@
 
 - type: reagent
   id: Antifreeze
+  pH: 6.0
   name: reagent-name-antifreeze
   parent: BaseAlcohol
   desc: reagent-desc-antifreeze
@@ -742,6 +769,7 @@
 
 - type: reagent
   id: AtomicBomb
+  pH: 4.5
   name: reagent-name-atomic-bomb
   parent: BaseAlcohol
   desc: reagent-desc-atomic-bomb
@@ -768,6 +796,7 @@
 
 - type: reagent
   id: B52
+  pH: 5.0
   name: reagent-name-b52
   parent: BaseAlcohol
   desc: reagent-desc-b52
@@ -791,6 +820,7 @@
 
 - type: reagent
   id: BahamaMama
+  pH: 3.8
   name: reagent-name-bahama-mama
   parent: BaseAlcohol
   desc: reagent-desc-bahama-mama
@@ -816,6 +846,7 @@
 
 - type: reagent
   id: BananaHonk
+  pH: 5.8
   name: reagent-name-banana-honk
   parent: BaseAlcohol
   desc: reagent-desc-banana-honk
@@ -831,6 +862,7 @@
 
 - type: reagent
   id: Barefoot
+  pH: 4.5
   name: reagent-name-barefoot
   parent: BaseAlcohol
   desc: reagent-desc-barefoot
@@ -860,6 +892,7 @@
 
 - type: reagent
   id: BeepskySmash
+  pH: 3.8
   name: reagent-name-beepsky-smash
   parent: BaseAlcohol
   desc: reagent-desc-beepsky-smash
@@ -884,6 +917,7 @@
 
 - type: reagent
   id: BlackRussian
+  pH: 5.0
   name: reagent-name-black-russian
   parent: BaseAlcohol
   desc: reagent-desc-black-russian
@@ -907,6 +941,7 @@
 
 - type: reagent
   id: BloodyMary
+  pH: 4.0
   name: reagent-name-bloody-mary
   parent: BaseAlcohol
   desc: reagent-desc-bloody-mary
@@ -931,6 +966,7 @@
 
 - type: reagent
   id:  Booger
+  pH: 5.8
   name: reagent-name-booger
   parent: BaseAlcohol
   desc: reagent-desc-booger
@@ -966,6 +1002,7 @@
 
 - type: reagent
   id: BraveBull
+  pH: 5.0
   name: reagent-name-brave-bull
   parent: BaseAlcohol
   desc: reagent-desc-brave-bull
@@ -989,6 +1026,7 @@
 
 - type: reagent
   id: Bronx
+  pH: 3.8
   name: reagent-name-bronx
   parent: BaseAlcohol
   desc: reagent-desc-bronx
@@ -1004,6 +1042,7 @@
 
 - type: reagent
   id: CoconutRum
+  pH: 4.5
   name: reagent-name-coconut-rum
   parent: BaseAlcohol
   desc: reagent-desc-coconut-rum
@@ -1027,6 +1066,7 @@
 
 - type: reagent
   id: Cosmopolitan
+  pH: 3.2
   name: reagent-name-cosmopolitan
   parent: BaseAlcohol
   desc: reagent-desc-cosmopolitan
@@ -1050,6 +1090,7 @@
 
 - type: reagent
   id: CrushDepth
+  pH: 4.5
   name: reagent-name-crush-depth
   parent: BaseAlcohol
   desc: reagent-desc-crush-depth
@@ -1065,6 +1106,7 @@
 
 - type: reagent
   id: CubaLibre
+  pH: 2.8
   name: reagent-name-cuba-libre
   parent: BaseAlcohol
   desc: reagent-desc-cuba-libre
@@ -1089,6 +1131,7 @@
 
 - type: reagent
   id: DarkandStormy
+  pH: 3.4
   name: reagent-name-dark-and-stormy
   parent: BaseAlcohol
   desc: reagent-desc-dark-and-stormy
@@ -1104,6 +1147,7 @@
 
 - type: reagent
   id: DemonsBlood
+  pH: 5.2
   name: reagent-name-demons-blood
   parent: BaseAlcohol
   desc: reagent-desc-demons-blood
@@ -1130,6 +1174,7 @@
 
 - type: reagent
   id: DevilsKiss
+  pH: 5.0
   name: reagent-name-devils-kiss
   parent: BaseAlcohol
   desc: reagent-desc-devils-kiss
@@ -1145,6 +1190,7 @@
 
 - type: reagent
   id: DoctorsDelight
+  pH: 4.5
   name: reagent-name-doctors-delight
   parent: BaseDrink
   desc: reagent-desc-doctors-delight
@@ -1176,6 +1222,7 @@
 
 - type: reagent
   id: DriestMartini
+  pH: 6.0
   name: reagent-name-driest-martini
   parent: BaseAlcohol
   desc: reagent-desc-driest-martini
@@ -1206,6 +1253,7 @@
 
 - type: reagent
   id: Eggnog
+  pH: 6.4
   name: reagent-name-eggnog
   parent: BaseAlcohol
   desc: reagent-desc-eggnog
@@ -1221,6 +1269,7 @@
 
 - type: reagent
   id: ElectricShark
+  pH: 3.5
   name: reagent-name-electric-shark
   parent: BaseAlcohol
   desc: reagent-desc-electric-shark
@@ -1236,6 +1285,7 @@
 
 - type: reagent
   id: ErikaSurprise
+  pH: 3.8
   name: reagent-name-erika-surprise
   parent: BaseAlcohol
   desc: reagent-desc-erika-surprise
@@ -1271,6 +1321,7 @@
 
 - type: reagent
   id: GargleBlaster
+  pH: 4.0
   name: reagent-name-gargle-blaster
   parent: BaseAlcohol
   desc: reagent-desc-gargle-blaster
@@ -1314,6 +1365,7 @@
 
 - type: reagent
   id: GinFizz
+  pH: 3.3
   name: reagent-name-gin-fizz
   parent: BaseAlcohol
   desc: reagent-desc-gin-fizz
@@ -1338,6 +1390,7 @@
 
 - type: reagent
   id: GinTonic
+  pH: 4.0
   name: reagent-name-gin-tonic
   parent: BaseAlcohol
   desc: reagent-desc-gin-tonic
@@ -1362,6 +1415,7 @@
 
 - type: reagent
   id: Gildlager
+  pH: 6.0
   name: reagent-name-gildlager
   parent: BaseAlcohol
   desc: reagent-desc-gildlager
@@ -1385,6 +1439,7 @@
 
 - type: reagent
   id: Grog
+  pH: 4.8
   name: reagent-name-grog
   parent: BaseAlcohol
   desc: reagent-desc-grog
@@ -1400,6 +1455,7 @@
 
 - type: reagent
   id: HippiesDelight
+  pH: 5.0
   name: reagent-name-hippies-delight
   parent: BaseAlcohol
   desc: reagent-desc-hippies-delight
@@ -1415,6 +1471,7 @@
 
 - type: reagent
   id: Hooch
+  pH: 5.0
   name: reagent-name-hooch
   parent: BaseAlcohol
   desc: reagent-desc-hooch
@@ -1444,6 +1501,7 @@
 
 - type: reagent
   id: IcedBeer
+  pH: 4.3
   name: reagent-name-iced-beer
   parent: BaseAlcohol
   desc: reagent-desc-iced-beer
@@ -1470,6 +1528,7 @@
 
 - type: reagent
   id: IrishSlammer
+  pH: 5.0
   name: reagent-name-irish-slammer
   parent: BaseAlcohol
   desc: reagent-desc-irish-slammer
@@ -1493,6 +1552,7 @@
 
 - type: reagent
   id: IrishCream
+  pH: 6.2
   name: reagent-name-irish-cream
   parent: BaseAlcohol
   desc: reagent-desc-irish-cream
@@ -1516,6 +1576,7 @@
 
 - type: reagent
   id: IrishCoffee
+  pH: 5.4
   name: reagent-name-irish-coffee
   parent: BaseAlcohol
   desc: reagent-desc-irish-coffee
@@ -1539,6 +1600,7 @@
 
 - type: reagent
   id: JackRose
+  pH: 3.3
   name: reagent-name-jack-rose
   parent: BaseAlcohol
   desc: reagent-desc-jack-rose
@@ -1554,6 +1616,7 @@
 
 - type: reagent
   id: JungleBird
+  pH: 3.5
   name: reagent-name-jungle-bird
   parent: BaseAlcohol
   desc: reagent-desc-jungle-bird
@@ -1569,6 +1632,7 @@
 
 - type: reagent
   id: Kalimotxo
+  pH: 3.0
   name: reagent-name-kalimotxo
   parent: BaseAlcohol
   desc: reagent-desc-kalimotxo
@@ -1584,6 +1648,7 @@
 
 - type: reagent
   id: LongIslandIcedTea
+  pH: 3.5
   name: reagent-name-long-island-iced-tea
   parent: BaseAlcohol
   desc: reagent-desc-long-island-iced-tea
@@ -1614,6 +1679,7 @@
 
 - type: reagent
   id: Manhattan
+  pH: 4.5
   name: reagent-name-manhattan
   parent: BaseAlcohol
   desc: reagent-desc-manhattan
@@ -1629,6 +1695,7 @@
 
 - type: reagent
   id: ManhattanProject
+  pH: 4.5
   name: reagent-name-manhattan-project
   parent: BaseAlcohol
   desc: reagent-desc-manhattan-project
@@ -1644,6 +1711,7 @@
 
 - type: reagent
   id: ManlyDorf
+  pH: 4.4
   name: reagent-name-manly-dorf
   parent: BaseAlcohol
   desc: reagent-desc-manly-dorf
@@ -1660,6 +1728,7 @@
 
 - type: reagent
   id: Margarita
+  pH: 3.2
   name: reagent-name-margarita
   parent: BaseAlcohol
   desc: reagent-desc-margarita
@@ -1675,6 +1744,7 @@
 
 - type: reagent
   id: Martini
+  pH: 5.4
   name: reagent-name-martini
   parent: BaseAlcohol
   desc: reagent-desc-martini
@@ -1698,6 +1768,7 @@
 
 - type: reagent
   id: Mead
+  pH: 4.0
   name: reagent-name-mead
   parent: BaseAlcohol
   desc: reagent-desc-mead
@@ -1714,6 +1785,7 @@
 
 - type: reagent
   id: Mojito
+  pH: 3.3
   name: reagent-name-mojito
   parent: BaseAlcohol
   desc: reagent-desc-mojito
@@ -1730,6 +1802,7 @@
 
 - type: reagent
   id: MonkeyBusiness
+  pH: 4.0
   name: reagent-name-monkey-business
   parent: BaseAlcohol
   desc: reagent-desc-monkey-business
@@ -1745,6 +1818,7 @@
 
 - type: reagent
   id: Moonshine
+  pH: 5.0
   name: reagent-name-moonshine
   parent: BaseAlcohol
   desc: reagent-desc-moonshine
@@ -1770,6 +1844,7 @@
 
 - type: reagent
   id: Neurotoxin
+  pH: 7.5
   name: reagent-name-neurotoxin
   parent: BaseAlcohol
   desc: reagent-desc-neurotoxin
@@ -1799,6 +1874,7 @@
 
 - type: reagent
   id: Painkiller
+  pH: 4.2
   name: reagent-name-painkiller
   parent: BaseAlcohol
   desc: reagent-desc-painkiller
@@ -1836,6 +1912,7 @@
 
 - type: reagent
   id: Patron
+  pH: 4.0
   name: reagent-name-patron
   parent: BaseAlcohol
   desc: reagent-desc-patron
@@ -1859,6 +1936,7 @@
 
 - type: reagent
   id: RedMead
+  pH: 4.5
   name: reagent-name-red-mead
   parent: BaseAlcohol
   desc: reagent-desc-red-mead
@@ -1882,6 +1960,7 @@
 
 - type: reagent
   id: PinaColada
+  pH: 4.2
   name: reagent-name-pina-colada
   parent: BaseAlcohol
   desc: reagent-desc-pina-colada
@@ -1905,6 +1984,7 @@
 
 - type: reagent
   id: Radler
+  pH: 3.5
   name: reagent-name-radler
   parent: BaseAlcohol
   desc: reagent-desc-radler
@@ -1920,6 +2000,7 @@
 
 - type: reagent
   id: Sbiten
+  pH: 5.5
   name: reagent-name-sbiten
   parent: BaseAlcohol
   desc: reagent-desc-sbiten
@@ -1949,6 +2030,7 @@
 
 - type: reagent
   id: ScrewdriverCocktail
+  pH: 3.6
   name: reagent-name-screwdriver-cocktail
   parent: BaseAlcohol
   desc: reagent-desc-screwdriver-cocktail
@@ -1983,6 +2065,7 @@
 
 - type: reagent
   id: CogChamp
+  pH: 5.0
   name: reagent-name-cogchamp
   parent: BaseAlcohol
   desc: reagent-desc-cogchamp
@@ -2009,6 +2092,7 @@
 
 - type: reagent
   id: Silencer
+  pH: 6.2
   name: reagent-name-silencer
   parent: BaseAlcohol
   desc: reagent-desc-silencer
@@ -2032,6 +2116,7 @@
 
 - type: reagent
   id: Singulo
+  pH: 6.0
   name: reagent-name-singulo
   parent: BaseAlcohol
   desc: reagent-desc-singulo
@@ -2066,6 +2151,7 @@
 
 - type: reagent
   id: SnowWhite
+  pH: 3.5
   name: reagent-name-snow-white
   parent: BaseAlcohol
   desc: reagent-desc-snow-white
@@ -2082,6 +2168,7 @@
 
 - type: reagent
   id: SuiDream
+  pH: 3.8
   name: reagent-name-sui-dream
   parent: BaseAlcohol
   desc: reagent-desc-sui-dream
@@ -2098,6 +2185,7 @@
 
 - type: reagent
   id: SyndicateBomb
+  pH: 4.0
   name: reagent-name-syndicate-bomb
   parent: BaseAlcohol
   desc: reagent-desc-syndicate-bomb
@@ -2133,6 +2221,7 @@
 
 - type: reagent
   id: TequilaSunrise
+  pH: 3.7
   name: reagent-name-tequila-sunrise
   parent: BaseAlcohol
   desc: reagent-desc-tequila-sunrise
@@ -2177,6 +2266,7 @@
 
 - type: reagent
   id: TheMartinez
+  pH: 3.3
   name: reagent-name-the-martinez
   parent: BaseAlcohol
   desc: reagent-desc-the-martinez
@@ -2221,6 +2311,7 @@
 
 - type: reagent
   id: ThreeMileIsland
+  pH: 4.0
   name: reagent-name-three-mile-island
   parent: BaseAlcohol
   desc: reagent-desc-three-mile-island
@@ -2247,6 +2338,7 @@
 
 - type: reagent
   id: ToxinsSpecial
+  pH: 5.0
   name: reagent-name-toxins-special
   parent: BaseAlcohol
   desc: reagent-desc-toxins-special
@@ -2262,6 +2354,7 @@
 
 - type: reagent
   id: Vampiro
+  pH: 3.3
   name: reagent-name-vampiro
   parent: BaseAlcohol
   desc: reagent-desc-vampiro
@@ -2277,6 +2370,7 @@
 
 - type: reagent
   id: VodkaMartini
+  pH: 5.8
   name: reagent-name-vodka-martini
   parent: BaseAlcohol
   desc: reagent-desc-vodka-martini
@@ -2300,6 +2394,7 @@
 
 - type: reagent
   id: VodkaTonic
+  pH: 4.0
   name: reagent-name-vodka-tonic
   parent: BaseAlcohol
   desc: reagent-desc-vodka-tonic
@@ -2324,6 +2419,7 @@
 
 - type: reagent
   id: WhiskeyCola
+  pH: 2.8
   name: reagent-name-whiskey-cola
   parent: BaseAlcohol
   desc: reagent-desc-whiskey-cola
@@ -2348,6 +2444,7 @@
 
 - type: reagent
   id: WhiskeySoda
+  pH: 4.0
   name: reagent-name-whiskey-soda
   parent: BaseAlcohol
   desc: reagent-desc-whiskey-soda
@@ -2372,6 +2469,7 @@
 
 - type: reagent
   id: WhiteGilgamesh
+  pH: 5.2
   name: reagent-name-white-gilgamesh
   parent: BaseDrink
   desc: reagent-desc-white-gilgamesh
@@ -2407,6 +2505,7 @@
 
 - type: reagent
   id: WhiteRussian
+  pH: 6.0
   name: reagent-name-white-russian
   parent: BaseAlcohol
   desc: reagent-desc-white-russian
@@ -2441,6 +2540,7 @@
 
 - type: reagent
   id: VodkaRedBool
+  pH: 3.6
   name: reagent-name-vodka-red-bool
   parent: BaseAlcohol
   desc: reagent-desc-vodka-red-bool
@@ -2499,6 +2599,7 @@
 
 - type: reagent
   id: XenoBasher
+  pH: 4.0
   name: reagent-name-xeno-basher
   parent: BaseAlcohol
   desc: reagent-desc-xeno-basher
@@ -2530,6 +2631,7 @@
 
 - type: reagent
   id: IrishBool
+  pH: 4.0
   name: reagent-name-irish-bool
   parent: BaseAlcohol
   desc: reagent-desc-irish-bool
@@ -2561,6 +2663,7 @@
 
 - type: reagent
   id: BudgetInsulsDrink
+  pH: 3.8
   name: reagent-name-budget-insuls
   parent: BaseAlcohol
   desc: reagent-desc-budget-insuls
@@ -2620,6 +2723,7 @@
 
 - type: reagent
   id: WatermelonWakeup
+  pH: 4.0
   name: reagent-name-watermelon-wakeup
   parent: BaseAlcohol
   desc: reagent-desc-watermelon-wakeup
@@ -2651,6 +2755,7 @@
 
 - type: reagent
   id: Rubberneck
+  pH: 4.0
   name: reagent-name-rubberneck
   parent: BaseAlcohol
   desc: reagent-desc-rubberneck
@@ -2682,6 +2787,7 @@
 
 - type: reagent
   id: BlueHawaiian
+  pH: 3.4
   name: reagent-name-blue-hawaiian
   parent: BaseAlcohol
   desc: reagent-desc-blue-hawaiian
@@ -2716,6 +2822,7 @@
 
 - type: reagent
   id: Caipirinha
+  pH: 3.3
   name: reagent-name-caipirinha
   parent: BaseAlcohol
   desc: reagent-desc-caipirinha
@@ -2739,6 +2846,7 @@
 
 - type: reagent
   id: MoscowMule
+  pH: 3.5
   name: reagent-name-moscow-mule
   parent: BaseAlcohol
   desc: reagent-desc-moscow-mule
@@ -2765,6 +2873,7 @@
 
 - type: reagent
   id: Mimeosa
+  pH: 3.3
   name: reagent-name-mimeosa
   parent: BaseAlcohol
   desc: reagent-desc-mimeosa
@@ -2791,6 +2900,7 @@
 
 - type: reagent
   id: Mimosa
+  pH: 3.4
   name: reagent-name-mimosa
   parent: BaseAlcohol
   desc: reagent-desc-mimosa
@@ -2814,6 +2924,7 @@
 
 - type: reagent
   id: Mayojito
+  pH: 4.5
   name: reagent-name-mayojito
   parent: BaseAlcohol
   desc: reagent-desc-mayojito
@@ -2847,6 +2958,7 @@
 
 - type: reagent
   id: DeathInTheAfternoon
+  pH: 4.2
   name: reagent-name-death-in-the-afternoon
   parent: BaseAlcohol
   desc: reagent-desc-death-in-the-afternoon
@@ -2870,6 +2982,7 @@
 
 - type: reagent
   id: Empress75
+  pH: 3.4
   name: reagent-name-empress-75
   parent: BaseAlcohol
   desc: reagent-desc-empress-75
@@ -2893,6 +3006,7 @@
 
 - type: reagent
   id: EspressoMartini
+  pH: 5.0
   name: reagent-name-espresso-martini
   parent: BaseAlcohol
   desc: reagent-desc-espresso-martini
@@ -2916,6 +3030,7 @@
 
 - type: reagent
   id: Daiquiri
+  pH: 3.2
   name: reagent-name-daiquiri
   parent: BaseAlcohol
   desc: reagent-desc-daiquiri
@@ -2939,6 +3054,7 @@
 
 - type: reagent
   id: TheSunAlsoRises
+  pH: 3.5
   name: reagent-name-the-sun-also-rises
   parent: BaseAlcohol
   desc: reagent-desc-the-sun-also-rises
@@ -2962,6 +3078,7 @@
 
 - type: reagent
   id: WhiskeySour
+  pH: 3.4
   name: reagent-name-whiskey-sour
   parent: BaseAlcohol
   desc: reagent-desc-whiskey-sour
@@ -2985,6 +3102,7 @@
 
 - type: reagent
   id: ZombieCocktail
+  pH: 5.0
   name: reagent-name-zombiecocktail
   parent: BaseAlcohol
   desc: reagent-desc-zombiecocktail
@@ -3008,6 +3126,7 @@
 
 - type: reagent
   id: BacchusBlessing
+  pH: 4.5
   name: reagent-name-bacchus-blessing
   parent: BaseAlcohol
   desc: reagent-desc-bacchus-blessing

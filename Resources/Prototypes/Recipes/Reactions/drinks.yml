@@ -1,5 +1,7 @@
 - type: reaction
   id: AcidSpit
+  minPH: 0
+  maxPH: 4
   reactants:
     Wine:
       amount: 2
@@ -10,6 +12,8 @@
 
 - type: reaction
   id: AlienBrainHemorrhage
+  minPH: 3
+  maxPH: 7
   reactants:
     IrishCream:
       amount: 1
@@ -22,6 +26,8 @@
 
 - type: reaction
   id: AlliesCocktail
+  minPH: 4
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -34,6 +40,8 @@
 
 - type: reaction
   id: Amasec
+  minPH: 4
+  maxPH: 8
   requiredMixerCategories:
   - Shake
   reactants:
@@ -48,6 +56,8 @@
 
 - type: reaction
   id: Andalusia
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Stir
   reactants:
@@ -62,6 +72,8 @@
 
 - type: reaction
   id: Antifreeze
+  minPH: 5
+  maxPH: 8
   reactants:
     Cream:
       amount: 1
@@ -74,6 +86,8 @@
 
 - type: reaction
   id: ArnoldPalmer
+  minPH: 2
+  maxPH: 5
   reactants:
     IcedTea:
       amount: 1
@@ -84,6 +98,8 @@
 
 - type: reaction
   id: AtomicBomb
+  minPH: 0
+  maxPH: 14
   reactants:
     B52:
       amount: 10
@@ -94,6 +110,8 @@
 
 - type: reaction
   id: B52
+  minPH: 4
+  maxPH: 7
   reactants:
     Cognac:
       amount: 1
@@ -106,6 +124,8 @@
 
 - type: reaction
   id: BudgetInsulsDrink
+  minPH: 3
+  maxPH: 7
   reactants:
     Tequila:
       amount: 1
@@ -116,6 +136,8 @@
 
 - type: reaction
   id: BlueHawaiian
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -132,6 +154,8 @@
 
 - type: reaction
   id: CogChamp
+  minPH: 4
+  maxPH: 8
   reactants:
     Cognac:
       amount: 1
@@ -146,6 +170,8 @@
 
 - type: reaction
   id: BahamaMama
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -166,6 +192,8 @@
 
 - type: reaction
   id: Barefoot
+  minPH: 4
+  maxPH: 7
   reactants:
     Cream:
       amount: 1
@@ -178,6 +206,8 @@
 
 - type: reaction
   id: BananaHonk
+  minPH: 5
+  maxPH: 8
   reactants:
     Cream:
       amount: 1
@@ -190,6 +220,8 @@
 
 - type: reaction
   id: BeepskySmash
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -204,6 +236,8 @@
 
 - type: reaction
   id: BlackRussian
+  minPH: 4
+  maxPH: 7
   reactants:
     CoffeeLiqueur:
       amount: 1
@@ -214,6 +248,8 @@
 
 - type: reaction
   id: BloodyMary
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Stir
   reactants:
@@ -228,6 +264,8 @@
 
 - type: reaction
   id: Booger
+  minPH: 5
+  maxPH: 8
   reactants:
     Cream:
       amount: 2
@@ -242,6 +280,8 @@
 
 - type: reaction
   id: BraveBull
+  minPH: 4
+  maxPH: 7
   reactants:
     CoffeeLiqueur:
       amount: 1
@@ -252,6 +292,8 @@
 
 - type: reaction
   id: Bronx
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -266,6 +308,8 @@
 
 - type: reaction
   id: CafeLatte
+  minPH: 5
+  maxPH: 7
   reactants:
     Coffee:
       amount: 1
@@ -276,6 +320,8 @@
 
 - type: reaction
   id: CoconutRum
+  minPH: 4
+  maxPH: 7
   reactants:
     Rum:
       amount: 2
@@ -286,6 +332,8 @@
 
 - type: reaction
   id: Cosmopolitan
+  minPH: 3
+  maxPH: 6
   reactants:
     Vodka:
       amount: 1
@@ -298,6 +346,8 @@
 
 - type: reaction
   id: CreamOfCoconut
+  minPH: 5
+  maxPH: 8
   reactants:
     CoconutWater:
       amount: 1
@@ -310,6 +360,8 @@
 
 - type: reaction
   id: CrushDepth
+  minPH: 4
+  maxPH: 7
   reactants:
     RootBeerFloat:
       amount: 1
@@ -320,6 +372,8 @@
 
 - type: reaction
   id: CubaLibre
+  minPH: 2.5
+  maxPH: 6
   reactants:
     Cola:
       amount: 2
@@ -330,6 +384,8 @@
 
 - type: reaction
   id: DarkandStormy
+  minPH: 3
+  maxPH: 6
   reactants:
     SolDry:
       amount: 1
@@ -340,6 +396,8 @@
 
 - type: reaction
   id: DemonsBlood
+  minPH: 4
+  maxPH: 8
   requiredMixerCategories:
   - Stir
   reactants:
@@ -356,6 +414,8 @@
 
 - type: reaction
   id: DevilsKiss
+  minPH: 4
+  maxPH: 8
   requiredMixerCategories:
   - Stir
   reactants:
@@ -370,6 +430,8 @@
 
 - type: reaction
   id: DoctorsDelight
+  minPH: 3
+  maxPH: 7
   requiredMixerCategories:
   - Stir
   reactants:
@@ -388,6 +450,8 @@
 
 - type: reaction
   id: DriestMartini
+  minPH: 4
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -400,6 +464,8 @@
 
 - type: reaction
   id: Eggnog
+  minPH: 5
+  maxPH: 8
   requiredMixerCategories:
   - Shake
   reactants:
@@ -414,6 +480,8 @@
 
 - type: reaction
   id: ElectricShark
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -428,6 +496,8 @@
 
 - type: reaction
   id: ErikaSurprise
+  minPH: 3
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -446,6 +516,8 @@
 
 - type: reaction
   id: EthanolBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Electrolysis
@@ -459,6 +531,8 @@
 
 - type: reaction
   id: FourteenLoko
+  minPH: 3
+  maxPH: 6
   reactants:
     Coffee:
       amount: 1
@@ -471,6 +545,8 @@
 
 - type: reaction
   id: GargleBlaster
+  minPH: 3
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -489,6 +565,8 @@
 
 - type: reaction
   id: GinFizz
+  minPH: 3
+  maxPH: 6
   reactants:
     Gin:
       amount: 1
@@ -501,6 +579,8 @@
 
 - type: reaction
   id: GinTonic
+  minPH: 3
+  maxPH: 7
   reactants:
     Gin:
       amount: 1
@@ -511,6 +591,8 @@
 
 - type: reaction
   id: Gildlager
+  minPH: 0
+  maxPH: 14
   requiredMixerCategories:
   - Shake
   reactants:
@@ -523,6 +605,8 @@
 
 - type: reaction
   id: Grog
+  minPH: 4
+  maxPH: 7
   reactants:
     Rum:
       amount: 1
@@ -535,6 +619,8 @@
 
 - type: reaction
   id: HippiesDelight
+  minPH: 4
+  maxPH: 8
   reactants:
     GargleBlaster:
       amount: 1
@@ -545,6 +631,8 @@
 
 - type: reaction
   id: Hooch
+  minPH: 4
+  maxPH: 8
   reactants:
     Ethanol:
       amount: 2
@@ -557,6 +645,8 @@
 
 - type: reaction
   id: HotCocoa
+  minPH: 5
+  maxPH: 8
   minTemp: 350
   reactants:
     Water:
@@ -568,6 +658,8 @@
 
 - type: reaction
   id: IceCream
+  minPH: 5
+  maxPH: 8
   reactants:
     Cream:
       amount: 1
@@ -580,6 +672,8 @@
 
 - type: reaction
   id: IcedBeer
+  minPH: 4
+  maxPH: 7
   reactants:
     Beer:
       amount: 5
@@ -590,6 +684,8 @@
 
 - type: reaction
   id: IcedBeerAlt
+  minPH: 4
+  maxPH: 7
   reactants:
     Beer:
       amount: 10
@@ -600,6 +696,8 @@
 
 - type: reaction
   id: IcedCoffee
+  minPH: 4
+  maxPH: 7
   reactants:
     Coffee:
       amount: 2
@@ -610,6 +708,8 @@
 
 - type: reaction
   id: IcedGreenTea
+  minPH: 5
+  maxPH: 8
   reactants:
     GreenTea:
       amount: 2
@@ -620,6 +720,8 @@
 
 - type: reaction
   id: IcedTea
+  minPH: 4
+  maxPH: 8
   reactants:
     Ice:
       amount: 1
@@ -630,6 +732,8 @@
 
 - type: reaction
   id: IrishBool
+  minPH: 3
+  maxPH: 7
   reactants:
     EnergyDrink:
       amount: 1
@@ -640,6 +744,8 @@
 
 - type: reaction
   id: IrishSlammer
+  minPH: 4
+  maxPH: 7
   reactants:
     Ale:
       amount: 1
@@ -652,6 +758,8 @@
 
 - type: reaction
   id: IrishCoffee
+  minPH: 4
+  maxPH: 7
   requiredMixerCategories:
   - Stir
   reactants:
@@ -664,6 +772,8 @@
 
 - type: reaction
   id: IrishCream
+  minPH: 5
+  maxPH: 8
   reactants:
     Cream:
       amount: 1
@@ -674,6 +784,8 @@
 
 - type: reaction
   id: JackRose
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -690,6 +802,8 @@
 
 - type: reaction
   id: JungleBird
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -706,6 +820,8 @@
 
 - type: reaction
   id: Kalimotxo
+  minPH: 2.5
+  maxPH: 6
   reactants:
     Cola:
       amount: 1
@@ -716,6 +832,8 @@
 
 - type: reaction
   id: OrangeLimeSoda
+  minPH: 2
+  maxPH: 5
   requiredMixerCategories:
   - Stir
   reactants:
@@ -730,6 +848,8 @@
 
 - type: reaction
   id: Lemonade
+  minPH: 2
+  maxPH: 5
   requiredMixerCategories:
   - Stir
   reactants:
@@ -744,6 +864,8 @@
 
 - type: reaction
   id: LemonLime
+  minPH: 2
+  maxPH: 5
   requiredMixerCategories:
   - Stir
   reactants:
@@ -758,6 +880,8 @@
 
 - type: reaction
   id: LongIslandIcedTea
+  minPH: 3
+  maxPH: 7
   requiredMixerCategories:
   - Stir
   reactants:
@@ -774,6 +898,8 @@
 
 - type: reaction
   id: Manhattan
+  minPH: 4
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -786,6 +912,8 @@
 
 - type: reaction
   id: ManhattanProject
+  minPH: 0
+  maxPH: 14
   reactants:
     Whiskey:
       amount: 10
@@ -796,6 +924,8 @@
 
 - type: reaction
   id: ManlyDorf
+  minPH: 4
+  maxPH: 7
   reactants:
     Ale:
       amount: 2
@@ -806,6 +936,8 @@
 
 - type: reaction
   id: Margarita
+  minPH: 3
+  maxPH: 6
   reactants:
     Tequila:
       amount: 2
@@ -816,6 +948,8 @@
 
 - type: reaction
   id: Martini
+  minPH: 4
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -828,6 +962,8 @@
 
 - type: reaction
   id: Mead
+  minPH: 4
+  maxPH: 8
   reactants:
     Sugar:
       amount: 1
@@ -839,6 +975,8 @@
 
 - type: reaction
   id: Mojito
+  minPH: 2.5
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -855,6 +993,8 @@
 
 - type: reaction
   id: MonkeyBusiness
+  minPH: 3
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -871,6 +1011,8 @@
 
 - type: reaction
   id: Moonshine
+  minPH: 4
+  maxPH: 7
   reactants:
     Tequila:
       amount: 1
@@ -894,6 +1036,8 @@
 
 - type: reaction
   id: NuclearCola
+  minPH: 0
+  maxPH: 14
   reactants:
     Cola:
       amount: 5
@@ -904,6 +1048,8 @@
 
 - type: reaction
   id: NuclearColaBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge
@@ -918,6 +1064,8 @@
 
 - type: reaction
   id: Patron
+  minPH: 0
+  maxPH: 14
   requiredMixerCategories:
   - Shake
   reactants:
@@ -930,6 +1078,8 @@
 
 - type: reaction
   id: Painkiller
+  minPH: 3
+  maxPH: 6.5
   requiredMixerCategories:
   - Shake
   reactants:
@@ -946,6 +1096,8 @@
 
 - type: reaction
   id: PinaColada
+  minPH: 3
+  maxPH: 6.5
   reactants:
     JuicePineapple:
       amount: 3
@@ -960,6 +1112,8 @@
 
 - type: reaction
   id: Posca
+  minPH: 2
+  maxPH: 5
   reactants:
     TableSalt:
       amount: 1
@@ -972,6 +1126,8 @@
 
 - type: reaction
   id: Radler
+  minPH: 3
+  maxPH: 6
   reactants:
     Lemonade:
       amount: 1
@@ -982,6 +1138,8 @@
 
 - type: reaction
   id: RedMead
+  minPH: 4
+  maxPH: 8
   reactants:
     Mead:
       amount: 1
@@ -992,6 +1150,8 @@
 
 - type: reaction
   id: Rewriter
+  minPH: 3
+  maxPH: 6
   reactants:
     Coffee:
       amount: 1
@@ -1002,6 +1162,8 @@
 
 - type: reaction
   id: RootBeerFloat
+  minPH: 4
+  maxPH: 7
   reactants:
     RootBeer:
       amount: 2
@@ -1012,6 +1174,8 @@
 
 - type: reaction
   id: RoyRogers
+  minPH: 2.5
+  maxPH: 5
   reactants:
     Cola:
       amount: 2
@@ -1022,6 +1186,8 @@
 
 - type: reaction
   id: Rubberneck
+  minPH: 3
+  maxPH: 7
   reactants:
     EnergyDrink:
       amount: 2
@@ -1034,6 +1200,8 @@
 
 - type: reaction
   id: Sbiten
+  minPH: 4
+  maxPH: 8
   reactants:
     Vodka:
       amount: 1
@@ -1044,6 +1212,8 @@
 
 - type: reaction
   id: ScrewdriverCocktail
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -1056,6 +1226,8 @@
 
 - type: reaction
   id: ShirleyTemple
+  minPH: 2.5
+  maxPH: 5
   reactants:
     SolDry:
       amount: 2
@@ -1066,6 +1238,8 @@
 
 - type: reaction
   id: Silencer
+  minPH: 5
+  maxPH: 8
   reactants:
     Nothing:
       amount: 1
@@ -1091,6 +1265,8 @@
 
 - type: reaction
   id: SnowWhite
+  minPH: 3
+  maxPH: 6
   reactants:
     Beer:
       amount: 1
@@ -1101,6 +1277,8 @@
 
 - type: reaction
   id: SodaWater
+  minPH: 4
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -1113,6 +1291,8 @@
 
 - type: reaction
   id: SoyLatte
+  minPH: 5
+  maxPH: 7
   reactants:
     Coffee:
       amount: 1
@@ -1123,6 +1303,8 @@
 
 - type: reaction
   id: Starkist
+  minPH: 2.5
+  maxPH: 5
   reactants:
     Cola:
       amount: 1
@@ -1133,6 +1315,8 @@
 
 - type: reaction
   id: SuiDream
+  minPH: 3
+  maxPH: 6
   reactants:
     SpaceUp:
       amount: 1
@@ -1145,6 +1329,8 @@
 
 - type: reaction
   id: SyndicateBomb
+  minPH: 3
+  maxPH: 7
   reactants:
     Beer:
       amount: 1
@@ -1155,6 +1341,8 @@
 
 - type: reaction
   id: Tea
+  minPH: 5
+  maxPH: 8
   reactants:
     TeaPowder:
       amount: 1
@@ -1165,6 +1353,8 @@
 
 - type: reaction
   id: TequilaSunrise
+  minPH: 3
+  maxPH: 6
   reactants:
     JuiceOrange:
       amount: 1
@@ -1175,6 +1365,8 @@
 
 - type: reaction
   id: ThreeMileIsland
+  minPH: 0
+  maxPH: 14
   reactants:
     LongIslandIcedTea:
       amount: 10
@@ -1185,6 +1377,8 @@
 
 - type: reaction
   id: Tortuga
+  minPH: 4
+  maxPH: 8
   requiredMixerCategories:
   - Stir
   reactants:
@@ -1197,6 +1391,8 @@
 
 - type: reaction
   id: ToxinsSpecial
+  minPH: 4
+  maxPH: 8
   requiredMixerCategories:
   - Shake
   reactants:
@@ -1211,6 +1407,8 @@
 
 - type: reaction
   id: Vampiro
+  minPH: 2.5
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -1227,6 +1425,8 @@
 
 - type: reaction
   id: VodkaMartini
+  minPH: 4
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -1239,6 +1439,8 @@
 
 - type: reaction
   id: VodkaRedBool
+  minPH: 3
+  maxPH: 7
   reactants:
     Vodka:
       amount: 1
@@ -1249,6 +1451,8 @@
 
 - type: reaction
   id: VodkaTonic
+  minPH: 3
+  maxPH: 7
   reactants:
     Vodka:
       amount: 1
@@ -1259,6 +1463,8 @@
 
 - type: reaction
   id: WhiskeyCola
+  minPH: 2.5
+  maxPH: 6
   reactants:
     Cola:
       amount: 2
@@ -1269,6 +1475,8 @@
 
 - type: reaction
   id: WatermelonWakeup
+  minPH: 3
+  maxPH: 7
   reactants:
     JuiceWatermelon:
       amount: 1
@@ -1281,6 +1489,8 @@
 
 - type: reaction
   id: WhiteRussian
+  minPH: 5
+  maxPH: 8
   reactants:
     BlackRussian:
       amount: 1
@@ -1291,6 +1501,8 @@
 
 - type: reaction
   id: WhiskeySoda
+  minPH: 3
+  maxPH: 7
   reactants:
     SodaWater:
       amount: 2
@@ -1301,6 +1513,8 @@
 
 - type: reaction
   id: XenoBasher
+  minPH: 3
+  maxPH: 7
   reactants:
     ManlyDorf:
       amount: 2
@@ -1311,6 +1525,8 @@
 
 - type: reaction
   id: HotRamen
+  minPH: 5
+  maxPH: 9
   minTemp: 323.15
   reactants:
     DryRamen:
@@ -1322,6 +1538,8 @@
 
 - type: reaction
   id: Pilk
+  minPH: 4
+  maxPH: 7
   reactants:
     Cola:
       amount: 1
@@ -1332,6 +1550,8 @@
 
 - type: reaction
   id: TheMartinez
+  minPH: 3
+  maxPH: 6
   reactants:
     Cola:
       amount: 2
@@ -1346,6 +1566,8 @@
 
 - type: reaction
   id: Vodka
+  minPH: 5
+  maxPH: 8
   requiredMixerCategories:
   - Stir
   reactants:
@@ -1358,6 +1580,8 @@
 
 - type: reaction
   id: WaterBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Electrolysis
@@ -1370,6 +1594,8 @@
 
 - type: reaction
   id: WhiteGilgamesh
+  minPH: 4
+  maxPH: 7
   reactants:
     Beer:
       amount: 2
@@ -1380,6 +1606,8 @@
 
 - type: reaction
   id: Cola
+  minPH: 2
+  maxPH: 5
   reactants:
     Ipecac:
       amount: 1
@@ -1394,6 +1622,8 @@
 
 - type: reaction
   id: Caipirinha
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -1410,6 +1640,8 @@
 
 - type: reaction
   id: Daiquiri
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Stir
   reactants:
@@ -1424,6 +1656,8 @@
 
 - type: reaction
   id: DeathInTheAfternoon
+  minPH: 3
+  maxPH: 7
   reactants:
     Absinthe:
       amount: 2
@@ -1434,6 +1668,8 @@
 
 - type: reaction
   id: Empress75
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -1450,6 +1686,8 @@
 
 - type: reaction
   id: EspressoMartini
+  minPH: 4
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -1462,6 +1700,8 @@
 
 - type: reaction
   id: Mayojito
+  minPH: 3
+  maxPH: 7
   reactants:
     Mojito:
       amount: 1
@@ -1472,6 +1712,8 @@
 
 - type: reaction
   id: Mimeosa
+  minPH: 3
+  maxPH: 6
   reactants:
     Mimosa:
       amount: 2
@@ -1482,6 +1724,8 @@
 
 - type: reaction
   id: Mimosa
+  minPH: 3
+  maxPH: 6
   reactants:
     JuiceOrange:
       amount: 2
@@ -1492,6 +1736,8 @@
 
 - type: reaction
   id: MoscowMule
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Stir
   reactants:
@@ -1506,6 +1752,8 @@
 
 - type: reaction
   id: TheSunAlsoRises
+  minPH: 3
+  maxPH: 7
   reactants:
     Absinthe:
       amount: 1
@@ -1516,6 +1764,8 @@
 
 - type: reaction
   id: WhiskeySour
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -1532,6 +1782,8 @@
 
 - type: reaction
   id: ZombieCocktail
+  minPH: 4
+  maxPH: 8
   reactants:
     Rum:
       amount: 2
@@ -1544,6 +1796,8 @@
 
 - type: reaction
   id: BacchusBlessing
+  minPH: 3
+  maxPH: 8
   reactants:
     Hooch:
       amount: 1

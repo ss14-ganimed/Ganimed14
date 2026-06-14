@@ -3,6 +3,9 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Content.Shared._Ganimed.Chemistry;
+using Content.Shared._Ganimed.Chemistry.Reagents;
+using Content.Shared._Ganimed.Chemistry.Purity;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reaction;
@@ -64,6 +67,8 @@ public partial record struct SolutionAccessAttemptEvent(string SolutionName)
 [UsedImplicitly]
 public abstract partial class SharedSolutionContainerSystem : EntitySystem
 {
+    private const float ActiveReactionUpdateInterval = 1f;
+
     [Dependency] protected readonly IPrototypeManager PrototypeManager = default!;
     [Dependency] protected readonly ChemicalReactionSystem ChemicalReactionSystem = default!;
     [Dependency] protected readonly ExamineSystemShared ExamineSystem = default!;
@@ -73,6 +78,11 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
     [Dependency] protected readonly SharedContainerSystem ContainerSystem = default!;
     [Dependency] protected readonly MetaDataSystem MetaDataSys = default!;
     [Dependency] protected readonly INetManager NetManager = default!;
+
+    private readonly HashSet<EntityUid> _activeReactionSolutions = [];
+    private readonly Dictionary<EntityUid, ReactionMixerComponent?> _activeReactionMixers = [];
+    private readonly List<EntityUid> _activeReactionWorkList = [];
+    private float _activeReactionAccumulator;
 
     public override void Initialize()
     {
@@ -92,6 +102,32 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         {
             SubscribeLocalEvent<SolutionContainerManagerComponent, ComponentShutdown>(OnContainerManagerShutdown);
             SubscribeLocalEvent<ContainedSolutionComponent, ComponentShutdown>(OnContainedSolutionShutdown);
+        }
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (_activeReactionSolutions.Count == 0)
+            return;
+
+        _activeReactionAccumulator += frameTime;
+        if (_activeReactionAccumulator < ActiveReactionUpdateInterval)
+            return;
+
+        _activeReactionAccumulator = 0f;
+        _activeReactionWorkList.Clear();
+        _activeReactionWorkList.AddRange(_activeReactionSolutions);
+        _activeReactionSolutions.Clear();
+
+        foreach (var uid in _activeReactionWorkList)
+        {
+            if (!TryComp(uid, out SolutionComponent? solution))
+                continue;
+
+            _activeReactionMixers.Remove(uid, out var mixerComponent);
+            UpdateChemicals((uid, solution), mixerComponent: mixerComponent, processRateLimitedReactions: true);
         }
     }
 
@@ -310,7 +346,7 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
     /// <param name="soln"></param>
     /// <param name="needsReactionsProcessing"></param>
     /// <param name="mixerComponent"></param>
-    public void UpdateChemicals(Entity<SolutionComponent> soln, bool needsReactionsProcessing = true, ReactionMixerComponent? mixerComponent = null)
+    public void UpdateChemicals(Entity<SolutionComponent> soln, bool needsReactionsProcessing = true, ReactionMixerComponent? mixerComponent = null, bool processRateLimitedReactions = false)
     {
         Dirty(soln);
 
@@ -319,7 +355,13 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
 
         // Process reactions
         if (needsReactionsProcessing && solution.CanReact)
-            ChemicalReactionSystem.FullyReactSolution(soln, mixerComponent);
+        {
+            if (ChemicalReactionSystem.FullyReactSolution(soln, mixerComponent, processRateLimitedReactions))
+            {
+                _activeReactionSolutions.Add(uid);
+                _activeReactionMixers[uid] = mixerComponent;
+            }
+        }
 
         var overflow = solution.Volume - solution.MaxVolume;
         if (overflow > FixedPoint2.Zero)
@@ -447,24 +489,49 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         var (uid, comp) = soln;
         var solution = comp.Solution;
 
-        acceptedQuantity = solution.AvailableVolume > reagentQuantity.Quantity
+        var reagentProto = PrototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
+        var canBypassVolume = ReagentBehaviorHelper.ShouldBypassVolumeWhenMixed(reagentProto) &&
+            solution.Volume > FixedPoint2.Zero &&
+            solution.Contents.Any(reagent => reagent.Reagent.Prototype != reagentQuantity.Reagent.Prototype);
+
+        acceptedQuantity = canBypassVolume
             ? reagentQuantity.Quantity
-            : solution.AvailableVolume;
+            : FixedPoint2.Min(solution.AvailableVolume, reagentQuantity.Quantity);
 
         if (acceptedQuantity <= 0)
             return reagentQuantity.Quantity == 0;
 
-        if (temperature == null)
+        var hadOtherReagents = solution.Volume > FixedPoint2.Zero &&
+            solution.Contents.Any(r =>
+                r.Quantity > FixedPoint2.Zero && r.Reagent.Prototype != reagentQuantity.Reagent.Prototype);
+
+        if (ReagentBehaviorHelper.ShouldTrackTransferWhenMixed(reagentProto) && acceptedQuantity > FixedPoint2.Zero && hadOtherReagents)
+            solution.PendingReagentTransfer = (reagentQuantity.Reagent.Prototype, acceptedQuantity);
+
+        try
         {
-            solution.AddReagent(reagentQuantity.Reagent, acceptedQuantity);
+            if (temperature == null)
+            {
+                solution.AddReagent(reagentQuantity.Reagent, acceptedQuantity);
+            }
+            else
+            {
+                solution.AddReagent(reagentProto, acceptedQuantity, temperature.Value, PrototypeManager);
+            }
+
+            if (solution.PendingReagentTransfer is { } pending)
+            {
+                var transferred = new SolutionReagentTransferredEvent(soln, pending.Prototype, pending.Quantity);
+                RaiseLocalEvent(soln, ref transferred);
+            }
+
+            UpdateChemicals(soln);
         }
-        else
+        finally
         {
-            var proto = PrototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
-            solution.AddReagent(proto, acceptedQuantity, temperature.Value, PrototypeManager);
+            solution.PendingReagentTransfer = null;
         }
 
-        UpdateChemicals(soln);
         return acceptedQuantity == reagentQuantity.Quantity;
     }
 
@@ -989,12 +1056,19 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         foreach (var (proto, quantity) in sortedReagentPrototypes)
         {
             msg.PushNewline();
-            msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-chemical"
+            var reagentQuantity = solution.Contents.FirstOrDefault(x => x.Reagent.Prototype == proto.ID);
+            var tier = ChemistryPurity.GetDisplayTier(reagentQuantity.Reagent, proto);
+            msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-chemical-with-tier"
                 , ("type", proto.LocalizedName)
                 , ("color", proto.SubstanceColor.ToHexNoAlpha())
-                , ("amount", quantity)));
+                , ("amount", quantity)
+                , ("tierColor", ChemistryPurity.GetDisplayTierColor(tier))
+                , ("tier", Loc.GetString(ChemistryPurity.GetDisplayTierLocale(tier)))));
         }
 
+        msg.PushNewline();
+        msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-ph",
+            ("ph", ChemistryPH.GetSolutionPH(solution, PrototypeManager).ToString("0.0"))));
         msg.PushNewline();
         msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-temperature", ("temperature", Math.Round(solution.Temperature))));
 

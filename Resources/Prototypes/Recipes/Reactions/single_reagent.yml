@@ -2,6 +2,8 @@
 
 - type: reaction
   id: ProteinCooking
+  minPH: 5
+  maxPH: 9
   impact: Low
   minTemp: 347
   reactants:
@@ -12,6 +14,8 @@
 
 - type: reaction
   id: EggCooking
+  minPH: 5
+  maxPH: 9
   impact: Low
   minTemp: 344
   reactants:
@@ -22,6 +26,8 @@
 
 - type: reaction
   id: SapBoiling
+  minPH: 4
+  maxPH: 8
   impact: Low
   minTemp: 377
   reactants:
@@ -37,6 +43,8 @@
 
 - type: reaction
   id: BloodToWine
+  minPH: 0
+  maxPH: 14
   impact: Low
   requiredMixerCategories:
   - Holy
@@ -48,6 +56,8 @@
 
 - type: reaction
   id: WatertoHolyWater
+  minPH: 0
+  maxPH: 14
   impact: Low
   requiredMixerCategories:
   - Holy

@@ -8,6 +8,7 @@
   physicalDesc: reagent-physical-desc-gaseous
   flavor: bitter
   color: "#c4f5ff"
+  pH: 7.0
   boilingPoint: -183.0
   meltingPoint: -218.4
   metabolisms:
@@ -95,6 +96,7 @@
   physicalDesc: reagent-physical-desc-gaseous
   flavor: bitter
   color: "#7e009e"
+  pH: 6.5
   recognizable: true
   boilingPoint: -127.3 # Random values picked between the actual values for CO2 and O2
   meltingPoint: -186.4
@@ -216,6 +218,7 @@
   - Engineering
   flavor: bitter
   color: "#66ff33"
+  pH: 7.0
   tileReactions:
   - !type:FlammableTileReaction
     temperatureMultiplier: 2.0
@@ -254,6 +257,7 @@
   physicalDesc: reagent-physical-desc-odorless
   flavor: bitter
   color: "#66ff33"
+  pH: 5.6
   metabolisms:
     Poison:
       effects:
@@ -313,6 +317,7 @@
   physicalDesc: reagent-physical-desc-gaseous
   flavor: bitter
   color: "#a1e1ff"
+  pH: 7.0
   boilingPoint: -195.8
   meltingPoint: -210.0
   metabolisms:
@@ -351,6 +356,7 @@
   physicalDesc: reagent-physical-desc-gaseous
   flavor: bitter
   color: "#5d88c9"
+  pH: 7.0
   boilingPoint: -88
   meltingPoint: -90
   metabolisms:
@@ -429,6 +435,7 @@
   - Chemist
   flavor: bitter
   color: "#3a758c"
+  pH: 6.0
   boilingPoint: -195.8
   meltingPoint: -210.0
   metabolisms:

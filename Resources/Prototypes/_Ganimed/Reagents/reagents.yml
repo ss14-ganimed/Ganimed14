@@ -1,0 +1,31 @@
+- type: reagent
+  id: AcidicBuffer
+  name: reagent-name-acidic-buffer
+  group: Special
+  desc: reagent-desc-acidic-buffer
+  physicalDesc: reagent-physical-desc-acidic
+  flavor: bitter
+  color: "#f05c5c"
+  pH: 0.0
+  solutionAdd:
+    bypassVolumeWhenMixed: true
+    skipPhBlendOnAdd: true
+    trackTransferWhenMixed: true
+  phBuffer:
+    requiresMixedSolution: true
+
+- type: reagent
+  id: BasicBuffer
+  name: reagent-name-basic-buffer
+  group: Special
+  desc: reagent-desc-basic-buffer
+  physicalDesc: reagent-physical-desc-alkaline
+  flavor: bitter
+  color: "#5c8ff0"
+  pH: 14.0
+  solutionAdd:
+    bypassVolumeWhenMixed: true
+    skipPhBlendOnAdd: true
+    trackTransferWhenMixed: true
+  phBuffer:
+    requiresMixedSolution: true

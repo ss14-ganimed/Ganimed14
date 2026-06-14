@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server.Chemistry.Components;
 using Content.Server.Chemistry.Containers.EntitySystems;
+using Content.Shared._Ganimed.Chemistry;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
@@ -44,6 +45,7 @@ namespace Content.Server.Chemistry.EntitySystems
             SubscribeLocalEvent<ReagentDispenserComponent, EntInsertedIntoContainerMessage>(SubscribeUpdateUiState, after: [typeof(SharedStorageSystem)]);
             SubscribeLocalEvent<ReagentDispenserComponent, EntRemovedFromContainerMessage>(SubscribeUpdateUiState, after: [typeof(SharedStorageSystem)]);
             SubscribeLocalEvent<ReagentDispenserComponent, BoundUIOpenedEvent>(SubscribeUpdateUiState);
+            SubscribeLocalEvent<ReagentDispenserComponent, DispenserInsertedContainerSolutionChangedEvent>(OnDispenserContainerSolutionChanged);
 
             SubscribeLocalEvent<ReagentDispenserComponent, ReagentDispenserSetDispenseAmountMessage>(OnSetDispenseAmountMessage);
             SubscribeLocalEvent<ReagentDispenserComponent, ReagentDispenserDispenseReagentMessage>(OnDispenseReagentMessage);
@@ -58,7 +60,15 @@ namespace Content.Server.Chemistry.EntitySystems
             UpdateUiState(ent);
         }
 
-        private void UpdateUiState(Entity<ReagentDispenserComponent> reagentDispenser)
+        private void OnDispenserContainerSolutionChanged(Entity<ReagentDispenserComponent> ent, ref DispenserInsertedContainerSolutionChangedEvent ev)
+        {
+            if (ev.SlotId != SharedReagentDispenser.OutputSlotName)
+                return;
+
+            UpdateUiState(ent);
+        }
+
+        public void UpdateUiState(Entity<ReagentDispenserComponent> reagentDispenser)
         {
             var outputContainer = _itemSlotsSystem.GetItemOrNull(reagentDispenser, SharedReagentDispenser.OutputSlotName);
             var outputContainerInfo = BuildOutputContainerInfo(outputContainer);
@@ -78,7 +88,8 @@ namespace Content.Server.Chemistry.EntitySystems
             {
                 return new ContainerInfo(Name(container.Value), solution.Volume, solution.MaxVolume)
                 {
-                    Reagents = solution.Contents
+                    Reagents = solution.Contents,
+                    SolutionPH = ChemistryPH.GetSolutionPH(solution, _prototypeManager),
                 };
             }
 

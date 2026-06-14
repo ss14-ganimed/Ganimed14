@@ -7,6 +7,9 @@ reagent-desc-napalm = It's just a little flammable.
 reagent-name-phlogiston = phlogiston
 reagent-desc-phlogiston = Catches you on fire and makes you ignite.
 
+reagent-name-pyrosium = pyrosium
+reagent-desc-pyrosium = Cools the mixture to 20 K when first mixed. Consumes liquid oxygen to heat the container. Pyrosium is not expended.
+
 reagent-name-chlorine-trifluoride = chlorine trifluoride
 reagent-desc-chlorine-trifluoride = You really, REALLY don't want to get this shit anywhere near you.
 

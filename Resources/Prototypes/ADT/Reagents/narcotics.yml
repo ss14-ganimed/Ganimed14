@@ -6,6 +6,7 @@
   physicalDesc: reagent-physical-desc-cloudy
   flavor: bitter
   color: "#9c4008"
+  pH: 8.5
   metabolisms:
     Medicine:
       effects:
@@ -75,6 +76,7 @@
   physicalDesc: reagent-physical-desc-translucent
   flavor: bitter
   color: "#1bcfe7"
+  pH: 10.5
   boilingPoint: 212.0  # Dexosyephedrine vape when?
   meltingPoint: 170.0
   metabolisms:

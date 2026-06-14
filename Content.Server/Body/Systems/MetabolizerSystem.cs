@@ -1,4 +1,5 @@
 using Content.Server.Body.Components;
+using Content.Shared._Ganimed.Chemistry.Purity;
 using Content.Shared.Body.Events;
 using Content.Shared.Body.Organ;
 using Content.Shared.Body.Prototypes;
@@ -193,6 +194,11 @@ public sealed class MetabolizerSystem : SharedMetabolizerSystem
                 }
 
                 var actualEntity = ent.Comp2?.Body ?? solutionEntityUid.Value;
+
+                var purityEv = new ReagentMetabolizingEvent(actualEntity, soln.Value, reagent, mostToRemove, scale);
+                RaiseLocalEvent(ref purityEv);
+                mostToRemove = purityEv.Amount;
+                scale = purityEv.EffectScale;
 
                 // ADT-Tweak-Start
                 var ev = new GetReagentEffectsEvent(reagent, entry.Effects);

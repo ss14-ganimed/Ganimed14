@@ -6,6 +6,7 @@
   physicalDesc: reagent-physical-desc-metallic
   flavor: metallic
   color: "#848789"
+  pH: 7.0
   boilingPoint: 2327.0
   meltingPoint: 660.0
     # ADT Start
@@ -26,6 +27,7 @@
   physicalDesc: reagent-physical-desc-crystalline
   flavor: bitter
   color: "#22282b"
+  pH: 7.0
   boilingPoint: 4200.0
   meltingPoint: 3550.0
 
@@ -37,6 +39,7 @@
   physicalDesc: reagent-physical-desc-gaseous
   flavor: bitter
   color: "#a2ff00"
+  pH: 3.0
   meltingPoint: -101.5
   boilingPoint: -34.04
   plantMetabolism:
@@ -64,6 +67,7 @@
   physicalDesc: reagent-physical-desc-metallic
   flavor: metallic
   color: "#b05b3c"
+  pH: 6.5
   boilingPoint: 2595.0
   meltingPoint: 1083.0
   metabolisms:
@@ -106,6 +110,7 @@
   physicalDesc: reagent-physical-desc-gaseous
   flavor: bitter
   color: "#ba85cc"
+  pH: 3.0
   boilingPoint: -188.11
   meltingPoint: -219.67
   plantMetabolism:
@@ -133,6 +138,7 @@
   physicalDesc: reagent-physical-desc-metallic
   flavor: metallic
   color: "#F7C430"
+  pH: 7.0
   boilingPoint: 2700.0
   meltingPoint: 1064.76
     # ADT Start
@@ -166,6 +172,7 @@
   physicalDesc: reagent-physical-desc-dark-brown
   flavor: bitter
   color: "#BC8A00"
+  pH: 5.5
   boilingPoint: 184.3
   meltingPoint: 113.7
 
@@ -177,6 +184,7 @@
   physicalDesc: reagent-physical-desc-metallic
   flavor: metallic
   color: "#434b4d"
+  pH: 6.5
   boilingPoint: 2862.0
   meltingPoint: 1538.0
   metabolisms:
@@ -219,6 +227,7 @@
   physicalDesc: reagent-physical-desc-shiny
   flavor: metallic
   color: "#d6c0a7"
+  pH: 11.0
   meltingPoint: 180.5
   boilingPoint: 1330.0
   metabolisms:
@@ -246,6 +255,7 @@
   physicalDesc: reagent-physical-desc-shiny
   flavor: metallic
   color: "#929296"
+  pH: 6.0
   meltingPoint: -38.83
   boilingPoint: 356.73
   metabolisms:
@@ -267,6 +277,7 @@
   physicalDesc: reagent-physical-desc-shiny
   flavor: metallic
   color: "#c6c8cc"
+  pH: 12.0
   meltingPoint: 65.5
   boilingPoint: 759.0
 
@@ -278,6 +289,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: metallic
   color: "#f5da9a"
+  pH: 5.5
   meltingPoint: 44.2
   boilingPoint: 280.5
   plantMetabolism:
@@ -297,6 +309,7 @@
   physicalDesc: reagent-physical-desc-glowing
   flavor: metallic
   color: "#00ff04"
+  pH: 10.0
   meltingPoint: 700.0
   boilingPoint: 1737.0
 
@@ -308,6 +321,7 @@
   physicalDesc: reagent-physical-desc-crystalline
   flavor: metallic
   color: "#364266"
+  pH: 7.0
   boilingPoint: 3265.0
   meltingPoint: 1414.0
   metabolisms:
@@ -340,6 +354,7 @@
   physicalDesc: reagent-physical-desc-reasonably-metallic
   flavor: metallic
   color: "#d0d0d0"
+  pH: 7.0
   boilingPoint: 2212.0
   meltingPoint: 960.5
     # ADT Start
@@ -360,6 +375,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: bitter
   color: "#fff385"
+  pH: 5.5
   boilingPoint: 445.0
   meltingPoint: 120.0
   metabolisms:
@@ -378,6 +394,7 @@
   physicalDesc: reagent-physical-desc-metallic
   flavor: bitter
   color: "#a7b3d6"
+  pH: 12.0
   meltingPoint: 97.8
   boilingPoint: 883.0
 
@@ -389,6 +406,7 @@
   physicalDesc: reagent-physical-desc-metallic
   flavor: metallic
   color: "#8fa191"
+  pH: 6.0
   meltingPoint: 1133.0
   boilingPoint: 4131.0
   plantMetabolism:
@@ -417,6 +435,7 @@
   physicalDesc: reagent-physical-desc-shiny
   flavor: metallic
   color: "#bababa"
+  pH: 7.5
   meltingPoint: 419.5
   boilingPoint: 907.0
     # ADT Start

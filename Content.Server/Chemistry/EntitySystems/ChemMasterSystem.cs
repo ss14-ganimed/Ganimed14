@@ -2,6 +2,7 @@ using Content.Server.Chemistry.Components;
 using Content.Server.Popups;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared.Administration.Logs;
+using Content.Shared._Ganimed.Chemistry;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
@@ -52,6 +53,7 @@ namespace Content.Server.Chemistry.EntitySystems
 
             SubscribeLocalEvent<ChemMasterComponent, ComponentStartup>(SubscribeUpdateUiState);
             SubscribeLocalEvent<ChemMasterComponent, SolutionContainerChangedEvent>(SubscribeUpdateUiState);
+            SubscribeLocalEvent<ChemMasterComponent, DispenserInsertedContainerSolutionChangedEvent>(OnDispenserContainerSolutionChanged);
             // ADT-Tweak Start: Cutted
             // SubscribeLocalEvent<ChemMasterComponent, EntInsertedIntoContainerMessage>(SubscribeUpdateUiState);
             // SubscribeLocalEvent<ChemMasterComponent, EntRemovedFromContainerMessage>(SubscribeUpdateUiState);
@@ -117,6 +119,14 @@ namespace Content.Server.Chemistry.EntitySystems
         // ADT-Tweak Start
         private void SubscribeUpdateUiState<T>(Entity<ChemMasterComponent> ent, ref T ev) =>
             UpdateUiState(ent);
+
+        private void OnDispenserContainerSolutionChanged(Entity<ChemMasterComponent> ent, ref DispenserInsertedContainerSolutionChangedEvent ev)
+        {
+            if (ev.SlotId != SharedChemMaster.InputSlotName)
+                return;
+
+            UpdateUiState(ent);
+        }
         // ADT-Tweak End
 
         private void UpdateUiState(Entity<ChemMasterComponent> ent, bool updateLabel = false)
@@ -328,6 +338,7 @@ namespace Content.Server.Chemistry.EntitySystems
                 BuildInputContainerInfo(container),
                 bufferReagents,
                 bufferCurrentVolume,
+                ChemistryPH.GetSolutionPH(bufferSolution, _prototypeManager),
                 chemMaster.PillType,
                 chemMaster.PillDosageLimit,
                 chemMaster.BottleDosageLimit,
@@ -1567,10 +1578,11 @@ namespace Content.Server.Chemistry.EntitySystems
         }
 
         // ADT-Tweak-Start: Update sorting methods, build Container info for UI update and Input solution
-        private static ContainerInfo BuildContainerInfo(string name, Solution solution) =>
+        private ContainerInfo BuildContainerInfo(string name, Solution solution) =>
             new(name, solution.Volume, solution.MaxVolume)
             {
-                Reagents = solution.Contents
+                Reagents = solution.Contents,
+                SolutionPH = ChemistryPH.GetSolutionPH(solution, _prototypeManager),
             };
 
         private void OnSortMethodUpdated(EntityUid uid, ChemMasterComponent chemMaster, ChemMasterSortMethodUpdated args)

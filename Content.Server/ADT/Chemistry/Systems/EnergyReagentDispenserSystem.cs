@@ -1,5 +1,8 @@
 using System.Linq;
 using Content.Server.ADT.Chemistry.Components;
+using Content.Server.Chemistry.Components;
+using Content.Server.Chemistry.EntitySystems;
+using Content.Shared._Ganimed.Chemistry;
 using Content.Shared.ADT.Chemistry;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
@@ -33,7 +36,6 @@ namespace Content.Server.ADT.Chemistry.EntitySystems
         [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly BatterySystem _battery = default!;
-
         public override void Initialize()
         {
             base.Initialize();
@@ -43,6 +45,7 @@ namespace Content.Server.ADT.Chemistry.EntitySystems
             SubscribeLocalEvent<EnergyReagentDispenserComponent, EntInsertedIntoContainerMessage>(SubscribeUpdateUiState);
             SubscribeLocalEvent<EnergyReagentDispenserComponent, EntRemovedFromContainerMessage>(SubscribeUpdateUiState);
             SubscribeLocalEvent<EnergyReagentDispenserComponent, BoundUIOpenedEvent>(SubscribeUpdateUiState);
+            SubscribeLocalEvent<EnergyReagentDispenserComponent, DispenserInsertedContainerSolutionChangedEvent>(OnDispenserContainerSolutionChanged);
 
             SubscribeLocalEvent<EnergyReagentDispenserComponent, EnergyReagentDispenserSetDispenseAmountMessage>(OnSetDispenseAmountMessage);
             SubscribeLocalEvent<EnergyReagentDispenserComponent, EnergyReagentDispenserDispenseReagentMessage>(OnDispenseReagentMessage);
@@ -55,6 +58,14 @@ namespace Content.Server.ADT.Chemistry.EntitySystems
 
         private void SubscribeUpdateUiState<T>(Entity<EnergyReagentDispenserComponent> ent, ref T ev) =>
             UpdateUiState(ent);
+
+        private void OnDispenserContainerSolutionChanged(Entity<EnergyReagentDispenserComponent> ent, ref DispenserInsertedContainerSolutionChangedEvent ev)
+        {
+            if (ev.SlotId != SharedEnergyReagentDispenser.OutputSlotName)
+                return;
+
+            UpdateUiState(ent);
+        }
 
         private void UpdateUiState(Entity<EnergyReagentDispenserComponent> reagentDispenser)
         {
@@ -96,6 +107,7 @@ namespace Content.Server.ADT.Chemistry.EntitySystems
                 return new ContainerInfo(Name(container.Value), solution.Volume, solution.MaxVolume)
                 {
                     Reagents = solution.Contents,
+                    SolutionPH = ChemistryPH.GetSolutionPH(solution, _prototypeManager),
                 };
             }
 

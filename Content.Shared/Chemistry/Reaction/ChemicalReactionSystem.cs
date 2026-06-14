@@ -1,6 +1,8 @@
 using System.Collections.Frozen;
 using System.Linq;
 using Content.Shared.Administration.Logs;
+using Content.Shared._Ganimed.Chemistry;
+using Content.Shared._Ganimed.Chemistry.Purity;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Database;
@@ -160,6 +162,10 @@ namespace Content.Shared.Chemistry.Reaction
             if (reaction.Quantized)
                 lowestUnitReactions = (int) lowestUnitReactions;
 
+            // Effect-only reactions with catalyst reactants should run once per processing pass.
+            if (lowestUnitReactions == FixedPoint2.MaxValue)
+                lowestUnitReactions = FixedPoint2.New(1);
+
             return lowestUnitReactions > 0;
         }
 
@@ -173,6 +179,7 @@ namespace Content.Shared.Chemistry.Reaction
             var solution = comp.Solution;
 
             var energy = reaction.ConserveEnergy ? solution.GetThermalEnergy(_prototypeManager) : 0;
+            var productPurity = ChemistryPurity.CalculateReactionPurity(solution, reaction, _prototypeManager);
 
             //Remove reactants
             foreach (var reactant in reaction.Reactants)
@@ -189,7 +196,21 @@ namespace Content.Shared.Chemistry.Reaction
             foreach (var product in reaction.Products)
             {
                 products.Add(product.Key);
-                solution.AddReagent(product.Key, product.Value * unitReactions);
+
+                if (!_prototypeManager.TryIndex(product.Key, out ReagentPrototype? productProto))
+                {
+                    solution.AddReagent(product.Key, product.Value * unitReactions);
+                    continue;
+                }
+
+                ChemistryPurity.ResolvePurityProduct(
+                    solution,
+                    product.Key,
+                    product.Value * unitReactions,
+                    productPurity,
+                    productProto,
+                    reaction,
+                    _prototypeManager);
             }
 
             if (reaction.ConserveEnergy)
@@ -200,6 +221,9 @@ namespace Content.Shared.Chemistry.Reaction
             }
 
             OnReaction(soln, reaction, null, unitReactions);
+
+            var performed = new SolutionReactionPerformedEvent(reaction, soln, unitReactions);
+            RaiseLocalEvent(soln, ref performed);
 
             return products;
         }
@@ -220,33 +244,55 @@ namespace Content.Shared.Chemistry.Reaction
                 _audio.PlayPvs(reaction.Sound, soln);
         }
 
+        private enum ReactionProcessResult : byte
+        {
+            None,
+            ReactedInstant,
+            ReactedRateLimited,
+            QueuedRateLimited,
+        }
+
         /// <summary>
-        ///     Performs all chemical reactions that can be run on a solution.
-        ///     Removes the reactants from the solution, then returns a solution with all products.
+        ///     Performs one available reaction, or queues a rate-limited reaction for active ticking.
         ///     WARNING: Does not trigger reactions between solution and new products.
         /// </summary>
-        private bool ProcessReactions(Entity<SolutionComponent> soln, SortedSet<ReactionPrototype> reactions, ReactionMixerComponent? mixerComponent)
+        private ReactionProcessResult ProcessReactions(Entity<SolutionComponent> soln, SortedSet<ReactionPrototype> reactions, ReactionMixerComponent? mixerComponent, bool processRateLimited)
         {
             List<string>? products = null;
+            var processResult = ReactionProcessResult.None;
 
             // attempt to perform any applicable reaction
             foreach (var reaction in reactions)
             {
+                if (ShouldSkipCompetingReaction(reaction, soln, mixerComponent))
+                    continue;
+
                 if (!CanReact(soln, reaction, mixerComponent, out var unitReactions))
                 {
                     continue;
                 }
 
+                var reactionRate = GetReactionRate(reaction, soln.Comp.Solution);
+                if (!processRateLimited && reactionRate < FixedPoint2.MaxValue)
+                    return ReactionProcessResult.QueuedRateLimited;
+
+                unitReactions = FixedPoint2.Min(unitReactions, reactionRate);
+                if (unitReactions <= FixedPoint2.Zero)
+                    continue;
+
+                processResult = reactionRate < FixedPoint2.MaxValue
+                    ? ReactionProcessResult.ReactedRateLimited
+                    : ReactionProcessResult.ReactedInstant;
                 products = PerformReaction(soln, reaction, unitReactions);
                 break;
             }
 
             // did any reaction occur?
             if (products == null)
-                return false;
+                return ReactionProcessResult.None;
 
             if (products.Count == 0)
-                return true;
+                return processResult;
 
             // Add any reactions associated with the new products. This may re-add reactions that were already iterated
             // over previously. The new product may mean the reactions are applicable again and need to be processed.
@@ -256,13 +302,84 @@ namespace Content.Shared.Chemistry.Reaction
                     reactions.UnionWith(reactantReactions);
             }
 
-            return true;
+            return processResult;
+        }
+
+        private bool ShouldSkipCompetingReaction(
+            ReactionPrototype reaction,
+            Entity<SolutionComponent> soln,
+            ReactionMixerComponent? mixerComponent)
+        {
+            if (reaction.CompetingReaction is not { } competingId
+                || !_prototypeManager.TryIndex(competingId, out var competing))
+            {
+                return false;
+            }
+
+            if (!CanReact(soln, competing, mixerComponent, out _))
+                return false;
+
+            var solution = soln.Comp.Solution;
+            var favorsThis = ChemistryPurity.FavorsCompetingReaction(reaction, solution, _prototypeManager);
+            var favorsCompeting = ChemistryPurity.FavorsCompetingReaction(competing, solution, _prototypeManager);
+
+            if (favorsThis == favorsCompeting)
+                return string.CompareOrdinal(reaction.ID, competing.ID) > 0;
+
+            return !favorsThis;
+        }
+
+        private static readonly FixedPoint2 DefaultReactionRate = FixedPoint2.New(5);
+        private const float BaselineReactionTemperature = 293.15f;
+
+        private static bool RequiresManualMix(ReactionPrototype reaction)
+        {
+            if (reaction.MixingCategories is not { } categories)
+                return false;
+
+            foreach (var category in categories)
+            {
+                if (category == "Shake" || category == "Stir")
+                    return true;
+            }
+
+            return false;
+        }
+
+        private static FixedPoint2 GetReactionRate(ReactionPrototype reaction, Solution solution)
+        {
+            FixedPoint2 rate;
+
+            if (reaction.Instant || RequiresManualMix(reaction))
+                rate = FixedPoint2.MaxValue;
+            else if (reaction.Products.Count == 0 && reaction.Effects.Length > 0)
+            {
+                // Effect-only reactions run immediately unless a custom reaction rate is set in YAML.
+                rate = reaction.ReactionRate != DefaultReactionRate
+                    ? reaction.ReactionRate
+                    : FixedPoint2.MaxValue;
+            }
+            else
+            {
+                rate = reaction.ReactionRate;
+            }
+
+            // Reaction speed scales linearly with absolute temperature.
+            // Examples: at 2x baseline temperature, 5u -> ~10u; at 0.5x, 5u -> ~2.5u.
+            var temperatureMultiplier = Math.Max(0f, solution.Temperature / BaselineReactionTemperature);
+            if (Math.Abs(temperatureMultiplier - 1f) > 1e-6f)
+                rate *= FixedPoint2.New(temperatureMultiplier);
+
+            if (solution.ReactionRateMultiplier <= 0f || Math.Abs(solution.ReactionRateMultiplier - 1f) < 1e-6f)
+                return rate;
+
+            return rate * FixedPoint2.New(solution.ReactionRateMultiplier);
         }
 
         /// <summary>
         ///     Continually react a solution until no more reactions occur, with a volume constraint.
         /// </summary>
-        public void FullyReactSolution(Entity<SolutionComponent> soln, ReactionMixerComponent? mixerComponent = null)
+        public bool FullyReactSolution(Entity<SolutionComponent> soln, ReactionMixerComponent? mixerComponent = null, bool processRateLimited = false)
         {
             // construct the initial set of reactions to check.
             SortedSet<ReactionPrototype> reactions = new();
@@ -276,11 +393,19 @@ namespace Content.Shared.Chemistry.Reaction
             // exceed the iteration limit.
             for (var i = 0; i < MaxReactionIterations; i++)
             {
-                if (!ProcessReactions(soln, reactions, mixerComponent))
-                    return;
+                var result = ProcessReactions(soln, reactions, mixerComponent, processRateLimited);
+                switch (result)
+                {
+                    case ReactionProcessResult.None:
+                        return false;
+                    case ReactionProcessResult.QueuedRateLimited:
+                    case ReactionProcessResult.ReactedRateLimited:
+                        return true;
+                }
             }
 
             Log.Error($"{nameof(Solution)} {soln.Owner} could not finish reacting in under {MaxReactionIterations} loops.");
+            return false;
         }
     }
 
@@ -297,4 +422,22 @@ namespace Content.Shared.Chemistry.Reaction
         public readonly Entity<SolutionComponent> Solution = Solution;
         public bool Cancelled = false;
     }
+
+    /// <summary>
+    /// Raised after a reaction has been applied to a solution.
+    /// </summary>
+    [ByRefEvent]
+    public readonly record struct SolutionReactionPerformedEvent(
+        ReactionPrototype Reaction,
+        Entity<SolutionComponent> Solution,
+        FixedPoint2 UnitReactions);
+
+    /// <summary>
+    /// Raised after a tracked reagent transfer was added to a solution, before reactions are processed.
+    /// </summary>
+    [ByRefEvent]
+    public readonly record struct SolutionReagentTransferredEvent(
+        Entity<SolutionComponent> Solution,
+        string ReagentId,
+        FixedPoint2 Quantity);
 }

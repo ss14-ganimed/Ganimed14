@@ -7,6 +7,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: nutriment
   color: "#24591F"
+  pH: 6.8
   metabolisms:
     Food:
       effects:
@@ -35,6 +36,7 @@
   physicalDesc: reagent-physical-desc-chalky
   flavor: vitamin
   color: "#D3D3D3"
+  pH: 5.5
   metabolisms:
     Food: #This makes it not compete with medicines, a large bonus for something that can heal
       effects:
@@ -64,6 +66,7 @@
   physicalDesc: reagent-physical-desc-clumpy
   flavor: protein
   color: "#FFFFE5"
+  pH: 7.0
   metabolisms:
     Food:
       effects:
@@ -85,6 +88,7 @@
   physicalDesc: reagent-physical-desc-sweet
   flavor: sweet
   color: white
+  pH: 7.0
   meltingPoint: 146.0
   metabolisms:
     Food:
@@ -116,3 +120,4 @@
   desc: reagent-desc-pumpkin-flesh
   flavor: pumpkin
   color: "#fc9300"
+  pH: 6.0

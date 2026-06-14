@@ -2,6 +2,8 @@
 
 - type: reaction
   id: ADTSummerShade
+  minPH: 2.5
+  maxPH: 6
   requiredMixerCategories:
   - Stir
   reactants:
@@ -16,6 +18,8 @@
 
 - type: reaction
   id: ADTWinterSun
+  minPH: 5.5
+  maxPH: 7.5
   requiredMixerCategories:
   - Stir
   reactants:
@@ -28,6 +32,8 @@
 
 - type: reaction
   id: ADTHungoverAngel
+  minPH: 2
+  maxPH: 5
   requiredMixerCategories:
   - Stir
   reactants:
@@ -42,6 +48,8 @@
 
 - type: reaction
   id: ADTCitrusBalance
+  minPH: 2
+  maxPH: 5
   requiredMixerCategories:
   - Stir
   reactants:
@@ -56,6 +64,8 @@
 
 - type: reaction
   id: ADTDobryiDrink
+  minPH: 2.5
+  maxPH: 5
   reactants:
     JuiceOrange:
       amount: 1
@@ -68,6 +78,8 @@
 
 - type: reaction
   id: ADTMilkEclipse
+  minPH: 5
+  maxPH: 7.5
   requiredMixerCategories:
   - Stir
   reactants:
@@ -82,6 +94,8 @@
 
 - type: reaction
   id: ADTArcticExplosion
+  minPH: 4
+  maxPH: 7
   requiredMixerCategories:
   - Stir
   reactants:
@@ -98,6 +112,8 @@
 
 - type: reaction
   id: ADTSugarKnight
+  minPH: 4
+  maxPH: 7
   requiredMixerCategories:
   - Stir
   reactants:
@@ -112,6 +128,8 @@
 
 - type: reaction
   id: ADTGrapeLady
+  minPH: 4
+  maxPH: 7
   requiredMixerCategories:
   - Stir
   reactants:
@@ -126,6 +144,8 @@
 
 - type: reaction
   id: ADTSaturdayBaron
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -142,6 +162,8 @@
 
 - type: reaction
   id: ADTArcticLatte
+  minPH: 5
+  maxPH: 7
   requiredMixerCategories:
   - Stir
   reactants:
@@ -156,6 +178,8 @@
 
 - type: reaction
   id: ADTSpecialTeaOolong
+  minPH: 4
+  maxPH: 7
   requiredMixerCategories:
   - Stir
   reactants:
@@ -170,6 +194,8 @@
 
 - type: reaction
   id: ADTAzureBlue
+  minPH: 3
+  maxPH: 6.5
   requiredMixerCategories:
   - Stir
   reactants:
@@ -186,6 +212,8 @@
 
 - type: reaction
   id: ADTPenetrationDrink
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Stir
   reactants:
@@ -206,6 +234,8 @@
 
 - type: reaction
   id: ADTEclipsedEclispe
+  minPH: 3
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -218,6 +248,8 @@
 
 - type: reaction
   id: ADTSpaceBush
+  minPH: 2.5
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -232,6 +264,8 @@
 
 - type: reaction
   id: ADTBusinessConversation
+  minPH: 4
+  maxPH: 8.5
   requiredMixerCategories:
   - Stir
   reactants:
@@ -249,6 +283,8 @@
 
 - type: reaction
   id: ADTAppleMartini
+  minPH: 3
+  maxPH: 6.5
   reactants:
     ADTAppleLiqueur:
       amount: 3
@@ -261,6 +297,8 @@
 
 - type: reaction
   id: ADTBacardiApple
+  minPH: 3
+  maxPH: 7
   reactants:
     ADTAppleLiqueur:
       amount: 1
@@ -274,6 +312,8 @@
 #охохо, сейчас такое будет.
 - type: reaction
   id: ADTElderGuards
+  minPH: 2.5
+  maxPH: 6
   reactants:
     Vodka:
       amount: 2
@@ -296,6 +336,8 @@
 
 - type: reaction
   id: ADTLimeShade
+  minPH: 3
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -312,6 +354,8 @@
 
 - type: reaction
   id: ADTOrangeteaReaction
+  minPH: 4
+  maxPH: 7
   minTemp: 370
   reactants:
     ADTOrangepackReg:
@@ -323,6 +367,8 @@
 
 - type: reaction
   id: ADTCherryteaReaction
+  minPH: 4
+  maxPH: 7
   minTemp: 370
   reactants:
     ADTCherrypackReg:
@@ -334,6 +380,8 @@
 
 - type: reaction
   id: ADTWatermelonteaReaction
+  minPH: 4
+  maxPH: 7
   minTemp: 370
   reactants:
     ADTWatermelonpackReg:
@@ -345,6 +393,8 @@
 
 - type: reaction
   id: ADTTeqilaOldFashion
+  minPH: 3.5
+  maxPH: 7
   reactants:
     Tequila:
       amount: 7
@@ -359,6 +409,8 @@
 
 - type: reaction
   id: ADTJackieWelles
+  minPH: 3
+  maxPH: 6
   requiredMixerCategories:
   - Shake
   reactants:
@@ -375,6 +427,8 @@
 
 - type: reaction
   id: ADTTheSilverhand
+  minPH: 3
+  maxPH: 7
   requiredMixerCategories:
   - Shake
   reactants:
@@ -389,6 +443,8 @@
 
 - type: reaction
   id: Singulo
+  minPH: 0
+  maxPH: 14
   requiredMixerCategories:
   - Shake
   reactants:
@@ -404,6 +460,8 @@
 
 - type: reaction
   id: ADTCondensedMilk
+  minPH: 6
+  maxPH: 8
   minTemp: 340
   impact: Low
   quantized: true
@@ -419,6 +477,8 @@
 
 - type: reaction
   id: ADTCoffeeBonBon
+  minPH: 5
+  maxPH: 7
   reactants:
     ADTCondensedMilk:
       amount: 1
@@ -429,6 +489,8 @@
 
 - type: reaction
   id: ADTCoffeCooking
+  minPH: 5
+  maxPH: 8
   minTemp: 373
   reactants:
     ADTCoffeePowder:
@@ -440,6 +502,8 @@
 
 - type: reaction
   id: ADTYupiReactionApple
+  minPH: 3
+  maxPH: 7
   reactants:
     ADTYupiDryApple:
       amount: 1
@@ -450,6 +514,8 @@
 
 - type: reaction
   id: ADTYupiReactionBerries
+  minPH: 3
+  maxPH: 7
   reactants:
     ADTYupiDryBerries:
       amount: 1
@@ -460,6 +526,8 @@
 
 - type: reaction
   id: ADTYupiReactionCherry
+  minPH: 3
+  maxPH: 7
   reactants:
     ADTYupiDryCherry:
       amount: 1
@@ -470,6 +538,8 @@
 
 - type: reaction
   id: ADTYupiReactionMango
+  minPH: 3
+  maxPH: 7
   reactants:
     ADTYupiDryMango:
       amount: 1
@@ -480,6 +550,8 @@
 
 - type: reaction
   id: ADTYupiReactionOrange
+  minPH: 3
+  maxPH: 7
   reactants:
     ADTYupiDryOrange:
       amount: 1
@@ -490,6 +562,8 @@
 
 - type: reaction
   id: ADTYupiReactionPeach
+  minPH: 3
+  maxPH: 7
   reactants:
     ADTYupiDryPeach:
       amount: 1
@@ -500,6 +574,8 @@
 
 - type: reaction
   id: ADTYupiReactionPineapple
+  minPH: 3
+  maxPH: 7
   reactants:
     ADTYupiDryPineapple:
       amount: 1
@@ -510,6 +586,8 @@
 
 - type: reaction
   id: ADTYupiReactionRaspberry
+  minPH: 3
+  maxPH: 7
   reactants:
     ADTYupiDryRaspberry:
       amount: 1
@@ -520,6 +598,8 @@
 
 - type: reaction
   id: ADTYupiReactionStrawberry
+  minPH: 3
+  maxPH: 7
   reactants:
     ADTYupiDryStrawberry:
       amount: 1
@@ -530,6 +610,8 @@
 
 - type: reaction
   id: ADTYupiReactionWatermelon
+  minPH: 3
+  maxPH: 7
   reactants:
     ADTYupiDryWatermelon:
       amount: 1

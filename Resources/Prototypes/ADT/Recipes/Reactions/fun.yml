@@ -1,5 +1,7 @@
 - type: reaction
   id: ADTChaoticPolymorphine
+  minPH: 5
+  maxPH: 8
   reactants:
     Uranium:
       amount: 4
@@ -14,6 +16,8 @@
 
 - type: reaction
   id: ADTPolymorphine
+  minPH: 6
+  maxPH: 9
   reactants:
     ADTChaoticPolymorphine:
       amount: 1
@@ -28,6 +32,8 @@
 
 - type: reaction
   id: ADTGenusiphine
+  minPH: 6
+  maxPH: 9
   reactants:
     ADTPolymorphine:
       amount: 1

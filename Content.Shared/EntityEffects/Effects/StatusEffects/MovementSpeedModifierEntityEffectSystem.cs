@@ -1,4 +1,5 @@
-﻿using Content.Shared.Movement.Components;
+﻿using Content.Shared._Ganimed.Chemistry.Purity;
+using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.StatusEffectNew;
 using Robust.Shared.Prototypes;
@@ -7,7 +8,7 @@ namespace Content.Shared.EntityEffects.Effects.StatusEffects;
 
 /// <summary>
 /// Applies a given movement speed modifier status effect to this entity.
-/// Duration is modified by scale.
+/// Duration and speed bonus/penalty are modified by scale (includes reagent purity).
 /// </summary>
 /// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
 public sealed partial class MovementSpeedModifierEntityEffectSystem : EntityEffectSystem<MovementSpeedModifierComponent, MovementSpeedModifier>
@@ -18,8 +19,8 @@ public sealed partial class MovementSpeedModifierEntityEffectSystem : EntityEffe
     protected override void Effect(Entity<MovementSpeedModifierComponent> entity, ref EntityEffectEvent<MovementSpeedModifier> args)
     {
         var proto = args.Effect.EffectProto;
-        var sprintMod = args.Effect.SprintSpeedModifier;
-        var walkMod = args.Effect.WalkSpeedModifier;
+        var sprintMod = ChemistryPurity.ScaleMovementModifier(args.Effect.SprintSpeedModifier, args.Scale);
+        var walkMod = ChemistryPurity.ScaleMovementModifier(args.Effect.WalkSpeedModifier, args.Scale);
 
         switch (args.Effect.Type)
         {

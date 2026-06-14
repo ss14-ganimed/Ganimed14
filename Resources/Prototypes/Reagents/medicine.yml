@@ -8,6 +8,7 @@
   - Medical
   flavor: medicine
   color: "#081a80"
+  pH: 6.5
   metabolisms:
     Medicine:
       effects:
@@ -26,6 +27,7 @@
   physicalDesc: reagent-physical-desc-translucent
   flavor: medicine
   color: "#3a1d8a"
+  pH: 6.8
   metabolisms:
     Medicine:
       effects:
@@ -80,6 +82,7 @@
   physicalDesc: reagent-physical-desc-chalky
   flavor: medicine
   color: "#64ffe6"
+  pH: 8.4
   metabolisms:
     Medicine:
       effects:
@@ -110,6 +113,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#2d5708"
+  pH: 7.4
   metabolisms:
     Medicine:
       effects:
@@ -130,6 +134,7 @@
   physicalDesc: reagent-physical-desc-cloudy
   flavor: medicine
   color: "#bd5902"
+  pH: 4.7
   metabolisms:
     Medicine:
       effects:
@@ -148,6 +153,12 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#ffaa00"
+  pH: 6.1
+  unreactedPurity: 0.75
+  inverseThreshold: 0.30
+  inverseReagent: ToxicMonomers
+  failedReagent: InsolventMedicinalPrecipitate
+  retainsVolumeOnSplit: true
   metabolisms:
     Medicine:
       effects:
@@ -201,6 +212,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: medicine
   color: "#0091ff"
+  pH: 7.2
   worksOnTheDead: true
   plantMetabolism:
   - !type:PlantAdjustToxins
@@ -253,6 +265,7 @@
   physicalDesc: reagent-physical-desc-bubbling
   flavor: medicine
   color: "#32cd32"
+  pH: 6.2
   worksOnTheDead: true
   metabolisms:
     Medicine:
@@ -273,6 +286,7 @@
   physicalDesc: reagent-physical-desc-translucent
   flavor: medicine
   color: "#215263"
+  pH: 8.0
   metabolisms:
     Medicine:
       effects:
@@ -326,6 +340,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#0041a8"
+  pH: 8.5
   metabolisms:
     Medicine:
       effects:
@@ -371,6 +386,7 @@
   physicalDesc: reagent-physical-desc-cloudy
   flavor: medicine
   color: "#4da0bd"
+  pH: 7.3
   metabolisms:
     Medicine:
       effects:
@@ -437,6 +453,7 @@
   physicalDesc: reagent-physical-desc-odorless
   flavor: medicine
   color: "#d2fffa"
+  pH: 7
   metabolisms:
     Medicine:
       effects:
@@ -544,6 +561,7 @@
   physicalDesc: reagent-physical-desc-cloudy
   flavor: medicine
   color: "#4cb580"
+  pH: 7.0
   metabolisms:
     Medicine:
       effects:
@@ -577,6 +595,7 @@
   - Medical
   flavor: medicine
   color: "#422912"
+  pH: 5.0
   metabolisms:
     Medicine:
       effects:
@@ -595,6 +614,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#731024"
+  pH: 5.5
   metabolisms:
     Medicine:
       metabolismRate: 0.1 # Smaller doses stabilize critical people for longer. Gives it a specific usecase as to not be entirely outclassed by dex+
@@ -639,6 +659,10 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: medicine
   color: "#bf3d19"
+  pH: 7.5
+  unreactedPurity: 0.75
+  inverseThreshold: 0.25
+  retainsVolumeOnSplit: true
   metabolisms:
     Medicine:
       effects:
@@ -674,6 +698,7 @@
   physicalDesc: reagent-physical-desc-pungent
   flavor: medicine
   color: "#ff7db5"
+  pH: 7.0
   metabolisms:
     Medicine:
       effects:
@@ -708,6 +733,7 @@
   physicalDesc: reagent-physical-desc-viscous
   flavor: medicine
   color: "#ff867d"
+  pH: 7.6
   metabolisms:
     Medicine:
       effects:
@@ -754,6 +780,7 @@
   physicalDesc: reagent-physical-desc-acrid
   flavor: medicine
   color: "#c8ff75"
+  pH: 5.0
   plantMetabolism:
     - !type:PlantAdjustToxins
       amount: 6
@@ -794,6 +821,7 @@
   physicalDesc: reagent-physical-desc-pungent
   flavor: violets
   color: "#9423FF"
+  pH: 7.8
   metabolisms:
     Medicine:
       effects:
@@ -854,6 +882,7 @@
   physicalDesc: reagent-physical-desc-crisp
   flavor: medicine
   color: "#86caf7"
+  pH: 6.8
   metabolisms:
     Medicine:
       effects:
@@ -871,6 +900,7 @@
   physicalDesc: reagent-physical-desc-crisp
   flavor: medicine
   color: "#1274b5"
+  pH: 7.2
   metabolisms:
     Medicine:
       effects:
@@ -889,6 +919,7 @@
   physicalDesc: reagent-physical-desc-pulpy
   flavor: medicine
   color: "#FFE774"
+  pH: 5.8
   metabolisms:
     Medicine:
       effects:
@@ -903,6 +934,7 @@
   physicalDesc: reagent-physical-desc-salty
   flavor: salty
   color: "#0064C8"
+  pH: 7.0
   metabolisms:
     Drink:
       effects:
@@ -919,6 +951,7 @@
   physicalDesc: reagent-physical-desc-milky
   flavor: medicine
   color: "#f4dab8"
+  pH: 6.8
   metabolisms:
     Medicine:
       effects:
@@ -935,6 +968,7 @@
   physicalDesc: reagent-physical-desc-starry
   flavor: medicine
   color: "#2b2f77"
+  pH: 5.8
   metabolisms:
     Medicine:
       effects:
@@ -958,6 +992,7 @@
   physicalDesc: reagent-physical-desc-pungent
   flavor: medicine
   color: "#d49a2f"
+  pH: 8.2
   metabolisms:
     Poison:
       effects:
@@ -985,6 +1020,7 @@
   physicalDesc: reagent-physical-desc-viscous
   flavor: medicine
   color: "#ba7d7d"
+  pH: 3.8
   metabolisms:
     Medicine:
       effects:
@@ -1009,6 +1045,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#00e5ff"
+  pH: 7.0
   metabolisms:
     Medicine:
       effects:
@@ -1035,6 +1072,7 @@
   physicalDesc: reagent-physical-desc-oily
   flavor: medicine
   color: "#2690b5"
+  pH: 7.0
   metabolisms:
     Medicine:
       effects:
@@ -1050,6 +1088,7 @@
   physicalDesc: reagent-physical-desc-soothing
   flavor: medicine
   color: "#fcf7f9"
+  pH: 7.0
   metabolisms:
     Medicine:
       effects:
@@ -1068,6 +1107,7 @@
   physicalDesc: reagent-physical-desc-thick-and-grainy
   flavor: medicine
   color: "#520e30"
+  pH: 7.5
   metabolisms:
     Medicine:
       effects:
@@ -1126,6 +1166,7 @@
   physicalDesc: reagent-physical-desc-translucent
   flavor: medicine
   color: "#404040"
+  pH: 10
   metabolisms:
     Medicine:
       effects:
@@ -1139,6 +1180,7 @@
   physicalDesc: reagent-physical-desc-enigmatic
   flavor: magical
   color: "#b50ee8"
+  pH: 8.0
   metabolisms:
     Medicine:
       effects:
@@ -1156,6 +1198,7 @@
   physicalDesc: reagent-physical-desc-shiny
   flavor: medicine
   color: "#d5d5e4"
+  pH: 9.8
   metabolisms:
     Medicine:
       effects:
@@ -1186,6 +1229,7 @@
   physicalDesc: reagent-physical-desc-glowing
   flavor: medicine
   color: "#b0abaa"
+  pH: 9.0
   metabolisms:
     Medicine:
       effects:
@@ -1213,6 +1257,7 @@
   physicalDesc: reagent-physical-desc-thick
   flavor: sweet
   color: "#e0a5b9"
+  pH: 6.6
   metabolisms:
     Medicine:
       metabolismRate: 0.25
@@ -1273,6 +1318,7 @@
   physicalDesc: reagent-physical-desc-viscous
   flavor: syrupy
   color: "#283332"
+  pH: 8.0
   metabolisms:
     Medicine:
       metabolismRate: 0.1 # ADT-Tweak 0.25 -> 0.1
@@ -1299,6 +1345,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: fizzy
   color: "#b9bf93"
+  pH: 7.5
   metabolisms:
     Medicine:
       metabolismRate: 0.1 # ADT-Tweak 0.25 -> 0.1
@@ -1333,6 +1380,7 @@
   physicalDesc: reagent-physical-desc-mucus-like
   flavor: sour
   color: "#ff3636"
+  pH: 6.5
   metabolisms:
     Medicine:
       metabolismRate: 0.1 # ADT-Tweak 0.25 -> 0.1
@@ -1368,6 +1416,7 @@
   physicalDesc: reagent-physical-desc-holy
   flavor: holy
   color: "#91C3F7"
+  pH: 7.4
   metabolisms:
     Drink:
       effects:
@@ -1412,6 +1461,7 @@
   physicalDesc: reagent-physical-desc-thick
   flavor: syrupy
   color: "#aa4308"
+  pH: 4.0
   metabolisms:
     Medicine:
       metabolismRate: 0.1 # slow metabolism to not be a godly combat med, its for treating burn victims efficiently
@@ -1453,6 +1503,7 @@
   physicalDesc: reagent-physical-desc-frosty
   flavor: metallic
   color: "#8147ff"
+  pH: 6.8
   metabolisms:
     Medicine:
       metabolismRate: 0.25
@@ -1500,6 +1551,7 @@
   physicalDesc: reagent-physical-desc-sickly
   flavor: acid
   color: "#b5e36d"
+  pH: 3.2
   worksOnTheDead: true
   metabolisms:
     Medicine:
@@ -1521,6 +1573,7 @@
   physicalDesc: reagent-physical-desc-necrotic
   flavor: medicine
   color: "#86a5bd"
+  pH: 6.5
   worksOnTheDead: true
   plantMetabolism:
   - !type:PlantAdjustToxins
@@ -1551,6 +1604,7 @@
   physicalDesc: reagent-physical-desc-soothing
   flavor: medicine
   color: "#89f77f"
+  pH: 7.6
   worksOnTheDead: true
   metabolisms:
     Medicine:
@@ -1574,6 +1628,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: sweet
   color: "#A0A0A0"
+  pH: 10.4
   metabolisms:
     Medicine:
       effects:
@@ -1595,6 +1650,7 @@
   physicalDesc: reagent-physical-desc-shiny
   flavor: bitter
   color: "#07E79E"
+  pH: 8.0
   metabolisms:
     Medicine:
       effects:
@@ -1639,6 +1695,7 @@
   physicalDesc: reagent-physical-desc-grainy
   flavor: medicine
   color: "#baa15d"
+  pH: 7.0
   metabolisms:
     Medicine:
       effects:
@@ -1664,6 +1721,7 @@
   physicalDesc: reagent-physical-desc-crystalline
   flavor: medicine
   color: "#27870a"
+  pH: 8.5
   metabolisms:
     Medicine:
       effects:

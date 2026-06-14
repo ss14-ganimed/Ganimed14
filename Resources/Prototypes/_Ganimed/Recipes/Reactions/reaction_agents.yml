@@ -1,0 +1,91 @@
+# Reaction-agent synthesis and activation (tg fermichem prefactor chain).
+
+- type: reaction
+  id: PrefactorA
+  maxTemp: 800
+  minPH: 2
+  maxPH: 12
+  minimumProductPurity: 0.25
+  reactants:
+    Phenol:
+      amount: 1
+    Ethanol:
+      amount: 3
+    Plasma:
+      amount: 1
+  products:
+    PrefactorA: 5
+
+- type: reaction
+  id: PrefactorB
+  minTemp: 50
+  maxTemp: 500
+  minPH: 5
+  maxPH: 8
+  minimumProductPurity: 0.35
+  reactants:
+    PrefactorA:
+      amount: 5
+  products:
+    PrefactorB: 5
+  competingReaction: PrefactorAReverse
+  competingFavor: Hot
+  competingThreshold: 400
+
+- type: reaction
+  id: PrefactorAReverse
+  source: true
+  maxTemp: 800
+  minPH: 2
+  maxPH: 12
+  reactants:
+    PrefactorB:
+      amount: 1
+  products:
+    PrefactorA: 1
+  competingReaction: PrefactorB
+  competingFavor: Cold
+  competingThreshold: 400
+
+- type: reaction
+  id: PurityTesterReagentSynth
+  maxTemp: 800
+  minPH: 2
+  maxPH: 12
+  minimumProductPurity: 0.25
+  reactants:
+    PrefactorA:
+      amount: 1
+    Plasma:
+      amount: 1
+  products:
+    PurityTesterReagent: 1
+
+- type: reaction
+  id: TempomyocinSynth
+  minTemp: 50
+  maxTemp: 500
+  minPH: 5
+  maxPH: 8
+  minimumProductPurity: 0.35
+  reactants:
+    PrefactorB:
+      amount: 1
+    Plasma:
+      amount: 1
+  products:
+    Tempomyocin: 1
+
+- type: reaction
+  id: PurityTestAgentActivation
+  instant: true
+  priority: 98
+  minPH: 0
+  maxPH: 14
+  reactants:
+    PurityTesterReagent:
+      amount: 1
+      catalyst: true
+  effects:
+  - !type:PurityTesterReactionEffect
+    reagent: PurityTesterReagent

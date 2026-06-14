@@ -301,6 +301,7 @@
     - ServiceBoardsStatic
     - CargoBoardsStatic
     - MedicalBoardsStatic
+    - HplcBoardsStatic
     - EngineeringBoardsStatic
     - CircuitFloorsStatic
     - ElectronicsStatic # ADT-Tweak

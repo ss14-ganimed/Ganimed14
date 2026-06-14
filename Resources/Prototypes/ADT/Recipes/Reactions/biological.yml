@@ -1,5 +1,7 @@
 - type: reaction
   id: ResomiBloodBreakdown
+  minPH: 0
+  maxPH: 14
   source: true
   requiredMixerCategories:
   - Centrifuge

@@ -6,6 +6,7 @@
   physicalDesc: reagent-physical-desc-enigmatic
   flavor: tingly
   color: "#b26de3"
+  pH: 8.0
   metabolisms:
     Medicine:
       effects:
@@ -375,6 +376,7 @@
   physicalDesc: reagent-physical-desc-volatile
   flavor: magical
   color: "#62278c"
+  pH: 6.0
   metabolisms:
     Medicine:
       effects:
@@ -514,6 +516,7 @@
   physicalDesc: reagent-physical-desc-enigmatic
   flavor: tingly
   color: "#059fb39d"
+  pH: 7.5
   metabolisms:
     Medicine:
       effects:

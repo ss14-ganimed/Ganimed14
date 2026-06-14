@@ -6,6 +6,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: soda
   color: "#6c2828"
+  pH: 2.5
   recognizable: true
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/colaglass.rsi
@@ -31,6 +32,7 @@
   physicalDesc: reagent-physical-desc-sweet
   flavor: cola
   color: "#262019"
+  pH: 2.8
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/royrogers.rsi
     state: icon_empty
@@ -51,6 +53,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: soda
   color: "#2E6671"
+  pH: 3.3
 
 - type: reagent
   id: DrGibb
@@ -60,6 +63,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: drgibb
   color: "#102000"
+  pH: 3.1
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/dr_gibb_glass.rsi
     state: icon_empty
@@ -75,6 +79,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: energydrink
   color: "#ffffbf"
+  pH: 3.4
   metabolisms:
     Drink:
       effects:
@@ -97,6 +102,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: grapesoda
   color: "#ae94a6"
+  pH: 3.2
 
 - type: reagent
   id: IceCream
@@ -106,6 +112,7 @@
   physicalDesc: reagent-physical-desc-creamy
   flavor: icecream
   color: "#fffbd6"
+  pH: 6.2
   recognizable: true
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/icecreamglass.rsi
@@ -123,6 +130,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: lemonlimesoda
   color: "#878F00"
+  pH: 3.0
 
 - type: reagent
   id: LemonLimeCranberry
@@ -132,6 +140,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: lemonlimecranberrysoda
   color: "#803C53"
+  pH: 2.9
 
 - type: reagent
   id: PwrGame
@@ -141,6 +150,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: pwrgamesoda
   color: "#9385bf"
+  pH: 3.2
   fizziness: 0.9 # gamers crave the fizz
 
 - type: reagent
@@ -151,6 +161,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: rootbeersoda
   color: "#381c07"
+  pH: 4.0
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/rootbeerglass.rsi
     state: icon_empty
@@ -166,6 +177,7 @@
   physicalDesc: reagent-physical-desc-fizzy-and-creamy
   flavor: rootbeerfloat
   color: "#4f361f"
+  pH: 5.2
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/rootbeerfloatglass.rsi
     state: icon_empty
@@ -182,6 +194,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: gingersoda
   color: "#ccb87e"
+  pH: 3.4
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/sol_dry_glass.rsi
     state: icon_empty
@@ -197,6 +210,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: sweet
   color: "#af2221"
+  pH: 3.5
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/shirleytemple.rsi
     state: icon_empty
@@ -217,6 +231,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: sodacitrus
   color: "#a6fa5a"
+  pH: 3.1
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/space_mountain_wind_glass.rsi
     state: icon_empty
@@ -232,6 +247,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: spaceup
   color: "#e3e3e37d"
+  pH: 3.2
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/space-up_glass.rsi
     state: icon_empty
@@ -247,6 +263,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: starkistsoda
   color: "#9F3400"
+  pH: 3.3
 
 - type: reagent
   id: FourteenLoko
@@ -256,6 +273,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: fourteenlokosoda
   color: "#deb928"
+  pH: 3.0
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/fourteen_loko_glass.rsi
     state: icon_empty
@@ -289,3 +307,4 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: metallic
   color: "#66538F"
+  pH: 4.5

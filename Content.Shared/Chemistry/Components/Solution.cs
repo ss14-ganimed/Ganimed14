@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Linq;
+using Content.Shared._Ganimed.Chemistry;
+using Content.Shared._Ganimed.Chemistry.Purity;
+using Content.Shared._Ganimed.Chemistry.Reagents;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
@@ -66,11 +69,65 @@ namespace Content.Shared.Chemistry.Components
         public string? Name;
 
         /// <summary>
+        ///     Explicit pH value for solutions adjusted by pH buffer reactions.
+        /// </summary>
+        [DataField("pHOverride")]
+        public float? PHOverride;
+
+        /// <summary>
+        ///     Temporary multiplier applied to rate-limited reactions (e.g. reaction-rate agents).
+        /// </summary>
+        [ViewVariables]
+        public float ReactionRateMultiplier = 1f;
+
+        /// <summary>
+        ///     Set while a reaction agent is being poured into a non-empty vessel (tg-style transfer activation).
+        /// </summary>
+        /// <summary>
+        /// Recently transferred reagent used by pour-in activation and boost behaviors.
+        /// </summary>
+        [ViewVariables]
+        public (string Prototype, FixedPoint2 Quantity)? PendingReagentTransfer;
+
+        /// <summary>
         ///     Checks if a solution can fit into the container.
         /// </summary>
         public bool CanAddSolution(Solution solution)
         {
             return solution.Volume <= AvailableVolume;
+        }
+
+        private void BlendPHOverrideOnAdd(ReagentId id, FixedPoint2 quantity)
+        {
+            if (PHOverride == null || Volume <= FixedPoint2.Zero || quantity <= FixedPoint2.Zero)
+                return;
+
+            var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
+            if (!prototypeManager.TryIndex(id.Prototype, out ReagentPrototype? proto))
+                return;
+
+            if (ReagentBehaviorHelper.ShouldSkipPhContribution(proto))
+                return;
+
+            PHOverride = ChemistryPH.GetMixedPH(PHOverride.Value, Volume, proto.PH, quantity);
+        }
+
+        private void BlendPHOverrideOnAddSolution(Solution otherSolution, IPrototypeManager? prototypeManager)
+        {
+            if (Volume <= FixedPoint2.Zero)
+            {
+                PHOverride = otherSolution.PHOverride;
+                return;
+            }
+
+            if (PHOverride == null && otherSolution.PHOverride == null)
+                return;
+
+            IoCManager.Resolve(ref prototypeManager);
+
+            var currentPH = PHOverride ?? ChemistryPH.GetSolutionPH(this, prototypeManager);
+            var otherPH = otherSolution.PHOverride ?? ChemistryPH.GetSolutionPH(otherSolution, prototypeManager);
+            PHOverride = ChemistryPH.GetMixedPH(currentPH, Volume, otherPH, otherSolution.Volume);
         }
 
         /// <summary>
@@ -171,6 +228,8 @@ namespace Content.Shared.Chemistry.Components
             Volume = solution.Volume;
             MaxVolume = solution.MaxVolume;
             Temperature = solution.Temperature;
+            PHOverride = solution.PHOverride;
+            ReactionRateMultiplier = solution.ReactionRateMultiplier;
             CanReact = solution.CanReact;
             _heatCapacity = solution._heatCapacity;
             _heatCapacityDirty = solution._heatCapacityDirty;
@@ -365,15 +424,24 @@ namespace Content.Shared.Chemistry.Components
                 return;
             }
 
+            BlendPHOverrideOnAdd(id, quantity);
             Volume += quantity;
             _heatCapacityDirty |= dirtyHeatCap;
             for (var i = 0; i < Contents.Count; i++)
             {
                 var (reagent, existingQuantity) = Contents[i];
-                if (reagent != id)
+                if (reagent == id)
+                {
+                    Contents[i] = new ReagentQuantity(id, existingQuantity + quantity);
+                    ValidateSolution();
+                    return;
+                }
+
+                if (!ChemistryPurity.CanMergeByPrototype(reagent, id))
                     continue;
 
-                Contents[i] = new ReagentQuantity(id, existingQuantity + quantity);
+                var mergedId = ChemistryPurity.MergeReagentIds(reagent, existingQuantity, id, quantity);
+                Contents[i] = new ReagentQuantity(mergedId, existingQuantity + quantity);
                 ValidateSolution();
                 return;
             }
@@ -573,6 +641,7 @@ namespace Content.Shared.Chemistry.Components
         {
             Contents.Clear();
             Volume = FixedPoint2.Zero;
+            PHOverride = null;
             _heatCapacityDirty = false;
             _heatCapacity = 0;
         }
@@ -795,6 +864,7 @@ namespace Content.Shared.Chemistry.Components
             if (otherSolution.Volume <= FixedPoint2.Zero)
                 return;
 
+            BlendPHOverrideOnAddSolution(otherSolution, protoMan);
             Volume += otherSolution.Volume;
 
             var closeTemps = MathHelper.CloseTo(otherSolution.Temperature, Temperature);

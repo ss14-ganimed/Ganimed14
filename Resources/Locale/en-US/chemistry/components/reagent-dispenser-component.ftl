@@ -17,3 +17,5 @@ reagent-dispenser-window-no-container-loaded-text = No container loaded.
 reagent-dispenser-window-reagent-name-not-found-text = Reagent name not found
 reagent-dispenser-window-unknown-reagent-text = Unknown reagent
 reagent-dispenser-window-quantity-label-text = {$quantity}u
+reagent-dispenser-window-fill-with-ph-label-text = {$currentVolume}/{$maxVolume}, pH {$ph}
+reagent-dispenser-window-solution-ph-label-text = Beaker pH: {$ph}

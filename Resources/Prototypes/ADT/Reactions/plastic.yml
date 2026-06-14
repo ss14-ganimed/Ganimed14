@@ -1,5 +1,7 @@
 - type: reaction
   id: SheetPlastic
+  minPH: 0
+  maxPH: 14
   impact: Low
   quantized: true
   minTemp: 400

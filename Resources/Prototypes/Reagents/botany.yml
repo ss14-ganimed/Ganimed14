@@ -5,6 +5,7 @@
   desc: reagent-desc-e-z-nutrient
   flavor: bitter
   color: "#664330"
+  pH: 6.5
   physicalDesc: reagent-physical-desc-thick
   plantMetabolism:
     - !type:PlantAdjustNutrition
@@ -24,6 +25,7 @@
   desc: reagent-desc-left4-zed
   flavor: bitter
   color: "#5b406c"
+  pH: 5.8
   physicalDesc: reagent-physical-desc-heterogeneous
   plantMetabolism:
     - !type:PlantAdjustNutrition
@@ -55,6 +57,7 @@
   desc: reagent-desc-pest-killer
   flavor: bitter
   color: "#9e9886"
+  pH: 6.0
   physicalDesc: reagent-physical-desc-bubbling
   plantMetabolism:
     - !type:PlantAdjustToxins
@@ -79,6 +82,7 @@
   desc: reagent-desc-plant-b-gone
   flavor: bitter
   color: "#49002E"
+  pH: 5.5
   physicalDesc: reagent-physical-desc-bubbling
   plantMetabolism:
     - !type:PlantAdjustToxins
@@ -110,6 +114,7 @@
   desc: reagent-desc-robust-harvest
   flavor: bitter
   color: "#3e901c"
+  pH: 6.8
   physicalDesc: reagent-physical-desc-robust
   plantMetabolism:
     - !type:PlantAdjustNutrition
@@ -164,6 +169,7 @@
   desc: reagent-desc-sedin
   flavor: bitter
   color: "#3CB371"
+  pH: 6.2
   physicalDesc: reagent-physical-desc-sickly
   plantMetabolism:
     - !type:PlantAdjustHealth
@@ -180,6 +186,7 @@
   desc: reagent-desc-weed-killer
   flavor: bitter
   color: "#968395"
+  pH: 5.8
   physicalDesc: reagent-physical-desc-bubbling
   plantMetabolism:
     - !type:PlantAdjustToxins
@@ -205,6 +212,7 @@
   physicalDesc: reagent-physical-desc-pungent
   flavor: bitter
   color: "#77b58e"
+  pH: 11.6
   boilingPoint: -33.0
   meltingPoint: -77.7
   #ADT-tweak-start
@@ -294,6 +302,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: bitter
   color: "#a1000b"
+  pH: 12
   boilingPoint: 55.5
   meltingPoint: -50.0
   #ADT-tweak-start

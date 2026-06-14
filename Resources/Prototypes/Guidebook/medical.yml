@@ -31,6 +31,7 @@
   # - Medicine
   # Duplicate guide entries are currently not supported
   # TODO GUIDEBOOK Maybe allow duplicate entries?
+  - GanimedChemistry # Ganimed-Tweak
   - Botanicals
   - AdvancedBrute
 

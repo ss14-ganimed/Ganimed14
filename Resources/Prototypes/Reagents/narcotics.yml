@@ -7,6 +7,7 @@
   contrabandSeverity: Major
   flavor: bitter
   color: "#FAFAFA"
+  pH: 10.4
   boilingPoint: 212.0  # Dexosyephedrine vape when?
   meltingPoint: 170.0
   metabolisms:
@@ -106,6 +107,7 @@
   contrabandSeverity: Minor
   flavor: bitter
   color: "#D2FFFA"
+  pH: 10.2
   boilingPoint: 255.0
   meltingPoint: 36.0
   metabolisms:
@@ -203,6 +205,7 @@
   contrabandSeverity: Syndicate
   flavor: sharp
   color: "#9A040E"
+  pH: 9.5
   boilingPoint: 212.0
   meltingPoint: 170.0
   metabolisms:
@@ -290,6 +293,7 @@
   flavor: bitter
   flavorMinimum: 0.05
   color: "#808080"
+  pH: 7.0
   physicalDesc: reagent-physical-desc-crystalline
   plantMetabolism:
   - !type:PlantAdjustNutrition
@@ -311,6 +315,7 @@
   desc: reagent-desc-nicotine
   flavor: bitter
   color: "#C0C0C0"
+  pH: 9.0
   physicalDesc: reagent-physical-desc-strong-smelling
   plantMetabolism:
   - !type:PlantAdjustHealth
@@ -326,6 +331,7 @@
   contrabandSeverity: Minor
   flavor: bitter
   color: "#215263"
+  pH: 6.5
   metabolisms:
     Narcotic:
       effects:
@@ -353,6 +359,7 @@
   physicalDesc: reagent-physical-desc-syrupy
   flavor: bitter
   color: "#63806e"
+  pH: 7.8
   metabolisms:
     Narcotic:
       effects:
@@ -369,6 +376,7 @@
   physicalDesc: reagent-physical-desc-powdery
   flavor: bitter
   color: "#ffff00"
+  pH: 8.0
   metabolisms:
     Narcotic:
       effects:
@@ -386,6 +394,7 @@
   physicalDesc: reagent-physical-desc-powdery
   contrabandSeverity: Syndicate
   color: "#128e80"
+  pH: 6.8
   boilingPoint: 444.0
   meltingPoint: 128.0
   metabolisms:
@@ -411,6 +420,7 @@
   physicalDesc: reagent-physical-desc-syrupy
   contrabandSeverity: Syndicate
   color: "#000000"
+  pH: 6.0
   boilingPoint: 255.0
   meltingPoint: 36.0
   metabolisms:
@@ -431,6 +441,7 @@
   contrabandSeverity: Minor
   flavor: salty
   color: "#96a8b5"
+  pH: 3.5
   boilingPoint: 255.0
   meltingPoint: 36.0
   metabolisms:
@@ -479,6 +490,7 @@
   - Security
   flavor: salty
   color: "#ffffff4d"
+  pH: 4.0
   boilingPoint: 255.0
   meltingPoint: 36.0
   metabolisms:
@@ -538,6 +550,7 @@
   physicalDesc: reagent-physical-desc-soothing
   flavor: paintthinner
   color: "#EE35FF"
+  pH: 8.5
   metabolisms:
     Narcotic:
       effects:
