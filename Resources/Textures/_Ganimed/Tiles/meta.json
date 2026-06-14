@@ -1,17 +1,17 @@
 {
-    "version": 1,
-    "license": "CC-BY-SA-3.0",
-    "copyright": "smooth taken from tgstation at https://github.com/tgstation/tgstation/blob/9428d97a4fadf8a486b0c6fbe2ee345a2780e687/icons/turf/floors.dmi, steel_alt made by Alecksohs",
-    "size": {
-        "x": 32,
-        "y": 32
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "smooth taken from tgstation at https://github.com/tgstation/tgstation/blob/9428d97a4fadf8a486b0c6fbe2ee345a2780e687/icons/turf/floors.dmi, steel_alt made by Alecksohs",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "smooth"
     },
-    "states": [
-        {
-            "name": "smooth"
-        },
-        {
-            "name": "steel_alt"
-        }
-    ]
+    {
+      "name": "steel_alt"
+    }
+  ]
 }

@@ -51,21 +51,21 @@
     - 0,0,3,2
     whitelist:
       tags:
-        - Bottle
-        - Spray
-        - Brutepack
-        - Bloodpack
-        - Gauze
-        - Ointment
-        - CigPack
-        - PillCanister
-        - Radio
-        - DiscreteHealthAnalyzer
+      - Bottle
+      - Spray
+      - Brutepack
+      - Bloodpack
+      - Gauze
+      - Ointment
+      - CigPack
+      - PillCanister
+      - Radio
+      - DiscreteHealthAnalyzer
       components:
-        - Hypospray
-        - Injector
-        - Pill
-        - Healing
+      - Hypospray
+      - Injector
+      - Pill
+      - Healing
 
 - type: entity
   parent: ClothingBeltPouchBase
@@ -93,7 +93,7 @@
 #    maxItemSize: Normal
 #    whitelist:
 #      tags:
-#        - ShellShotgunLight
+#      - ShellShotgunLight
 #  - type: ItemSlots
 #    slots:
 #      item:

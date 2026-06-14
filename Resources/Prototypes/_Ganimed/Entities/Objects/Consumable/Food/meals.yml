@@ -23,8 +23,8 @@
           Quantity: 4
   - type: FlavorProfile
     flavors:
-      - meaty
-      - potatoes
+    - meaty
+    - potatoes
   - type: Tag
     tags:
     - Meat
@@ -51,8 +51,8 @@
           Quantity: 4
   - type: FlavorProfile
     flavors:
-      - salty
-      - juicy
+    - salty
+    - juicy
   - type: Tag
     tags:
     - Fruit

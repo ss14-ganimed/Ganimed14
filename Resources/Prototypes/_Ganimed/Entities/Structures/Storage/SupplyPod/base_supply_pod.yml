@@ -62,7 +62,7 @@
     graph: SupplyPod
     node: SupplyPod
     containers:
-      - entity_storage
+    - entity_storage
   - type: Destructible
     thresholds:
     - trigger:

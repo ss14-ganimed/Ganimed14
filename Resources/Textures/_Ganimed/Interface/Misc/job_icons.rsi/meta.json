@@ -1,23 +1,23 @@
 {
-    "version": 1,
-    "license": "CC-BY-SA-4.0",
-    "copyright": "USSP and TSF icons made by AltMapper (GitHub)",
-    "size": {
-        "x": 8,
-        "y": 8
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "USSP and TSF icons made by AltMapper (GitHub)",
+  "size": {
+    "x": 8,
+    "y": 8
+  },
+  "states": [
+    {
+      "name": "TSF"
     },
-    "states": [
-        {
-            "name": "TSF"
-        },
-        {
-            "name": "USSPSoldier"
-        },
-        {
-            "name": "USSPOfficer"
-        },
-        {
-            "name": "USSPMedical"
-        }
-    ]
+    {
+      "name": "USSPSoldier"
+    },
+    {
+      "name": "USSPOfficer"
+    },
+    {
+      "name": "USSPMedical"
+    }
+  ]
 }

@@ -1,5 +1,4 @@
 # SPDX-FileCopyrightText: 2025 CrimeMoot <wakeafa@gmail.com>
-# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -9,16 +8,16 @@
   categories: [ HideSpawnMenu ]
   id: RocketMediumExplosionFallingAnimation
   components:
-    - type: Sprite
-      sprite: _Ganimed/Effects/rocket_falling.rsi
-      layers:
-        - state: rocket_falling_animation
-    - type: TimedSpawner
-      prototypes:
-        - Rocket
-      intervalSeconds: 2
-    - type: SpawnOnDespawn
-      prototype: MediumExplosionInstant
+  - type: Sprite
+    sprite: _Ganimed/Effects/rocket_falling.rsi
+    layers:
+    - state: rocket_falling_animation
+  - type: TimedSpawner
+    prototypes:
+    - Rocket
+    intervalSeconds: 2
+  - type: SpawnOnDespawn
+    prototype: MediumExplosionInstant
 
 # Syndicate
 - type: entity
@@ -26,13 +25,13 @@
   categories: [ HideSpawnMenu ]
   id: RocketSyndicateMediumExplosionFallingAnimation
   components:
-    - type: Sprite
-      sprite: _Ganimed/Effects/rocket_falling.rsi
-      layers:
-        - state: rocket_syndicate_falling_animation
-    - type: SpawnOnDespawn
-      prototype: MediumExplosionInstant
-    - type: TimedSpawner
-      prototypes:
-        - RocketSyndicate
-      intervalSeconds: 2
+  - type: Sprite
+    sprite: _Ganimed/Effects/rocket_falling.rsi
+    layers:
+    - state: rocket_syndicate_falling_animation
+  - type: SpawnOnDespawn
+    prototype: MediumExplosionInstant
+  - type: TimedSpawner
+    prototypes:
+    - RocketSyndicate
+    intervalSeconds: 2

@@ -245,7 +245,7 @@
     state: scientist1
   - type: Tool
     qualities:
-      - Screwing
+    - Screwing
     useSound:
       collection: Screwdriver
 
@@ -338,7 +338,7 @@
         Piercing: 15
   - type: Tool
     qualities:
-      - Screwing
+    - Screwing
     useSound:
       collection: Screwdriver
 

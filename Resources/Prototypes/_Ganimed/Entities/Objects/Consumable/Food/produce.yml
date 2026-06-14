@@ -11,7 +11,7 @@
   components:
   - type: FlavorProfile
     flavors:
-      - water
+    - water
   - type: SolutionContainerManager
     solutions:
       food:
@@ -49,10 +49,10 @@
   components:
   - type: FlavorProfile
     flavors:
-      - water
-      - strange
+    - water
+    - strange
     ignoreReagents:
-      - Cryptobiolin
+    - Cryptobiolin
   - type: SolutionContainerManager
     solutions:
       food:
