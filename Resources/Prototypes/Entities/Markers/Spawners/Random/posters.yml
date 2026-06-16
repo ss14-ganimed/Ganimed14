@@ -104,7 +104,7 @@
       - ADTPosterContrabandLustArDeco
       # - ADTPosterDontSitDown # Ganimed-Remove
       # - ADTPosterLustyMoth # Ganimed-Remove
-      - ADTPosterWatchOutChem
+      # - ADTPosterWatchOutChem # Ganimed-Remove
       - ADTPosterPanem
       - ADTPosterGasAttack
       - ADTPosterNoGood
