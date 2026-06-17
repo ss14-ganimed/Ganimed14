@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2025 CrimeMoot <wakeafa@gmail.com>
 # SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
 #
@@ -25,26 +26,7 @@ CHANGELOG_RE = re.compile(
     re.IGNORECASE | re.MULTILINE
 )
 
-TIMEOUT = 620  # seconds
-
-
-def smart_capitalize(text): # currently unused
-    text = text.strip()
-    parts = re.split(r'([.!?])', text)
-    result = []
-    capitalize_next = True
-    for part in parts:
-        if not part:
-            continue
-        if capitalize_next and part.strip():
-            part = part.strip()
-            result.append(part[0].upper() + part[1:])
-            capitalize_next = False
-        else:
-            result.append(part.strip())
-        if part in ".!?":
-            capitalize_next = True
-    return ' '.join(result)
+TIMEOUT = 420 # seconds
 
 
 def is_inside_comment(text, match_start):
@@ -160,7 +142,7 @@ def create_embeds(changelog, author_name, author_avatar, branch, coauthors=None)
 
 def test_discord_webhook(url):
     try:
-        resp = requests.get(url, timeout=5)
+        resp = requests.get(url, timeout=10)
         if resp.status_code in (401, 403, 404):
             print(f"❌ Discord webhook invalid or no permission (HTTP {resp.status_code}).")
             return False
