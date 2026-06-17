@@ -1,0 +1,30 @@
+- type: entity
+  parent: BaseItem
+  id: ExperimentScanner
+  name: experiment scanner
+  description: A research scanner that issues and tracks field experiments.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Objects/Specific/Research/experimentscanner.rsi
+    state: icon
+  - type: Item
+    sprite: _Ganimed/Objects/Specific/Research/experimentscanner.rsi
+  - type: ResearchClient
+  - type: ExperimentScanner
+    experimentGroup: Experiments
+    visibleOrders: 7
+  - type: ActivatableUI
+    key: enum.ExperimentScannerUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.ExperimentScannerUiKey.Key:
+        type: ExperimentScannerBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+  - type: GuideHelp
+    guides:
+    - ExperimentScannerGuide

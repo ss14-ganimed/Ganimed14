@@ -1,0 +1,356 @@
+- type: researchExperiment
+  id: ExperimentAmeUnsafeInject
+  group: Experiments
+  name: experiment-order-ame-name
+  description: experiment-order-ame-desc
+  rewardPoints: 10000
+  condition: !type:ThresholdInjectionExperimentCondition
+    safeInjection: 2
+    requirePowered: true
+
+- type: researchExperiment
+  id: ExperimentSpeciesSafeReagent
+  group: Experiments
+  name: experiment-order-species-safe-name
+  description: experiment-order-species-safe-desc
+  rewardPoints: 10000
+  condition: !type:SpeciesReagentExperimentCondition
+    solutionName: chemicals
+    excludedSpecies:
+    - IPC
+    reagents:
+    - Ipecac
+    - Cryptobiolin
+    - Mannitol
+    - Psicodine
+    - Charcoal
+
+- type: researchExperiment
+  id: ExperimentSpeciesUnSafeReagent
+  group: Experiments
+  name: experiment-order-species-unsafe-name
+  description: experiment-order-species-unsafe-desc
+  rewardPoints: 30000
+  condition: !type:SpeciesReagentExperimentCondition
+    solutionName: chemicals
+    excludedSpecies:
+    - IPC
+    reagents:
+    - Desoxyephedrine
+    - Razorium
+    - UnstableMutagen
+    - Plasma
+    - SpaceDrugs
+    - WeldingFuel
+    - HeartbreakerToxin
+    - Impedrezene
+    - Radium
+
+- type: researchExperiment
+  id: ExperimentVomitPuddle
+  group: Experiments
+  name: experiment-order-vomit-name
+  description: experiment-order-vomit-desc
+  rewardPoints: 3500
+  condition: !type:SolutionReagentExperimentCondition
+    solutionName: puddle
+    reagent: Vomit
+
+- type: researchExperiment
+  id: ExperimentFullRipley
+  group: Experiments
+  name: experiment-order-ripley-name
+  description: experiment-order-ripley-desc
+  rewardPoints: 3500
+  condition: !type:FullEquipmentExperimentCondition
+    allowedPrototypes:
+    - MechRipley
+    prototypeAliases:
+      MechRipley:
+      - ADTMechRipleyMk2
+      - ADTMechRipleyMk2Battery
+      - MechRipleyBattery
+
+- type: researchExperiment
+  id: ExperimentRandomPet
+  group: Experiments
+  name: experiment-order-pet-name
+  description: experiment-order-pet-desc
+  rewardPoints: 7500
+  condition: !type:PrototypeSelectionExperimentCondition
+    allowedPrototypes:
+    - MobCatException
+    - MobCow
+    - MobSpiderShiva
+    - MobGorillaLargo
+    - MobFoxRenault
+
+- type: researchExperiment
+  id: ExperimentRandomXeno
+  group: Experiments
+  name: experiment-order-xeno-name
+  description: experiment-order-xeno-desc
+  rewardPoints: 30000
+  condition: !type:PrototypeSelectionExperimentCondition
+    allowedPrototypes:
+    - MobXenoDrone
+    - MobGoliath
+    - MobShark
+    - MobCarp
+    - MobBearSpace
+    - MobSpiderSpace
+    - MobWatcherLavaland
+    prototypeAliases:
+      MobXenoDrone:
+      - ADTMobXenoDroneNoGhost
+      MobShark:
+      - MobSharkSalvage
+      MobCarp:
+      - ADTMobCarpNukie
+      - ADTMobCarpPirate
+      - ADTChurchMobCarp
+      - MobCarpDragon
+      - MobCarpSalvage
+      - MobCarpDungeon
+      - MobCarpMagic
+      - MobCarpRainbow
+      MobBearSpace:
+      - MobBearSpaceSalvage
+      - ADTMobBearSpaceSponge
+      MobSpiderSpace:
+      - MobSpiderSpaceSalvage
+      - ADTMobSpiderSpaceSponge
+
+- type: researchExperiment
+  id: ExperimentVendingRescan
+  group: Experiments
+  name: experiment-order-vending-name
+  description: experiment-order-vending-desc
+  rewardPoints: 10000
+  condition: !type:DelayedRescanExperimentCondition
+    rescanDelay: 600
+    departmentVendingPrototypes:
+      Engineering:
+      - VendingMachineEngivend
+      Medical:
+      - VendingMachineMedical
+      - VendingMachineWallMedical
+      - VendingMachineChemicals
+      Security:
+      - VendingMachineSec
+      - VendingMachineSecDrobe
+      Service:
+      - VendingMachineDinnerware
+      - VendingMachineChefvend
+
+- type: researchExperiment
+  id: ExperimentMeatDishes
+  group: Experiments
+  name: experiment-order-meat-name
+  description: experiment-order-meat-desc
+  rewardPoints: 7000
+  condition: !type:TagCountExperimentCondition
+    requiredCount: 5
+    requiredTags:
+    - Meat
+    forbiddenTags:
+    - Steak
+
+- type: researchExperiment
+  id: ExperimentMicrowavedId
+  group: Experiments
+  name: experiment-order-id-name
+  description: experiment-order-id-desc
+  rewardPoints: 5000
+  condition: !type:TagCountExperimentCondition
+    requiredCount: 1
+    requiredTags:
+    - MicrowavedIdCard
+    requiredComponents:
+    - IdCard
+
+- type: researchExperiment
+  id: ExperimentBatonPlasma
+  group: Experiments
+  name: experiment-order-baton-name
+  description: experiment-order-baton-desc
+  rewardPoints: 15000
+  condition: !type:TaggedSolutionReagentExperimentCondition
+    solutionName: battery
+    requiredTags:
+    - Stunbaton
+    reagent: Plasma
+    quantity: 5
+
+- type: researchExperiment
+  id: ExperimentMutatedSeedPacket
+  group: Experiments
+  name: experiment-order-seed-name
+  description: experiment-order-seed-desc
+  rewardPoints: 15000
+  condition: !type:PrototypeSelectionExperimentCondition
+    allowedPrototypes:
+    - BlueTomatoSeeds
+    - BloodTomatoSeeds
+    - KillerTomatoSeeds
+    - RainbowCannabisSeeds
+    - DeathNettleSeeds
+    - HolymelonSeeds
+    - ShashamberSeeds
+    - ExtradimensionalOrangeSeeds
+    - GoldenAppleSeeds
+    - LemoonSeeds
+    - BloonionSeeds
+    - MimanaSeeds
+    - PyrottonSeeds
+    - GlasstleSeeds
+    - ChillySeeds
+    - AmbrosiaDeusSeeds
+
+- type: researchExperiment
+  id: ExperimentRadiationCollectorRads
+  group: Experiments
+  name: experiment-order-radcollector-name
+  description: experiment-order-radcollector-desc
+  rewardPoints: 15000
+  condition: !type:RadiationLevelExperimentCondition
+    requiredComponents:
+    - RadiationCollector
+    minRadiation: 6
+
+- type: researchExperiment
+  id: ExperimentCanisterTargetGas
+  group: Experiments
+  name: experiment-order-canister-gas-name
+  description: experiment-order-canister-gas-desc
+  rewardPoints: 30000
+  condition: !type:GasMolesExperimentCondition
+    requiredComponents:
+    - GasCanister
+    minMoles: 500
+    allowedGases:
+    - Tritium
+    - Frezon
+    - BZ
+    - Pluoxium
+    - Nitrium
+    - Healium
+    - Hyper-Noblium
+    - Proto-Nitrate
+
+- type: researchExperiment
+  id: ExperimentCaptainId
+  group: Experiments
+  name: experiment-order-captain-id-name
+  description: experiment-order-captain-id-desc
+  rewardPoints: 7500
+  condition: !type:PrototypeSelectionExperimentCondition
+    allowedPrototypes:
+    - CaptainIDCard
+
+- type: researchExperiment
+  id: ExperimentRandomWeapon
+  group: Experiments
+  name: experiment-order-weapon-name
+  description: experiment-order-weapon-desc
+  rewardPoints: 10000
+  condition: !type:PrototypeSelectionExperimentCondition
+    allowedPrototypes:
+    - WeaponRifleLecter
+    - WeaponShotgunKammerer
+    - WeaponSubMachineGunDrozd
+    - WeaponLaserCarbine
+
+- type: researchExperiment
+  id: ExperimentPaperSignatures
+  group: Experiments
+  name: experiment-order-paper-signatures-name
+  description: experiment-order-paper-signatures-desc
+  rewardPoints: 7500
+  condition: !type:SignatureDiversityExperimentCondition
+    requiredComponents:
+    - Paper
+    minUniqueSignatures: 5
+
+- type: researchExperiment
+  id: ExperimentBibleItem
+  group: Experiments
+  name: experiment-order-bible-name
+  description: experiment-order-bible-desc
+  rewardPoints: 5000
+  condition: !type:ComponentFlagExperimentCondition
+    requiredComponents:
+    - Bible
+
+- type: researchExperiment
+  id: ExperimentFruitDishes
+  group: Experiments
+  name: experiment-order-fruit-dishes-name
+  description: experiment-order-fruit-dishes-desc
+  rewardPoints: 6000
+  condition: !type:TagCountExperimentCondition
+    requiredCount: 5
+    requiredTags:
+    - Fruit
+
+- type: researchExperiment
+  id: ExperimentSoupDishes
+  group: Experiments
+  name: experiment-order-soups-name
+  description: experiment-order-soups-desc
+  rewardPoints: 7000
+  condition: !type:TagCountExperimentCondition
+    requiredCount: 5
+    requiredTags:
+    - Soup
+
+- type: researchExperiment
+  id: ExperimentGravityGeneratorWorking
+  group: Experiments
+  name: experiment-order-gravity-name
+  description: experiment-order-gravity-desc
+  rewardPoints: 7500
+  condition: !type:PoweredStateExperimentCondition
+    requiredComponents:
+    - GravityGenerator
+    requirePowered: true
+    requireGravityActive: true
+
+- type: researchExperiment
+  id: ExperimentCombatMechFullEquipment
+  group: Experiments
+  name: experiment-order-combat-mech-name
+  description: experiment-order-combat-mech-desc
+  rewardPoints: 7500
+  condition: !type:FullEquipmentExperimentCondition
+    allowedPrototypes:
+    - ADTMechPhazon
+    - ADTMechDurand
+    - ADTMechGygax
+    prototypeAliases:
+      ADTMechPhazon:
+      - ADTMechPhazonBattery
+      ADTMechDurand:
+      - ADTMechDurandBattery
+      ADTMechGygax:
+      - ADTMechGygaxBattery
+
+- type: researchExperiment
+  id: ExperimentRandomMaterial
+  group: Experiments
+  name: experiment-order-material-name
+  description: experiment-order-material-desc
+  rewardPoints: 8000
+  condition: !type:PrototypeSelectionExperimentCondition
+    allowedPrototypes:
+    - MaterialBananium1
+    - SheetBrass1
+    - MaterialSheetMeat1
+    prototypeAliases:
+      MaterialBananium1:
+      - MaterialBananium
+      SheetBrass1:
+      - SheetBrass
+      - SheetBrass10
+      MaterialSheetMeat1:
+      - MaterialSheetMeat
