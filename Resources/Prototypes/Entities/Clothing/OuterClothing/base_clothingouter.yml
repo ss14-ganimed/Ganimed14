@@ -20,7 +20,7 @@
     slots:
     - outerClothing
     # Ganimed-Add-Start
-    equipDelay: 0.75
+    equipDelay: 0.5
     unequipDelay: 0.5
     # Ganimed-Add-End
   - type: ClothingSpeedModifier
