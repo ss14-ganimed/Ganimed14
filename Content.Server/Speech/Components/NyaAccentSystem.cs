@@ -10,8 +10,8 @@ public sealed class NyaAccentSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private static readonly Dictionary<string, string> DirectReplacements = new() {
-        {"иди нахуй", "хиииссс" },
-        {"иди нах", "хиииссс" },
+        {"иди нахуй", "хииссс" },
+        {"иди нах", "хииссс" },
 
         {"дибилы", "баки" },
         {"дибил", "бака" },
@@ -29,8 +29,8 @@ public sealed class NyaAccentSystem : EntitySystem
 
         {"сук", "фуг" },
 
-        {"внимател", "внямател"}, //внямательно
-        {"маги", "мяуги"}, //мяугия
+        {"внимател", "внимятел"}, //внимятельно
+        {"маги", "мяги"}, //мягия
         {"замечател", "замурчател"}, //замурчательно
 
         {"синдикат", "синдикэт"},
