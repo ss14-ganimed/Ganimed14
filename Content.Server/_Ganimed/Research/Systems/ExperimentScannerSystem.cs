@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Gorox221 <139872389+Gorox221@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server._Ganimed.Research.Components;
