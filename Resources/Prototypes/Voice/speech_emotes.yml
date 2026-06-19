@@ -399,6 +399,11 @@
     - хлопнула в ладоши
     - апплодирует
     # Corvax-Localization-End
+    # Ganimed-Localization-Add-Start
+    - похлопал
+    - похлопала
+    - похлопали
+    # Ganimed-Localization-Add-End
 
 - type: emote
   id: ClapSingle
@@ -419,6 +424,7 @@
     - claps his hands together
     - claps its hands together
     # Ganimed-Localization-Add-Start
+    - хлоп
     - хлопок
     - одиночный хлопок
     - делает одиночный хлопок
