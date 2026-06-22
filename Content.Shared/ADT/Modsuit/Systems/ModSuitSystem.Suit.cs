@@ -397,8 +397,10 @@ public sealed partial class ModSuitSystem
         }
         else
         {
+            // Ganimed-edit start
             _cell.SetDrawEnabled(ent.Owner, true);
-            draw.DrawRate = ent.Comp.ModEnergyBaseUsing * attachedCount;
+            draw.DrawRate = ent.Comp.ModEnergyBaseUsing;
+            // Ganimed-edit end
         }
 
     }
