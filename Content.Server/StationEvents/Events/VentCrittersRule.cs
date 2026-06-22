@@ -1,5 +1,5 @@
-using Content.Server.StationEvents.Components;
 using Content.Server.Antag; // Ganimed-tweak
+using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Station.Components;
 using Content.Shared.Storage;
@@ -10,18 +10,52 @@ namespace Content.Server.StationEvents.Events;
 
 public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleComponent>
 {
-    [Dependency] private readonly SharedTransformSystem _transform = default!; // Ganimed-tweak
-
     /*
      * DO NOT COPY PASTE THIS TO MAKE YOUR MOB EVENT.
      * USE THE PROTOTYPE.
      */
 
     // Ganimed-edit start
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<VentCrittersRuleComponent, AntagSelectLocationEvent>(OnSelectLocation);
+    }
+
+    private void OnSelectLocation(Entity<VentCrittersRuleComponent> ent, ref AntagSelectLocationEvent args)
+    {
+        if (!TryGetRandomStation(out var station))
+            return;
+
+        var mainGrid = GetStationMainGrid(Comp<StationDataComponent>(station.Value));
+        if (mainGrid == null)
+            return;
+
+        // Reuse cached location so the actual mob spawns at the same vent as the ghost role spawner.
+        if (ent.Comp.SpawnLocation != null)
+        {
+            args.Coordinates.Add(ent.Comp.SpawnLocation.Value);
+            return;
+        }
+
+        var locations = EntityQueryEnumerator<VentCritterSpawnLocationComponent, TransformComponent>();
+        var validVents = new List<MapCoordinates>();
+        while (locations.MoveNext(out _, out _, out var transform))
+        {
+            if (transform.GridUid != mainGrid.Value.Owner)
+                continue;
+
+            validVents.Add(_transform.ToMapCoordinates(transform.Coordinates));
+        }
+
+        if (validVents.Count == 0)
+            return;
+
+        var chosen = RobustRandom.Pick(validVents);
+        ent.Comp.SpawnLocation = chosen;
+        args.Coordinates.Add(chosen);
     }
     // Ganimed-edit end
 
@@ -66,19 +100,4 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
             }
         }
     }
-
-    // Ganimed-edit start
-    private void OnSelectLocation(Entity<VentCrittersRuleComponent> ent, ref AntagSelectLocationEvent args)
-    {
-        if (!TryGetRandomStation(out var station))
-            return;
-
-        var locations = EntityQueryEnumerator<VentCritterSpawnLocationComponent, TransformComponent>();
-        while (locations.MoveNext(out _, out _, out var transform))
-        {
-            if (CompOrNull<StationMemberComponent>(transform.GridUid)?.Station == station)
-                args.Coordinates.Add(_transform.ToMapCoordinates(transform.Coordinates));
-        }
-    }
-    // Ganimed-edit end
 }
