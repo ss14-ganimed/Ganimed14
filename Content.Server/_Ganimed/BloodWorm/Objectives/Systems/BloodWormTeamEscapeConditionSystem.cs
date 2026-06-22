@@ -67,6 +67,7 @@ public sealed class BloodWormTeamEscapeConditionSystem : EntitySystem
 
         if (ent.Comp.RequireCommandHost)
         {
+            var survivingCommandCount = 0;
             var command = EntityQueryEnumerator<CommandStaffComponent, TransformComponent>();
             while (command.MoveNext(out var commandUid, out _, out var xform))
             {
@@ -76,10 +77,17 @@ public sealed class BloodWormTeamEscapeConditionSystem : EntitySystem
                 if (HasComp<SiliconComponent>(commandUid))
                     continue;
 
+                survivingCommandCount++;
+
                 // A command member who entered cryo is considered neutralized.
                 if (_cryo.IsInPausedMap((commandUid, xform)))
                     escaped++;
             }
+
+            // Command members whose entities no longer exist (deleted/gibbed/NullSpace)
+            // should count as neutralized, same as how KillPersonConditionSystem handles it.
+            var neutralizedDeleted = ent.Comp.RequiredEscaped - survivingCommandCount;
+            escaped += Math.Max(0, neutralizedDeleted);
         }
 
         var query = EntityQueryEnumerator<MindComponent>();
