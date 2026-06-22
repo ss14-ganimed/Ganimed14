@@ -69,6 +69,9 @@
     stage: Hatchling
     maxBloodResource: 80
     bloodResource: 80
+    leaveHostReagents:
+    - Saline
+    - TranexamicAcid
     enterHostSound: /Audio/Weapons/Xeno/alien_claw_flesh1.ogg
     leaveHostSound: /Audio/Effects/gib2.ogg
     spitSound: /Audio/Weapons/Xeno/alien_spitacid.ogg

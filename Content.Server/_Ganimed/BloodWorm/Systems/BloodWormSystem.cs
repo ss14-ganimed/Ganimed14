@@ -37,7 +37,6 @@ using Content.Shared.Ghost;
 using Content.Shared.Projectiles;
 using Content.Shared.Roles;
 using Content.Shared._Ganimed.Roles.Components;
-using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Alert;
 using Content.Shared.Damage.Components;
@@ -86,7 +85,6 @@ public sealed class BloodWormSystem : EntitySystem
         SubscribeLocalEvent<BloodWormHostComponent, ComponentShutdown>(OnHostShutdown);
         SubscribeLocalEvent<BloodWormHostComponent, DamageChangedEvent>(OnHostDamageChanged);
         SubscribeLocalEvent<BloodWormHostComponent, BleedModifierEvent>(OnHostBleedModifier);
-        SubscribeLocalEvent<BloodWormHostComponent, StunnedEvent>(OnHostStunned);
 
         SubscribeLocalEvent<BloodWormComponent, BloodWormLeechActionEvent>(OnLeechAction);
         SubscribeLocalEvent<BloodWormComponent, BloodWormInvadeActionEvent>(OnInvadeAction);
@@ -140,6 +138,21 @@ public sealed class BloodWormSystem : EntitySystem
             {
                 LeaveHost(uid, comp, true);
                 continue;
+            }
+
+            if (comp.LeaveHostReagents.Count > 0
+                && _solution.TryGetSolution(host, BloodstreamComponent.DefaultChemicalsSolutionName,
+                    out _, out var chemSol))
+            {
+                foreach (var reagent in comp.LeaveHostReagents)
+                {
+                    if (chemSol.GetTotalPrototypeQuantity(reagent) > 0)
+                    {
+                        _popup.PopupEntity(Loc.GetString("blood-worm-leave-host-reagent-pain"), host, host);
+                        LeaveHost(uid, comp, true);
+                        break;
+                    }
+                }
             }
         }
 
@@ -256,14 +269,6 @@ public sealed class BloodWormSystem : EntitySystem
 
         // Use per-stage prototype tuning (e.g. hatchling/juvenile/adult differences).
         args.BleedAmount *= wormComp.HostBleedDamageMultiplier;
-    }
-
-    private void OnHostStunned(EntityUid uid, BloodWormHostComponent hostComp, ref StunnedEvent args)
-    {
-        if (!TryComp(hostComp.Worm, out BloodWormComponent? wormComp) || wormComp.Host != uid)
-            return;
-
-        LeaveHost(hostComp.Worm, wormComp, true);
     }
 
     private void OnWormMeleeHit(EntityUid uid, BloodWormComponent comp, MeleeHitEvent args)

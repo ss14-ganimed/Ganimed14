@@ -1,3 +1,4 @@
+using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Prototypes;
 using Content.Shared.DoAfter;
 using Robust.Shared.Audio;
@@ -44,6 +45,13 @@ public sealed partial class BloodWormComponent : Component
 
     [DataField]
     public float EjectThresholdRatio = 0.1f;
+
+    /// <summary>
+    /// If the host has ALL of these reagents in their bloodstream,
+    /// the worm will automatically leave the host.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<ReagentPrototype>> LeaveHostReagents = new();
 
     [DataField]
     public float HostDrainPerSecond = 14f;

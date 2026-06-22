@@ -6,6 +6,7 @@ blood-worm-not-enough-host-blood = This body has too little blood for control.
 blood-worm-leech-success = You leech blood from {$target}.
 blood-worm-enter-host = You invade {$target}'s body.
 blood-worm-leave-host = The blood worm leaves its host.
+blood-worm-leave-host-reagent-pain = Hellish pain pierces every cell! The blood worm flees the host in agony.
 blood-worm-cannot-while-hosted = You cannot use this while inside a host.
 blood-worm-cannot-mature-in-host = Leave your host before maturing.
 blood-worm-not-ready = You are not ready yet: {$progress}/{$required}.

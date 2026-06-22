@@ -5,6 +5,7 @@ blood-worm-target-empty = У цели больше нет крови.
 blood-worm-leech-success = Вы высасываете кровь из {$target}.
 blood-worm-enter-host = Вы проникаете в тело {$target}.
 blood-worm-leave-host = Кровавый червь покидает носителя.
+blood-worm-leave-host-reagent-pain = Адская боль пронзает каждую клетку тела! Кровавый червь в агонии покидает носителя.
 blood-worm-cannot-while-hosted = Нельзя использовать это внутри носителя.
 blood-worm-cannot-mature-in-host = Покиньте носителя перед созреванием.
 blood-worm-not-ready = Пока рано: {$progress}/{$required}.
