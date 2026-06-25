@@ -96,7 +96,7 @@
 
 Некоторые файлы содержат заголовки-комментарии в соответствии со [спецификацией REUSE](https://reuse.software/) или отдельные файлы (`license`) с информацией о лицензии, авторском праве и условиях повторного использования.
 
-Большинство ассетов лицензированы под [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. Ассеты имеют свою лицензию и информацию об авторском праве в файле метаданных (`meta` или `attributions`). [Пример](https://github.com/ss14-ganimed/Ganimed14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
+Большинство ассетов лицензированы под [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. Ассеты имеют свою лицензию и информацию об авторском праве в файле метаданных ([`meta`](https://docs.spacestation14.com/en/specifications/robust-station-image.html) или [`attributions`](https://docs.spacestation14.com/en/specifications/robust-generic-attribution.html)). [Пример](https://github.com/ss14-ganimed/Ganimed14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
 
 Обратите внимание, что некоторые ассеты лицензированы на некоммерческой основе [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) или аналогичной некоммерческой лицензией, и их необходимо удалить, если вы хотите использовать этот проект в коммерческих целях.
 
