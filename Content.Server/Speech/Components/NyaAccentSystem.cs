@@ -37,9 +37,9 @@ public sealed class NyaAccentSystem : EntitySystem
         {"наркотик", "кошачья мята"},
         {"каргон", "кэтгон"}, // каргония
 
-        {"ма", "мя"}, //внимятельно
-        {"на", "ня"}, //няши
-        {"мечат", "мурчат"} //замурчательно
+        {"мечат", "мурчат"}, // замурчательно
+        {"ма", "мя"}, // внимятельно
+        {"на", "ня"} // няши
     };
 
     private static readonly IReadOnlyList<string> Ending = new List<string> {
