@@ -4,7 +4,7 @@
   weights:
     Dragon: 1
     Revenant: 1
-    BloodWorm: 1 # Ganimed-tweak
+    BloodWorm: 1 # Ganimed-Bloodworm-Add
     Pirate: 0.75 # ADT pirates
     Morph: 1 # ADT-tweak
 ##    Wizard: 0.75 #ADT tweak.
@@ -19,9 +19,9 @@
   announcement: terror-revenant
   rule: RevenantSpawn
 
-# Ganimed-edit start
+# Ganimed-Bloodworm-Add-Start
 - type: ninjaHackingThreat
   id: BloodWorm
   announcement: terror-blood-worm
   rule: BloodWormSpawn
-# Ganimed-edit end
+# Ganimed-Bloodworm-Add-End

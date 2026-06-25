@@ -131,6 +131,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
 
     private void AddSummary(StringBuilder result, string agent, List<(EntityUid, string)> minds)
     {
+// Ganimed-Bloodworm-Add-Start
         if (agent == Loc.GetString("blood-worm-round-end-agent-name"))
         {
             EntityUid? sharedMindId = null;
@@ -220,6 +221,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
 
             return;
         }
+// Ganimed-Bloodworm-Add-End
 
         var agentSummaries = new List<(string summary, float successRate, int completedObjectives)>();
 

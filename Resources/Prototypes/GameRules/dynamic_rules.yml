@@ -84,7 +84,7 @@
           - !type:MaxRuleOccurenceCondition
           - !type:RoundDurationCondition
             min: 900 # 15 minutes
-        # Ganimed-edit start
+        # Ganimed-Bloodworm-Add-Start
         - id: BloodWormSpawn
           weight: 12
           conditions:
@@ -92,7 +92,7 @@
           - !type:MaxRuleOccurenceCondition
           - !type:RoundDurationCondition
             min: 900 # 15 minutes
-        # Ganimed-edit end
+        # Ganimed-Bloodworm-Add-End
         - id: NinjaSpawn
           weight: 20
           conditions:

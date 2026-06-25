@@ -222,10 +222,10 @@
     midroundAntags:
       - id: DragonSpawn
         cost: 100
-      # Ganimed-edit start
+      # Ganimed-Bloodworm-Add-Start
       - id: BloodWormSpawn
         cost: 110
-      # Ganimed-edit end
+      # Ganimed-Bloodworm-Add-End
       - id: Pirates
         cost: 120
       - id: MorphSpawn
@@ -272,10 +272,10 @@
     midroundAntags:
       - id: DragonSpawn
         cost: 110
-      # Ganimed-edit start
+      # Ganimed-Bloodworm-Add-Start
       - id: BloodWormSpawn
         cost: 120
-      # Ganimed-edit end
+      # Ganimed-Bloodworm-Add-End
       - id: Pirates
         cost: 130
       - id: MorphSpawn
@@ -309,10 +309,10 @@
     midroundAntags:
       - id: DragonSpawn
         cost: 110
-      # Ganimed-edit start
+      # Ganimed-Bloodworm-Add-Start
       - id: BloodWormSpawn
         cost: 120
-      # Ganimed-edit end
+      # Ganimed-Bloodworm-Add-End
       - id: Pirates
         cost: 130
       - id: MorphSpawn

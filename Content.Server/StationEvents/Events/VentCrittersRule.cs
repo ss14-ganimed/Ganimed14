@@ -1,4 +1,4 @@
-using Content.Server.Antag; // Ganimed-tweak
+using Content.Server.Antag; // Ganimed-Bloodworm-Add
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Station.Components;
@@ -15,7 +15,7 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
      * USE THE PROTOTYPE.
      */
 
-    // Ganimed-edit start
+    // Ganimed-Bloodworm-Add-Start
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Initialize()
@@ -57,7 +57,7 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         ent.Comp.SpawnLocation = chosen;
         args.Coordinates.Add(chosen);
     }
-    // Ganimed-edit end
+    // Ganimed-Bloodworm-Add-End
 
     protected override void Started(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
