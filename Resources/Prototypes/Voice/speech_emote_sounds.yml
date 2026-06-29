@@ -44,6 +44,12 @@
     Spit:
       collection: HumanSpits
     # ADT Emotes end
+    # Ganimed-Emotes-Add-Start
+    PainScream:
+      collection: MalePainScream
+    Chuckle:
+      collection: MaleChuckle
+    # Ganimed-Emotes-Add-End
 
 - type: emoteSounds
   id: FemaleHuman
@@ -90,6 +96,12 @@
     Spit:
       collection: HumanSpits
     # ADT Emotes end
+    # Ganimed-Emotes-Add-Start
+    PainScream:
+      collection: FemalePainScream
+    Chuckle:
+      collection: FemaleChuckle
+    # Ganimed-Emotes-Add-End
 
 - type: emoteSounds
   id: MaleReptilian
@@ -130,6 +142,12 @@
     Spit:
       collection: HumanSpits
     # ADT Emotes end
+    # Ganimed-Emotes-Add-Start
+    Hiss:
+      path: /Audio/Animals/snake_hiss.ogg # TODO: Find a better sound
+      params:
+        volume: -2
+    # Ganimed-Emotes-Add-End
 
 - type: emoteSounds
   id: FemaleReptilian
@@ -170,6 +188,12 @@
     Spit:
       collection: HumanSpits
     # ADT Emotes end
+    # Ganimed-Emotes-Add-Start
+    Hiss:
+      path: /Audio/Animals/snake_hiss.ogg # TODO: Find a better sound
+      params:
+        volume: -2
+    # Ganimed-Emotes-Add-End
 
 - type: emoteSounds
   id: MaleSlime
@@ -220,6 +244,12 @@
     Pop:
       collection: SlimePop
     # ADT-Tweak End
+    # Ganimed-Emotes-Add-Start
+    PainScream:
+      collection: MalePainScream
+    Chuckle:
+      collection: MaleChuckle
+    # Ganimed-Emotes-Add-End
   params:
     variation: 0.125
 
@@ -272,6 +302,12 @@
     Pop:
       collection: SlimePop
     #ADT-Tweak End
+    # Ganimed-Emotes-Add-Start
+    PainScream:
+      collection: FemalePainScream
+    Chuckle:
+      collection: FemaleChuckle
+    # Ganimed-Emotes-Add-End
   params:
     variation: 0.125
 
@@ -431,6 +467,12 @@
     Spit:
       collection: HumanSpits
     # ADT Emotes end
+    # Ganimed-Emotes-Add-Start
+    PainScream:
+      collection: MalePainScream
+    Chuckle:
+      collection: MaleChuckle
+    # Ganimed-Emotes-Add-End
   params:
     variation: 0.125
     pitch: 0.75
@@ -478,6 +520,12 @@
     Spit:
       collection: HumanSpits
     # ADT Emotes end
+    # Ganimed-Emotes-Add-Start
+    PainScream:
+      collection: FemalePainScream
+    Chuckle:
+      collection: FemaleChuckle
+    # Ganimed-Emotes-Add-End
   params:
     variation: 0.125
     pitch: 0.75
@@ -606,6 +654,10 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    # Ganimed-Emotes-Add-Start
+    Chuckle:
+      collection: MaleChuckle
+    # Ganimed-Emotes-Add-End
 
 - type: emoteSounds
   id: FemaleVulpkanin
@@ -640,6 +692,10 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    # Ganimed-Emotes-Add-Start
+    Chuckle:
+      collection: FemaleChuckle
+    # Ganimed-Emotes-Add-End
 
 # body emotes
 - type: emoteSounds

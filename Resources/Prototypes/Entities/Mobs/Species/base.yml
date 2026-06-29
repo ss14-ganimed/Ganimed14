@@ -209,6 +209,7 @@
   - type: Puller
   - type: Speech
     speechSounds: Alto
+    allowedEmotes: ['PainScream', 'Chuckle'] # Ganimed-Emotes-Add
   - type: DamageForceSay
   - type: Vocal
     sounds:

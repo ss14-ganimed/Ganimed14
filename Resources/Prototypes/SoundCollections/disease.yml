@@ -16,12 +16,20 @@
   files:
   - /Audio/Voice/Human/male_cough_1.ogg
   - /Audio/Voice/Human/male_cough_2.ogg
+  # Ganimed-Audio-Add-Start
+  - /Audio/_Ganimed/Voice/Human/male_cough_3.ogg
+  - /Audio/_Ganimed/Voice/Human/male_cough_4.ogg
+  # Ganimed-Audio-Add-End
 
 - type: soundCollection
   id: FemaleCoughs
   files:
   - /Audio/Voice/Human/female_cough_1.ogg
   - /Audio/Voice/Human/female_cough_2.ogg
+  # Ganimed-Audio-Add-Start
+  - /Audio/_Ganimed/Voice/Human/female_cough_3.ogg
+  - /Audio/_Ganimed/Voice/Human/female_cough_4.ogg
+  # Ganimed-Audio-Add-End
 
 - type: soundCollection
   id: CatMeows

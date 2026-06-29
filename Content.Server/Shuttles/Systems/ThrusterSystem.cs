@@ -326,7 +326,7 @@ public sealed class ThrusterSystem : EntitySystem
             _light.SetEnabled(uid, true, pointLightComponent);
         }
 
-        // _ambient.SetAmbience(uid, true); // Ganimed-Remove (Enable ambience only with thrust)
+        // _ambient.SetAmbience(uid, true); // Ganimed-Audio-Remove (Enable ambience only with thrust)
         RefreshCenter(uid, shuttleComponent);
     }
 
@@ -414,7 +414,7 @@ public sealed class ThrusterSystem : EntitySystem
             _light.SetEnabled(uid, false, pointLightComponent);
         }
 
-        // _ambient.SetAmbience(uid, false); // Ganimed-Remove (Enable ambience only with thrust)
+        // _ambient.SetAmbience(uid, false); // Ganimed-Audio-Remove (Enable ambience only with thrust)
 
         if (TryComp(uid, out PhysicsComponent? physicsComponent))
         {
@@ -522,7 +522,7 @@ public sealed class ThrusterSystem : EntitySystem
             comp.Firing = true;
             appearanceQuery.TryGetComponent(uid, out var appearance);
             _appearance.SetData(uid, ThrusterVisualState.Thrusting, true, appearance);
-            _ambient.SetAmbience(uid, true); // Ganimed-Add
+            _ambient.SetAmbience(uid, true); // Ganimed-Audio-Add
         }
     }
 
@@ -548,7 +548,7 @@ public sealed class ThrusterSystem : EntitySystem
             appearanceQuery.TryGetComponent(uid, out var appearance);
             comp.Firing = false;
             _appearance.SetData(uid, ThrusterVisualState.Thrusting, false, appearance);
-            _ambient.SetAmbience(uid, false); // Ganimed-Add
+            _ambient.SetAmbience(uid, false); // Ganimed-Audio-Add
         }
     }
 
@@ -577,7 +577,7 @@ public sealed class ThrusterSystem : EntitySystem
                 appearanceQuery.TryGetComponent(uid, out var appearance);
                 comp.Firing = true;
                 _appearance.SetData(uid, ThrusterVisualState.Thrusting, true, appearance);
-                _ambient.SetAmbience(uid, true); // Ganimed-Add
+                _ambient.SetAmbience(uid, true); // Ganimed-Audio-Add
             }
         }
         else
@@ -590,7 +590,7 @@ public sealed class ThrusterSystem : EntitySystem
                 appearanceQuery.TryGetComponent(uid, out var appearance);
                 comp.Firing = false;
                 _appearance.SetData(uid, ThrusterVisualState.Thrusting, false, appearance);
-                _ambient.SetAmbience(uid, false); // Ganimed-Add
+                _ambient.SetAmbience(uid, false); // Ganimed-Audio-Add
             }
         }
     }
