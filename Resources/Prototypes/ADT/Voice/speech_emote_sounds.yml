@@ -220,6 +220,10 @@
       collection: MaleSigh
     Crying-apathy:
       collection: MaleCry
+    # Ganimed-Emotes-Add-Start
+    Chuckle:
+      collection: MaleChuckle
+    # Ganimed-Emotes-Add-End
 
 - type: emoteSounds
   id: ADTFemaleTajaran
@@ -271,6 +275,10 @@
       collection: FemaleSigh
     Crying-apathy:
       collection: FemaleCry
+    # Ganimed-Emotes-Add-Start
+    Chuckle:
+      collection: FemaleChuckle
+    # Ganimed-Emotes-Add-End
 
 - type: emoteSounds
   id: UnisexNovakid
@@ -641,6 +649,10 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    # Ganimed-Emotes-Add-Start
+    Chuckle:
+      collection: MaleChuckle
+    # Ganimed-Emotes-Add-End
 
 - type: emoteSounds
   id: NesFemaleVulpa
@@ -691,6 +703,10 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    # Ganimed-Emotes-Add-Start
+    Chuckle:
+      collection: FemaleChuckle
+    # Ganimed-Emotes-Add-End
 
 - type: emoteSounds
   id: MaleFelinid
@@ -740,6 +756,12 @@
       collection: MaleSigh
     Crying-apathy:
       collection: MaleCry
+    # Ganimed-Emotes-Add-Start
+    PainScream:
+      collection: MalePainScream
+    Chuckle:
+      collection: MaleChuckle
+    # Ganimed-Emotes-Add-End
 
 - type: emoteSounds
   id: FemaleFelinid
@@ -789,6 +811,12 @@
       collection: FemaleSigh
     Crying-apathy:
       collection: FemaleCry
+    # Ganimed-Emotes-Add-Start
+    PainScream:
+      collection: FemalePainScream
+    Chuckle:
+      collection: FemaleChuckle
+    # Ganimed-Emotes-Add-End
 
 - type: emoteSounds
   id: MaleResomi

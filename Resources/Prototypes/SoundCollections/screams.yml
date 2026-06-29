@@ -24,6 +24,7 @@
     - /Audio/ADT/Voice/Human/scream_f1.ogg
     - /Audio/ADT/Voice/Human/scream_f2.ogg
     # ADT End
+    - /Audio/_Ganimed/Voice/Human/femalescream_6.ogg # Ganimed-Audio-Add
 
 - type: soundCollection
   id: ZombieScreams

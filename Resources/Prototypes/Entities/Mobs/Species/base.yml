@@ -209,6 +209,7 @@
   - type: Puller
   - type: Speech
     speechSounds: Alto
+    allowedEmotes: ['PainScream', 'Chuckle'] # Ganimed-Emotes-Add
   - type: DamageForceSay
   - type: Vocal
     sounds:
@@ -316,6 +317,7 @@
     postingSayDamage: blood-cough
   - type: TimeDespawnDamage
   # End-ADT Tweak
+  - type: CritHeartbeat # Ganimed-Audio-Add
 
 - type: entity
   save: false

@@ -131,6 +131,10 @@
     shortscale: 0.9 # Ganimed-Tweak
   - type: CollectiveMindRank
   # ADT tweak end
+  # Ganimed-Audio-Add-Start
+  - type: CritHeartbeat
+    enabled: false
+  # Ganimed-Audio-Add-End
 
 - type: entity
   parent: BaseSpeciesDummy

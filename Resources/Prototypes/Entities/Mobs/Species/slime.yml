@@ -157,6 +157,10 @@
   - type: Sprite
     scale: 0.95, 0.95
   # Ganimed-Tweak-End
+  # Ganimed-Audio-Add-Start
+  - type: CritHeartbeat
+    enabled: false
+  # Ganimed-Audio-Add-End
 
 - type: entity
   parent: MobHumanDummy

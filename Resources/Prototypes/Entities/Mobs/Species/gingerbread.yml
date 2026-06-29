@@ -51,6 +51,10 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+  # Ganimed-Audio-Add-Start
+  - type: CritHeartbeat
+    enabled: false
+  # Ganimed-Audio-Add-End
 
 
 - type: entity

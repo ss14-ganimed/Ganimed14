@@ -1,0 +1,59 @@
+# vocal emotes
+- type: emote
+  id: PainScream
+  name: chat-emote-name-pain-scream
+  category: Vocal
+  available: false # still availible to base species (allowedEmotes)
+  icon: Interface/Emotes/scream.png
+  whitelist:
+    requireAll: true
+    components:
+    - Vocal
+    - Damageable
+    tags:
+    - RawMaterial # just a placeholder to prevent the emote from showing up in the emote wheel
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-pain-scream"]
+  chatTriggers:
+  - agonizing scream
+  - scream in agony
+  - screams in agony
+  - screaming in agony
+  - painful scream
+  - scream in pain
+  - screams in pain
+  - screaming in pain
+  - крик боли
+  - крики боли
+  - кричит от боли
+  - орёт от боли
+  - визжит от боли
+  - крик агонии
+  - крики агонии
+  - кричит в агонии
+  - орёт в агонии
+  - визжит в агонии
+
+- type: emote
+  id: Chuckle
+  name: chat-emote-name-chuckle
+  category: Vocal
+  available: false # still availible to base species (allowedEmotes)
+  icon: Interface/Emotes/laugh.png
+  whitelist:
+    requireAll: true
+    components:
+    - Vocal
+    tags:
+    - RawMaterial # just a placeholder to prevent the emote from showing up in the emote wheel
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-chuckle"]
+  chatTriggers:
+  # - chuckles # used by the laugh emote
+  - посмеивается
+  - посмеиваются
+  - смешок

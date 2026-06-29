@@ -7,4 +7,9 @@
     - /Audio/StationEvents/blatantly_nuclear.ogg
     - /Audio/Corvax/StationEvents/level.ogg # Corvax-NukeMusic
     - /Audio/ADT/StationEvent/sponsored_by_syndicate.ogg # ADT-Tweak
-    
+    # Ganimed-Music-Add-Start
+    - /Audio/_Ganimed/StationEvents/invaders-must-die.ogg
+    - /Audio/_Ganimed/StationEvents/second-warning.ogg
+    - /Audio/_Ganimed/StationEvents/the-adventurers.ogg
+    - /Audio/_Ganimed/StationEvents/the-cyber-grind.ogg
+    # Ganimed-Music-Add-End

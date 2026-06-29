@@ -18,10 +18,10 @@
           - MachineLayer
     - type: AmbientSound
       enabled: false
-      range: 4
+      range: 6 # Ganimed-Audio-Edit (4 -> 6)
       volume: -4
       sound:
-        path: /Audio/Effects/shuttle_thruster.ogg
+        path: /Audio/_Ganimed/Effects/rocket_engine.ogg # Ganimed-Audio-Edit (shuttle_thruster.ogg)
     - type: Transform
       anchored: true
     - type: Physics
@@ -270,6 +270,12 @@
     damageModifierSet: Electronic
   - type: StaticPrice
     price: 2000
+  # Ganimed-Audio-Add-Start
+  - type: AmbientSound
+    volume: 1
+    sound:
+      path: /Audio/Effects/shuttle_thruster.ogg
+  # Ganimed-Audio-Add-End
 
 - type: entity
   id: GyroscopeUnanchored
@@ -307,6 +313,12 @@
       map: ["enum.ThrusterVisualLayers.ThrustingUnshaded"]
       shader: unshaded
       visible: false
+  # Ganimed-Add-Start
+  - type: AmbientSound
+    volume: 1
+    sound:
+      path: /Audio/Effects/shuttle_thruster.ogg
+  # Ganimed-Add-End
 
 - type: entity
   id: RustedThruster

@@ -3,6 +3,10 @@
   files:
     - /Audio/Voice/Human/manlaugh1.ogg
     - /Audio/Voice/Human/manlaugh2.ogg
+    # Ganimed-Audio-Add-Start
+    - /Audio/_Ganimed/Voice/Human/laugh_male_1.ogg
+    - /Audio/_Ganimed/Voice/Human/laugh_male_2.ogg
+    # Ganimed-Audio-Add-End
 
 - type: soundCollection
   id: FemaleLaugh
