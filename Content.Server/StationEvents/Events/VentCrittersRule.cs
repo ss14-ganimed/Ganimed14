@@ -1,3 +1,4 @@
+using Content.Server.Antag; // Ganimed-Bloodworm-Add
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Station.Components;
@@ -13,6 +14,50 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
      * DO NOT COPY PASTE THIS TO MAKE YOUR MOB EVENT.
      * USE THE PROTOTYPE.
      */
+
+    // Ganimed-Bloodworm-Add-Start
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<VentCrittersRuleComponent, AntagSelectLocationEvent>(OnSelectLocation);
+    }
+
+    private void OnSelectLocation(Entity<VentCrittersRuleComponent> ent, ref AntagSelectLocationEvent args)
+    {
+        if (!TryGetRandomStation(out var station))
+            return;
+
+        var mainGrid = GetStationMainGrid(Comp<StationDataComponent>(station.Value));
+        if (mainGrid == null)
+            return;
+
+        // Reuse cached location so the actual mob spawns at the same vent as the ghost role spawner.
+        if (ent.Comp.SpawnLocation != null)
+        {
+            args.Coordinates.Add(ent.Comp.SpawnLocation.Value);
+            return;
+        }
+
+        var locations = EntityQueryEnumerator<VentCritterSpawnLocationComponent, TransformComponent>();
+        var validVents = new List<MapCoordinates>();
+        while (locations.MoveNext(out _, out _, out var transform))
+        {
+            if (transform.GridUid != mainGrid.Value.Owner)
+                continue;
+
+            validVents.Add(_transform.ToMapCoordinates(transform.Coordinates));
+        }
+
+        if (validVents.Count == 0)
+            return;
+
+        var chosen = RobustRandom.Pick(validVents);
+        ent.Comp.SpawnLocation = chosen;
+        args.Coordinates.Add(chosen);
+    }
+    // Ganimed-Bloodworm-Add-End
 
     protected override void Started(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {

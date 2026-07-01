@@ -1,0 +1,174 @@
+- type: entity
+  id: ActionBloodWormLeechHatchling
+  name: action-name-blood-worm-leech
+  description: action-description-blood-worm-leech
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon:
+      sprite: _Ganimed/Interface/Actions/blood_worm.rsi
+      state: leech_blood
+    itemIconStyle: BigAction
+    useDelay: 0
+  - type: TargetAction
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Body
+    canTargetSelf: false
+    event: !type:BloodWormLeechActionEvent
+      drainAmount: 28
+      startupDelay: 1
+      tickDelay: 1
+
+- type: entity
+  id: ActionBloodWormLeechJuvenile
+  name: action-name-blood-worm-leech
+  description: action-description-blood-worm-leech
+  categories: [ HideSpawnMenu ]
+  parent: ActionBloodWormLeechHatchling
+  components:
+  - type: EntityTargetAction
+    event: !type:BloodWormLeechActionEvent
+      drainAmount: 42
+      startupDelay: 1
+      tickDelay: 1
+
+- type: entity
+  id: ActionBloodWormLeechAdult
+  name: action-name-blood-worm-leech
+  description: action-description-blood-worm-leech
+  categories: [ HideSpawnMenu ]
+  parent: ActionBloodWormLeechHatchling
+  components:
+  - type: EntityTargetAction
+    event: !type:BloodWormLeechActionEvent
+      drainAmount: 56
+      startupDelay: 1
+      tickDelay: 1
+
+- type: entity
+  id: ActionBloodWormInvade
+  name: action-name-blood-worm-invade
+  description: action-description-blood-worm-invade
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon:
+      sprite: _Ganimed/Interface/Actions/blood_worm.rsi
+      state: invade_corpse
+    itemIconStyle: BigAction
+    useDelay: 3
+  - type: TargetAction
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Body
+    canTargetSelf: false
+    event: !type:BloodWormInvadeActionEvent
+      delay: 5
+
+- type: entity
+  id: ActionBloodWormSpitJuvenile
+  name: action-name-blood-worm-spit
+  description: action-description-blood-worm-spit
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon:
+      sprite: _Ganimed/Interface/Actions/blood_worm.rsi
+      state: spit_blood
+    itemIconStyle: BigAction
+    useDelay: 3
+  - type: TargetAction
+    checkCanAccess: false
+    range: 0
+  - type: WorldTargetAction
+    event: !type:BloodWormSpitActionEvent
+      bloodCost: 6
+
+- type: entity
+  id: ActionBloodWormSpitAdult
+  name: action-name-blood-worm-spit
+  description: action-description-blood-worm-spit
+  categories: [ HideSpawnMenu ]
+  parent: ActionBloodWormSpitJuvenile
+  components:
+  - type: Action
+    useDelay: 2
+  - type: WorldTargetAction
+    event: !type:BloodWormSpitActionEvent
+      bloodCost: 7
+
+- type: entity
+  id: ActionBloodWormMature
+  name: action-name-blood-worm-mature
+  description: action-description-blood-worm-mature
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon:
+      sprite: _Ganimed/Interface/Actions/blood_worm.rsi
+      state: mature_juveline
+    itemIconStyle: BigAction
+    useDelay: 1
+  - type: InstantAction
+    event: !type:BloodWormMatureActionEvent
+      delay: 30
+
+- type: entity
+  id: ActionBloodWormLeaveHost
+  name: action-name-blood-worm-leave-host
+  description: action-description-blood-worm-leave-host
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon:
+      sprite: _Ganimed/Interface/Actions/blood_worm.rsi
+      state: leave_host
+    itemIconStyle: BigAction
+    checkCanInteract: false
+    checkConsciousness: false
+    useDelay: 1
+  - type: InstantAction
+    event: !type:BloodWormLeaveHostActionEvent
+      delay: 3
+
+- type: entity
+  id: ActionBloodWormInject
+  name: action-name-blood-worm-heal-host
+  description: action-description-blood-worm-heal-host
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon:
+      sprite: _Ganimed/Interface/Actions/blood_worm.rsi
+      state: inject_blood
+    itemIconStyle: BigAction
+    useDelay: 30
+    checkCanInteract: false
+    checkConsciousness: false
+  - type: InstantAction
+    event: !type:BloodWormInjectActionEvent
+      bloodCost: 65
+      healAmount: 65
+      bloodHealAmount: 0
+
+- type: entity
+  id: ActionBloodWormReviveHost
+  name: action-name-blood-worm-revive-host
+  description: action-description-blood-worm-revive-host
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon:
+      sprite: _Ganimed/Interface/Actions/blood_worm.rsi
+      state: revive_host
+    itemIconStyle: BigAction
+    useDelay: 300
+    checkCanInteract: false
+    checkConsciousness: false
+  - type: InstantAction
+    event: !type:BloodWormReviveHostActionEvent
+      bloodCost: 0
+      delay: 6

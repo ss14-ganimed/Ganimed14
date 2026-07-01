@@ -131,6 +131,98 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
 
     private void AddSummary(StringBuilder result, string agent, List<(EntityUid, string)> minds)
     {
+// Ganimed-Bloodworm-Add-Start
+        if (agent == Loc.GetString("blood-worm-round-end-agent-name"))
+        {
+            EntityUid? sharedMindId = null;
+            MindComponent? sharedMind = null;
+
+            foreach (var (mindId, name) in minds)
+            {
+                if (!TryComp<MindComponent>(mindId, out var mind))
+                    continue;
+
+                var title = GetTitle((mindId, mind), name);
+                var custody = IsInCustody(mindId, mind) ? Loc.GetString("objectives-in-custody") : string.Empty;
+
+                if (mind.Objectives.Count == 0)
+                    result.AppendLine(Loc.GetString("objectives-no-objectives", ("custody", custody), ("title", title), ("agent", agent)));
+                else
+                    result.AppendLine(Loc.GetString("objectives-with-objectives", ("custody", custody), ("title", title), ("agent", agent)));
+
+                if (sharedMindId == null && mind.Objectives.Count > 0)
+                {
+                    sharedMindId = mindId;
+                    sharedMind = mind;
+                }
+            }
+
+            if (sharedMindId == null || sharedMind == null)
+                return;
+
+            // Shared hive objectives should be shown only once.
+            var ev = new PrependObjectivesSummaryTextEvent();
+            RaiseLocalEvent(sharedMindId.Value, ref ev);
+            if (ev.Text != string.Empty)
+                result.AppendLine(ev.Text);
+
+            foreach (var objectiveGroup in sharedMind.Objectives.GroupBy(o => Comp<ObjectiveComponent>(o).LocIssuer))
+            {
+                result.AppendLine(objectiveGroup.Key);
+
+                foreach (var objective in objectiveGroup)
+                {
+                    var info = GetInfo(objective, sharedMindId.Value, sharedMind);
+                    if (info == null)
+                        continue;
+
+                    var objectiveTitle = info.Value.Title;
+                    var progress = info.Value.Progress;
+
+                    result.Append("- ");
+                    if (!_showGreentext)
+                    {
+                        result.AppendLine(objectiveTitle);
+                    }
+                    else if (progress > 0.99f)
+                    {
+                        result.AppendLine(Loc.GetString(
+                            "objectives-objective-success",
+                            ("objective", objectiveTitle),
+                            ("progress", progress)
+                        ));
+                    }
+                    else if (progress <= 0.99f && progress >= 0.5f)
+                    {
+                        result.AppendLine(Loc.GetString(
+                            "objectives-objective-partial-success",
+                            ("objective", objectiveTitle),
+                            ("progress", progress)
+                        ));
+                    }
+                    else if (progress < 0.5f && progress > 0f)
+                    {
+                        result.AppendLine(Loc.GetString(
+                            "objectives-objective-partial-failure",
+                            ("objective", objectiveTitle),
+                            ("progress", progress)
+                        ));
+                    }
+                    else
+                    {
+                        result.AppendLine(Loc.GetString(
+                            "objectives-objective-fail",
+                            ("objective", objectiveTitle),
+                            ("progress", progress)
+                        ));
+                    }
+                }
+            }
+
+            return;
+        }
+// Ganimed-Bloodworm-Add-End
+
         var agentSummaries = new List<(string summary, float successRate, int completedObjectives)>();
 
         foreach (var (mindId, name) in minds)
