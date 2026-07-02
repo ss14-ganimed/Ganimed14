@@ -1,0 +1,74 @@
+# Head
+- type: loadout
+  id: BotanistStrawHat
+  equipment:
+    head: ClothingHeadHatStrawHat
+
+- type: loadout
+  id: BotanistPoppy
+  equipment:
+    head: FoodPoppy
+
+- type: loadout
+  id: BotanistAmbrosia
+  equipment:
+    head: FoodAmbrosiaVulgaris
+
+- type: loadout
+  id: BotanistFlowerWreath
+  equipment:
+    head: ClothingHeadHatFlowerWreath
+
+- type: loadout
+  id: WatermelonHelmet
+  equipment:
+    head: ClothingHeadHatWatermelon
+
+- type: loadout # TODO: Whitelist restriction
+  id: HeadBucket
+  equipment:
+    head: Bucket
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Service
+
+# Jumpsuit
+- type: loadout
+  id: BotanistOverallsOriginal
+  equipment:
+    jumpsuit: ClothingUniformOverallsOriginal
+
+- type: loadout
+  id: BotanistDryadCoverings
+  equipment:
+    jumpsuit: ADTClothingJumpsuitDryadCoverings
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBotanist
+      time: 54000 # 15 hours
+
+# Belt
+- type: loadout
+  id: BotanistBelt
+  equipment:
+    belt: ClothingBeltPlantFilled
+
+- type: loadout
+  id: PlantBag
+  equipment:
+    belt: PlantBag
+
+# Gloves
+- type: loadout
+  id: BotanistLeatherGloves
+  equipment:
+    gloves: ClothingHandsGlovesLeather
+
+# Shoes
+- type: loadout
+  id: GreenShoes
+  equipment:
+    shoes: ClothingShoesColorGreen

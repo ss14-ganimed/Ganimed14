@@ -82,28 +82,33 @@
   - type: Ghost
   # ADT-Tweak-Start
     availableClothing:
-    - ClothingUniformJumpsuitPsychologist
-    - ClothingUniformJumpsuitScientist
-    - ClothingUniformJumpsuitSafari
-    - ClothingUniformJumpsuitSecGrey
-    - ClothingUniformJumpsuitBartender
-    - ClothingUniformJumpsuitBartenderPurple
-    - ClothingUniformJumpsuitChef
-    - ClothingUniformJumpsuitChemistry
-    - ClothingUniformJumpsuitDetective
-    - ClothingUniformJumpsuitHawaiYellow
-    - ClothingUniformJumpsuitHoS
-    - ClothingUniformJumpsuitJanitor
+    # Ganimed-Remove-Start
+    # - ClothingUniformJumpsuitPsychologist
+    # - ClothingUniformJumpsuitScientist
+    # - ClothingUniformJumpsuitSafari
+    # - ClothingUniformJumpsuitSecGrey
+    # - ClothingUniformJumpsuitBartender
+    # - ClothingUniformJumpsuitBartenderPurple
+    # - ClothingUniformJumpsuitChef
+    # - ClothingUniformJumpsuitChemistry
+    # - ClothingUniformJumpsuitDetective
+    # - ClothingUniformJumpsuitHawaiYellow
+    # - ClothingUniformJumpsuitHoS
+    # - ClothingUniformJumpsuitJanitor
+    # Ganimed-Remove-End
     - ClothingUniformJumpsuitKimono
-    - ClothingUniformJumpsuitMime
-    - ClothingUniformJumpsuitChaplain
-    - ClothingUniformJumpsuitParamedic
-    - ClothingUniformJumpsuitPirate
-    - ADTClothingUniformJumpsuitBlueshield
-    - ADTClothingUniformJumpsuitGreenSuitLawyer
-    - ADTClothingUniformJumpsuitBarber
-    - ADTClothingUniformCorrectionsOfficer
-    - ADTClothingUniformSquidGamePlayer
+    - ClothingUniformJumpsuitMonasticRobeLight # Ganimed-Add
+    # Ganimed-Remove-Start
+    # - ClothingUniformJumpsuitMime
+    # - ClothingUniformJumpsuitChaplain
+    # - ClothingUniformJumpsuitParamedic
+    # - ClothingUniformJumpsuitPirate
+    # - ADTClothingUniformJumpsuitBlueshield
+    # - ADTClothingUniformJumpsuitGreenSuitLawyer
+    # - ADTClothingUniformJumpsuitBarber
+    # - ADTClothingUniformCorrectionsOfficer
+    # - ADTClothingUniformSquidGamePlayer
+    # Ganimed-Remove-End
   # ADT-Tweak-End
   - type: GhostHearing
   - type: ShowElectrocutionHUD

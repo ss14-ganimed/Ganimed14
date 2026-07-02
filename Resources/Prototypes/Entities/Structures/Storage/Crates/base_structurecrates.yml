@@ -94,6 +94,7 @@
     containers:
       - entity_storage
   - type: RequireProjectileTarget
+  - type: ChildBlockVision # Ganimed-Add (Starlight: You can't see from containers)
 
 - type: entity
   parent: CrateGeneric

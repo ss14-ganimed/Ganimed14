@@ -443,7 +443,8 @@
   icon:
     sprite: *icon-rsi
     state: SeniorPhysician
-  allowSelection: false
+  allowSelection: true # Ganimed-Tweak
+  jobName: job-name-senior-physician # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -451,7 +452,8 @@
   icon:
     sprite: *icon-rsi
     state: SeniorOfficer
-  allowSelection: false
+  allowSelection: true # Ganimed-Tweak
+  jobName: job-name-senior-officer # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -459,7 +461,8 @@
   icon:
     sprite: *icon-rsi
     state: SeniorEngineer
-  allowSelection: false
+  allowSelection: true # Ganimed-Tweak
+  jobName: job-name-senior-engineer # Ganimed-Add
 
 - type: jobIcon
   parent: JobIcon
@@ -467,7 +470,8 @@
   icon:
     sprite: *icon-rsi
     state: SeniorResearcher
-  allowSelection: false
+  allowSelection: true # Ganimed-Tweak
+  jobName: job-name-senior-researcher # Ganimed-Add
 
 # Other
 

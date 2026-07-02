@@ -26,57 +26,48 @@
   - type: Storage
     whitelist:
       tags:
-        - SecBeltEquip
-        - CigPack
-        - Taser
-        - Wrench
-        - Bottle
-        - Spray
-        - Brutepack
-        - Bloodpack
-        - Gauze
-        - Ointment
-        - PillCanister
-        - Radio
-        - DiscreteHealthAnalyzer
-        - SurgeryTool
-        - Dropper
+      - SecBeltEquip
+      - CigPack
+      - Taser
+      - Wrench
+      - Bottle
+      - Spray
+      - Brutepack
+      - Bloodpack
+      - Gauze
+      - Ointment
+      - PillCanister
+      - Radio
+      - DiscreteHealthAnalyzer
+      - SurgeryTool
+      - Dropper
+      - ADTMobileDefibrillator
+      - ADTTelescopicBaton
       components:
-        - Stunbaton
-        - FlashOnTrigger
-        - SmokeOnTrigger
-        - Flash
-        - Handcuff
-        - BallisticAmmoProvider
-        - Ammo
-        - Hypospray
-        - Injector
-        - Pill
-        - HandLabeler
-#  - type: StorageFill
-#    contents:
-#      - id: Brutepack
-#      - id: Ointment
-#      - id: Gauze
-#      - id: Bloodpack
-#      - id: Tourniquet
-#      - id: EmergencyMedipen
-#      - id: Zipties
+      - Stunbaton
+      - Flash
+      - Handcuff
+      - BallisticAmmoProvider
+      - Ammo
+      - Hypospray
+      - Injector
+      - Pill
+      - HandLabeler
 
 - type: entity
   parent: ClothingBeltSheath
-  id: ClothingBeltWhiteSheath
+  id: ClothingBeltSheathWhite
   name: white sabre sheath
   description: Style, shine, everything for the best sabers in the universe.
   components:
   - type: Sprite
-    sprite: _Ganimed/Clothing/Belt/white_sheath.rsi
+    sprite: _Ganimed/Clothing/Belt/sheath_white.rsi
     state: sheath
   - type: Clothing
-    sprite: _Ganimed/Clothing/Belt/white_sheath.rsi
+    sprite: _Ganimed/Clothing/Belt/sheath_white.rsi
 
 - type: entity
-  parent: ClothingBeltSecurityWebbingFilled
+  parent: ClothingBeltSecurityWebbing
   id: ClothingBeltOfficerBlackWebbing
   name: bridge officer webbing
   description: It's a fairly comfortable and ergonomic webbing.
@@ -96,8 +87,8 @@
     sprite: _Ganimed/Clothing/Belt/ammobelt.rsi
     state: base
     layers:
-      - state: ammobelt-6
-      - map: ["enum.StorageFillLayers.Fill"]
+    - state: ammobelt-6
+    - map: ["enum.StorageFillLayers.Fill"]
   - type: Appearance
   - type: StorageFillVisualizer
     maxFillLevels: 7
@@ -112,23 +103,23 @@
     - 7,0,7,1
     whitelist:
       tags:
-        - MagazineShotgun
-        - MagazineRifle
-        - MagazineLightRifle
-        - MagazineCaselessRifle
-        - ADTMagazineRifleExtended
-        - MagazinePistolSubMachineGun
-        - MagazinePistolSubMachineGunTopMounted
-        - MagazinePistol
-        - MagazinePistolHighCapacity
-        - MagazineMagnum
-        - MagazinePistolCaselessRifle
-        - SpeedLoaderMagnum
-        - SpeedLoaderRifle
-        - CigPack #это был трудный день
-        - ADTLighter
-        - Radio
-        - Knife
+      - MagazineShotgun
+      - MagazineRifle
+      - MagazineLightRifle
+      - MagazineCaselessRifle
+      - ADTMagazineRifleExtended
+      - MagazinePistolSubMachineGun
+      - MagazinePistolSubMachineGunTopMounted
+      - MagazinePistol
+      - MagazinePistolHighCapacity
+      - MagazineMagnum
+      - MagazinePistolCaselessRifle
+      - SpeedLoaderMagnum
+      - SpeedLoaderRifle
+      - CigPack # это был трудный день
+      - ADTLighter
+      - Radio
+      - Knife
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -141,8 +132,8 @@
   - type: Clothing
     sprite: _Ganimed/Clothing/Belt/pistolbelt.rsi
   - type: Appearance
-  - type: Foldable #рп реализация кобуры для правшей и левшей
-    canFoldInsideContainer: true #без этого кобура нормально работает только в одном состоянии
+  - type: Foldable # рп реализация кобуры для правшей и левшей
+    canFoldInsideContainer: true # без этого кобура нормально работает только в одном состоянии
     unfoldVerbText: holster-unfold-verb-text
     foldVerbText: holster-fold-verb-text
   - type: FoldableClothing
@@ -160,7 +151,7 @@
         name: Sidearm
         insertVerbText: holster-insert-verb-text
         ejectVerbText: holster-eject-verb-text
-        #insertSound: /..
+        # insertSound: /..
         ejectSound: /Audio/_Ganimed/Items/holster_eject.ogg
         priority: 2
         whitelist:
@@ -196,19 +187,19 @@
         name: Sidearm
         insertVerbText: holster-insert-verb-text
         ejectVerbText: holster-eject-verb-text
-        #insertSound: /..
+        # insertSound: /..
         ejectSound: /Audio/_Ganimed/Items/holster_eject.ogg
         priority: 2
         whitelist:
           components:
             - RevolverAmmoProvider
-  - type: ItemMapper #в данный момент реализован только один спрайт в кобуре, для отображения других револьверов требуются изменения в их прототипах и тегах. Скорее всего это будет реализовано в другом PR.
+  - type: ItemMapper # в данный момент реализован только один спрайт в кобуре, для отображения других револьверов требуются изменения в их прототипах и тегах. Скорее всего это будет реализовано в другом PR.
     mapLayers:
       filled-inspector:
         whitelist:
-          components: #tags
+          components: # tags
             - RevolverAmmoProvider #WeaponRevolverInspector
-      #filled-mateba: #будет реализовано позже, спрайты уже есть в meta.json и тут
+      #filled-mateba: # будет реализовано позже, спрайты уже есть в meta.json и тут
         #whitelist:
           #tags:
             #- WeaponRevolverMateba
@@ -268,8 +259,69 @@
         - Radio
         - Flashlight
         - DiscreteHealthAnalyzer
-        - SecBeltEquip #ради жгута
+        - SecBeltEquip # ради жгута
       components:
         - Hypospray
         - Injector
         - Pill
+
+- type: entity
+  parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase]
+  id: ClothingBeltAssault
+  name: assault belt
+  description: A tactical assault belt.
+  components:
+  - type: Sprite
+    sprite: Clothing/Belt/assault.rsi
+  - type: Clothing
+    sprite: Clothing/Belt/assault.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+  - type: Storage
+    whitelist:
+      tags:
+      - CigPack
+      - Taser
+      - Sidearm
+      - CombatKnife
+      - Truncheon
+      - Grenade
+      - GrenadeFlashBang
+      - SpeedLoaderRifle
+      - SpeedLoaderPistol
+      - SpeedLoaderMagnum
+      - Shiv
+      - Cartridge
+      - Pen
+      - ADTMagazineRifleBibis
+      - ADTCartridgeBibis
+      - ADTBola
+      components:
+      - Stunbaton
+      - FlashOnTrigger
+      - SmokeOnTrigger
+      - ExplodeOnTrigger
+      - Flash
+      - Handcuff
+      - BallisticAmmoProvider
+      - Ammo
+      - CartridgeAmmo
+      - ChemicalPayload
+      - ScatteringGrenade
+      - ProjectileGrenade
+  - type: ItemMapper
+    mapLayers:
+      flashbang:
+        whitelist:
+          components:
+          - FlashOnTrigger
+      stunbaton:
+        whitelist:
+          components:
+          - Stunbaton
+      tear_gas_grenade:
+        whitelist:
+          components:
+          - SmokeOnTrigger
+    sprite: Clothing/Belt/belt_overlay.rsi
+  - type: Appearance

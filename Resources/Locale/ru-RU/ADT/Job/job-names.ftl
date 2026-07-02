@@ -9,6 +9,8 @@ JobRoboticist = робототехник
 job-name-magistrat = душнила
 JobMagistrat = душнила
 
+job-name-machine = Машина
+
 job-name-senior-physician = заведующий сараем
 JobADTSeniorPhysician = заведующий сараем
 

@@ -44,7 +44,7 @@ centcom-random-event-language-13 = канилунц
 centcom-random-event-language-14 = каукиттен
 centcom-random-event-language-15 = шахт
 
-centcom-random-event-words-1 = слова "ня", "мяу", "мевп", "мев" и "мррр" запрещены
+centcom-random-event-words-1 = слова "ня", "мяу", "мяр", "мряу", "мяв" и "мррр" запрещены
 centcom-random-event-words-2 = слова "бульк", "блуп", "блёп", "бламп", "блимпаф", "вай" и "хлюп" запрещены
 centcom-random-event-words-3 = тен-коды запрещены
 centcom-random-event-words-4 = любые сокращения, включая, но не ограничиваясь: "ГП, РНД, РСУ, ТЭГ" запрещены
@@ -62,13 +62,13 @@ centcom-random-event-race-7 = люди
 centcom-random-event-race-8 = арахниды
 centcom-random-event-race-9 = вульпканины
 centcom-random-event-race-10 = драски
-centcom-random-event-race-11 = кобольды
+centcom-random-event-race-11 = унатхи
 centcom-random-event-race-12 = таяры
-centcom-random-event-race-13 = урсы
+centcom-random-event-race-13 = воксы
 centcom-random-event-race-14 = КПБ
-centcom-random-event-race-15 = новакиды
+centcom-random-event-race-15 = слаймолюды
 centcom-random-event-race-16 = резоми
-centcom-random-event-race-17 = сумеречники
+centcom-random-event-race-17 = вульпканины
 centcom-random-event-race-18 = фелиниды
 
 centcom-random-event-fax-paper-name = документ

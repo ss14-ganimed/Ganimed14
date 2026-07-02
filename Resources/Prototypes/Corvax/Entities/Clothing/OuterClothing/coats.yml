@@ -91,8 +91,8 @@
         coefficients:
           Blunt: 0.8
           Slash: 0.8
-          Piercing: 0.7 #ADT-Tweak: 0,6 => 0,7
-          Heat: 0.85 #ADT-Tweak: 0,9 => 0,85
+          Piercing: 0.6
+          Heat: 0.9
     #ADT-Tweak-Start
     - type: ContainerContainer
       containers:
@@ -107,10 +107,10 @@
     #ADT-Tweak-End
 
 - type: entity
-  parent: ClothingOuterStorageBase
+  parent: ClothingOuterStorageFoldableBase # Ganimed-Resprite-Edit (Foldable)
   id: ClothingOuterCoatLabSecurityMedic
   name: security medic labcoat
-  description: A suit that protects against minor chemical spills.
+  description: A white sanitary suit for places where it can easily be stained with red.
   components:
     - type: Sprite
       sprite: Corvax/Clothing/OuterClothing/Coats/labcoat_security_medic.rsi

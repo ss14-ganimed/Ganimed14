@@ -16,7 +16,7 @@ ent-SpawnADTBrigMedic = бригмедик
 ent-SpawnPointSeniorEngineer = бригадир
     .desc = { ent-SpawnPointJobBase.desc }
 
-ent-SpawnPointSeniorPhysician = ведущий врач
+ent-SpawnPointSeniorPhysician = заведующий врач
     .desc = { ent-SpawnPointJobBase.desc }
 
 ent-SpawnPointSeniorResearcher = старший научный сотрудник

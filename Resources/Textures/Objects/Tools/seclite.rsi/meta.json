@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at https://github.com/tgstation/tgstation/commit/52cbeaf94322209d4c6596818dda9fb3654729d3 and modified by Swept",
+  "copyright": "Taken from tgstation at https://github.com/tgstation/tgstation/commit/52cbeaf94322209d4c6596818dda9fb3654729d3 and modified by Swept; seclite states taken from ParadiseSS13 at commit https://github.com/ParadiseSS13/Paradise/commit/7cd066e961d71b315e476c37d7ef97c3d74d3c96 and modified by HyperB1 (GitHub)",
   "size": {
     "x": 32,
     "y": 32

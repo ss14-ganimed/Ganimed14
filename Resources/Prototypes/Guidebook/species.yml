@@ -56,4 +56,4 @@
 - type: guideEntry
   id: Vulpkanin
   name: species-name-vulpkanin
-  text: "/ServerInfo/Guidebook/Mobs/Vulpkanin.xml"
+  text: "/ServerInfo/Corvax/Guidebook/Mobs/Vulpkanin.xml" # Ganimed-Edit (Corvax)

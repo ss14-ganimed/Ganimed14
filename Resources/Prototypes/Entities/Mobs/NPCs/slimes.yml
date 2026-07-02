@@ -8,7 +8,7 @@
   - type: VentCrawler # ADT tweak
   - type: Sprite
     drawdepth: Mobs
-    sprite: ADT/Mobs/Aliens/slimes.rsi
+    sprite: Mobs/Aliens/slimes.rsi
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: blue_adult_slime
@@ -178,6 +178,10 @@
   id: MobAdultSlimesBlueAngry
   suffix: Angry
   components:
+    # Ganimed-Resprite-Add-Start
+    - type: Sprite
+      sprite: ADT/Mobs/Aliens/slimes.rsi
+    # Ganimed-Resprite-Add-End
     - type: NpcFactionMember
       factions:
         - SimpleHostile
@@ -218,6 +222,10 @@
   id: MobAdultSlimesGreenAngry
   suffix: Angry
   components:
+    # Ganimed-Resprite-Add-Start
+    - type: Sprite
+      sprite: ADT/Mobs/Aliens/slimes.rsi
+    # Ganimed-Resprite-Add-End
     - type: NpcFactionMember
       factions:
         - SimpleHostile
@@ -257,6 +265,10 @@
   id: MobAdultSlimesYellowAngry
   suffix: Angry
   components:
+    # Ganimed-Resprite-Add-Start
+    - type: Sprite
+      sprite: ADT/Mobs/Aliens/slimes.rsi
+    # Ganimed-Resprite-Add-End
     - type: NpcFactionMember
       factions:
         - SimpleHostile

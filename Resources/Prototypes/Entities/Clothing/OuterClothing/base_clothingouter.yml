@@ -19,6 +19,10 @@
   - type: Clothing
     slots:
     - outerClothing
+    # Ganimed-Add-Start
+    equipDelay: 0.5
+    unequipDelay: 0.5
+    # Ganimed-Add-End
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
@@ -158,6 +162,11 @@
   - type: HidesSlots
     hidesSlots: [ INNERCLOTHING, GLOVES, LEGS, FEET, SOCKS, UNDERWEART, UNDERWEARB, POCKET ]
   #ADT-Tweak-End
+  # Ganimed-Add-Start
+  - type: Clothing
+    equipDelay: 1
+    unequipDelay: 1
+  # Ganimed-Add-End
 
 - type: entity
   abstract: true
@@ -196,6 +205,11 @@
   - type: HidesSlots
     hidesSlots: [ INNERCLOTHING, GLOVES, LEGS, FEET, SOCKS, UNDERWEART, UNDERWEARB, POCKET ]
   #ADT-Tweak-End
+  # Ganimed-Add-Start
+  - type: Clothing
+    equipDelay: 1
+    unequipDelay: 1
+  # Ganimed-Add-End
 
 - type: entity
   parent: ClothingOuterBase

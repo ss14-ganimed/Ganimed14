@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Discord: belay5",
+  "copyright": "Derivative from tgstation at commit https://github.com/tgstation/tgstation/commit/2fea0a59470c476cf3f927833d3918d89cbe6af8 by Discord: belay5, modified by HyperB1 (GitHub)",
   "size": {
     "x": 32,
     "y": 32

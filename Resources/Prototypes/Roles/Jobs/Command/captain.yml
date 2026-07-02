@@ -30,7 +30,7 @@
       traits:
 #     - Monolingual
       - Muted
-      - ADTDeaf
+      - Deaf
   # ADT Restrict Start
     - !type:SpeciesRequirement
       inverted: true
@@ -60,9 +60,9 @@
 - type: startingGear
   id: CaptainGear
   equipment:
-    shoes: ClothingShoesBootsLaceup
-    eyes: ClothingEyesGlassesCommand
-    gloves: ClothingHandsGlovesCaptain
+    # shoes: ClothingShoesBootsLaceup # Ganimed-Loadouts-Remove (Loadout choice)
+    # eyes: ClothingEyesGlassesCommand # Ganimed-Loadouts-Remove (Loadout choice)
+    # gloves: ClothingHandsGlovesCaptain # Ganimed-Loadouts-Remove (Loadout choice)
     id: CaptainPDA
     # ears: ClothingHeadsetAltCommand # ADT tweak
   storage:

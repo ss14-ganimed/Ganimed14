@@ -82,6 +82,9 @@
   id: BrigmedicCoatAMG
   equipment:
     outerClothing: ClothingOuterCoatAMG
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: Corpsman
 
 - type: loadout
   id: BrigmedicOuterWinterSec
@@ -92,6 +95,9 @@
   id: BrigmedicVestArmor
   equipment:
     outerClothing: ClothingOuterVestArmorMedSec
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: Corpsman
 
 # Обувь
 - type: loadout

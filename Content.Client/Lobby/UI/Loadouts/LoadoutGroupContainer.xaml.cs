@@ -28,7 +28,6 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutPressed;
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutUnpressed;
-    public event Action<ProtoId<LoadoutGroupPrototype>, ProtoId<LoadoutPrototype>, List<ProtoId<LoadoutPrototype>>, Dictionary<string, ProtoId<LoadoutGroupPrototype>>>? OnLoadoutPressedWithConflict; // Ganimed Sponsor
 
     public LoadoutGroupContainer(HumanoidCharacterProfile profile, RoleLoadout loadout, LoadoutGroupPrototype groupProto, ICommonSession session, IDependencyCollection collection, bool isSponsor)
     {
@@ -278,58 +277,10 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         cont.Select.OnPressed += args =>
         {
             if (args.Button.Pressed)
-            {
-                // Ganimed sponsor start
-                var allSlots = new HashSet<string>(proto.Equipment.Keys);
-                foreach (var storageSlot in proto.Storage.Keys)
-                {
-                    allSlots.Add(storageSlot);
-                }
-
-                var toRemove = new List<ProtoId<LoadoutPrototype>>();
-                var conflictingGroupForSlot = new Dictionary<string, ProtoId<LoadoutGroupPrototype>>();
-
-                foreach (var (groupId, groupLoadouts) in loadout.SelectedLoadouts)
-                {
-                    var resolvedLoadouts = groupLoadouts
-                        .Select(l => (Loadout: l, Proto: collection.Resolve<IPrototypeManager>().TryIndex(l.Prototype, out var p) ? p : null))
-                        .Where(x => x.Proto != null)!;
-
-                    foreach (var (selectedLoadout, selectedProto) in resolvedLoadouts)
-                    {
-                        foreach (var slot in allSlots)
-                        {
-                            var newHasSlot = proto.Equipment.ContainsKey(slot) || proto.Storage.ContainsKey(slot);
-                            var selectedHasEquipment = selectedProto!.Equipment.ContainsKey(slot);
-
-                            if (newHasSlot && selectedHasEquipment)
-                            {
-                                toRemove.Add(selectedLoadout.Prototype);
-
-                                if (!conflictingGroupForSlot.ContainsKey(slot))
-                                {
-                                    conflictingGroupForSlot[slot] = groupId;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (toRemove.Count > 0)
-                {
-                    OnLoadoutPressedWithConflict?.Invoke(_groupProto.ID, proto.ID, toRemove, conflictingGroupForSlot);
-                }
-                else
-                {
-                    OnLoadoutPressed?.Invoke(proto.ID);
-                }
-            }
+                OnLoadoutPressed?.Invoke(proto.ID);
             else
-            {
                 OnLoadoutUnpressed?.Invoke(proto.ID);
-            }
         };
-        // Ganimed sponsor end
 
         return cont;
     }

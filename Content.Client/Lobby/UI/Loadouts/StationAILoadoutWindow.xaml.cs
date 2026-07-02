@@ -20,7 +20,6 @@ namespace Content.Client.Lobby.UI.Loadouts;
 public sealed partial class StationAILoadoutWindow : BaseLoadoutWindow, ILoadoutOverride
 {
     public Action<KeyValuePair<string, string>>? OnValueChanged { get; set; }
-    public Action<ProtoId<LoadoutGroupPrototype>, ProtoId<LoadoutPrototype>, List<ProtoId<LoadoutPrototype>>, Dictionary<string, ProtoId<LoadoutGroupPrototype>>>? OnLoadoutPressedWithConflict { get; set; } // Ganimed Sponsor
     public HumanoidCharacterProfile? Profile { get; set; }
     private SiliconLawsetPrototype? _lawset;
 

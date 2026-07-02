@@ -1,8 +1,14 @@
 - type: entity
-  parent: ClothingHeadsetAltCentCom
+  parent: [ ClothingHeadsetAlt, BaseCentcommContraband ] # Ganimed-Edit (ClothingHeadsetAltCentCom)
   id: ADTClothingHeadsetAltBlueshield
   name: blueshield over-ear headset
   components:
+  # Ganimed-Add-Start
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyStationMaster
+  # Ganimed-Add-End
   - type: Sprite
     sprite: ADT/Clothing/Ears/Headsets/blueshield.rsi
   - type: Clothing

@@ -43,7 +43,7 @@
 - type: startingGear
   id: SecurityOfficerGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
+    # eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts-Remove (Loadout choice)
     ears: ClothingHeadsetSecurity
     pocket1: WeaponPistolMk58
   storage:
@@ -60,3 +60,4 @@
     mask: ClothingMaskGasSecurity
     neck: Dinkystar
     gloves: ClothingHandsGlovesColorBlack
+    eyes: ClothingEyesGlassesSunglasses # Ganimed-Loadouts-Add
