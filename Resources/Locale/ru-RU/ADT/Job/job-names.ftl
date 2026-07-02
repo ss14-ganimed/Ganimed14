@@ -9,8 +9,8 @@ JobRoboticist = робототехник
 job-name-magistrat = душнила
 JobMagistrat = душнила
 
-job-name-senior-physician = заведующий врач
-JobADTSeniorPhysician = заведующий врач
+job-name-senior-physician = заведующий сараем
+JobADTSeniorPhysician = заведующий сараем
 
 job-name-senior-researcher = снюсолог
 JobADTSeniorResearcher = снюсолог
@@ -27,13 +27,13 @@ JobADTCentcomConsultant = консультант колл центра
 job-name-ADTBlueShieldOfficer = офицер холи щит
 JobADTBlueShieldOfficer = офицер холи щит
 
-job-name-ussp-army-private = Военнослужащий СССП
-job-description-ussp-army-private = Рядовой состав армии СССП. Ваши обязанности включают патрулирование, охрану объектов, поддержание порядка и выполнение боевых или служебных задач согласно уставу и приказам командиров.
-job-supervisors-ussp-centcom = Вы подчиняетесь офицерам СССП и вышестоящему командованию
+job-name-ussp-army-private = Военнослужащий С ДЦП
+job-description-ussp-army-private = Рядовой состав армии С ДЦП. Ваши обязанности включают патрулирование, охрану объектов, поддержание порядка и выполнение боевых или служебных задач согласно уставу и приказам командиров.
+job-supervisors-ussp-centcom = Вы подчиняетесь офицерам С ДЦП и вышестоящему командованию
 
-job-name-ussp-army-officer = Офицер СССП
-JobADTUSSPArmyPrivate = Военнослужащий СССП
-JobADTUSSPArmyOfficer = Офицер СССП
+job-name-ussp-army-officer = Офицер С ДЦП
+JobADTUSSPArmyPrivate = Военнослужащий С ДЦП
+JobADTUSSPArmyOfficer = Офицер С ДЦП
 
 job-name-ADTSpaceSecCadet = кадет SPACE SEC
 job-name-ADTSpaceSecOfficer = офицер SPACE SEC
@@ -50,9 +50,9 @@ officer-space-sec = офицер SPACE SEC
 pilot-space-sec = пилот SPACE SEC
 commander-space-sec = командир SPACE SEC
 member-space-sec = сотрудник SPACE SEC
-trader-tsf = торговец
+trader-tsf = перекуп
 
-job-name-ADTbarber = парикмахер
+job-name-ADTbarber = вульпячий грумер
 
 # Engineering
 
@@ -66,15 +66,15 @@ job-name-welder = сварщик третьего разряда
 
 job-name-postman = курьер
 job-name-inventory-associate = закладчик
-job-name-intendant = интендант
+job-name-intendant = складской барон
 
 # Medical
 
 job-name-real-chief-medical-officer = ЧМО
-job-name-practical-nurse = фельдшер
+job-name-practical-nurse = школьная медсестра
 job-name-resident = ординатор
 job-name-clinician = педик
-job-name-traumatologist = травматолог
+job-name-traumatologist = травма левого мизинца
 job-name-adt-doctor = диктор
 job-name-therapist = терпила
 job-name-psychiatrist = шизолог
@@ -82,11 +82,11 @@ job-name-psychotherapist = психотерпила
 
 # RnD
 
-job-name-real-reserch-director = директор исследований
-job-name-lab-tech = аналитик
-job-name-anomalist = аномалист
-job-name-xenoarch = ксеноархеолог
-job-name-mechanical-assembler = механосборщик
+job-name-real-reserch-director = препод
+job-name-lab-tech = анальный тик
+job-name-anomalist = сталкер
+job-name-xenoarch = ксенофоб
+job-name-mechanical-assembler = механодрочер
 
 # Service
 
@@ -98,7 +98,7 @@ job-name-ecologist = эколог
 job-name-mythologist = мифолог
 job-name-ethnologist = расист
 job-name-exorcist = экзорцист
-job-name-monk = монах
+job-name-monk = инцел
 job-name-priest = жрец
 job-name-shepherd = пастор
 job-name-clergyman = священнослужитель
@@ -116,15 +116,15 @@ job-name-performer = исполнитель
 job-name-concertmaster = концертмейстер
 job-name-composer = компостер
 job-name-bard = бард 2 ур.
-job-name-dj = Джей Ди Вэнс
+job-name-dj = джей ди вэнс
 job-name-journalist = экстремист
 job-name-karateka = каратист
-job-name-kickboxer = кикбоксер
+job-name-kickboxer = кекбоксер
 job-name-savatist = садист
 job-name-hand-to-hand-combat-master = мастер ролевого отыгрыша
 job-name-mma-fighter = боец ХРП
 job-name-judoist = дзюдоист
-job-name-coach = тренер
+job-name-coach = лайфстайл коуч
 job-name-gladiator = гладиатор
 
 # Security
