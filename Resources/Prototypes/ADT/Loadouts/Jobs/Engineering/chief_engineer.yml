@@ -13,3 +13,6 @@
   id: ADTClothingHeadsetAltEngineering
   equipment:
     ears: ClothingHeadsetAltEngineering
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: Commander

@@ -73,6 +73,9 @@
         type: RPDMenuBoundUserInterface
   - type: ActivatableUI
     key: enum.RpdUiKey.Key
+  - type: Tag
+    tags:
+    - RPD
 
 
 - type: entity
@@ -91,10 +94,10 @@
   suffix: Recharging
   components:
   - type: LimitedCharges
-    maxCharges: 20
-    lastCharges: 20
+    maxCharges: 100
+    lastCharges: 100
   - type: AutoRecharge
-    rechargeDuration: 10
+    rechargeDuration: 2
 - type: entity
   name: scalpel
   id: ADTSupermatterScalpel

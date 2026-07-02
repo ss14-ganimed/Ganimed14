@@ -164,7 +164,7 @@ public sealed class ADTCCVars
     ///     Below this threshold, the supermatter can heal damage.
     /// </summary>
     public static readonly CVarDef<float> SupermatterMolePenaltyThreshold =
-        CVarDef.Create("supermatter.mole_penalty_threshold", 1800f, CVar.SERVER);
+        CVarDef.Create("supermatter.mole_penalty_threshold", 100f, CVar.SERVER);
 
     /// <summary>
     ///     Divisor on the amount of oxygen released during atmospheric reactions.
@@ -266,7 +266,7 @@ public sealed class ADTCCVars
     /// Кол-во предыдущих карт, которые будут исключены из голосования.
     /// </summary>
     public static readonly CVarDef<int> MapVoteRecentBanDepth =
-        CVarDef.Create("game.map_vote_recent_ban_depth", 3, CVar.SERVER | CVar.ARCHIVE);
+        CVarDef.Create("game.map_vote_recent_ban_depth", 1, CVar.SERVER | CVar.ARCHIVE); // Ganimed-Tweak (3 -> 1)
 
 
     public static readonly CVarDef<float> BookPrinterUploadCooldown =
@@ -274,5 +274,97 @@ public sealed class ADTCCVars
 
     public static readonly CVarDef<bool> BookPrinterUploadCooldownEnabled =
         CVarDef.Create("bookprinter.upload_cooldown_enabled", true, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<bool> PaySalary =
+        CVarDef.Create("economy.pay_salary", true, CVar.SERVERONLY | CVar.ARCHIVE);
+
+
+
+    /// <summary>
+    /// Whether or not to spawn space whales if the entity is too far away from the station
+    /// </summary>
+    public static readonly CVarDef<bool> SpaceWhaleSpawn =
+        CVarDef.Create("misc.space_whale_spawn", true, CVar.SERVER);
+
+    /// <summary>
+    /// The distance to spawn a space whale from the station
+    /// </summary>
+    public static readonly CVarDef<int> SpaceWhaleSpawnDistance =
+        CVarDef.Create("misc.space_whale_spawn_distance", 1965, CVar.SERVER);
+
+    /// <summary>
+    /// If enabled, job icons in chat and status icons are available.
+    /// When disabled on server, icons will not be shown for anyone.
+    /// Players can also disable icons in their client settings.
+    /// </summary>
+    public static readonly CVarDef<bool> EnableJobIconAnimation =
+        CVarDef.Create("adt.job_icon_animation_enabled", true, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Client-side setting to toggle job icons in chat.
+    /// Icons are only shown if both server and client allow them.
+    /// </summary>
+    public static readonly CVarDef<bool> EnableChatJobIcons =
+        CVarDef.Create("adt.chat_job_icons_enabled", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /*
+    * Headshot
+    */
+    // public static readonly CVarDef<string> HeadshotUrl =
+    // CVarDef.Create("ic.headshot_url", "https://discord.com/channels/901772674865455115/1446603657255850085", CVar.SERVER | CVar.REPLICATED);
+    public static readonly CVarDef<string> HeadshotDomain =
+        CVarDef.Create("ic.headshot_domain", "i.pinimg.com", CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Maximum size of headshot images in bytes (default: 5MB).
+    /// </summary>
+    public static readonly CVarDef<int> HeadshotMaxSize =
+        CVarDef.Create("ic.headshot_max_size", 5 * 1024 * 1024, CVar.SERVER);
+
+    /// <summary>
+    /// Headshot cache duration in minutes (default: 30 minutes).
+    /// </summary>
+    public static readonly CVarDef<float> HeadshotCacheDuration =
+        CVarDef.Create("ic.headshot_cache_duration", 30f, CVar.SERVER);
+
+    /// <summary>
+    /// Maximum number of headshot images in cache (default: 100).
+    /// </summary>
+    public static readonly CVarDef<int> HeadshotMaxCacheCount =
+        CVarDef.Create("ic.headshot_max_cache_count", 100, CVar.SERVER);
+
+    /*
+    * Fix PoolManager. Cvars
+    */
+
+    /// <summary>
+    /// Whether ghostbar is enabled.
+    /// </summary>
+    public static readonly CVarDef<bool> GhostbarEnabled =
+        CVarDef.Create("ghostbar.enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether planet spawning is enabled.
+    /// </summary>
+    public static readonly CVarDef<bool> PlanetSpawnerEnabled =
+        CVarDef.Create("planet_spawner.enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether biome generation on planets is enabled.
+    /// </summary>
+    public static readonly CVarDef<bool> BiomeGenerationEnabled =
+        CVarDef.Create("biome.generation_enabled", true, CVar.SERVERONLY);
+
+    /*
+     * Atmos
+     */
+
+    /// <summary>
+    /// Whether overpressure pipe damage is enabled.
+    /// When enabled, pipes with OverpressurePipeDamageComponent will take damage when pressure exceeds the limit.
+    /// </summary>
+    public static readonly CVarDef<bool> OverpressurePipeDamageEnabled =
+        CVarDef.Create("atmos.overpressure_pipe_damage_enabled", true, CVar.SERVERONLY);
+
 }
 

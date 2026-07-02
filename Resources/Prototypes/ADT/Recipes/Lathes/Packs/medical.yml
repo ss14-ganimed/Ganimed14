@@ -2,11 +2,11 @@
   id: ADTMedicalMiscStaticPack
   recipes:
   - ADTAntibioticOintment
+  - ADTBloodPackTransfusionLatheRecipe
   - ADTSmallSyringe
   - ADTPillCanister
   - ADTPillPack
   - ADTPlasticBottle
-  - ADTBaseChemistryEmptyVial
   - ADTAutoSurgeon
 
 - type: latheRecipePack
@@ -23,11 +23,16 @@
   - ADTMiniSyringe
   - ADTTourniquet
   - ADTPatchLepo
-  
+
 - type: latheRecipePack
   id: ADTAdvancedMedical
   recipes:
   - ADTAdvancedMedicalBedCircuitboard
+
+- type: latheRecipePack
+  id: ADTCryoPodMachineCircuitboard
+  recipes:
+  - CryoPodMachineCircuitboard
 
 - type: latheRecipePack
   id: ADTChemDisp
@@ -40,7 +45,6 @@
 - type: latheRecipePack
   id: ADTCryoTech
   recipes:
-  - CryoPodMachineCircuitboard
   - ADTPatchCryo
   - CryostasisBeaker
   - SyringeCryostasis

@@ -1,0 +1,24 @@
+# Head
+- type: loadout
+  id: BlackBeret
+  equipment:
+    head: ADTClothingHeadHatBeretBlackCivilian
+
+# Mask
+- type: loadout
+  id: MimeMaskBlushing
+  equipment:
+    mask: ClothingMaskBlushingMime
+  effects:
+  - !type:SponsorLoadoutEffect
+
+# Neck
+- type: loadout # TODO: Whitelist restriction
+  id: ScarfZebra
+  equipment:
+    neck: ClothingNeckScarfStripedZebra
+
+- type: loadout
+  id: MimeBedsheet
+  equipment:
+    neck: BedsheetMime

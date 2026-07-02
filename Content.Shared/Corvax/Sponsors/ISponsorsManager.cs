@@ -7,5 +7,6 @@ namespace Content.Shared.Corvax.Sponsors
     {
         bool TryGetInfo([NotNullWhen(true)] out SponsorInfo? info);
         bool TryGetInfo(NetUserId userId, [NotNullWhen(true)] out SponsorInfo? info);
+        bool TryGetInfoByCkey(string ckey, [NotNullWhen(true)] out SponsorInfo? info); // Ganimed-Sponsors
     }
 }

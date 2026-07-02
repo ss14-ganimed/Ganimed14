@@ -1,0 +1,57 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatWigClownOrange # Make green/golden/bananium versions in the future?
+  name: orange clown wig
+  description: This wig had the full version all along?!
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Misc/clown_wig.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Misc/clown_wig.rsi
+  - type: HideLayerClothing
+    slots:
+    - HeadTop
+    layers:
+      Hair: HEAD
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatWigClownRainbow
+  name: colorful clown wig
+  description: A rainbow on top of your head! Honk!
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Misc/clown_wig_rainbow.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Misc/clown_wig_rainbow.rsi
+  - type: HideLayerClothing
+    slots:
+    - HeadTop
+    layers:
+      Hair: HEAD
+
+- type: entity
+  parent: ClothingHeadBaseButcherable
+  id: ClothingHeadHatBowWhite
+  name: hair bow
+  description: A white hair bow with a small removable clip on the back.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Misc/bow.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Misc/bow.rsi
+    slots: # Should quickequip to head slot but does so to neck, unfortunately
+    - HEAD
+    - NECK
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadFaceshield
+  name: face shield
+  description: A face shield meant to further impede infection vectors and stop debris and dangerous chemicals from damaging your face. Holding this makes you feel uneasy.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Clothing/Head/Misc/face_shield.rsi
+  - type: Clothing
+    sprite: _Ganimed/Clothing/Head/Misc/face_shield.rsi
+  - type: IngestionBlocker

@@ -154858,13 +154858,6 @@ entities:
     - type: Transform
       pos: 33.740536,9.704989
       parent: 2
-- proto: Ointment10Lingering
-  entities:
-  - uid: 22433
-    components:
-    - type: Transform
-      pos: -41.986748,-6.3407183
-      parent: 2
 - proto: OperatingTable
   entities:
   - uid: 22434
@@ -181662,7 +181655,7 @@ entities:
       pos: -81.56706,-16.585152
       parent: 2
     missingComponents:
-    - OnUseTimerTrigger
+    - TimerTrigger
     - ExplodeOnTrigger
     - Explosive
 - proto: Syringe

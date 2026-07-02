@@ -3,7 +3,7 @@
   mapName: 'Cluster Legacy'
   mapPath: /Maps/ADTMaps/ADTStations/adt_cluster_legacy.yml
   minPlayers: 1
-  maxPlayers: 35
+  maxPlayers: 20 # Ganimed-Tweak (35 -> 20)
   stations:
     ADT_Cluster_Legacy:
       stationProto: StandardNanotrasenStation
@@ -19,9 +19,12 @@
             prefixCreator: '-'
         - type: StationJobs
           availableJobs:
+            # Centcom specialists
+            ADTCentcomConsultant: [ 1, 1 ] #ADT-Roles
+            ADTBlueShieldOfficer: [ 1, 1 ] #ADT-Roles
+
             # Command
             Captain: [ 1, 1 ]
-            ADTBlueShieldOfficer: [ 1, 1 ]
 
             # Service
             HeadOfPersonnel: [ 1, 1 ]

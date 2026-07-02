@@ -8,6 +8,9 @@
   id: ADTMedicalAssemblerStuff
 
 - type: Tag
+  id: ADTStabilizingSerum
+
+- type: Tag
   id: Patch
 
 - type: Tag
@@ -15,6 +18,9 @@
 
 - type: Tag
   id: ADTLasgunRevolverCell
+
+- type: Tag
+  id: RPD
 
 - type: Tag
   id: PhantomEctoplasm
@@ -131,6 +137,9 @@
   id: Stomach
 
 - type: Tag
+  id: Storage
+
+- type: Tag
   id: Stunbaton
 
 - type: Tag
@@ -138,6 +147,9 @@
 
 - type: Tag
   id: Tongue
+
+- type: Tag
+  id: Standard
 
 - type: Tag
   id: Poppy
@@ -189,6 +201,9 @@
 
 - type: Tag
   id: ADTArmorSacrafice
+
+- type: Tag
+  id: ADTBarbellAttachment
 
 - type: Tag
   id: ADTSyndieThingies
@@ -495,10 +510,16 @@
   id: ADTVoxEmotes
 
 - type: Tag
+  id: ADTResomiEmotes
+
+- type: Tag
   id: ADTSlimeEmotes
 
 - type: Tag
   id: ADTShadekinEmotes
+
+- type: Tag
+  id: ADTNovakidEmotes
 
 - type: Tag
   id: ADTDogEmotes
@@ -519,6 +540,17 @@
 - type: Tag
   id: ADTWeaponMeleePrasatChainsword
 
+- type: Tag
+  id: ADTKeyPangaariBike
+
+- type: Tag
+  id: ADTGoldPlatedDrinkJiggerTag
+
+- type: Tag
+  id: ADTGoldPlatedBarSpoonTag
+
+- type: Tag
+  id: ADTGoldPlatedDrinkShakerTag
 #sponsor_items - End
 
 - type: Tag
@@ -688,3 +720,51 @@
 
 - type: Tag
   id: VoxFood
+
+- type: Tag
+  id: ADTCopperOre
+
+- type: Tag
+  id: ADTZincOre
+
+- type: Tag
+  id: ADTLeadOre
+
+- type: Tag
+  id: ScrapAirlock1
+
+- type: Tag
+  id: ScrapAirlock2
+
+- type: Tag
+  id: ADTOreBS
+
+- type: Tag
+  id: ADTClosedRadio
+
+- type: Tag
+  id: ADTDrill
+  
+- type: Tag
+  id: Katana
+
+- type: Tag
+  id: MagazineLightRiflePan
+
+- type: Tag
+  id: SecwayKeys
+
+- type: Tag
+  id: ATVKeys
+
+- type: Tag
+  id: SyndicateSegwayKeys
+
+- type: Tag
+  id: GunUpgradeVampirism
+
+- type: Tag
+  id: MansusLinkMind
+
+- type: Tag
+  id: SiliconFootstepSound

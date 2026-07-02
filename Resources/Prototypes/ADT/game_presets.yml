@@ -23,7 +23,7 @@
   showInVote: false
   description: changelings-description
   rules:
-    - ChangelingGameRule
+    - Changeling
     - BasicRoundstartVariation
     - SubGamemodesRule
     - BasicStationEventScheduler
@@ -42,8 +42,8 @@
   showInVote: false
   rules:
     - TraitorLightGameRule
-    - SubGamemodesRule
-    - BasicStationEventScheduler
+    - SubGamemodesRuleNoXenoborg
+    - TraitorLightStationEventScheduler
     - MeteorSwarmScheduler
 #    - SpaceTrafficControlEventScheduler #Ganimed-Tweak
     - BasicRoundstartVariation
@@ -59,7 +59,7 @@
   showInVote: false
   rules:
     - TraitorDuoGameRule
-    - ChangelingDuoGameRule
+    - ChangelingDuo # ADT tweak
     - HereticDuoGameRule
     - SubGamemodesRule
     - BasicStationEventScheduler
@@ -81,7 +81,7 @@
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
-  bannedRound: 3
+  bannedRound: 1
 
 - type: gamePreset
   id: DynamicLight
@@ -110,15 +110,16 @@
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
-  bannedRound: 2
+  bannedRound: 1
 
 - type: gamePreset
   id: DynamicRandom
   alias:
     - dynamicrandom
   name: dynamic-random-title
+  minPlayers: 15
   description: dynamic-random-description
   showInVote: true
   rules:
     - DynamicRandomGamerule
-  bannedRound: 2
+  bannedRound: 1

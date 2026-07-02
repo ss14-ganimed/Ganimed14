@@ -3,8 +3,8 @@ using Content.Server.Ghost.Roles.Events;
 using Content.Server.Popups;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
-using Content.Shared.Bible;
-using Content.Shared.Bible.Components;
+using Content.Shared.ADT.Chaplain.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Ghost.Roles.Components;
 using Content.Shared.IdentityManagement;
@@ -15,7 +15,6 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Timing;
 using Content.Shared.Verbs;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Content.Shared.ADT.Controlled;
@@ -170,7 +169,7 @@ public sealed class BibleSystem : EntitySystem
 
         var damage = _damageableSystem.TryChangeDamage(target, component.Damage, true, origin: uid);
 
-        if (damage == null || damage.Empty)
+        if (!damage)
         {
             var othersMessage = Loc.GetString(component.LocPrefix + "-heal-success-none-others", ("user", Identity.Entity(user, EntityManager)), ("target", Identity.Entity(target, EntityManager)), ("bible", uid));
             _popupSystem.PopupEntity(othersMessage, user, Filter.PvsExcept(user), true, PopupType.Medium);

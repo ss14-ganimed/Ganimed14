@@ -26,16 +26,6 @@
   equipment:
     jumpsuit: ADTClothingUniformJumpskirtCamisoleQM
 
-- type: loadout
-  id: QuartermasterPDAloadout
-  equipment:
-    pda: QuartermasterPDA
-
-- type: loadout
-  id: ADTintendantPDAloadout
-  equipment:
-    pda: ADTintendantPDA
-
 # Ears
 - type: loadout
   id: ADTClothingHeadsetQM
@@ -46,3 +36,18 @@
   id: ADTClothingHeadsetAltCargo
   equipment:
     ears: ClothingHeadsetAltCargo
+  effects: # Ganimed-Loadouts-Add
+  - !type:GroupLoadoutEffect
+    proto: Commander
+
+# PDA
+
+- type: loadout
+  id: ADTIntendantPDA
+  equipment:
+    id: ADTIntendantPDA
+
+- type: loadout
+  id: QuartermasterPDA
+  equipment:
+    id: QuartermasterPDA

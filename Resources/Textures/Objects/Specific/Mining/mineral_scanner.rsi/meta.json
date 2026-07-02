@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from vgstation at https://github.com/vgstation-coders/vgstation13/commit/125c975f1b3bf9826b37029e9ab5a5f89e975a7e. adv and adv-o by EmoGarbage404, inhands by TiniestShark (github)",
+  "copyright": "Taken from tgstation at https://github.com/tgstation/tgstation/blob/f02819360b59052b89317a368d673891a5295a5c/icons/obj/devices/scanner.dmi, inhands by xaunto",
   "size": {
     "x": 32,
     "y": 32

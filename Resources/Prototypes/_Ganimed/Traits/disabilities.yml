@@ -3,5 +3,9 @@
   name: trait-incognito-name
   description: trait-incognito-desc
   category: account
-  components:
+  cost: 0
+  # components: # Deprecated
+  effects:
+  - !type:AddCompsEffect
+    components:
     - type: SetIncognito

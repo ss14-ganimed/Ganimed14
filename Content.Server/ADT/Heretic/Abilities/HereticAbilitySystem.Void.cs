@@ -4,7 +4,9 @@ using Content.Server.Heretic.Components.PathSpecific;
 using Content.Server.Magic;
 using Content.Server.Temperature.Components;
 using Content.Shared.ADT.Heretic.Components;
+using Content.Shared.ADT.Chaplain.Components;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Heretic;
 using Content.Shared.Temperature.Components;
@@ -75,7 +77,9 @@ public sealed partial class HereticAbilitySystem : EntitySystem
         _aud.PlayPvs(new SoundPathSpecifier("/Audio/Effects/tesla_consume.ogg"), ent);
 
         foreach (var pookie in GetNearbyPeople(ent, power))
+        {
             _stun.TryKnockdown(pookie, TimeSpan.FromSeconds(power), true);
+        }
 
         _transform.SetCoordinates(ent, args.Target);
 
@@ -112,7 +116,7 @@ public sealed partial class HereticAbilitySystem : EntitySystem
             var damage = (dmgComp.TotalDamage + power) / _prot.EnumeratePrototypes<DamageTypePrototype>().Count();
 
             // apply gaming.
-            _damageable.SetAllDamage(pookie, dmgComp, damage);
+            _damageable.SetAllDamage((pookie, dmgComp), damage);
         }
 
         // stun close-mid range

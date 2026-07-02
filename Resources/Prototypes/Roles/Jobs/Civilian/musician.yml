@@ -17,7 +17,7 @@
 - type: startingGear
   id: MusicianGear
   equipment:
-    eyes: ClothingEyesGlassesSunglasses
+    # eyes: ClothingEyesGlassesSunglasses # Ganimed-Loadouts-Remove (Loadout choice)
     shoes: ClothingShoesBootsLaceup
     #id: MusicianPDA # ADT: different PDAs in loadouts
     ears: ClothingHeadsetService

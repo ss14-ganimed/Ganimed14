@@ -21,7 +21,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Linq;
-
+using Content.Shared.EntityEffects.Effects.Solution;
 using TimedDespawnComponent = Robust.Shared.Spawners.TimedDespawnComponent;
 
 namespace Content.Server.Fluids.EntitySystems;
@@ -76,6 +76,15 @@ public sealed class SmokeSystem : EntitySystem
                 continue;
 
             smoke.NextSecond += TimeSpan.FromSeconds(1);
+
+            // ADT-Tweak start: Validate smoke entity exists and has SmokeComponent before reacting
+            if (TerminatingOrDeleted(smoke.SmokeEntity) || !_smokeQuery.HasComponent(smoke.SmokeEntity))
+            {
+                RemCompDeferred(uid, smoke);
+                continue;
+            }
+            // ADT-Tweak end
+
             SmokeReact(uid, smoke.SmokeEntity);
         }
     }
@@ -255,7 +264,12 @@ public sealed class SmokeSystem : EntitySystem
     /// </summary>
     public void SmokeReact(EntityUid entity, EntityUid smokeUid, SmokeComponent? component = null)
     {
-        if (!Resolve(smokeUid, ref component))
+        // ADT-Tweak start: Early validation to prevent resolve errors
+        if (TerminatingOrDeleted(smokeUid))
+            return;
+        // ADT-Tweak end
+
+        if (!Resolve(smokeUid, ref component, logMissing: false)) // ADT-Tweak
             return;
 
         if (!_solutionContainerSystem.ResolveSolution(smokeUid, SmokeComponent.SolutionName, ref component.Solution, out var solution) ||
@@ -290,11 +304,10 @@ public sealed class SmokeSystem : EntitySystem
         {
             if (reagentQuantity.Quantity == FixedPoint2.Zero)
                 continue;
-            var reagentProto = _prototype.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
 
-            _reactive.ReactionEntity(entity, ReactionMethod.Touch, reagentProto, reagentQuantity, transferSolution);
+            _reactive.ReactionEntity(entity, ReactionMethod.Touch, reagentQuantity);
             if (!blockIngestion)
-                _reactive.ReactionEntity(entity, ReactionMethod.Ingestion, reagentProto, reagentQuantity, transferSolution);
+                _reactive.ReactionEntity(entity, ReactionMethod.Ingestion, reagentQuantity);
         }
 
         if (blockIngestion)

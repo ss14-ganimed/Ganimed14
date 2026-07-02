@@ -30,6 +30,9 @@
     - /Audio/ADT/Jukebox/fsm-team-escp-neonscapes.ogg
     - /Audio/ADT/Jukebox/fsm-team-eagle.ogg
     - /Audio/ADT/Lobby/horn.ogg
+    - /Audio/ADT/Lobby/Sonic_The_Hedgehog_CD_Naofumi_Hataya_Masafumi_Ogata-Collision_Chaos_Good_Future.ogg
+    - /Audio/ADT/Lobby/Tidal_Tempest_Zone_Present_US_Sonic_The_Hedgehog_CD.ogg
+    - /Audio/ADT/Lobby/Tidal_Tempest_Sonic_CD_JP.ogg
     - /Audio/ADT/Lobby/Collapsing_Rift.ogg
     - /Audio/ADT/Lobby/Nebula.ogg
     - /Audio/ADT/Lobby/DOS.ogg
@@ -50,9 +53,7 @@
     - /Audio/_Ganimed/Lobby/our-flag-was-still-there.ogg
     - /Audio/_Ganimed/Lobby/revolution.ogg
     - /Audio/_Ganimed/Lobby/silicon-dreams.ogg
-    - /Audio/_Ganimed/Lobby/vibe_ace.ogg
     - /Audio/_Ganimed/Lobby/hackers.ogg
-    - /Audio/_Ganimed/Lobby/marhaba.ogg
-    - /Audio/_Ganimed/Lobby/Monument.ogg
-    #Ganimed music end
+    - /Audio/_Ganimed/Lobby/HumanMusic.ogg
+    # Ganimed music end
     - /Audio/Corvax/Lobby/nodecision.ogg # Corvax-LobbyMusic

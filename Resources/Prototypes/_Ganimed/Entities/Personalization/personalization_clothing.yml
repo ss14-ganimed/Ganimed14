@@ -7,9 +7,9 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/safno_hos_beret.rsi
+    sprite: _Ganimed/Personalization/Clothing/Safno_HoS/beret.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/safno_hos_beret.rsi
+    sprite: _Ganimed/Personalization/Clothing/Safno_HoS/beret.rsi
   - type: StaticPrice
     price: 90
 
@@ -21,9 +21,9 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/safno_hos_mask.rsi
+    sprite: _Ganimed/Personalization/Clothing/Safno_HoS/mask.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/safno_hos_mask.rsi
+    sprite: _Ganimed/Personalization/Clothing/Safno_HoS/mask.rsi
   # - type: FlashImmunity # TODO: implement sec glasses functionality. Currently bugged, works even when the mask is pulled down.
   # - type: EyeProtection
   #   protectionTime: 5
@@ -45,9 +45,9 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/safno_hos_mantle.rsi
+    sprite: _Ganimed/Personalization/Clothing/Safno_HoS/mantle.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/safno_hos_mantle.rsi
+    sprite: _Ganimed/Personalization/Clothing/Safno_HoS/mantle.rsi
   - type: StaticPrice
     price: 85
 
@@ -59,9 +59,9 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/safno_hos_jumpsuit.rsi
+    sprite: _Ganimed/Personalization/Clothing/Safno_HoS/jumpsuit.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/safno_hos_jumpsuit.rsi
+    sprite: _Ganimed/Personalization/Clothing/Safno_HoS/jumpsuit.rsi
   - type: StaticPrice
     price: 85
 
@@ -73,9 +73,9 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/safno_hos_armor.rsi
+    sprite: _Ganimed/Personalization/Clothing/Safno_HoS/armor.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/safno_hos_armor.rsi
+    sprite: _Ganimed/Personalization/Clothing/Safno_HoS/armor.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -94,9 +94,9 @@
   suffix: Sponsor, Safno_S
   components:
   - type: Sprite
-    sprite: _Ganimed/Personalization/Clothing/safno_hos_belt.rsi
+    sprite: _Ganimed/Personalization/Clothing/Safno_HoS/belt.rsi
   - type: Clothing
-    sprite: _Ganimed/Personalization/Clothing/safno_hos_belt.rsi
+    sprite: _Ganimed/Personalization/Clothing/Safno_HoS/belt.rsi
   - type: ContainerContainer
     containers:
       katana: !type:ContainerSlot
@@ -132,3 +132,195 @@
   #   sprite: _Ganimed/Clothing/Belt/belt_overlay.rsi
   - type: StaticPrice
     price: 70
+
+# Halo_Shivter
+- type: entity
+  parent: ADTClothingModsuitBackMining
+  id: ClothingModsuitBackBee
+  name: bee lover MOD control unit
+  description: Bz-bz-bz-bz.
+  suffix: sponsor, Halo_Shivter, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/back_control_unit.rsi
+    state: icon
+  - type: ModSuit
+    clothingPrototypes:
+      head: ClothingHeadHelmetModsuitBee
+      gloves: ClothingHandsModsuitBee
+      outerClothing: ClothingOuterModsuitBodyBee
+      shoes: ClothingModsuitShoesBee
+
+- type: entity
+  parent: ADTClothingHeadHelmetModsuitMining
+  id: ClothingHeadHelmetModsuitBee
+  categories: [ HideSpawnMenu ]
+  name: bee lover MOD helmet
+  suffix: sponsor, Halo_Shivter, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/helmet.rsi
+    layers:
+    - state: icon
+    - state: light-overlay
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/helmet.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-head
+  - type: ToggleableVisuals
+    spriteLayer: light
+    clothingVisuals:
+      head:
+      - state: equipped-head-light
+        shader: unshaded
+  - type: RgbLightController
+    layers: [ 1 ]
+  - type: Appearance
+
+- type: entity
+  parent: ADTClothingOuterModsuitBodyMining
+  id: ClothingOuterModsuitBodyBee
+  categories: [ HideSpawnMenu ]
+  name: bee lover MOD chestplate
+  suffix: sponsor, Halo_Shivter, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/body_chestplate.rsi
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/body_chestplate.rsi
+
+- type: entity
+  parent: ADTClothingHandsModsuitMining
+  id: ClothingHandsModsuitBee
+  categories: [ HideSpawnMenu ]
+  name: bee lover MOD gauntlets
+  suffix: sponsor, Halo_Shivter, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/gauntlets.rsi
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/gauntlets.rsi
+
+- type: entity
+  parent: ADTClothingModsuitShoesMining
+  id: ClothingModsuitShoesBee
+  categories: [ HideSpawnMenu ]
+  name: bee lover MOD boots
+  suffix: sponsor, Halo_Shivter, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/boots.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Bee_modsuit/boots.rsi
+
+# HackerEasy
+- type: entity
+  parent: [ADTClothingModsuitBackMedical, BaseMedicalContraband]
+  id: ClothingModsuitBackResuscitator
+  name: resuscitator MOD control unit
+  description: Reanimate it!
+  suffix: sponsor, HackerEasy, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/back_control_unit.rsi
+    state: icon
+  - type: ModSuit
+    clothingPrototypes:
+      head: ClothingHeadHelmetModsuitResuscitator
+      gloves: ClothingHandsModsuitResuscitator
+      outerClothing: ClothingOuterModsuitBodyResuscitator
+      shoes: ClothingModsuitShoesResuscitator
+      
+- type: entity
+  parent: ADTClothingHeadHelmetModsuitMedical
+  id: ClothingHeadHelmetModsuitResuscitator
+  categories: [ HideSpawnMenu ]
+  name: resuscitator MOD helmet
+  suffix: sponsor, HackerEasy, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/helmet.rsi
+    layers:
+    - state: icon
+    - state: light-overlay
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/helmet.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-head
+  - type: ToggleableVisuals
+    spriteLayer: light
+    clothingVisuals:
+      head:
+      - state: equipped-head-light
+        shader: unshaded
+  - type: Appearance
+  
+- type: entity
+  parent: ADTClothingOuterModsuitBodyMedical
+  id: ClothingOuterModsuitBodyResuscitator
+  categories: [ HideSpawnMenu ]
+  name: resuscitator MOD chestplate
+  suffix: sponsor, HackerEasy, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/body_chestplate.rsi
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/body_chestplate.rsi
+  - type: ItemToggle
+    onUse: false
+    soundActivate:
+      path: /Audio/Items/flashlight_on.ogg
+    soundDeactivate:
+      path: /Audio/Items/flashlight_off.ogg
+  - type: ItemToggleActiveSound
+    activeSound:
+      path: /Audio/Effects/Vehicle/ambulancesiren.ogg
+      params:
+        volume: -4
+  - type: UseDelay
+    delay: 1.0
+  - type: ToggleClothing
+    action: ActionToggleParamedicSiren
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 2
+    energy: 2
+    color: blue
+    mask: /Textures/Effects/LightMasks/double_cone.png
+  - type: RotatingLight
+    speed: 360
+
+- type: entity
+  parent: ADTClothingHandsModsuitMedical
+  id: ClothingHandsModsuitResuscitator
+  categories: [ HideSpawnMenu ]
+  name: resuscitator MOD gauntlets
+  suffix: sponsor, HackerEasy, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/gauntlets.rsi
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/gauntlets.rsi
+
+- type: entity
+  parent: ADTClothingModsuitShoesMedical
+  id: ClothingModsuitShoesResuscitator
+  categories: [ HideSpawnMenu ]
+  name: resuscitator MOD boots
+  suffix: sponsor, HackerEasy, Ganimed
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/boots.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Ganimed/Personalization/Clothing/Hacker_modsuit/boots.rsi

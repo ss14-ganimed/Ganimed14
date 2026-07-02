@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/9bebd81ae0b0a7f952b59886a765c681205de31f",
+  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/9bebd81ae0b0a7f952b59886a765c681205de31f, lantern, burnt, flashing states modified by HyperB1 (GitHub) based on sprites from ParadiseSS13 at commit https://github.com/ParadiseSS13/Paradise/commit/7cd066e961d71b315e476c37d7ef97c3d74d3c96",
   "size": {
     "x": 32,
     "y": 32

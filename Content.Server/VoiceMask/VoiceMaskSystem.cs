@@ -1,15 +1,19 @@
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
+using Content.Shared.ADT.Radio.EntitySystems;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Clothing;
 using Content.Shared.Database;
 using Content.Shared.Inventory;
+using Content.Shared.Lock;
 using Content.Shared.Popups;
 using Content.Shared.Preferences;
 using Content.Shared.Speech;
 using Content.Shared.VoiceMask;
 using Robust.Shared.Configuration;
+using Robust.Shared.Containers;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.VoiceMask;
@@ -21,6 +25,9 @@ public sealed partial class VoiceMaskSystem : EntitySystem
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly LockSystem _lock = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedRadioJobIconSystem _radioJobIcon = default!; // ADT-Tweak: Update radio job icon cache
 
     // CCVar.
     private int _maxNameLength;
@@ -29,9 +36,12 @@ public sealed partial class VoiceMaskSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<VoiceMaskComponent, InventoryRelayedEvent<TransformSpeakerNameEvent>>(OnTransformSpeakerName);
+        SubscribeLocalEvent<VoiceMaskComponent, LockToggledEvent>(OnLockToggled);
         SubscribeLocalEvent<VoiceMaskComponent, VoiceMaskChangeNameMessage>(OnChangeName);
         SubscribeLocalEvent<VoiceMaskComponent, VoiceMaskChangeVerbMessage>(OnChangeVerb);
+        SubscribeLocalEvent<VoiceMaskComponent, VoiceMaskChangeJobIconMessage>(OnChangeJobIcon); // ADT-Tweak
         SubscribeLocalEvent<VoiceMaskComponent, ClothingGotEquippedEvent>(OnEquip);
+        SubscribeLocalEvent<VoiceMaskComponent, ClothingGotUnequippedEvent>(OnUnequip); // ADT-Tweak
         SubscribeLocalEvent<VoiceMaskSetNameEvent>(OpenUI);
         Subs.CVar(_cfg, CCVars.MaxNameLength, value => _maxNameLength = value, true);
         InitializeTTS(); // Corvax-TTS
@@ -42,6 +52,18 @@ public sealed partial class VoiceMaskSystem : EntitySystem
     {
         args.Args.VoiceName = GetCurrentVoiceName(entity);
         args.Args.SpeechVerb = entity.Comp.VoiceMaskSpeechVerb ?? args.Args.SpeechVerb;
+    }
+
+    private void OnLockToggled(Entity<VoiceMaskComponent> ent, ref LockToggledEvent args)
+    {
+        if (args.Locked)
+        {
+            _actions.RemoveAction(ent.Comp.ActionEntity);
+        }
+        else if (ent.Comp.Action.HasValue && _container.TryGetContainingContainer(ent.Owner, out var container)) // ADT-Tweak
+        {
+            _actions.AddAction(container.Owner, ref ent.Comp.ActionEntity, ent.Comp.Action.Value.Id, ent); // ADT-Tweak
+        }
     }
 
     #region User inputs from UI
@@ -73,14 +95,47 @@ public sealed partial class VoiceMaskSystem : EntitySystem
 
         UpdateUI(entity);
     }
+
+    // ADT-Tweak start
+    private void OnChangeJobIcon(Entity<VoiceMaskComponent> entity, ref VoiceMaskChangeJobIconMessage msg)
+    {
+        entity.Comp.VoiceMaskJobIcon = msg.JobIconId;
+
+        var iconText = msg.JobIconId.HasValue && _proto.TryIndex(msg.JobIconId.Value, out var proto)
+            ? proto.LocalizedJobName
+            : Loc.GetString("voice-mask-job-icon-none");
+
+        _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(msg.Actor):player} set radio icon of {ToPrettyString(entity):mask}: {iconText}");
+
+        _popupSystem.PopupEntity(Loc.GetString("voice-mask-popup-success"), entity, msg.Actor);
+
+        _radioJobIcon.UpdateWearerRadioJobIcon(entity.Owner, _container); // ADT-Tweak
+
+        UpdateUI(entity);
+    }
+    // ADT-Tweak end
     #endregion
 
     #region UI
     private void OnEquip(EntityUid uid, VoiceMaskComponent component, ClothingGotEquippedEvent args)
     {
-        if (component.Action != null) //ADT tweak
-        _actions.AddAction(args.Wearer, ref component.ActionEntity, component.Action, uid);
+        if (_lock.IsLocked(uid) || !component.Action.HasValue || component.ActionEntity.HasValue) // ADT-Tweak
+            return;
+
+        _actions.AddAction(args.Wearer, ref component.ActionEntity, component.Action.Value.Id, uid); // ADT-Tweak
+
+        _radioJobIcon.UpdateRadioJobIcon(args.Wearer); // ADT-Tweak
     }
+
+    // ADT-Tweak start
+    private void OnUnequip(EntityUid uid, VoiceMaskComponent component, ClothingGotUnequippedEvent args)
+    {
+        _actions.RemoveAction(component.ActionEntity);
+        component.ActionEntity = null;
+
+        _radioJobIcon.UpdateRadioJobIcon(args.Wearer);
+    }
+    // ADT-Tweak end
 
     private void OpenUI(VoiceMaskSetNameEvent ev)
     {
@@ -99,7 +154,7 @@ public sealed partial class VoiceMaskSystem : EntitySystem
     private void UpdateUI(Entity<VoiceMaskComponent> entity)
     {
         if (_uiSystem.HasUi(entity, VoiceMaskUIKey.Key))
-            _uiSystem.SetUiState(entity.Owner, VoiceMaskUIKey.Key, new VoiceMaskBuiState(GetCurrentVoiceName(entity), entity.Comp.VoiceId, entity.Comp.BarkId, entity.Comp.BarkPitch, entity.Comp.VoiceMaskSpeechVerb));
+            _uiSystem.SetUiState(entity.Owner, VoiceMaskUIKey.Key, new VoiceMaskBuiState(GetCurrentVoiceName(entity), entity.Comp.VoiceId, entity.Comp.BarkId, entity.Comp.BarkPitch, entity.Comp.VoiceMaskSpeechVerb, entity.Comp.VoiceMaskJobIcon)); // ADT-Tweak start
     }
     #endregion
 

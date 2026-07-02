@@ -64,7 +64,8 @@
   - type: UnpoweredFlashlight
   - type: PointLight
     enabled: false
-    radius: 1.5
+    radius: 1.7
+    falloff: 3
     softness: 5
     autoRot: true
   - type: Ringer
@@ -109,6 +110,10 @@
         type: InstrumentBoundUserInterface
       enum.HealthAnalyzerUiKey.Key:
         type: HealthAnalyzerBoundUserInterface
+      # Ganimed-Add-Start
+      enum.GasAnalyzerUiKey.Key:
+        type: GasAnalyzerBoundUserInterface
+      # Ganimed-Add-End
   - type: Tag
     tags:
     - DoorBumpOpener
@@ -198,6 +203,14 @@
   components:
   - type: Pda
     id: TechnicalAssistantIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenEngineering
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -217,6 +230,14 @@
   components:
   - type: Pda
     id: MedicalInternIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenMedical2
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -239,6 +260,14 @@
   components:
   - type: Pda
     id: SecurityCadetIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenSecurityRed
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -258,6 +287,14 @@
   components:
   - type: Pda
     id: ResearchAssistantIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenScience
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -277,6 +314,14 @@
   components:
   - type: Pda
     id: ServiceWorkerIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenGreen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -316,6 +361,14 @@
   components:
   - type: Pda
     id: BotanistIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenHydroponics
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -410,7 +463,7 @@
         components:
         - IdCard
     penSlot:
-      startingItem: Pen
+      startingItem: PenMime # Ganimed-Edit
       priority: -1
       whitelist:
         tags:
@@ -444,6 +497,14 @@
   components:
   - type: Pda
     id: ChaplainIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenChaplain
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -499,6 +560,8 @@
     - NewsReaderCartridge
     - AstroNavCartridge
     - NanoChatCartridge # ADT-tweak: Наночат
+    - ADTWalletCartridge # ADT-Economy
+    diskSpace: 8 # ADT tweak
 
 - type: entity
   parent: BasePDA
@@ -508,6 +571,14 @@
   components:
   - type: Pda
     id: CargoIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenCargo
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -526,6 +597,14 @@
   components:
   - type: Pda
     id: SalvageIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenCargo
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -556,6 +635,14 @@
   components:
   - type: Pda
     id: BartenderIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenBooze
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -644,6 +731,14 @@
   components:
   - type: Pda
     id: JanitorIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenJanitor
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -729,6 +824,20 @@
     accentHColor: "#447987"
   - type: Icon
     state: pda-ce
+  # Ganimed-Add-Start
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - AtmosTekCartridge # Gas analyzer
+    - AstroNavCartridge
+    - NetProbeCartridge
+    - NanoChatCartridge # ADT-tweak: Наночат
+    - ADTWalletCartridge # ADT-Economy
+    diskSpace: 10 # Ganimed-Tweak (8)
+  # Ganimed-Add-End
 
 - type: entity
   parent: BasePDA
@@ -738,6 +847,14 @@
   components:
   - type: Pda
     id: EngineeringIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenEngineering
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -785,6 +902,14 @@
   components:
   - type: Pda
     id: MedicalIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenMedical1
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -818,6 +943,14 @@
   components:
   - type: Pda
     id: ParamedicIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenMedical1
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -828,6 +961,18 @@
     accentVColor: "#2a4b5b"
   - type: Icon
     state: pda-paramedic
+  # Ganimed-Add-Start
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
+    - AstroNavCartridge
+    - NanoChatCartridge # ADT-tweak: Наночат
+    - ADTWalletCartridge # ADT-Economy
+  # Ganimed-Add-End
 
 - type: entity
   parent: BaseMedicalPDA
@@ -837,6 +982,14 @@
   components:
   - type: Pda
     id: ChemistIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenChemist
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -884,6 +1037,14 @@
   components:
   - type: Pda
     id: ResearchIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenScience
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -940,6 +1101,14 @@
   components:
   - type: Pda
     id: WardenIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenSecurityFountain
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -959,6 +1128,14 @@
   components:
   - type: Pda
     id: SecurityIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenSecurityBlack
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1018,10 +1195,6 @@
     maxScanRange: null
     scanDelay: 0
     silent: true
-  # ADT-Tweak-Start
-  - type: NanoChatCard
-    listNumber: false
-  # ADT-Tweak-End
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     notificationsEnabled: false
@@ -1047,6 +1220,17 @@
   components:
   - type: Pda
     id: CentcomIDCardDeathsquad
+  - type: Icon
+    state: pda-ds
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-ds
+  - type: PdaBorderColor
+    borderColor: "##1C1C1C"
+    accentHColor: "#2851a4"
+    accentVColor: "#8B0000"
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1071,8 +1255,8 @@
   - type: Instrument
     allowPercussion: true #ADT-tweak false>true
     handheld: true
-    bank: 1
     program: 128 #ADT-tweak 2>128
+    bank: 100 # Defined in space-station-14.sf2
 
 - type: entity
   parent: MusicianPDA
@@ -1093,6 +1277,14 @@
   components:
   - type: Pda
     id: AtmosIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenAtmos
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1103,6 +1295,18 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-atmos
+  # Ganimed-Add-Start
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - AtmosTekCartridge # Gas analyzer
+    - NanoChatCartridge # ADT-tweak: Наночат
+    - ADTWalletCartridge # ADT-Economy
+    diskSpace: 8 # ADT tweak
+  # Ganimed-Add-End
 
 - type: entity
   parent: BasePDA
@@ -1158,6 +1362,60 @@
     diskSpace: 8 # ADT tweak
 
 - type: entity
+  parent: [ SyndiPDA, BaseSyndicateContraband ]
+  id: SyndiOperativePDA
+  name: syndicate operative PDA
+  description: Death to NT!
+  components:
+  - type: Pda
+    id: SyndiOperativeIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-syndi-operative
+  - type: Icon
+    state: pda-syndi-operative
+
+- type: entity
+  parent: [ SyndiOperativePDA, BaseSyndicateContraband ]
+  id: SyndiCorpsmanPDA
+  name: syndicate corpsman PDA
+  description: Commander... I need to cook!
+  components:
+  - type: Pda
+    id: SyndiCorpsmanIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-syndi-corpsman
+  - type: Icon
+    state: pda-syndi-corpsman
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - MedTekCartridge
+
+- type: entity
+  parent: [ SyndiOperativePDA, BaseSyndicateContraband ]
+  id: SyndiCommanderPDA
+  name: syndicate commander PDA
+  description: So what are we, some kind of Nukie squad?
+  components:
+  - type: Pda
+    id: SyndiCommanderIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-syndi-commander
+  - type: Icon
+    state: pda-syndi-commander
+
+- type: entity
   parent: BaseSecurityPDA
   id: ERTLeaderPDA
   name: ERT Leader PDA
@@ -1209,6 +1467,22 @@
   components:
   - type: Pda
     id: ERTEngineerIDCard
+  # Ganimed-Add-Start
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - AtmosTekCartridge # Gas analyzer
+      - WantedListCartridge
+      - LogProbeCartridge
+      - AstroNavCartridge
+      - NanoChatCartridge # ADT-tweak: Наночат
+      - ADTWalletCartridge # ADT-Economy
+    diskSpace: 10 # Ganimed-Tweak
+  # Ganimed-Add-End
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1352,6 +1626,14 @@
   components:
   - type: Pda
     id: DetectiveIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenSecurityBlack
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1380,6 +1662,14 @@
   components:
   - type: Pda
     id: BrigmedicIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenBrigmedic
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1437,6 +1727,24 @@
   components:
   - type: Pda
     id: SeniorEngineerIDCard
+  # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenEngineering
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - AtmosTekCartridge # Gas analyzer
+    - NanoChatCartridge # ADT-tweak: Наночат
+    - ADTWalletCartridge # ADT-Economy
+    diskSpace: 8 # ADT tweak
+  # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1456,6 +1764,14 @@
   components:
   - type: Pda
     id: SeniorResearcherIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenScienceOverpriced
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1476,6 +1792,14 @@
   components:
   - type: Pda
     id: SeniorPhysicianIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenMedical1
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1496,6 +1820,14 @@
   components:
   - type: Pda
     id: SeniorOfficerIDCard
+    # Ganimed-Add-Start
+    penSlot:
+      startingItem: PenSecurityRed
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    # Ganimed-Add-End
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1506,6 +1838,25 @@
     accentVColor: "#DFDFDF"
   - type: Icon
     state: pda-seniorofficer
+
+- type: entity
+  parent: BasePDA
+  id: SeniorCourierPDA
+  name: senior courier PDA
+  description: Smells like postage stamps and shuttle fuel.
+  components:
+  - type: Pda
+    id: CargoIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-seniorcourier
+  - type: PdaBorderColor
+    borderColor: "#e39751"
+    accentVColor: "#DFDFDF"
+  - type: Icon
+    state: pda-seniorcourier
 
 - type: entity
   parent: [ BaseMajorContraband, SyndiPDA ]
@@ -1524,41 +1875,7 @@
     state: pda-pirate
 
 - type: entity
-  parent: [ BaseMedicalPDA, BaseSyndicateContraband ]
-  id: SyndiAgentPDA
-  name: syndicate corpsman PDA
-  description: For those days when healing normal syndicates aren't enough, try healing nuclear operatives instead!
-  components:
-  - type: Pda
-    id: SyndicateIDCard
-  - type: Appearance
-    appearanceDataInit:
-     enum.PdaVisuals.PdaType:
-       !type:String
-       pda-syndi-agent
-  - type: PdaBorderColor
-    borderColor: "#891417"
-  - type: Icon
-    state: pda-syndi-agent
-  - type: CartridgeLoader
-    uiKey: enum.PdaUiKey.Key
-    preinstalled:
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - MedTekCartridge
-      - NanoChatCartridge # ADT-tweak: Наночат
-    cartridgeSlot:
-      priority: -1
-      name: Cartridge
-      ejectSound: /Audio/Machines/id_swipe.ogg
-      insertSound: /Audio/Machines/id_insert.ogg
-      whitelist:
-        components:
-          - Cartridge
-    diskSpace: 8 # ADT tweak
-
-- type: entity
-  parent: BasePDA
+  parent: [BasePDA, SelectableLock]
   id: ChameleonPDA
   name: passenger PDA
   description: Why isn't it gray?
@@ -1587,6 +1904,10 @@
         type: HealthAnalyzerBoundUserInterface
       enum.ChameleonUiKey.Key:
         type: ChameleonBoundUserInterface
+      # Ganimed-Add-Start
+      enum.GasAnalyzerUiKey.Key:
+        type: GasAnalyzerBoundUserInterface
+      # Ganimed-Add-End
 
 - type: entity
   parent: BaseWidePDA

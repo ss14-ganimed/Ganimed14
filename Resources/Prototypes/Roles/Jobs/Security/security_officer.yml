@@ -6,8 +6,12 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 36000 #10 hrs Ganimed-RoleTime
+      time: 10h # Ganimed-RoleTime
   # ADT Restrict Start
+    - !type:TraitsRequirement
+      inverted: true
+      traits:
+      - Muted
     - !type:SpeciesRequirement
       inverted: true
       species:
@@ -23,9 +27,10 @@
   - Security
   - Brig
   - Maintenance
-  - Service
   - External
   - Cryogenics
+  - GenpopEnter
+  - GenpopLeave
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -38,7 +43,7 @@
 - type: startingGear
   id: SecurityOfficerGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
+    # eyes: ClothingEyesGlassesSecurity # Ganimed-Loadouts-Remove (Loadout choice)
     ears: ClothingHeadsetSecurity
     pocket1: WeaponPistolMk58
   storage:
@@ -55,3 +60,4 @@
     mask: ClothingMaskGasSecurity
     neck: Dinkystar
     gloves: ClothingHandsGlovesColorBlack
+    eyes: ClothingEyesGlassesSunglasses # Ganimed-Loadouts-Add

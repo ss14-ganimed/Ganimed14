@@ -1,8 +1,7 @@
-using Content.Shared.GameTicking;
 using Content.Shared.Mind.Components;
+using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Network;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Mind;
@@ -124,8 +123,14 @@ public sealed partial class MindComponent : Component
     /// <summary>
     ///     Mind Role Entities belonging to this Mind
     /// </summary>
-    [DataField, AutoNetworkedField]
-    public List<EntityUid> MindRoles = new List<EntityUid>();
+    [ViewVariables]
+    public const string MindRoleContainerId = "mind_roles";
+
+    /// <summary>
+    ///     Container for mind role entities
+    /// </summary>
+    [ViewVariables]
+    public Container MindRoleContainer = default!;
 
     /// <summary>
     ///     The mind's current antagonist/special role, or lack thereof;
@@ -143,4 +148,14 @@ public sealed partial class MindComponent : Component
     public bool PreventGhostingSendMessage = true;
     [DataField]
     public LocId? Subtype;
+
+    // ADT-tweak-start
+    /// <summary>
+    ///     The last mob entity this mind was in.
+    ///     Can be null.
+    /// </summary>
+    [DataField]
+    public EntityUid? LastMob { get; set; }
+    // ADT-tweak-end
+
 }

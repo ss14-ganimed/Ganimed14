@@ -3,7 +3,7 @@
   mapName: 'Origin Station'
   mapPath: /Maps/ADTMaps/ADTStations/adt_origin.yml
   maxRandomOffset: 0
-  minPlayers: 60
+  minPlayers: 25 # Ganimed-Tweak (60 -> 25)
   stations:
     ADT_Origin:
       stationProto: StandardNanotrasenStation
@@ -61,6 +61,7 @@
             IAA: [ 1, 1 ]
             ADTRoboticist: [ 1, 2 ]
             ADTPathologist: [ 1, 1 ]
+            ADTCentcomConsultant: [ 1, 1 ] # Ganimed-Tweak
             ADTBlueShieldOfficer: [ 1, 1 ]
             ADTSeniorPhysician: [ 1, 1 ]
             Brigmedic: [ 1, 1 ]

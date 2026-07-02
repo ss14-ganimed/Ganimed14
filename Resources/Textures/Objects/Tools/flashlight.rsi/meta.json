@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from vgstation and modified by Swept at https://github.com/vgstation-coders/vgstation13/blob/Bleeding-Edge/icons/obj/lighting.dmi",
+  "copyright": "Taken from vgstation and modified by Swept at https://github.com/vgstation-coders/vgstation13/blob/Bleeding-Edge/icons/obj/lighting.dmi; flashlight states modified by HyperB1 (GitHub) based on sprites from ParadiseSS13 at commit https://github.com/ParadiseSS13/Paradise/commit/a8eef567fd19653c4cdac9656b801c8f647314cc and shiptest-ss13 at commit https://github.com/shiptest-ss13/Shiptest/commit/5a38f836654d3016703a52acbb4d75fdea303ff9",
   "size": {
     "x": 32,
     "y": 32

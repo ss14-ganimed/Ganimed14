@@ -16,3 +16,27 @@ ent-ClothingOuterArmorHoSSafno = бронежилет главы службы б
 ent-ClothingBeltHoSSafno = тактический пояс ГСБ с ножнами
     .desc = Уникальный пояс главы службы безопасности, предназначенный для снаряжения и экипировки СБ. Оснащён интегрированными ножнами для хранения катаны и вакидзаси.
     .suffix = { "Спонсорское, Safno_S" }
+
+ent-ClothingModsuitBackBee = МОД "Пчелиный"
+    .desc = Специально модифицированный шахтёрский МОД, создан для настоящих трудяг.
+    .suffix = { "Спонсорское, Halo_Shivter, Ganimed" }
+ent-ClothingHeadHelmetModsuitBee = шлем пчелиного МОДа
+    .desc = { ent-ADTClothingHeadHelmetModsuitBase.desc }
+ent-ClothingOuterModsuitBodyBee = оболочка пчелиного МОДа
+    .desc = { ent-ADTClothingOuterModsuitBodyBase.desc }
+ent-ClothingHandsModsuitBee = перчатки пчелиного МОДа
+    .desc = { ent-ADTClothingHandsModsuitBase.desc }
+ent-ClothingModsuitShoesBee = ботинки пчелиного МОДа
+    .desc = { ent-ADTClothingModsuitShoesBase.desc }
+
+ent-ClothingModsuitBackResuscitator = МОД "Реаниматолог"
+    .desc = Передовой экспериментальный МОД для сотрудников медицинской службы, действующих в нестандартных условиях.
+    .suffix = { "Спонсорское, HackerEasy, Ganimed" }
+ent-ClothingHeadHelmetModsuitResuscitator = шлем МОДа "Реаниматолог"
+    .desc = { ent-ADTClothingHeadHelmetModsuitBase.desc }
+ent-ClothingOuterModsuitBodyResuscitator = оболочка МОДа "Реаниматолог"
+    .desc = { ent-ADTClothingOuterModsuitBodyBase.desc }
+ent-ClothingHandsModsuitResuscitator = перчатки МОДа "Реаниматолог"
+    .desc = { ent-ADTClothingHandsModsuitBase.desc }
+ent-ClothingModsuitShoesResuscitator = ботинки МОДа "Реаниматолог"
+    .desc = { ent-ADTClothingModsuitShoesBase.desc }

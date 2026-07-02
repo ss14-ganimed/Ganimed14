@@ -17,7 +17,7 @@
     - id: DrinkShaker
     - id: ClothingEyesHudBeer
     - id: HandLabeler
-    - id: DrinkBottleBeer
+    - id: DrinkBeerBottleFull
       amount: !type:BinomialNumberSelector
         trials: 3
     - !type:AllSelector
@@ -51,6 +51,7 @@
     - id: ReagentContainerSugar
     - id: FoodCondimentBottleEnzyme
     - id: DrinkSoyMilkCarton
+    - id: ADTBookSRPsrv # Ganimed-Add
     - !type:AllSelector
       rolls: 2
       children:
@@ -59,21 +60,27 @@
       # yes, I'm using this as an excuse to not have to do extra work.
       - id: ReagentContainerFlour
       - id: BoxMousetrap
+      # Ganimed-Add-Start
+      - id: DrinkMilkCarton
+        amount: 2
+      - id: DrinkSoyMilkCarton
+      - id: FoodCondimentBottleEnzyme
+      # Ganimed-Add-End
     - !type:AllSelector
       rolls: 3
       children:
       - id: FoodCondimentPacketSalt
       - id: FoodCondimentPacketPepper
       # ADT-tweak-start
-        amount: 3
-      - id: FoodCondimentBottleEnzyme
+      #   amount: 3 # Ganimed-Remove (Duplicates)
+      # - id: FoodCondimentBottleEnzyme # Ganimed-Remove (Duplicates)
       # really, milk should go in the fridge. Unfortunately saltern only has freezers.
       # yes, I'm using this as an excuse to not have to do extra work.
-      - id: DrinkMilkCarton
-        amount: 2
-      - id: DrinkSoyMilkCarton
+      # - id: DrinkMilkCarton # Ganimed-Remove (Duplicates)
+      #   amount: 2 # Ganimed-Remove (Duplicates)
+      # - id: DrinkSoyMilkCarton # Ganimed-Remove (Duplicates)
       - id: FoodContainerEgg
-      - id: ADTBookSRPsrv
+      # - id: ADTBookSRPsrv # Ganimed-Remove (Duplicates)
       # ADT-tweak-end
 
 - type: entity

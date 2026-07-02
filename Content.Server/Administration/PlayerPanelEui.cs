@@ -2,10 +2,10 @@ using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Notes;
-using Content.Server.Administration.Systems;
 using Content.Server.Database;
 using Content.Server.EUI;
 using Content.Shared.Administration;
+using Content.Shared.Administration.Systems;
 using Content.Shared.Database;
 using Content.Shared.Eui;
 using Content.Shared.Follower;
@@ -209,7 +209,8 @@ public sealed class PlayerPanelEui : BaseEui
             _canFreeze = false;
         }
 
-        if (_admins.HasAdminFlag(Player, AdminFlags.Adminhelp))
+        if (_admins.HasAdminFlag(Player, AdminFlags.Adminhelp) ||
+            _admins.HasAdminFlag(Player, AdminFlags.AhelpView)) // ADT-Tweak
         {
             _canAhelp = true;
         }

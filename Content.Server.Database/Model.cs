@@ -436,6 +436,10 @@ namespace Content.Server.Database
         public int Slot { get; set; }
         [Column("char_name")] public string CharacterName { get; set; } = null!;
         public string FlavorText { get; set; } = null!;
+        //ADT-tweak-start
+        public string OOCNotes { get; set; } = null!;
+        public string HeadshotUrl { get; set; } = null!;
+        //ADT-tweak-end
         public int Age { get; set; }
         public string Sex { get; set; } = null!;
         public string Gender { get; set; } = null!;
@@ -447,7 +451,7 @@ namespace Content.Server.Database
         public float HighBarkVar { get; set; } = 0.5f; // ADT Barks
         [Column(TypeName = "jsonb")] public JsonDocument? Markings { get; set; } = null!;
         public string HairName { get; set; } = null!;
-        public string HairColor { get; set; } = null!;
+        [Column(TypeName = "json")] public string HairColor { get; set; } = null!; // ADT-Tweak Hair Color Gradient
         public string FacialHairName { get; set; } = null!;
         public string FacialHairColor { get; set; } = null!;
         public string EyeColor { get; set; } = null!;

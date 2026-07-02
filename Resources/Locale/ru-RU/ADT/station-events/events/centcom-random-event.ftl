@@ -2,78 +2,74 @@ centcom-random-event-sender = от Центрального Командован
 
 centcom-random-event-announcement = Сообщаем экипажу, что согласно новому регламенту корпоративного закона, { $sighting }
 
-centcom-random-event-sighting-1 = любая алкогольная продукция приравнивается к наркотическим веществам и наказывается соответственными статьями 103 и 203. Всему экипажу сдать всю алкогольную продукцию службе безопасности.
-centcom-random-event-sighting-2 = все члены экипажа должны носить { $clothing }. Нарушение данного закона приравнивается к нарушению статьи 104.
-centcom-random-event-sighting-3 = слово { $word } запрещено к использованию. Нарушение данного закона приравнивается к нарушению статьи 504.
-centcom-random-event-sighting-4 = любые шутки произнесенные экипажем запрещены. Нарушение данного закона приравнивается к нарушению статьи 510.
-centcom-random-event-sighting-5 = запрещено бегать на станции. Нарушение данного закона приравнивается к нарушению статьи 104.
-centcom-random-event-sighting-6 = ВСЕ колюще-режущие предметы на станции запрещены и приравниваются к холодному оружию. Всему экипажу сдать их службе безопасности на утилизацию.
-centcom-random-event-sighting-7 = быть компетентным запрещено и наказуемо в соответствии со статьей 310.
-centcom-random-event-sighting-8 = { $clothing } запрещены и должны быть изъяты службой безопасности. Нарушение данного закона приравнивается к нарушению статьи 206.
-centcom-random-event-sighting-9 = запрещено использовать { $generator } для получения электро-энергии, так как отдел по технике безопасности признал данный источник энергии крайне опасным. Нарушение данного закона приравнивается к нарушению статьи 410.
-centcom-random-event-sighting-10 = арест клоуна запрещен, так как теперь каждый клоун NanoTrasen имеет юридическую неприкосновенность. Нарушение данного закона приравнивается к нарушению статьи 510.
-centcom-random-event-sighting-11 = экипажу запрещено иметь на своем лице растительность. Нарушение данного закона приравнивается к нарушению статьи 310.
-centcom-random-event-sighting-12 = запрещено выращивать { $plant }. Нарушение данного закона приравнивается к нарушению статьи 303.
-centcom-random-event-sighting-13 = запрещено быть инвалидом. Нарушение данного закона приравнивается к нарушению статьи 510.
-centcom-random-event-sighting-14 = теперь датчики должны быть { $mode }. Нарушение данного закона приравнивается к нарушению статьи 310.
-centcom-random-event-sighting-15 = любая музыка запрещена. Нарушение данного закона приравнивается к нарушению статьи 504.
-centcom-random-event-sighting-16 = запрещено любое физическое передвижения кроме { $movement }. Нарушение данного закона приравнивается к нарушению статьи 310.
-
-centcom-random-event-word-1 = сингулярность
-centcom-random-event-word-2 = блять
-centcom-random-event-word-3 = хонк
-centcom-random-event-word-4 = сука
-centcom-random-event-word-5 = клоун
-centcom-random-event-word-6 = слайм
-centcom-random-event-word-7 = синий код
-centcom-random-event-word-8 = красный код
-centcom-random-event-word-9 = диск
-centcom-random-event-word-10 = ГСБ
-centcom-random-event-word-11 = мед
-centcom-random-event-word-12 = сигарета
-centcom-random-event-word-13 = метеор
-centcom-random-event-word-14 = канистра
-centcom-random-event-word-15 = плазма
-centcom-random-event-word-16 = ИИ
-centcom-random-event-word-17 = кровь
-centcom-random-event-word-18 = капитан
-centcom-random-event-word-19 = пиво
-centcom-random-event-word-20 = криокапсула
-centcom-random-event-word-21 = РНД
-
-centcom-random-event-clothing-1 = красные элементы гардероба
-centcom-random-event-clothing-2 = обувь
-centcom-random-event-clothing-3 = лабораторные халаты
-centcom-random-event-clothing-4 = бронежилеты
-centcom-random-event-clothing-5 = головные уборы
-centcom-random-event-clothing-6 = резиновые сапоги
-centcom-random-event-clothing-7 = противогазы
-centcom-random-event-clothing-8 = перчатки
-centcom-random-event-clothing-9 = береты службы безопасности
-centcom-random-event-clothing-10 = синие элементы гардероба
-centcom-random-event-clothing-11 = чёрные береты
-centcom-random-event-clothing-12 = скафандры и МОДы
+centcom-random-event-sighting-1 = любая алкогольная продукция приравнивается к наркотическим веществам и наказывается, соответственно, статьёй 204. Всему экипажу сдать всю алкогольную продукцию службе безопасности.
+centcom-random-event-sighting-2 = все колюще-режущие предметы на станции запрещены и приравниваются к холодному оружию. Всему экипажу сдать их службе безопасности на утилизацию.
+centcom-random-event-sighting-3 = запрещено использовать { $generator } для получения электроэнергии, так как отдел по технике безопасности признал данный источник энергии крайне опасным. Нарушение данного закона приравнивается к нарушению статьи 401.
+centcom-random-event-sighting-4 = запрещено выращивать { $plant } из-за опасной болезни, распространяющейся среди растений. Нарушение данного закона приравнивается к нарушению статьи 404.
+centcom-random-event-sighting-5 = теперь датчики должны быть включены в режиме координат. Нарушение данного закона приравнивается к нарушению статьи 301.
+centcom-random-event-sighting-6 = язык: "{ $language }" запрещён к использованию. Нарушение данного закона приравнивается к нарушению статьи 204.
+centcom-random-event-sighting-7 = { $words } к использованию. Нарушение данного закона приравнивается к нарушению статьи 204.
+centcom-random-event-sighting-8 = все { $race }, находящиеся на станции или недавно прибывшие на неё, должны пройти обязательный обыск службой безопасности. Нарушение данного закона приравнивается к нарушению статьи 304.
+centcom-random-event-sighting-9 = запрещено использование радиоканалов, а также раций, гарнитур и интеркомов, в секторе объявлен режим радиомолчания. Инженерно-технической команде надлежит отключить телекоммуникационные сервера станции. Нарушение данного закона приравнивается к нарушению статьи 401.
+centcom-random-event-sighting-10 = арест клоуна запрещен, так как теперь каждый клоун NanoTrasen имеет юридическую неприкосновенность. Нарушение данного закона приравнивается к нарушению статьи 401.
+centcom-random-event-sighting-11 = запрещено применять клонирование к телам разумных существ ради эксперимента или в качестве метода возвращения к жизни, в связи с признанием клонирования слишком опасным и негуманным. Нарушение данного закона приравнивается к нарушению статьи 301.
 
 centcom-random-event-generator-1 = сингулярность
 centcom-random-event-generator-2 = генератор теслы
-centcom-random-event-generator-3 = кристалл супер материи
+centcom-random-event-generator-3 = кристалл суперматерии
 centcom-random-event-generator-4 = термоэлектрический генератор
 centcom-random-event-generator-5 = двигатель антиматерии
 centcom-random-event-generator-6 = радиоизотопный термоэлектрический генератор
 centcom-random-event-generator-7 = солнечные панели
+centcom-random-event-generator-8 = реактор на основе биомассы таяран
 
 centcom-random-event-plant-1 = злаковые культуры
 centcom-random-event-plant-2 = фрукты
 centcom-random-event-plant-3 = овощи
+centcom-random-event-plant-4 = ягоды
 
-centcom-random-event-mode-1 = выключены
-centcom-random-event-mode-2 = включены в бинарный режим
-centcom-random-event-mode-3 = включены в режим здоровья
-centcom-random-event-mode-4 = включены в режиме координат
+centcom-random-event-language-1 = пузырчатый
+centcom-random-event-language-2 = хихич
+centcom-random-event-language-3 = ткачий
+centcom-random-event-language-4 = троичный
+centcom-random-event-language-5 = синта'унати
+centcom-random-event-language-6 = синта’тайр
+centcom-random-event-language-7 = сик'тайр
+centcom-random-event-language-8 = скретчи
+centcom-random-event-language-9 = рыкрур
+centcom-random-event-language-10 = паучий
+centcom-random-event-language-11 = орлуум
+centcom-random-event-language-12 = некоязык
+centcom-random-event-language-13 = канилунц
+centcom-random-event-language-14 = каукиттен
+centcom-random-event-language-15 = шахт
 
-centcom-random-event-movement-1 = ползания
-centcom-random-event-movement-2 = бега
-centcom-random-event-movement-3 = хождения
+centcom-random-event-words-1 = слова "ня", "мяу", "мяр", "мряу", "мяв" и "мррр" запрещены
+centcom-random-event-words-2 = слова "бульк", "блуп", "блёп", "бламп", "блимпаф" и "хлюп" запрещены
+centcom-random-event-words-3 = тен-коды запрещены
+centcom-random-event-words-4 = любые сокращения, включая, но не ограничиваясь: "ГП, РНД, РСУ, ТЭГ" запрещены
+centcom-random-event-words-5 = шипенье, рычание и мяуканье запрещено
+centcom-random-event-words-6 = стрекотание и жужжание запрещено
+centcom-random-event-words-7 = гавканье, скулёж и рычание запрещено
+
+centcom-random-event-race-1 = воксы
+centcom-random-event-race-2 = дворфы
+centcom-random-event-race-3 = дионы
+centcom-random-event-race-4 = нианы
+centcom-random-event-race-5 = слаймолюды
+centcom-random-event-race-6 = унатхи
+centcom-random-event-race-7 = люди
+centcom-random-event-race-8 = арахниды
+centcom-random-event-race-9 = вульпканины
+centcom-random-event-race-10 = драски
+centcom-random-event-race-11 = унатхи
+centcom-random-event-race-12 = таяры
+centcom-random-event-race-13 = воксы
+centcom-random-event-race-14 = КПБ
+centcom-random-event-race-15 = слаймолюды
+centcom-random-event-race-16 = резоми
+centcom-random-event-race-17 = вульпканины
+centcom-random-event-race-18 = фелиниды
 
 centcom-random-event-fax-paper-name = документ
 
@@ -88,7 +84,7 @@ centcom-random-event-doc = ⠀[color=#1b487e]███░███░░░░�
     Дата: $time$
     Этот документ является автоматически отправленным на все факсы капитанов сектора и на него не нужно отвечать.
 
-    Сообщаем экипажу станции, что согласно новому реграменту корпоративного закона, { $sighting }
+    Сообщаем экипажу станции, что согласно новому регламенту корпоративного закона, { $sighting }
 
     Данное решение является неоспоримым и не может быть отменено никем, кроме центрального командования.
 

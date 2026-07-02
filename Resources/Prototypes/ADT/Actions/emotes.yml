@@ -2,6 +2,11 @@
   id: Flip
   name: chat-emote-name-flip
   category: Hands
+  # Ganimed-Add-Start
+  whitelist:
+    components:
+    - AnimatedEmotes
+  # Ganimed-Add-End
   chatMessages: ["chat-emote-msg-flip"]
   chatTriggers:
   - сальто
@@ -14,6 +19,11 @@
   id: Spin
   name: chat-emote-name-spin
   category: Hands
+  # Ganimed-Add-Start
+  whitelist:
+    components:
+    - AnimatedEmotes
+  # Ganimed-Add-End
   chatMessages: ["chat-emote-msg-spin"]
   chatTriggers:
   - крутиться
@@ -26,6 +36,11 @@
   id: Jump
   name: chat-emote-name-jump
   category: Hands
+  # Ganimed-Add-Start
+  whitelist:
+    components:
+    - AnimatedEmotes
+  # Ganimed-Add-End
   chatMessages: ["chat-emote-msg-jump"]
   chatTriggers:
   - прыжок

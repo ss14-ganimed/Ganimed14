@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Made by Чаевар (discord: chaevarik); redacted by Solongo (discord: _solongo_) and AltMapper (discord: barnaulcommunist) for Ganimed/Enterprise server",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-HAND",
+      "directions": 4
+    }
+  ]
+}

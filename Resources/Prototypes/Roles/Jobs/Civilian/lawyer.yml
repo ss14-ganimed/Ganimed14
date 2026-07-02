@@ -5,10 +5,10 @@
   playTimeTracker: JobLawyer
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 54000 # 15 hrs Ganimed-RoleTime
+      time: 15h # Ganimed-RoleTime
 #  - !type:DepartmentTimeRequirement
 #    department: Security
-#    time: 18000 #5 hrs Ganimed-RoleTime
+#    time: 5h # Ganimed-RoleTime
     #ADT tweak start
     #- !type:SpeciesRequirement
     #  inverted: true

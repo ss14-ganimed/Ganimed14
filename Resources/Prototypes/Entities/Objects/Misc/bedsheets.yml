@@ -12,6 +12,7 @@
   - type: Sprite
     sprite: Objects/Misc/bedsheets.rsi
     noRot: true
+    offset: 0, 0.03125 # Ganimed-Resprite-Add
   - type: Item
     size: Small
   - type: Clothing
@@ -19,7 +20,7 @@
     slots:
     - neck
   - type: StaticPrice
-    price: 100
+    price: 12
   - type: Tag
     tags:
     - Bedsheet

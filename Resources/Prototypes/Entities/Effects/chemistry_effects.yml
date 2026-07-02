@@ -31,6 +31,10 @@
         maxVol: 600
         canReact: false
   - type: SupermatterIgnore # ADT-Tweak
+  # Ganimed-Add-Start
+  - type: ExaminableSolution
+    solution: solutionArea
+  # Ganimed-Add-End
 
 - type: entity
   parent: BaseFoam

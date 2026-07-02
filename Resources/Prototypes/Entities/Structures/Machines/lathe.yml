@@ -49,6 +49,8 @@
     price: 800
   - type: ResearchClient
   - type: TechnologyDatabase
+  - type: RadioJobIconOverride # ADT-Tweak
+    iconId: JobIconMachine
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity
@@ -107,12 +109,16 @@
   - type: Machine
     board: AutolatheMachineCircuitboard
   - type: MaterialStorage
-    whitelist:
+    whitelist: &StandardMaterialWhitelist
       tags:
         - Sheet
         - RawMaterial
         - Ingot
-  - type: StationAiWhitelist #ADT-Tweak
+        # ADT-Tweak start. Разрешаем блюспейс кристаллы и фантомным кристаллам пихать в автолат
+        - ADTBSCrystal
+        - PhantomEctoplasm
+        #ADT-Tweak end
+  - type: StationAiWhitelist
   - type: OreSiloClient
   - type: Lathe
     idleState: icon
@@ -124,6 +130,8 @@
     - PartsStatic
     - AtmosStatic
     - CablesStatic
+    - PaperworkStatic
+    - TowelsStatic
     - CargoStatic
     - MaterialsStatic
     - BasicChemistryStatic
@@ -140,6 +148,7 @@
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
+    - SyndicateAmmoStatic
   - type: BlueprintReceiver
     whitelist:
       tags:
@@ -185,15 +194,16 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Machine
     board: ProtolatheMachineCircuitboard
-  - type: StationAiWhitelist #ADT-Tweak
+  # ADT-tweak Start
+  - type: StationAiWhitelist
+  - type: ActivatableUIRequiresAccess
+  - type: AccessReader
+    access:
+      - [Research]
+      - [Engineering]
+  # ADT-tweak End
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
-        - PhantomEctoplasm
-        - ADTBSCrystal #ADT Tweak
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: Lathe
     idleState: icon
@@ -217,7 +227,6 @@
     - Janitor
     - Instruments
     - Equipment
-    - FauxTiles
     #ADT-tweak-start
     - ADTRCDPack
     - ADTPKAPack
@@ -225,10 +234,11 @@
     - ADTAdvancedMedicalMiscPack
     - ADTTranslatorPack
     - ADTXenoTranslatorPack
-    - ADTPhantomPack
+    #- ADTPhantomPack
     - ADTWeaponLauncherHydraPack
     - ADTPowerPack
     - ADTMegaCellPack
+    - ADTBeltManipulatorPack
     #ADT-tweak-end
     - ADTBluespaceCrystalTech #ADT Tweak
   - type: EmagLatheRecipes
@@ -248,6 +258,13 @@
     sprite: Structures/Machines/protolathe_hypercon.rsi
   - type: Machine
     board: ProtolatheHyperConvectionMachineCircuitboard
+  # ADT-tweak Start
+  - type: ActivatableUIRequiresAccess
+  - type: AccessReader
+    access:
+      - [Research]
+      - [Engineering]
+  # ADT-tweak End
 
 - type: entity
   id: CircuitImprinter
@@ -268,7 +285,13 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Machine
     board: CircuitImprinterMachineCircuitboard
-  - type: StationAiWhitelist #ADT-Tweak
+  # ADT-tweak Start
+  - type: StationAiWhitelist
+  - type: ActivatableUIRequiresAccess
+  - type: AccessReader
+    access:
+      - [Research]
+  # ADT-tweak End
   - type: Lathe
     producingSound: /Audio/Machines/circuitprinter.ogg
     idleState: icon
@@ -280,6 +303,7 @@
     - MedicalBoardsStatic
     - EngineeringBoardsStatic
     - CircuitFloorsStatic
+    - ElectronicsStatic # ADT-Tweak
     dynamicPacks:
     - EngineeringBoards
     - CargoBoards
@@ -295,17 +319,15 @@
     - ADTIndustrialCharger
     - ADTAdvancedThruster
     - ADTMegaCharger
+    - ADTChemDisp
+    - ADTAdvancedMedical
+    - ADTCryoPodMachineCircuitboard
     # ADT-tweak-end
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityBoards
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
-        - ADTBSCrystal #ADT Tweak
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: RequireProjectileTarget
 
@@ -319,6 +341,12 @@
     sprite: Structures/Machines/circuit_imprinter_hypercon.rsi
   - type: Machine
     board: CircuitImprinterHyperConvectionMachineCircuitboard
+  # ADT-tweak Start
+  - type: ActivatableUIRequiresAccess
+  - type: AccessReader
+    access:
+      - [Research]
+  # ADT-tweak End
 
 - type: entity
   id: ExosuitFabricator
@@ -358,14 +386,10 @@
     - ADTDurandPack
     - ADTPhazonPack
     - ADTMechEquipmentPack
+    - ADTBorgModules
     # ADT-tweak-end
   - type: MaterialStorage
-    whitelist:
-      tags:
-      - Sheet
-      - RawMaterial
-      - Ingot
-      - ADTBSCrystal #ADT Tweak
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: GuideHelp
     guides:
@@ -460,12 +484,11 @@
     - ADT40mmGrenadePack
     - ADTMechEquipmentSecTechfabPack
     # ADT-tweak-end
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - SyndicateAmmoStatic
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: LatheAnnouncing
     channels: [Security]
@@ -496,12 +519,11 @@
       runningState: icon
       staticPacks:
       - SecurityAmmoStatic
+    - type: EmagLatheRecipes
+      emagStaticPacks:
+      - SyndicateAmmoStatic
     - type: MaterialStorage
-      whitelist:
-        tags:
-          - Sheet
-          - RawMaterial
-          - Ingot
+      whitelist: *StandardMaterialWhitelist
     - type: OreSiloClient
 
 - type: entity
@@ -538,12 +560,10 @@
     dynamicPacks:
     - Chemistry
     #ADT-Tweak Start
-    - ADTAdvancedMedical
     - ADTAdvancedMedicalMiscPack
     - ADTAdvancedMedicalCarePack
     - ADTCryoTech
     - ADTThermoTech
-    - ADTChemDisp
     #ADT-Tweak End
   - type: Machine
     board: MedicalTechFabCircuitboard
@@ -574,6 +594,7 @@
     idleState: icon
     runningState: building
     staticPacks:
+    - TowelsStatic
     - ClothingCivilian
     - ClothingCargo
     - ClothingCommand
@@ -592,6 +613,8 @@
     - ADTBackpacks
     - ADTSatchels
     - ADTDuffel
+    - ADTStandards
+    - ADTDoubleBedsheets
     # ADT tweak end
   - type: EmagLatheRecipes
     emagStaticPacks:
@@ -601,11 +624,7 @@
     - ClothingCentComm
     - ClothingSyndie
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
 
 - type: entity
@@ -650,6 +669,10 @@
     staticPacks:
     - BioGenIngredientsStatic
     - BioGenMaterialsStatic
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - BioGenEmagStatic
+    - HostileCubesStatic
 
 - type: entity
   parent: BaseLathe
@@ -684,6 +707,8 @@
       - OreSmelting
       - RGlassSmelting
       - ADTBScrystalSmelting #ADT Tweak
+      # ADT-Tweak раскомментить и пересмотреть рецепты после добавления обломков с металлоломом
+      #- ScrapSmeltingBasic #ADT tweak
     # ADT tweak start
     - type: AutoMaterialInsert
       tag: ADTOreBag
@@ -711,6 +736,9 @@
     - RGlassSmelting
     - AdvancedSmelting
     - ADTBScrystalSmelting #ADT Tweak
+# ADT-Tweak раскомментить и пересмотреть рецепты после добавления обломков с металлоломом
+#    - ScrapSmeltingBasic #ADT tweak
+#    - ScrapSmeltingAdvanced #ADT tweak
 
 - type: entity
   parent: BaseLathe
@@ -769,13 +797,16 @@
     idleState: icon
     runningState: building
     staticPacks:
-    - FloorTilesStatic
+    - FloorDarkTilesStatic
+    - FloorSteelTilesStatic
+    - FloorWhiteTilesStatic
+    - FloorMaintsTilesStatic
+    - FloorWoodTilesStatic
+    - FloorConcreteTilesStatic
+    - CircuitFloorsStatic
+    - FloorMarbleTilesStatic
+    dynamicPacks:
+    - FauxTiles
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - Metal
-        - Wooden
-        - RawMaterial
-        - Plastic
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient

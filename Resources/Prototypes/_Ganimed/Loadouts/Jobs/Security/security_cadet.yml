@@ -1,0 +1,50 @@
+# Timers
+- type: loadoutEffectGroup
+  id: CadetSilverBadgeTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 72000 # 20 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSecurityCadet
+      time: 18000 # 4 hrs
+
+- type: loadoutEffectGroup
+  id: CadetGoldBadgeTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 216000 # 60 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSecurityCadet
+      time: 36000 # 12 hrs
+
+# Neck
+- type: loadout
+  id: CadetBronzeBadge
+  equipment:
+    neck: ClothingNeckSecBadgeCadetBronze
+
+- type: loadout
+  id: CadetSilverBadge
+  equipment:
+    neck: ClothingNeckSecBadgeCadetSilver
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: CadetSilverBadgeTimer
+
+- type: loadout
+  id: CadetGoldBadge
+  equipment:
+    neck: ClothingNeckSecBadgeCadetGold
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: CadetGoldBadgeTimer

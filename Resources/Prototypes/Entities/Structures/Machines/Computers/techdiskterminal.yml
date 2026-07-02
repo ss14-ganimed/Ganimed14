@@ -12,6 +12,20 @@
       state: icon
     - map: ["computerLayerScreen"]
       state: unshaded
+  # ADT-Tweak start
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: icon, sprite: Structures/Machines/tech_disk_printer.rsi }
+          East: { state: icon, sprite: Structures/Machines/tech_disk_printer.rsi }
+          West: { state: icon, sprite: Structures/Machines/tech_disk_printer.rsi }
+          East, West: { state: icon, sprite: Structures/Machines/tech_disk_printer.rsi }
+  # ADT-Tweak end
+  # Ganimed-Add-Fix-Start
+  - type: EdgeConnection
+    connectionKey: other
+  # Ganimed-Add-Fix-End
   - type: DiskConsole
   - type: ResearchClient
   - type: ActivatableUI

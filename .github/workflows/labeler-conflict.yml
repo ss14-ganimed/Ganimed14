@@ -8,6 +8,11 @@ on:
       - reopened
       - ready_for_review
 
+permissions:
+  pull-requests: write
+  issues: write
+  contents: read
+
 jobs:
   Label:
     if: ( github.event.pull_request.draft == false ) && ( github.actor != 'IanComradeBot' )

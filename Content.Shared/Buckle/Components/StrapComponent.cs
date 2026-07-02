@@ -10,7 +10,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Buckle.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedBuckleSystem), typeof(SharedVehicleSystem))]   // ADT added: typeof(SharedVehicleSystem)
+[Access(typeof(SharedBuckleSystem), typeof(SharedVehicleSystem), typeof(Content.Shared.ADT.Bed.DoubleBedSystem))]   // ADT-Tweak: typeof(SharedVehicleSystem), typeof(DoubleBedSystem)
 public sealed partial class StrapComponent : Component
 {
     /// <summary>
@@ -91,6 +91,11 @@ public sealed partial class StrapComponent : Component
     /// </summary>
     [DataField]
     public bool BuckleOnInteractHand = true;
+
+    // ADT-Tweak-Start
+    [DataField]
+    public bool ForceBuckle = true;
+    // ADT-Tweak-End
 }
 
 public enum StrapPosition

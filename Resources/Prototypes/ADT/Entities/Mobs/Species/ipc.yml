@@ -13,6 +13,11 @@
         locked: true
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMedium
+      # ADT-tweak-start
+        blacklist:
+          tags:
+          - ADTMegaCell
+      # ADT-tweak-end
   - type: Lock
     locked: true
     lockOnClick: false
@@ -24,6 +29,7 @@
     itemSlot: cell_slot
   - type: PickupHumans
   - type: MobIpc
+    disablePointLightOnDeath: true
   - type: InteractionPopup
     interactSuccessString: petting-success-ipc
     interactSuccessSound:
@@ -113,12 +119,9 @@
       Male: UnisexIPC
       Female: UnisexIPC
       Unsexed: UnisexIPC
-  - type: TriggerOnMobstateChange
-    mobState:
-    - Dead
-  - type: EmitSoundOnTrigger
-    sound:
-      path: /Audio/ADT/IPC/borg_deathsound.ogg
+  - type: Deathgasp
+    prototype: IPCDeathgasp
+    onAnyState: true
   - type: TTS # Corvax-TTS
   - type: LanguageSpeaker
     languages:
@@ -128,7 +131,7 @@
   - type: Tag
     tags:
     - CanPilot
-    - FootstepSound
+    - SiliconFootstepSound
     - DoorBumpOpener
     - ChangelingBlacklist
     - ADTSiliconStealthWhitelist
@@ -157,8 +160,8 @@
   - type: OfferItem
   - type: UserInterface
     interfaces:
-      enum.IpcScreenUiKey.Key:
-        type: IpcScreenBoundUserInterface
+      enum.MidroundCustomizationUiKey.Key:
+        type: MidroundCustomizationBoundUserInterface
       enum.VoiceMaskUIKey.Key:
         type: VoiceMaskBoundUserInterface
       enum.HumanoidMarkingModifierKey.Key:
@@ -169,10 +172,29 @@
         type: StoreBoundUserInterface
       enum.HereticLivingHeartKey.Key:
         type: LivingHeartMenuBoundUserInterface
-  - type: IpcScreen
+  - type: MidroundCustomization
+    action: ActionIpcScreen
     selectSlotTime: 0
     changeSlotTime: 0
+    changeVoiceTime: 0
+    addSlotTime: 0
+    removeSlotTime: 0
+    changeMarkingSound:
+      path: /Audio/Machines/beep.ogg
+    playSoundForVoiceChange: false
+    customizableCategories:
+    - FacialHair
+    defaultSkinColoring: false
+    changeSlotOnState:
+    - state: Dead
+      category: FacialHair
+      slot: 0
+      marking: ADTIPCScreenBroken
+      colors: ["#ffffff"]
+    pointLightColor: true
   - type: AnimatedEmotes
+  - type: Posing
+  - type: SoftWalk
 
 - type: entity
   save: false

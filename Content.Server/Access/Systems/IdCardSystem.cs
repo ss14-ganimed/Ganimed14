@@ -9,6 +9,7 @@ using Content.Shared.Access.Systems;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Popups;
+using Content.Shared.Tag; // Ganimed-Add
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Server.Kitchen.EntitySystems;
@@ -23,6 +24,9 @@ public sealed class IdCardSystem : SharedIdCardSystem
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly MicrowaveSystem _microwave = default!;
+    [Dependency] private readonly TagSystem _tag = default!; // Ganimed-Add
+
+    private static readonly ProtoId<TagPrototype> MicrowavedIdCardTag = "MicrowavedIdCard"; // Ganimed-Add
 
     public override void Initialize()
     {
@@ -63,6 +67,8 @@ public sealed class IdCardSystem : SharedIdCardSystem
                 _microwave.Explode((args.Microwave, micro));
                 return;
             }
+
+            _tag.AddTag(uid, MicrowavedIdCardTag); // Ganimed-Add
 
             // If they're unlucky, brick their ID
             if (randomPick <= 0.25f)

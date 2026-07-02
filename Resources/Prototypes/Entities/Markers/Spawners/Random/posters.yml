@@ -97,14 +97,14 @@
       - PosterContrabandExoRun
       - PosterContrabandExoChomp
       #ADT tweak vvv
-      - ADTPosterContrabandLustTayaran # Спрайт от Празата
+      # - ADTPosterContrabandLustTayaran # Спрайт от Празата # Ganimed-Remove
       - ADTPosterContrabandFearThem # Спрайт от Иллюми
       - ADTPosterContrabandSilence # Спрайт от Иллюми
       # - ADTPosterContrabandLustUma
       - ADTPosterContrabandLustArDeco
-      - ADTPosterDontSitDown
-      - ADTPosterLustyMoth
-      - ADTPosterWatchOutChem
+      # - ADTPosterDontSitDown # Ganimed-Remove
+      # - ADTPosterLustyMoth # Ganimed-Remove
+      # - ADTPosterWatchOutChem # Ganimed-Remove
       - ADTPosterPanem
       - ADTPosterGasAttack
       - ADTPosterNoGood
@@ -114,8 +114,20 @@
       # - ADTPosterContrabandUmaAndAzalia
       # - ADTPosterContrabandUmaRabbit
       # - ADTPosterContrabandUmaOnBeach
-      - ADTPosterContrabandGoobChuckler
-      - ADTPosterContrabandGoobYakub
+      # - ADTPosterContrabandGoobChuckler # Ganimed-Remove
+      # - ADTPosterContrabandGoobYakub # Ganimed-Remove
+      - ADTPosterContrabandSlimeBarmaid
+      - ADTPosterContrabandHonkminator
+      - ADTPosterContrabandHonkDance
+      - ADTPosterContrabandBorgBro
+      - ADTPosterContrabandLadyRnd
+      - ADTPosterContrabandSkrellSinger
+      - ADTPosterContrabandSpaceNinja
+      - ADTPosterContrabandAnime
+      # - ADTPosterContrabandUnati # Ganimed-Remove
+      - ADTPosterContrabandPinning
+      - ADTPosterContrabandGorlaxSanta
+      - ADTPosterContrabandLostParadise
       #ADT tweak ^^^
     chance: 1
 
@@ -201,8 +213,14 @@
       - ADTPosterLegitGoobDurkPlush
       - ADTPosterLegitGoobBigBrotherAI
       - ADTPoster2984
+      - ADTPosterLegitGrowFood
+      - ADTPosterLegitMissNT1
+      - ADTPosterLegitMissNT2
+      - ADTPosterCalendarNT
+      - ADTPosterLegitObjection
       #ADT tweak ^^^
       - PosterLegitOppenhopper
       - PosterLegitTyrone
       - PosterLegitHelio
+      - PosterLegitBotanyFear
     chance: 1
