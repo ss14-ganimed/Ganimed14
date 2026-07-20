@@ -20,41 +20,41 @@
 /Resources/Locale/ru-RU/ @HyperB1
 
 # Administration
-/Resources/ConfigPresets/ @CrimeMoot
-/Content.*/Administration/ @CrimeMoot
+/Resources/ConfigPresets/ @CrimeMoot @Imperator-Shlepa @ThundraBoomerov
+/Content.*/Administration/ @CrimeMoot @Imperator-Shlepa @ThundraBoomerov
 
 # Head Mapper
-/Resources/Maps/** @AltMapper
-/Resources/Prototypes/Maps/** @AltMapper
-/Resources/Prototypes/*/Maps/** @AltMapper
+/Resources/Maps/** @ThundraBoomerov
+/Resources/Prototypes/Maps/** @ThundraBoomerov
+/Resources/Prototypes/*/Maps/** @ThundraBoomerov
 
 # Sprites and design (Head Spriter vacant)
-*.png @HyperB1 @AltMapper
-*meta.json @HyperB1 @AltMapper
-/Resources/Textures/ @HyperB1 @AltMapper
+*.png @HyperB1
+*meta.json @HyperB1
+/Resources/Textures/ @HyperB1
 
 # Species
-/Resources/Prototypes/Species/ @AltMapper @HyperB1
-/Resources/Prototypes/*/Species/ @AltMapper @HyperB1
-/Resources/Prototypes/Entities/Mobs/Species/ @AltMapper @HyperB1
-/Resources/Prototypes/*/Entities/Mobs/Species/ @AltMapper @HyperB1
-/Resources/Prototypes/Entities/Mobs/Player/ @AltMapper @HyperB1
-/Resources/Prototypes/*/Entities/Mobs/Player/ @AltMapper @HyperB1
+/Resources/Prototypes/Species/ @HyperB1
+/Resources/Prototypes/*/Species/ @HyperB1
+/Resources/Prototypes/Entities/Mobs/Species/ @HyperB1
+/Resources/Prototypes/*/Entities/Mobs/Species/ @HyperB1
+/Resources/Prototypes/Entities/Mobs/Player/ @HyperB1
+/Resources/Prototypes/*/Entities/Mobs/Player/ @HyperB1
 
 # Other unique content
 /Resources/Prototypes/Traits/ @CrimeMoot @HyperB1
 /Resources/Prototypes/*/Traits/ @CrimeMoot @HyperB1
-/Resources/Prototypes/Roles/ @HyperB1 @AltMapper
-/Resources/Prototypes/*/Roles/ @HyperB1 @AltMapper
+/Resources/Prototypes/Roles/ @HyperB1
+/Resources/Prototypes/*/Roles/ @HyperB1
 /Resources/Prototypes/Loadouts/ @HyperB1
 /Resources/Prototypes/*/Loadouts/ @HyperB1
-/Resources/Prototypes/_Ganimed/Entities/Clothing/ @AltMapper @HyperB1
+/Resources/Prototypes/_Ganimed/Entities/Clothing/ @HyperB1
 # /Resources/Prototypes/Entities/Objects/Weapons/ @RedSpyy
 # /Resources/Prototypes/*/Entities/Objects/Weapons/ @RedSpyy
-/Resources/Prototypes/GameRules/ @HyperB1 @AltMapper @CrimeMoot
+/Resources/Prototypes/GameRules/ @HyperB1 @Imperator-Shlepa @ThundraBoomerov @CrimeMoot
 
 # Lore, Wiki, Guidebook & Rules
 *.xml @HyperB1
-/Resources/ServerInfo/ @AltMapper @HyperB1
-/Resources/Prototypes/Guidebook/ @AltMapper @HyperB1
-/Resources/Prototypes/*/Guidebook/ @AltMapper @HyperB1
+/Resources/ServerInfo/ @Imperator-Shlepa @ThundraBoomerov
+/Resources/Prototypes/Guidebook/ @Imperator-Shlepa @ThundraBoomerov
+/Resources/Prototypes/*/Guidebook/ @Imperator-Shlepa @ThundraBoomerov
