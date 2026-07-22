@@ -198,6 +198,8 @@
   - GroupTankHarness
   - SeniorOfficerHead # Ganimed-Loadouts-Edit (SecurityHead)
   - SecurityNeck # Ganimed-Loadouts-Edit (SecurityOfficerNeckADT)
+  - SecurityOfficerGlassesADT
+  - SecurityOfficerNeckADT # ADT-Loadouts
   - SeniorOfficerJumpsuit # ADT-Tweak-senior
   - ADTSeniorOfficerOuterClothing # ADT-Tweak-senior
   - SecurityGlasses # Ganimed-Loadouts-Add
@@ -249,6 +251,7 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - ADTCorrectionsOfficerHead
+  - SecurityOfficerGlassesADT
   - SecurityOfficerNeckADT # ADT-Loadouts
   - ADTCorrectionsOfficerJumpsuit
   - ADTCorrectionsOfficerOuterClothing

@@ -16,10 +16,20 @@
     - !type:DepartmentTimeRequirement
       department: Medical
       time: 20h # Ganimed-RoleTime
+#    - !type:OverallPlaytimeRequirement
+#      time: 144000 #40 hrs
     - !type:OverallPlaytimeRequirement
       time: 40h # Ganimed-RoleTime
-    - !type:AgeRequirement # Ganimed-MRP
-      requiredAge: 21
+    - !type:TraitsRequirement #Corvax-TraitsRequirement
+      inverted: true
+      traits:
+      - Muted
+    # ADT-Tweak: Start
+    - !type:SpeciesRequirement
+      inverted: true
+      species:
+      - Vox
+    # ADT-Tweak: End
   weight: 10
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
@@ -40,7 +50,6 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
-      # - type: PhantomTyranyTarget # ADT Phantom
 
 - type: startingGear
   id: CMOGear

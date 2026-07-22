@@ -425,6 +425,8 @@
       path: /Audio/Items/bikehorn.ogg
     Ping:
       path: /Audio/Effects/Cargo/ping.ogg
+    StartUp:
+      path: /Audio/ADT/IPC/startup.ogg
     IPCDeathgasp:
       path: /Audio/ADT/IPC/borg_deathsound.ogg
 
@@ -455,6 +457,8 @@
       path: /Audio/Items/bikehorn.ogg
     Ping:
       path: /Audio/Effects/Cargo/ping.ogg
+    StartUp:
+      path: /Audio/ADT/IPC/startup.ogg
     IPCDeathgasp:
       path: /Audio/ADT/IPC/borg_deathsound.ogg
     Laugh:
@@ -501,6 +505,8 @@
       path: /Audio/Items/bikehorn.ogg
     Ping:
       path: /Audio/Effects/Cargo/ping.ogg
+    StartUp:
+      path: /Audio/ADT/IPC/startup.ogg
     IPCDeathgasp:
       path: /Audio/ADT/IPC/borg_deathsound.ogg
     Laugh:
@@ -615,6 +621,8 @@
       collection: RobotBeeps
     Yawn:
       collection: MaleYawn
+    Snarl:
+      collection: VulpkaninSnarls
     Snore:
       collection: Snores
     Honk:
@@ -665,6 +673,8 @@
       collection: RobotBeeps
     Yawn:
       collection: FemaleYawn
+    Snarl:
+      collection: VulpkaninSnarls
     Snore:
       collection: Snores
     Honk:
@@ -941,3 +951,27 @@
       collection: Salutes
     Purse:
       path: /Audio/Effects/thudswoosh.ogg
+
+- type: emoteSounds
+  id: MaleButcher
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: ButcherScream
+    Laugh:
+      collection: ButcherLaugh
+    Sneeze:
+      collection: ButcherSneeze
+    Cough:
+      collection: ButcherCough
+    Yawn:
+      collection: ButcherYawn
+    Sigh:
+      collection: ButcherSigh
+    Crying:
+      collection: ButcherCry
+    Whistle:
+      collection: Whistles
+    Spit:
+      collection: HumanSpits

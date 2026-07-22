@@ -37,7 +37,8 @@
   - type: PressureProtection
     highPressureMultiplier: 0.1
     lowPressureMultiplier: 1000
-  - type: ToggleableLightVisuals
+  - type: ToggleableVisuals
+    spriteLayer: light
   - type: PointLight
     color: "#adffe6"
     enabled: false
@@ -223,7 +224,7 @@
       visible: false
       shader: unshaded
       map: [ "light" ]
-  - type: ToggleableLightVisuals
+  - type: ToggleableVisuals
     spriteLayer: light
     clothingVisuals:
       head:
@@ -284,7 +285,7 @@
       visible: false
       shader: unshaded
       map: [ "light" ]
-  - type: ToggleableLightVisuals
+  - type: ToggleableVisuals
     spriteLayer: light
     clothingVisuals:
       head:
@@ -551,7 +552,7 @@
     clothingVisuals:
       head:
       - state: equipped-head
-  - type: ToggleableLightVisuals
+  - type: ToggleableVisuals
     spriteLayer: light
     clothingVisuals:
       head:

@@ -37,9 +37,14 @@
   parent: ClothingOuterBase
   id: ClothingOuterStorageBase
   components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,1,2
   - type: Storage
     grid:
     - 0,0,2,1
+    maxItemSize: Small
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
@@ -167,6 +172,9 @@
     equipDelay: 1
     unequipDelay: 1
   # Ganimed-Add-End
+  - type: HideLayerClothing
+    slots:
+    - Tail
 
 - type: entity
   abstract: true
@@ -210,6 +218,9 @@
     equipDelay: 1
     unequipDelay: 1
   # Ganimed-Add-End
+  - type: HideLayerClothing
+    slots:
+    - Tail
 
 - type: entity
   parent: ClothingOuterBase
@@ -232,4 +243,6 @@
   id: ClothingOuterBaseMedium
   components:
   - type: Item
-    size: Huge
+    size: Large
+    shape:
+    - 0,0,2,3

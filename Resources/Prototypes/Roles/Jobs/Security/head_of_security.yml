@@ -51,6 +51,8 @@
   - External
   - Detective
   - Cryogenics
+  - GenpopEnter
+  - GenpopLeave
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -62,7 +64,6 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
-      # - type: PhantomTyranyTarget # ADT Phantom
       # ADT-Tweak-Start: метка персонала службы безопасности
       - type: SecurityStaff
       # ADT-Tweak-End
@@ -78,7 +79,7 @@
     back:
     - Flash
     - ADTtelescopicBaton #ADT-CustomADTLoadout
-    - MagazinePistol
+  # - MagazinePistol ADT-Tweak
 
 - type: chameleonOutfit
   id: HeadOfSecurityChameleonOutfit

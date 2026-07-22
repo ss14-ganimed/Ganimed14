@@ -1,4 +1,7 @@
+#nullable enable
 using System.Linq;
+using Content.IntegrationTests.Fixtures;
+using Content.IntegrationTests.Fixtures.Attributes;
 using Content.Shared.Actions;
 using Content.Shared.Eye;
 using Robust.Server.GameObjects;
@@ -10,22 +13,18 @@ using Robust.Shared.GameStates;
 namespace Content.IntegrationTests.Tests.Actions;
 
 [TestFixture]
-public sealed class ActionPvsDetachTest
+public sealed class ActionPvsDetachTest : GameTest
 {
+    [SidedDependency(Side.Server)] private readonly SharedActionsSystem _sActionsSys = null!;
+    [SidedDependency(Side.Client)] private readonly SharedActionsSystem _cActionsSys = null!;
+
     [Test]
     public async Task TestActionDetach()
     {
-        var pair = await PoolManager.GetServerClient();
-
-        var netMan = pair.Client.ResolveDependency<INetManager>();
-        if (!netMan.IsConnected)
-        {
-            await pair.CleanReturnAsync();
-            Assert.Ignore("Пропущено: клиент не подключён.");
-        }
-        var (server, client) = pair;
-        var sys = server.System<SharedActionsSystem>();
-        var cSys = client.System<SharedActionsSystem>();
+        var pair = Pair;
+        var (server, client) = (Server, Client);
+        var sys = _sActionsSys;
+        var cSys = _cActionsSys;
 
         EntityUid ent = default;
         var map = await pair.CreateTestMap();
@@ -64,6 +63,5 @@ public sealed class ActionPvsDetachTest
         Assert.That(cSys.GetActions(cEnt).Count(), Is.EqualTo(initActions));
 
         await server.WaitPost(() => server.EntMan.DeleteEntity(map.MapUid));
-        await pair.CleanReturnAsync();
     }
 }

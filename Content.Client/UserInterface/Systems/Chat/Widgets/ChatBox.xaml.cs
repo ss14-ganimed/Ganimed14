@@ -153,13 +153,9 @@ public partial class ChatBox : UIWidget
     public void Repopulate()
     {
         // ADT-Tweak start
-        foreach (var child in Contents.Children.Cast<Control>().ToArray())
-        {
-            if (child.Name != "_v_scroll")
-            {
-                Contents.RemoveChild(child);
-            }
-        }
+        _controller.MessageAdded -= OnMessageAdded;
+
+        Contents.Clear();
         // ADT-Tweak end
         _chatStackList = new List<ChatStackData>(_chatStackAmount); // Ganimed, EE - Chat stacking
 
@@ -167,24 +163,24 @@ public partial class ChatBox : UIWidget
         {
             OnMessageAdded(message.Item2);
         }
+
+        _controller.MessageAdded += OnMessageAdded; // ADT-Tweak 
     }
 
     private void OnChannelFilter(ChatChannel channel, bool active)
     {
         // ADT-Tweak start
-        foreach (var child in Contents.Children.Cast<Control>().ToArray())
-        {
-            if (child.Name != "_v_scroll")
-            {
-                Contents.RemoveChild(child);
-            }
-        }
+        _controller.MessageAdded -= OnMessageAdded;
+
+        Contents.Clear();
         // ADT-Tweak end
 
         foreach (var message in _controller.History)
         {
             OnMessageAdded(message.Item2);
         }
+
+        _controller.MessageAdded += OnMessageAdded; // ADT-Tweak 
 
         if (active)
         {
@@ -215,7 +211,7 @@ public partial class ChatBox : UIWidget
                                 ("size", sizeIncrease)
                                 ));
         }
-        Contents.AddMessage(formatted);
+        Contents.AddMessage(formatted, tagsAllowed: null);
         // Ganimed, End EE - Chat stacking
     }
 

@@ -8,7 +8,7 @@ mining-voucher-crusher-description =
     Однако его трудно использовать эффективно для всех, кроме самых опытных и/или склонных к суициду шахтеров.
 mining-voucher-extraction-name = Доставка и спасение
 mining-voucher-extraction-description =
-    Содержит фултон-маяк и 10 фултонов, которые позволяют отправлять минералы,
+    Содержит фултон-маяк и 5 фултонов, которые позволяют отправлять минералы,
     предметы и трупы домой, не прибегая к помощи шахтерского шаттла.
 
 mining-voucher-resonator-name = Набор резонатора
@@ -45,10 +45,20 @@ voucher-mod-satchel-name = Сумочный модуль МОДа
 voucher-mod-satchel-description =
     Модуль хранилища для МОДа, что полностью идентичен по размерам сумке.
 
+blueshield-voucher-smg-name = набор с пистолетом пулеметом и лазерным пистолетом
+blueshield-voucher-smg-description =
+    Стандартное вооружение офицеров "Синий Щит".
+    Включает в себя UTAP МК.1, уникальный лазерный пистолет, два расширенных магазина и коробку патрон.
+
+blueshield-voucher-tonfa-name = набор с кунг-фу дракона
+blueshield-voucher-tonfa-description =
+    Набор ближнего боя.
+    Включает в себя усиленный набор брони, свиток Кунг-фу Дракона, а также фаворитный щит корпуса синих щитов.
+
 blueshield-voucher-saber-rev-name = набор с энергетическим мечом-револьвером
 blueshield-voucher-saber-rev-description =
-    Стандартное вооружение офицеров "Синий Щит".
-    Включает в себя энергетический меч-револьвер, а также 3 дополнительных для него батареи.
+    Прототип энергетического меча-револьвера.
+    Включает в себя энергетический меч-револьвер, 3 дополнительных батареи, а также фаворитный щит корпуса синих щитов.
 
 hos-voucher-unika-name = Уника 6
 hos-voucher-unika-description =
@@ -81,7 +91,7 @@ ccc-stockdegen-description =
     Включает в себя Теневую трость-лезвие Центрального Командования.
 
 shoes-voucher-chameleon-name = Ботинки-хамелеоны
-shoes-voucher-chameleon-description =  
+shoes-voucher-chameleon-description =
     Ботинки-хамелеоны
 
     Ботинки, способные изменять свой внешний вид по желанию владельца.
@@ -91,3 +101,21 @@ shoes-voucher-no-sound-description =
     Бесшумные ботинки-хамелеоны
 
     Ботинки-хамелеоны с особой подошвой, позволяющие передвигаться бесшумно.
+
+syndicate-voucher-hardsuit-name = кроваво-красный скафандр
+syndicate-voucher-hardsuit-description = Тяжелобронированный скафандр, предназначенный для специальных операций. Собственность Мародёров Горлекса.
+
+syndicate-voucher-mod-name = МОД "Синдикат"
+syndicate-voucher-mod-description = Костюм, разработанный "Gorlex Marauders", предлагающий броню, признанную незаконной в большинстве секторов.
+
+syndicate-elite-voucher-hardsuit-name = элитный скафандр Синдиката
+syndicate-elite-voucher-hardsuit-description = Элитная версия кроваво-красного скафандра, отличающаяся повышенной стойкостью к радиации и огнеупорностью. Собственность Мародёров Горлекса.
+
+syndicate-elite-voucher-mod-name = МОД "Элитный"
+syndicate-elite-voucher-mod-description = Элитный костюм, усовершенствованный "Cybersun Industries" и предлагающий повышенные показатели брони.
+
+sec-voucher-mk58-name = МК 58
+sec-voucher-mk58-description = Дешёвый и распространённый пистолет, производимый дочерней компанией Nanotrasen. Использует патроны калибра 9х19 мм.
+
+sec-voucher-laser-name = лазерный пистолет
+sec-voucher-laser-description = Дешёвый и широко распространённый лазерный пистолет, производимый дочерней компанией Nanotrasen. При долгом использовании может нагреваться.

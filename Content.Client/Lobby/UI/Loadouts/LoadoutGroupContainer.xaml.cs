@@ -8,7 +8,6 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Client.Lobby.UI.Loadouts;
 
@@ -77,27 +76,6 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         }
 
         LoadoutsContainer.RemoveAllChildren();
-
-        // Ganimed sponsor start
-        IEnumerable<ProtoId<LoadoutPrototype>> groupLoadouts = _groupProto.Loadouts;
-
-        if (_groupProto.ID == "Inventory")
-        {
-            // Для группы Inventory — отображаем только те вещи, что указаны в HTTP API (allowedMarkings).
-            // Это работает даже если игрок не спонсор.
-            string[] allowedItems = Array.Empty<string>();
-
-            if (_sponsorsManager.TryGetInfo(out var sponsor))
-            {
-                allowedItems = sponsor.AllowedMarkings ?? Array.Empty<string>();
-            }
-
-            groupLoadouts = protoMan.EnumeratePrototypes<LoadoutPrototype>()
-                .Where(p => allowedItems.Contains(p.ID))
-                .Select(p => (ProtoId<LoadoutPrototype>)p.ID)
-                .ToList();
-        }
-        // Ganimed sponsor end
 
         // Get all loadout prototypes for this group.
         var validProtos = groupLoadouts
