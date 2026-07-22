@@ -262,22 +262,5 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(conspirator);
         // Harmony conspirators add end
-
-        // Harmony conspirators add start
-        var conspiratorName = Loc.GetString("admin-verb-text-make-conspirator");
-        Verb conspirator = new()
-        {
-            Text = conspiratorName,
-            Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new("/Textures/_Harmony/Interface/Misc/job_icons.rsi"), "Conspirator"),
-            Act = () =>
-            {
-                _antag.ForceMakeAntag<ConspiratorRuleComponent>(targetPlayer, DefaultConspiratorRule);
-            },
-            Impact = LogImpact.High,
-            Message = string.Join(": ", conspiratorName, Loc.GetString("admin-verb-make-conspirator")),
-        };
-        args.Verbs.Add(conspirator);
-        // Harmony conspirators add end
     }
 }
