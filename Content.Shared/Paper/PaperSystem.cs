@@ -433,7 +433,7 @@ public sealed class PaperSystem : EntitySystem
         _appearance.SetData(entity, PaperVisuals.Status, status, appearance);
     }
 
-    public void UpdateUserInterface(Entity<PaperComponent> entity) // Ganimed edit
+    private void UpdateUserInterface(Entity<PaperComponent> entity)
     {
         // ADT-Tweak: Start
         _uiSystem.SetUiState(entity.Owner,

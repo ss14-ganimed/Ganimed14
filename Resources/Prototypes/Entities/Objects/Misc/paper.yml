@@ -119,7 +119,7 @@
 
 - type: entity
   name: paper scrap
-  parent: Paper
+  parent: BasePaper
   id: PaperScrap
   description: 'A crumpled up piece of white paper.'
   components:
