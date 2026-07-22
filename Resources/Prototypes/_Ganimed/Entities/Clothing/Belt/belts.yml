@@ -111,7 +111,6 @@
       - MagazineShotgun
       - MagazineRifle
       - MagazineLightRifle
-      - MagazineCaselessRifle
       - ADTMagazineRifleExtended
       - MagazinePistolSubMachineGun
       - MagazinePistolSubMachineGunTopMounted
@@ -120,7 +119,6 @@
       - MagazineMagnum
       - MagazinePistolCaselessRifle
       - SpeedLoaderMagnum
-      - SpeedLoaderRifle
       - CigPack # это был трудный день
       - ADTLighter
       - Radio

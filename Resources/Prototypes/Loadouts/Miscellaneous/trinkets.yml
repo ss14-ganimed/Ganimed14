@@ -291,12 +291,6 @@
 
 # Canes
 # The white cane is intentionally not included here. Thats for the blind.
-- type: loadout
-  id: OffsetCane
-  storage:
-    back:
-    - OffsetCane
-  groupBy: "canes"
 
 - type: loadout
   id: OffsetCaneClown

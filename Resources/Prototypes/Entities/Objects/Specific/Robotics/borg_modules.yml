@@ -1022,7 +1022,7 @@
     - state: icon-chemist
   - type: ItemBorgModule
     hands:
-    - item: HandheldHealthAnalyzerUnpowered
+    - item: HandheldHealthAnalyzer
     - item: BorgHypo
     - item: Syringe
     # - BorgDropper # ADT start
