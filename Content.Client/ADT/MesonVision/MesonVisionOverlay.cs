@@ -9,7 +9,6 @@ using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 
-
 namespace Content.Client.ADT.MesonVision;
 
 public sealed class MesonVisionOverlay : Overlay
@@ -20,13 +19,9 @@ public sealed class MesonVisionOverlay : Overlay
     private readonly ContainerSystem _container;
     private readonly EntityQuery<SpriteComponent> _spriteQuery;
     private readonly EntityQuery<TransformComponent> _xformQuery;
-    private readonly EntityQuery<TagComponent> _tagQuery;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     private readonly List<MesonVisionRenderEntry> _entries = new(64);
-
-    private const float MesonAlpha = 0.35f; // Someday, someone will do this in a component.
-    private const int MesonDrawDepth = 0;
 
     public MesonVisionOverlay()
     {
@@ -35,7 +30,6 @@ public sealed class MesonVisionOverlay : Overlay
         _xformSystem = _entity.System<SharedTransformSystem>();
         _spriteQuery = _entity.GetEntityQuery<SpriteComponent>();
         _xformQuery = _entity.GetEntityQuery<TransformComponent>();
-        _tagQuery = _entity.GetEntityQuery<TagComponent>();
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -45,17 +39,17 @@ public sealed class MesonVisionOverlay : Overlay
             _entity.HasComponent<PermanentBlindnessComponent>(_player.LocalEntity))
         {
             return;
+        }
 
         var eye = args.Viewport.Eye;
-        if (eye == null)
-            return;
+        if (eye == null) return;
 
-        MapId mapId = eye.Position.MapId;
-        Angle eyeRot = eye.Rotation;
+        var mapId = eye.Position.MapId;
+        var eyeRot = eye.Rotation;
         var worldBounds = args.WorldBounds;
         var worldHandle = args.WorldHandle;
 
-        foreach (EntityUid entity in _entity.GetEntities())
+        foreach (var entity in _entity.GetEntities())
         {
             // Ganimed edit start
             if (!_spriteQuery.TryGetComponent(entity, out var sprite) ||
@@ -82,42 +76,36 @@ public sealed class MesonVisionOverlay : Overlay
                 (entity, sprite, xform),
                 mapId,
                 eyeRot,
-                MesonDrawDepth,
-                MesonAlpha));
+                sprite.DrawDepth,
+                1f
+            ));
         }
 
         foreach (var entry in _entries)
         {
-            RenderFastRaw(entry.Ent, worldHandle, entry.EyeRot, entry.Transparency ?? 1f);
+            RenderFast(entry.Ent, worldHandle, entry.EyeRot, entry.Transparency ?? 1f, nightVision.Color);
         }
 
         _entries.Clear();
     }
 
-    private void RenderFastRaw(
-        (EntityUid uid, SpriteComponent sprite, TransformComponent xform) ent,
+    private void RenderFast(
+        Entity<SpriteComponent, TransformComponent> ent,
         DrawingHandleWorld handle,
         Angle eyeRot,
-        float alpha)
+        float alpha,
+        Color color)
     {
         var (uid, sprite, xform) = ent;
-
         var position = _xformSystem.GetWorldPosition(xform);
         var rotation = _xformSystem.GetWorldRotation(xform);
 
         handle.SetTransform(position, rotation);
 
-        var originalDepth = sprite.DrawDepth;
-        sprite.DrawDepth = MesonDrawDepth;
-
         var originalColor = sprite.Color;
-        sprite.Color = originalColor.WithAlpha(alpha);
-
+        sprite.Color = color.WithAlpha(alpha);
         sprite.Render(handle, eyeRot, rotation, position: position);
-
         sprite.Color = originalColor;
-        sprite.DrawDepth = originalDepth;
-
         handle.SetTransform(Vector2.Zero, Angle.Zero);
     }
 }
