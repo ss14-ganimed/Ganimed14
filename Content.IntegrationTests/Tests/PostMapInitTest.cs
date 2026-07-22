@@ -454,10 +454,11 @@ namespace Content.IntegrationTests.Tests
                 {
                     throw new Exception($"Failed to delete map {mapProto}", ex);
                 }
+
+                GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, blocking: true);
+                GC.WaitForPendingFinalizers();
             });
         }
-
-
 
         private static int GetCountLateSpawn<T>(List<EntityUid> gridUids, IEntityManager entManager)
             where T : ISpawnPoint, IComponent
@@ -550,6 +551,9 @@ namespace Content.IntegrationTests.Tests
                     {
                         throw new Exception($"Failed to delete map {mapPath}", ex);
                     }
+
+                    GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, blocking: true);
+                    GC.WaitForPendingFinalizers();
                 });
             });
         }
