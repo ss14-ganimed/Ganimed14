@@ -544,6 +544,17 @@
       max: 900 # 15 mins # C# const- 10
     # Corvax-MRP-end
 
+- type: entityTable
+  id: SpaceTrafficControlTable
+  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+    children:
+      - !type:NestedSelector
+        tableId: UnknownShuttlesFriendlyTable
+      - !type:NestedSelector
+        tableId: UnknownShuttlesFreelanceTable
+      # - !type:NestedSelector # ADT tweak
+      #   tableId: UnknownShuttlesHostileTable
+
 - type: entity
   id: SpaceTrafficControlEventScheduler # iff we make a selector for EntityTables that can respect StationEventComp restrictions, or somehow impliment them otherwise in said tables,
   parent: BaseGameRule                  # we can remerge this with the other schedulers, but it will silently fail due to that limitation without a separate scheduler to balance atm.
