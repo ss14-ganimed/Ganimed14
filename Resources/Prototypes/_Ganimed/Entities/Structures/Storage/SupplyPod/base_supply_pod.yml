@@ -56,8 +56,9 @@
     containers:
       entity_storage: !type:Container
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Biological
   - type: Construction
     graph: SupplyPod
     node: SupplyPod

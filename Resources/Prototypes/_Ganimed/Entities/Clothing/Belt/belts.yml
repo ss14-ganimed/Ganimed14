@@ -55,7 +55,6 @@
       - Handcuff
       - BallisticAmmoProvider
       - Ammo
-      - Hypospray
       - Injector
       - Pill
       - HandLabeler
@@ -266,7 +265,6 @@
       - DiscreteHealthAnalyzer
       - SecBeltEquip # ради жгута
       components:
-      - Hypospray
       - Injector
       - Pill
 
@@ -292,9 +290,6 @@
       - Truncheon
       - Grenade
       - GrenadeFlashBang
-      - SpeedLoaderRifle
-      - SpeedLoaderPistol
-      - SpeedLoaderMagnum
       - Shiv
       - Cartridge
       - Pen

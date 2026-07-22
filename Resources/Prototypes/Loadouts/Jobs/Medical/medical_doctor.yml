@@ -7,6 +7,17 @@
   equipment:
     head: ClothingHeadHatBeretSeniorPhysician
 
+# Other Timers
+
+- type: loadoutEffectGroup
+  id: MedicalHeadMirrorTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobMedicalDoctor
+      time: 30h
+
 - type: loadout
   id: MedicalHeadMirror
   effects:

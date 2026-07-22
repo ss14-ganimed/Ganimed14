@@ -897,7 +897,7 @@
     - state: icon-diagnosis
   - type: ItemBorgModule
     hands:
-    - item: HandheldHealthAnalyzerUnpowered
+    - item: HandheldHealthAnalyzer
     - item: ClothingNeckStethoscope
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: diagnosis-module }

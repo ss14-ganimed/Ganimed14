@@ -8,7 +8,7 @@
   - !type:DepartmentTimeRequirement
     department: Command
     time: 90000 # 25 hrs Ganimed-RoleTime
-  startingGear: CentcomGear
+  startingGear: CentcommGear
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-centcom # Corvax-JobSupervisors
   canBeAntag: false

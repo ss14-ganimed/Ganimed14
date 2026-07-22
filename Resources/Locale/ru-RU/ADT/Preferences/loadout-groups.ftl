@@ -105,6 +105,7 @@ loadout-corrections-officer-head-adt = Головной убор надзира�
 loadout-corrections-officer-jumpsuit-adt = Комбинезон надзирателя
 loadout-corrections-officer-outerclothing-adt = Верхняя одежда надзирателя
 loadout-group-detective-id-adt = ID детектива
+loadout-security-officer-glasses-adt = Офицер СБ, очки
 loadout-security-officer-neck-adt = Шея офицера СБ
 loadout-security-cadet-neck-adt = Шея кадета СБ
 
