@@ -68,6 +68,7 @@ namespace Content.Client.Lobby.UI
 
         private readonly SpriteSystem _sprite;
         private readonly AntagRollBonusSystem _antagRollBonus; // ADT Antag roll bonus
+        private SponsorsManager _sponsorsManager = default!; // Ganimed sponsor
 
         // CCvar.
         private int _maxNameLength;

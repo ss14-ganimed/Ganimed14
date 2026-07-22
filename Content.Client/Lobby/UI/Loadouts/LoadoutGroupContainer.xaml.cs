@@ -81,6 +81,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         LoadoutsContainer.RemoveAllChildren();
 
         // Get all loadout prototypes for this group.
+        var groupLoadouts = loadout.SelectedLoadouts.GetValueOrDefault(_groupProto, new());
         var validProtos = groupLoadouts
             .Where(id => protoMan.TryIndex<LoadoutPrototype>(id, out _))
             .Select(id => protoMan.Index(id))
