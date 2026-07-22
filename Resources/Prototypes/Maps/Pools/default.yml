@@ -29,12 +29,12 @@
   - ADT_Pump
 # Lowpop 20 - 35
   - ADT_Bagel
-  - ENTCivilStation # Ganimed-Add
+#  - ENTCivilStation # Ganimed-Add
   - ADT_Saltern
   - ADT_Aspid
   - ADT_Cluster
 # Micropop 0 - 20
-  - ENTFearohStation # Ganimed-Add
+#  - ENTFearohStation # Ganimed-Add
   - ADT_Reach
   - ADT_Silly
 
