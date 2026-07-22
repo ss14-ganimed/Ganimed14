@@ -10597,7 +10597,6 @@ entities:
     - type: Action
       originalIconColor: '#FFFFFFFF'
       container: 5
-      attachedEntity: invalid
 - proto: ActionToggleLight
   entities:
   - uid: 10391
@@ -18773,8 +18772,6 @@ entities:
       pos: -8.5,16.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 21729
 - proto: AirSensorAssembly
@@ -71583,8 +71580,6 @@ entities:
       pos: -5.5,15.5
       parent: 2
     - type: Strap
-      buckledEntities:
-      - invalid
     - type: HealOnBuckle
       sleepAction: 6
     - type: HealOnBuckleHealing
@@ -74952,8 +74947,6 @@ entities:
       pos: 19.5,-13.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 389
       - 388
@@ -74965,8 +74958,6 @@ entities:
       pos: 20.5,-13.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 389
       - 388
@@ -76777,8 +76768,6 @@ entities:
       pos: -47.5,-77.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 456
       - 455
@@ -76791,8 +76780,6 @@ entities:
       pos: -47.5,-78.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 456
       - 455
@@ -76805,8 +76792,6 @@ entities:
       pos: -47.5,-79.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 456
       - 455
@@ -77024,8 +77009,6 @@ entities:
       pos: 27.5,-30.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 8687
       - 464
@@ -77038,8 +77021,6 @@ entities:
       pos: 26.5,-30.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 8687
       - 464
@@ -77052,8 +77033,6 @@ entities:
       pos: 25.5,-30.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 8687
       - 464
@@ -77183,8 +77162,6 @@ entities:
       pos: -5.5,17.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 21729
   - uid: 21728
@@ -77193,8 +77170,6 @@ entities:
       pos: -8.5,14.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 21729
   - uid: 21817
@@ -77203,8 +77178,6 @@ entities:
       pos: 43.5,25.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 15323
 - proto: Fireplace
@@ -98983,8 +98956,6 @@ entities:
       pos: -9.5,12.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 21729
     - type: AtmosPipeColor
@@ -98996,8 +98967,6 @@ entities:
       pos: -9.5,15.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 21729
     - type: AtmosPipeColor
@@ -99009,8 +98978,6 @@ entities:
       pos: 42.5,26.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 15323
     - type: AtmosPipeColor
@@ -100443,8 +100410,6 @@ entities:
       pos: -9.5,13.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 21729
     - type: AtmosPipeLayers
@@ -100458,8 +100423,6 @@ entities:
       pos: -9.5,16.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 21729
     - type: AtmosPipeLayers
@@ -100472,8 +100435,6 @@ entities:
       pos: 44.5,26.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 15323
     - type: AtmosPipeColor

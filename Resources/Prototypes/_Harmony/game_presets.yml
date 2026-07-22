@@ -10,6 +10,6 @@
   - Conspirators
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
- # - SpaceTrafficControlEventScheduler
+  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
   - CrewTransferScheduler # ADT tweak
