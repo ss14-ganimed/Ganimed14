@@ -14,22 +14,6 @@
     - MeteorSwarmScheduler
     - CrewTransferScheduler
 
-- type: gamePreset
-  id: Changeling
-  alias:
-    - changeling
-  name: changelings-title
-  minPlayers: 15 # Ganimed-Tweak
-  showInVote: false
-  description: changelings-description
-  rules:
-    - Changeling
-    - BasicRoundstartVariation
-    - SubGamemodesRule
-    - BasicStationEventScheduler
-    - MeteorSwarmScheduler
-    - CrewTransferScheduler
-
 #Облегченная версия предателей
 
 - type: gamePreset
