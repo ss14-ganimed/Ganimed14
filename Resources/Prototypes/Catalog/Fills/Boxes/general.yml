@@ -46,7 +46,6 @@
   - type: PhysicalComposition # Half of the "regular" cardboard box
     materialComposition:
       Cardboard: 50
->>>>>>> upstream/master
   - type: Sprite
     state: box
   - type: Tag
