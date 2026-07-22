@@ -24,6 +24,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
     private readonly LoadoutGroupPrototype _groupProto;
     private readonly SponsorsManager _sponsorsManager; // Ganimed sponsor
+    private readonly List<Loadout> _groupLoadouts = new();
 
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutPressed;
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutUnpressed;
@@ -35,6 +36,8 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         _groupProto = groupProto;
 
         _sponsorsManager = collection.Resolve<SponsorsManager>(); // Ganimed sponsor
+
+        loadout.SelectedLoadouts.TryGetValue(groupProto, out _groupLoadouts);
 
         RefreshLoadouts(profile, loadout, session, collection, isSponsor);
     }
