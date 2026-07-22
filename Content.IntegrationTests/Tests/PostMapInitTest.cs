@@ -376,75 +376,80 @@ namespace Content.IntegrationTests.Tests
                     throw new Exception($"Failed to load map {mapProto}", ex);
                 }
 
-                    mapSystem.CreateMap(out var shuttleMap);
-                    var largest = 0f;
-                    EntityUid? targetGrid = null;
-                    var memberQuery = entManager.GetEntityQuery<StationMemberComponent>();
+                mapSystem.CreateMap(out var shuttleMap);
+                var largest = 0f;
+                EntityUid? targetGrid = null;
+                var memberQuery = entManager.GetEntityQuery<StationMemberComponent>();
 
-                    var grids = mapManager.GetAllGrids(mapId).ToList();
-                    var gridUids = grids.Select(o => o.Owner).ToList();
-                    targetGrid = gridUids.First();
+                var grids = mapManager.GetAllGrids(mapId).ToList();
+                var gridUids = grids.Select(o => o.Owner).ToList();
+                targetGrid = gridUids.First();
 
-                    foreach (var grid in grids)
+                foreach (var grid in grids)
+                {
+                    var gridEnt = grid.Owner;
+                    if (!memberQuery.HasComponent(gridEnt))
+                        continue;
+
+                    var area = grid.Comp.LocalAABB.Width * grid.Comp.LocalAABB.Height;
+
+                    if (area > largest)
                     {
-                        var gridEnt = grid.Owner;
-                        if (!memberQuery.HasComponent(gridEnt))
-                            continue;
+                        largest = area;
+                        targetGrid = gridEnt;
+                    }
+                }
 
-                        var area = grid.Comp.LocalAABB.Width * grid.Comp.LocalAABB.Height;
+                // Test shuttle can dock.
+                // This is done inside gamemap test because loading the map takes ages and we already have it.
+                var station = entManager.GetComponent<StationMemberComponent>(targetGrid!.Value).Station;
+                if (entManager.TryGetComponent<StationEmergencyShuttleComponent>(station, out var stationEvac))
+                {
+                    var shuttlePath = stationEvac.EmergencyShuttlePath;
+                    Assert.That(mapLoader.TryLoadGrid(shuttleMap, shuttlePath, out var shuttle),
+                        $"Failed to load {shuttlePath}");
 
-                        if (area > largest)
-                        {
-                            largest = area;
-                            targetGrid = gridEnt;
-                        }
+                    Assert.That(
+                        shuttleSystem.TryFTLDock(shuttle!.Value.Owner,
+                            entManager.GetComponent<ShuttleComponent>(shuttle!.Value.Owner),
+                            targetGrid.Value),
+                        $"Unable to dock {shuttlePath} to {mapProto}");
+                }
+
+                mapSystem.DeleteMap(shuttleMap);
+
+                if (entManager.HasComponent<StationJobsComponent>(station))
+                {
+                    // Test that the map has valid latejoin spawn points or container spawn points
+                    if (!NoSpawnMaps.Contains(mapProto))
+                    {
+                        var lateSpawns = 0;
+
+                        lateSpawns += GetCountLateSpawn<SpawnPointComponent>(gridUids, entManager);
+                        lateSpawns += GetCountLateSpawn<ContainerSpawnPointComponent>(gridUids, entManager);
+
+                        Assert.That(lateSpawns, Is.GreaterThan(0), $"Found no latejoin spawn points on {mapProto}");
                     }
 
-                    // Test shuttle can dock.
-                    var station = entManager.GetComponent<StationMemberComponent>(targetGrid!.Value).Station;
-                    if (entManager.TryGetComponent<StationEmergencyShuttleComponent>(station, out var stationEvac))
-                    {
-                        var shuttlePath = stationEvac.EmergencyShuttlePath;
-                        Assert.That(mapLoader.TryLoadGrid(shuttleMap, shuttlePath, out var shuttle),
-                            $"Failed to load {shuttlePath}");
+                    // Test all availableJobs have spawnPoints
+                    // This is done inside gamemap test because loading the map takes ages and we already have it.
+                    var comp = entManager.GetComponent<StationJobsComponent>(station);
+                    var jobs = new HashSet<ProtoId<JobPrototype>>(comp.SetupAvailableJobs.Keys);
 
-                        Assert.That(
-                            shuttleSystem.TryFTLDock(shuttle!.Value.Owner,
-                                entManager.GetComponent<ShuttleComponent>(shuttle!.Value.Owner),
-                                targetGrid.Value),
-                            $"Unable to dock {shuttlePath} to {mapProto}");
-                    }
+                    var spawnPoints = entManager.EntityQuery<SpawnPointComponent>()
+                        .Where(x => x.SpawnType == SpawnPointType.Job && x.Job != null)
+                        .Select(x => x.Job.Value);
 
-                    mapSystem.DeleteMap(shuttleMap);
+                    jobs.ExceptWith(spawnPoints);
 
-                    if (entManager.HasComponent<StationJobsComponent>(station))
-                    {
-                        if (!NoSpawnMaps.Contains(mapProto))
-                        {
-                            var lateSpawns = 0;
-                            lateSpawns += GetCountLateSpawn<SpawnPointComponent>(gridUids, entManager);
-                            lateSpawns += GetCountLateSpawn<ContainerSpawnPointComponent>(gridUids, entManager);
+                    spawnPoints = entManager.EntityQuery<ContainerSpawnPointComponent>()
+                        .Where(x => x.SpawnType is SpawnPointType.Job or SpawnPointType.Unset && x.Job != null)
+                        .Select(x => x.Job.Value);
 
-                            Assert.That(lateSpawns, Is.GreaterThan(0), $"Found no latejoin spawn points on {mapProto}");
-                        }
+                    jobs.ExceptWith(spawnPoints);
 
-                        var comp = entManager.GetComponent<StationJobsComponent>(station);
-                        var jobs = new HashSet<ProtoId<JobPrototype>>(comp.SetupAvailableJobs.Keys);
-
-                        var spawnPoints = entManager.EntityQuery<SpawnPointComponent>()
-                            .Where(x => x.SpawnType == SpawnPointType.Job && x.Job != null)
-                            .Select(x => x.Job.Value);
-
-                        jobs.ExceptWith(spawnPoints);
-
-                        spawnPoints = entManager.EntityQuery<ContainerSpawnPointComponent>()
-                            .Where(x => x.SpawnType is SpawnPointType.Job or SpawnPointType.Unset && x.Job != null)
-                            .Select(x => x.Job.Value);
-
-                        jobs.ExceptWith(spawnPoints);
-
-                        Assert.That(jobs, Is.Empty, $"There is no spawnpoints for {string.Join(", ", jobs)} on {mapProto}.");
-                    }
+                    Assert.That(jobs, Is.Empty, $"There is no spawnpoints for {string.Join(", ", jobs)} on {mapProto}.");
+                }
 
                 try
                 {
@@ -454,9 +459,6 @@ namespace Content.IntegrationTests.Tests
                 {
                     throw new Exception($"Failed to delete map {mapProto}", ex);
                 }
-
-                GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, blocking: true);
-                GC.WaitForPendingFinalizers();
             });
         }
 
@@ -551,9 +553,6 @@ namespace Content.IntegrationTests.Tests
                     {
                         throw new Exception($"Failed to delete map {mapPath}", ex);
                     }
-
-                    GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, blocking: true);
-                    GC.WaitForPendingFinalizers();
                 });
             });
         }
