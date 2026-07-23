@@ -812,43 +812,6 @@ HonkerChassis: null
 HamtrChassis: null
 VimChassis: null
 
-# 2025-07-17 Corvax
-DrinkDaiquiriGlass: DrinkDaiquiri
-DrinkEspressoMartiniGlass: DrinkEspressoMartini
-DrinkMoscowMuleGlass: DrinkMoscowMule
-
-# ADT 2025-08.10
-AltarSpawner: AltarConvert
-ConvertAltarSpawner: AltarConvert
-
-#ADT 2025-08-25
-# BookSpaceLaw: ADTBookSpaceLaw # Ganimed-Remove
-
-# ADT 2025-08-27
-ADTIndustrialSMES: SMESAdvanced
-SpawnPointADTSecborg: null # На всякий случай лол
-
-#ADT 2025-10-31 ХЭППИ ХЕЛЛАВИН
-ADTClothingHeadHatsGuardOfficer: ADTClothingHeadHatsCorrectionsOfficerCap
-ADTClothingUniformGuardOfficer: ADTClothingUniformCorrectionsOfficer
-
-# ADT 2025-11-08
-# ChemDispenser: EnergyChemDispenser # Ganimed-Remove
-# ChemDispenserEmpty: EnergyChemDispenser # Ganimed-Remove
-
-# Ganimed 2025-06-14
-ADTPoweredShuttleLight: AlwaysPoweredWallLight
-ADTPoweredShuttleLightLED: AlwaysPoweredWallLight
-ADTPoweredShuttleLightRed: AlwaysPoweredWallLight
-ADTPoweredShuttleLightOrange: AlwaysPoweredWallLight
-ADTPoweredShuttleLightSodium: AlwaysPoweredWallLight
-
-# Ganimed 2025-07-10
-GhostBarSpawner: null
-
-# Ganimed 2025-11-03
-ADTDrinkBeerCanPack: null
-
 # 2025-08-01
 FoodDonutJellySlugcat: FoodDonutJellyScurret
 
@@ -878,10 +841,6 @@ ToySkeleton: ToyFigurineSkeleton
 # 2025-10-28
 DrinkKiraSpecial: DrinkOrangeLimeSodaGlass
 
-# Ganimed 2026-01-04
-ADTClothingNeckShockCollar: ClothingBackpackElectropack
-
-
 # 2025-11-08
 DebugSMES: SMESBasicEmpty
 DebugSubstation: SubstationBasicEmpty
@@ -894,6 +853,19 @@ SpeedLoaderPistolPractice: null
 
 # 2025-12-05
 GlowstickBase: GlowstickGreen
+
+# Ganimed 2025-06-14
+ADTPoweredShuttleLight: AlwaysPoweredWallLight
+ADTPoweredShuttleLightLED: AlwaysPoweredWallLight
+ADTPoweredShuttleLightRed: AlwaysPoweredWallLight
+ADTPoweredShuttleLightOrange: AlwaysPoweredWallLight
+ADTPoweredShuttleLightSodium: AlwaysPoweredWallLight
+
+# Ganimed 2025-07-10
+GhostBarSpawner: null
+
+# Ganimed 2025-11-03
+ADTDrinkBeerCanPack: null
 
 # 2025-12-06
 SpawnPointZookeeper: null
@@ -924,6 +896,9 @@ RightHandSkeleton: OrganSkeletonPersonHandRight
 RightLegHuman: OrganHumanLegRight
 TorsoSkeleton: OrganSkeletonPersonTorso
 RightArmSkeleton: OrganSkeletonPersonArmRight
+
+# Ganimed 2026-01-04
+ADTClothingNeckShockCollar: ClothingBackpackElectropack
 
 # 2026-01-19
 TowelColorPurple: null
@@ -1015,12 +990,19 @@ Bloodpack: ADTBloodPackTransfusionFull
 # SodaDispenserEmpty: ADTEnergySodaDispenser
 
 # Ganimed 2026-01-24 (No roundstart energy dispensers)
-EnergyChemDispenser: ChemDispenser
-EnergyChemDispenserMachineCircuitboard: ChemDispenserMachineCircuitboard
-ADTEnergyBoozeDispenserMachineCircuitboard: BoozeDispenserMachineCircuitboard
-ADTEnergyBoozeDispenser: BoozeDispenser
-ADTEnergySodaDispenserMachineCircuitboard: SodaDispenserMachineCircuitboard
-ADTEnergySodaDispenser: SodaDispenser
+#EnergyChemDispenser: ChemDispenser
+#EnergyChemDispenserMachineCircuitboard: ChemDispenserMachineCircuitboard
+#ADTEnergyBoozeDispenserMachineCircuitboard: BoozeDispenserMachineCircuitboard
+#ADTEnergyBoozeDispenser: BoozeDispenser
+#ADTEnergySodaDispenserMachineCircuitboard: SodaDispenserMachineCircuitboard
+#ADTEnergySodaDispenser: SodaDispenser
+
+# Ganimed 2025-06-14
+ADTPoweredShuttleLight: AlwaysPoweredWallLight
+ADTPoweredShuttleLightLED: AlwaysPoweredWallLight
+ADTPoweredShuttleLightRed: AlwaysPoweredWallLight
+ADTPoweredShuttleLightOrange: AlwaysPoweredWallLight
+ADTPoweredShuttleLightSodium: AlwaysPoweredWallLight
 
 # Ganimed 2026-03-13
 MobArtificialHuman: MobMonkey
