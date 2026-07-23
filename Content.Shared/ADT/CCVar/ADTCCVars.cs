@@ -325,12 +325,6 @@ public sealed class ADTCCVars
     */
 
     /// <summary>
-    /// Whether ghostbar is enabled.
-    /// </summary>
-    public static readonly CVarDef<bool> GhostbarEnabled =
-        CVarDef.Create("ghostbar.enabled", true, CVar.SERVERONLY);
-
-    /// <summary>
     /// Whether planet spawning is enabled.
     /// </summary>
     public static readonly CVarDef<bool> PlanetSpawnerEnabled =
