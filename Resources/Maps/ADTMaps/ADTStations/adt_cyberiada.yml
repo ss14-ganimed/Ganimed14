@@ -17499,7 +17499,7 @@ entities:
       parent: 2
     - type: Fixtures
       fixtures: {}
-- proto: ADTPoweredShuttleLight
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 11592
     components:
@@ -17537,7 +17537,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 33.5,45.5
       parent: 2
-- proto: ADTPoweredShuttleLightRed
+- proto: м
   entities:
   - uid: 30943
     components:

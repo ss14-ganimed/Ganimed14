@@ -30850,7 +30850,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: -0.5,41.5
       parent: 2
-- proto: ADTPoweredShuttleLight
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 27821
     components:

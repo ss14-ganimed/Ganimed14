@@ -9165,7 +9165,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -60.5,35.5
       parent: 2
-- proto: ADTPoweredShuttleLight
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 1615
     components:
@@ -9386,7 +9386,7 @@ entities:
     - type: Transform
       pos: 13.5,64.5
       parent: 2
-- proto: ADTPoweredShuttleLightBlue
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 3228
     components:
@@ -9456,14 +9456,14 @@ entities:
     - type: Transform
       pos: -90.5,41.5
       parent: 2
-- proto: ADTPoweredShuttleLightOrange
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 8588
     components:
     - type: Transform
       pos: -30.5,93.5
       parent: 2
-- proto: ADTPoweredShuttleLightRed
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 6322
     components:
@@ -9471,7 +9471,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: -30.5,42.5
       parent: 2
-- proto: ADTPoweredShuttleLightSodium
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 8751
     components:

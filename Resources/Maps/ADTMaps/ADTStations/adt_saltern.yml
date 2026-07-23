@@ -6862,7 +6862,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: -30.5,16.5
       parent: 2
-- proto: ADTPoweredShuttleLight
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 12344
     components:
@@ -6876,7 +6876,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -17.5,-38.5
       parent: 2
-- proto: ADTPoweredShuttleLightSodium
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 190
     components:

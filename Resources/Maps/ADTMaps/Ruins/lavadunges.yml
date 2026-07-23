@@ -17413,7 +17413,7 @@ entities:
     - type: Transform
       pos: 158.5,-11.5
       parent: 1
-- proto: ADTPoweredShuttleLightCyan
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 6393
     components:
