@@ -592,7 +592,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-- proto: ADTPoweredShuttleLightSodium
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 485
     components:

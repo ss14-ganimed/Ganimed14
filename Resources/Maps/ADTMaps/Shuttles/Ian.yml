@@ -876,7 +876,7 @@ entities:
     - type: Transform
       pos: 23.5,27.5
       parent: 2
-- proto: ADTPoweredShuttleLightSodium
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 24
     components:
