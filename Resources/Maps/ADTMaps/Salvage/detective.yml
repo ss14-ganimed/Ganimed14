@@ -96,7 +96,7 @@ entities:
     - type: Transform
       pos: -0.4474821,-4.596323
       parent: 1
-- proto: WeaponRevolverInspector
+- proto: ADTWeaponRevolverLesserUnica
   entities:
   - uid: 6
     components:

@@ -275,7 +275,7 @@ entities:
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: SupermatterSpreaderGrid
-- proto: AlwaysPoweredWallLight
+- proto: ADTPoweredShuttleLight
   entities:
   - uid: 40
     components:
