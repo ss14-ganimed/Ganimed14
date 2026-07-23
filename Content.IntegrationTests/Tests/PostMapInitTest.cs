@@ -487,11 +487,9 @@ namespace Content.IntegrationTests.Tests
         }
 
         [Test]
-        [Ignore("Временное решение")] // ADT-тестовое временное решение
-        /*
-        [TestCaseSource(nameof(AllMapFiles))]ыв
+        [TestCaseSource(nameof(AllMapFiles))]
         [EnsureCVar(Side.Server, typeof(CCVars), nameof(CCVars.GridFill), false)]
-        */
+        [Ignore("Временное решение")] // ADT-тестовое временное решение
         public async Task NonGameMapsLoadableTest(ResPath mapPath)
         {
             var pair = Pair;
