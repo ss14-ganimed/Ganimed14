@@ -60,7 +60,9 @@ namespace Content.IntegrationTests.Tests
             "ADT_Bagel",
             "ADT_Gemini",
             "ADT_Box",
-            "ADT_Kerberos"
+            "ADT_Kerberos",
+            "ENTCivilStation", // Ganimed tweak
+            "ENTFearohStation" // Ganimed tweak
         };
         // ADT-Tweak end
 
