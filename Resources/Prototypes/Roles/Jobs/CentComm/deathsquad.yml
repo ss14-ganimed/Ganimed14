@@ -29,7 +29,7 @@
     eyes: ClothingEyesHudSecurity
     ears: ClothingHeadsetAltCentCom
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitDeathsquad
+    # outerClothing: ClothingOuterHardsuitDeathsquad #ADT tweak: выбор скаф/МОД через ваучер
     shoes: ADTClothingShoesBootsMagERT #ADT tweak
     id: DeathsquadPDA
     pocket1: EnergySword
@@ -37,6 +37,7 @@
     belt: ClothingBeltMilitaryWebbingMedFilled
   storage:
     back:
+    - ADTDeathSquadVoucher #ADT tweak: выбор скаф/МОД
     - WeaponPulsePistol
     - WeaponRevolverMatebaAP
     - SpeedLoaderMagnumAP

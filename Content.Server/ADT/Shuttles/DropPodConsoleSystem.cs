@@ -199,9 +199,7 @@ public sealed class DropPodConsoleSystem : EntitySystem
                     var tileRef = _mapSystem.GetTileRef(stationGridCov, stationCompCov, targetXform.Coordinates);
                     if (coveredStationTiles.Contains(tileRef.GridIndices))
                     {
-                        // Mark for suppressed scrap - entity still destroyed via damage, but no scrap spawns
-                        EnsureComp<DroppodSuppressedComponent>(target);
-                        _damageable.TryChangeDamage(target, structuralDamage, ignoreResistances: true);
+                        QueueDel(target);
                         continue;
                     }
                 }
@@ -346,7 +344,7 @@ public sealed class DropPodConsoleSystem : EntitySystem
         var elapsed = _timing.CurTime - comp.LastLaunchTime;
         var cooldownReady = onDropPod && !alreadyLaunched && elapsed >= comp.Cooldown;
 
-        var isAtWar = false;
+        var isAtWar = comp.WarDeclaredTime != null;
         var warCooldownRemaining = 0;
         var warNukieArriveDelay = TimeSpan.Zero;
 
@@ -359,14 +357,13 @@ public sealed class DropPodConsoleSystem : EntitySystem
                 warNukieArriveDelay = nukeops.WarNukieArriveDelay;
                 if (warTime < nukeops.WarNukieArriveDelay)
                 {
-                    isAtWar = true;
                     warCooldownRemaining = (int)Math.Ceiling((nukeops.WarNukieArriveDelay - warTime).TotalSeconds);
                 }
                 break;
             }
         }
 
-        comp.WarDeclaredTime = isAtWar ? _timing.CurTime : comp.WarDeclaredTime;
+        comp.WarDeclaredTime = comp.WarDeclaredTime ?? _timing.CurTime;
 
         var tcCount = GetTcInSlot(uid);
         var currentCost = isAtWar ? comp.WarCost : comp.PeaceCost;
@@ -536,6 +533,11 @@ public sealed class DropPodConsoleSystem : EntitySystem
             announcement,
             sender: Loc.GetString("drop-pod-console-sender"),
             colorOverride: Color.Red);
+
+        if (comp.LaunchAnnouncementSound != null)
+        {
+            _audio.PlayGlobal(comp.LaunchAnnouncementSound, Filter.Broadcast(), true);
+        }
 
         if (TryComp<ItemSlotsComponent>(uid, out var slots))
         {
