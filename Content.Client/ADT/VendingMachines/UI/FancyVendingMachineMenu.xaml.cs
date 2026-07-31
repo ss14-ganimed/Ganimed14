@@ -31,6 +31,8 @@ public sealed partial class FancyVendingMachineMenu : FancyWindow
 
     public event Action<VendingMachineInventoryEntry>? OnItemSelected;
     public Action? OnWithdraw;
+    // Ganimed-Edit: AI synthetic bypass (issue #208)
+    public Action? OnSyntheticBypass;
 
     private double _priceMultiplier = 1;
 
@@ -53,6 +55,27 @@ public sealed partial class FancyVendingMachineMenu : FancyWindow
 
         SearchBar.OnTextChanged += _ => PopulateList();
         WithdrawButton.OnPressed += _ => OnWithdraw?.Invoke();
+        // Ganimed-Edit: AI synthetic bypass (issue #208)
+        SyntheticBypassButton.OnPressed += _ => OnSyntheticBypass?.Invoke();
+    }
+
+    // Ganimed-Edit: AI synthetic bypass (issue #208)
+    public bool SyntheticBypassVisible
+    {
+        set => SyntheticBypassButton.Visible = value;
+    }
+
+    /// <summary>
+    /// Updates the synthetic bypass button. <paramref name="cooldownRemaining"/> is in seconds.
+    /// </summary>
+    public void UpdateSyntheticBypass(bool armed, int cooldownRemaining)
+    {
+        SyntheticBypassButton.Disabled = armed || cooldownRemaining > 0;
+        SyntheticBypassButton.Text = Loc.GetString(armed
+            ? "vending-machine-synthetic-bypass-armed"
+            : cooldownRemaining > 0
+                ? "vending-machine-synthetic-bypass-cooldown"
+                : "vending-machine-synthetic-bypass", ("time", cooldownRemaining));
     }
 
     /// <summary>

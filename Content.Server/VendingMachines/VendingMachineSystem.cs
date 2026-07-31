@@ -23,6 +23,7 @@ using Content.Shared.Interaction;
 using Content.Shared.PDA;
 using Content.Shared.Popups;
 using Content.Shared.Power;
+using Content.Shared.Silicons.StationAi; // Ganimed-Edit: AI synthetic bypass (issue #208)
 using Content.Shared.Stacks;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
@@ -86,6 +87,12 @@ namespace Content.Server.VendingMachines
             SubscribeLocalEvent<VendingMachineComponent, VendingMachineWithdrawMessage>(OnWithdrawMessage);
             //ADT-Economy-End
 
+            // Ganimed-Edit: AI synthetic bypass (issue #208)
+            Subs.BuiEvents<VendingMachineComponent>(VendingMachineUiKey.Key, subs =>
+            {
+                subs.Event<VendingMachineSyntheticBypassMessage>(OnSyntheticBypass);
+            });
+
             SubscribeLocalEvent<VendingMachineRestockComponent, PriceCalculationEvent>(OnPriceCalculation);
         }
 
@@ -126,9 +133,35 @@ namespace Content.Server.VendingMachines
         private void UpdateVendingMachineInterfaceState(EntityUid uid, VendingMachineComponent component)
         {
             var state = new VendingMachineInterfaceState(GetAllInventory(uid, component), component.PriceMultiplier,
-                component.Credits); //ADT-Economy
+                component.Credits,
+                // Ganimed-Edit: AI synthetic bypass (issue #208)
+                component.SyntheticBypassArmed,
+                (int) Math.Max(0, Math.Ceiling((component.NextSyntheticBypassTime - _timing.CurTime).TotalSeconds))); //ADT-Economy
 
             _userInterfaceSystem.SetUiState(uid, VendingMachineUiKey.Key, state);
+        }
+
+        // Ganimed-Edit: AI synthetic bypass (issue #208)
+        private void OnSyntheticBypass(EntityUid uid, VendingMachineComponent component, VendingMachineSyntheticBypassMessage args)
+        {
+            if (!this.IsPowered(uid, EntityManager))
+                return;
+
+            if (!HasComp<StationAiHeldComponent>(args.Actor))
+                return;
+
+            if (_timing.CurTime < component.NextSyntheticBypassTime)
+            {
+                var remaining = (int)Math.Ceiling((component.NextSyntheticBypassTime - _timing.CurTime).TotalSeconds);
+                Popup.PopupEntity(Loc.GetString("vending-machine-synthetic-bypass-cooldown-popup", ("time", remaining)), uid, args.Actor);
+                return;
+            }
+
+            component.SyntheticBypassArmed = true;
+            component.NextSyntheticBypassTime = _timing.CurTime + TimeSpan.FromSeconds(VendingMachineComponent.SyntheticBypassCooldown);
+            UpdateVendingMachineInterfaceState(uid, component);
+            Audio.PlayPvs(component.SoundInsertCurrency, uid);
+            Popup.PopupEntity(Loc.GetString("vending-machine-synthetic-bypass-armed-popup"), uid, args.Actor);
         }
 
         private void OnInventoryEjectMessage(EntityUid uid, VendingMachineComponent component, VendingMachineEjectMessage args)
@@ -362,8 +395,11 @@ namespace Content.Server.VendingMachines
                 return;
 
             //ADT-Economy-Start
+            // Ganimed-Edit: AI synthetic bypass (issue #208)
+            var syntheticBypass = vendComponent.SyntheticBypassArmed && sender.HasValue && HasComp<StationAiHeldComponent>(sender.Value);
+
             var price = GetPrice(entry, vendComponent, count);
-            if (price > 0 && !vendComponent.AllForFree && sender.HasValue && !_tag.HasTag(sender.Value, "IgnoreBalanceChecks"))
+            if (price > 0 && !vendComponent.AllForFree && sender.HasValue && !_tag.HasTag(sender.Value, "IgnoreBalanceChecks") && !syntheticBypass)
             {
                 var success = false;
                 if (vendComponent.Credits >= price)
@@ -398,6 +434,14 @@ namespace Content.Server.VendingMachines
                     return;
                 }
             }
+
+            // Ganimed-Edit: AI synthetic bypass (issue #208)
+            if (syntheticBypass)
+            {
+                vendComponent.SyntheticBypassArmed = false;
+                UpdateVendingMachineInterfaceState(uid, vendComponent);
+            }
+
             vendComponent.NextItemCount = count;
             //ADT-Economy-End
 
@@ -596,6 +640,15 @@ namespace Content.Server.VendingMachines
                         comp.DispenseOnHitAccumulator = 0f;
                         comp.DispenseOnHitCoolingDown = false;
                     }
+                }
+
+                // Ganimed-Edit: tick the synthetic bypass cooldown down in the UI (issue #208)
+                if (comp.NextSyntheticBypassUiRefresh < _timing.CurTime &&
+                    TryComp<UserInterfaceComponent>(uid, out var ui) &&
+                    _userInterfaceSystem.IsUiOpen((uid, ui), VendingMachineUiKey.Key))
+                {
+                    comp.NextSyntheticBypassUiRefresh = _timing.CurTime + TimeSpan.FromSeconds(1);
+                    UpdateVendingMachineInterfaceState(uid, comp);
                 }
             }
             var disabled = EntityQueryEnumerator<EmpDisabledComponent, VendingMachineComponent>();

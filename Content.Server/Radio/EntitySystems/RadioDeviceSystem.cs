@@ -35,6 +35,9 @@ public sealed class RadioDeviceSystem : SharedRadioDeviceSystem
     // Used to prevent a shitter from using a bunch of radios to spam chat.
     private HashSet<(string, EntityUid, RadioChannelPrototype)> _recentlySent = new();
 
+    // Ganimed-Edit: channel supported by every intercom (issue #208)
+    private static readonly ProtoId<RadioChannelPrototype> _aiPrivateChannel = "AiPrivate";
+
     public override void Initialize()
     {
         base.Initialize();
@@ -206,6 +209,10 @@ public sealed class RadioDeviceSystem : SharedRadioDeviceSystem
     private void OnIntercomEncryptionChannelsChanged(Entity<IntercomComponent> ent, ref EncryptionChannelsChangedEvent args)
     {
         ent.Comp.SupportedChannels = args.Component.Channels.Select(p => new ProtoId<RadioChannelPrototype>(p)).ToList();
+
+        // Ganimed-Edit: intercoms always support the AI private channel (issue #208)
+        if (!ent.Comp.SupportedChannels.Contains(_aiPrivateChannel))
+            ent.Comp.SupportedChannels.Add(_aiPrivateChannel);
 
         var channel = args.Component.DefaultChannel;
         if (ent.Comp.CurrentChannel != null && ent.Comp.SupportedChannels.Contains(ent.Comp.CurrentChannel.Value))

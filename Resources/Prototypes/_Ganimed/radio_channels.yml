@@ -1,0 +1,10 @@
+# SPDX-FileCopyrightText: 2026 ultradyper <ultradyper@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: radioChannel
+  id: AiPrivate
+  name: chat-radio-ai-private
+  keycode: 'л'
+  frequency: 1499
+  color: "#66ccff"

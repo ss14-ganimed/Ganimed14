@@ -10,18 +10,29 @@ namespace Content.Shared.VendingMachines
         public double PriceMultiplier;
         public int Credits;
         //ADT-Economy-End
-        public VendingMachineInterfaceState(List<VendingMachineInventoryEntry> inventory, double priceMultiplier, int credits) //ADT-Economy
+        // Ganimed-Edit: AI synthetic bypass (issue #208)
+        public bool SyntheticBypassArmed;
+        public int SyntheticBypassCooldownRemaining;
+        public VendingMachineInterfaceState(List<VendingMachineInventoryEntry> inventory, double priceMultiplier, int credits, bool syntheticBypassArmed = false, int syntheticBypassCooldownRemaining = 0) //ADT-Economy
         {
             Inventory = inventory;
             //ADT-Economy-Start
             PriceMultiplier = priceMultiplier;
             Credits = credits;
             //ADT-Economy-End
+            SyntheticBypassArmed = syntheticBypassArmed;
+            SyntheticBypassCooldownRemaining = syntheticBypassCooldownRemaining;
         }
     }
     //ADT-Economy-Start
     [Serializable, NetSerializable]
     public sealed class VendingMachineWithdrawMessage : BoundUserInterfaceMessage
+    {
+    }
+
+    // Ganimed-Edit: AI synthetic bypass (issue #208)
+    [Serializable, NetSerializable]
+    public sealed class VendingMachineSyntheticBypassMessage : BoundUserInterfaceMessage
     {
     }
 

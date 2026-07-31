@@ -129,6 +129,8 @@
     interfaces:
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
+      enum.AiUi.Key: # Ganimed-Edit: AI radial menu for turrets (issue #208)
+        type: StationAiBoundUserInterface
   - type: WiresPanel
   - type: WiresVisuals
   - type: Wires

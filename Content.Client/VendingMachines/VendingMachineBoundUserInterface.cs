@@ -1,7 +1,9 @@
 using Content.Client.ADT.VendingMachines.UI;
 using Content.Client.UserInterface.Controls;
 using Content.Client.VendingMachines.UI;
+using Content.Shared.Silicons.StationAi; // Ganimed-Edit: AI synthetic bypass (issue #208)
 using Content.Shared.VendingMachines;
+using Robust.Client.Player; // Ganimed-Edit: AI synthetic bypass (issue #208)
 using Robust.Client.UserInterface;
 using Robust.Shared.Input;
 using System.Linq;
@@ -34,6 +36,10 @@ namespace Content.Client.VendingMachines
             _menu.OnClose += Close;
             _menu.OnItemSelected += OnItemSelected;
             _menu.OnWithdraw += () => SendMessage(new VendingMachineWithdrawMessage());
+            // Ganimed-Edit: AI synthetic bypass (issue #208)
+            _menu.OnSyntheticBypass += () => SendMessage(new VendingMachineSyntheticBypassMessage());
+            _menu.SyntheticBypassVisible = IoCManager.Resolve<IPlayerManager>().LocalEntity is { } localPlayer &&
+                EntMan.HasComponent<StationAiHeldComponent>(localPlayer);
             _menu.Populate(Owner, _cachedInventory, component.PriceMultiplier, component.Credits);
             // ADT-tweak-end
 
@@ -71,6 +77,8 @@ namespace Content.Client.VendingMachines
             _cachedInventory = system.GetAllInventory(Owner);
 
             _menu?.Populate(Owner, _cachedInventory, newState.PriceMultiplier, newState.Credits); //ADT-Economy-Tweak
+            // Ganimed-Edit: AI synthetic bypass (issue #208)
+            _menu?.UpdateSyntheticBypass(newState.SyntheticBypassArmed, newState.SyntheticBypassCooldownRemaining);
         }
 
         private void OnItemSelected(VendingMachineInventoryEntry entry)

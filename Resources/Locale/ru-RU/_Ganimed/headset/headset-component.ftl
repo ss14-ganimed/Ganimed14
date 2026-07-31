@@ -4,3 +4,5 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 chat-radio-conspiracy = Заговор
+
+chat-radio-ai-private = ИИ приватный

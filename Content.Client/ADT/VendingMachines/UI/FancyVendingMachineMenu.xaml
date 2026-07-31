@@ -14,6 +14,12 @@
                 Text="{Loc 'store-ui-default-withdraw-text'}"
                 Margin ="4 4"
                 HorizontalAlignment="Right"/>
+            <Button
+                Name="SyntheticBypassButton"
+                Text="{Loc 'vending-machine-synthetic-bypass'}"
+                Margin ="4 4"
+                HorizontalAlignment="Right"
+                Visible="False"/> <!-- Ganimed-Edit: AI synthetic bypass (issue #208) -->
             <LineEdit Name="SearchBar" PlaceHolder="{Loc 'vending-machine-component-search-filter'}" HorizontalExpand="True" Margin ="4 4"/>
         </BoxContainer>
         <cc:HSeparator Margin="8 8 8 0" />

@@ -16,6 +16,7 @@
     - Security
     - Service
     - Supply
+    - AiPrivate # Ganimed-Edit: AI private channel (issue #208)
   - type: ActiveRadio
     channels:
     - Binary
@@ -27,6 +28,7 @@
     - Security
     - Service
     - Supply
+    - AiPrivate # Ganimed-Edit: AI private channel (issue #208)
   - type: IgnoreUIRange
   - type: StationAiHeld
   - type: RadioJobIconOverride # ADT-Tweak

@@ -217,6 +217,27 @@ namespace Content.Shared.VendingMachines
         [DataField, AutoNetworkedField]
         public Color UiButtonDisabledColor = Color.FromHex("#3f3f3fff");
 
+        // Ganimed-Edit: AI synthetic bypass (issue #208)
+        /// <summary>
+        /// The next AI vend is free of charge while this is true.
+        /// </summary>
+        public bool SyntheticBypassArmed;
+
+        /// <summary>
+        /// When the AI is allowed to use the synthetic bypass again.
+        /// </summary>
+        public TimeSpan NextSyntheticBypassTime = TimeSpan.Zero;
+
+        /// <summary>
+        /// When the UI state should be refreshed to tick down the bypass cooldown.
+        /// </summary>
+        public TimeSpan NextSyntheticBypassUiRefresh = TimeSpan.Zero;
+
+        /// <summary>
+        /// Cooldown of the synthetic bypass in seconds.
+        /// </summary>
+        public const float SyntheticBypassCooldown = 120f;
+
         //ADT-Economy-End
     }
 
