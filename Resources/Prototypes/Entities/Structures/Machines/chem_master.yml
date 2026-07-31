@@ -6,8 +6,6 @@
   placement:
     mode: SnapgridCenter
   components:
-  # Ganimed-Edit: allow station AI to use the ChemMaster (issue #208)
-  - type: StationAiWhitelist
   - type: Sprite
     sprite: Structures/Machines/mixer.rsi
     snapCardinals: true

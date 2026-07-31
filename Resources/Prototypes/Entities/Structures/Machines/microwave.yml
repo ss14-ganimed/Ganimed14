@@ -4,8 +4,6 @@
   name: microwave
   description: It's magic.
   components:
-  # Ganimed-Edit: allow station AI to use the microwave (issue #208)
-  - type: StationAiWhitelist
   - type: Microwave
     capacity: 10
   - type: Appearance

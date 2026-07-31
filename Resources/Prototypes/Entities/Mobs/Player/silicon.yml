@@ -33,13 +33,12 @@
     iconId: JobIconStationAi
   - type: StationAiOverlay
   - type: ShowElectrocutionHUD
-  # Ganimed-Edit: camera speed toggle action for the station AI eye (issue #208)
-  - type: StationAiEyeSpeed
+  - type: StationAiEyeSpeed # Ganimed-Add: Camera speed toggle action
   - type: ActionGrant
     actions:
     - ActionJumpToCore
     - ActionSurvCameraLights
-    - ActionStationAiEyeSpeed
+    - ActionStationAiEyeSpeed # Ganimed-Add: Camera speed toggle action
     - ActionAIViewLaws
   - type: UserInterface
     interfaces:

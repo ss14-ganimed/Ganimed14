@@ -48,6 +48,7 @@
   parent: BaseMachine
   id: BaseMachinePowered
   components:
+  - type: StationAiWhitelist # Ganimed-Edit: station AI can operate powered machines (issue #208)
   - type: ApcPowerReceiver
     powerLoad: 1000
   - type: ExtensionCableReceiver

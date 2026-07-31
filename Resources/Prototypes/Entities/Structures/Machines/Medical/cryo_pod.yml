@@ -4,8 +4,6 @@
   name: cryo pod
   description: A special machine intended to create a safe environment for the use of chemicals that react in cold environments.
   components:
-  # Ganimed-Edit: allow station AI to use the cryo pod (issue #208)
-  - type: StationAiWhitelist
   - type: Sprite
     sprite: Structures/Machines/Medical/cryopod.rsi
     drawdepth: Mobs

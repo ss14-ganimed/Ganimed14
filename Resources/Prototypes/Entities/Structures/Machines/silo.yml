@@ -4,8 +4,6 @@
   name: material silo
   description: An advanced machine, capable of using bluespace technology to transmit materials to nearby machines.
   components:
-  # Ganimed-Edit: allow station AI to use the material silo (issue #208)
-  - type: StationAiWhitelist
   - type: Sprite
     sprite: Structures/Machines/silo.rsi
     snapCardinals: true

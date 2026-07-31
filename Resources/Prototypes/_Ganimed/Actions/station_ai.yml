@@ -12,7 +12,7 @@
     priority: -10
     itemIconStyle: BigAction
     icon:
-      sprite: Interface/Actions/actions_ai.rsi
+      sprite: _Ganimed/Interface/Actions/ai_eye_speed.rsi
       state: eye_speed
   - type: InstantAction
     event: !type:ToggleActionEvent
