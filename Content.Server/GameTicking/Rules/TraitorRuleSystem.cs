@@ -6,6 +6,8 @@ using Content.Server.PDA.Ringer;
 using Content.Server.Traitor.Uplink;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mind;
+// Ganimed-Edit: removed - faction swap no longer performed (issue #351)
+// using Content.Shared.NPC.Systems;
 using Content.Shared.PDA;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
@@ -27,6 +29,8 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
     [Dependency] private readonly MindSystem _mindSystem = default!;
+    // Ganimed-Edit: removed - faction swap no longer performed (issue #351)
+    // [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedRoleCodewordSystem _roleCodewordSystem = default!;
@@ -133,8 +137,16 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         var codewordComp = EnsureComp<RoleCodewordComponent>(mindId);
         _roleCodewordSystem.SetRoleCodewords((mindId, codewordComp), "traitor", factionCodewords.ToList(), color);
 
-        // Ganimed-Edit: removed the faction swap below. The traitor keeps the NanoTrasen faction until
-        // revealed, so faction-based NPCs/turrets (hostile to "Syndicate") don't attack unrevealed antags.
+        // Ganimed-Edit (issue #351): faction swap removed. The traitor used to be moved from the
+        // NanoTrasen faction to Syndicate right on selection, which made station turrets/NPCs (hostile
+        // to "Syndicate") shoot unrevealed antags. The traitor now keeps the NanoTrasen faction.
+        // The "reveal" is effectively the antag's own actions (crimes) - nothing in code marks them
+        // as an enemy until then; before this fix the faction swap itself was the "reveal".
+        // Change the faction
+        // Log.Debug($"MakeTraitor {ToPrettyString(traitor)} - Change faction");
+        // _npcFaction.RemoveFaction(traitor, component.NanoTrasenFaction, false);
+        // _npcFaction.AddFaction(traitor, component.SyndicateFaction);
+        //
         Log.Debug($"MakeTraitor {ToPrettyString(traitor)} - Finished");
         return true;
     }

@@ -1,6 +1,7 @@
 using Content.Server.Codewords;
 using Content.Shared.Dataset;
 using Content.Shared.FixedPoint;
+using Content.Shared.NPC.Prototypes; // Ganimed-Edit: kept - NanoTrasenFaction/SyndicateFaction fields remain (per review)
 using Content.Shared.Random;
 using Content.Shared.Roles;
 using Robust.Shared.Audio;
@@ -20,7 +21,16 @@ public sealed partial class TraitorRuleComponent : Component
     [DataField]
     public ProtoId<CodewordFactionPrototype> CodewordFactionPrototypeId = "Traitor";
 
-    [DataField] // Ganimed-Edit: NanoTrasenFaction/SyndicateFaction removed - traitors no longer change faction on selection
+    // Ganimed-Edit (issue #351): kept per review - "no field removals in vanilla components".
+    // No longer used: the traitor no longer changes faction on selection, so turrets/NPCs
+    // hostile to "Syndicate" don't attack unrevealed antags.
+    [DataField]
+    public ProtoId<NpcFactionPrototype> NanoTrasenFaction = "NanoTrasen";
+
+    [DataField]
+    public ProtoId<NpcFactionPrototype> SyndicateFaction = "Syndicate";
+
+    [DataField]
     public ProtoId<LocalizedDatasetPrototype> ObjectiveIssuers = "TraitorCorporations";
 
     /// <summary>

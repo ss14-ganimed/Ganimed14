@@ -6,6 +6,9 @@ using Content.Server.Objectives;
 using Content.Server.Objectives.Components;
 using Content.Server.Roles;
 using Content.Shared.Heretic;
+// Ganimed-Edit: removed - faction swap no longer performed (issue #351)
+// using Content.Shared.NPC.Prototypes;
+// using Content.Shared.NPC.Systems;
 using Content.Shared.Roles;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
@@ -24,12 +27,19 @@ public sealed partial class HereticRuleSystem : GameRuleSystem<HereticRuleCompon
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly SharedRoleSystem _role = default!;
+    // Ganimed-Edit: removed - faction swap no longer performed (issue #351)
+    // [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
     [Dependency] private readonly ObjectivesSystem _objective = default!;
     [Dependency] private readonly IRobustRandom _rand = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _userInterfaceSystem = default!;
 
 
     public readonly SoundSpecifier BriefingSound = new SoundPathSpecifier("/Audio/ADT/Heretic/Ambience/Antag/Heretic/heretic_gain.ogg");
+
+    // Ganimed-Edit: removed - faction swap no longer performed (issue #351)
+    // [ValidatePrototypeId<NpcFactionPrototype>] public readonly ProtoId<NpcFactionPrototype> HereticFactionId = "Heretic";
+    //
+    // [ValidatePrototypeId<NpcFactionPrototype>] public readonly ProtoId<NpcFactionPrototype> NanotrasenFactionId = "NanoTrasen";
 
     [ValidatePrototypeId<CurrencyPrototype>] public readonly ProtoId<CurrencyPrototype> Currency = "KnowledgePoint";
 
@@ -74,8 +84,12 @@ public sealed partial class HereticRuleSystem : GameRuleSystem<HereticRuleCompon
             _antag.SendBriefing(target, Loc.GetString("heretic-role-greeting"), Color.Red, BriefingSound);
 
         }
-        // Ganimed-Edit: removed the faction swap here. The heretic keeps the NanoTrasen faction until
-        // revealed, so faction-based NPCs/turrets (hostile to "Heretic") don't attack unrevealed antags.
+        // Ganimed-Edit (issue #351): faction swap removed. The heretic used to be moved from the
+        // NanoTrasen faction to Heretic right on selection, which made station turrets/NPCs (hostile
+        // to "Heretic") shoot unrevealed antags. The heretic now keeps the NanoTrasen faction.
+        // _npcFaction.RemoveFaction(target, NanotrasenFactionId, false);
+        // _npcFaction.AddFaction(target, HereticFactionId);
+        //
         EnsureComp<HereticComponent>(target);
 
         // add store

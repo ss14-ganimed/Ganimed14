@@ -2,6 +2,9 @@ using Content.Server.Antag;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
 using Content.Shared.Changeling.Components;
+// Ganimed-Edit: removed - faction swap no longer performed (issue #351)
+// using Content.Shared.NPC.Systems;
+// using Content.Shared.NPC.Prototypes;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Tag;
 using Content.Shared.Roles;
@@ -16,10 +19,16 @@ public sealed partial class ChangelingRuleSystem : GameRuleSystem<ChangelingRule
 {
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
+    // Ganimed-Edit: removed - faction swap no longer performed (issue #351)
+    // [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
     [Dependency] private readonly SharedRoleSystem _role = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _userInterfaceSystem = default!;
 
+    // Ganimed-Edit: removed - faction swap no longer performed (issue #351)
+    // public readonly ProtoId<NpcFactionPrototype> SyndicateFactionId = "Syndicate";
+    //
+    // public readonly ProtoId<NpcFactionPrototype> NanotrasenFactionId = "NanoTrasen";
     [ValidatePrototypeId<CurrencyPrototype>] public readonly ProtoId<CurrencyPrototype> Currency = "EvolutionPoints";
 
     public override void Initialize()
@@ -61,8 +70,13 @@ public sealed partial class ChangelingRuleSystem : GameRuleSystem<ChangelingRule
             _userInterfaceSystem.SetUi(target, StoreUiKey.Key, new InterfaceData("StoreBoundUserInterface"));
         }
 
-        // Ganimed-Edit: removed the faction swap here. The changeling keeps the NanoTrasen faction until
-        // revealed, so faction-based NPCs/turrets (hostile to "Syndicate") don't attack unrevealed antags.
+        // Ganimed-Edit (issue #351): faction swap removed. The changeling used to be moved from the
+        // NanoTrasen faction to Syndicate right on selection, which made station turrets/NPCs (hostile
+        // to "Syndicate") shoot unrevealed antags. The changeling now keeps the NanoTrasen faction.
+        // _npcFaction.RemoveFaction(target, NanotrasenFactionId, false);
+        // _npcFaction.AddFaction(target, SyndicateFactionId);
+        //
+        // Ensure Changeling component and role
         EnsureComp<ChangelingComponent>(target);
 
         rule.Minds.Add(mindId);
