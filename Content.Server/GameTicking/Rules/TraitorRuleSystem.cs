@@ -6,7 +6,6 @@ using Content.Server.PDA.Ringer;
 using Content.Server.Traitor.Uplink;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mind;
-using Content.Shared.NPC.Systems;
 using Content.Shared.PDA;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
@@ -28,7 +27,6 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
     [Dependency] private readonly MindSystem _mindSystem = default!;
-    [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedRoleCodewordSystem _roleCodewordSystem = default!;
@@ -135,11 +133,8 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         var codewordComp = EnsureComp<RoleCodewordComponent>(mindId);
         _roleCodewordSystem.SetRoleCodewords((mindId, codewordComp), "traitor", factionCodewords.ToList(), color);
 
-        // Change the faction
-        Log.Debug($"MakeTraitor {ToPrettyString(traitor)} - Change faction");
-        _npcFaction.RemoveFaction(traitor, component.NanoTrasenFaction, false);
-        _npcFaction.AddFaction(traitor, component.SyndicateFaction);
-
+        // Ganimed-Edit: removed the faction swap below. The traitor keeps the NanoTrasen faction until
+        // revealed, so faction-based NPCs/turrets (hostile to "Syndicate") don't attack unrevealed antags.
         Log.Debug($"MakeTraitor {ToPrettyString(traitor)} - Finished");
         return true;
     }

@@ -1,7 +1,6 @@
 using Content.Server.Codewords;
 using Content.Shared.Dataset;
 using Content.Shared.FixedPoint;
-using Content.Shared.NPC.Prototypes;
 using Content.Shared.Random;
 using Content.Shared.Roles;
 using Robust.Shared.Audio;
@@ -21,13 +20,7 @@ public sealed partial class TraitorRuleComponent : Component
     [DataField]
     public ProtoId<CodewordFactionPrototype> CodewordFactionPrototypeId = "Traitor";
 
-    [DataField]
-    public ProtoId<NpcFactionPrototype> NanoTrasenFaction = "NanoTrasen";
-
-    [DataField]
-    public ProtoId<NpcFactionPrototype> SyndicateFaction = "Syndicate";
-
-    [DataField]
+    [DataField] // Ganimed-Edit: NanoTrasenFaction/SyndicateFaction removed - traitors no longer change faction on selection
     public ProtoId<LocalizedDatasetPrototype> ObjectiveIssuers = "TraitorCorporations";
 
     /// <summary>

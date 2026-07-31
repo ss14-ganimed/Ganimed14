@@ -266,6 +266,7 @@
   components:
   - type: GameRule
     minPlayers: 25
+  - type: ChangelingRule # Ganimed-Edit: added so changelings are actually made via ChangelingRuleSystem (was missing, breaking the whole antag)
   - type: AntagSelection
     agentName: changeling-round-end-agent-name
     selectionTime: IntraPlayerSpawn

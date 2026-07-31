@@ -2,5 +2,5 @@
   id: Changeling
   name: roles-antag-changeling-name
   antagonist: true
-  setPreference: false # TODO: set this to true once Changeling exits WIP status
+  setPreference: true # Ganimed-Edit: enabled so players can opt into Changeling; without it the pref is stripped on profile save and the antag can never be picked
   objective: roles-antag-changeling-objective

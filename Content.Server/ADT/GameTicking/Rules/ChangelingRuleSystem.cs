@@ -2,8 +2,6 @@ using Content.Server.Antag;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
 using Content.Shared.Changeling.Components;
-using Content.Shared.NPC.Systems;
-using Content.Shared.NPC.Prototypes;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Tag;
 using Content.Shared.Roles;
@@ -18,14 +16,10 @@ public sealed partial class ChangelingRuleSystem : GameRuleSystem<ChangelingRule
 {
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
     [Dependency] private readonly SharedRoleSystem _role = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _userInterfaceSystem = default!;
 
-    public readonly ProtoId<NpcFactionPrototype> SyndicateFactionId = "Syndicate";
-
-    public readonly ProtoId<NpcFactionPrototype> NanotrasenFactionId = "NanoTrasen";
     [ValidatePrototypeId<CurrencyPrototype>] public readonly ProtoId<CurrencyPrototype> Currency = "EvolutionPoints";
 
     public override void Initialize()
@@ -67,10 +61,8 @@ public sealed partial class ChangelingRuleSystem : GameRuleSystem<ChangelingRule
             _userInterfaceSystem.SetUi(target, StoreUiKey.Key, new InterfaceData("StoreBoundUserInterface"));
         }
 
-        _npcFaction.RemoveFaction(target, NanotrasenFactionId, false);
-        _npcFaction.AddFaction(target, SyndicateFactionId);
-
-        // Ensure Changeling component and role
+        // Ganimed-Edit: removed the faction swap here. The changeling keeps the NanoTrasen faction until
+        // revealed, so faction-based NPCs/turrets (hostile to "Syndicate") don't attack unrevealed antags.
         EnsureComp<ChangelingComponent>(target);
 
         rule.Minds.Add(mindId);

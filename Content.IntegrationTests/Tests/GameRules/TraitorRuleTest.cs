@@ -125,8 +125,10 @@ public sealed class TraitorRuleTest
         // Make sure the player is a traitor.
         var mind = mindSys.GetMind(player)!.Value;
         Assert.That(roleSys.MindIsAntagonist(mind));
-        Assert.That(factionSys.IsMember(player, SyndicateFaction), Is.True);
-        Assert.That(factionSys.IsMember(player, NanotrasenFaction), Is.False);
+        // Ganimed-Edit: traitors keep the NanoTrasen faction on selection, so faction-based
+        // NPCs/turrets (hostile to "Syndicate") don't attack unrevealed antags.
+        Assert.That(factionSys.IsMember(player, SyndicateFaction), Is.False);
+        Assert.That(factionSys.IsMember(player, NanotrasenFaction), Is.True);
         Assert.That(traitorRule.TotalTraitors, Is.EqualTo(1));
         Assert.That(traitorRule.TraitorMinds[0], Is.EqualTo(mind));
 
