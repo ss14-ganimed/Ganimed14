@@ -5,6 +5,8 @@
   name: telescreen
   description: Finally, some decent reception around here...
   components:
+  # Ganimed-Edit: allow station AI to use telescreens (issue #208)
+  - type: StationAiWhitelist
   - type: Sprite
     sprite: Structures/Machines/computers.rsi
     layers:

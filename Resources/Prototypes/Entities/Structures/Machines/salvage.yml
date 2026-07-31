@@ -4,6 +4,8 @@
   name: salvage magnet
   description: Pulls in salvage.
   components:
+  # Ganimed-Edit: allow station AI to use the salvage magnet (issue #208)
+  - type: StationAiWhitelist
   - type: Sprite
     sprite: Structures/Machines/salvage.rsi
     layers:

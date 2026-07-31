@@ -5,6 +5,8 @@
   name: wireless camera
   description: A camera. It's watching you. Kinda.
   components:
+    # Ganimed-Edit: allow station AI to interact with wireless cameras (issue #208)
+    - type: StationAiWhitelist
     - type: InteractionOutline
     - type: Eye
     - type: WirelessNetworkConnection

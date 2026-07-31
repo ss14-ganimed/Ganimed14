@@ -5,6 +5,8 @@
   name: camera router
   description: A surveillance camera router. It routes. Perhaps.
   components:
+    # Ganimed-Edit: allow station AI to use camera routers (issue #208)
+    - type: StationAiWhitelist
     - type: DeviceNetwork
       deviceNetId: Wired
       receiveFrequencyId: SurveillanceCamera
@@ -139,6 +141,8 @@
   name: wireless camera router
   description: A wireless surveillance camera router. It routes. Perhaps.
   components:
+    # Ganimed-Edit: allow station AI to use wireless camera routers (issue #208)
+    - type: StationAiWhitelist
     - type: DeviceNetwork
       deviceNetId: Wireless
       receiveFrequencyId: SurveillanceCamera

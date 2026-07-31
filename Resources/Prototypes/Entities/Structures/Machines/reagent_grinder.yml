@@ -5,6 +5,8 @@
   description: From BlenderTech. Will It Blend? Let's find out!
   suffix: grinder/juicer
   components:
+  # Ganimed-Edit: allow station AI to use the reagent grinder (issue #208)
+  - type: StationAiWhitelist
   - type: ReagentGrinder
   - type: ActivatableUI
     key: enum.ReagentGrinderUiKey.Key

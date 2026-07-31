@@ -30,6 +30,8 @@
     radius: 5
   - type: SlimPoweredLight
     enabled: false
+  # Ganimed-Edit: allow station AI to interact with surveillance cameras (issue #208)
+  - type: StationAiWhitelist
   - type: StationAiVision
   - type: Clickable
   - type: InteractionOutline

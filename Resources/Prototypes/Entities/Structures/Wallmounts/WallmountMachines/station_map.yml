@@ -29,6 +29,8 @@
   description: A virtual map of the surrounding station.
   suffix: Wall
   components:
+    # Ganimed-Edit: allow station AI to use the station map (issue #208)
+    - type: StationAiWhitelist
     - type: WallMount
       arc: 360
     - type: Appearance
