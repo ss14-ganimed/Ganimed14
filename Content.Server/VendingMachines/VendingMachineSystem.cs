@@ -142,6 +142,8 @@ namespace Content.Server.VendingMachines
         }
 
         // Ganimed-Edit: AI synthetic bypass (issue #208)
+        // The 120s cooldown (NextSyntheticBypassTime) gates the ARMING button itself, not the vend:
+        // once armed, the very next purchase by the AI is free (SyntheticBypassArmed is reset after it).
         private void OnSyntheticBypass(EntityUid uid, VendingMachineComponent component, VendingMachineSyntheticBypassMessage args)
         {
             if (!this.IsPowered(uid, EntityManager))

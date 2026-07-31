@@ -10,7 +10,11 @@ using Content.Shared.Access.Systems;
 namespace Content.Server._Ganimed.Silicons.StationAi;
 
 /// <summary>
-/// Radial menu action for APCs controlled by the station AI.
+/// Handles the AI radial menu action on APCs (main breaker toggle).
+/// A dedicated server system is needed because the breaker logic lives in the server-side
+/// <see cref="ApcSystem"/> (ApcComponent is server-only), while the radial action itself is a
+/// shared <see cref="StationAiApcToggleBreakerEvent"/> raised on the APC. The system runs the
+/// standard breaker attempt event plus an access check before toggling.
 /// </summary>
 public sealed partial class StationAiApcRadialSystem : EntitySystem
 {
