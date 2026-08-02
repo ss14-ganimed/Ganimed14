@@ -79,7 +79,8 @@
   - type: SolutionContainerManager
     solutions:
       smokable:
-        maxVol: 10
+        # Ganimed-Edit: tank increased from 10 to 200u so the vape lasts 100 puffs.
+        maxVol: 200
   - type: RefillableSolution
     solution: smokable
   - type: ExaminableSolution

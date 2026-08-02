@@ -7,6 +7,12 @@
   - type: Sprite
     sprite: Objects/Consumable/Smokeables/Vapes/vape-standard.rsi
     state: icon
+  # Ganimed-Add-Start (vape tritium): way more vapor, big tank, fixed portion per use and a bit of tritium.
+  - type: Vape
+    reductionFactor: 4
+    volumePerUse: 2
+    tritiumPerUse: 0.05
+  # Ganimed-Add-End (vape tritium)
   # ADT Tweak Start
   - type: StaticPrice
     price: 100

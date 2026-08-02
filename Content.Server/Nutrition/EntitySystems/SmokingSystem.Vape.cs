@@ -7,6 +7,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Emag.Systems;
+using Content.Shared.FixedPoint;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Nutrition;
@@ -133,12 +134,20 @@ namespace Content.Server.Nutrition.EntitySystems
             //Smoking kills(your lungs, but there is no organ damage yet)
             _damageableSystem.TryChangeDamage(args.Args.Target.Value, entity.Comp.Damage, true);
 
+            // Ganimed-Edit-Start (vape tritium): vapes release a fixed portion of their
+            // solution per use instead of the whole tank, plus a bit of tritium.
+            var volumeUsed = FixedPoint2.Min(FixedPoint2.New(entity.Comp.VolumePerUse), args.Solution.Volume);
+
             var merger = new GasMixture(1) { Temperature = args.Solution.Temperature };
-            merger.SetMoles(entity.Comp.GasType, args.Solution.Volume.Value / entity.Comp.ReductionFactor);
+            merger.SetMoles(entity.Comp.GasType, volumeUsed.Value / entity.Comp.ReductionFactor);
+
+            if (entity.Comp.TritiumPerUse > 0)
+                merger.AdjustMoles(Gas.Tritium, entity.Comp.TritiumPerUse);
 
             _atmos.Merge(environment, merger);
 
-            args.Solution.RemoveAllSolution();
+            args.Solution.RemoveSolution(volumeUsed);
+            // Ganimed-Edit-End (vape tritium)
 
             if (args.Forced)
             {

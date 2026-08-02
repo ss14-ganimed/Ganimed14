@@ -39,6 +39,22 @@ namespace Content.Server.Nutrition.Components // Vapes are very nutritious.
         [ViewVariables(VVAccess.ReadWrite)]
         public float ReductionFactor { get; set; } = 300f;
 
+        // Ganimed-Add-Start (vape tritium)
+        /// <summary>
+        /// Amount of tritium released into the atmosphere with each use.
+        /// </summary>
+        [DataField("tritiumPerUse")]
+        [ViewVariables(VVAccess.ReadWrite)]
+        public float TritiumPerUse { get; set; } = 0.05f;
+
+        /// <summary>
+        /// How much of the solution is consumed with each use.
+        /// </summary>
+        [DataField("volumePerUse")]
+        [ViewVariables(VVAccess.ReadWrite)]
+        public float VolumePerUse { get; set; } = 2f;
+        // Ganimed-Add-End (vape tritium)
+
         // TODO when this gets fixed, use prototype serializers
         [DataField("solutionNeeded")]
         [ViewVariables(VVAccess.ReadWrite)]
