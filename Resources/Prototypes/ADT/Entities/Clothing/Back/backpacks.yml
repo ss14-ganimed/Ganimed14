@@ -22,7 +22,7 @@
 #дамские сумочки
 
 - type: entity
-  parent: ClothingBackpackSatchel
+  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Tweak (two-sided satchels)
   id: ADTClothingBackpackBlackLadySatchel
   name: black lady satchel
   description: Satchel for storage. Wow, whats there? A stolen hearts?
@@ -115,7 +115,7 @@
 # Winrar ; >
 
 - type: entity
-  parent: [ClothingBackpack]
+  parent: [ClothingBackpack, ClothingBackpackSatchelFoldableBase] # Ganimed-Tweak (two-sided satchels)
   id: ADTClothingBackpackWinRAR
   name: WinRar Backpak
   description: WinRAR - not a free backpack. After the 40-day trial period, you must either purchase a backpack license or refuse further use.

@@ -6,8 +6,8 @@
 holster-insert-verb-text = Убрать в кобуру
 holster-eject-verb-text = Выхватить из кобуры
 
-holster-fold-verb-text = Закрепить кобуру слева
-holster-unfold-verb-text = Закрепить кобуру справа
+holster-fold-verb-text = Перекинуть на левый бок
+holster-unfold-verb-text = Перекинуть на правый бок
 
 fold-roll-up-sleeves-verb = Закатать рукава
 unfold-pull-down-sleeves-verb = Опустить рукава
