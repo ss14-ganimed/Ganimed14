@@ -1,22 +1,10 @@
 # SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 RedSpy <127129838+RedSpyy@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-- type: entity 
-  abstract: true
-  id: ClothingBackpackSatchelFoldableBase
-  components:
-  - type: Foldable 
-    canFoldInsideContainer: true
-    unfoldVerbText: holster-unfold-verb-text
-    foldVerbText: holster-fold-verb-text
-  - type: FoldableClothing
-    foldedEquippedPrefix: mirrored # don't forget to add the mirrored sprite in rsi for ALL new satchels
-
 - type: entity
   id: ClothingBackpackSatchelCaptainWhite
-  parent: [ClothingBackpackSatchel, BaseCommandContraband, ClothingBackpackSatchelFoldableBase]
+  parent: [ClothingBackpackSatchel, BaseCommandContraband]
   name: white captain's satchel
   description: Is it your imagination, or is there a stain on it?
   components:

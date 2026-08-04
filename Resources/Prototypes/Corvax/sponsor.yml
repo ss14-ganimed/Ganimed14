@@ -26,7 +26,7 @@
 
 # NEKISH
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Tweak (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelHoS
   name: head of security's satchel
   description: Stylish, dark leather satchel
