@@ -1567,6 +1567,7 @@
   - ScientistPDA
   - ADTLabTechPDA # ADT
   - ADTXenoarchPDA # ADT
+  - XenobioPDA # VG-Tweak
   - ADTAnomalistPDA # ADT
 #- type: loadoutGroup
 #  id: ScientistJobTrinkets

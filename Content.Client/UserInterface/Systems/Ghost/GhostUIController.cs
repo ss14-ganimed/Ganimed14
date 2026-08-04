@@ -132,6 +132,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.TargetWindow.WarpClicked += OnWarpClicked;
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
         Gui.ThunderdomePressed += ThunderdomePressed; // ADT-Tweak
+        Gui.ThunderdomeLeaderboardPressed += ThunderdomeLeaderboardPressed; // ADT-Tweak
 
         UpdateGui();
     }
@@ -147,6 +148,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.TargetWindow.WarpClicked -= OnWarpClicked;
 
         Gui.ThunderdomePressed -= ThunderdomePressed; // ADT-Tweak
+        Gui.ThunderdomeLeaderboardPressed -= ThunderdomeLeaderboardPressed; // ADT-Tweak
 
         Gui.Hide();
     }
@@ -172,6 +174,11 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
     private void ThunderdomePressed()
     {
         _net.SendSystemNetworkMessage(new ThunderdomeJoinRequestEvent());
+    }
+
+    private void ThunderdomeLeaderboardPressed()
+    {
+        _net.SendSystemNetworkMessage(new ThunderdomeLeaderboardRequestEvent());
     }
 
     private void OnThunderdomePlayerCount(ThunderdomePlayerCountEvent ev)
