@@ -213,6 +213,13 @@
     - Hair
     - FacialHair
   # ADT-Tweak end
+  # Ganimed-Add-Start: следы расы (Footstep)
+  - type: FootprintEmitter
+    leftBareFootState:
+      - "footprint-left-bare-slime"
+    rightBareFootState:
+      - "footprint-right-bare-slime"
+  # Ganimed-Add-End
 
 - type: entity
   parent: OrganBaseOrganic

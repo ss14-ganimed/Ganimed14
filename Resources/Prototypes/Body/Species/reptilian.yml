@@ -219,6 +219,13 @@
       295: 0.8
       285: 0.7
   - type: Wagging
+  # Ganimed-Add-Start: следы расы (Footstep)
+  - type: FootprintEmitter
+    leftBareFootState:
+    - "footprint-left-bare-lizard"
+    rightBareFootState:
+    - "footprint-right-bare-lizard"
+  # Ganimed-Add-End
 
 - type: entity
   parent: OrganBaseOrganic

@@ -219,6 +219,8 @@
     solution: puddle
   - type: BadDrink
   - type: IgnoresFingerprints
+  # Ganimed-Add: лужи пачкают наступивших, те оставляют следы.
+  - type: PuddleFootprint
   - type: Tag
     tags:
     - DNASolutionScannable

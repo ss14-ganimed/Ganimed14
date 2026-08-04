@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._Ganimed.Footprints;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
@@ -9,6 +10,7 @@ using Content.Shared.Popups;
 using Content.Shared.Timing;
 using Content.Shared.Weapons.Melee;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -31,6 +33,8 @@ public abstract class SharedAbsorbentSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedItemSystem _item = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    // Ganimed-Add: поиск следов (FootprintComponent) на тайле при клике шваброй.
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     public override void Initialize()
     {
@@ -55,8 +59,125 @@ public abstract class SharedAbsorbentSystem : EntitySystem
         if (!args.CanReach || args.Handled || args.Target is not { } target)
             return;
 
+        // Ganimed-Add: следы - не лужи и не ёмкости, обычный моп по ним не работает.
+        if ((HasComp<PuddleComponent>(target) ||
+             HasComp<RefillableSolutionComponent>(target)) &&
+            !HasComp<FootprintComponent>(target))
+        {
+            Mop(args.User, target, args.Used, ent.Comp);
+            args.Handled = true;
+            return;
+        }
+
+        // Ganimed-Add: клик шваброй по полу - вытираем следы на тайле.
+        var coordinates = args.ClickLocation;
+        var gridUid = _transform.GetGrid(coordinates);
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
+            return;
+
+        var tileCoordinates = _mapSystem.CoordinatesToTile(gridUid.Value, grid, coordinates);
+        var tileRef = _mapSystem.GetTileRef(gridUid.Value, grid, tileCoordinates);
+        var tileCenterPos = _mapSystem.GridTileToLocal(gridUid.Value, grid, tileRef.GridIndices);
+
+        var footPrints = new HashSet<Entity<FootprintComponent>>();
+        var entities = _lookup.GetLocalEntitiesIntersecting(tileRef, ent.Comp.FootprintEnlargement);
+
+        foreach (var entity in entities)
+        {
+            if (TryComp<FootprintComponent>(entity, out var footprint))
+            {
+                footPrints.Add((entity, footprint));
+            }
+        }
+
+        if (footPrints.Count > 0)
+        {
+            if (!SolutionContainer.TryGetSolution(args.Used, ent.Comp.SolutionName, out var absorberSoln))
+                return;
+
+            CleanFootprints(args.User, args.Used, ent.Comp, absorberSoln.Value, footPrints, tileCenterPos);
+            args.Handled = true;
+            return;
+        }
+
         Mop(ent, args.User, target);
         args.Handled = true;
+    }
+
+    // Ganimed-Add: вытирание следов шваброй (раствор следов впитывается как у лужи).
+    public void CleanFootprints(EntityUid user, EntityUid used, AbsorbentComponent absorber,
+        Entity<SolutionComponent> absorberSoln, IEnumerable<Entity<FootprintComponent>> footPrints,
+        EntityCoordinates targetCoords)
+    {
+        var soundPlayed = false;
+
+        foreach (var (footstepUid, comp) in footPrints)
+        {
+            if (!SolutionContainer.ResolveSolution(footstepUid, comp.ContainerName, ref comp.SolutionContainer, out var targetStepSolution) || targetStepSolution.Volume <= 0)
+                continue;
+
+            if (Puddle.CanFullyEvaporate(targetStepSolution))
+                continue; // no spam
+
+            var absorberSolution = absorberSoln.Comp.Solution;
+            var available = absorberSolution.GetTotalPrototypeQuantity(Puddle.GetAbsorbentReagents(absorberSolution));
+
+            // No material
+            if (available == FixedPoint2.Zero)
+            {
+                TryPopupNoWater(user, used);
+                return;
+            }
+
+            var transferMax = absorber.PickupAmount;
+            var transferAmount = FixedPoint2.Min(transferMax, available);
+
+            var puddleSplit = targetStepSolution.SplitSolutionWithout(transferAmount, Puddle.GetAbsorbentReagents(targetStepSolution));
+            var absorberSplit = absorberSolution.SplitSolutionWithOnly(puddleSplit.Volume, Puddle.GetAbsorbentReagents(absorberSolution));
+
+            var gridUid = targetCoords.GetGridUid(EntityManager);
+            if (TryComp<MapGridComponent>(gridUid, out var mapGrid))
+            {
+                var tileRef = _mapSystem.GetTileRef(gridUid.Value, mapGrid, targetCoords);
+                Puddle.DoTileReactions(tileRef, absorberSplit);
+            }
+
+            SolutionContainer.AddSolution(comp.SolutionContainer.Value, absorberSplit);
+            SolutionContainer.AddSolution(absorberSoln, puddleSplit);
+
+            if (!soundPlayed)
+            {
+                soundPlayed = true; // to prevent sound spam
+                _audio.PlayPvs(absorber.PickupSound, footstepUid);
+            }
+
+            // Без этого лужи следов останутся пустыми и не удалятся.
+            var ev = new SolutionContainerChangedEvent(targetStepSolution, comp.ContainerName);
+            RaiseLocalEvent(footstepUid, ref ev);
+        }
+
+        var userXform = Transform(user);
+        var localPos = Vector2.Transform(targetCoords.Position, _transform.GetWorldMatrix(userXform));
+        localPos = userXform.LocalRotation.RotateVec(localPos);
+
+        _melee.DoLunge(user, used, Angle.Zero, localPos, null, false);
+    }
+
+    private void TryPopupNoWater(EntityUid user, EntityUid used)
+    {
+        if (TryComp(used, out UseDelayComponent? useDelay) && _useDelay.IsDelayed((used, useDelay)))
+            return;
+
+        var message = Loc.GetString("mopping-system-no-water", ("used", used));
+
+        if (HasComp<ItemComponent>(used))
+            _popups.PopupClient(message, user, user);
+
+        else
+            _popups.PopupEntity(message, user, user);
+
+        if (useDelay != null)
+            _useDelay.TryResetDelay((used, useDelay));
     }
 
     private void OnAbsorbentSolutionChange(Entity<AbsorbentComponent> ent, ref SolutionContainerChangedEvent args)

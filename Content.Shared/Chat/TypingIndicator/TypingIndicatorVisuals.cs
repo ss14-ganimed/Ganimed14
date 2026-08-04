@@ -5,7 +5,8 @@ namespace Content.Shared.Chat.TypingIndicator;
 [Serializable, NetSerializable]
 public enum TypingIndicatorVisuals : byte
 {
-    State
+    State,
+    Channel // Ganimed-Add (Typing indicator color based on chat type)
 }
 
 [Serializable]

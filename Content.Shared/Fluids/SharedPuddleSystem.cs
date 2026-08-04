@@ -326,6 +326,14 @@ public abstract partial class SharedPuddleSystem : EntitySystem
 
     private void UpdateSlow(EntityUid uid, Solution solution)
     {
+        // Ganimed-Edit: следы (Footstep/DragMark) - визуальные отпечатки, не должны замедлять ходьбу.
+        // У них нет физики, поэтому контактные модификаторы скорости тоже вызывают ошибки.
+        if (TryComp(uid, out PuddleComponent? puddle) && !puddle.CanSlow)
+        {
+            RemComp<SpeedModifierContactsComponent>(uid);
+            return;
+        }
+
         var maxViscosity = 0f;
         foreach (var (reagent, _) in solution.Contents)
         {

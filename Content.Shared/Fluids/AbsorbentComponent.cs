@@ -56,4 +56,8 @@ public sealed partial class AbsorbentComponent : Component
     /// </summary>
     [DataField]
     public bool UseAbsorberSolution = true;
+
+    // Ganimed-Add: радиус поиска следов при клике шваброй по полу.
+    [DataField]
+    public float FootprintEnlargement = 1f;
 }

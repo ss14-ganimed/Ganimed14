@@ -263,3 +263,5 @@
     postingSayDamage: blood-cough
   - type: TimeDespawnDamage
   # End-ADT Tweak
+  # Ganimed-Add: мобы пачкаются в лужах и оставляют следы (Footstep/DragMark).
+  - type: FootprintEmitter

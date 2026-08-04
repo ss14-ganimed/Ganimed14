@@ -81,6 +81,8 @@ public abstract class SharedTypingIndicatorSystem : EntitySystem
         }
 
         SetTypingIndicatorState(uid.Value, ev.State);
+
+        _appearance.SetData(uid.Value, TypingIndicatorVisuals.Channel, ev.Channel); // Ganimed-Add (Typing indicator color based on chat type)
     }
 
     private void SetTypingIndicatorState(EntityUid uid, TypingIndicatorState state, AppearanceComponent? appearance = null)

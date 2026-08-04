@@ -185,6 +185,13 @@
     allowedStates:
     - Dead
   - type: Rootable
+  # Ganimed-Add-Start: следы расы (Footstep)
+  - type: FootprintEmitter
+    leftBareFootState:
+      - "footprint-left-bare-diona"
+    rightBareFootState:
+      - "footprint-right-bare-diona"
+  # Ganimed-Add-End
 
 - type: entity
   parent: OrganBaseOrganic

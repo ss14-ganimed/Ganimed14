@@ -114,7 +114,6 @@ public sealed class ToggleableFontTag : IMarkupTag
         if (!prototypeManager.TryIndex<FontPrototype>(fontId, out var prototype))
             prototype = prototypeManager.Index<FontPrototype>(DefaultFont);
 
-        var fontResource = cache.GetResource<FontResource>(prototype.Path);
-        return new VectorFont(fontResource, size);
+        return Content.Client._Ganimed.Fonts.GanimedFontStack.WithJapaneseFallback(cache, prototype, size); // Ganimed-Add (Japanese support)
     }
 }
