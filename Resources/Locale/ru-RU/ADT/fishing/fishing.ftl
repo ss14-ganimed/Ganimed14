@@ -9,3 +9,5 @@ ent-ActionStartFishing = Закинуть крючок
 
 ent-ActionStopFishing = Потянуть за удочку
     .desc = Потяните за удочку, чтобы прекратить рыбалку.
+fishing-caught-progress = Вы поймали { $count } рыб!
+fishing-golden-rod-granted = Наконец-то, { $count } рыб! Вот ваш трофей.
