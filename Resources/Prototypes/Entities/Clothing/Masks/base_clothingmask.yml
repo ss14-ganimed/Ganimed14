@@ -14,6 +14,17 @@
     - Mask
   - type: StaticPrice
     price: 25
+  # Ganimed-Port-Start: стайны (funky-station/forky-station#107)
+  - type: Appearance
+  - type: Stainable
+    clothingVisuals:
+      mask:
+      - sprite: _Ganimed/Effects/blood.rsi
+        state: maskblood
+    iconVisuals:
+    - sprite: _Ganimed/Effects/blood.rsi
+      state: maskbloodicon
+  # Ganimed-Port-End
   - type: PhysicalComposition # ADT START CHANGES
     materialComposition:
       Plastic: 100 # ADT END CHANGES
@@ -59,6 +70,8 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 10
+      stain: # Ganimed-Port: стайны (funky-station/forky-station#107)
+        maxVol: 5
   - type: Tag
     tags:
     - ClothMade

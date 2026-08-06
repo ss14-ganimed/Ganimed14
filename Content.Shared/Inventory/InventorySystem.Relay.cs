@@ -115,6 +115,8 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<EquipmentVerb>>(OnGetEquipmentVerbs);
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<InnateVerb>>(OnGetInnateVerbs);
 
+        // Ganimed-Port: стайны на одежде (funky-station/forky-station#107)
+        SubscribeLocalEvent<InventoryComponent, Content.Shared._Ganimed.Fluids.SpilledOnEvent>(RelayInventoryEvent);
     }
 
     protected void RefRelayInventoryEvent<T>(EntityUid uid, InventoryComponent component, ref T args) where T : IInventoryRelayEvent
@@ -210,6 +212,13 @@ public sealed class InventoryRelayedEvent<TEvent> : EntityEventArgs
     {
         Args = args;
         Owner = owner;
+    }
+
+    // Ganimed-Port: стайны (funky-station/forky-station#107)
+    public InventoryRelayedEvent(TEvent args)
+    {
+        Args = args;
+        Owner = EntityUid.Invalid;
     }
 }
 

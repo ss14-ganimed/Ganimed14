@@ -19,6 +19,8 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 10
+      stain: # Ganimed-Port: стайны (funky-station/forky-station#107)
+        maxVol: 5
   - type: Tag
     tags:
     - ClothMade
@@ -26,6 +28,17 @@
     - WhitelistChameleon
     - ADTShoesSacrifice # ADT Tweak
   - type: ProtectedFromStepTriggers
+  # Ganimed-Port-Start: стайны (funky-station/forky-station#107)
+  - type: Appearance
+  - type: Stainable
+    clothingVisuals:
+      shoes:
+      - sprite: _Ganimed/Effects/blood.rsi
+        state: shoeblood
+    iconVisuals:
+    - sprite: _Ganimed/Effects/blood.rsi
+      state: shoebloodicon
+  # Ganimed-Port-End
   # ADT Start
   - type: EmitSoundOnPickup
     sound:

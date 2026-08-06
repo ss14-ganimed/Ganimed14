@@ -26,11 +26,24 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 30
+      stain: # Ganimed-Port: стайны (funky-station/forky-station#107)
+        maxVol: 5
   - type: Tag
     tags:
     - ClothMade
     - Recyclable
     - WhitelistChameleon
+  # Ganimed-Port-Start: стайны (funky-station/forky-station#107)
+  - type: Appearance
+  - type: Stainable
+    clothingVisuals:
+      jumpsuit:
+      - sprite: _Ganimed/Effects/blood.rsi
+        state: uniformblood
+    iconVisuals:
+    - sprite: _Ganimed/Effects/blood.rsi
+      state: uniformbloodicon
+  # Ganimed-Port-End
   #ADT-Tweak-Start
   - type: CoveredSlot
     slots: [underwearb, underweart]
@@ -44,6 +57,15 @@
   - type: Clothing
     slots: [innerclothing]
     femaleMask: UniformTop
+  # Ganimed-Port: стайны (funky-station/forky-station#107)
+  - type: Stainable
+    clothingVisuals:
+      jumpsuit:
+      - sprite: _Ganimed/Effects/blood.rsi
+        state: uniformblood
+    iconVisuals:
+    - sprite: _Ganimed/Effects/blood.rsi
+      state: uniformbloodicon
   #ADT-Tweak-Start
   - type: CoveredSlot # Backmen
     slots: [underweart]
@@ -82,6 +104,15 @@
   - type: Clothing
     slots: [innerclothing]
     femaleMask: UniformTop
+  # Ganimed-Port: стайны (funky-station/forky-station#107)
+  - type: Stainable
+    clothingVisuals:
+      jumpsuit:
+      - sprite: _Ganimed/Effects/blood.rsi
+        state: uniformblood
+    iconVisuals:
+    - sprite: _Ganimed/Effects/blood.rsi
+      state: uniformbloodicon
   #ADT-Tweak-Start
   - type: CoveredSlot
     slots: [underweart]
