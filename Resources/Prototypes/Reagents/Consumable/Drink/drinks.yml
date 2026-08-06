@@ -560,6 +560,7 @@
 
 - type: reagent
   id: Water
+  flammability: -4 # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
   name: reagent-name-water
   parent: BaseDrink
   desc: reagent-desc-water
@@ -602,6 +603,7 @@
 
 - type: reagent
   id: Ice
+  flammability: -4 # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
   name: reagent-name-ice
   desc: reagent-desc-ice
   slipData:

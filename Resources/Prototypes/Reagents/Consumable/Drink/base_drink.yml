@@ -43,6 +43,7 @@
 
 - type: reagent
   id: BaseAlcohol
+  flammability: 1 # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
   group: Drinks
   abstract: true
   slipData:

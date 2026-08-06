@@ -1,5 +1,7 @@
 - type: reagent
   id: Acetone
+  flammability: 3 # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
+  selfOxidizing: true # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
   name: reagent-name-acetone
   desc: reagent-desc-acetone
   physicalDesc: reagent-physical-desc-acidic
@@ -28,6 +30,7 @@
 
 - type: reagent
   id: Charcoal
+  flammability: 2 # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
   name: reagent-name-charcoal
   desc: reagent-desc-charcoal
   physicalDesc: reagent-physical-desc-porous
@@ -135,6 +138,8 @@
 
 - type: reagent
   id: Benzene
+  flammability: 2 # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
+  selfOxidizing: true # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
   name: reagent-name-benzene
   desc: reagent-desc-benzene
   physicalDesc: reagent-physical-desc-acidic

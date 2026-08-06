@@ -1,0 +1,22 @@
+// SPDX-FileCopyrightText: 2026 YaraaraY
+//
+// SPDX-License-Identifier: MIT
+
+using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
+
+namespace Content.Shared._Ganimed.ReagentFires
+{
+    [Serializable, NetSerializable]
+    public enum ReagentPuddleFireVisuals : byte
+    {
+        OnFire,
+        FireState,
+        FireColor
+    }
+
+    [RegisterComponent, NetworkedComponent]
+    public sealed partial class ReagentPuddleFireEffectComponent : Component
+    {
+    }
+}
