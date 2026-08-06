@@ -60,7 +60,8 @@ namespace Content.Server.Doors.Systems
                 // only bother to check pressure on doors that are some variation of closed.
                 if (door.State != DoorState.Closed
                     && door.State != DoorState.Welded
-                    && door.State != DoorState.Denying)
+                    && door.State != DoorState.Denying
+                    && door.State != DoorState.Open) // Ganimed-Port: фикс firelock (funky-station/forky-station#127)
                 {
                     continue;
                 }
@@ -69,18 +70,32 @@ namespace Content.Server.Doors.Systems
                     && xformQuery.TryGetComponent(uid, out var xform)
                     && appearanceQuery.TryGetComponent(uid, out var appearance))
                 {
-                    var (pressure, fire) = CheckPressureAndFire(uid, firelock, xform, airtight, airtightQuery);
-                    _appearance.SetData(uid, DoorVisuals.ClosedLights, fire || pressure, appearance);
-                    firelock.Temperature = fire;
-                    firelock.Pressure = pressure;
-                    _appearance.SetData(uid, FirelockVisuals.PressureWarning, pressure, appearance);
-                    _appearance.SetData(uid, FirelockVisuals.TemperatureWarning, fire, appearance);
-                    Dirty(uid, firelock);
+                    // Ganimed-Port: фикс firelock (funky-station/forky-station#127)
+                    var (pressure, fire) = CheckPressureAndFire(uid, firelock, xform, airtight, airtightQuery, door.State == DoorState.Open);
 
-                    if (pointLightQuery.TryComp(uid, out var pointLight))
+                    // Ganimed-Port-Start
+                    if (door.State == DoorState.Open)
                     {
-                        _pointLight.SetEnabled(uid, fire | pressure, pointLight);
+                        if (pressure || fire)
+                        {
+                            EmergencyPressureStop(uid, firelock, door);
+                        }
                     }
+                    else
+                    {
+                        _appearance.SetData(uid, DoorVisuals.ClosedLights, fire || pressure, appearance);
+                        firelock.Temperature = fire;
+                        firelock.Pressure = pressure;
+                        _appearance.SetData(uid, FirelockVisuals.PressureWarning, pressure, appearance);
+                        _appearance.SetData(uid, FirelockVisuals.TemperatureWarning, fire, appearance);
+                        Dirty(uid, firelock);
+
+                        if (pointLightQuery.TryComp(uid, out var pointLight))
+                        {
+                            _pointLight.SetEnabled(uid, fire | pressure, pointLight);
+                        }
+                    }
+                    // Ganimed-Port-End
                 }
             }
         }
@@ -113,13 +128,14 @@ namespace Content.Server.Doors.Systems
         }
 
         public (bool Pressure, bool Fire) CheckPressureAndFire(
-        EntityUid uid,
-        FirelockComponent firelock,
-        TransformComponent xform,
-        AirtightComponent airtight,
-        EntityQuery<AirtightComponent> airtightQuery)
+            EntityUid uid,
+            FirelockComponent firelock,
+            TransformComponent xform,
+            AirtightComponent airtight,
+            EntityQuery<AirtightComponent> airtightQuery,
+            bool checkEvenIfOpen = false) // Ganimed-Port: фикс firelock (funky-station/forky-station#127)
         {
-            if (!airtight.AirBlocked)
+            if (!checkEvenIfOpen && !airtight.AirBlocked) // Ganimed-Port: фикс firelock (funky-station/forky-station#127)
                 return (false, false);
 
             if (TryComp(uid, out DockingComponent? dock) && dock.Docked)
@@ -128,8 +144,13 @@ namespace Content.Server.Doors.Systems
                 return (false, false);
             }
 
-            if (!HasComp<GridAtmosphereComponent>(xform.ParentUid))
+            // Ganimed-Port: фикс firelock (funky-station/forky-station#127)
+            if (!HasComp<GridAtmosphereComponent>(xform.ParentUid) ||
+                !HasComp<MapGridComponent>(xform.ParentUid) ||
+                !HasComp<MapAtmosphereComponent>(xform.MapUid))
+            {
                 return (false, false);
+            }
 
             var grid = Comp<MapGridComponent>(xform.ParentUid);
             var pos = _mapping.CoordinatesToTile(xform.ParentUid, grid, xform.Coordinates);
