@@ -22,6 +22,7 @@ public sealed class FishingSystem : SharedFishingSystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
+    [Dependency] private readonly FishingStatsSystem _fishingStats = default!;
 
     public override void Initialize()
     {
@@ -134,6 +135,10 @@ public sealed class FishingSystem : SharedFishingSystem
         direction *= distance / length;
 
         Throwing.TryThrow(fish, direction, 7f);
+
+        // ADT-Fishing-Stats: считаем только рыбу, мусор и хлам не в счёт
+        if (_proto.Index(fishId).TryGetComponent(out FishComponent? _, _compFactory))
+            _fishingStats.AddCaughtFish(target);
     }
 
     protected override void CalculateFightingTimings(Entity<ActiveFisherComponent> fisher, ActiveFishingSpotComponent activeSpotComp)
