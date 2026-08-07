@@ -30,6 +30,12 @@ public sealed class BoomboxSystem : EntitySystem
 
     private void OnJukeboxPlay(Entity<BoomboxComponent> ent, ref JukeboxPlayingMessage args)
     {
+        // Расход батареи включаем только если трек реально может запуститься:
+        // без выбранной песни JukeboxSystem.PlayTrack молча выходит, и батарея
+        // начала бы расходоваться впустую.
+        if (TryComp<JukeboxComponent>(ent, out var jukebox) && string.IsNullOrEmpty(jukebox.SelectedSongId))
+            return;
+
         _cell.SetDrawEnabled(ent.Owner, true);
     }
 
