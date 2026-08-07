@@ -1,7 +1,9 @@
+using Content.Shared._Ganimed.Boombox;
 using Content.Shared.Audio.Jukebox;
 using Robust.Client.Audio;
 using Robust.Client.UserInterface;
 using Robust.Shared.Audio.Components;
+using Robust.Shared.Localization;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Audio.Jukebox;
@@ -23,6 +25,11 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
         base.Open();
 
         _menu = this.CreateWindow<JukeboxMenu>();
+
+        // Ganimed-Edit start: boombox uses its own window title
+        if (EntMan.HasComponent<BoomboxComponent>(Owner))
+            _menu.Title = Loc.GetString("boombox-menu-title");
+        // Ganimed-Edit end
 
         _menu.OnPlayPressed += args =>
         {

@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: BoomboxCargo
+  icon:
+    sprite: _Ganimed/Objects/Devices/boombox.rsi
+    state: icon
+  product: BoomboxCrate
+  cost: 2000
+  category: cargoproduct-category-name-fun
+  group: market

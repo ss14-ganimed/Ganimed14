@@ -1,0 +1,28 @@
+{
+    "version": 1,
+    "license": "CC0-1.0",
+    "copyright": "Boomer",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "on"
+        },
+        {
+            "name": "off"
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        }
+    ]
+}

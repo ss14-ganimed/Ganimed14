@@ -1,0 +1,40 @@
+- type: entity
+  parent: BaseItem
+  id: Boombox
+  name: бумбокс
+  description: Переносной музыкальный автомат. Играет любимые треки станции прямо из твоих рук. Работает от батарейки.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Objects/Devices/boombox.rsi
+    layers:
+    - state: on
+  - type: Icon
+    sprite: _Ganimed/Objects/Devices/boombox.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _Ganimed/Objects/Devices/boombox.rsi
+  - type: Jukebox
+    onState: on
+    offState: off
+  - type: Boombox
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+  - type: PowerCellDraw
+    drawRate: 1
+    useRate: 5
+  - type: ActivatableUI
+    key: enum.JukeboxUiKey.Key
+  - type: ActivatableUIRequiresPowerCell
+  - type: UserInterface
+    interfaces:
+      enum.JukeboxUiKey.Key:
+        type: JukeboxBoundUserInterface

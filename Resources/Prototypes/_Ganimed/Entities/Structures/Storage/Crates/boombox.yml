@@ -1,0 +1,9 @@
+- type: entity
+  id: BoomboxCrate
+  parent: CrateGenericSteel
+  name: boombox crate
+  description: Contains a portable boombox. Guaranteed to annoy your neighbours.
+  components:
+  - type: StorageFill
+    contents:
+      - id: Boombox

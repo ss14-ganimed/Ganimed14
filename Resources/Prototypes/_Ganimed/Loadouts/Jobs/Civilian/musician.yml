@@ -17,3 +17,16 @@
     shoes: ClothingShoesBootsPerformer
   effects:
   - !type:SponsorLoadoutEffect
+
+# Ganimed-Add: Boombox для музыкантов с 100+ часами игры за профессию
+- type: loadout
+  id: BoomboxLoadout
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobMusician
+      time: 100h
+  storage:
+    back:
+    - Boombox
