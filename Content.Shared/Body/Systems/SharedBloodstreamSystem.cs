@@ -288,14 +288,15 @@ public abstract class SharedBloodstreamSystem : EntitySystem
 
     private void OnBeingGibbed(Entity<BloodstreamComponent> ent, ref BeingGibbedEvent args)
     {
-        SpillAllSolutions(ent.AsNullable());
-
         // Ganimed-Port-Start: частицы крови при гиббинге (_Starfall, funky-station/forky-station#67)
         // Встроено сюда вместо серверного GibMistParticleSystem: пара (BloodstreamComponent, BeingGibbedEvent) уже занята этим классом.
+        // Цвет берём до SpillAllSolutions: после очистки раствор пуст и цвет был бы всегда красным.
         var color = Color.Red;
         var contents = ent.Comp.BloodSolution?.Comp.Solution.Contents;
         if (contents is { Count: > 0 } && _prototypeManager.TryIndex(contents[0].Reagent.Prototype, out ReagentPrototype? reagentProto))
             color = reagentProto.SubstanceColor;
+
+        SpillAllSolutions(ent.AsNullable());
 
         var coords = _transform.GetMapCoordinates(ent.Owner);
         RaiseNetworkEvent(new GibMistParticleEvent(coords, color), Filter.Pvs(ent.Owner));

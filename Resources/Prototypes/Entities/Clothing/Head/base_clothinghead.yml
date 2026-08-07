@@ -340,4 +340,8 @@
     iconVisuals:
     - sprite: _Ganimed/Effects/blood.rsi
       state: helmetbloodicon
+  - type: SolutionContainerManager
+    solutions:
+      stain: # Ganimed-Port: стайны (funky-station/forky-station#107)
+        maxVol: 5
   # Ganimed-Port-End

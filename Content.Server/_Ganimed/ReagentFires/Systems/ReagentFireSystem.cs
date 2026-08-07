@@ -24,6 +24,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Ganimed.ReagentFires.Systems
 {
@@ -40,6 +41,7 @@ namespace Content.Server._Ganimed.ReagentFires.Systems
         [Dependency] private readonly DecalSystem _decalSystem = null!;
         [Dependency] private readonly IRobustRandom _random = null!;
         [Dependency] private readonly DamageableSystem _damageable = null!;
+        [Dependency] private readonly IGameTiming _timing = null!;
 
         private readonly List<EntityUid> _toExtinguish = new();
         private readonly string[] _burntDecals = ["burnt1", "burnt2", "burnt3", "burnt4"];
@@ -253,6 +255,13 @@ namespace Content.Server._Ganimed.ReagentFires.Systems
                     if (fireComp.Flammability <= 0)
                         continue;
 
+                    // Атмосферные запросы на каждую негорящую лужу каждый тик - лишняя
+                    // нагрузка при большом количестве разлитых реагентов: проверяем раз в 2 секунды.
+                    if (_timing.CurTime < fireComp.NextAutoIgniteCheck)
+                        continue;
+
+                    fireComp.NextAutoIgniteCheck = _timing.CurTime + TimeSpan.FromSeconds(2);
+
                     var gridId = xform.GridUid;
                     if (gridId != null)
                     {
@@ -303,7 +312,16 @@ namespace Content.Server._Ganimed.ReagentFires.Systems
                 }
 
                 var burnFraction = 0.05f / MathF.Pow(MathF.Max(1f, fireComp.Flammability), 3f);
-                _solutionContainerSystem.BurnFlammableReagents(puddle.Solution.Value, burnFraction);
+                if (fireComp.SelfOxidizing)
+                {
+                    // Без внешнего кислорода сгорает только самоокисляющаяся часть раствора
+                    // (термит и подобное), а не весь горючий объём: этанол в вакууме не горит.
+                    _solutionContainerSystem.BurnSelfOxidizingReagents(puddle.Solution.Value, burnFraction);
+                }
+                else
+                {
+                    _solutionContainerSystem.BurnFlammableReagents(puddle.Solution.Value, burnFraction);
+                }
 
                 var flammability = solution.GetSolutionFlammability(_prototypeManager);
                 var selfOxidizing = solution.IsSolutionSelfOxidizing(_prototypeManager);
@@ -398,7 +416,12 @@ namespace Content.Server._Ganimed.ReagentFires.Systems
                         }
                     }
 
-                    if (!isBlocked && adjMix != null && tileMix is { Temperature: > Atmospherics.FireMinimumTemperatureToSpread })
+                    // Огонь не проходит сквозь герметичные преграды (закрытые firelock, стены):
+                    // не греем и не поджигаем лужи за ними.
+                    if (isBlocked)
+                        continue;
+
+                    if (adjMix != null && tileMix is { Temperature: > Atmospherics.FireMinimumTemperatureToSpread })
                     {
                         var radiatedTemp = tileMix.Temperature * Atmospherics.FireSpreadRadiosityScale;
                         if (adjMix.Temperature < radiatedTemp)

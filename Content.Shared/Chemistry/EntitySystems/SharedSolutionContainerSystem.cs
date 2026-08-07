@@ -372,6 +372,12 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         soln.Comp.Solution.BurnFlammableReagents(fraction, PrototypeManager);
         UpdateChemicals(soln);
     }
+
+    public void BurnSelfOxidizingReagents(Entity<SolutionComponent> soln, float fraction)
+    {
+        soln.Comp.Solution.BurnSelfOxidizingReagents(fraction, PrototypeManager);
+        UpdateChemicals(soln);
+    }
     // Ganimed-Port-End
 
     public Solution SplitStackSolution(Entity<SolutionComponent> soln, FixedPoint2 quantity, int stackCount)

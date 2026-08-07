@@ -66,7 +66,10 @@ public abstract class SharedStainSystem : EntitySystem
         if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out var stainSolution))
             return;
 
+        // Не отбираем у источника больше, чем влезет в пятно: иначе TryAddSolution
+        // откажет, а реагенты уже будут удалены из лужи и пропадут.
         var transferAmount = FixedPoint.FixedPoint2.Min(args.Args.Solution.Volume, ent.Comp.SpillTransferAmount);
+        transferAmount = FixedPoint.FixedPoint2.Min(transferAmount, stainSolution.Value.Comp.Solution.AvailableVolume);
         var split = args.Args.Solution.SplitSolution(transferAmount);
 
         for (var i = split.Contents.Count - 1; i >= 0; i--)
@@ -75,9 +78,8 @@ public abstract class SharedStainSystem : EntitySystem
                 split.RemoveReagent(split.Contents[i].Reagent, split.Contents[i].Quantity);
         }
 
-        if (split.Volume > 0)
+        if (split.Volume > 0 && _solution.TryAddSolution(stainSolution.Value, split))
         {
-            _solution.TryAddSolution(stainSolution.Value, split);
             UpdateVisuals(ent);
             OnStained(ent, stainSolution.Value);
         }

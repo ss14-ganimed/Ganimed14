@@ -27,6 +27,13 @@ namespace Content.Server._Ganimed.ReagentFires.Components
         [ViewVariables]
         public float Accumulator { get; set; } = 0f;
 
+        /// <summary>
+        /// Когда в следующий раз проверять самовоспламенение негорящей лужи
+        /// (чтобы не дёргать атмосферу каждый тик на каждую лужу).
+        /// </summary>
+        [ViewVariables]
+        public TimeSpan NextAutoIgniteCheck { get; set; }
+
         [ViewVariables]
         public EntityUid? PlayingStream { get; set; } = null;
 

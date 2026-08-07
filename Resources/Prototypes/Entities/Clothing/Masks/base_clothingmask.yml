@@ -25,6 +25,10 @@
     - sprite: _Ganimed/Effects/blood.rsi
       state: maskbloodicon
   # Ganimed-Port-End
+  - type: SolutionContainerManager
+    solutions:
+      stain: # Ganimed-Port: стайны (funky-station/forky-station#107)
+        maxVol: 5
   - type: PhysicalComposition # ADT START CHANGES
     materialComposition:
       Plastic: 100 # ADT END CHANGES
@@ -70,8 +74,6 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 10
-      stain: # Ganimed-Port: стайны (funky-station/forky-station#107)
-        maxVol: 5
   - type: Tag
     tags:
     - ClothMade
