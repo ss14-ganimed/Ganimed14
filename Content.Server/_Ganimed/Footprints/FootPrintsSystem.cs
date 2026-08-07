@@ -7,7 +7,6 @@ using Content.Server.Decals;
 using Content.Server.Gravity;
 using Content.Shared._Ganimed.Footprints;
 using Content.Shared.Body.Components;
-using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
@@ -43,7 +42,6 @@ public sealed class FootprintSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly PuddleSystem _puddleSystem = default!;
-    [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
     [Dependency] private readonly DecalSystem _decalSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
@@ -119,7 +117,9 @@ public sealed class FootprintSystem : EntitySystem
         {
             // Ganimed-Add: истекающее кровью тело (на поверхности нет жидкости, но в теле есть кровь)
             // оставляет визуальный след волочения (decal). Баланс крови не трогаем.
-            if (!stand && TryEmitBleedingDragMark(ent))
+            // У простых мобов (SimpleSpaceMobBase) нет StandingStateComponent, поэтому они всегда
+            // считаются стоящими: разрешаем след волочения и им, и лежачим гуманоидам.
+            if ((!stand || !_standingQuery.HasComp(ent)) && TryEmitBleedingDragMark(ent, stand))
                 return true;
 
             return false;
@@ -260,16 +260,22 @@ public sealed class FootprintSystem : EntitySystem
     /// но на его поверхности нет жидкости (body_surface пуст). Кровь из тела не списывается,
     /// это чистый визуал.
     /// </summary>
-    private bool TryEmitBleedingDragMark(Entity<FootprintEmitterComponent> ent)
+    private bool TryEmitBleedingDragMark(Entity<FootprintEmitterComponent> ent, bool stand)
     {
         if (TerminatingOrDeleted(ent))
+            return false;
+
+        // Стоящий гуманоид (у которого поза определяется StandingState) след волочения
+        // не оставляет: для него BloodDecalSystem рисует капли и кляксы.
+        if (stand && _standingQuery.HasComp(ent))
             return false;
 
         if (!TryComp<BloodstreamComponent>(ent, out var bloodstream))
             return false;
 
-        // Кровь должна быть в теле: активное кровотечение или ещё не вытекла вся.
-        if (bloodstream.BleedAmount <= 0f && _bloodstream.GetBloodLevelPercentage((ent.Owner, (BloodstreamComponent?) bloodstream)) <= 0f)
+        // След нужен только при активном кровотечении: наличие крови в теле
+        // (GetBloodLevelPercentage > 0) есть и у здорового существа.
+        if (bloodstream.BleedAmount <= 0f)
             return false;
 
         if (!_physicsQuery.TryComp(ent, out var body))

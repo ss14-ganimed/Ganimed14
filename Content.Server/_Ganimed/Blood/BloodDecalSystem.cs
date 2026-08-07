@@ -61,7 +61,12 @@ public sealed class BloodDecalSystem : EntitySystem
 
     private sealed class DripState
     {
+        /// <summary> Позиция последней капли: по ней считается, что существо идёт/бежит. </summary>
         public Vector2 LastDripPosition;
+
+        /// <summary> Когда смещение попало в «серую зону» (0.3..0.75 м) и не вышло из неё. </summary>
+        public TimeSpan? StuckSince;
+
         public TimeSpan NextDrip;
         public TimeSpan NextStandingSplat;
     }
@@ -110,6 +115,7 @@ public sealed class BloodDecalSystem : EntitySystem
                 var coordinates = new EntityCoordinates(gridUid, grid.WorldToLocal(mapPos.Position) + _random.NextVector2(0f, 0.2f));
                 TrySpawnDecal(coordinates, GetBloodColor(blood).WithAlpha(_random.NextFloat(0.35f, 0.6f)), 4);
                 state.LastDripPosition = mapPos.Position;
+                state.StuckSince = null;
                 state.NextDrip = curTime + DripCooldown;
             }
             else if (moved <= 0.3f && curTime >= state.NextStandingSplat)
@@ -117,7 +123,20 @@ public sealed class BloodDecalSystem : EntitySystem
                 // Стоит на месте: под ним копится клякса.
                 var coordinates = new EntityCoordinates(gridUid, grid.WorldToLocal(mapPos.Position) + _random.NextVector2(0.1f, 0.45f));
                 TrySpawnDecal(coordinates, GetBloodColor(blood).WithAlpha(_random.NextFloat(0.45f, 0.7f)), 5);
+                state.StuckSince = null;
                 state.NextStandingSplat = curTime + StandingSplatCooldown;
+            }
+            else if (moved > 0.3f)
+            {
+                // Сдвинулся на 0.3..0.75 м и замер: ни капля, ни клякса.
+                // Если стоит так дольше секунды - считаем это новой точкой стояния,
+                // иначе состояние зависло бы навсегда.
+                state.StuckSince ??= curTime;
+                if (curTime - state.StuckSince.Value > TimeSpan.FromSeconds(1))
+                {
+                    state.LastDripPosition = mapPos.Position;
+                    state.StuckSince = null;
+                }
             }
         }
     }
