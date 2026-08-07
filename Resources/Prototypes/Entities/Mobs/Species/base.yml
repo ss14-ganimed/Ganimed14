@@ -318,6 +318,8 @@
   # End-ADT Tweak
   # Ganimed-Add: мобы пачкаются в лужах и оставляют следы (Footstep/DragMark).
   - type: FootprintEmitter
+  # Ganimed-Add: duo emotes port (funky-station#179), все игровые виды могут участвовать.
+  - type: DuoEmote
 
 - type: entity
   save: false

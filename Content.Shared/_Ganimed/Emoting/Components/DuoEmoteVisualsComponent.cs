@@ -1,0 +1,16 @@
+// SPDX-FileCopyrightText: 2026 YaraaraY
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Shared._Ganimed.Emoting.Prototypes;
+using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
+
+namespace Content.Shared._Ganimed.Emoting.Components;
+
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+public sealed partial class DuoEmoteVisualsComponent : Component
+{
+    [DataField, AutoNetworkedField]
+    public ProtoId<DuoEmotePrototype> EmoteId;
+}

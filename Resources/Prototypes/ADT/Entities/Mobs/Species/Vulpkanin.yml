@@ -121,6 +121,8 @@
         state: "creampie_human"
         visible: false
     - type: Wagging
+    # Ganimed-Add: duo emotes port (funky-station#179), хвостатый вид.
+    - type: TailDuoEmote
     - type: Inventory
       speciesId: vulp
 
