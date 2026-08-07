@@ -2,6 +2,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.Body.Prototypes;
+using Content.Shared.Chemistry.Reagent;
+using Robust.Shared.Prototypes;
+
 namespace Content.Shared._Ganimed.Addiction;
 
 /// <summary>
@@ -24,10 +28,11 @@ public sealed partial class AddictionComponent : Component
     public float Threshold = 50f;
 
     /// <summary>
-    /// Спад уровня в секунду. 100 за ~50 минут воздержания.
+    /// Спад уровня в секунду. 100 за ~100 минут воздержания: при стартовом уровне 100
+    /// порог (50) достигается через ~50 минут, тяжёлая стадия ломки (с 30-й минуты) успевает наступить.
     /// </summary>
     [DataField]
-    public float DecayRate = 100f / 3000f;
+    public float DecayRate = 100f / 6000f;
 
     /// <summary>
     /// Рост уровня за цикл метаболизма реагента (примерно раз в секунду,
@@ -59,6 +64,84 @@ public sealed partial class AddictionComponent : Component
     /// </summary>
     [DataField]
     public TimeSpan PopupInterval = TimeSpan.FromSeconds(60);
+
+    /// <summary>
+    /// Как долго держатся симптомы после последнего продления (дрожь и статус-эффекты).
+    /// </summary>
+    [DataField]
+    public TimeSpan SymptomDuration = TimeSpan.FromSeconds(35);
+
+    /// <summary>
+    /// Как часто продлеваются симптомы во время ломки.
+    /// </summary>
+    [DataField]
+    public TimeSpan SymptomRefreshInterval = TimeSpan.FromSeconds(10);
+
+    /// <summary>
+    /// Амплитуда дрожи на лёгкой стадии ломки.
+    /// </summary>
+    [DataField]
+    public float MildJitterAmplitude = 6f;
+
+    /// <summary>
+    /// Амплитуда дрожи на средней стадии ломки.
+    /// </summary>
+    [DataField]
+    public float MediumJitterAmplitude = 8f;
+
+    /// <summary>
+    /// Амплитуда дрожи на тяжёлой стадии ломки.
+    /// </summary>
+    [DataField]
+    public float SevereJitterAmplitude = 10f;
+
+    /// <summary>
+    /// Частота дрожи во время ломки.
+    /// </summary>
+    [DataField]
+    public float JitterFrequency = 3f;
+
+    /// <summary>
+    /// Статус-эффект косноязычия на средней стадии алкогольной ломки.
+    /// </summary>
+    [DataField]
+    public EntProtoId SlurredEffect = "StatusEffectSlurred";
+
+    /// <summary>
+    /// Статус-эффект заикания на средней стадии никотиновой и наркотической ломки.
+    /// </summary>
+    [DataField]
+    public EntProtoId StutterEffect = "StatusEffectStutter";
+
+    /// <summary>
+    /// Статус-эффект слабости на тяжёлой стадии ломки.
+    /// </summary>
+    [DataField]
+    public EntProtoId WeaknessEffect = "StatusEffectWithdrawalWeakness";
+
+    /// <summary>
+    /// Статус-эффект галлюцинаций на тяжёлой стадии наркотической ломки.
+    /// </summary>
+    [DataField]
+    public EntProtoId RainbowEffect = "StatusEffectSeeingRainbow";
+
+    /// <summary>
+    /// Реагент, который кормит никотиновый канал (по id, у никотина нет своей группы метаболизма).
+    /// </summary>
+    [DataField]
+    public ProtoId<ReagentPrototype> NicotineReagent = "Nicotine";
+
+    /// <summary>
+    /// Группа метаболизма, по которой реагент считается алкоголем.
+    /// </summary>
+    [DataField]
+    public ProtoId<MetabolismGroupPrototype> AlcoholMetabolismGroup = "Alcohol";
+
+    /// <summary>
+    /// Группа метаболизма, по которой реагент считается наркотиком.
+    /// </summary>
+    [DataField]
+    public ProtoId<MetabolismGroupPrototype> NarcoticMetabolismGroup = "Narcotic";
 }
 
 /// <summary>
@@ -99,7 +182,7 @@ public sealed partial class AddictionChannel
     public TimeSpan NextPopupTime;
 
     /// <summary>
-    /// Время следующего обновления симптомов (чтобы не дёргать DoJitter каждый тик).
+    /// Время следующего продления симптомов (чтобы не дёргать DoJitter каждый тик).
     /// </summary>
     [DataField]
     public TimeSpan NextSymptomsTime;
@@ -115,4 +198,9 @@ public sealed partial class AddictionChannel
     /// </summary>
     [DataField]
     public bool InWithdrawal;
+
+    /// <summary>
+    /// Текущая стадия ломки (0 - лёгкая, 1 - средняя, 2 - тяжёлая). Обновляется AddictionSystem.
+    /// </summary>
+    public int Stage;
 }

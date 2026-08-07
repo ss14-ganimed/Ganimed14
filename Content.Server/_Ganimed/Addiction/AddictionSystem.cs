@@ -8,11 +8,8 @@ using Content.Server.Popups;
 using Content.Server.Traits;
 using Content.Shared.GameTicking;
 using Content.Shared._Ganimed.Addiction;
-using Content.Shared.Body.Prototypes;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.Jittering;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.StatusEffectNew;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -20,7 +17,8 @@ namespace Content.Server._Ganimed.Addiction;
 
 /// <summary>
 /// Система зависимости: ловит приём доз (GetReagentEffectsEvent), копит уровень привыкания,
-/// при долгом воздержании вешает симптомы ломки, снимает их при новой дозе.
+/// при долгом воздержании запускает ломку и рейзит AddictionSymptomsChangedEvent,
+/// чтобы симптомы применила AddictionSymptomsSystem.
 /// Компонент есть у всех игроков со спавна, канал зависимости появляется
 /// при первом употреблении (подсесть может каждый), трайты дают стартовую
 /// зависимость с высоким уровнем.
@@ -29,29 +27,8 @@ public sealed partial class AddictionSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedJitteringSystem _jitter = default!;
-    [Dependency] private readonly StatusEffectsSystem _status = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-
-    public static readonly EntProtoId Stutter = "StatusEffectStutter";
-    public static readonly EntProtoId Slurred = "StatusEffectSlurred";
-    public static readonly EntProtoId Weakness = "StatusEffectWithdrawalWeakness";
-    public static readonly EntProtoId SeeingRainbow = "StatusEffectSeeingRainbow";
-
-    /// <summary>
-    /// Как долго держатся симптомы после последнего продления (дрожь и статус-эффекты).
-    /// </summary>
-    private const float SymptomDuration = 35f;
-
-    /// <summary>
-    /// Как часто обновляются симптомы во время ломки (секунды).
-    /// </summary>
-    private const float SymptomRefreshInterval = 10f;
-
-    private static readonly ProtoId<MetabolismGroupPrototype> AlcoholGroup = "Alcohol";
-    private static readonly ProtoId<MetabolismGroupPrototype> NarcoticGroup = "Narcotic";
-    private static readonly ProtoId<ReagentPrototype> NicotineReagent = "Nicotine";
 
     public override void Initialize()
     {
@@ -76,11 +53,16 @@ public sealed partial class AddictionSystem : EntitySystem
 
     private void OnComponentInit(EntityUid uid, AddictionComponent comp, ComponentInit args)
     {
-        // Каналы из трайта приходят с LastDoseTime = 0, иначе ломка началась бы мгновенно
+        // Каналы из трайта приходят с LastDoseTime = 0, иначе ломка началась бы мгновенно.
+        // Уровень выше порога означает, что зависимость уже есть: без WasAddicted
+        // лечение не показало бы поп-ап выздоровления, а доза до лечения - поп-ап подсадки.
         foreach (var channel in comp.Channels)
         {
             if (channel.LastDoseTime == TimeSpan.Zero)
                 channel.LastDoseTime = _timing.CurTime;
+
+            if (channel.Level >= comp.Threshold)
+                channel.WasAddicted = true;
         }
     }
 
@@ -98,7 +80,12 @@ public sealed partial class AddictionSystem : EntitySystem
             // Доза была недавно - ломки нет
             if (timeSinceDose < comp.WithdrawalDelay)
             {
-                channel.InWithdrawal = false;
+                if (channel.InWithdrawal)
+                {
+                    channel.InWithdrawal = false;
+                    channel.Stage = 0;
+                    RaiseSymptomsChanged(uid);
+                }
                 continue;
             }
 
@@ -115,7 +102,8 @@ public sealed partial class AddictionSystem : EntitySystem
                 if (channel.InWithdrawal)
                 {
                     channel.InWithdrawal = false;
-                    RemoveSymptoms(uid);
+                    channel.Stage = 0;
+                    RaiseSymptomsChanged(uid);
                 }
                 continue;
             }
@@ -124,8 +112,6 @@ public sealed partial class AddictionSystem : EntitySystem
                 continue;
 
             // Ломка
-            channel.InWithdrawal = true;
-
             var stageTime = timeSinceDose - comp.WithdrawalDelay;
             var stage = stageTime < comp.MildStageDuration
                 ? 0
@@ -133,10 +119,11 @@ public sealed partial class AddictionSystem : EntitySystem
                     ? 1
                     : 2;
 
-            if (_timing.CurTime >= channel.NextSymptomsTime)
+            if (!channel.InWithdrawal || channel.Stage != stage)
             {
-                ApplySymptoms(uid, channel, stage);
-                channel.NextSymptomsTime = _timing.CurTime + TimeSpan.FromSeconds(SymptomRefreshInterval);
+                channel.InWithdrawal = true;
+                channel.Stage = stage;
+                RaiseSymptomsChanged(uid);
             }
 
             if (_timing.CurTime >= channel.NextPopupTime)
@@ -155,7 +142,7 @@ public sealed partial class AddictionSystem : EntitySystem
 
     private void OnGetReagentEffects(EntityUid uid, AddictionComponent comp, ref GetReagentEffectsEvent args)
     {
-        var kind = GetKind(args.Reagent);
+        var kind = GetKind(args.Reagent, comp);
         if (kind is not { } kindValue)
             return;
 
@@ -174,7 +161,8 @@ public sealed partial class AddictionSystem : EntitySystem
         if (channel.InWithdrawal)
         {
             channel.InWithdrawal = false;
-            RemoveSymptoms(uid);
+            channel.Stage = 0;
+            RaiseSymptomsChanged(uid);
             _popup.PopupEntity(Loc.GetString($"addiction-dose-{KindLoc(kindValue)}"), uid, uid);
         }
         // Первое превышение порога - подсадка
@@ -187,55 +175,32 @@ public sealed partial class AddictionSystem : EntitySystem
 
     /// <summary>
     /// Определяет тип зависимости по рецепту: никотин по id, алкоголь по группе Alcohol,
-    /// наркотики по группе Narcotic.
+    /// наркотики по группе Narcotic. Группы и реагент настраиваются в компоненте.
     /// </summary>
-    private AddictionKind? GetKind(ReagentId reagent)
+    private AddictionKind? GetKind(ReagentId reagent, AddictionComponent comp)
     {
-        if (reagent.Prototype == NicotineReagent)
+        if (reagent.Prototype == comp.NicotineReagent)
             return AddictionKind.Nicotine;
 
         if (!_proto.TryIndex(reagent.Prototype, out ReagentPrototype? proto) || proto.Metabolisms is not { } metabolisms)
             return null;
 
-        if (metabolisms.ContainsKey(AlcoholGroup))
+        if (metabolisms.ContainsKey(comp.AlcoholMetabolismGroup))
             return AddictionKind.Alcohol;
 
-        if (metabolisms.ContainsKey(NarcoticGroup))
+        if (metabolisms.ContainsKey(comp.NarcoticMetabolismGroup))
             return AddictionKind.Drug;
 
         return null;
     }
 
-    private void ApplySymptoms(EntityUid uid, AddictionChannel channel, int stage)
+    /// <summary>
+    /// Сообщает AddictionSymptomsSystem, что набор симптомов нужно пересчитать.
+    /// </summary>
+    private void RaiseSymptomsChanged(EntityUid uid)
     {
-        // Дрожь - косметика на любой стадии.
-        // refresh: true, чтобы время не копилось при повторных вызовах
-        var amplitude = stage switch { 0 => 6f, 1 => 8f, _ => 10f };
-        _jitter.DoJitter(uid, TimeSpan.FromSeconds(SymptomDuration), refresh: true, amplitude, 3f);
-
-        // Средняя стадия: косметика речи
-        if (stage >= 1)
-        {
-            var speech = channel.Kind == AddictionKind.Alcohol ? Slurred : Stutter;
-            _status.TrySetStatusEffectDuration(uid, speech, TimeSpan.FromSeconds(SymptomDuration + 5f));
-        }
-
-        // Тяжёлая стадия: лёгкие дебафы
-        if (stage >= 2)
-        {
-            _status.TrySetStatusEffectDuration(uid, Weakness, TimeSpan.FromSeconds(SymptomDuration + 5f));
-            if (channel.Kind == AddictionKind.Drug)
-                _status.TrySetStatusEffectDuration(uid, SeeingRainbow, TimeSpan.FromSeconds(SymptomDuration + 5f));
-        }
-    }
-
-    private void RemoveSymptoms(EntityUid uid)
-    {
-        RemComp<JitteringComponent>(uid);
-        _status.TryRemoveStatusEffect(uid, Stutter);
-        _status.TryRemoveStatusEffect(uid, Slurred);
-        _status.TryRemoveStatusEffect(uid, Weakness);
-        _status.TryRemoveStatusEffect(uid, SeeingRainbow);
+        var ev = new AddictionSymptomsChangedEvent(uid);
+        RaiseLocalEvent(uid, ref ev);
     }
 
     private static string KindLoc(AddictionKind kind) => kind switch
