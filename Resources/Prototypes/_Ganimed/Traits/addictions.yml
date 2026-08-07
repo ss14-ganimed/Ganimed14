@@ -1,0 +1,60 @@
+# SPDX-FileCopyrightText: 2026 ultradyper <ultradyper@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: trait
+  id: AlcoholicAddiction
+  name: trait-alcoholic-addiction-name
+  description: trait-alcoholic-addiction-desc
+  category: Quirks
+  cost: -1
+  speciesBlacklist:
+  - IPC
+  - Diona
+  - SlimePerson
+  - NovakidSpecies
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Addiction
+      channels:
+      - kind: Alcohol
+        level: 100
+
+- type: trait
+  id: NicotineAddiction
+  name: trait-nicotine-addiction-name
+  description: trait-nicotine-addiction-desc
+  category: Quirks
+  cost: -1
+  speciesBlacklist:
+  - IPC
+  - Diona
+  - SlimePerson
+  - NovakidSpecies
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Addiction
+      channels:
+      - kind: Nicotine
+        level: 100
+
+- type: trait
+  id: DrugAddiction
+  name: trait-drug-addiction-name
+  description: trait-drug-addiction-desc
+  category: Quirks
+  cost: -1
+  speciesBlacklist:
+  - IPC
+  - Diona
+  - SlimePerson
+  - NovakidSpecies
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Addiction
+      channels:
+      - kind: Drug
+        level: 100
