@@ -121,6 +121,26 @@ public sealed partial class FootprintEmitterComponent : Component
     public EntProtoId<FootprintComponent> DragMarkPrototype = "DragMark";
 
     /// <summary>
+    /// Decals-прототипы следа волочения для истекающих тел (когда на теле нет жидкости,
+    /// но в теле есть кровь). Чисто визуальные, баланс крови не трогают.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadOnly), DataField]
+    public string[] DragMarkDecals =
+    {
+        "BloodDragMark1",
+        "BloodDragMark2",
+        "BloodDragMark3",
+        "BloodDragMark4",
+        "BloodDragMark5",
+    };
+
+    /// <summary>
+    /// Оставлять ли следы ног при ходьбе. Животным выключено: только волочение.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadOnly), DataField]
+    public bool EmitFootprints = true;
+
+    /// <summary>
     /// Расстояние между следами при ходьбе.
     /// </summary>
     [DataField]

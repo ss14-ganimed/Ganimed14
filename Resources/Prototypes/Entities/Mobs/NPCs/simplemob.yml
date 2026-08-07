@@ -68,6 +68,10 @@
     price: 1000 # Living critters are valuable in space.
   - type: Perishable
   - type: Fauna #ADT tweak
+  # Ganimed-Add: животные и монстры оставляют следы волочения при буксировке (drag marks),
+  # но не оставляют следов ног при ходьбе.
+  - type: FootprintEmitter
+    emitFootprints: false
 
 - type: entity
   parent:

@@ -1,0 +1,112 @@
+# Кровавые брызги и следы волочения (decals).
+# Используются системой BloodDecalSystem и для следов истекающих тел.
+# Тег ganimed-blood: швабра впитывает кровь с таких декалей (DecalMoppingSystem).
+- type: decal
+  id: BloodSplatter0
+  tags: ["ganimed-blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: Fluids/splatter.rsi
+    state: splatter-0
+
+- type: decal
+  id: BloodSplatter1
+  tags: ["ganimed-blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: Fluids/splatter.rsi
+    state: splatter-1
+
+- type: decal
+  id: BloodSplatter2
+  tags: ["ganimed-blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: Fluids/splatter.rsi
+    state: splatter-2
+
+- type: decal
+  id: BloodSplatter3
+  tags: ["ganimed-blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: Fluids/splatter.rsi
+    state: splatter-3
+
+- type: decal
+  id: BloodSplatter4
+  tags: ["ganimed-blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: Fluids/splatter.rsi
+    state: splatter-4
+
+- type: decal
+  id: BloodSplatter5
+  tags: ["ganimed-blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: Fluids/splatter.rsi
+    state: splatter-5
+
+- type: decal
+  id: BloodDragMark1
+  tags: ["ganimed-blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _Ganimed/Effects/footprints.rsi
+    state: dragging-1
+
+- type: decal
+  id: BloodDragMark2
+  tags: ["ganimed-blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _Ganimed/Effects/footprints.rsi
+    state: dragging-2
+
+- type: decal
+  id: BloodDragMark3
+  tags: ["ganimed-blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _Ganimed/Effects/footprints.rsi
+    state: dragging-3
+
+- type: decal
+  id: BloodDragMark4
+  tags: ["ganimed-blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _Ganimed/Effects/footprints.rsi
+    state: dragging-4
+
+- type: decal
+  id: BloodDragMark5
+  tags: ["ganimed-blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _Ganimed/Effects/footprints.rsi
+    state: dragging-5

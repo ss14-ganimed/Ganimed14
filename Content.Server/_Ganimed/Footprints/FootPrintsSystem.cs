@@ -3,11 +3,15 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Atmos.Components;
+using Content.Server.Decals;
 using Content.Server.Gravity;
 using Content.Shared._Ganimed.Footprints;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
 using Content.Server.Fluids.EntitySystems;
@@ -39,6 +43,8 @@ public sealed class FootprintSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly PuddleSystem _puddleSystem = default!;
+    [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
+    [Dependency] private readonly DecalSystem _decalSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     private EntityQuery<TransformComponent> _transformQuery;
@@ -110,7 +116,14 @@ public sealed class FootprintSystem : EntitySystem
     public bool TryEmitFootprint(Entity<FootprintEmitterComponent> ent)
     {
         if (!CanEmitFootprint(ent, out var stand, out var solComp, out var solution, out var gridUid, out var grid, out var tileRef, out var transform))
+        {
+            // Ganimed-Add: истекающее кровью тело (на поверхности нет жидкости, но в теле есть кровь)
+            // оставляет визуальный след волочения (decal). Баланс крови не трогаем.
+            if (!stand && TryEmitBleedingDragMark(ent))
+                return true;
+
             return false;
+        }
 
         EmitFootprint(ent, stand, solComp, solution, gridUid, grid, tileRef, transform);
         return true;
@@ -188,6 +201,10 @@ public sealed class FootprintSystem : EntitySystem
 
         stand = !_standingQuery.TryComp(ent, out var standing) || standing.Standing;
 
+        // Ganimed-Add: животным следы ног не нужны, только волочение.
+        if (stand && !ent.Comp.EmitFootprints)
+            return false;
+
         var solCont = (ent, container);
         if (stand)
         {
@@ -235,6 +252,55 @@ public sealed class FootprintSystem : EntitySystem
         if (puddles.Count > 0)
             return false;
 
+        return true;
+    }
+
+    /// <summary>
+    /// Ganimed-Add: спавнит визуальный decal-след волочения, если тело истекает кровью,
+    /// но на его поверхности нет жидкости (body_surface пуст). Кровь из тела не списывается,
+    /// это чистый визуал.
+    /// </summary>
+    private bool TryEmitBleedingDragMark(Entity<FootprintEmitterComponent> ent)
+    {
+        if (TerminatingOrDeleted(ent))
+            return false;
+
+        if (!TryComp<BloodstreamComponent>(ent, out var bloodstream))
+            return false;
+
+        // Кровь должна быть в теле: активное кровотечение или ещё не вытекла вся.
+        if (bloodstream.BleedAmount <= 0f && _bloodstream.GetBloodLevelPercentage((ent.Owner, (BloodstreamComponent?) bloodstream)) <= 0f)
+            return false;
+
+        if (!_physicsQuery.TryComp(ent, out var body))
+            return false;
+
+        if (body.BodyStatus == BodyStatus.InAir || _gravity.IsWeightless(ent.Owner))
+            return false;
+
+        var transform = Transform(ent);
+        var mapCoords = _transform.GetMapCoordinates((ent, transform));
+        if (!_mapManager.TryFindGridAt(mapCoords, out var gridUid, out var grid))
+            return false;
+
+        var distanceMoved = (transform.LocalPosition - ent.Comp.LastStepPosition).Length();
+        if (distanceMoved <= ent.Comp.DragMarkInterval)
+            return false;
+
+        var bloodColor = _prototype.Index<ReagentPrototype>(bloodstream.BloodReagent).SubstanceColor;
+        var direction = (transform.LocalPosition - ent.Comp.LastStepPosition).ToAngle() + Angle.FromDegrees(-90f);
+        var coordinates = new EntityCoordinates(gridUid, transform.LocalPosition + _random.NextVector2(0f, 0.15f));
+
+        _decalSystem.TryAddDecal(
+            _random.Pick(ent.Comp.DragMarkDecals),
+            coordinates,
+            out _,
+            bloodColor.WithAlpha(_random.NextFloat(0.5f, 0.85f)),
+            direction,
+            zIndex: 5,
+            cleanable: true);
+
+        ent.Comp.LastStepPosition = transform.LocalPosition;
         return true;
     }
 
