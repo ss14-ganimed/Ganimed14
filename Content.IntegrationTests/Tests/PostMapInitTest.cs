@@ -61,6 +61,7 @@ namespace Content.IntegrationTests.Tests
             "ADT_Gemini",
             "ADT_Box",
             "ADT_Kerberos",
+            "ADT_Cluster",
             "ENTCivilStation", // Ganimed tweak
             "ENTFearohStation" // Ganimed tweak
         };
