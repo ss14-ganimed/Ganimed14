@@ -950,6 +950,7 @@
   maxLimit: 2
   loadouts:
   - MusicianSuperSynthesizer # ADT-Tweak
+  - BoomboxLoadout # Ganimed-Add
   - Glockenspiel
   - MusicBox
   - Xylophone
