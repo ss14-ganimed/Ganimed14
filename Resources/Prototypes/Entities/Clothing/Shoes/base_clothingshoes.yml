@@ -33,10 +33,10 @@
   - type: Stainable
     clothingVisuals:
       shoes:
-      - sprite: _Ganimed/Effects/blood.rsi
+      - sprite: _Funkystation/Effects/blood.rsi
         state: shoeblood
     iconVisuals:
-    - sprite: _Ganimed/Effects/blood.rsi
+    - sprite: _Funkystation/Effects/blood.rsi
       state: shoebloodicon
   # Ganimed-Port-End
   # ADT Start

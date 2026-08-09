@@ -15,7 +15,7 @@ using Content.Shared.HealthExaminable;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
-using Content.Shared._Ganimed.Fluids;
+using Content.Shared._Funkystation.Fluids;
 using Content.Shared._Starfall.Particles; // Ganimed-Port: частицы крови при гиббинге (_Starfall, funky-station/forky-station#67)
 using Robust.Shared.Player; // Ganimed-Port: Filter.Pvs // Ganimed-Port: стайны (funky-station/forky-station#107)
 using Content.Shared.Random.Helpers;

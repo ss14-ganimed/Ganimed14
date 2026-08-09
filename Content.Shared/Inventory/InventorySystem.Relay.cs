@@ -116,7 +116,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<InnateVerb>>(OnGetInnateVerbs);
 
         // Ganimed-Port: стайны на одежде (funky-station/forky-station#107)
-        SubscribeLocalEvent<InventoryComponent, Content.Shared._Ganimed.Fluids.SpilledOnEvent>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, Content.Shared._Funkystation.Fluids.SpilledOnEvent>(RelayInventoryEvent);
     }
 
     protected void RefRelayInventoryEvent<T>(EntityUid uid, InventoryComponent component, ref T args) where T : IInventoryRelayEvent

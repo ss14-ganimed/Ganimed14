@@ -13,10 +13,10 @@
   - type: Stainable
     clothingVisuals:
       outerClothing:
-      - sprite: _Ganimed/Effects/blood.rsi
+      - sprite: _Funkystation/Effects/blood.rsi
         state: outerclothing
     iconVisuals:
-    - sprite: _Ganimed/Effects/blood.rsi
+    - sprite: _Funkystation/Effects/blood.rsi
       state: outerclothing
   - type: SolutionContainerManager
     solutions:
@@ -53,10 +53,10 @@
   - type: Stainable
     clothingVisuals:
       outerClothing:
-      - sprite: _Ganimed/Effects/blood.rsi
+      - sprite: _Funkystation/Effects/blood.rsi
         state: suitblood
     iconVisuals:
-    - sprite: _Ganimed/Effects/blood.rsi
+    - sprite: _Funkystation/Effects/blood.rsi
       state: suitbloodicon
   - type: StainBlocker
     slots: [INNERCLOTHING, FEET, GLOVES]
@@ -88,10 +88,10 @@
   - type: Stainable
     clothingVisuals:
       outerClothing:
-      - sprite: _Ganimed/Effects/blood.rsi
+      - sprite: _Funkystation/Effects/blood.rsi
         state: coatblood
     iconVisuals:
-    - sprite: _Ganimed/Effects/blood.rsi
+    - sprite: _Funkystation/Effects/blood.rsi
       state: coatbloodicon
 
 - type: entity
@@ -118,10 +118,10 @@
   - type: Stainable
     clothingVisuals:
       outerClothing:
-      - sprite: _Ganimed/Effects/blood.rsi
+      - sprite: _Funkystation/Effects/blood.rsi
         state: outerclothing
     iconVisuals:
-    - sprite: _Ganimed/Effects/blood.rsi
+    - sprite: _Funkystation/Effects/blood.rsi
       state: outerclothing
 
 - type: entity

@@ -1,4 +1,4 @@
-using Content.Server._Ganimed.Atmos.Events; // Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
+using Content.Server._Funkystation.Atmos.Events; // Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
 using Content.Server.Atmos.Components;
 using Content.Server.Decals;
 using Content.Shared.Atmos;

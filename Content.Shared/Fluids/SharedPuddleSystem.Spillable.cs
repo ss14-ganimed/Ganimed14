@@ -15,7 +15,7 @@ using Content.Shared.Spillable;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
-using Content.Shared._Ganimed.Fluids; // Ganimed-Port: стайны (funky-station/forky-station#107)
+using Content.Shared._Funkystation.Fluids; // Ganimed-Port: стайны (funky-station/forky-station#107)
 using Robust.Shared.Player;
 
 namespace Content.Shared.Fluids;

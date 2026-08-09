@@ -19,10 +19,10 @@
   - type: Stainable
     clothingVisuals:
       mask:
-      - sprite: _Ganimed/Effects/blood.rsi
+      - sprite: _Funkystation/Effects/blood.rsi
         state: maskblood
     iconVisuals:
-    - sprite: _Ganimed/Effects/blood.rsi
+    - sprite: _Funkystation/Effects/blood.rsi
       state: maskbloodicon
   # Ganimed-Port-End
   - type: SolutionContainerManager

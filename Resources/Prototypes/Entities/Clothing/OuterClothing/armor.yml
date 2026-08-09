@@ -27,10 +27,10 @@
   - type: Stainable
     clothingVisuals:
       outerClothing:
-      - sprite: _Ganimed/Effects/blood.rsi
+      - sprite: _Funkystation/Effects/blood.rsi
         state: armorblood
     iconVisuals:
-    - sprite: _Ganimed/Effects/blood.rsi
+    - sprite: _Funkystation/Effects/blood.rsi
       state: armorbloodicon
 
 #Standard armor vest, allowed for security and bartenders

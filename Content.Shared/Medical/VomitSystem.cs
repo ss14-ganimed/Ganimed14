@@ -11,7 +11,7 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
-using Content.Shared._Ganimed.Fluids; // Ganimed-Port: стайны (funky-station/forky-station#107)
+using Content.Shared._Funkystation.Fluids; // Ganimed-Port: стайны (funky-station/forky-station#107)
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
