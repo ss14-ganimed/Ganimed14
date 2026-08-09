@@ -2,8 +2,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Ganimed.Emoting.Components;
-using Content.Shared._Ganimed.Emoting.Prototypes;
+using Content.Shared._Funkystation.Emoting.Components;
+using Content.Shared._Funkystation.Emoting.Prototypes;
 using Content.Shared.Coordinates;
 using Content.Shared.Interaction;
 using Content.Shared.Movement.Events;
@@ -14,7 +14,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._Ganimed.Emoting.EntitySystems;
+namespace Content.Shared._Funkystation.Emoting.EntitySystems;
 
 public abstract partial class SharedDuoEmoteSystem : EntitySystem
 {
@@ -104,7 +104,7 @@ public abstract partial class SharedDuoEmoteSystem : EntitySystem
 
         if (_net.IsServer)
         {
-            var effect = SpawnAttachedTo("GanimedEffectDuoEmoteBase", initiator.Owner.ToCoordinates());
+            var effect = SpawnAttachedTo("FunkyEffectDuoEmoteBase", initiator.Owner.ToCoordinates());
             var visuals = EnsureComp<DuoEmoteVisualsComponent>(effect);
             visuals.EmoteId = emoteId;
             Dirty(effect, visuals);

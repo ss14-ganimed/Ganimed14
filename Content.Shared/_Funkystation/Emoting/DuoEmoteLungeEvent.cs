@@ -4,7 +4,7 @@
 
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._Ganimed.Emoting;
+namespace Content.Shared._Funkystation.Emoting;
 
 /// <summary>
 /// Raised on clients to trigger lunge animations for both participants

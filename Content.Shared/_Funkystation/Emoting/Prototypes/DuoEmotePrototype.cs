@@ -6,7 +6,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Shared._Ganimed.Emoting.Prototypes;
+namespace Content.Shared._Funkystation.Emoting.Prototypes;
 
 [Prototype]
 public sealed partial class DuoEmotePrototype : IPrototype

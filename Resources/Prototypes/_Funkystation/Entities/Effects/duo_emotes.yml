@@ -2,17 +2,17 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-# Ganimed duo emotes (порт funky-station/forky-station#179).
+# Порт duo emotes из funky-station/forky-station#179 (неймспейс форка сохранён).
 # Эффект-сущность для парных эмоутов: спавнится над инициатором, пока ждём ответа.
 - type: entity
-  id: GanimedEffectDuoEmoteBase
+  id: FunkyEffectDuoEmoteBase
   categories: [ HideSpawnMenu ]
   components:
   - type: TimedDespawn
     lifetime: 11.0
   - type: Sprite
     offset: 0, 0.65
-    sprite: _Ganimed/Effects/duo_emotes.rsi
+    sprite: _Funkystation/Effects/duo_emotes.rsi
     noRot: true
     drawdepth: Effects
     layers:
@@ -28,10 +28,10 @@
   id: Fistbump
   name: duo-emote-fistbump-perform
   icon:
-    sprite: _Ganimed/Effects/duo_emotes.rsi
+    sprite: _Funkystation/Effects/duo_emotes.rsi
     state: icon-fistbump
   effectSprite:
-    sprite: _Ganimed/Effects/duo_emotes.rsi
+    sprite: _Funkystation/Effects/duo_emotes.rsi
     state: effect-fistbump
   sound:
     path: /Audio/Effects/weak_hit1.ogg
@@ -47,10 +47,10 @@
   id: Highfive
   name: duo-emote-highfive-perform
   icon:
-    sprite: _Ganimed/Effects/duo_emotes.rsi
+    sprite: _Funkystation/Effects/duo_emotes.rsi
     state: icon-highfive
   effectSprite:
-    sprite: _Ganimed/Effects/duo_emotes.rsi
+    sprite: _Funkystation/Effects/duo_emotes.rsi
     state: effect-highfive
   sound:
     path: /Audio/Items/snap.ogg
@@ -66,10 +66,10 @@
   id: Hug
   name: duo-emote-hug-perform
   icon:
-    sprite: _Ganimed/Effects/duo_emotes.rsi
+    sprite: _Funkystation/Effects/duo_emotes.rsi
     state: icon-hug
   effectSprite:
-    sprite: _Ganimed/Effects/duo_emotes.rsi
+    sprite: _Funkystation/Effects/duo_emotes.rsi
     state: effect-hug
   sound:
     path: /Audio/Effects/thudswoosh.ogg
@@ -87,13 +87,13 @@
   requireTail: true # будет виден и сработает только с другими хвостатыми
   animation: Spin
   icon:
-    sprite: _Ganimed/Effects/duo_emotes.rsi
+    sprite: _Funkystation/Effects/duo_emotes.rsi
     state: icon-tailswipe
   effectSprite:
-    sprite: _Ganimed/Effects/duo_emotes.rsi
+    sprite: _Funkystation/Effects/duo_emotes.rsi
     state: effect-tailswipe
   sound:
-    path: /Audio/_Ganimed/Effects/Emotes/whip_crack.ogg
+    path: /Audio/_Funkystation/Effects/Emotes/whip_crack.ogg
     params:
       variation: 0.15
   attemptSelf: duo-emote-tailswipe-attempt-self
@@ -106,13 +106,13 @@
   id: Handshake
   name: duo-emote-handshake-perform
   icon:
-    sprite: _Ganimed/Effects/duo_emotes.rsi
+    sprite: _Funkystation/Effects/duo_emotes.rsi
     state: icon-handshake
   effectSprite:
-    sprite: _Ganimed/Effects/duo_emotes.rsi
+    sprite: _Funkystation/Effects/duo_emotes.rsi
     state: effect-handshake
   sound:
-    path: /Audio/_Ganimed/Effects/Emotes/handshake.ogg
+    path: /Audio/_Funkystation/Effects/Emotes/handshake.ogg
     params:
       variation: 0.15
   attemptSelf: duo-emote-handshake-attempt-self

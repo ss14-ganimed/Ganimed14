@@ -2,13 +2,13 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Ganimed.Emoting.EntitySystems;
-using Content.Shared._Ganimed.Emoting.Prototypes;
+using Content.Shared._Funkystation.Emoting.EntitySystems;
+using Content.Shared._Funkystation.Emoting.Prototypes;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
-namespace Content.Shared._Ganimed.Emoting.Components;
+namespace Content.Shared._Funkystation.Emoting.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 [Access(typeof(SharedDuoEmoteSystem))]

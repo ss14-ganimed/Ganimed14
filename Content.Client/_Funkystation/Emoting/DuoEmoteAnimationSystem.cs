@@ -6,7 +6,7 @@ using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Animations;
 
-namespace Content.Client._Ganimed.Emoting;
+namespace Content.Client._Funkystation.Emoting;
 
 /// <summary>
 /// Handles custom animations for duo emotes that play in addition to the lunge

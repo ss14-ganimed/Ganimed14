@@ -3,11 +3,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
-using Content.Client._Ganimed.Emoting.UI;
+using Content.Client._Funkystation.Emoting.UI;
 using Content.Client.Gameplay;
-using Content.Shared._Ganimed.Emoting;
-using Content.Shared._Ganimed.Emoting.Components;
-using Content.Shared._Ganimed.Emoting.EntitySystems;
+using Content.Shared._Funkystation.Emoting;
+using Content.Shared._Funkystation.Emoting.Components;
+using Content.Shared._Funkystation.Emoting.EntitySystems;
 using Content.Shared.Input;
 using JetBrains.Annotations;
 using Robust.Client.Animations;
@@ -21,7 +21,7 @@ using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
 
-namespace Content.Client._Ganimed.Emoting;
+namespace Content.Client._Funkystation.Emoting;
 
 [UsedImplicitly]
 public sealed partial class DuoEmoteSystem : SharedDuoEmoteSystem

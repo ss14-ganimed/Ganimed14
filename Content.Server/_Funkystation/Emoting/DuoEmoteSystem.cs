@@ -2,11 +2,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Ganimed.Emoting;
-using Content.Shared._Ganimed.Emoting.Components;
-using Content.Shared._Ganimed.Emoting.EntitySystems;
+using Content.Shared._Funkystation.Emoting;
+using Content.Shared._Funkystation.Emoting.Components;
+using Content.Shared._Funkystation.Emoting.EntitySystems;
 
-namespace Content.Server._Ganimed.Emoting;
+namespace Content.Server._Funkystation.Emoting;
 
 public sealed class ServerDuoEmoteSystem : SharedDuoEmoteSystem
 {

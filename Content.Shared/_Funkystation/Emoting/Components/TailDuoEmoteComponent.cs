@@ -4,7 +4,7 @@
 
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Ganimed.Emoting.Components;
+namespace Content.Shared._Funkystation.Emoting.Components;
 
 /// <summary>
 /// Component placed on species that have a tail, allowing them to use tail-specific duo emotes

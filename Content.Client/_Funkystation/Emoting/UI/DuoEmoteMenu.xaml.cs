@@ -4,11 +4,11 @@
 
 using System.Linq;
 using Content.Client.UserInterface.Controls;
-using Content.Shared._Ganimed.Emoting.Components;
-using Content.Shared._Ganimed.Emoting.Prototypes;
+using Content.Shared._Funkystation.Emoting.Components;
+using Content.Shared._Funkystation.Emoting.Prototypes;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client._Ganimed.Emoting.UI;
+namespace Content.Client._Funkystation.Emoting.UI;
 
 public sealed class DuoEmoteMenu
 {
