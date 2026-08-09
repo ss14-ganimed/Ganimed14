@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackMilitarySatchel
   name: army satchel
   description: A tactical satchel for army related needs.
@@ -11,7 +11,7 @@
     - 0,0,8,4
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelCE
   name: chief engineer satchel
   description: A white satchel for best engineers.
