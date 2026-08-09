@@ -318,7 +318,7 @@
          conditions:
           - !type:ReagentCondition
             reagent: ADTFormalin
-            min: 10 # Ganimed-Tweak (5 -> 10)
+            min: 5
           - !type:MobStateCondition
             mobstate: dead
       - !type:HealthChange
@@ -424,12 +424,17 @@
   flavor: medicine
   color: "#c8a2c8"
   physicalDesc: reagent-physical-desc-powdery
+  # Ganimed-Add-Start
   reactiveEffects:
     Acidic:
       methods: [ Touch ]
       effects:
+      - !type:EvenHealthChange
+        damage:
+          Brute: -0.4
       - !type:ModifyBleed
-        amount: -3
+        amount: -0.5
+  # Ganimed-Add-End
   metabolisms:
     Bloodstream:
       metabolismRate : 0.3
@@ -447,17 +452,6 @@
         visualType: Small
         messages: [ "medicine-effect-usual" ]
         probability: 0.05
-  # Ganimed-Add-Start
-  reactiveEffects:
-    Acidic:
-      methods: [ Touch ]
-      effects:
-      - !type:EvenHealthChange
-        damage:
-          Brute: -0.4
-      - !type:ModifyBleed
-        amount: -0.5
-  # Ganimed-Add-End
 
 #Сульфадиазин серебра
 - type: reagent
