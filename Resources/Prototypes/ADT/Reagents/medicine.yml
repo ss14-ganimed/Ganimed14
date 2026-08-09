@@ -318,7 +318,7 @@
          conditions:
           - !type:ReagentCondition
             reagent: ADTFormalin
-            min: 5
+            min: 10 # Ganimed-Tweak (5 -> 10)
           - !type:MobStateCondition
             mobstate: dead
       - !type:HealthChange
