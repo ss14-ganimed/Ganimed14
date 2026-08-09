@@ -1135,12 +1135,6 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitDeathsquad
-  # ADT-Tweak-start
-  - type: ClothingGrantComponent
-    component:
-    - type: SupermatterImmune
-  - type: SupermatterImmune
-  # ADT-Tweak-end
 
 #CBURN Hardsuit
 - type: entity

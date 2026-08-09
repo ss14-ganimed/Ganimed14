@@ -149,12 +149,15 @@ public sealed partial class ModSuitSystem
             }
         }
 
+        // Ganimed-edit start
         if (TryComp<PowerCellDrawComponent>(suit, out var celldraw))
         {
             suit.Comp.ModEnergyBaseUsing = (float)Math.Round(suit.Comp.ModEnergyBaseUsing + module.Comp.EnergyUsing, 3);
             var attachedCount = GetAttachedToggleCount(suit);
-            celldraw.DrawRate = suit.Comp.ModEnergyBaseUsing * attachedCount;
+            if (attachedCount > 0)
+                celldraw.DrawRate = suit.Comp.ModEnergyBaseUsing;
         }
+        // Ganimed-edit end
     }
 
     public void DeactivateModule(Entity<ModSuitComponent> suit, Entity<ModSuitModComponent> module)
@@ -176,8 +179,7 @@ public sealed partial class ModSuitSystem
                 }
             }
 
-            module.Comp.Active = false;
-            UpdateUserInterface(suit, suit.Comp);
+            UpdateUserInterface(suit, suit.Comp); // Ganimed-tweak
 
             foreach (var attached in suit.Comp.ClothingUids)
             {
@@ -205,12 +207,15 @@ public sealed partial class ModSuitSystem
             }
         }
 
+        // Ganimed-edit start
         if (TryComp<PowerCellDrawComponent>(suit, out var celldraw))
         {
             suit.Comp.ModEnergyBaseUsing = (float)Math.Round(suit.Comp.ModEnergyBaseUsing - module.Comp.EnergyUsing, 3);
             var attachedCount = GetAttachedToggleCount(suit);
-            celldraw.DrawRate = suit.Comp.ModEnergyBaseUsing * attachedCount;
+            if (attachedCount > 0)
+                celldraw.DrawRate = suit.Comp.ModEnergyBaseUsing;
         }
+        // Ganimed-edit end
     }
 
     public string GetColor(ExamineColor color, string text)

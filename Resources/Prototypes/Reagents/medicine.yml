@@ -201,7 +201,6 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: medicine
   color: "#0091ff"
-  worksOnTheDead: true
   plantMetabolism:
   - !type:PlantAdjustToxins
     amount: -5
@@ -224,10 +223,10 @@
           damage:
           # todo scale with temp like SS13
           # ADT-Tweak start (made HealthChange even)
-            Airloss: -1
-            Brute: -1
-            Burn: -1.2
-            Toxin: -0.8
+            Airloss: -3
+            Brute: -2
+            Burn: -2
+            Toxin: -2
           # ADT-Tweak end
         # Start ADT tweak
         - !type:HealthChange
@@ -253,7 +252,6 @@
   physicalDesc: reagent-physical-desc-bubbling
   flavor: medicine
   color: "#32cd32"
-  worksOnTheDead: true
   metabolisms:
     Medicine:
       effects:

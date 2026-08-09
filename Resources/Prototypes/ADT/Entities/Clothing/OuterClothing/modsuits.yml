@@ -334,12 +334,10 @@
   - type: StaminaResistance
     damageCoefficient: 0.75
   - type: ClothingSpeedModifier
-    walkModifier: 1
-    sprintModifier: 1
+    walkModifier: 0.9 # Ganimed-Edit
+    sprintModifier: 0.9 # Ganimed-Edit
   - type: ExplosionResistance
     damageCoefficient: 0.6
-  - type: FireProtection
-    reduction: 0.3
 
 - type: entity
   parent: ADTClothingOuterModsuitBodyBase
@@ -410,8 +408,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 1
     sprintModifier: 1
-  - type: FireProtection
-    reduction: 0.7
   - type: ModifyGrabStageTime
     modifiers:
       Hard: 2.25
@@ -453,7 +449,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.1
   - type: FireProtection
-    reduction: 1
+    reduction: 0.8
   - type: ModifyGrabStageTime
     modifiers:
       Hard: 1.5

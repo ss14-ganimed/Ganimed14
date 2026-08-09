@@ -27,7 +27,7 @@
   recipeUnlocks:
   - StasisBedMachineCircuitboard
   - ADTAdvancedMedicalBedCircuitboard
-  - ADTPatchLepo
+# - ADTPatchLepo Ganimed-edit
   - MedicalScannerMachineCircuitboard
   position: 3,-1
   requiredTech:
@@ -61,8 +61,12 @@
   - CloningPodMachineCircuitboard
   - CloningConsoleComputerCircuitboard
   position: 1,-1
+# Ganimed-edit start
+#  requiredTech:
+#  - ADTThermoTech Почему оно вообще требует технологию пластырей, а не крио, хоть в консоли и отображается требование технологии крио???
   requiredTech:
-  - ADTThermoTech
+  - ADTCryoTech
+# Ganimed-end
 
 - type: technology
   id: ADTIndustrialMedicine
@@ -110,25 +114,27 @@
   - CryoPodMachineCircuitboard
   - CryostasisBeaker
   - SyringeCryostasis
-  - ADTPatchCryo
+# - ADTPatchCryo Ganimed-edit
   requiredTech:
   - ADTAdvancedMedicalCare
   position: 2,-2
 
-- type: technology
-  id: ADTThermoTech
-  name: research-technology-thermo
-  icon:
-    sprite: ADT/Objects/Specific/Medical/patch.rsi
-    state: patch23
-  discipline: Biochemical
-  tier: 3
-  cost: 7500
-  recipeUnlocks:
-  - ADTPatchThermo
-  requiredTech:
-  - ADTCryoTech
-  position: 2,0
+# Ganimed-edit start
+#- type: technology
+#  id: ADTThermoTech
+#  name: research-technology-thermo
+#  icon:
+#    sprite: ADT/Objects/Specific/Medical/patch.rsi
+#    state: patch23
+#  discipline: Biochemical
+#  tier: 3
+#  cost: 7500
+#  recipeUnlocks:
+#  - ADTPatchThermo
+#  requiredTech:
+#  - ADTCryoTech
+#  position: 2,0
+# Ganimed-edit end
 
 - type: technology
   id: ADTMechanizedTreatment

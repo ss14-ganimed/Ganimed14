@@ -473,11 +473,15 @@
     impactEffect: ADTBulletImpactEffectIon
     damage:
       types:
-        Heat: 11
-        Shock: 4
+  # Ganimed-edit start
+        Heat: 7
+        Shock: 8
+  # Ganimed-edit end
     soundHit:
       collection: WeakHit
     forceSound: true
-  - type: EmpOnCollide
-    energyConsumption: 20
-    disableDuration: 2
+  # Ganimed-edit start
+  #- type: EmpOnCollide
+  #  energyConsumption: 20
+  #  disableDuration: 2
+  # Ganimed-edit end
