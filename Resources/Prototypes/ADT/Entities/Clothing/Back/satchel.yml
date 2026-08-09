@@ -1,6 +1,6 @@
 #ОСЩ
 - type: entity
-  parent: [ClothingBackpackSatchelSecurity, ClothingBackpackSatchelFoldableBase] #Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchelSecurity
   id: ADTClothingBackpackSatchelBlueshield
   name: blueshield satchel
   description: A satchel to hold medical and security equipment
@@ -10,7 +10,7 @@
 
 #ЦК
 - type: entity
-  parent: [ClothingBackpackSatchelSecurity, ClothingBackpackSatchelFoldableBase] #Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchelSecurity
   id: ADTClothingBackpackSatchelCentcom
   name: Centcom's satchel
   description: The most expensive backpack you've ever seen.
@@ -21,7 +21,7 @@
 # Med
 
 - type: entity
-  parent: [ClothingBackpackSatchelMedical, ClothingBackpackSatchelFoldableBase] #Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchelMedical
   id: ADTClothingBackpackSatchelPathologist
   components:
   - type: Sprite
@@ -29,7 +29,7 @@
 
 # Сумка ЦентКом
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ADTClothingCentComSatchel
   name: centcom satchel
   description: Green satchel. He smells fresh
@@ -38,7 +38,7 @@
     sprite: ADT/Clothing/Back/centcom_satchel.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchelMedical, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchelMedical
   id: ADTClothingBackpackSatchelParamedic
   name: paramedical satchel
   description: A satchel to store some paramedical equipment.
@@ -47,7 +47,7 @@
     sprite: ADT/Clothing/Back/paramedic_satchel.rsi
 
 - type: entity
-  parent: [ADTClothingBackpackSatchelParamedic, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ADTClothingBackpackSatchelParamedic
   id: ADTClothingBackpackSatchelParamedicFilled
   name: paramedical satchel
   suffix: Paramedic,Filled

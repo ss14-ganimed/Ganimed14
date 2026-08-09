@@ -13,7 +13,7 @@
     - 8,0,9,3
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelLeather
   name: leather satchel
   description: A trend-setting satchel from a bygone era.
@@ -22,7 +22,7 @@
     sprite: Clothing/Back/Satchels/leather.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelEngineering
   name: engineering satchel
   description: A tough satchel with extra pockets.
@@ -31,7 +31,7 @@
     sprite: Clothing/Back/Satchels/engineering.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelAtmospherics
   name: atmospherics satchel
   description: A tough satchel made of fire resistant fibers. Smells like plasma.
@@ -40,7 +40,7 @@
     sprite: Clothing/Back/Satchels/atmospherics.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelClown
   name: clown satchel
   description: For fast running from security.
@@ -58,7 +58,7 @@
         variation: 0.125
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelMime
   name: mime satchel
   description: A satchel designed for the silent and expressive art of miming.
@@ -70,7 +70,7 @@
     storageInsertSound: null
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelMedical
   name: medical satchel
   description: A sterile satchel used in medical departments.
@@ -79,7 +79,7 @@
     sprite: Clothing/Back/Satchels/medical.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelChemistry
   name: chemistry satchel
   description: A sterile satchel with chemist colours.
@@ -88,7 +88,7 @@
     sprite: Clothing/Back/Satchels/chemistry.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelVirology
   name: virology satchel
   description: A satchel made of hypo-allergenic fibers. It's designed to help prevent the spread of disease. Smells like monkey.
@@ -97,7 +97,7 @@
     sprite: Clothing/Back/Satchels/virology.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelGenetics
   name: genetics satchel
   description: A sterile satchel with geneticist colours.
@@ -106,7 +106,7 @@
     sprite: Clothing/Back/Satchels/genetics.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel , ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelScience
   name: science satchel
   description: Useful for holding research materials.
@@ -115,7 +115,7 @@
     sprite: Clothing/Back/Satchels/science.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel, BaseSecurityContraband, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: [ClothingBackpackSatchel, BaseSecurityContraband]
   id: ClothingBackpackSatchelSecurity
   name: security satchel
   description: A robust satchel for security related needs.
@@ -124,7 +124,7 @@
     sprite: Clothing/Back/Satchels/security.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel, BaseSecurityContraband, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: [ClothingBackpackSatchel, BaseSecurityContraband]
   id: ClothingBackpackSatchelBrigmedic
   name: brigmedic satchel
   description: A sterile satchel for medical related needs.
@@ -133,7 +133,7 @@
     sprite: Clothing/Back/Satchels/brigmedic.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel, BaseCommandContraband, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: [ClothingBackpackSatchel, BaseCommandContraband]
   id: ClothingBackpackSatchelCaptain
   name: captain's satchel
   description: An exclusive satchel for Nanotrasen officers.
@@ -142,7 +142,7 @@
     sprite: Clothing/Back/Satchels/captain.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelHydroponics
   name: hydroponics satchel
   description: A satchel made of all natural fibers.
@@ -151,7 +151,7 @@
     sprite: Clothing/Back/Satchels/hydroponics.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelCargo
   name: cargo satchel
   description: A robust satchel for stealing cargo's loot.
@@ -160,7 +160,7 @@
       sprite: Clothing/Back/Satchels/cargo.rsi
 
 - type: entity
-  parent: [ClothingBackpackSatchel, ClothingBackpackSatchelFoldableBase] # Ganimed-Edit (two-sided satchels)
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelSalvage
   name: salvage satchel
   description: A robust satchel for stashing your loot.
