@@ -31,6 +31,8 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 30
+      stain: # Ganimed-Port: стайны (funky-station/forky-station#107)
+        maxVol: 5
   - type: Tag
     tags:
     - ClothMade

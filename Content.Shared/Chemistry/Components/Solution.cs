@@ -882,7 +882,91 @@ namespace Content.Shared.Chemistry.Components
             return mixColor;
         }
 
-        public Color GetColor(IPrototypeManager? protoMan)
+        
+        // Ganimed-Port-Start: реагентные пожары (funky-station/forky-station#127, автор YaraaraY, MIT)
+        public int GetSolutionFlammability(IPrototypeManager? protoMan)
+        {
+            if (Volume <= 0)
+                return 0;
+
+            IoCManager.Resolve(ref protoMan);
+            var totalFlammability = 0f;
+            foreach (var (reagent, quantity) in Contents)
+            {
+                if (protoMan.TryIndex<ReagentPrototype>(reagent.Prototype, out var proto))
+                {
+                    totalFlammability += proto.Flammability * (quantity.Float() / Volume.Float());
+                }
+            }
+            return (int) MathF.Round(totalFlammability);
+        }
+
+        public bool IsSolutionSelfOxidizing(IPrototypeManager? protoMan)
+        {
+            if (Volume <= 0)
+                return false;
+
+            IoCManager.Resolve(ref protoMan);
+            foreach (var (reagent, _) in Contents)
+            {
+                if (protoMan.TryIndex<ReagentPrototype>(reagent.Prototype, out var proto) && proto.SelfOxidizing)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void BurnFlammableReagents(float fraction, IPrototypeManager? protoMan)
+        {
+            IoCManager.Resolve(ref protoMan);
+            var clone = Clone();
+            foreach (var (reagent, quantity) in Contents)
+            {
+                if (!protoMan.TryIndex<ReagentPrototype>(reagent.Prototype, out var proto) || proto.Flammability <= 0)
+                    continue;
+
+                var rawBurn = quantity.Float() * fraction * proto.Flammability;
+                var roundedBurn = MathF.Ceiling(rawBurn * 100f) / 100f;
+                if (roundedBurn <= 0f)
+                    continue;
+
+                clone.RemoveReagent(reagent, FixedPoint2.New(roundedBurn));
+            }
+            Contents = clone.Contents;
+            Volume = clone.Volume;
+            _heatCapacityDirty = true;
+            ValidateSolution();
+        }
+
+        /// <summary>
+        /// Сжигает только самоокисляющиеся реагенты (не требуют внешнего кислорода).
+        /// Нужно для горения в вакууме: без этого любая примесь термита позволяла бы
+        /// гореть всему раствору, включая этанол.
+        /// </summary>
+        public void BurnSelfOxidizingReagents(float fraction, IPrototypeManager? protoMan)
+        {
+            IoCManager.Resolve(ref protoMan);
+            var clone = Clone();
+            foreach (var (reagent, quantity) in Contents)
+            {
+                if (!protoMan.TryIndex<ReagentPrototype>(reagent.Prototype, out var proto) || !proto.SelfOxidizing || proto.Flammability <= 0)
+                    continue;
+
+                var rawBurn = quantity.Float() * fraction * proto.Flammability;
+                var roundedBurn = MathF.Ceiling(rawBurn * 100f) / 100f;
+                if (roundedBurn <= 0f)
+                    continue;
+
+                clone.RemoveReagent(reagent, FixedPoint2.New(roundedBurn));
+            }
+            Contents = clone.Contents;
+            Volume = clone.Volume;
+            _heatCapacityDirty = true;
+            ValidateSolution();
+        }
+        // Ganimed-Port-End
+public Color GetColor(IPrototypeManager? protoMan)
         {
             return GetColorWithout(protoMan);
         }
