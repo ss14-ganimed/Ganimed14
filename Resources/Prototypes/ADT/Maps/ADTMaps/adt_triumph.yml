@@ -41,8 +41,7 @@
             ADTPathologist: [ 1, 1 ] #ADT-Roles
             # cargo
             CargoTechnician: [ 4, 4 ]
-            SalvageSpecialist: [ 3, 3 ]
-            ADTMiner: [ 6, 6 ] #ADT-Roles
+            SalvageSpecialist: [ 9, 9 ]
             # security
             SecurityOfficer: [ 8, 8 ]
             SecurityCadet: [ 4, 4 ]

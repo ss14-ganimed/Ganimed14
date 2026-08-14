@@ -60,9 +60,8 @@
             ADTSeniorOfficer: [ 1, 1 ] # ADT-Roles
             #supply
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 1, 2 ]
+            SalvageSpecialist: [ 3, 5 ]
             CargoTechnician: [ 1, 1 ]
-            ADTMiner: [ 2, 3 ] # ADT-Roles
             #civillian
             Passenger: [ -1, -1 ]
             Clown: [ 1, 1 ]

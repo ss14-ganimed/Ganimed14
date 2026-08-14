@@ -433,17 +433,12 @@
   flavor: medicine
   color: "#c8a2c8"
   physicalDesc: reagent-physical-desc-powdery
-  # Ganimed-Add-Start
   reactiveEffects:
     Acidic:
       methods: [ Touch ]
       effects:
-      - !type:EvenHealthChange
-        damage:
-          Brute: -0.4
       - !type:ModifyBleed
-        amount: -0.5
-  # Ganimed-Add-End
+        amount: -3
   metabolisms:
     Bloodstream:
       metabolismRate : 0.3
