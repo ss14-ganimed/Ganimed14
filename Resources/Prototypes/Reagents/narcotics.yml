@@ -80,8 +80,7 @@
           reagent: Desoxyephedrine
           min: 12
         probability: 0.15
-        pacifyDuration: 3
-      # End ADT tweak
+      # End ADT tweak 
 
 - type: reagent
   id: Ephedrine
