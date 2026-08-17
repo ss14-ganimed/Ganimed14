@@ -13,6 +13,7 @@
   - CaptainOuterClothing
   - CaptainGlasses # Ganimed-Loadouts-Add
   - CaptainShoes # Ganimed-Loadouts-Add
+  - ADTRacialItems # ADT-Tweak
   # ADT underwear tweak start
   - ADTTopCap
   - ADTBottomCap
@@ -46,6 +47,7 @@
   - Survival
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   #- HoPJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -81,7 +83,7 @@
   - PassengerOuterClothing
   - PassengerShoes
   - Glasses
-  - ADTPassengerPDA # ADT tweak
+  - ADTPassengerPDA # ADT-Tweak
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
@@ -90,6 +92,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- PassengerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -116,6 +119,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   # - BartenderJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -140,6 +144,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT tweak
   #- ServiceWorkerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -170,6 +175,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- ChefJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -192,6 +198,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- LibrarianJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -216,6 +223,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- LawyerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -245,6 +253,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- ChaplainJobTrinkets
   - GroupSpeciesBreathTool
   # ADT chaplain update
@@ -271,6 +280,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   # - JanitorJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -296,6 +306,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- BotanistJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -326,6 +337,7 @@
   - SurvivalClown
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   # - ClownJobTrinkets
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -354,6 +366,7 @@
   - ADTSprayPaints # ADT-Tweak
   # - MimeJobTrinkets
   - SpareClothing # Ganimed-Loadouts-Add
+  - ADTRacialItems # ADT-Tweak
 
 - type: roleLoadout
   id: JobMusician
@@ -375,6 +388,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- MusicianJobTrinkets
   - Instruments
   - GroupSpeciesBreathTool
@@ -404,6 +418,7 @@
   - Survival
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   #- QuartermasterJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -430,6 +445,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- CargoTechnicianJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -460,6 +476,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- SalvageSpecialistJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -488,6 +505,7 @@
   - SurvivalExtended
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   #- ChiefEngineerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -508,6 +526,7 @@
   - SurvivalExtended
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- TechnicalAssistantJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -533,6 +552,7 @@
   - SurvivalExtended
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- StationEngineerJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -560,6 +580,7 @@
   - SurvivalExtended
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- AtmosphericTechnicianJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -589,6 +610,7 @@
   - Survival
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   #- ResearchDirectorJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -615,6 +637,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- ScientistJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -635,6 +658,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- ResearchAssistantJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -662,6 +686,7 @@
   # ADT underwear tweak end
   - SurvivalSecurity
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   #- HeadofSecurityJobTrinkets
   - GroupSpeciesBreathToolSecurity
   - SpareClothing # Ganimed-Loadouts-Add
@@ -688,6 +713,7 @@
   # ADT underwear tweak end
   - SurvivalSecurity
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   #- WardenJobTrinkets
   - GroupSpeciesBreathToolSecurity
   - SpareClothing # Ganimed-Loadouts-Add
@@ -715,6 +741,7 @@
   # ADT underwear tweak end
   - SurvivalSecurity
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   #- SecurityJobTrinkets
   - GroupSpeciesBreathToolSecurity
   - SpareClothing # Ganimed-Loadouts-Add
@@ -741,6 +768,7 @@
   # ADT underwear tweak end
   - SurvivalSecurity
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   #- DetectiveJobTrinkets
   - GroupSpeciesBreathToolSecurity
   - SpareClothing # Ganimed-Loadouts-Add
@@ -754,6 +782,7 @@
   - SecurityBackpack
   - SurvivalSecurity
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
@@ -777,6 +806,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- ZookeeperJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -804,6 +834,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   #- ReporterJobTrinkets
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
@@ -826,6 +857,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   # - PsychologistJobTrinkets
   - GroupSpeciesBreathToolMedical # Ganimed-Loadouts-Edit (GroupSpeciesBreathTool)
   - SpareClothing # Ganimed-Loadouts-Add
@@ -849,6 +881,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   # - BoxerJobTrinkets
   #- PsychologistJobTrinkets
   - GroupSpeciesBreathTool

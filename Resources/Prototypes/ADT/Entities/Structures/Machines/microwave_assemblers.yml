@@ -115,6 +115,7 @@
     powerLoad: 5
   - type: Machine
     board: ADTMedicalAssemblerMachineCircuitBoard
+  - type: AssemblerUpgrade
   - type: ActivatableUI
     key: enum.MicrowaveUiKey.MedicalAssemblerKey
   - type: UserInterface
