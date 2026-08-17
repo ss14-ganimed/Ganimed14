@@ -10,6 +10,15 @@ namespace Content.Shared.ADT.CCVar;
 public sealed class ADTCCVars
 {
     /*
+    * Exploitable Info
+    */
+    /// <summary>
+    /// Включает скрытую информацию персонажа (видна только владельцу, антагам и призракам).
+    /// </summary>
+    public static readonly CVarDef<bool> ExploitableSecrets =
+        CVarDef.Create("ic.exploitable_info", true, CVar.SERVER | CVar.REPLICATED);
+
+    /*
     * Barks
     */
     public static readonly CVarDef<bool> BarksEnabled =
@@ -400,5 +409,11 @@ public sealed class ADTCCVars
 
     public static readonly CVarDef<int> AntagRollBonusInfoRateLimitCount =
         CVarDef.Create("antag.roll_bonus_info_rate_limit_count", 3, CVar.SERVERONLY);
+
+    /// <summary>
+    /// How many hours pass between full wipes of every stored roll bonus. Zero or less disables wiping.
+    /// </summary>
+    public static readonly CVarDef<float> AntagRollBonusWipeHours =
+        CVarDef.Create("antag.roll_bonus_wipe_hours", 36f, CVar.SERVERONLY);
 }
 
