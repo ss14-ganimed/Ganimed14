@@ -84,8 +84,8 @@
   - PassengerShoes
   - Glasses
   - ADTPassengerPDA # ADT-Tweak
-  - ADTPassengerHead # ADT-Tweak
-  - ADTPassengerGlasses # ADT-Tweak
+  # - ADTPassengerHead # ADT-Tweak # Ganimed-Loadouts-Remove
+  # - ADTPassengerGlasses # ADT-Tweak # Ganimed-Loadouts-Remove (Duplicate)
   # ADT underwear tweak start
   - ADTTop
   - ADTBottom
@@ -671,10 +671,9 @@
   groups:
   - Inventory # Corvax-Loadouts
   - HeadofSecurityHead
-  - SecurityOfficerGlassesADT #ADT-Tweak
+  - HeadofSecurityGlasses #ADT-Tweak # Ganimed-Loadouts-Edit (SecurityOfficerGlassesADT)
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
-  - HeadofSecurityGlasses # Ganimed-Loadouts-Add
   - HeadofSecurityBackpack # Ganimed-Loadouts-Edit (SecurityBackpack)
   - HeadofSecurityBelt # Ganimed-Loadouts-Edit (SecurityBelt)
   - HeadofSecurityGloves # Ganimed-Loadouts-Add
@@ -699,14 +698,13 @@
   - Inventory # Corvax-Loadouts
   - WardenHead
   #ADT-Tweak-Start
-  - SecurityOfficerGlassesADT
+  - SecurityGlasses # Ganimed-Loadouts-Edit (SecurityOfficerGlassesADT)
   - WardenNeckADT
   #ADT-Tweak-End
   - WardenJumpsuit
   - WardenBackpack # Ganimed-Loadouts-Edit (SecurityBackpack)
   - SecurityBeltExtended # Ganimed-Loadouts-Edit (SecurityBelt)
   - WardenOuterClothing
-  - SecurityGlasses # Ganimed-Loadouts-Add
   - SecurityShoes
   # ADT underwear tweak start
   - ADTTop
@@ -726,13 +724,12 @@
   - Inventory # Corvax-Loadouts
   - SecurityHead
   #ADT-Tweak-Start
-  - SecurityOfficerGlassesADT
+  - SecurityGlasses # Ganimed-Loadouts-Edit (SecurityOfficerGlassesADT)
   - SecurityOfficerNeckADT
     #ADT-Tweak-End
   - SecurityJumpsuit
   - SecurityBackpack
   - SecurityOuterClothing
-  - SecurityGlasses # Ganimed-Loadouts-Add
   - SecurityShoes
   - SecurityPDA
   - SecurityBelt
@@ -753,7 +750,7 @@
   groups:
   - Inventory # Corvax-Loadouts
   - DetectiveHead
-  - SecurityOfficerGlassesADT #ADT-Tweak
+  - SecurityGlasses #ADT-Tweak # Ganimed-Loadouts-Edit (SecurityOfficerGlassesADT)
   - DetectiveNeck
   - DetectiveJumpsuit
   - DetectiveBackpack # Ganimed-Loadouts-Edit (SecurityBackpack)
