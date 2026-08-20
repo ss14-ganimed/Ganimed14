@@ -25,7 +25,6 @@
   - SurvivalMedical
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Trinkets
-  - ChiefMedicalOfficerJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -53,7 +52,6 @@
   - SurvivalMedical
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
-  - MedicalDoctorJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -75,7 +73,6 @@
   - SurvivalMedical
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
-  - MedicalInternJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -101,7 +98,6 @@
   - SurvivalMedical
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
-  - ChemistJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -130,6 +126,5 @@
   - SurvivalMedical
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
-  - ParamedicJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SpareClothing # Ganimed-Loadouts-Add
