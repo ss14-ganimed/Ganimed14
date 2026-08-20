@@ -375,14 +375,14 @@ public sealed class ADTCCVars
     /// When disabled, only popups are shown
     /// </summary>
     public static readonly CVarDef<bool> PointingChatIconsEnabled =
-        CVarDef.Create("adt.pointing_chat_icons_enabled", true, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
+        CVarDef.Create("adt.pointing_chat_icons_enabled", false, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE); // Ganimed-Tweak (Disabled)
 
     /// <summary>
     /// Client-side setting to toggle pointing messages in chat.
     /// Replicated to server so it can skip sending chat messages to players who disabled it.
     /// </summary>
     public static readonly CVarDef<bool> EnableChatPointingIcons =
-        CVarDef.Create("adt.chat_pointing_icons_enabled", true, CVar.ARCHIVE | CVar.REPLICATED | CVar.CLIENT);
+        CVarDef.Create("adt.chat_pointing_icons_enabled", false, CVar.ARCHIVE | CVar.REPLICATED | CVar.CLIENT); // Ganimed-Tweak (Disabled)
 
      /*
      * Blob

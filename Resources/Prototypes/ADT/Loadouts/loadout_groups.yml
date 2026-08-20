@@ -748,8 +748,8 @@
   - BrigmedicHat # Ganimed-Loadouts-Add
   - ADTHeadHelmetSecurityMedic
   - CorpsmanHelmet # Ganimed-Loadouts-Add
-  - ADTClothingHeadHatBeretSecurityMedic
-  - ADTClothingHeadHatBeretMedic
+  # - ADTClothingHeadHatBeretSecurityMedic # Ganimed-Loadouts-Remove (duplicate)
+  # - ADTClothingHeadHatBeretMedic # Ganimed-Loadouts-Remove
 
   #neck
 - type: loadoutGroup
@@ -820,9 +820,11 @@
   maxLimit: 1
   loadouts:
   - BrigmedicCoatAMG # Ganimed-Loadouts-Add
-  - ADTClothingOuterCoatAMG
-  - ADTClothingOuterVestArmorMedSec
+  # - ADTClothingOuterCoatAMG # Ganimed-Loadouts-Remove (duplicate)
+  # - ADTClothingOuterVestArmorMedSec # Ganimed-Loadouts-Remove (duplicate)
   - ADTOuterCoatLabSecurityMedic
+  - ADTOuterCoatBrigmedicWB # Ganimed-Loadouts-Add
+  - ADTOuterVestSecurityMedic # Ganimed-Loadouts-Add
   - BrigmedicVestArmor # Ganimed-Loadouts-Add
   - SecurityBioSuit # Ganimed-Loadouts-Add
 

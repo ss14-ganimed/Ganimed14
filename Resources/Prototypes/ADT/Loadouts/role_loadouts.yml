@@ -206,11 +206,10 @@
   - GroupTankHarness
   - SeniorOfficerHead # Ganimed-Loadouts-Edit (SecurityHead)
   - SecurityNeck # Ganimed-Loadouts-Edit (SecurityOfficerNeckADT)
-  - SecurityOfficerGlassesADT
+  - SecurityGlasses # Ganimed-Loadouts-Edit (SecurityOfficerGlassesADT)
   - SecurityOfficerNeckADT # ADT-Loadouts
   - SeniorOfficerJumpsuit # ADT-Tweak-senior
   - ADTSeniorOfficerOuterClothing # ADT-Tweak-senior
-  - SecurityGlasses # Ganimed-Loadouts-Add
   - SecurityBeltExtended # Ganimed-Loadouts-Edit (SecurityBelt)
   - ADTSeniorOfficerBackpack # ADT-Tweak-senior
   - SecurityShoes
@@ -261,11 +260,10 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - ADTCorrectionsOfficerHead
-  - SecurityOfficerGlassesADT
+  - SecurityGlasses # Ganimed-Loadouts-Edit (SecurityOfficerGlassesADT)
   - SecurityOfficerNeckADT # ADT-Loadouts
   - ADTCorrectionsOfficerJumpsuit
   - ADTCorrectionsOfficerOuterClothing
-  - SecurityGlasses # Ganimed-Loadouts-Add
   - SecurityBackpack
   - SecurityShoes
   - SurvivalSecurity

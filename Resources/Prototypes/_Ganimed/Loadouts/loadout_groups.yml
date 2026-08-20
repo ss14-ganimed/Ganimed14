@@ -858,6 +858,7 @@
   loadouts:
   - SecurityGlasses
   - SecurityVisor
+  - ADTClothingEyesHudAlt
 
 - type: loadoutGroup
   id: HeadofSecurityBackpack

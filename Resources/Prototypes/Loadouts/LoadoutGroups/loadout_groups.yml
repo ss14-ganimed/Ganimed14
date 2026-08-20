@@ -1709,8 +1709,8 @@
 #  name: loadout-group-jobtrinkets
 #  minLimit: 0
 #  loadouts:
-  - SecStar
-#
+#  - SecStar
+
 - type: loadoutGroup
   id: SecurityHead
   name: loadout-group-security-head
