@@ -42,11 +42,8 @@
         maxVol: 20
   - type: DeleteOnSolutionEmpty
     solution: pen
-  - type: Hypospray
-    onlyAffectsMobs: true
-    solutionName: pen
-    transferAmount: 20
-    injectSound: /Audio/Items/Medical/brutepack_end.ogg
+  - type: ADTPatch
+    solution: pen
   - type: Extractable
     grindableSolutionName: pen
   - type: Appearance
@@ -72,6 +69,8 @@
     layers:
     - state: patch2
       map: ["enum.SolutionContainerLayers.Fill"]
+  - type: ADTPatch
+    delay: 0
   - type: SolutionContainerManager
     solutions:
       pen:
@@ -92,6 +91,8 @@
     layers:
     - state: patch1
       map: ["enum.SolutionContainerLayers.Fill"]
+  - type: ADTPatch
+    delay: 0
   - type: SolutionContainerManager
     solutions:
       pen:
@@ -112,6 +113,8 @@
     layers:
     - state: patch4
       map: ["enum.SolutionContainerLayers.Fill"]
+  - type: ADTPatch
+    delay: 0
   - type: SolutionContainerManager
     solutions:
       pen:
@@ -132,6 +135,8 @@
     layers:
     - state: patch3
       map: ["enum.SolutionContainerLayers.Fill"]
+  - type: ADTPatch
+    delay: 0
   - type: SolutionContainerManager
     solutions:
       pen:

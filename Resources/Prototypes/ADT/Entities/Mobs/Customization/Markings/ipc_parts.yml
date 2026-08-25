@@ -1,17 +1,15 @@
 - type: marking
-  speciesRestriction: [IPC]
+  groupWhitelist: [Ipc]
   id: ADTIPCPartChestCore
   bodyPart: Chest
-  markingCategory: Chest
   sprites:
     - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
       state: chest_core
 
 - type: marking
-  speciesRestriction: [IPC]
+  groupWhitelist: [Ipc]
   id: ADTIPCPartChestDefaultLines
   bodyPart: Chest
-  markingCategory: Chest
   sprites:
     - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
       state: chest_line_prime
@@ -23,10 +21,9 @@
       state: chest_line_fourth
 
 - type: marking
-  speciesRestriction: [IPC]
+  groupWhitelist: [Ipc]
   id: ADTIPCPartLArmDefaultLines
   bodyPart: LArm
-  markingCategory: Arms
   sprites:
     - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
       state: l_arm_line_prime
@@ -34,10 +31,9 @@
       state: l_arm_line_second
 
 - type: marking
-  speciesRestriction: [IPC]
+  groupWhitelist: [Ipc]
   id: ADTIPCPartRArmDefaultLines
   bodyPart: RArm
-  markingCategory: Arms
   sprites:
     - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
       state: r_arm_line_prime
@@ -45,37 +41,89 @@
       state: r_arm_line_second
 
 - type: marking
-  speciesRestriction: [IPC]
+  groupWhitelist: [Ipc]
   id: ADTIPCPartLHandDefaultLines
   bodyPart: LHand
-  markingCategory: Arms
   sprites:
     - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
       state: l_hand_line_prime
 
 - type: marking
-  speciesRestriction: [IPC]
+  groupWhitelist: [Ipc]
   id: ADTIPCPartRHandDefaultLines
   bodyPart: RHand
-  markingCategory: Arms
   sprites:
     - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
       state: r_hand_line_prime
 
 - type: marking
-  speciesRestriction: [IPC]
+  groupWhitelist: [Ipc]
   id: ADTIPCPartLFootDefaultLines
   bodyPart: LFoot
-  markingCategory: Legs
   sprites:
     - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
       state: l_foot_line_prime
 
 - type: marking
-  speciesRestriction: [IPC]
+  groupWhitelist: [Ipc]
   id: ADTIPCPartRFootDefaultLines
   bodyPart: RFoot
-  markingCategory: Legs
   sprites:
     - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
       state: r_foot_line_prime
+
+- type: marking
+  groupWhitelist: [Ipc]
+  id: ADTIPCPartHeadDuke
+  bodyPart: Head
+  sprites:
+    - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
+      state: head_duke_prime
+    - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
+      state: head_duke_second
+
+- type: marking
+  groupWhitelist: [Ipc]
+  id: ADTIPCPartHeadGeth
+  bodyPart: Head
+  sprites:
+    - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
+      state: head_geth_prime
+    - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
+      state: head_geth_second
+
+- type: marking
+  groupWhitelist: [Ipc]
+  id: ADTIPCPartLHandArmband
+  bodyPart: LHand
+  sprites:
+    - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
+      state: l_hand_armband_prime
+    - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
+      state: l_hand_armband_second
+
+- type: marking
+  groupWhitelist: [Ipc]
+  id: ADTIPCPartRHandArmband
+  bodyPart: RHand
+  sprites:
+    - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
+      state: r_hand_armband_prime
+    - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
+      state: r_hand_armband_second
+
+- type: marking
+  groupWhitelist: [Ipc]
+  id: ADTIPCPartLLegRing
+  bodyPart: LLeg
+  sprites:
+    - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
+      state: l_leg_ring
+
+- type: marking
+  groupWhitelist: [Ipc]
+  id: ADTIPCPartRLegRing
+  bodyPart: RLeg
+  sprites:
+    - sprite: ADT/Mobs/Customization/Ipc/ipc_parts.rsi
+      state: r_leg_ring

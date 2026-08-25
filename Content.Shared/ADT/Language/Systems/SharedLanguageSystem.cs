@@ -13,11 +13,9 @@ namespace Content.Shared.ADT.Language;
 
 public abstract class SharedLanguageSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _action = default!;
     [Dependency] protected readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly INetManager _netMan = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
 
     public override void Initialize()
@@ -213,6 +211,20 @@ public abstract class SharedLanguageSystem : EntitySystem
             comp.Languages.Add(lang, knowledge);
 
         UpdateUi(uid, comp);
+    }
+
+    public void RemoveLanguage(EntityUid uid, string lang, LanguageSpeakerComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp, false))
+            return;
+
+        if (!comp.Languages.Remove(lang))
+            return;
+
+        if (comp.CurrentLanguage == lang)
+            SelectDefaultLanguage(uid, comp);
+        else
+            UpdateUi(uid, comp);
     }
 
     public void SortLanguages(EntityUid uid, LanguageSpeakerComponent? comp = null)

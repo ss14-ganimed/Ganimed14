@@ -55,7 +55,6 @@
       - Handcuff
       - BallisticAmmoProvider
       - Ammo
-      - Hypospray
       - Injector
       - Pill
       - HandLabeler
@@ -112,7 +111,6 @@
       - MagazineShotgun
       - MagazineRifle
       - MagazineLightRifle
-      - MagazineCaselessRifle
       - ADTMagazineRifleExtended
       - MagazinePistolSubMachineGun
       - MagazinePistolSubMachineGunTopMounted
@@ -121,7 +119,6 @@
       - MagazineMagnum
       - MagazinePistolCaselessRifle
       - SpeedLoaderMagnum
-      - SpeedLoaderRifle
       - CigPack # это был трудный день
       - ADTLighter
       - Radio
@@ -266,7 +263,6 @@
       - DiscreteHealthAnalyzer
       - SecBeltEquip # ради жгута
       components:
-      - Hypospray
       - Injector
       - Pill
 
@@ -292,9 +288,6 @@
       - Truncheon
       - Grenade
       - GrenadeFlashBang
-      - SpeedLoaderRifle
-      - SpeedLoaderPistol
-      - SpeedLoaderMagnum
       - Shiv
       - Cartridge
       - Pen

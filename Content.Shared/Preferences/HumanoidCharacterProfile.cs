@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Content.Shared.ADT.CCVar;
@@ -18,8 +19,12 @@ using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Serialization.Manager;
+using Robust.Shared.Serialization.Markdown;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Robust.Shared;
+using YamlDotNet.RepresentationModel;
 
 namespace Content.Shared.Preferences
 {
@@ -28,8 +33,16 @@ namespace Content.Shared.Preferences
     /// </summary>
     [DataDefinition]
     [Serializable, NetSerializable]
-    public sealed partial class HumanoidCharacterProfile : ICharacterProfile
+    public sealed partial class HumanoidCharacterProfile
     {
+        public static readonly ProtoId<SpeciesPrototype> DefaultSpecies = "Human";
+        public const string DefaultVoice = "VoiceHuman";
+        public static readonly Dictionary<Sex, string> DefaultSexVoice = new()
+        {
+            { Sex.Male, "VoiceHumanMale" },
+            { Sex.Female, "VoiceHumanFemale" },
+            { Sex.Unsexed, "VoiceHuman" }
+        };
         private static readonly Regex RestrictedNameRegex = new("[^A-Za-zА-Яа-яёЁ0-9' _.<>^%~ -]"); //ADT-Tweak
         private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
@@ -98,16 +111,22 @@ namespace Content.Shared.Preferences
                 ? url
                 : string.Empty;
         }
+
+        /// <summary>
+        /// скрытая информация персонажа, видна только антагам и призракам
+        /// </summary>
+        [DataField]
+        public string ExploitableInfo { get; set; } = string.Empty;
         //ADT-tweak-end
 
         /// <summary>
         /// Associated <see cref="SpeciesPrototype"/> for this profile.
         /// </summary>
         [DataField]
-        public ProtoId<SpeciesPrototype> Species { get; set; } = SharedHumanoidAppearanceSystem.DefaultSpecies;
+        public ProtoId<SpeciesPrototype> Species { get; set; } = DefaultSpecies;
 
         [DataField]
-        public string Voice { get; set; } = SharedHumanoidAppearanceSystem.DefaultVoice;
+        public string Voice { get; set; } = DefaultVoice;
 
         [DataField]
         public int Age { get; set; } = 18;
@@ -117,11 +136,6 @@ namespace Content.Shared.Preferences
 
         [DataField]
         public Gender Gender { get; private set; } = Gender.Male;
-
-        /// <summary>
-        /// <see cref="Appearance"/>
-        /// </summary>
-        public ICharacterAppearance CharacterAppearance => Appearance;
 
         /// <summary>
         /// Stores markings, eye colors, etc for the profile.
@@ -144,6 +158,16 @@ namespace Content.Shared.Preferences
         private HashSet<ProtoId<LanguagePrototype>> _languages = new();
 
         public IReadOnlySet<ProtoId<LanguagePrototype>> Languages => _languages;
+
+        /// <summary>
+        /// Трайт, дающий один дополнительный слот языка в редакторе персонажа.
+        /// </summary>
+        private static readonly ProtoId<TraitPrototype> PolyglotTraitId = "Polyglot";
+
+        /// <summary>
+        /// Бонус к лимиту языков от выбранных трайтов (трайт «Полиглот»).
+        /// </summary>
+        public int LanguageSlotsBonus => TraitPreferences.Contains(PolyglotTraitId) ? 1 : 0;
         // ADT Languages end
 
         /// <summary>
@@ -186,7 +210,8 @@ namespace Content.Shared.Preferences
             BarkData bark,
             HashSet<ProtoId<LanguagePrototype>> languages,
             string oocNotes,
-            string headshotUrl
+            string headshotUrl,
+            string exploitableInfo
             )
             //ADT-tweak-end
         {
@@ -209,6 +234,7 @@ namespace Content.Shared.Preferences
             _languages = languages;
             OOCNotes = oocNotes;
             HeadshotUrl = headshotUrl;
+            ExploitableInfo = exploitableInfo;
             // ADT end
 
             var hasHighPrority = false;
@@ -246,7 +272,8 @@ namespace Content.Shared.Preferences
                 other.Bark,
                 other._languages,
                 other.OOCNotes,
-                other.HeadshotUrl
+                other.HeadshotUrl,
+                other.ExploitableInfo
                 )
                 // ADT end
         {
@@ -254,7 +281,7 @@ namespace Content.Shared.Preferences
 
         /// <summary>
         ///     Get the default humanoid character profile, using internal constant values.
-        ///     Defaults to <see cref="SharedHumanoidAppearanceSystem.DefaultSpecies"/> for the species.
+        ///     Defaults to <see cref="DefaultSpecies"/> for the species.
         /// </summary>
         /// <returns></returns>
         public HumanoidCharacterProfile()
@@ -264,17 +291,21 @@ namespace Content.Shared.Preferences
         /// <summary>
         ///     Return a default character profile, based on species.
         /// </summary>
-        /// <param name="species">The species to use in this default profile. The default species is <see cref="SharedHumanoidAppearanceSystem.DefaultSpecies"/>.</param>
+        /// <param name="species">The species to use in this default profile. The default species is <see cref="DefaultSpecies"/>.</param>
+        /// <param name="sex">Self explanatory.</param>
         /// <returns>Humanoid character profile with default settings.</returns>
-        public static HumanoidCharacterProfile DefaultWithSpecies(string? species = null)
+        public static HumanoidCharacterProfile DefaultWithSpecies(ProtoId<SpeciesPrototype>? species = null, Sex? sex = null)
         {
-            var proto = IoCManager.Resolve<IPrototypeManager>();    // ADT Languages
-            species ??= SharedHumanoidAppearanceSystem.DefaultSpecies;
+            var proto = IoCManager.Resolve<IPrototypeManager>(); // ADT Languages
+
+            species ??= HumanoidCharacterProfile.DefaultSpecies;
+            sex ??= Sex.Male;
 
             return new()
             {
-                Species = species,
-                Appearance = HumanoidCharacterAppearance.DefaultWithSpecies(species),
+                Species = species.Value,
+                Sex = sex.Value,
+                Appearance = HumanoidCharacterAppearance.DefaultWithSpecies(species.Value, sex.Value),
                 _languages = proto.Index<SpeciesPrototype>(species).DefaultLanguages.ToHashSet()    // ADT Languages
             };
         }
@@ -296,7 +327,7 @@ namespace Content.Shared.Preferences
 
         public static HumanoidCharacterProfile RandomWithSpecies(string? species = null)
         {
-            species ??= SharedHumanoidAppearanceSystem.DefaultSpecies;
+            species ??= HumanoidCharacterProfile.DefaultSpecies;
 
             var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
             var random = IoCManager.Resolve<IRobustRandom>();
@@ -362,6 +393,10 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile WithHeadshotUrl(string headshotUrl)
         {
             return new(this) { HeadshotUrl = headshotUrl };
+        }
+        public HumanoidCharacterProfile WithExploitableInfo(string exploitableInfo)
+        {
+            return new(this) { ExploitableInfo = exploitableInfo };
         }
         //ADT-tweak-end
         public HumanoidCharacterProfile WithAge(int age)
@@ -526,14 +561,14 @@ namespace Content.Shared.Preferences
             var category = traitProto.Category;
 
             // Category not found so dump it.
-            if (!protoManager.Resolve(category, out var traitCategory)) // ADT-Tweak new Traits
+            if (!protoManager.Resolve(category, out TraitCategoryPrototype? traitCategory))
                 return new(this);
 
             var list = new HashSet<ProtoId<TraitPrototype>>(_traitPreferences) { traitId };
 
             // Check category points limit if applicable
              // ADT-Tweak start new Traits - система полностью переписана
-            if (traitCategory.MaxPoints.HasValue) 
+            if (traitCategory.MaxPoints.HasValue)
             {
                 var count = 0;
                 foreach (var trait in list)
@@ -580,9 +615,8 @@ namespace Content.Shared.Preferences
                 ("age", Age)
             );
 
-        public bool MemberwiseEquals(ICharacterProfile maybeOther)
+        public bool MemberwiseEquals(HumanoidCharacterProfile other)
         {
-            if (maybeOther is not HumanoidCharacterProfile other) return false;
             if (Name != other.Name) return false;
             if (Voice != other.Voice) return false; //ADT-TTS-Tweak
             if (Age != other.Age) return false;
@@ -600,9 +634,10 @@ namespace Content.Shared.Preferences
             // ADT-tweak-start
             if (OOCNotes != other.OOCNotes) return false;
             if (HeadshotUrl != other.HeadshotUrl) return false;
+            if (ExploitableInfo != other.ExploitableInfo) return false;
             if (!Bark.MemberwiseEquals(other.Bark)) return false;
             // ADT-tweak-end
-            return Appearance.MemberwiseEquals(other.Appearance);
+            return Appearance.Equals(other.Appearance);
         }
 
         public void EnsureValid(ICommonSession session, IDependencyCollection collection, string[] sponsorPrototypes)
@@ -612,14 +647,14 @@ namespace Content.Shared.Preferences
 
             if (!prototypeManager.TryIndex(Species, out var speciesPrototype) || speciesPrototype.RoundStart == false)
             {
-                Species = SharedHumanoidAppearanceSystem.DefaultSpecies;
+                Species = HumanoidCharacterProfile.DefaultSpecies;
                 speciesPrototype = prototypeManager.Index(Species);
             }
 
             // Corvax-Sponsors-Start: Reset to human if player not sponsor
             if (speciesPrototype.SponsorOnly && !sponsorPrototypes.Contains(Species.Id))
             {
-                Species = SharedHumanoidAppearanceSystem.DefaultSpecies;
+                Species = DefaultSpecies;
                 speciesPrototype = prototypeManager.Index(Species);
             }
             // Corvax-Sponsors-End
@@ -692,18 +727,20 @@ namespace Content.Shared.Preferences
             }
 
             //ADT-tweak-start
-            string oocNotes = OOCNotes; // Initialize with the property value
+            string oocNotes = FormattedMessage.RemoveMarkupOrThrow(OOCNotes);
             if (oocNotes.Length > maxFlavorTextLength)
             {
-                oocNotes = FormattedMessage.RemoveMarkupOrThrow(oocNotes)[..maxFlavorTextLength];
+                oocNotes = oocNotes[..maxFlavorTextLength];
             }
-            else
+
+            string exploitableInfo = FormattedMessage.RemoveMarkupOrThrow(ExploitableInfo);
+            if (exploitableInfo.Length > maxFlavorTextLength)
             {
-                oocNotes = FormattedMessage.RemoveMarkupOrThrow(oocNotes);
+                exploitableInfo = exploitableInfo[..maxFlavorTextLength];
             }
             //ADT-tweak-end
 
-            var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex, sponsorPrototypes);
+            var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex);
 
             var prefsUnavailableMode = PreferenceUnavailable switch
             {
@@ -753,6 +790,7 @@ namespace Content.Shared.Preferences
             FlavorText = flavortext;
             //ADT-tweak-start
             OOCNotes = oocNotes;
+            ExploitableInfo = exploitableInfo;
             // HeadshotUrl уже валидирован при установке через SetHeadshotUrl
             //ADT-tweak-end
             Age = age;
@@ -779,7 +817,7 @@ namespace Content.Shared.Preferences
             // Corvax-TTS-Start
             prototypeManager.TryIndex<TTSVoicePrototype>(Voice, out var voice);
             if (voice is null || !CanHaveVoice(voice, Sex, Species)) // ADT-Tweak
-                Voice = SharedHumanoidAppearanceSystem.DefaultSexVoice[sex];
+                Voice = DefaultSexVoice[sex];
             // Corvax-TTS-End
 
             // Checks prototypes exist for all loadouts and dump / set to default if not.
@@ -817,6 +855,25 @@ namespace Content.Shared.Preferences
             {
                 _languages.Remove(lang);
             }
+
+            // ADT-Tweak-Start
+            var maxLanguages = speciesPrototype.MaxLanguages + LanguageSlotsBonus;
+            if (_languages.Count > maxLanguages)
+            {
+                var required = new HashSet<ProtoId<LanguagePrototype>>(speciesPrototype.DefaultLanguages);
+                required.UnionWith(speciesPrototype.UniqueLanguages);
+                foreach (var lang in _languages.ToList())
+                {
+                    if (_languages.Count <= maxLanguages)
+                        break;
+
+                    if (required.Contains(lang))
+                        continue;
+
+                    _languages.Remove(lang);
+                }
+            }
+            // ADT-Tweak-End
 
             GetQuirkPoints();
             // ADT end
@@ -878,7 +935,7 @@ namespace Content.Shared.Preferences
         }
         // Corvax-TTS-End
 
-        public ICharacterProfile Validated(ICommonSession session, IDependencyCollection collection, string[] sponsorPrototypes)
+        public HumanoidCharacterProfile Validated(ICommonSession session, IDependencyCollection collection, string[] sponsorPrototypes)
         {
             var profile = new HumanoidCharacterProfile(this);
             profile.EnsureValid(session, collection, sponsorPrototypes);
@@ -916,6 +973,7 @@ namespace Content.Shared.Preferences
             //ADT-tweak-start
             hashCode.Add(OOCNotes);
             hashCode.Add(HeadshotUrl);
+            hashCode.Add(ExploitableInfo);
             //ADT-tweak-end
             hashCode.Add(FlavorText);
             hashCode.Add(Species);
@@ -979,7 +1037,7 @@ namespace Content.Shared.Preferences
                 return new(this);
             if (_languages.Contains(language))
                 return new(this);
-            if (_languages.Count >= species.MaxLanguages)
+            if (_languages.Count >= species.MaxLanguages + LanguageSlotsBonus)
                 return new(this);
 
             HashSet<ProtoId<LanguagePrototype>> list = new(_languages);
@@ -1048,5 +1106,50 @@ namespace Content.Shared.Preferences
             return -count;
         }
         // ADT end
+        public DataNode ToDataNode(ISerializationManager? serialization = null, IConfigurationManager? configuration = null)
+        {
+            IoCManager.Resolve(ref serialization);
+            IoCManager.Resolve(ref configuration);
+
+            var export = new HumanoidProfileExportV2()
+            {
+                ForkId = configuration.GetCVar(CVars.BuildForkId),
+                Profile = this,
+            };
+
+            var dataNode = serialization.WriteValue(export, alwaysWrite: true, notNullableOverride: true);
+            return dataNode;
+        }
+
+        public static HumanoidCharacterProfile FromStream(Stream stream, ICommonSession session, ISerializationManager? serialization = null, IConfigurationManager? configuration = null)
+        {
+            IoCManager.Resolve(ref serialization);
+            IoCManager.Resolve(ref configuration);
+
+            using var reader = new StreamReader(stream, EncodingHelpers.UTF8);
+            var yamlStream = new YamlStream();
+            yamlStream.Load(reader);
+
+            var root = yamlStream.Documents[0].RootNode;
+            HumanoidCharacterProfile profile;
+            if (root["version"].Equals(new YamlScalarNode("1")))
+            {
+                var export = serialization.Read<HumanoidProfileExportV1>(root.ToDataNode(), notNullableOverride: true);
+                profile = export.ToV2().Profile;
+            }
+            else if (root["version"].Equals(new YamlScalarNode("2")))
+            {
+                var export = serialization.Read<HumanoidProfileExportV2>(root.ToDataNode(), notNullableOverride: true);
+                profile = export.Profile;
+            }
+            else
+            {
+                throw new InvalidOperationException($"Unknown version {root["version"]}");
+            }
+
+            var collection = IoCManager.Instance;
+            profile.EnsureValid(session, collection!, Array.Empty<string>());
+            return profile;
+        }
     }
 }

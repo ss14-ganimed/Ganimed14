@@ -1,17 +1,17 @@
-# - type: trait
-#   id: ChavAccent
-#   name: trait-chav-accent-name
-#   description: trait-chav-accent-desc
-#   category: SpeechTraits
-#   cost: -2
-#   effects:
-#   - !type:AddCompsEffect
-#     components:
-#     - type: MumbleAccent # TODO: make it an actual accent
-#   departmentBlacklist:
-#   - Command
-#   - Security
-#   - CentcomSpecialists
+- type: trait
+  id: ChavAccent
+  name: trait-chav-accent-name
+  description: trait-chav-accent-desc
+  category: SpeechTraits
+  cost: 0
+  effects:
+    - !type:AddCompsEffect
+      components:
+        - type: MumbleAccent
+  departmentBlacklist:
+    - Command
+    - Security
+    - CentcomSpecialists
 
 - type: trait
   id: Hushed
@@ -27,34 +27,34 @@
       components:
         - type: Hushed
 
-# - type: trait
-#   id: ArchaicAccent
-#   name: trait-archaic-accent-name
-#   description: trait-archaic-accent-desc
-#   category: SpeechTraits
-#   cost: 2
-#   effects:
-#   - !type:AddCompsEffect
-#     components:
-#     - type: BackwardsAccent # TODO: make it an actual accent
+- type: trait
+  id: ArchaicAccent
+  name: trait-archaic-accent-name
+  description: trait-archaic-accent-desc
+  category: SpeechTraits
+  cost: 0
+  effects:
+    - !type:AddCompsEffect
+      components:
+        - type: BackwardsAccent
 
-# - type: trait
-#   id: ScottishAccent
-#   name: trait-scottish-accent-name
-#   description: trait-scottish-accent-desc
-#   category: SpeechTraits
-#   cost: 2
-#   effects:
-#   - !type:AddCompsEffect
-#     components:
-#     - type: SlurredAccent # TODO: make an it actual accent
+- type: trait
+  id: ScottishAccent
+  name: trait-scottish-accent-name
+  description: trait-scottish-accent-desc
+  category: SpeechTraits
+  cost: 0
+  effects:
+    - !type:AddCompsEffect
+      components:
+        - type: SlurredAccent
 
 - type: trait
   id: MothAccent
   name: trait-moth-accent-name
   description: trait-moth-accent-desc
   category: SpeechTraits
-  cost: 1
+  cost: 0
   effects:
     - !type:AddCompsEffect
       components:
@@ -67,7 +67,7 @@
   name: trait-sick-teeth-accent-name
   description: trait-sick-teeth-accent-desc
   category: SpeechTraits
-  cost: 1
+  cost: 0
   effects:
     - !type:AddCompsEffect
       components:
@@ -81,7 +81,7 @@
   name: trait-burriness-accent-name
   description: trait-burriness-accent-desc
   category: SpeechTraits
-  cost: 1
+  cost: 0
   effects:
     - !type:AddCompsEffect
       components:

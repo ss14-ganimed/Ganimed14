@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared.ADT.Construction.Prototypes;
 using Content.Shared.Construction.Components;
 using Content.Shared.Examine;
 using Content.Shared.Lathe;
@@ -40,6 +41,26 @@ namespace Content.Shared.Construction
                         ("requiredElement", Loc.GetString(name))));
                 }
 
+                // ADT-Tweak-Start
+                foreach (var (partType, amount) in component.PartRequirements)
+                {
+                    string elementName;
+                    if (_prototype.TryIndex(partType, out var machinePart))
+                    {
+                        var partEnt = _prototype.Index(machinePart.StockPartPrototype);
+                        elementName = partEnt.Name;
+                    }
+                    else
+                    {
+                        elementName = partType;
+                    }
+
+                    args.PushMarkup(Loc.GetString("machine-board-component-required-element-entry-text",
+                        ("amount", amount),
+                        ("requiredElement", Loc.GetString(elementName))));
+                }
+                // ADT-Tweak-End
+
                 foreach (var (_, info) in component.ComponentRequirements)
                 {
                     var examineName = _construction.GetExamineName(info);
@@ -58,11 +79,11 @@ namespace Content.Shared.Construction
             }
         }
 
-        public Dictionary<string, int> GetMachineBoardMaterialCost(Entity<MachineBoardComponent> entity, int coefficient = 1)
+        public bool TryGetMachineBoardMaterialCost(Entity<MachineBoardComponent> entity, out Dictionary<string, int> materials, int coefficient = 1)
         {
             var (_, comp) = entity;
 
-            var materials = new Dictionary<string, int>();
+            materials = new Dictionary<string, int>();
 
             foreach (var (stackId, amount) in comp.StackRequirements)
             {
@@ -89,9 +110,14 @@ namespace Content.Shared.Construction
                         materials[mat] += matAmount * amount * coefficient;
                     }
                 }
+                else
+                {
+                    // The item has no material cost, so we cannot get the full cost.
+                    return false;
+                }
             }
 
-            var genericPartInfo = comp.ComponentRequirements.Values.Concat(comp.ComponentRequirements.Values);
+            var genericPartInfo = comp.ComponentRequirements.Values.Concat(comp.TagRequirements.Values);
             foreach (var info in genericPartInfo)
             {
                 var amount = info.Amount;
@@ -118,9 +144,15 @@ namespace Content.Shared.Construction
                         materials[mat] += matAmount * amount * coefficient;
                     }
                 }
+                else
+                {
+                    // The item has no material cost, so we cannot get the full cost.
+                    return false;
+                }
             }
 
-            return materials;
+            // We were able to construct all elements of the recipe.
+            return true;
         }
     }
 }

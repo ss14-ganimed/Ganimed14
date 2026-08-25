@@ -14,6 +14,7 @@
   - MagistrateGlasses # Ganimed-Loadouts-Edit (Glasses)
   - Survival
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   - GroupSpeciesBreathTool
   # ADT underwear tweak start
   - ADTTop
@@ -38,6 +39,7 @@
   - SurvivalMedical
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   - GroupSpeciesBreathToolMedical
   # ADT underwear tweak start
   - ADTTop
@@ -63,6 +65,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   - GroupSpeciesBreathTool
   # ADT underwear tweak start
   - ADTTop
@@ -84,6 +87,7 @@
   - ADTBlueshieldBack
   - SurvivalSecurity
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   - GroupSpeciesBreathToolSecurity
   # ADT underwear tweak start
   - ADTTopBlueshield
@@ -107,6 +111,7 @@
   - ADTCentcomConsultantShoes
   - SurvivalSecurity
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   - GroupSpeciesBreathToolSecurity
   # ADT underwear tweak start
   - ADTCentcomConsultantSocks
@@ -132,6 +137,7 @@
   - SeniorPhysicianEyewear # Ganimed-Loadouts-Edit (MedicalEyewear)
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   - SurvivalMedical
   - GroupSpeciesBreathToolMedical
   - SeniorPhysicianShoes # Ganimed-Loadouts-Edit (MedicalShoes)
@@ -159,6 +165,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   # ADT tweak start
   - ADTTop
   - ADTBottom
@@ -183,6 +190,7 @@
   - SeniorEngineerPocket # Ganimed-Loadouts-Add
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   # ADT tweak start
   - ADTTop
   - ADTBottom
@@ -198,14 +206,16 @@
   - GroupTankHarness
   - SeniorOfficerHead # Ganimed-Loadouts-Edit (SecurityHead)
   - SecurityNeck # Ganimed-Loadouts-Edit (SecurityOfficerNeckADT)
+  - SecurityGlasses # Ganimed-Loadouts-Edit (SecurityOfficerGlassesADT)
+  - SecurityOfficerNeckADT # ADT-Loadouts
   - SeniorOfficerJumpsuit # ADT-Tweak-senior
   - ADTSeniorOfficerOuterClothing # ADT-Tweak-senior
-  - SecurityGlasses # Ganimed-Loadouts-Add
   - SecurityBeltExtended # Ganimed-Loadouts-Edit (SecurityBelt)
   - ADTSeniorOfficerBackpack # ADT-Tweak-senior
   - SecurityShoes
   - SurvivalSecurity
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   # ADT tweak start
   - ADTTop
   - ADTBottom
@@ -235,6 +245,7 @@
   - SurvivalMedical # Ganimed-Loadouts-Edit (SurvivalSecurity)
   - Trinkets
   - GroupSpeciesBreathToolMedical # Ganimed-Loadouts-Edit (GroupSpeciesBreathToolSecurity)
+  - ADTRacialItems # ADT-Tweak
   - ADTBrigmedicPDA
   # ADT underwear tweak start
   - ADTTop
@@ -249,14 +260,15 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - ADTCorrectionsOfficerHead
+  - SecurityGlasses # Ganimed-Loadouts-Edit (SecurityOfficerGlassesADT)
   - SecurityOfficerNeckADT # ADT-Loadouts
   - ADTCorrectionsOfficerJumpsuit
   - ADTCorrectionsOfficerOuterClothing
-  - SecurityGlasses # Ganimed-Loadouts-Add
   - SecurityBackpack
   - SecurityShoes
   - SurvivalSecurity
   - Trinkets
+  - ADTRacialItems # ADT-Tweak
   # ADT tweak start
   - ADTTop
   - ADTBottom
@@ -290,6 +302,7 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add
 
@@ -314,5 +327,6 @@
   - Survival
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
   - GroupSpeciesBreathTool
   - SpareClothing # Ganimed-Loadouts-Add

@@ -13,6 +13,8 @@
   - type: Appearance
   - type: Charger
     slotId: charger_slot
+  - type: ApcPowerReceiver
+    powerLoad: 1 # same as draw given in ChargerComponent.PassiveDraw; increased when it is actually charging something
   - type: Anchorable
     delay: 1
   - type: Destructible
@@ -109,7 +111,10 @@
         blacklist:
           tags:
           - PotatoBattery
-          - ADTMegaCell #ADT-tweak
+          #- ADTMegaCell #ADT-tweak
+  - type: Item
+    size: Ginormous
+  - type: MultiHandedItem
 
 - type: entity
   parent: [ BaseItemRecharger, ConstructibleMachine ]
@@ -132,7 +137,8 @@
   - type: PointLight
     radius: 1.5
     color: "#03fc4e"
-    energy: 0.7
+    energy: 1 # ADT tweak 0.7 > 1.0
+    mask: /Textures/ADT/Effects/Lightmasks/circle_a.png # ADT tweak
   - type: Charger
     chargeRate: 50
   - type: Sprite
@@ -168,13 +174,20 @@
         ejectOnInteract: true
         whitelist:
           components:
-          - HitscanBatteryAmmoProvider
-          - ProjectileBatteryAmmoProvider
+          - BatteryAmmoProvider
           - Stunbaton
-        #  - PowerCell #ADT-Tweak
+        #ADT-Tweak-Start
+        #  - PowerCell
+          tags:
+            - ADTEnergyShield
+            - ADTResonator
+        #ADT-Tweak-End
         blacklist:
           tags:
           - PotatoBattery
+  - type: Item
+    size: Ginormous
+  - type: MultiHandedItem
 
 - type: entity
   parent: BaseItemRecharger
@@ -193,18 +206,25 @@
       charger_slot:
         ejectOnInteract: true
         whitelist:
+          # ADT-Tweak-Start
+          tags:
+          - ADTEnergyShield
+          - ADTResonator
+          # ADT-Tweak-End
           components:
-          - HitscanBatteryAmmoProvider
-          - ProjectileBatteryAmmoProvider
+          - BatteryAmmoProvider
           - Stunbaton
           - PowerCell
         blacklist:
           tags:
           - PotatoBattery
-          - ADTMegaCell # ADT-Tweak
+          #- ADTMegaCell # ADT-Tweak
           components: # ADT plasmacutters
           - BatteryRecharge # ADT plasmacutters
           - BatterySelfRecharger # ADT-tweak
+  - type: Item
+    size: Ginormous
+  - type: MultiHandedItem
 
 - type: entity
   parent: [ BaseItemRecharger, BaseWallmount ]
@@ -229,9 +249,13 @@
       charger_slot:
         ejectOnInteract: true
         whitelist:
+          # ADT-Tweak-Start
+          tags:
+          - ADTEnergyShield
+          - ADTResonator
+          # ADT-Tweak-End
           components:
-          - HitscanBatteryAmmoProvider
-          - ProjectileBatteryAmmoProvider
+          - BatteryAmmoProvider
           - Stunbaton
         blacklist:
           tags:
@@ -247,6 +271,7 @@
   components:
   - type: Sprite
     sprite: Structures/Power/borg_charger.rsi
+    noRot: True
     layers:
       - state: borgcharger-u1
         map: ["base"]
@@ -319,3 +344,23 @@
       entity_storage: !type:Container
       machine_board: !type:Container
       machine_parts: !type:Container
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.48
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: entity
+  parent: BorgCharger
+  id: BorgChargerXenoborg
+  name: xenoborg recharging station
+  description: A stationary charger for xenoborgs. Feels claustrophobic.
+  components:
+  - type: Sprite
+    sprite: Structures/Power/xenoborg_charger.rsi

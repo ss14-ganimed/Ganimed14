@@ -1,0 +1,969 @@
+# Command
+- type: roleLoadout
+  id: JobCaptain
+  groups:
+  - Inventory # Corvax-Loadouts
+  - CaptainHead
+  - CaptainNeck
+  - ADTCaptainEars # ADT tweak
+  - CaptainJumpsuit
+  - CaptainBackpack
+  - CaptainGloves # Ganimed-Loadouts-Add
+  - CaptainBelt # Ganimed-Loadouts-Add
+  - CaptainOuterClothing
+  - CaptainGlasses # Ganimed-Loadouts-Add
+  - CaptainShoes # Ganimed-Loadouts-Add
+  - ADTRacialItems # ADT-Tweak
+  # ADT underwear tweak start
+  - ADTTopCap
+  - ADTBottomCap
+  - ADTSocksCaptain
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  #- CaptainJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobHeadOfPersonnel
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - HoPHead
+  - HoPNeck
+  - ADTHoP # ADT tweak
+  - HoPJumpsuit
+  - HoPBackpack
+  - HoPOuterClothing
+  - BureaucraticBelt # Ganimed-Loadouts-Add
+  - HoPGlasses # Ganimed-Loadouts-Edit (Glasses)
+  - HoPShoes # ADT-Tweak # Ganimed-Loadouts-Edit (ADTHoPShoes)
+  # ADT underwear tweak start
+  - ADTTopHOP
+  - ADTBottomHOP
+  - ADTSocksHOP
+  # ADT underwear tweak end
+  - Survival
+  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
+  - Trinkets
+  - ADTRacialItems # ADT-Tweak
+  #- HoPJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+# Silicons
+- type: roleLoadout
+  id: JobBorg
+  nameDataset: NamesBorg
+  canCustomizeName: true
+
+- type: roleLoadout
+  id: JobStationAi
+  nameDataset: NamesAI
+  canCustomizeName: true
+  # ADT SAI Custom start
+  allowedExtras:
+  - ai-screen
+  - ai-lawset
+  - ai-name
+  # ADT SAI Custom end
+
+# Civilian
+- type: roleLoadout
+  id: JobPassenger
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - PassengerJumpsuit
+  - CommonBackpack
+  - PassengerNeck
+  - PassengerFace
+  - PassengerGloves
+  - PassengerOuterClothing
+  - PassengerShoes
+  - Glasses
+  - ADTPassengerPDA # ADT-Tweak
+  # - ADTPassengerHead # ADT-Tweak # Ganimed-Loadouts-Remove
+  # - ADTPassengerGlasses # ADT-Tweak # Ganimed-Loadouts-Remove (Duplicate)
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- PassengerJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobBartender
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - BartenderHead
+  - BartenderJumpsuit
+  - CommonBackpack
+  # - ADTBartenderGloves #ADT-tweak # Ganimed-Loadouts-Remove (Gloves in spare clothing)
+  - BartenderOuterClothing
+  - BartenderBelt # Ganimed-Loadouts-Add
+  - BartenderGlasses # Ganimed-Loadouts-Edit (Glasses)
+  - ADTBartenderShoes #ADT-Tweak
+  - ADTBartenderPDA # ADT tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  # - BartenderJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobServiceWorker
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ADTServiceWorkerJumpsuit #ADT-tweak
+  - CommonBackpack
+  - ADTServiceWorkerGloves #ADT-tweak
+  - ADTServiceWorkerShoes #ADT-Tweak
+  - Glasses
+  - CommonBelt # Ganimed-Loadouts-Add
+  - ADTServiceWorkerPDA # ADT tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT tweak
+  #- ServiceWorkerJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobChef
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ChefHead
+  - ADTChefNeck # ADT-Tweak
+  - ChefMask
+  - ChefJumpsuit
+  - ChefBackpack # Ganimed-Loadouts-Edit (CommonBackpack)
+  - ChefOuterClothing
+  - ADTChefGloves # ADT-Tweak
+  - ChefGlasses # Ganimed-Loadouts-Edit (Glasses)
+  - ChefShoes # ADT-Tweak # Ganimed-Loadouts-Edit (ADTChefShoes)
+  # ADT-Tweak-Start
+  - ADTChefPocket1
+  - ADTChefPDA
+  # ADT-Tweak-End
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- ChefJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobLibrarian
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - LibrarianJumpsuit
+  - LibrarianBackpack # ADT tweak
+  - LibrarianBelt # Ganimed-Loadouts-Add
+  - Glasses
+  - ADTLibrarianPDA # ADT tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- LibrarianJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobLawyer
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - LawyerNeck
+  - LawyerJumpsuit
+  - CommonBackpack
+  # - ADTLawyerGloves # ADT-Tweak # Ganimed-Loadouts-Remove (Gloves in spare clothing)
+  - LawyerShoes # ADT tweak
+  - Glasses
+  - ADTlawyerID # ADT tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- LawyerJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobChaplain
+  canCustomizeName: true
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ChaplainHead
+  - ChaplainMask
+  - ChaplainNeck
+  - ChaplainJumpsuit
+  - CommonBackpack
+  - ChaplainOuterClothing
+  - ChaplainGloves # Ganimed-Loadouts-Add
+  - ChaplainShoes # ADT-Tweak # Ganimed-Loadouts-Edit (ADTChaplainShoes)
+  - ChaplainBible
+  - Glasses
+  - ADTChaplainPDA # ADT tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- ChaplainJobTrinkets
+  - GroupSpeciesBreathTool
+  # ADT chaplain update
+  # - ADTChaplainBelt # Ganimed-Loadouts-Remove (Vanilla ChaplainBible)
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobJanitor
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - JanitorHead
+  - JanitorJumpsuit
+  - JanitorGloves
+  - CommonBackpack
+  - JanitorOuterClothing
+  - Glasses
+  - ADTJanitorPDA # ADT tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  # - JanitorJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobBotanist
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - BotanistHead
+  - BotanistJumpsuit
+  - BotanistBackpack
+  - BotanistOuterClothing
+  - Glasses
+  - BotanistGloves # Ganimed-Loadouts-Add
+  - ADTBotanistPDA # ADT tweak
+  - BotanistShoes # ADT-Tweak # Ganimed-Loadouts-Edit (ADTBotanistShoes)
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- BotanistJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobClown
+  canCustomizeName: true
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ClownHead
+  - ADTClownMask #ADT-tweak
+  - ClownJumpsuit
+  - ClownBackpack
+  - ClownOuterClothing
+  # - ADTClownGloves #ADT-tweak # Ganimed-Loadouts-Remove (Gloves in spare clothing)
+  - ClownShoes
+  - Glasses
+  - ADTClownPocket1 #ADT-tweak
+  - ADTClownPocket2 #ADT-tweak
+  - ADTClownPDA # ADT tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocksClown
+  # ADT underwear tweak end
+  - TheatricalAttire # Ganimed-Loadouts-Add
+  - SurvivalClown
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  # - ClownJobTrinkets
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobMime
+  canCustomizeName: true
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - MimeHead
+  - MimeMask
+  - MimeNeck # Ganimed-Loadouts-Add
+  - MimeJumpsuit
+  - MimeBackpack
+  - MimeOuterClothing
+  - ADTMimeShoes #ADT-Tweak
+  - MimeBelt
+  - Glasses
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocksMime
+  # ADT underwear tweak end
+  - SurvivalMime
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  # - MimeJobTrinkets
+  - SpareClothing # Ganimed-Loadouts-Add
+  - ADTRacialItems # ADT-Tweak
+
+- type: roleLoadout
+  id: JobMusician
+  canCustomizeName: true
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - MusicianJumpsuit
+  - CommonBackpack
+  # - ADTMusicianGloves # ADT-tweak # Ganimed-Loadouts-Remove (Gloves in spare clothing)
+  - MusicianOuterClothing
+  - GlassesWithSunglasses # Ganimed-Loadouts-Edit (Glasses)
+  - ADTMusicianPDA # ADT-tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- MusicianJobTrinkets
+  - Instruments
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+# Cargo
+- type: roleLoadout
+  id: JobQuartermaster
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - QuartermasterHead
+  - ADTQuartermasterEars # ADT tweak
+  - QuartermasterNeck
+  - QuartermasterJumpsuit
+  - QuartermasterBackpack # Ganimed-Loadouts-Edit (CargoTechnicianBackpack)
+  - QuartermasterOuterClothing
+  - BureaucraticBelt # Ganimed-Loadouts-Add
+  - QuartermasterShoes
+  - GlassesWithSunglasses # Ganimed-Loadouts-Edit (Glasses)
+  - ADTQuartermasterPDA # ADT-Tweak
+  # ADT underwear tweak start
+  - ADTTopQM
+  - ADTBottomQM
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
+  - Trinkets
+  - ADTRacialItems # ADT-Tweak
+  #- QuartermasterJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobCargoTechnician
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - CargoTechnicianHead
+  - CargoTechnicianJumpsuit
+  - CargoTechnicianBackpack
+  - CargoTechnicianOuterClothing
+  - CargoBelt # Ganimed-Loadouts-Add
+  - CargoTechnicianShoes
+  # - CargoTechnicianID # ADT tweak - убрал, чтобы не было дубляжа с КПК
+  - Glasses
+  - ADTCargoPDA # ADT tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- CargoTechnicianJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobSalvageSpecialist
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - SalvageSpecialistHead # Ganimed-Loadouts-Add
+    #ADT Loadouts Start
+  - ADTSalvageSpecialistJumpsuit
+  - ADTSalvageSpecialistNeck
+    #ADT Loadouts End
+  - SalvageSpecialistBackpack
+  - ADTSalvageSpecialistEars # ADT tweak
+  - SalvageSpecialistOuterClothing
+  - SalvageSpecialistBelt # Ganimed-Loadouts-Add
+  - SalvageSpecialistGloves # Ganimed-Loadouts-Add
+  - SalvageSpecialistShoes
+  - Glasses
+  - ADTSalvagePDA # ADT tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- SalvageSpecialistJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+# Engineering
+- type: roleLoadout
+  id: JobChiefEngineer
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ChiefEngineerHead
+  - ChiefEngineerJumpsuit
+  - ADTChiefEngineerEars # ADT tweak
+  - ChiefEngineerBackpack # Corvax-Loadouts
+  - ADTEngineeringBelt # ADT-TWEAK
+  - ChiefEngineerGlasses # Ganimed-Loadouts-Edit (ADTEngineeringGlasses)
+  - ChiefEngineerGloves # Ganimed-Loadouts-Add
+  - ChiefEngineerNeck
+  - ChiefEngineerOuterClothing
+  - ChiefEngineerShoes
+  # ADT underwear tweak start
+  - ADTTopCE
+  - ADTBottomCE
+  - ADTSocks
+  # ADT underwear tweak end
+  - SurvivalExtended
+  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
+  - Trinkets
+  - ADTRacialItems # ADT-Tweak
+  #- ChiefEngineerJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobTechnicalAssistant
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - TechnicalAssistantJumpsuit
+  - StationEngineerBackpack
+  - ADTEngineeringBelt # ADT-TWEAK
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - SurvivalExtended
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- TechnicalAssistantJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobStationEngineer
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - StationEngineerHead
+  - StationEngineerJumpsuit
+  - StationEngineerBackpack
+  - ADTEngineeringBelt # ADT-TWEAK
+  - ADTEngineeringGlasses # ADT-TWEAK
+  - StationEngineerOuterClothing
+  - StationEngineerShoes
+  - StationEngineerID
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - SurvivalExtended
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- StationEngineerJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobAtmosphericTechnician
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ADTAtmosphericTechnicianHead # ADT-Loadouts
+  - ADTAtmosphericTechnicianNeck # ADT-Loadouts
+  - ADTAtmosphericTechnicianGasMask # ADT-Loadouts
+  - AtmosphericTechnicianJumpsuit
+  - AtmosphericTechnicianBackpack
+  - ADTEngineeringBelt # ADT-TWEAK
+  - AtmosphericTechnicianGlasses # Ganimed-Loadouts-Edit (ADTEngineeringGlasses)
+  - AtmosphericTechnicianOuterClothing
+  - AtmosphericTechnicianShoes
+  - ADTAtmosPDA # ADT tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - SurvivalExtended
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- AtmosphericTechnicianJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+# Science
+- type: roleLoadout
+  id: JobResearchDirector
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ResearchDirectorHead
+  - ResearchDirectorNeck
+  - ADTResearchDirectorEars # ADT tweak
+  - ResearchDirectorJumpsuit
+  - ScientistBackpack
+  - ResearchDirectorOuterClothing
+  - ResearchDirectorBelt # Ganimed-Loadouts-Add
+  - ResearchDirectorGloves # Ganimed-Loadouts-Edit (ScientistGloves)
+  - ResearchDirectorGlasses # Ganimed-Loadouts-Edit (Glasses)
+  - ResearchDirectorShoes
+  - ADTRnDPDA # ADT tweak
+  # ADT underwear tweak start
+  - ADTTopRD
+  - ADTBottomRD
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
+  - Trinkets
+  - ADTRacialItems # ADT-Tweak
+  #- ResearchDirectorJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobScientist
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ScientistHead
+  - ScientistNeck
+  - ScientistJumpsuit
+  - ScientistBackpack
+  - ScientistOuterClothing
+  - ScientistGloves
+  - ScientistShoes
+  - ScientistPDA
+  - ScientistGlasses # Ganimed-Loadouts-Edit (Glasses)
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- ScientistJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobResearchAssistant
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ResearchAssistantJumpsuit
+  - ScientistBackpack
+  - Glasses
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- ResearchAssistantJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+# Security
+- type: roleLoadout
+  id: JobHeadOfSecurity
+  groups:
+  - Inventory # Corvax-Loadouts
+  - HeadofSecurityHead
+  - HeadofSecurityGlasses #ADT-Tweak # Ganimed-Loadouts-Edit (SecurityOfficerGlassesADT)
+  - HeadofSecurityNeck
+  - HeadofSecurityJumpsuit
+  - HeadofSecurityBackpack # Ganimed-Loadouts-Edit (SecurityBackpack)
+  - HeadofSecurityBelt # Ganimed-Loadouts-Edit (SecurityBelt)
+  - HeadofSecurityGloves # Ganimed-Loadouts-Add
+  - HeadofSecurityOuterClothing
+  - SecurityShoes
+#  - ADTHosPDA # Ganimed-Loadouts-Remove
+  # ADT underwear tweak start
+  - ADTTopHOS
+  - ADTBottomHOS
+  - ADTSocksHOS
+  # ADT underwear tweak end
+  - SurvivalSecurity
+  - Trinkets
+  - ADTRacialItems # ADT-Tweak
+  #- HeadofSecurityJobTrinkets
+  - GroupSpeciesBreathToolSecurity
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobWarden
+  groups:
+  - Inventory # Corvax-Loadouts
+  - WardenHead
+  #ADT-Tweak-Start
+  - SecurityGlasses # Ganimed-Loadouts-Edit (SecurityOfficerGlassesADT)
+  - WardenNeckADT
+  #ADT-Tweak-End
+  - WardenJumpsuit
+  - WardenBackpack # Ganimed-Loadouts-Edit (SecurityBackpack)
+  - SecurityBeltExtended # Ganimed-Loadouts-Edit (SecurityBelt)
+  - WardenOuterClothing
+  - SecurityShoes
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - SurvivalSecurity
+  - Trinkets
+  - ADTRacialItems # ADT-Tweak
+  #- WardenJobTrinkets
+  - GroupSpeciesBreathToolSecurity
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobSecurityOfficer
+  groups:
+  - Inventory # Corvax-Loadouts
+  - SecurityHead
+  #ADT-Tweak-Start
+  - SecurityGlasses # Ganimed-Loadouts-Edit (SecurityOfficerGlassesADT)
+  - SecurityOfficerNeckADT
+    #ADT-Tweak-End
+  - SecurityJumpsuit
+  - SecurityBackpack
+  - SecurityOuterClothing
+  - SecurityShoes
+  - SecurityPDA
+  - SecurityBelt
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - SurvivalSecurity
+  - Trinkets
+  - ADTRacialItems # ADT-Tweak
+  #- SecurityJobTrinkets
+  - GroupSpeciesBreathToolSecurity
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobDetective
+  groups:
+  - Inventory # Corvax-Loadouts
+  - DetectiveHead
+  - SecurityGlasses #ADT-Tweak # Ganimed-Loadouts-Edit (SecurityOfficerGlassesADT)
+  - DetectiveNeck
+  - DetectiveJumpsuit
+  - DetectiveBackpack # Ganimed-Loadouts-Edit (SecurityBackpack)
+  - DetectiveOuterClothing
+  # - DetectiveBelt # Ganimed-Loadouts, TODO: Personal weapon choice
+  - DetectiveGlasses # Ganimed-Loadouts-Add
+  - DetectiveGloves # Ganimed-Loadouts-Add
+  - DetectiveShoes # ADT tweak
+  - ADTDetectivePDA #ADT tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - SurvivalSecurity
+  - Trinkets
+  - ADTRacialItems # ADT-Tweak
+  #- DetectiveJobTrinkets
+  - GroupSpeciesBreathToolSecurity
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobSecurityCadet
+  groups:
+  - Inventory # Corvax-Loadouts
+  - SecurityCadetNeckADT # ADT-Loadouts
+  - SecurityCadetJumpsuit
+  - SecurityBackpack
+  - SurvivalSecurity
+  - Trinkets
+  - ADTRacialItems # ADT-Tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+
+# Wildcards
+- type: roleLoadout
+  id: JobZookeeper
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - CommonBackpack
+  - Glasses
+  - CommonBelt # Ganimed-Loadouts-Add
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- ZookeeperJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+  #- SecurityCadetJobTrinkets
+  - GroupSpeciesBreathToolSecurity
+
+# Wildcards
+- type: roleLoadout
+  id: JobReporter
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ReporterJumpsuit
+  - ReporterHead
+  - ReporterOuterClothing
+  - CommonBackpack
+  - Glasses
+  - ADTReporterPDA #ADT-tweak
+  - ADTReporterShoes #ADT-Tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  #- ReporterJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobPsychologist
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - PsychologistJumpsuit
+  - MedicalBackpack
+  - Glasses
+  - ADTPsychologistPDA # ADT tweak
+  - PsychologistShoes #ADT-Tweak # Ganimed-Loadouts-Edit (ADTPsychologistShoes)
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  # - PsychologistJobTrinkets
+  - GroupSpeciesBreathToolMedical # Ganimed-Loadouts-Edit (GroupSpeciesBreathTool)
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobBoxer
+  groups:
+  - Inventory # Corvax-Loadouts
+  - ADTBoxerHead #ADT-tweak
+  - GroupTankHarness
+  - BoxerJumpsuit
+  - BoxerGloves
+  - CommonBackpack
+  - Glasses
+  - ADTBoxerPDA #ADT-tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - Survival
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - ADTRacialItems # ADT-Tweak
+  # - BoxerJobTrinkets
+  #- PsychologistJobTrinkets
+  - GroupSpeciesBreathTool
+  - SpareClothing # Ganimed-Loadouts-Add
+
+# These loadouts are used for non-crew spawns, like off-station antags and event mobs
+# They will be used without player configuration, thus they will only ever apply what is forced by MinLimit
+
+# gives vox a harness and breathing mask
+# nitrogen tank not included
+- type: roleLoadout
+  id: RoleSurvivalVoxSupport
+  groups:
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+# gives vox a nitrogen breathing tank
+# other species get nothing
+- type: roleLoadout
+  id: RoleSurvivalVoxTank
+  groups:
+  - GroupEVATankVox
+
+- type: roleLoadout
+  id: RoleSurvivalStandard
+  groups:
+  - Survival
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+- type: roleLoadout
+  id: RoleSurvivalClown
+  groups:
+  - SurvivalClown
+  - GroupTankHarness
+
+- type: roleLoadout
+  id: RoleSurvivalExtended
+  groups:
+  - SurvivalExtended
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+- type: roleLoadout
+  id: RoleSurvivalMedical
+  groups:
+  - SurvivalMedical
+  - GroupSpeciesBreathToolMedical
+  - GroupTankHarness
+
+- type: roleLoadout
+  id: RoleSurvivalSecurity
+  groups:
+  - SurvivalSecurity
+  - GroupSpeciesBreathToolSecurity
+  - GroupTankHarness
+
+- type: roleLoadout
+  id: RoleSurvivalSyndicate
+  groups:
+  - SurvivalSyndicate
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+- type: roleLoadout
+  id: RoleSurvivalMilitaryDouble
+  groups:
+  - SurvivalMilitaryDouble
+
+- type: roleLoadout
+  id: RoleSurvivalNukie
+  groups:
+  - SurvivalSyndicate
+  - GroupSpeciesBreathTool
+  - GroupPocketTankDouble
+
+- type: roleLoadout
+  id: RoleSurvivalEVA
+  groups:
+  - GroupEVATank
+  - SurvivalExtended
+
+- type: roleLoadout
+  id: RoleSurvivalSpaceNinja
+  groups:
+  - GroupEVATank

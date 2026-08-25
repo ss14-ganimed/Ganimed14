@@ -71,6 +71,14 @@
   components:
   - type: DrowsinessStatusEffect
 
+# Makes the creature immune to pressure damage.
+- type: entity
+  parent: MobStatusEffectBase
+  id: StatusEffectPressureImmunity
+  name: pressure immunity
+  components:
+  - type: PressureImmunityStatusEffect
+
 # Adds drugs overlay
 - type: entity
   parent: MobStatusEffectDebuff
@@ -92,3 +100,16 @@
   parent: [ StatusEffectWoozy, StatusEffectSlurred ]
   id: StatusEffectDrunk
   name: drunk
+
+# Prevents the target from seeing
+- type: entity
+  parent: MobStatusEffectDebuff
+  id: StatusEffectBlindness
+  name: temporary blindness
+  components:
+  - type: StatusEffect
+    whitelist:
+      components:
+      - MobState
+      - Blindable
+  - type: BlindnessStatusEffect

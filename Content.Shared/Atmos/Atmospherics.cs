@@ -20,6 +20,11 @@ namespace Content.Shared.Atmos
         public const float OneAtmosphere = 101.325f;
 
         /// <summary>
+        /// Global Atmospherics epsilon. Used for all general floating-point comparisons.
+        /// </summary>
+        public const float Epsilon = 0.5f;
+
+        /// <summary>
         ///     Maximum external pressure (in kPA) a gas miner will, by default, output to.
         ///     This is used to initialize roundstart atmos rooms.
         /// </summary>
@@ -39,6 +44,13 @@ namespace Content.Shared.Atmos
         ///     20ºC in K
         /// </summary>
         public const float T20C = 293.15f;
+
+        // ADT-Tweak start
+        /// <summary>
+        ///     37ºC in K
+        /// </summary>
+        public const float T37C = 310.1f;
+        // ADT-Tweak end
 
         /// <summary>
         ///     -38.15ºC in K.
@@ -133,8 +145,19 @@ namespace Content.Shared.Atmos
         /// </summary>
         public const float MinimumAirToSuspend = (MolesCellStandard * MinimumAirRatioToSuspend);
 
-        public const float MinimumTemperatureToMove = (T20C + 100f);
+        /// <summary>
+        /// The minimum difference in temperature between <see cref="GasMixture"/>s
+        /// (<see cref="TileAtmosphere"/>s) required
+        /// for LINDA to report a pressure difference between them for space wind.
+        /// In Kelvin.
+        /// </summary>
+        public const float MinimumTemperatureToMove = 5f;
 
+        /// <summary>
+        /// The minimum difference in moles between <see cref="GasMixture"/>s
+        /// (<see cref="TileAtmosphere"/>s) required for LINDA to
+        /// report a pressure difference between them for space wind.
+        /// </summary>
         public const float MinimumMolesDeltaToMove = (MolesCellStandard * MinimumAirRatioToMove);
 
         /// <summary>
@@ -159,7 +182,9 @@ namespace Content.Shared.Atmos
         public const float MinimumHeatCapacity = 0.0003f;
 
         /// <summary>
-        ///     For the purposes of making space "colder"
+        /// Allows Atmospherics to cool down rooms during spacing
+        /// by assigning a fake heat capacity to space,
+        /// making space "actually cold" for gameplay reasons.
         /// </summary>
         public const float SpaceHeatCapacity = 7000f;
 
@@ -219,7 +244,7 @@ namespace Content.Shared.Atmos
         /// <summary>
         ///     Total number of gases. Increase this if you want to add more!
         /// </summary>
-        public const int TotalNumberOfGases = 20; //ADT-Gas
+        public const int TotalNumberOfGases = 49; //ADT-Gas
 
         /// <summary>
         ///     This is the actual length of the gases arrays in mixtures.
@@ -230,7 +255,7 @@ namespace Content.Shared.Atmos
         /// <summary>
         ///     Amount of heat released per mole of burnt hydrogen or tritium (hydrogen isotope)
         /// </summary>
-        public const float FireHydrogenEnergyReleased = 284e3f; // hydrogen is 284 kJ/mol
+        public const float FireHydrogenEnergyReleased = 284e4f;
         public const float FireMinimumTemperatureToExist = T0C + 100f;
         public const float FireMinimumTemperatureToSpread = T0C + 150f;
         public const float FireSpreadRadiosityScale = 0.85f;
@@ -241,8 +266,8 @@ namespace Content.Shared.Atmos
         public const float SuperSaturationEnds = SuperSaturationThreshold / 3;
 
         public const float OxygenBurnRateBase = 1.4f;
-        public const float PlasmaMinimumBurnTemperature = (100f+T0C);
-        public const float PlasmaUpperTemperature = (1370f+T0C);
+        public const float PlasmaMinimumBurnTemperature = 100f + T0C;
+        public const float PlasmaUpperTemperature = 1370f + T0C;
         public const float PlasmaOxygenFullburn = 10f;
         public const float PlasmaBurnRateDelta = 9f;
 
@@ -253,6 +278,7 @@ namespace Content.Shared.Atmos
 
         public const float TritiumBurnOxyFactor = 100f;
         public const float TritiumBurnTritFactor = 10f;
+        public const float TritiumBurnFuelRatio = 2f;
 
         public const float FrezonCoolLowerTemperature = 23.15f;
 
@@ -280,7 +306,7 @@ namespace Content.Shared.Atmos
         /// <summary>
         ///     1 mol of Tritium is required per X mol of oxygen.
         /// </summary>
-        public const float FrezonProductionTritRatio = 8.0f;
+        public const float FrezonProductionTritRatio = 50.0f;
 
         /// <summary>
         ///     1 / X of the tritium is converted into Frezon each tick
@@ -441,7 +467,36 @@ namespace Content.Shared.Atmos
         Zauker = 16,
         Halon = 17,
         Helium = 18,
-        AntiNoblium = 19
+        AntiNoblium = 19,
+        DexalinPlus = 20,
+        Omnizine = 21,
+        Inaprovaline = 22,
+        Diphenhydramine = 23,
+        Ichor = 24,
+        Phlogiston = 25,
+        PolytrinicAcid = 26,
+        SulfuricAcid = 27,
+        FluorosulfuricAcid = 28,
+        Bicaridine = 29,
+        Tricordrazine = 30,
+        Dylovene = 31,
+        Epinephrine = 32,
+        Dexalin = 33,
+        Kelotane = 34,
+        Charcoal = 35,
+        Iron = 36,
+        Cryoxadone = 37,
+        ADTSilverSulfadiazine = 38,
+        Toxin = 39,
+        Chlorine = 40,
+        Fluorine = 41,
+        Radium = 42,
+        Neurotoxin = 43,
+        Lexorin = 44,
+        Histamine = 45,
+        Mercury = 46,
+        WeldingFuel = 47,
+        Ethanol = 48
         //ADT-Gas-End
     }
 }

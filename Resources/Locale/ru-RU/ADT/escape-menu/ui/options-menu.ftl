@@ -1,4 +1,5 @@
 ## Кнопки работы с модулями
+
 ui-options-header-rmc = Оружейные модули
 ui-options-function-rmc-activate-attachable-barrel = Активировать модуль ствола
 ui-options-function-rmc-activate-attachable-rail = Активировать модуль верхней планки
@@ -23,7 +24,6 @@ ui-options-function-posing-offset-up = Переместиться вверх (п
 ui-options-function-posing-offset-down = Переместиться вниз (позирование)
 ui-options-function-posing-rotate-negative = Повернуть против часовой (позирование)
 ui-options-function-posing-rotate-positive = Повернуть по часовой (позирование)
-
 ui-options-hud-theme-operative = Оперативник
 ui-options-hud-theme-detective = Детектив
 ui-options-hud-theme-coscult = Космический культ
@@ -31,3 +31,16 @@ ui-options-hud-theme-xeno = Ксеноморф
 ui-options-hud-theme-trasenknox = Олдскул
 
 ui-options-show-chat-job-icons = Показывать иконки должностей в чате
+ui-options-show-chat-pointing-icons = Показывать иконки при указании в чате
+
+ui-options-chat-highlight-sound = Звук при выделенном слове в чате
+ui-options-chat-highlight-sound-choice = Звук:
+ui-options-chat-highlight-sound-volume = Громкость звука при выделенном слове
+ui-options-chat-highlight-sound-play = Прослушать
+ui-options-chat-highlight-sound-1 = Уведомление 1
+ui-options-chat-highlight-sound-2 = Уведомление 2
+ui-options-chat-highlight-sound-3 = Уведомление 3
+ui-options-chat-highlight-sound-4 = Уведомление 4
+ui-options-chat-highlight-sound-5 = Уведомление 5
+
+ui-options-function-smart-equip-neck = Умная экипировка на шею

@@ -1,12 +1,12 @@
+using Content.Server.ADT.Atmos.EntitySystems;
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Atmos.Piping.Components;
 using Content.Server.Atmos.Piping.Unary.Components;
-using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
 using JetBrains.Annotations;
@@ -20,6 +20,7 @@ public sealed class GasCondenserSystem : EntitySystem
     [Dependency] private readonly PowerReceiverSystem _power = default!;
     [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
+    [Dependency] private readonly GasEvaporatorSystem Evaporator = default!; // ADT-Tweak
 
     public override void Initialize()
     {
@@ -30,12 +31,22 @@ public sealed class GasCondenserSystem : EntitySystem
 
     private void OnCondenserUpdated(Entity<GasCondenserComponent> entity, ref AtmosDeviceUpdateEvent args)
     {
+        // ADT Tweak start
+        if (Evaporator.IsInEvaporateMode(entity.Owner))
+            return;
+        // ADT Tweak end
+
         if (!(TryComp<ApcPowerReceiverComponent>(entity, out var receiver) && _power.IsPowered(entity, receiver))
-            || !_nodeContainer.TryGetNode(entity.Owner, entity.Comp.Inlet, out PipeNode? inlet)
-            || !_solution.ResolveSolution(entity.Owner, entity.Comp.SolutionId, ref entity.Comp.Solution, out var solution))
+            || !_nodeContainer.TryGetNode(entity.Owner, entity.Comp.Inlet, out PipeNode? inlet)) // ADT-Tweak
+           // || !_solution.ResolveSolution(entity.Owner, entity.Comp.SolutionId, ref entity.Comp.Solution, out var solution)) // ADT-Tweak
         {
             return;
         }
+
+        // ADT Tweak start
+        if (!Evaporator.TryGetOutputSolution(entity.Owner, entity.Comp.SolutionId, ref entity.Comp.Solution, out var solution))
+            return;
+        // ADT Tweak end
 
         if (solution.AvailableVolume == 0 || inlet.Air.TotalMoles == 0)
             return;

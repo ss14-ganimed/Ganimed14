@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   id: CrystalGreen
   parent: BaseStructure
   suffix: green
@@ -37,9 +37,11 @@
       radius: 3
       energy: 3
       color: "#52ff39"
+      mask: /Textures/ADT/Effects/Lightmasks/circle_c.png # ADT tweak
     - type: Damageable
-      damageContainer: StructuralInorganic
       damageModifierSet: Glass
+    - type: Injurable
+      damageContainer: StructuralInorganic
     - type: Destructible
       thresholds:
         - trigger:

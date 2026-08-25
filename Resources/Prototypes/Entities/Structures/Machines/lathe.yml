@@ -49,6 +49,11 @@
     price: 800
   - type: ResearchClient
   - type: TechnologyDatabase
+  - type: ApcPowerReceiver
+    powerLoad: 150
+  - type: PowerState
+    idlePowerDraw: 150
+    workingPowerDraw: 1000
   - type: RadioJobIconOverride # ADT-Tweak
     iconId: JobIconMachine
 
@@ -116,7 +121,6 @@
         - Ingot
         # ADT-Tweak start. Разрешаем блюспейс кристаллы и фантомным кристаллам пихать в автолат
         - ADTBSCrystal
-        - PhantomEctoplasm
         #ADT-Tweak end
   - type: StationAiWhitelist
   - type: OreSiloClient
@@ -141,6 +145,7 @@
     - PowerCellsStatic
     - ElectronicsStatic
     # ADT-tweak-start
+    - ADTScienceTrigger
     - ADTServiceStaticPack
     - ADTRecorderStaticPack
     - ADTMicsStaticPack
@@ -213,10 +218,14 @@
     staticPacks:
     - ChemistryStatic
     - SurgeryStatic
+    # ADT-tweak-Start
+    - ADTScienceExplosives
+    - ADTAdvancedMaterialsStatic
+    # ADT-tweak-End
     dynamicPacks:
     - AdvancedTools
     - ScienceEquipment
-    - ScienceExplosives
+    # - ScienceExplosives # ADT-Tweak
     - ScienceClothing
     - PowerCells
     - ScienceWeapons
@@ -237,10 +246,13 @@
     #- ADTPhantomPack
     - ADTWeaponLauncherHydraPack
     - ADTPowerPack
-    - ADTMegaCellPack
+    #- ADTMegaCellPack
     - ADTBeltManipulatorPack
     #ADT-tweak-end
+    - XenobioPack #ADT Tweak
+    - XenobagHoldingPack #ADT Tweak
     - ADTBluespaceCrystalTech #ADT Tweak
+    - PartsDynamic #ADT-Tweak: machine parts
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityAmmo
@@ -318,10 +330,11 @@
     - ADTArcade
     - ADTIndustrialCharger
     - ADTAdvancedThruster
-    - ADTMegaCharger
+    #- ADTMegaCharger
     - ADTChemDisp
     - ADTAdvancedMedical
     - ADTCryoPodMachineCircuitboard
+    - BluespaceArtilleryBoards
     # ADT-tweak-end
   - type: EmagLatheRecipes
     emagDynamicPacks:
@@ -382,6 +395,7 @@
     - ADTModsuitPack
     - ADTGygaxPack
     - ADTOdysseusPack
+    - ADTArchimedesPack
     - ADTClarkePack
     - ADTDurandPack
     - ADTPhazonPack
@@ -463,12 +477,18 @@
   - type: Lathe
     idleState: icon
     runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
     staticPacks:
     - SecurityEquipmentStatic
     - SecurityPracticeStatic
     - SecurityAmmoStatic
     - SecurityWeaponsStatic
-    - ADTMagazineStaticPack # ADT-tweak
+    # ADT-Tweak-Start
+    - ADTMagazineStaticPack
+    - ADTScienceTrigger
+    - ADTScienceExplosives
+    # ADT-Tweak-End
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -517,6 +537,8 @@
     - type: Lathe
       idleState: icon
       runningState: icon
+      unlitIdleState: unlit
+      unlitRunningState: unlit-building
       staticPacks:
       - SecurityAmmoStatic
     - type: EmagLatheRecipes
@@ -548,6 +570,8 @@
   - type: Lathe
     idleState: icon
     runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
     staticPacks:
     - TopicalsStatic
     - ChemistryStatic
@@ -556,7 +580,10 @@
     - MedicalClothingStatic
     - EmptyMedkitsStatic
     - SurgeryStatic
-    - ADTMedicalMiscStaticPack # ADT-Tweak
+    # ADT-Tweak-Start
+    - ADTMedicalMiscStaticPack
+    - ADTChemicalPayload
+    # ADT-Tweak-End
     dynamicPacks:
     - Chemistry
     #ADT-Tweak Start
@@ -703,12 +730,11 @@
       idleState: icon
       runningState: building
       defaultProductionAmount: 30 #ADT, changed from 10 to 30
+      suppressMachinePartUpgrades: true #ADT-Tweak
       staticPacks:
       - OreSmelting
       - RGlassSmelting
       - ADTBScrystalSmelting #ADT Tweak
-      # ADT-Tweak раскомментить и пересмотреть рецепты после добавления обломков с металлоломом
-      #- ScrapSmeltingBasic #ADT tweak
     # ADT tweak start
     - type: AutoMaterialInsert
       tag: ADTOreBag
@@ -716,6 +742,7 @@
       transferSound:
         path: /Audio/Effects/Cargo/ping.ogg
     - type: MiningPointsLathe
+    - type: OreProcessorUpgrade #ADT-Tweak: машинные части (порт Orion PR #385)
      # ADT tweak end
 
 - type: entity
@@ -736,9 +763,6 @@
     - RGlassSmelting
     - AdvancedSmelting
     - ADTBScrystalSmelting #ADT Tweak
-# ADT-Tweak раскомментить и пересмотреть рецепты после добавления обломков с металлоломом
-#    - ScrapSmeltingBasic #ADT tweak
-#    - ScrapSmeltingAdvanced #ADT tweak
 
 - type: entity
   parent: BaseLathe
@@ -801,10 +825,15 @@
     - FloorSteelTilesStatic
     - FloorWhiteTilesStatic
     - FloorMaintsTilesStatic
+    - FloorIndustrialTilesStatic
     - FloorWoodTilesStatic
     - FloorConcreteTilesStatic
     - CircuitFloorsStatic
     - FloorMarbleTilesStatic
+    - FloorShuttleTilesStatic
+    - PlasticTilesStatic
+    - CarpetTilesStatic
+    - PreciousTilesStatic
     dynamicPacks:
     - FauxTiles
   - type: MaterialStorage

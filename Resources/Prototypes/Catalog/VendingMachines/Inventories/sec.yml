@@ -20,9 +20,9 @@
     RiotShield: 2
     RiotLaserShield: 2
     ADTClothingBeltJudo: 3 #ADT tweak
-    ADTBookPTCR: 4 #ADT tweak
-    ADTWeaponTonfa: 2 #ADT tweak
-    RiotBulletShield: 2 #Зачем они их убирали?
+    ADTBookPTSD: 4 #ADT tweak
+    ADTWeaponTonfa: 2 #ADT tweak вернул тонфы
+    # RiotBulletShield: 2 ADT no nullet shield
     RadioHandheldSecurity: 5
     Bola: 5 #ADT tweak
     ADTClothingNeckBodyCamera: 3 #ADT-tweak

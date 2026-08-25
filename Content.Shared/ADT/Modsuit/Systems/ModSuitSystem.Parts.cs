@@ -28,10 +28,16 @@ public sealed partial class ModSuitSystem
 
     private void OnRemoveAttached(Entity<ModPartComponent> ent, ref ComponentRemove args)
     {
+        if (Terminating(ent.Owner))
+            return;
+
         // if the attached component is being removed (maybe entity is being deleted?) we will just remove the
         // modsuit component. This means if you had a hard-suit helmet that took too much damage, you would
         // still be left with a suit that was simply missing a helmet. There is currently no way to fix a partially
         // broken suit like this.
+
+        if (!TryGetEntityData(ent.Comp.AttachedUid, out var attachedUid, out _) || !Exists(attachedUid.Value))
+            return;
 
         var suit = GetEntity(ent.Comp.AttachedUid);
 
@@ -57,9 +63,15 @@ public sealed partial class ModSuitSystem
         if (_timing.ApplyingState)
             return;
 
+        if (Terminating(ent.Owner))
+            return;
+
+        if (!TryGetEntityData(ent.Comp.AttachedUid, out var attachedUid, out _) || !Exists(attachedUid.Value))
+            return;
+
         var suit = GetEntity(ent.Comp.AttachedUid);
 
-        if (!TryComp(suit, out ModSuitComponent? modSuitComp))
+        if (!TryComp(suit, out ModSuitComponent? modSuitComp) || Terminating(suit))
             return;
 
         // As unequipped gets called in the middle of container removal, we cannot call a container-insert without causing issues.
@@ -83,6 +95,12 @@ public sealed partial class ModSuitSystem
         if (_timing.ApplyingState)
             return;
 
+        if (Terminating(ent.Owner))
+            return;
+
+        if (!TryGetEntityData(ent.Comp.AttachedUid, out var attachedUid, out _) || !Exists(attachedUid.Value))
+            return;
+
         var suit = GetEntity(ent.Comp.AttachedUid);
 
         if (!TryComp(suit, out ModSuitComponent? modSuitComp) || !modSuitComp.TempUser.HasValue)
@@ -101,6 +119,12 @@ public sealed partial class ModSuitSystem
 
     private void OnGetAttachedStripVerbsEvent(Entity<ModPartComponent> ent, ref GetVerbsEvent<EquipmentVerb> args)
     {
+        if (Terminating(ent.Owner))
+            return;
+
+        if (!TryGetEntityData(ent.Comp.AttachedUid, out var attachedUid, out _) || !Exists(attachedUid.Value))
+            return;
+
         var suit = GetEntity(ent.Comp.AttachedUid);
 
         if (!TryComp<ModSuitComponent>(suit, out var modSuitComp))
@@ -176,12 +200,21 @@ public sealed partial class ModSuitSystem
             return;
         }
 
+        var suitStorage = StashSuitStorage(user, parent, slot);
+
         if (_inventorySystem.TryUnequip(user, parent, slot, out var removedItem, predicted: true))
             _containerSystem.Insert(removedItem.Value, attachedComp.ClothingContainer);
         else if (removedItem.HasValue)
+        {
+            RestoreSuitStorage(user, parent, suitStorage);
             return;
+        }
 
         _inventorySystem.TryEquip(user, parent, part, slot, force: true, predicted: true);
+
+        RestoreSuitStorage(user, parent, suitStorage);
+
+        RefreshFullEquipModules(ent);
 
         UpdateCellDraw(ent);
 
@@ -202,19 +235,45 @@ public sealed partial class ModSuitSystem
 
         var parent = ent.Comp.TempUser.Value;
 
+        var suitStorage = StashSuitStorage(user, parent, slot);
+
         _inventorySystem.TryUnequip(user, parent, slot, force: true, predicted: true);
+
+        RefreshFullEquipModules(ent);
 
         // If attached have clothing in container - equip it
         if (!TryComp<ModPartComponent>(clothing, out var attachedComp))
+        {
+            RestoreSuitStorage(user, parent, suitStorage);
             return;
+        }
 
         if (attachedComp.ClothingContainer.ContainedEntity is { Valid: true } stored)
             _inventorySystem.TryEquip(parent, stored, slot, force: true, predicted: true);
+
+        RestoreSuitStorage(user, parent, suitStorage);
 
         UpdateCellDraw(ent);
 
         if (updateUi)
             UpdateUserInterface(ent.Owner, ent.Comp);
+    }
+
+    private EntityUid? StashSuitStorage(EntityUid user, EntityUid parent, string slot)
+    {
+        if (slot != "outerClothing")
+            return null;
+
+        if (!_inventorySystem.TryUnequip(user, parent, "suitstorage", out var stashed, force: true, predicted: true))
+            return null;
+
+        return stashed;
+    }
+
+    private void RestoreSuitStorage(EntityUid user, EntityUid parent, EntityUid? stashed)
+    {
+        if (stashed.HasValue)
+            _inventorySystem.TryEquip(user, parent, stashed.Value, "suitstorage", predicted: true);
     }
 
     private void RemoveAllParts(Entity<ModSuitComponent> ent)
