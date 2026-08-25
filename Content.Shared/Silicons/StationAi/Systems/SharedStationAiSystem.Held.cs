@@ -1,5 +1,4 @@
 using Content.Shared.Actions.Events;
-using Content.Shared.Doors.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
@@ -179,11 +178,6 @@ public abstract partial class SharedStationAiSystem
         {
             return;
         }
-
-        // ADT Tweak start
-        if (HasComp<DoorComponent>(args.Target))
-            return;
-        // ADT Tweak end
 
         var user = args.User;
         
