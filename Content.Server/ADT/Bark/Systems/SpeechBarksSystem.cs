@@ -49,7 +49,7 @@ public sealed class SpeechBarksSystem : EntitySystem
             if (!_mind.TryGetMind(ent, out _, out var mind) || mind.UserId == null || !_player.TryGetSessionById(mind.UserId, out var session))
                 continue;
 
-            if (!HasComp<GhostHearingComponent>(ent) && !_examineSystem.InRangeUnOccluded(ent, uid, 10f))
+            if (isWhisper && !HasComp<GhostHearingComponent>(ent) && !_examineSystem.InRangeUnOccluded(ent, uid, 10f)) // Ganimed tweak
                 continue;
 
             RaiseNetworkEvent(new PlaySpeechBarksEvent(

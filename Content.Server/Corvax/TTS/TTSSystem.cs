@@ -134,9 +134,6 @@ public sealed partial class TTSSystem : EntitySystem
         {
             if (!session.AttachedEntity.HasValue) continue;
 
-            if (!HasComp<GhostHearingComponent>(session.AttachedEntity.Value) && !_examineSystem.InRangeUnOccluded(session.AttachedEntity.Value, uid, ChatSystem.VoiceRange))
-                continue;
-
             RaiseNetworkEvent(ttsEvent, session);
         }
         // ADT-Tweak end
