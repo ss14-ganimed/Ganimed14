@@ -14,22 +14,22 @@ job-board-label-text = [head=2]Поставка утилизаторкой ра�
 
 
     { "[italic]Грузы подлежат проверке корпорацией Donk[/italic]" }
-salv-job-board-name-BountyTeethSpaceCarp = Космический карп
+salv-job-board-name-BountyTeethSpaceCarp = Космический ларп
 salv-job-board-name-BountySalvageScrap = Космический мусор
 salv-job-board-name-BountySalvageOreGold = Золото (Руда)
 salv-job-board-name-BountySalvageOreSilver = Серебро (Руда)
 salv-job-board-name-BountySalvageOreUranium = Уран (Руда)
 salv-job-board-name-BountySalvageOrePlasma = Плазма (Руда)
 salv-job-board-name-BountySalvageOreBananium = Бананиум (Руда)
-salv-job-board-name-BountyTeethSharkminnow = Карпоакула
+salv-job-board-name-BountyTeethSharkminnow = Ларпоакула
 salv-job-board-name-BountyGoliathPlates = Голиаф
 salv-job-board-name-BountyHivelordRemains = Повелитель улья
 salv-job-board-name-BountySalvageDiamond = Алмаз
-bounty-description-tooth-space-carp = Нам нужно, чтобы вы достали образец зуба космического карпа. Вы можете найти этих ребят на всех видах обломков. Будьте осторожны, они кусаются.
+bounty-description-tooth-space-carp = Нам нужно, чтобы вы достали образец зуба космического ларпа. Вы можете найти этих ребят на всех видах обломков. Будьте осторожны, они кусаются.
 bounty-description-salvage-scrap = Мы исследуем влияние глубокого космоса на станционные материалы и нам нужно несколько образцов. Найдите немного старого хлама на обломках и принесите нам.
 bounty-description-salvage-ore-gold = Мы занимаемся новым экспериментальным процессом производства электроники. Доставьте нам большую партию необработанной золотой руды. Она может быть любого происхождения.
 bounty-description-salvage-ore-silver = Мы изучаем материальные свойства серебра в зависимости от методов его обработки. Пришлите нам большое количество необработанной серебряной руды. Она может быть любого происхождения.
-bounty-description-tooth-sharkminnow = Нам нужно, чтобы вы достали образец зуба карпоакулы. Эти ребята гораздо опаснее, чем мелкие карпы, с которыми вы привыкли иметь дело. Смотрите чтобы они вас не укусили: они лечатся, когда пьют вашу кровь.
+bounty-description-tooth-sharkminnow = Нам нужно, чтобы вы достали образец зуба ларпоакулы. Эти ребята гораздо опаснее, чем мелкие ларпы, с которыми вы привыкли иметь дело. Смотрите чтобы они вас не укусили: они лечатся, когда пьют вашу кровь.
 bounty-description-salvage-ore-plasma = Нам нужна партия плазменной руды для отправки на исследовательскую станцию. Пожалуйста, предоставьте нам её, чтобы мы могли продолжить наши испытания. Она может быть любого происхождения.
 bounty-description-salvage-ore-uranium = Нам нужен образец урановой руды для наших текущих экспериментов с ядерными устройствами. Имейте в виду, что хотя уран и светится слабо, он, вероятно, не причинит вам вреда. Она может быть любого происхождения.
 bounty-description-salvage-ore-bananium = Мы ведём проект по расшифровке загадочной геномной последовательности клоуна. Мы полагаем, что образец сырого бананиума поможет нам в этом. Обратите внимание, что он добывается только из самых редких астероидов в глубоком космосе.

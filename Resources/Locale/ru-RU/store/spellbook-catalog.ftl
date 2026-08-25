@@ -38,8 +38,8 @@ spellbook-item-recall-description = Пометьте удерживаемый п
 
 spellbook-wand-polymorph-door-name = Волшебная палочка входа
 spellbook-wand-polymorph-door-description = На случай, когда нужен маршрут для побега.
-spellbook-wand-polymorph-carp-name = Волшебная палочка полиморфа карпа
-spellbook-wand-polymorph-carp-description = На случай, когда вам срочно нужно филе карпа, а клоун выглядит уж очень аппетитно.
+spellbook-wand-polymorph-carp-name = Волшебная палочка полиморфа ларпа
+spellbook-wand-polymorph-carp-description = На случай, когда вам срочно нужно филе ларпа, а клоун выглядит уж очень аппетитно.
 spellbook-wand-locker-name = Волшебная палочка шкафчика
 spellbook-hammer-mjollnir-name = Мьёльнир
 spellbook-hammer-mjollnir-description = В ваших руках мощь ГРОЗЫ. Отправляйте врагов в полет с помощью мощного взмаха или броска прямо в них!

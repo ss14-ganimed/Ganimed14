@@ -1,4 +1,4 @@
-ent-ADTSpawnMobCarpCat = спавнер КарпКат
+ent-ADTSpawnMobCarpCat = спавнер ЛарпКат
     .desc = { ent-MarkerBase.desc }
 
 ent-ADTSpawnMobPossumPoppy = спавнер опоссум Поппи

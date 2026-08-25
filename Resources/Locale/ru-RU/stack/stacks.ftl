@@ -164,7 +164,7 @@ stack-space-carp-tooth =
         [1] зуб
         [few] зуба
        *[other] зубов
-    } космического карпа
+    } космического ларпа
 stack-paper =
     { $amount ->
         [1] лист
@@ -255,7 +255,7 @@ stack-sharkminnow-tooth =
         [1] зуб
         [few] зуба
        *[other] зубов
-    } карпоакулы
+    } ларпоакулы
 stack-goliath-hide =
     { $amount ->
         [1] пластина

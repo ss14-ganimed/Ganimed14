@@ -81,10 +81,10 @@ ghost-role-information-rat-king-name = Крысиный король
 ghost-role-information-rat-king-description = Вы — Крысиный король, вас интересует еда, еда и ещё раз еда. Сражайтесь со станцией ради еды. Я уже упоминал, что вас интересует еда?
 ghost-role-information-rat-servant-name = Крысиный слуга
 ghost-role-information-rat-servant-description = Вы Крысиный слуга. Выполняйте приказы своего короля.
-ghost-role-information-salvage-carp-name = Космический карп с обломка
+ghost-role-information-salvage-carp-name = Космический ларп с обломка
 ghost-role-information-salvage-carp-description = Защищайте ценности вашего обломка!
-ghost-role-information-sentient-carp-name = Разумный карп
-ghost-role-information-sentient-carp-description = Помогите дракону наводнить станцию карпами!
+ghost-role-information-sentient-carp-name = Разумный ларп
+ghost-role-information-sentient-carp-description = Помогите дракону наводнить станцию ларпами!
 ghost-role-information-willow-name = Кенгуру Уиллоу
 ghost-role-information-willow-description = Вы кенгуру по имени Уиллоу! Уиллоу любит бокс.
 ghost-role-information-honkbot-name = Хонкбот
@@ -108,8 +108,8 @@ ghost-role-information-holoclown-description = Слушайте своего х�
 ghost-role-information-ifrit-name = Ифрит
 ghost-role-information-ifrit-description = Слушайте своего хозяина. Не танкуйте урон. Сильно бейте людей.
 ghost-role-information-space-dragon-name = Космический дракон
-ghost-role-information-space-dragon-description = Вызовите 3 карповых разлома и захватите этот квадрант! У вас есть лишь 5 минут между каждым разломом, прежде чем вы исчезнете.
-ghost-role-information-space-dragon-rules = Вы [color={ role-type-team-antagonist-color }][bold]{ role-type-team-antagonist-name }[/bold][/color], в команде с другими призванными карпами.
+ghost-role-information-space-dragon-description = Вызовите 3 ларповых разлома и захватите этот квадрант! У вас есть лишь 5 минут между каждым разломом, прежде чем вы исчезнете.
+ghost-role-information-space-dragon-rules = Вы [color={ role-type-team-antagonist-color }][bold]{ role-type-team-antagonist-name }[/bold][/color], в команде с другими призванными ларпами.
 ghost-role-information-space-dragon-summoned-carp-rules = Вы [color={ role-type-team-antagonist-color }][bold]{ role-type-team-antagonist-name }[/bold][/color], в команде с драконом и другими его союзниками.
 ghost-role-information-space-dragon-dungeon-description = Защищайте подземелье экспедиции вместе со своими рыбьими товарищами!
 ghost-role-information-space-dragon-dungeon-rules = Вы [color={ role-type-team-antagonist-color }][bold]{ role-type-team-antagonist-name }[/bold][/color], в команде с другими обитателями подземелья.

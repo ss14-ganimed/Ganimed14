@@ -1,7 +1,7 @@
 ent-WeaponWandPolymorphBase = { ent-WeaponWandBase }
     .desc = { ent-WeaponWandBase.desc }
-ent-WeaponWandPolymorphCarp = волшебная палочка полиморфа карпа
-    .desc = На случай, когда вам срочно нужно филе карпа, а клоун выглядит уж очень аппетитно.
+ent-WeaponWandPolymorphCarp = волшебная палочка полиморфа ларпа
+    .desc = На случай, когда вам срочно нужно филе ларпа, а клоун выглядит уж очень аппетитно.
 ent-WeaponWandPolymorphMonkey = волшебная палочка полиморфа обезьяны
     .desc = Когда вам нужен обезьяний друг.
 ent-WeaponWandFireball = волшебная палочка огненного шара

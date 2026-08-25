@@ -1,5 +1,5 @@
 ent-BaseMobDragon = космический дракон
-    .desc = Летающий левиафан, имеющий мало общего с космическими карпами.
+    .desc = Летающий левиафан, имеющий мало общего с космическими ларпами.
 ent-MobDragon = { ent-BaseMobDragon }
     .desc = { ent-BaseMobDragon.desc }
 ent-DragonsBreathGun = драконье лёгкое
@@ -7,8 +7,8 @@ ent-DragonsBreathGun = драконье лёгкое
 ent-MobDragonDungeon = { ent-BaseMobDragon }
     .suffix = Подземелье
     .desc = { ent-BaseMobDragon.desc }
-ent-ActionSpawnRift = Создать карповый разлом
-    .desc = Создать карповый разлом, который будет периодически призывать карпов.
+ent-ActionSpawnRift = Создать ларповый разлом
+    .desc = Создать ларповый разлом, который будет периодически призывать ларпов.
 ent-ActionDevour = [color=red]Поглотить[/color]
     .desc = Попытаться разрушить конструкцию своими челюстями или проглотить существо.
 ent-ActionDragonsBreath = [color=orange]Дыхание дракона[/color]

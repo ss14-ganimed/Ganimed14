@@ -1,6 +1,6 @@
 names-dragon-title-dataset-1 = Ужасный
 names-dragon-title-dataset-2 = Обжигатор
-names-dragon-title-dataset-3 = Разводчик Карпов
+names-dragon-title-dataset-3 = Разводчик Ларпов
 names-dragon-title-dataset-4 = Непобедимый
 names-dragon-title-dataset-5 = Разрушитель
 names-dragon-title-dataset-6 = Мимолётный

@@ -39,7 +39,7 @@ ent-ADTFoodMealTomatoMeatball = спагетти с фрикадельками
     .desc = Древнее оружие итальянской дипломатии.
 
 
-ent-ADTFoodMealNigiriCarp = нигири с карпом
+ent-ADTFoodMealNigiriCarp = нигири с ларпом
     .desc = Станционная импровизация японской кухни.
 
 ent-ADTFoodMealNigiriCooked = нигири с жареным лососем

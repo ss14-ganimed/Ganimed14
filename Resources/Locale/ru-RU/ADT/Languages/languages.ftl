@@ -131,8 +131,8 @@ language-SignLanguage-description = Язык, что позволяет глух
 language-DionaCollectiveMind-name = Колл. разум дион
 language-DionaCollectiveMind-description = Инстинктивно понятный дионам метод коммуникации через запахи и химические сигналы, для коммуникации как нимфам внутри гештальта, так и между отдельными организмами.
 
-language-CarpCollectiveMind-name = Колл. разум карпов
-language-CarpCollectiveMind-description = Коллективный разум карпов, космических хищников и отпрысков дракона.
+language-CarpCollectiveMind-name = Колл. разум ларпов
+language-CarpCollectiveMind-description = Коллективный разум ларпов, космических хищников и отпрысков дракона.
 
 language-XenoCollectiveMind-name = Колл. разум ксено
 language-XenoCollectiveMind-description = Коллективный разум ксеноморфов.
