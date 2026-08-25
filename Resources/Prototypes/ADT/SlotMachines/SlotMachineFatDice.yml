@@ -25,7 +25,7 @@
     bigWinChance: 0
     jackPotWinChance: 0
     godPotWinChance: 0.05
-    godPotPrize: DiceOfFate
+    godPotPrize: SpaceCash10000 # Ganimed Tweak > DiceOfFate
     deleteGodPot: true
     spinDamage:
       types:
