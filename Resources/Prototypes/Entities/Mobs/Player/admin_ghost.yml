@@ -24,10 +24,11 @@
     canInteract: true
     # Ganimed-Add-Start
     availableClothing:
-    - ADTClothingUniformJumpsuitGreenSuitLawyer
-    - ClothingUniformJumpsuitCentcomAgent
-    - ClothingUniformJumpsuitNanotrasen
-    - ADTClothingUniformsJumpsuitWhiteDiplomatSuitL
+      jumpsuit:
+      - ADTClothingUniformJumpsuitGreenSuitLawyer
+      - ClothingUniformJumpsuitCentcomAgent
+      - ClothingUniformJumpsuitNanotrasen
+      - ADTClothingUniformsJumpsuitWhiteDiplomatSuitL
     # Ganimed-Add-End
   - type: GhostHearing
   - type: Hands
