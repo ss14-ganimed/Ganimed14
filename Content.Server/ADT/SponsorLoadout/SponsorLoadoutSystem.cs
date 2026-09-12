@@ -32,14 +32,14 @@ public sealed class SponsorLoadoutSystem : EntitySystem
             return;
 
         // Проверяем, является ли лоадаут персональным
-        if (_prototypeManager.TryIndex<SponsorPersonalLoadoutPrototype>(spawnEquipment, out var personalLoadout))
+        if (_prototypeManager.TryIndex<SponsorPersonalLoadoutPrototype>(spawnEquipment!, out var personalLoadout))
         {
             EquipLoadout(ev, personalLoadout);
             return;
         }
 
         // Проверяем, является ли лоадаут для обычного tier
-        if (_prototypeManager.TryIndex<SponsorLoadoutPrototype>(spawnEquipment, out var loadout))
+        if (_prototypeManager.TryIndex<SponsorLoadoutPrototype>(spawnEquipment!, out var loadout))
         {
             EquipLoadout(ev, loadout);
             return;
