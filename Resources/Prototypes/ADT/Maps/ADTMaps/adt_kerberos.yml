@@ -19,7 +19,7 @@
           path: /Maps/ADTMaps/Shuttles/adt_cargo.yml
         - type: StationJobs
           availableJobs:
-            Boxer: [ 2, 2 ]
+            #Boxer: [ 2, 2 ] removed at commit 58f884133b 
             CargoTechnician: [ 4, 4 ]
             Passenger: [ -1, -1 ]
             Bartender: [ 1, 1 ]
@@ -43,7 +43,7 @@
             Warden: [ 1, 1 ]
             Librarian: [ 1, 1 ]
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 6, 6 ]
+            SalvageSpecialist: [ 9, 9 ]
             Musician: [ 2, 2 ]
             AtmosphericTechnician: [ 2, 3 ]
             TechnicalAssistant: [ 3, 3 ]
@@ -66,7 +66,7 @@
             ADTSeniorEngineer: [ 1, 1 ] # ADT-roles
             ADTSeniorResearcher: [ 1, 1 ] # ADT-roles
             ADTSeniorOfficer: [ 1, 1 ] # ADT-Roles
-            ADTCentcomConsultant: [ 1, 1 ] #ADT-Roles
+        #    ADTCentcomConsultant: [ 1, 1 ] #ADT-Roles
             ADTCorrectionsOfficer: [ 1, 1 ] # ADT-Roles
             #silicon
             StationAi: [ 1, 1 ]

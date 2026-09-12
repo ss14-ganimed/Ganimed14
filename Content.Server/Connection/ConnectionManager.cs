@@ -22,7 +22,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Content.Shared.ADT.CCVar;
-using Serilog;
 
 /*
  * TODO: Remove baby jail code once a more mature gateway process is established. This code is only being issued as a stopgap to help with potential tiding in the immediate future.
@@ -61,6 +60,7 @@ namespace Content.Server.Connection
         [Dependency] private readonly IServerDbManager _db = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly SponsorsManager _sponsorsManager = default!; // Corvax-Sponsors
+        [Dependency] private readonly Content.Server.ADT.Sponsors.SponsorManager _adtSponsors = default!;
         [Dependency] private readonly ILocalizationManager _loc = default!;
         [Dependency] private readonly ServerDbEntryManager _serverDbEntry = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
@@ -214,7 +214,7 @@ namespace Content.Server.Connection
          * TODO: Jesus H Christ what is this utter mess of a function
          * TODO: Break this apart into is constituent steps.
          */
-        private async Task<(ConnectionDenyReason, string, List<ServerBanDef>? bansHit)?> ShouldDeny(
+        private async Task<(ConnectionDenyReason, string, List<BanDef>? bansHit)?> ShouldDeny(
             NetConnectingArgs e)
         {
             // Check if banned.
@@ -235,7 +235,7 @@ namespace Content.Server.Connection
                 return (ConnectionDenyReason.NoHwid, Loc.GetString("hwid-required"), null);
             }
 
-            var bans = await _db.GetServerBansAsync(addr, userId, hwId, modernHwid, includeUnbanned: false);
+            var bans = await _db.GetBansAsync(addr, userId, hwId, modernHwid, includeUnbanned: false);
             if (bans.Count > 0)
             {
                 var firstBan = bans[0];
@@ -256,7 +256,7 @@ namespace Content.Server.Connection
                 var discordId = await _db.GetDiscordIdAsync(userId);
                 if (discordId != null)
                 {
-                    Log.Debug($"Discord ID for user {userId.ToString()}: {discordId}");
+                    Logger.Debug($"Discord ID for user {userId.ToString()}: {discordId}");
                 }
                 else
                 {
@@ -408,12 +408,17 @@ namespace Content.Server.Connection
         {
             var isAdmin = await _db.GetAdminDataForAsync(userId) != null;
             var havePriorityJoin = _sponsorsManager.TryGetInfo(userId, out var sponsor) && sponsor.HavePriorityJoin && sponsor.ExpireDate > DateTime.Now; // Corvax-Sponsors + ADT-Sponsors
+            // ADT-Tweak-Start
+            var adtSponsor = await _adtSponsors.EnsureLoadedAsync(userId);
+            havePriorityJoin |= adtSponsor.PriorityJoin;
+            // ADT-Tweak-End
             var wasInGame = EntitySystem.TryGet<GameTicker>(out var ticker) &&
                             ticker.PlayerGameStatuses.TryGetValue(userId, out var status) &&
                             status == PlayerGameStatus.JoinedGame;
             return isAdmin ||
                    havePriorityJoin || // Corvax-Sponsors
-                   wasInGame;
+                   wasInGame ||
+                   HasTemporaryBypass(userId); // ADT-Tweak-Start
         }
         // Corvax-Queue-End
     }

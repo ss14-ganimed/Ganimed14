@@ -1,5 +1,4 @@
 using Content.Shared.Research.Prototypes;
-using NetSerializer;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -13,6 +12,12 @@ public sealed class LatheUpdateState : BoundUserInterfaceState
     public LatheRecipeBatch[] Queue;
 
     public ProtoId<LatheRecipePrototype>? CurrentlyProducing;
+
+    // ADT-Tweak-Start
+    public bool HasReagentSlot;
+
+    public bool BeakerInserted;
+    // ADT-Tweak-End
 
     public LatheUpdateState(List<ProtoId<LatheRecipePrototype>> recipes, LatheRecipeBatch[] queue, ProtoId<LatheRecipePrototype>? currentlyProducing = null)
     {

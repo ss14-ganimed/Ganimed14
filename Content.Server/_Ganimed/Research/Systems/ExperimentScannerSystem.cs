@@ -293,7 +293,7 @@ public sealed partial class ExperimentScannerSystem : SharedExperimentScannerSys
             case SpeciesReagentExperimentCondition species:
                 if (order.SelectedSpecies == null || order.SelectedReagent == null)
                     return false;
-                if (!TryComp<HumanoidAppearanceComponent>(target, out var hum) ||
+                if (!TryComp<HumanoidProfileComponent>(target, out var hum) ||
                     hum.Species != order.SelectedSpecies)
                     return false;
 
@@ -565,7 +565,7 @@ public sealed partial class ExperimentScannerSystem : SharedExperimentScannerSys
                     return false;
 
                 var presentSpecies = new HashSet<string>();
-                var query = EntityQueryEnumerator<HumanoidAppearanceComponent>();
+                var query = EntityQueryEnumerator<HumanoidProfileComponent>();
                 while (query.MoveNext(out var uid, out var humanoid))
                 {
                     if (_station.GetOwningStation(uid) != station)

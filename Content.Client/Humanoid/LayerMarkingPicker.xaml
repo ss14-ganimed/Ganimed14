@@ -1,0 +1,19 @@
+<BoxContainer xmlns="https://spacestation14.io" Orientation="Vertical">
+    <LineEdit Name="SearchBar" PlaceHolder="{Loc 'markings-search'}" HorizontalExpand="True" />
+    <ScrollContainer Name="SelectionItems" HorizontalExpand="True" VerticalExpand="True">
+        <!-- ADT-Tweak-Start -->
+        <BoxContainer Orientation="Vertical">
+            <Label Name="SponsorHeader" Text="{Loc 'adt-sponsor-marking-category'}" StyleClasses="LabelHeading" Margin="4 4 4 0" Visible="False" />
+            <GridContainer Name="SponsorItems" Columns="2" Margin="4" Visible="False" />
+            <Label Name="RegularHeader" Text="{Loc 'adt-sponsor-marking-regular'}" StyleClasses="LabelHeading" Margin="4 4 4 0" Visible="False" />
+            <GridContainer Name="Items" Columns="2" Margin="4" />
+        </BoxContainer>
+        <!-- ADT-Tweak-End -->
+    </ScrollContainer>
+    <ScrollContainer Name="OrderingItems" HorizontalExpand="True" VerticalExpand="True" Visible="False">
+    </ScrollContainer>
+    <BoxContainer HorizontalExpand="True" Margin="4">
+        <Label Name="MarkingsStatus" HorizontalExpand="True" />
+        <Button Name="ReorderButton" ToggleMode="True" Text="{Loc 'markings-reorder'}" />
+    </BoxContainer>
+</BoxContainer>

@@ -12,7 +12,6 @@ public abstract class SharedThermalVisionSystem : EntitySystem
 {
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
@@ -149,7 +148,12 @@ public abstract class SharedThermalVisionSystem : EntitySystem
             if (TryComp<ThermalVisionComponent>(item, out var thermal))
             {
                 nightVision.Color = thermal.Color;
+                nightVision.UseAlternativeShader = thermal.UseAlternativeShader;
+                nightVision.HighlightLightSources = thermal.HighlightLightSources;
+                nightVision.HighlightOnly = thermal.HighlightOnly;
+                nightVision.IgnoredComponents = new(thermal.IgnoredComponents);
             }
+
             nightVision.State = ThermalVisionState.Full;
             Dirty(user, nightVision);
         }

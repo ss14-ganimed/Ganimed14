@@ -29,6 +29,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
     /// <summary>
     /// Loadout specific name.
     /// </summary>
+    [DataField]
     public string? EntityName;
 
     // ADT SAI Custom start
@@ -358,6 +359,14 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             reason = FormattedMessage.FromUnformatted("loadouts-prototype-missing");
             return false;
         }
+
+        // ADT-Tweak-Start
+        if (!Content.Shared.ADT.Sponsors.SponsorProfileValidation.IsLoadoutAllowed(session, collection, loadoutProto))
+        {
+            reason = FormattedMessage.FromUnformatted(Loc.GetString("adt-sponsor-loadout-locked"));
+            return false;
+        }
+        // ADT-Tweak-End
 
         var valid = true;
 

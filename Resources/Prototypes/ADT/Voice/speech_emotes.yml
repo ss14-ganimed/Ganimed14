@@ -253,13 +253,11 @@
   chatMessages: [утвердительно пищит]
   chatTriggers:
     - утвердительно пищит
-    - утвердительно пищит.
     - соглашается
-    - соглашается.
     - согласен
-    - согласен.
     - подтверждает
-    - подтверждает.
+    - довольно пищит
+    - радостно пищит
 
 - type: emote
   id: SynthNo
@@ -275,13 +273,10 @@
   chatMessages: [отрицательно пищит]
   chatTriggers:
     - отрицательно пищит
-    - отрицательно пищит.
     - отрицает
-    - отрицает.
     - не соглашается
-    - не соглашается.
     - не согласен
-    - не согласен.
+    - грустно пищит
 
 - type: emote
   id: SighBuzz
@@ -302,6 +297,60 @@
     - раздраженно жужжит
     - раздраженно жужжит.
     - искрит и раздраженно жужжит # ADT-Tweak-BloodCough
+
+- type: emote
+  id: StartUp
+  name: chat-emote-name-startup
+  category: Vocal
+  whitelist:
+    requireAll: true
+    components:
+    - Vocal
+    tags:
+    - ADTSiliconEmotes
+  icon: ADT/Interface/Emotes/Vocal/startup.png
+  chatMessages: [включается.]
+  chatTriggers:
+    - включается
+    - активируется
+
+- type: emote
+  id: Error
+  name: chat-emote-name-error
+  category: Vocal
+  whitelist:
+    requireAll: true
+    components:
+    - Vocal
+    tags:
+    - ADTSiliconEmotes
+  icon: ADT/Interface/Emotes/Vocal/error.png
+  chatMessages: [издаёт звук ошибки.]
+  chatTriggers:
+    - издаёт звук ошибки
+    - выдаёт ошибку
+    - недовольно пищит
+    - недовольно гудит
+
+- type: emote
+  id: Calculating
+  name: chat-emote-name-calculating
+  category: Vocal
+  whitelist:
+    requireAll: true
+    components:
+    - Vocal
+    tags:
+    - ADTSiliconEmotes
+  icon: ADT/Interface/Emotes/Vocal/calculating.png
+  chatMessages: [издаёт звук вычисления.]
+  chatTriggers:
+    - издаёт звук вычисления
+    - вычисляет
+    - усердно думает
+    - издаёт звук звонка
+    - звонит
+    - издаёт звук вызова
 
 - type: emote
   id: Spit
@@ -328,6 +377,46 @@
     - харкнуло
     - харкает
     - делает харчок
+
+- type: emote
+  id: IPCCuteSurprised
+  name: chat-emote-name-cute-surprised
+  icon: Interface/Emotes/scream.png
+  category: Vocal
+  whitelist:
+    requireAll: true
+    components:
+    - Vocal
+    tags:
+    - ADTIPCCuteEmotes
+  blacklist:
+    components:
+    - BorgChassis
+    tags:
+    - SiliconEmotes
+  chatMessages: [удивляется!]
+  chatTriggers:
+    - удивляется
+
+- type: emote
+  id: IPCCuteScared
+  name: chat-emote-name-cute-scared
+  icon: Interface/Emotes/scream.png
+  category: Vocal
+  whitelist:
+    requireAll: true
+    components:
+    - Vocal
+    tags:
+    - ADTIPCCuteEmotes
+  blacklist:
+    components:
+    - BorgChassis
+    tags:
+    - SiliconEmotes
+  chatMessages: [пугается!]
+  chatTriggers:
+    - пугается
 
 - type: emote
   id: IPCDeathgasp

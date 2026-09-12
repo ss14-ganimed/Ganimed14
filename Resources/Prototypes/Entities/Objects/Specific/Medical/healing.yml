@@ -28,10 +28,16 @@
     state: ointment
   - type: Item
     heldPrefix: ointment
-    storedRotation: 45
+    storedSprite:
+      state: ointment-storage
+      sprite: Objects/Specific/Medical/medical.rsi
   - type: Healing
     damageContainers:
       - Biological
+      # ADT-Tweak Start: New healing containers
+      - ADTBiologicalShadekin
+      - ADTBiologicalDrask
+      # ADT-Tweak End
     damage:
       types:
         Heat: -5
@@ -80,6 +86,10 @@
   - type: Healing
     damageContainers:
       - Biological
+      # ADT-Tweak Start: New healing containers
+      - ADTBiologicalShadekin
+      - ADTBiologicalDrask
+      # ADT-Tweak End
     damage:
       types:
         Heat: -10
@@ -130,9 +140,15 @@
   - type: Healing
     damageContainers:
       - Biological
+      # ADT-Tweak Start: New healing containers
+      - ADTBiologicalShadekin
+      - ADTBiologicalDrask
+      # ADT-Tweak End
     damage:
-      groups:
-        Brute: -15 # 5 for each type in the group
+      types:
+        Blunt: -5
+        Piercing: -5
+        Slash: -5
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
       params:
@@ -176,9 +192,15 @@
   - type: Healing
     damageContainers:
       - Biological
+      # ADT-Tweak Start: New healing containers
+      - ADTBiologicalShadekin
+      - ADTBiologicalDrask
+      # ADT-Tweak End
     damage:
-      groups:
-        Brute: -30 # 10 for each type in the group
+      types:
+        Blunt: -10
+        Piercing: -10
+        Slash: -10
     bloodlossModifier: -10 # a suture should stop ongoing bleeding
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
@@ -222,6 +244,10 @@
   - type: Healing
     damageContainers:
       - Biological
+      # ADT-Tweak Start: New healing containers
+      - ADTBiologicalShadekin
+      - ADTBiologicalDrask
+      # ADT-Tweak End
     damage:
       types:
         Bloodloss: -2.5 #lowers bloodloss damage  # ADT tweak было до этого -0.5
@@ -260,6 +286,7 @@
     - type: Tag
       tags:
         - SecBeltEquip
+        - Tourniquet
     - type: Sprite
       state: tourniquet
     - type: Item
@@ -267,6 +294,10 @@
     - type: Healing
       damageContainers:
         - Biological
+        # ADT-Tweak Start: New healing containers
+        - ADTBiologicalShadekin
+        - ADTBiologicalDrask
+        # ADT-Tweak End
       damage:
 # ADT-tweak start
 #        groups:
@@ -310,6 +341,10 @@
   - type: Healing
     damageContainers:
       - Biological
+      # ADT-Tweak Start: New healing containers
+      - ADTBiologicalShadekin
+      - ADTBiologicalDrask
+      # ADT-Tweak End
     damage:
       types:
         Blunt: 0 # благодаря этому дает лечить кровотек всегда ADT tweak
@@ -352,6 +387,12 @@
   - type: Stack
     stackType: AloeCream
     count: 10
+  - type: Item
+    storedRotation: 90
+    storedOffset: 4, 0
+    storedSprite:
+      state: cream
+      sprite: Objects/Specific/Hydroponics/aloe.rsi
 
 - type: entity
   parent: BaseHealingItem
@@ -366,11 +407,19 @@
   - type: Healing
     damageContainers:
     - Biological
+    # ADT-Tweak Start: New healing containers
+    - ADTBiologicalShadekin
+    - ADTBiologicalDrask
+    # ADT-Tweak End
     damage:
-      groups: # these are all split across multiple types
-        Brute: -150
-        Burn: -150
-        Toxin: -150
+      types: # these are all split across multiple types
+        Blunt: -50
+        Piercing: -50
+        Slash: -50
+        Heat: -50
+        Cold: -50
+        Shock: -50
+        Poison: -150
     bloodlossModifier: -20
     delay: 1
     selfHealPenaltyMultiplier: 0
@@ -414,10 +463,11 @@
   components:
   - type: Label
     currentLabel: Дексалин 10u # ADT-Tweak
-  - type: StorageFill
-    contents:
-    - id: PillDexalin
-      amount: 7
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PillDexalin
+        amount: 7
 
 - type: entity
   name: pill
@@ -447,10 +497,11 @@
   components:
   - type: Label
     currentLabel: Диловен 10u # ADT-Tweak
-  - type: StorageFill
-    contents:
-    - id: PillDylovene
-      amount: 5
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PillDylovene
+        amount: 5
 
 - type: entity
   name: pill
@@ -480,10 +531,11 @@
   components:
   - type: Label
     currentLabel: Хироналин 10u # ADT-Tweak
-  - type: StorageFill
-    contents:
-    - id: PillHyronalin
-      amount: 5
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PillHyronalin
+        amount: 5
 
 - type: entity
   name: pill
@@ -513,10 +565,11 @@
   components:
   - type: Label
     currentLabel: Иодид калия 10u # ADT-Tweak
-  - type: StorageFill
-    contents:
-    - id: PillPotassiumIodide
-      amount: 5
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PillPotassiumIodide
+        amount: 5
 
 - type: entity
   name: pill
@@ -566,10 +619,11 @@
   components:
   - type: Label
     currentLabel: Железо 10u # ADT-Tweak
-  - type: StorageFill
-    contents:
-    - id: PillIron
-      amount: 5
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PillIron
+        amount: 5
 
 - type: entity
   name: pill canister
@@ -579,10 +633,11 @@
   components:
   - type: Label
     currentLabel: Медь 10u # ADT-Tweak
-  - type: StorageFill
-    contents:
-    - id: PillCopper
-      amount: 5
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PillCopper
+        amount: 5
 
 - type: entity
   name: pill
@@ -612,10 +667,11 @@
   components:
   - type: Label
     currentLabel: Келотан 10u # ADT-Tweak
-  - type: StorageFill
-    contents:
-    - id: PillKelotane
-      amount: 5
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PillKelotane
+        amount: 5
 
 - type: entity
   name: pill
@@ -645,10 +701,11 @@
   components:
   - type: Label
     currentLabel: Дермалин 10u # ADT-Tweak
-  - type: StorageFill
-    contents:
-    - id: PillDermaline
-      amount: 5
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PillDermaline
+        amount: 5
 
 - type: entity
   name: space mirage
@@ -691,10 +748,11 @@
   components:
   - type: Label
     currentLabel: Трикордразин 10u # ADT-Tweak
-  - type: StorageFill
-    contents:
-    - id: PillTricordrazine
-      amount: 5
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PillTricordrazine
+        amount: 5
 
 - type: entity
   name: pill
@@ -724,10 +782,11 @@
   components:
   - type: Label
     currentLabel: Бикаридин 10u # ADT-Tweak
-  - type: StorageFill
-    contents:
-    - id: PillBicaridine
-      amount: 5
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PillBicaridine
+        amount: 5
 
 - type: entity
   name: pill
@@ -757,11 +816,11 @@
   components:
   - type: Label
     currentLabel: Уголь 10u # ADT-Tweak
-  - type: StorageFill
-    contents:
-    - id: PillCharcoal
-      amount: 3
-
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PillCharcoal
+        amount: 3
 - type: entity
   name: romerol pill
   parent: Pill
@@ -810,68 +869,38 @@
   id: PillCanisterRandom
   suffix: Random
   components:
-  - type: StorageFill
-    contents:
-    - id: PillDexalin
-      prob: 0.10
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillDylovene
-      prob: 0.10
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillHyronalin
-      prob: 0.10
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillPotassiumIodide
-      prob: 0.10
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillIron
-      prob: 0.10
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillCopper
-      prob: 0.10
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillKelotane
-      prob: 0.10
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillDermaline
-      prob: 0.10
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillTricordrazine
-      prob: 0.10
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillBicaridine
-      prob: 0.10
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillCharcoal
-      prob: 0.10
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillAmbuzol
-      prob: 0.075
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillAmbuzolPlus
-      prob: 0.075
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillSpaceDrugs
-      prob: 0.075
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: StrangePill
-      prob: 0.075
-      maxAmount: 7
-      orGroup: RandomPill
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        children:
+        - id: PillDexalin
+          amount: 1, 6
+        - id: PillDylovene
+          amount: 1, 6
+        - id: PillHyronalin
+          amount: 1, 6
+        - id: PillPotassiumIodide
+          amount: 1, 6
+        - id: PillIron
+          amount: 1, 6
+        - id: PillCopper
+          amount: 1, 6
+        - id: PillKelotane
+          amount: 1, 6
+        - id: PillDermaline
+          amount: 1, 6
+        - id: PillTricordrazine
+          amount: 1, 6
+        - id: PillBicaridine
+          amount: 1, 6
+        - id: PillCharcoal
+          amount: 1, 6
+        - id: PillSpaceDrugs
+          weight: 0.75
+          amount: 1, 6
+        - id: StrangePill
+          weight: 0.75
+          amount: 1, 6
 
 # Syringes
 - type: entity

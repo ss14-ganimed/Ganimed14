@@ -3,13 +3,13 @@
   alias:
     - survival
   name: survival-title
-  showInVote: false #ADT tweak
+  showInVote: false # Ganimed-Tweak
   description: survival-description
   rules:
     - MeteorSwarmScheduler
     - RampingStationEventScheduler
     # - SpaceTrafficControlEventScheduler
-#    # - SpaceTrafficControlFriendlyEventScheduler #Ganimed-Tweak
+    # - SpaceTrafficControlFriendlyEventScheduler
     - BasicRoundstartVariation
     - CrewTransferScheduler #ADT tweak
   bannedRound: 2 #ADT tweak
@@ -73,7 +73,7 @@
     - MeteorSwarmScheduler
     - RampingStationEventScheduler
     # - SpaceTrafficControlEventScheduler
-  #  # - SpaceTrafficControlFriendlyEventScheduler
+    # - SpaceTrafficControlFriendlyEventScheduler
     - BasicRoundstartVariation
     - CrewTransferScheduler #ADT tweak
 
@@ -88,7 +88,7 @@
   rules:
   - ExtendedStationEventScheduler #ADT extended
   - MeteorSwarmScheduler
-#  # - SpaceTrafficControlFriendlyEventScheduler # Ganimed-Tweak
+  # - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
   - CrewTransferScheduler #ADT tweak
 
@@ -101,9 +101,8 @@
   showInVote: false #ADT_Tweak
   description: greenshift-description
   rules:
-#  # - SpaceTrafficControlFriendlyEventScheduler #Ganimed-Tweak
+  # - SpaceTrafficControlFriendlyEventScheduler
   - BasicRoundstartVariation
-  - CrewTransferScheduler #ADT tweak
 
 - type: gamePreset
   id: Dynamic
@@ -112,7 +111,6 @@
   - multiantag
   - director
   name: dynamic-title
-  showInVote: false # admin-only for now until we fix some bugs
   description: dynamic-description
   rules:
   - DynamicRule
@@ -121,6 +119,7 @@
   - MeteorSwarmScheduler
   # - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  - CrewTransferScheduler #ADT tweak
 
 - type: gamePreset
   id: Secret
@@ -128,7 +127,7 @@
     - secret
     - sekrit
   name: secret-title
-  showInVote: true
+  showInVote: true # Ganimed-Tweak
   description: secret-description
   rules:
     - Secret
@@ -235,12 +234,11 @@
   rules:
   - Xenoborgs
   - DummyNonAntagChance
-  - SubGamemodesRuleNoXenoborg # no two motherships
+  - SubGamemodesRuleNoWizardNoXenoborg # no two motherships
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   # - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
-
 
 - type: gamePreset
   id: Zombie
@@ -257,7 +255,7 @@
   - Zombie
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
-#  # - SpaceTrafficControlEventScheduler #Ganimed-Tweak
+  # - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
   - CrewTransferScheduler #ADT tweak
 

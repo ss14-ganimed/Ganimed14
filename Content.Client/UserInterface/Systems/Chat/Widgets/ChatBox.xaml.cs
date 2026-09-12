@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client.ADT.UI.Chat; 
 using Content.Client.UserInterface.Systems.Chat.Controls;
 using Content.Shared.Chat;
 using Content.Shared.Input;
@@ -29,8 +30,11 @@ public partial class ChatBox : UIWidget
 
     private readonly ISawmill _sawmill;
     private readonly ChatUIController _controller;
+    private readonly ChatSearchController _searchController; // ADT-Tweak
 
     public bool Main { get; set; }
+
+    public string SearchFilter { get; private set; } = string.Empty; // ADT-Tweak
 
     public ChatSelectChannel SelectedChannel => ChatInput.ChannelSelector.SelectedChannel;
 
@@ -53,7 +57,13 @@ public partial class ChatBox : UIWidget
         ChatInput.ChannelSelector.OnChannelSelect += OnChannelSelect;
         ChatInput.FilterButton.Popup.OnChannelFilter += OnChannelFilter;
         ChatInput.FilterButton.Popup.OnNewHighlights += OnNewHighlights;
+        // ADT-Tweak start
+        ChatInput.OnSearchButtonPressed += ToggleSearch;
+        ChatSearch.OnSearchChanged += OnSearchTextChanged;
+        ChatSearch.OnSearchClosed += CloseSearch;
+        // ADT-Tweak end
         _controller = UserInterfaceManager.GetUIController<ChatUIController>();
+        _searchController = UserInterfaceManager.GetUIController<ChatSearchController>(); // ADT-Tweak
         _controller.MessageAdded += OnMessageAdded;
         _controller.HighlightsUpdated += OnHighlightsUpdated;
         _controller.RegisterChat(this);
@@ -83,6 +93,14 @@ public partial class ChatBox : UIWidget
         {
             return;
         }
+
+        // ADT-Tweak start
+        if (!string.IsNullOrWhiteSpace(SearchFilter)
+            && !_searchController.MatchesQuery(msg, SearchFilter))
+        {
+            return;
+        }
+        // ADT-Tweak end
 
         if (msg is { Read: false, AudioPath: { } })
             _entManager.System<AudioSystem>().PlayGlobal(msg.AudioPath, Filter.Local(), false, AudioParams.Default.WithVolume(msg.AudioVolume));
@@ -140,6 +158,47 @@ public partial class ChatBox : UIWidget
         _chatStackList.Insert(0, new ChatStackData(wrappedMessage, colorOverride));
     }
 
+    // ADT-Tweak start
+    public void SetSearchFilter(string filter)
+    {
+        SearchFilter = filter.Trim();
+        Repopulate();
+    }
+
+    private void ToggleSearch()
+    {
+        if (SearchPanel.Visible)
+        {
+            CloseSearch();
+        }
+        else
+        {
+            OpenSearch();
+        }
+    }
+
+    private void OpenSearch()
+    {
+        SearchPanel.Visible = true;
+        ChatSearch.FocusSearch();
+    }
+
+    private void CloseSearch()
+    {
+        if (!SearchPanel.Visible)
+            return;
+
+        SearchPanel.Visible = false;
+        ChatSearch.SearchInput.Clear();
+        _searchController.ClearSearch(this);
+    }
+
+    private void OnSearchTextChanged(string query)
+    {
+        _searchController.SetSearch(this, query);
+    }
+    // ADT-Tweak end
+
     private void OnHighlightsUpdated(string highlights)
     {
         ChatInput.FilterButton.Popup.UpdateHighlights(highlights);
@@ -153,13 +212,9 @@ public partial class ChatBox : UIWidget
     public void Repopulate()
     {
         // ADT-Tweak start
-        foreach (var child in Contents.Children.Cast<Control>().ToArray())
-        {
-            if (child.Name != "_v_scroll")
-            {
-                Contents.RemoveChild(child);
-            }
-        }
+        _controller.MessageAdded -= OnMessageAdded;
+
+        Contents.Clear();
         // ADT-Tweak end
         _chatStackList = new List<ChatStackData>(_chatStackAmount); // Ganimed, EE - Chat stacking
 
@@ -167,24 +222,24 @@ public partial class ChatBox : UIWidget
         {
             OnMessageAdded(message.Item2);
         }
+
+        _controller.MessageAdded += OnMessageAdded; // ADT-Tweak 
     }
 
     private void OnChannelFilter(ChatChannel channel, bool active)
     {
         // ADT-Tweak start
-        foreach (var child in Contents.Children.Cast<Control>().ToArray())
-        {
-            if (child.Name != "_v_scroll")
-            {
-                Contents.RemoveChild(child);
-            }
-        }
+        _controller.MessageAdded -= OnMessageAdded;
+
+        Contents.Clear();
         // ADT-Tweak end
 
         foreach (var message in _controller.History)
         {
             OnMessageAdded(message.Item2);
         }
+
+        _controller.MessageAdded += OnMessageAdded; // ADT-Tweak 
 
         if (active)
         {
@@ -215,7 +270,7 @@ public partial class ChatBox : UIWidget
                                 ("size", sizeIncrease)
                                 ));
         }
-        Contents.AddMessage(formatted);
+        Contents.AddMessage(formatted, tagsAllowed: null);
         // Ganimed, End EE - Chat stacking
     }
 
@@ -313,6 +368,11 @@ public partial class ChatBox : UIWidget
         ChatInput.Input.OnTextChanged -= OnTextChanged;
         ChatInput.ChannelSelector.OnChannelSelect -= OnChannelSelect;
         _cfg.UnsubValueChanged(CCVars.ChatStackLastLines, UpdateChatStack); // Ganimed, EE - Chat stacking
+        // ADT-Tweak start
+        ChatInput.OnSearchButtonPressed -= ToggleSearch;
+        ChatSearch.OnSearchChanged -= OnSearchTextChanged;
+        ChatSearch.OnSearchClosed -= CloseSearch;
+        // ADT-Tweak end
     }
 }
 

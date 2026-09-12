@@ -559,7 +559,7 @@ entities:
       color: '#964B00FF'
     - type: CargoShuttle
     - type: ImplicitRoof
-- proto: ADTPoweredShuttleLight
+- proto: AlwaysPoweredWallLight
   entities:
   - uid: 3
     components:

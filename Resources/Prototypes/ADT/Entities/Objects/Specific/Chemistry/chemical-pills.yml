@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   id: ADTBasePack
   parent: BaseStorageItem
   description: Holds up to 10 pills.
@@ -47,26 +47,12 @@
     state: sodiumizole
   - type: Item
     sprite: ADT/Objects/Specific/Chemistry/packs.rsi
-  - type: StorageFill
-    contents:
-      - id: ADTSodiumizolePill
-        amount: 10
-
-- type: entity
-  name: nitrofurfoll pack
-  id: ADTNitrofurfollPack
-  parent: ADTPillPack
-  components:
-  - type: Sprite
-    sprite: ADT/Objects/Specific/Chemistry/packs.rsi
-    state: nitrofurfoll
-  - type: Item
-    sprite: ADT/Objects/Specific/Chemistry/packs.rsi
-  - type: StorageFill
-    contents:
-      - id: ADTNitrofurfollPill
-        amount: 10
-
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ADTSodiumizolePill
+          amount: 10
 - type: entity
   name: anelgesin pack
   id: ADTAnelgesinPack
@@ -77,11 +63,12 @@
     state: anelgesin
   - type: Item
     sprite: ADT/Objects/Specific/Chemistry/packs.rsi
-  - type: StorageFill
-    contents:
-      - id: ADTAnelgesinPill
-        amount: 10
-
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ADTAnelgesinPill
+          amount: 10
 - type: entity
   name: minoxide pack
   id: ADTMinoxidePack
@@ -92,11 +79,12 @@
     state: minoxide
   - type: Item
     sprite: ADT/Objects/Specific/Chemistry/packs.rsi
-  - type: StorageFill
-    contents:
-      - id: ADTMinoxidePill
-        amount: 10
-
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ADTMinoxidePill
+          amount: 10
 - type: entity
   name: diethamilate pack
   id: ADTDiethamilatePack
@@ -107,11 +95,12 @@
     state: diethamilate
   - type: Item
     sprite: ADT/Objects/Specific/Chemistry/packs.rsi
-  - type: StorageFill
-    contents:
-      - id: ADTDiethamilatePill
-        amount: 10
-
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ADTDiethamilatePill
+          amount: 10
 - type: entity
   name: haloperidol pack
   id: ADTHaloperidolPack
@@ -122,11 +111,12 @@
     state: haloperidol
   - type: Item
     sprite: ADT/Objects/Specific/Chemistry/packs.rsi
-  - type: StorageFill
-    contents:
-      - id: ADTHaloperidolPill
-        amount: 10
-
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ADTHaloperidolPill
+          amount: 10
 - type: entity
   name: charcoal pack
   id: ADTCharcoalPack
@@ -137,11 +127,12 @@
     state: charcoal
   - type: Item
     sprite: ADT/Objects/Specific/Chemistry/packs.rsi
-  - type: StorageFill
-    contents:
-      - id: PillCharcoal
-        amount: 10
-
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: PillCharcoal
+          amount: 10
 - type: entity
   name: ethylredoxrazine pack
   id: ADTEthylredoxrazinePack
@@ -152,11 +143,12 @@
     state: ethylredoxrazine
   - type: Item
     sprite: ADT/Objects/Specific/Chemistry/packs.rsi
-  - type: StorageFill
-    contents:
-      - id: ADTEthylredoxrazinePill
-        amount: 10
-
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ADTEthylredoxrazinePill
+          amount: 10
 - type: entity
   name: ethyloxyephedrine pack
   id: ADTEthyloxyephedrinePack
@@ -167,11 +159,12 @@
     state: ethyloxyephedrine
   - type: Item
     sprite: ADT/Objects/Specific/Chemistry/packs.rsi
-  - type: StorageFill
-    contents:
-      - id: ADTEthyloxyephedrinePill
-        amount: 10
-
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ADTEthyloxyephedrinePill
+          amount: 10
 #баночка
 - type: entity
   name: vitamin canister
@@ -184,22 +177,23 @@
     state: vitamin-canister
   - type: Item
     sprite: ADT/Objects/Specific/Chemistry/pills.rsi
-  - type: StorageFill
-    contents:
-      - id: ADTVitaminPill
-        amount: 10
-
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ADTVitaminPill
+          amount: 10
 # пиллюли.
 - type: entity
   name: pill
   parent: Pill
-  id: ADTPillBase
+  id: ADTPill
   abstract: true
   description: It's not a suppository.
 
 - type: entity
   name: sodiumizole pill
-  parent: ADTPillBase
+  parent: ADTPill
   id: ADTSodiumizolePill
   components:
   - type: SolutionContainerManager
@@ -207,29 +201,16 @@
       food:
         reagents:
         - ReagentId: ADTSodiumizole
-          Quantity: 10
-  - type: Sprite
-    sprite: Objects/Specific/Chemistry/pills.rsi
-    state: pill7
-
-- type: entity
-  name: nitrofurfoll pill
-  parent: ADTPillBase
-  id: ADTNitrofurfollPill
-  components:
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: ADTNitrofurfoll
-          Quantity: 10
+          Quantity: 7.5
+        - ReagentId: Bicaridine
+          Quantity: 7.5
   - type: Sprite
     sprite: Objects/Specific/Chemistry/pills.rsi
     state: pill7
 
 - type: entity
   name: anelgesin pill
-  parent: ADTPillBase
+  parent: ADTPill
   id: ADTAnelgesinPill
   components:
   - type: SolutionContainerManager
@@ -237,14 +218,16 @@
       food:
         reagents:
         - ReagentId: ADTAnelgesin
-          Quantity: 10
+          Quantity: 7.5
+        - ReagentId: Dermaline
+          Quantity: 7.5
   - type: Sprite
     sprite: Objects/Specific/Chemistry/pills.rsi
     state: pill8
 
 - type: entity
   name: minoxide pill
-  parent: ADTPillBase
+  parent: ADTPill
   id: ADTMinoxidePill
   components:
   - type: SolutionContainerManager
@@ -252,14 +235,16 @@
       food:
         reagents:
         - ReagentId: ADTMinoxide
-          Quantity: 10
+          Quantity: 7.5
+        - ReagentId: Dermaline
+          Quantity: 7.5
   - type: Sprite
     sprite: Objects/Specific/Chemistry/pills.rsi
     state: pill20
 
 - type: entity
   name: diethamilate pill
-  parent: ADTPillBase
+  parent: ADTPill
   id: ADTDiethamilatePill
   components:
   - type: SolutionContainerManager
@@ -267,14 +252,16 @@
       food:
         reagents:
         - ReagentId: ADTDiethamilate
-          Quantity: 10
+          Quantity: 7.5
+        - ReagentId: DexalinPlus
+          Quantity: 7.5
   - type: Sprite
     sprite: Objects/Specific/Chemistry/pills.rsi
     state: pill9
 
 - type: entity
   name: haloperidol pill
-  parent: ADTPillBase
+  parent: ADTPill
   id: ADTHaloperidolPill
   components:
   - type: SolutionContainerManager
@@ -282,14 +269,14 @@
       food:
         reagents:
         - ReagentId: Haloperidol
-          Quantity: 10
+          Quantity: 15
   - type: Sprite
     sprite: Objects/Specific/Chemistry/pills.rsi
     state: pill9
 
 - type: entity
   name: ethylredoxrazine pill
-  parent: ADTPillBase
+  parent: ADTPill
   id: ADTEthylredoxrazinePill
   components:
   - type: SolutionContainerManager
@@ -297,14 +284,16 @@
       food:
         reagents:
         - ReagentId: Ethylredoxrazine
-          Quantity: 10
+          Quantity: 7.5
+        - ReagentId: Dylovene
+          Quantity: 7.5
   - type: Sprite
     sprite: Objects/Specific/Chemistry/pills.rsi
     state: pill17
 
 - type: entity
   name: vitamin pill
-  parent: ADTPillBase
+  parent: ADTPill
   id: ADTVitaminPill
   description: Found in healthy, complete meals.
   components:
@@ -313,14 +302,14 @@
       food:
         reagents:
         - ReagentId: Vitamin
-          Quantity: 10
+          Quantity: 15
   - type: Sprite
     sprite: Objects/Specific/Chemistry/pills.rsi
     state: pill16
 
 - type: entity
   name: ethyloxyephedrine pill
-  parent: ADTPillBase
+  parent: ADTPill
   id: ADTEthyloxyephedrinePill
   description: Narcolepsy is not a problem anymore.
   components:
@@ -329,7 +318,7 @@
       food:
         reagents:
         - ReagentId: Ethyloxyephedrine
-          Quantity: 10
+          Quantity: 15
   - type: Sprite
     sprite: Objects/Specific/Chemistry/pills.rsi
     state: pill18
@@ -348,16 +337,15 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 10
         reagents:
         - ReagentId: Tricordrazine
-          Quantity: 10
+          Quantity: 15
   - type: StaticPrice
     price: 5
 
 - type: entity
   name: ephedrine pill
-  parent: ADTPillBase
+  parent: ADTPill
   id: ADTEphedrinePill
   description: Feel the speed!
   components:
@@ -375,7 +363,7 @@
 
 - type: entity
   name: toxin pill
-  parent: ADTPillBase
+  parent: ADTPill
   id: ADTToxinPill
   description: Whoops. he-he
   components:
@@ -384,7 +372,7 @@
       food:
         reagents:
         - ReagentId: Toxin
-          Quantity: 10
+          Quantity: 15
   - type: Sprite
     sprite: Objects/Specific/Chemistry/pills.rsi
     state: pill14
@@ -393,7 +381,7 @@
 
 - type: entity
   name: happiness pill
-  parent: ADTPillBase
+  parent: ADTPill
   id: ADTHappinessPill
   description: Feel the speed!
   components:
@@ -402,7 +390,7 @@
       food:
         reagents:
         - ReagentId: Happiness
-          Quantity: 10
+          Quantity: 15
   - type: Sprite
     sprite: Objects/Specific/Chemistry/pills.rsi
     state: pill11

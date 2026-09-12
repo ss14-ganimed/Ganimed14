@@ -22,6 +22,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
+using Content.Shared.Gibbing;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Polymorph.Components;
@@ -39,13 +40,14 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Shared.Body;
 
 namespace Content.Server.ADT.Morph;
 
 public sealed class MorphSystem : SharedMorphSystem
 {
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] protected readonly ChatSystem ChatSystem = default!;
+    [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedChameleonProjectorSystem _chameleon = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
@@ -53,8 +55,7 @@ public sealed class MorphSystem : SharedMorphSystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly HungerSystem _hunger = default!;
-    [Dependency] private readonly HumanoidAppearanceSystem _humanoid = default!;
-    [Dependency] protected readonly SharedAudioSystem _audioSystem = default!;
+    [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
@@ -65,14 +66,15 @@ public sealed class MorphSystem : SharedMorphSystem
     [Dependency] private readonly WeldableSystem _weldable = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
-    public ProtoId<DamageGroupPrototype> BruteDamageGroup = "Brute";
-    public ProtoId<DamageGroupPrototype> BurnDamageGroup = "Burn";
+    private static readonly ProtoId<DamageGroupPrototype> BruteDamageGroup = "Brute";
+    private static readonly ProtoId<DamageGroupPrototype> BurnDamageGroup = "Burn";
     public override void Initialize()
     {
         SubscribeLocalEvent<MorphComponent, AttackedEvent>(OnAttacked);
         SubscribeLocalEvent<MorphComponent, MeleeHitEvent>(OnAttack);
 
         SubscribeLocalEvent<MorphComponent, MapInitEvent>(OnInit);
+        SubscribeLocalEvent<MorphComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<MorphComponent, BeingGibbedEvent>(OnDestroy);
         SubscribeLocalEvent<MorphComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<MorphComponent, InteractHandEvent>(OnInteract);
@@ -94,12 +96,20 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnDestroy(EntityUid uid, MorphComponent component, ref BeingGibbedEvent args)
     {
-        foreach (var entity in component.ContainedCreatures)
+        if (component.Container != null)
         {
-            var transform = Transform(uid);
-            _transform.SetCoordinates(entity, transform.Coordinates);
+            var coords = Transform(uid).Coordinates;
+            _container.EmptyContainer(component.Container, force: true, destination: coords);
         }
+
+        component.ContainedCreatures.Clear();
     }
+
+    private void OnComponentStartup(EntityUid uid, MorphComponent component, ComponentStartup args)
+    {
+        component.Container = _container.EnsureContainer<Container>(uid, component.ContainerId);
+    }
+
     private void OnInit(EntityUid uid, MorphComponent component, MapInitEvent args)
     {
         _actions.AddAction(uid, ref component.DevourActionEntity, component.DevourAction);
@@ -260,7 +270,7 @@ public sealed class MorphSystem : SharedMorphSystem
         //отвечает за запоминание энтити для мимикрии.
         //гуманоидов запоминает отдельно т.к. их невозможно показать путём хамелеона
         //короче мне лень эту хреноетнь выписывать. Кто будет её чинить - мои соболезнования вам
-        if (TryComp<HumanoidAppearanceComponent>(args.Target, out var humanoid))
+        if (TryComp<HumanoidProfileComponent>(args.Target, out var humanoid))
         {
             //короче мне лень эту хреноетнь выписывать. Кто будет её чинить - мои соболезнования вам
             //TODO: сделать морфабильность гуманоидов. Этот метод работает, но на 50%. Он спавнит зуманоида и устанавливает ему вид, но не может прицепить его
@@ -351,7 +361,7 @@ public sealed class MorphSystem : SharedMorphSystem
 
             if (morphList.Count() == component.DetectableCount) //чтобы не спамило на всякий
             {
-                ChatSystem.DispatchFilteredAnnouncement(Filter.Broadcast(), Loc.GetString("morphs-announcement"), playSound: false, colorOverride: Color.Gold);
+                _chatSystem.DispatchFilteredAnnouncement(Filter.Broadcast(), Loc.GetString("morphs-announcement"), playSound: false, colorOverride: Color.Gold);
                 _audioSystem.PlayGlobal(component.SoundReplication, Filter.Broadcast(), true);
             }
             _actions.StartUseDelay(component.ReplicationActionEntity);
@@ -369,16 +379,15 @@ public sealed class MorphSystem : SharedMorphSystem
             health = -component.EatWeaponHungerReq;
             _hunger.ModifyHunger(uid, (float)health.Value, hunger);
             _audioSystem.PlayPvs(component.SoundDevour, uid);
+            _container.Insert(args.Target.Value, component.Container);
             component.ContainedCreatures.Add(args.Target.Value);
-            component.ContainedCreatures.Add(args.Target.Value);
-            _transform.SetCoordinates(args.Target.Value, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
             return;
         }
         if (state.CurrentThresholdState != MobState.Dead)
             return;
         if (health == null)
             return;
-        if (!HasComp<HumanoidAppearanceComponent>(args.Args.Target))
+        if (!HasComp<HumanoidProfileComponent>(args.Args.Target))
             health /= 2;
         var damage_brute = new DamageSpecifier(_proto.Index(BruteDamageGroup), -health.Value / 2);
         var damage_burn = new DamageSpecifier(_proto.Index(BurnDamageGroup), -health.Value / 2);
@@ -386,7 +395,7 @@ public sealed class MorphSystem : SharedMorphSystem
         _damageable.TryChangeDamage(uid, damage_burn);
         _hunger.ModifyHunger(uid, (float)health.Value / 3.5f, hunger);
         _audioSystem.PlayPvs(component.SoundDevour, uid);
+        _container.Insert(args.Target.Value, component.Container);
         component.ContainedCreatures.Add(args.Target.Value);
-        _transform.SetCoordinates(args.Target.Value, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
     }
 }

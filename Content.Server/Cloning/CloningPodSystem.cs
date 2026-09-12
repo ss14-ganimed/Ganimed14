@@ -35,6 +35,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Server.Cloning;
 
@@ -60,6 +61,7 @@ public sealed class CloningPodSystem : EntitySystem
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
     [Dependency] private readonly CloningSystem _cloning = default!;
     [Dependency] private readonly EmagSystem _emag = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
     // ADT-Tweak start
     [Dependency] private readonly SleepingSystem _sleepingSystem = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
@@ -206,10 +208,11 @@ public sealed class CloningPodSystem : EntitySystem
 
         // genetic damage checks
         if (TryComp<DamageableComponent>(bodyToClone, out var damageable) &&
-            damageable.Damage.DamageDict.TryGetValue("Cellular", out var cellularDmg))
+            _damageable.GetAllDamage((bodyToClone, damageable)).DamageDict.TryGetValue("Cellular", out var cellularDmg))
         {
             var chance = Math.Clamp((float)(cellularDmg / 100), 0, 1);
             chance *= failChanceModifier;
+            chance /= Math.Max(1f, clonePod.CloningSafety); // ADT-Tweak: сканмодуль снижает шанс неудачи
 
             if (cellularDmg > 0 && clonePod.ConnectedConsole != null)
                 _chatSystem.TrySendInGameICMessage(clonePod.ConnectedConsole.Value, Loc.GetString("cloning-console-cellular-warning", ("percent", Math.Round(100 - chance * 100))), InGameICChatType.Speak, false);
@@ -264,7 +267,7 @@ public sealed class CloningPodSystem : EntitySystem
             if (cloning.BodyContainer.ContainedEntity == null && !cloning.FailedClone)
                 continue;
 
-            cloning.CloningProgress += frameTime;
+            cloning.CloningProgress += frameTime * cloning.SpeedMultiplier; // ADT-Tweak: машинные части
             if (cloning.CloningProgress < cloning.CloningTime)
                 continue;
 
