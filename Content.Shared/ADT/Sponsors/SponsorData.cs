@@ -142,6 +142,9 @@ public sealed class SponsorData
 [Serializable, NetSerializable]
 public sealed class SponsorTierSummary
 {
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
+
     [JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;
 

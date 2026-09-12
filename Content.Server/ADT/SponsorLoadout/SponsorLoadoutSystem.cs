@@ -1,6 +1,9 @@
-using Content.Server.Corvax.Sponsors;
+using System.Linq;
+using Content.Server.ADT.Sponsors;
 using Content.Server.Station.Systems;
+using Content.Shared.ADT.Sponsors;
 using Content.Shared.GameTicking;
+using Robust.Server.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.ADT.SponsorLoadout;
@@ -9,7 +12,8 @@ public sealed class SponsorLoadoutSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly StationSpawningSystem _spawn = default!;
-    [Dependency] private readonly SponsorsManager _sponsorsManager = default!;
+    [Dependency] private readonly SponsorManager _sponsorsManager = default!;
+    [Dependency] private readonly IPlayerManager _players = default!;
 
     public override void Initialize()
     {
@@ -18,11 +22,13 @@ public sealed class SponsorLoadoutSystem : EntitySystem
 
     private void OnPlayerSpawned(PlayerSpawnCompleteEvent ev)
     {
-        if (_sponsorsManager == null)
+        var data = _sponsorsManager.GetData(ev.Player.UserId);
+
+        if (!data.HasAnyBenefit && data.Tiers.Count == 0)
             return;
 
         // Получаем экипировку (может быть персональной или по Tier)
-        if (!_sponsorsManager.TryGetSpawnEquipment(ev.Player.UserId, ev.JobId, out var spawnEquipment))
+        if (!TryGetSpawnEquipment(ev, data, out var spawnEquipment))
             return;
 
         // Проверяем, является ли лоадаут персональным
@@ -38,6 +44,60 @@ public sealed class SponsorLoadoutSystem : EntitySystem
             EquipLoadout(ev, loadout);
             return;
         }
+    }
+
+    private bool TryGetSpawnEquipment(PlayerSpawnCompleteEvent ev, SponsorData data, out string? spawnEquipment)
+    {
+        spawnEquipment = null;
+
+        // Попытка найти персональный набор
+        if (_players.TryGetSessionById(ev.Player.UserId, out var session))
+        {
+            var username = session.Name;
+            var personalGears = _prototypeManager.EnumeratePrototypes<SponsorPersonalLoadoutPrototype>();
+            var currentDate = DateTime.UtcNow;
+
+            // 1. Сначала ищем лоадаут по должности
+            var jobLoadout = personalGears.FirstOrDefault(loadout =>
+                loadout.UserName == username &&
+                ev.JobId != null &&
+                loadout.WhitelistJobs?.Contains(ev.JobId) == true &&
+                (loadout.ExpirationDate == null || loadout.ExpirationDate > currentDate));
+
+            if (jobLoadout != null)
+            {
+                spawnEquipment = jobLoadout.Equipment;
+                return true;
+            }
+
+            // 2. Если нет подходящего по должности, берём общий персональный
+            var generalLoadout = personalGears.FirstOrDefault(loadout =>
+                loadout.UserName == username &&
+                (loadout.WhitelistJobs == null || loadout.WhitelistJobs.Count == 0) &&
+                (loadout.ExpirationDate == null || loadout.ExpirationDate > currentDate));
+
+            if (generalLoadout != null)
+            {
+                spawnEquipment = generalLoadout.Equipment;
+                return true;
+            }
+        }
+
+        // Если персонального лоадаута нет — проверяем Tier
+        var tierSettings = _prototypeManager.EnumeratePrototypes<SponsorLoadoutTierSettingPrototype>().FirstOrDefault();
+        if (tierSettings != null)
+        {
+            foreach (var tier in data.Tiers)
+            {
+                if (tierSettings.Tiers.TryGetValue(tier.Id, out var equipmentId))
+                {
+                    spawnEquipment = equipmentId;
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     // Универсальный метод для экипировки лоадаута

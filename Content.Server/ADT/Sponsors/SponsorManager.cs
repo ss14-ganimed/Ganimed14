@@ -234,6 +234,7 @@ public sealed partial class SponsorManager : SharedSponsorManager
                 layers.Add(new SponsorBenefitLayer(tier.Benefits, tierPriority + grant.Priority));
                 tiers.Add(new SponsorTierSummary
                 {
+                    Id = tier.Id,
                     Name = tier.Name,
                     DisplayName = tier.DisplayName,
                     ExpiresAt = grant.ExpiresAt,

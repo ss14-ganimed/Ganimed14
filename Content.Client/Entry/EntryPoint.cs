@@ -152,7 +152,6 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("sponsorLoadout"); // ADT-Sponsor-Loadout
             _prototypeManager.RegisterIgnore("sponsorPersonalLoadout"); // ADT-Sponsor-Loadout
             _prototypeManager.RegisterIgnore("sponsorLoadoutTierSetting"); // ADT-Sponsor-Loadout
-            _prototypeManager.RegisterIgnore("debugSponsor"); // Ganimed-Debug-Sponsor
 
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();
