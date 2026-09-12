@@ -93,13 +93,7 @@
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
-        showEnts: False
-        occludes: True
-        ents: []
       badge: !type:ContainerSlot
-        showEnts: False
-        occludes: True
-        ent: null
 
 - type: entity
   parent: ClothingBeltSecurity
