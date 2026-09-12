@@ -24,7 +24,10 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Body.Systems;
+using Content.Shared.Mech.Components;
 using Content.Shared.Physics;
+using Content.Shared.Silicons.Borgs.Components;
+using Content.Shared.ADT.Silicon.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
@@ -90,13 +93,16 @@ public sealed partial class SlimeLatchSystem : EntitySystem
             UpdateHunger((uid, dotComp), (source, slimeComp));
         }
 
-        var query = EntityQueryEnumerator<SlimeComponent>();
-        while (query.MoveNext(out var uid, out var slime))
+        var query = EntityQueryEnumerator<SlimeComponent, SlimeLatchedComponent>();
+        while (query.MoveNext(out var uid, out var slime, out _))
         {
             var slimeEnt = new Entity<SlimeComponent>(uid, slime);
 
             if (!IsLatched(slimeEnt))
+            {
+                RemCompDeferred<SlimeLatchedComponent>(uid);
                 continue;
+            }
 
             var target = slime.LatchedTarget!.Value;
 
@@ -245,10 +251,7 @@ public sealed partial class SlimeLatchSystem : EntitySystem
         // Восполняем голод слайма ТОЛЬКО если он прикреплен
         var addedHunger = (float)ent.Comp.Damage.GetTotal();
         if (TryComp<HungerComponent>(source, out var hunger))
-        {
             _hunger.ModifyHunger(source, addedHunger, hunger);
-            Dirty(source, hunger);
-        }
 
         // Трансфер растворов
         if (!TryComp<BodyComponent>(source, out var bodyComp))
@@ -297,7 +300,6 @@ public sealed partial class SlimeLatchSystem : EntitySystem
         if (HasComp<MonkeyAccentComponent>(corpse))
         {
             slime.Comp.Friendship = MathF.Min(1f, slime.Comp.Friendship + slime.Comp.FriendshipPerMeal);
-            Dirty(slime);
         }
     }
 
@@ -318,7 +320,15 @@ public sealed partial class SlimeLatchSystem : EntitySystem
             || !_actionBlocker.CanInteract(ent, target)
             || !HasComp<MobStateComponent>(target)
             || HasComp<BeingLatchedComponent>(target)
+            || IsRobotic(target)
             || Deleted(target));
+    }
+
+    private bool IsRobotic(EntityUid target)
+    {
+        return HasComp<BorgChassisComponent>(target)
+            || HasComp<MechComponent>(target)
+            || HasComp<SiliconComponent>(target);
     }
 
     public bool NpcTryLatch(Entity<SlimeComponent> ent, EntityUid target)
@@ -347,6 +357,7 @@ public sealed partial class SlimeLatchSystem : EntitySystem
             _physics.SetCanCollide(ent, false, body: physics);
 
         ent.Comp.LatchedTarget = target;
+        EnsureComp<SlimeLatchedComponent>(ent);
 
         EnsureComp<BeingLatchedComponent>(target);
         EnsureComp(target, out SlimeDamageOvertimeComponent comp);
@@ -354,9 +365,6 @@ public sealed partial class SlimeLatchSystem : EntitySystem
 
         _audio.PlayEntity(ent.Comp.EatSound, ent, ent);
         _popup.PopupEntity(Loc.GetString("slime-action-latch-success", ("slime", ent), ("target", target)), ent, PopupType.SmallCaution);
-
-        Dirty(ent);
-        Dirty(target, comp);
     }
 
     public void Unlatch(Entity<SlimeComponent> ent)
@@ -380,6 +388,7 @@ public sealed partial class SlimeLatchSystem : EntitySystem
             _physics.SetCanCollide(ent, true, body: physics);
 
         ent.Comp.LatchedTarget = null;
+        RemCompDeferred<SlimeLatchedComponent>(ent);
     }
 
     #endregion

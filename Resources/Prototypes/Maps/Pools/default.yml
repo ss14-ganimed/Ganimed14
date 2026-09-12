@@ -26,7 +26,6 @@
   - ADT_Meta
   - ADT_Box
   # - ADT_Train
-  - ADT_Pump
 # Lowpop 20 - 35
   - ADT_Bagel
   - ENTCivilStation # Ganimed-Add
@@ -37,6 +36,7 @@
   - ENTFearohStation # Ganimed-Add
   - ADT_Reach
   - ADT_Silly
+  - ADT_Pump
 
 # ADT Maps Выведенные на переработку
   # - ADT_Gate пока минока не начнёт нормально работать

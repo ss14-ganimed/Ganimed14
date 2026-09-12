@@ -278,12 +278,6 @@
   - SpareClothing # Ganimed-Loadouts-Add
 
 - type: roleLoadout
-  id: ADTRoleSurvivalCBURN
-  groups:
-  - SurvivalExtended
-  - GroupPocketTankDouble
-
-- type: roleLoadout
   id: JobADTBarber
   groups:
   - Inventory # Corvax-Loadouts

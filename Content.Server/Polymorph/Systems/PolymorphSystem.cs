@@ -573,6 +573,7 @@ public sealed partial class PolymorphSystem : EntitySystem
             .WithName(targetMeta.EntityName)
             .WithSpecies(targetHumanoidAppearance.Species)
             .WithSex(targetHumanoidAppearance.Sex)
+            .WithGender(targetHumanoidAppearance.Gender) // ADT-Tweak
             .WithAge(targetHumanoidAppearance.Age)
             .WithCharacterAppearance(HumanoidCharacterAppearance.DefaultWithSpecies(targetHumanoidAppearance.Species, targetHumanoidAppearance.Sex));
 
@@ -639,6 +640,7 @@ public sealed partial class PolymorphSystem : EntitySystem
             .WithName(targetMeta.EntityName)
             .WithSpecies(targetHumanoidAppearance.Species)
             .WithSex(targetHumanoidAppearance.Sex)
+            .WithGender(targetHumanoidAppearance.Gender) // ADT-Tweak
             .WithAge(targetHumanoidAppearance.Age)
             .WithCharacterAppearance(HumanoidCharacterAppearance.DefaultWithSpecies(targetHumanoidAppearance.Species, targetHumanoidAppearance.Sex));
 

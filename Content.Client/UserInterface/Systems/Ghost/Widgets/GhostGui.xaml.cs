@@ -15,6 +15,7 @@ public sealed partial class GhostGui : UIWidget
     public event Action? RequestWarpsPressed;
     public event Action? ReturnToBodyPressed;
     public event Action? GhostRolesPressed;
+    public event Action? CharacterEditorPressed; // ADT-Tweak 
     public event Action? ThunderdomePressed; // ADT - Thunderdome
     public event Action? ThunderdomeLeaderboardPressed; // ADT - Thunderdome
 
@@ -32,6 +33,7 @@ public sealed partial class GhostGui : UIWidget
         ReturnToBodyButton.OnPressed += _ => ReturnToBodyPressed?.Invoke();
         GhostRolesButton.OnPressed += _ => GhostRolesPressed?.Invoke();
         GhostRolesButton.OnPressed += _ => GhostRolesButton.StyleClasses.Remove(StyleClass.Negative);
+        CharacterEditorButton.OnPressed += _ => CharacterEditorPressed?.Invoke(); // ADT-Tweak 
         ThunderdomeButton.OnPressed += _ => ThunderdomePressed?.Invoke(); // ADT - Thunderdome
         ThunderdomeLeaderboardButton.OnPressed += _ => ThunderdomeLeaderboardPressed?.Invoke(); // ADT - Thunderdome
     }
