@@ -19,6 +19,7 @@
   - NodeScanner
   - AnomalyLocator
   - AnomalyLocatorWide
+  - ExperimentScanner # Ganimed-Add
   - HoloprojectorField
   - SlimeScannerXenobio # ADT-Tweak
   - SignallerAdvanced

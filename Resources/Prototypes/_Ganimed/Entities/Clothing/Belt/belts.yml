@@ -160,6 +160,16 @@
         whitelist:
           tags:
           - Sidearm
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        showEnts: False
+        occludes: True
+        ents: []
+      item: !type:ContainerSlot
+        showEnts: False
+        occludes: True
+        ent: null
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -195,6 +205,16 @@
         whitelist:
           components:
           - RevolverAmmoProvider
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        showEnts: False
+        occludes: True
+        ents: []
+      item: !type:ContainerSlot
+        showEnts: False
+        occludes: True
+        ent: null
   - type: ItemMapper # в данный момент реализован только один спрайт в кобуре, для отображения других револьверов требуются изменения в их прототипах и тегах. Скорее всего это будет реализовано в другом PR.
     mapLayers:
       filled-inspector:
