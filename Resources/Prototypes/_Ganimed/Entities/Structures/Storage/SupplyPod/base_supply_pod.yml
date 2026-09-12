@@ -12,6 +12,10 @@
   placement:
     mode: AlignTileAny
   components:
+  - type: ContainerContainer
+    containers:
+      entity_storage: !type:Container
+      paper_label: !type:ContainerSlot
   - type: Appearance
   - type: Sprite
     noRot: true

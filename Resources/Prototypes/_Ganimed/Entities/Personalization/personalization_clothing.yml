@@ -115,10 +115,7 @@
   - type: ContainerContainer
     containers:
       katana: !type:ContainerSlot
-        showEnts: False
-        occludes: True
-        ent: null
-      # wakizashi: !type:ContainerSlot # Second slot temporarily unused
+      storagebase: !type:Container
   - type: ItemSlots
     slots:
       katana:
