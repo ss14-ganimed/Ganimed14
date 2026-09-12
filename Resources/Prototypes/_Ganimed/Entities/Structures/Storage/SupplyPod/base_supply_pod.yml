@@ -56,12 +56,6 @@
   - type: ExplosionResistance
     worn: false
     damageCoefficient: 0.1
-  - type: ContainerContainer
-    containers:
-      entity_storage: !type:Container
-        showEnts: False
-        occludes: True
-        ents: []
   - type: Damageable
     damageModifierSet: Metallic
   - type: Injurable
