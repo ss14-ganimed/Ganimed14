@@ -73,6 +73,5 @@
       rolls: 3
       children:
       - id: RemoteSignaller
-      - id: ADTClothingNeckShockCollar
       - id: ADTLegCuffs
       - id: ClothingBackpackElectropack
