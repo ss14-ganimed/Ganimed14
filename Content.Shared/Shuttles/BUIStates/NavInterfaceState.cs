@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Robust.Shared.Map;
 using Robust.Shared.Serialization;
 
@@ -22,6 +23,10 @@ public sealed class NavInterfaceState
 
     public bool RotateWithEntity = true;
 
+    // Ganimed-Add: radar projectile positions (ship shells, RPG rockets). Map coordinates are used
+    // on purpose: projectiles outside of PVS still have to be drawn on the radar.
+    public List<NavProjectile> ProjectileCoordinates = new();
+
     public NavInterfaceState(
         float maxRange,
         NetCoordinates? coordinates,
@@ -32,6 +37,24 @@ public sealed class NavInterfaceState
         Coordinates = coordinates;
         Angle = angle;
         Docks = docks;
+        ProjectileCoordinates = new List<NavProjectile>();
+    }
+}
+
+// Ganimed-Add: single tracked projectile sent to open radars (position + contact color).
+[Serializable, NetSerializable]
+public struct NavProjectile
+{
+    /// <summary>Position of the projectile on the map.</summary>
+    public MapCoordinates Coordinates;
+
+    /// <summary>Color of the marker drawn for this projectile.</summary>
+    public Color Color;
+
+    public NavProjectile(MapCoordinates coordinates, Color color)
+    {
+        Coordinates = coordinates;
+        Color = color;
     }
 }
 
