@@ -637,8 +637,8 @@
           sound:
             collection: MetalBreak
         - !type:SpawnEntitiesBehavior
-          spawn:
-            SheetPlasteel1:
+          spawn: # Ganimed-Edit: steel sheets instead of plasteel (storage canister costs only steel)
+            SheetSteel1:
               min: 1
               max: 2
         - !type:DoActsBehavior
