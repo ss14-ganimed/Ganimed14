@@ -104,8 +104,9 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         return coords;
     }
 
-    // Ganimed-Add: projectile positions for radar
+    // Ganimed-Add-Start: projectile positions for radar
     private List<NavProjectile> _projectiles = new();
+    // Ganimed-Add-End
 
     public void UpdateState(NavInterfaceState state)
     {
@@ -281,7 +282,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
             DrawDocks(handle, gUid, curGridToView);
         }
 
-        // Ganimed-Add: draw tracked projectiles (ship shells, RPG rockets)
+        // Ganimed-Add-Start: draw tracked projectiles (ship shells, RPG rockets)
         if (_projectiles.Count > 0)
         {
             const float projRadius = 1.8f;
@@ -306,11 +307,12 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                     posInView + new Vector2(-projRadius * MinimapScale, 0f),
                 };
 
-                // Ganimed-Edit: contact color comes from the radar state (yellow for DS-30/GAU-32, red for the rest)
+                // Contact color comes from the radar state (yellow for DS-30/GAU-32, red for the rest)
                 handle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, verts, proj.Color.WithAlpha(0.85f));
                 handle.DrawPrimitives(DrawPrimitiveTopology.LineStrip, verts, proj.Color.WithAlpha(0.95f));
             }
         }
+        // Ganimed-Add-End
 
         // If we've set the controlling console, and it's on a different grid
         // to the shuttle itself, then draw an additional marker to help the

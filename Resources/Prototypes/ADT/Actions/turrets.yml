@@ -16,10 +16,11 @@
   description: View a Mass Scanner Interface.
   components:
   - type: Action
-    # Ganimed-Edit: mass-scanner icon instead of the placeholder crowbar sprite
     icon:
+      # Ganimed-Edit-Start: mass-scanner icon instead of the placeholder crowbar sprite
       sprite: Interface/Actions/actions_ai.rsi
       state: mass_scanner
+      # Ganimed-Edit-End
     useDelay: 1
     checkCanInteract: false
   - type: InstantAction

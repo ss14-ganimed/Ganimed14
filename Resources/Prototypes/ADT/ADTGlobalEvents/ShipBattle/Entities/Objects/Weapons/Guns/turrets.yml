@@ -125,9 +125,11 @@
     - type: Speech
       speechVerb: Robotic
       speechSounds: Pai
+    # Ganimed-Add-Start: the gun understands/ speaks GalacticCommon from outside
     - type: LanguageSpeaker # Ganimed-Add: the gun understands/ speaks GalacticCommon from outside
       languages:
         GalacticCommon: Speak
+    # Ganimed-Add-End
     - type: IntrinsicRadioReceiver
     - type: IntrinsicRadioTransmitter
       channels:
@@ -143,6 +145,7 @@
       pvsScale: 3
     - type: NightVision
       overlay: true
+    # Ganimed-Add-Start: mass scanner for the turret gunner + its shells shown on radars
     - type: RadarConsole # Ganimed-Add: mass scanner for turret gunner (followEntity)
       maxRange: 256
       followEntity: true
@@ -151,6 +154,7 @@
         enum.RadarConsoleUiKey.Key:
           type: RadarConsoleBoundUserInterface
     - type: RadarTrackedGun # Ganimed-Add: shells of this turret are shown on radars/mass scanners
+    # Ganimed-Add-End
 
 - type: entity
   parent: BaseStructure
@@ -202,8 +206,10 @@
   id: ADTgau32KMT
   suffix: Space Battleships, KMT
   components:
+    # Ganimed-Add-Start: GAU-32 shells are yellow contacts on radars
     - type: RadarTrackedGun # Ganimed-Add: GAU-32 shells are yellow contacts on radars
       color: yellow
+    # Ganimed-Add-End
     - type: NpcFactionMember
       factions:
         - KMT
@@ -221,8 +227,10 @@
   id: ADTgau32TSF
   suffix: Space Battleships, TSF
   components:
+    # Ganimed-Add-Start: GAU-32 shells are yellow contacts on radars
     - type: RadarTrackedGun # Ganimed-Add: GAU-32 shells are yellow contacts on radars
       color: yellow
+    # Ganimed-Add-End
     - type: NpcFactionMember
       factions:
         - TSF
@@ -252,8 +260,10 @@
   name: DS-30
   suffix: Space Battleships
   components:
+    # Ganimed-Add-Start: DS-30 shells are yellow contacts on radars
     - type: RadarTrackedGun # Ganimed-Add: DS-30 shells are yellow contacts on radars
       color: yellow
+    # Ganimed-Add-End
     - type: Fixtures
       fixtures:
         fix1:
@@ -521,9 +531,11 @@
     - type: Speech
       speechVerb: Robotic
       speechSounds: Pai
+    # Ganimed-Add-Start: the gun understands/ speaks GalacticCommon from outside
     - type: LanguageSpeaker # Ganimed-Add: the gun understands/ speaks GalacticCommon from outside
       languages:
         GalacticCommon: Speak
+    # Ganimed-Add-End
     - type: IntrinsicRadioReceiver
     - type: IntrinsicRadioTransmitter
       channels:
@@ -539,6 +551,7 @@
       pvsScale: 3
     - type: NightVision
       overlay: true
+    # Ganimed-Add-Start: mass scanner for the turret gunner + its shells shown on radars
     - type: RadarConsole # Ganimed-Add: mass scanner for turret gunner (followEntity)
       maxRange: 256
       followEntity: true
@@ -547,6 +560,7 @@
         enum.RadarConsoleUiKey.Key:
           type: RadarConsoleBoundUserInterface
     - type: RadarTrackedGun # Ganimed-Add: shells of this turret are shown on radars/mass scanners
+    # Ganimed-Add-End
 
 - type: entity
   parent: ADTgau32Broken

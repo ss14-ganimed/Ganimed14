@@ -4,10 +4,10 @@ using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.ADT.SS40k.Turrets.Components;
-using Content.Shared.ADT.Language;
+using Content.Shared.ADT.Language; // Ganimed-Add
 using Content.Shared.Movement.Events;
 using Content.Shared.Destructible;
-using Content.Shared.UserInterface;
+using Content.Shared.UserInterface; // Ganimed-Add
 
 namespace Content.Shared.ADT.SS40k.Turrets.Systems;
 
@@ -20,7 +20,7 @@ public sealed class TurretControllableSystem : EntitySystem
     [Dependency] private readonly SharedUserInterfaceSystem _uiSystem = default!; // Ganimed-Add
 
     // Ganimed-Add: язык, на котором орудие понимает и говорит снаружи
-    private const string GalacticCommonLanguage = "GalacticCommon";
+    private const string GalacticCommonLanguage = "GalacticCommon"; // Ganimed-Add
 
     public override void Initialize()
     {
@@ -31,6 +31,7 @@ public sealed class TurretControllableSystem : EntitySystem
         SubscribeLocalEvent<TurretControllableComponent, ControlReturnActionEvent>(OnReturn);//акшон возврата
         SubscribeLocalEvent<TurretControllableComponent, GettingControlledEvent>(OnGettingControlled);//сохраняем
         SubscribeLocalEvent<TurretControllableComponent, MoveInputEvent>(OnUserMoveInput);
+        // Ganimed-Add-Start: кнопка сканера массы и понимание внешней речи орудием
         SubscribeLocalEvent<TurretControllableComponent, ToggleIntrinsicUIEvent>(OnToggleIntrinsicUi); // Ganimed-Add: кнопка сканера массы
     }
 
@@ -52,6 +53,7 @@ public sealed class TurretControllableSystem : EntitySystem
         lang.CurrentLanguage ??= GalacticCommonLanguage;
         Dirty(uid, lang);
     }
+    // Ganimed-Add-End
 
     private void OnDestruction(EntityUid uid, TurretControllableComponent component, DestructionEventArgs args)
     {

@@ -1,7 +1,7 @@
-using System.Collections.Generic;
+using System.Collections.Generic; // Ganimed-Add
 using System.Numerics;
 using Content.Server.UserInterface;
-using Content.Shared._Ganimed.Shuttles.Components;
+using Content.Shared._Ganimed.Shuttles.Radar; // Ganimed-Add
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
@@ -9,7 +9,7 @@ using Content.Shared.PowerCell;
 using Content.Shared.Movement.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
-using Robust.Shared.Timing;
+using Robust.Shared.Timing; // Ganimed-Add
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -17,6 +17,7 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
 {
     [Dependency] private readonly ShuttleConsoleSystem _console = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
+    // Ganimed-Add-Start: периодический пуш позиций снарядов во все открытые радары
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedTransformSystem _xformSystem = default!; // Ganimed-Add
 
@@ -29,6 +30,7 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
 
     /// <summary>Multiplier applied to the radar range so contacts in the view corners are not culled.</summary>
     private const float RadarRangeMargin = 1.5f;
+    // Ganimed-Add-End
 
     public override void Initialize()
     {
@@ -41,7 +43,7 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
         UpdateState(uid, component);
     }
 
-    // Ganimed-Add: periodic update to push projectile positions to all radars
+    // Ganimed-Add-Start: periodic update to push projectile positions to all radars
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -62,6 +64,7 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
                 UpdateState(uid, comp);
         }
     }
+    // Ganimed-Add-End
 
     protected override void UpdateState(EntityUid uid, RadarConsoleComponent component)
     {
@@ -92,17 +95,18 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
 
             state.RotateWithEntity = !component.FollowEntity;
 
-            // Ganimed-Add: collect positions of tracked projectiles in radar range
+            // Ganimed-Add-Start: collect positions of tracked projectiles in radar range
             state.ProjectileCoordinates = GetTrackedProjectiles(
                 coordinates ?? xform.Coordinates,
                 xform.MapID,
                 component.MaxRange);
+            // Ganimed-Add-End
 
             _uiSystem.SetUiState(uid, RadarConsoleUiKey.Key, new NavBoundUserInterfaceState(state));
         }
     }
 
-    // Ganimed-Add: map positions of tracked projectiles (ship shells, RPG rockets) inside radar range.
+    // Ganimed-Add-Start: map positions of tracked projectiles (ship shells, RPG rockets) inside radar range.
     private List<NavProjectile> GetTrackedProjectiles(EntityCoordinates center, MapId mapId, float maxRange)
     {
         var list = new List<NavProjectile>();
@@ -138,4 +142,5 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
 
         return list;
     }
+    // Ganimed-Add-End
 }

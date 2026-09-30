@@ -2,10 +2,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Ganimed.Shuttles.Components;
+using Content.Shared._Ganimed.Shuttles.Radar;
 using Content.Shared.Weapons.Ranged.Events;
 
-namespace Content.Server._Ganimed.Shuttles.Systems;
+namespace Content.Server._Ganimed.Shuttles.Radar.System;
 
 /// <summary>
 /// Marks every projectile fired from a <see cref="RadarTrackedGunComponent"/> gun so that
