@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2023 temporaldarkness <94239354+temporaldarkness@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Gorox221 <139872389+Gorox221@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 AltMapper <141431347+AltMapper@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ent-ClothingOuterHardsuitHop = синий офицерский скафандр
     .desc = Композиция легированных сплавов защищает носителя от революций и политических нестабильностей всех форм и масштабов. Не так уж и просто носить, но репутация требует жертв.
 

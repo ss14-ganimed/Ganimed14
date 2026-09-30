@@ -11,9 +11,9 @@
     - id: ClothingHeadsetAltCargo
     - id: DoorRemoteCargo
     - id: ADTHandheldShuttleConsoleSalvage # ADT-handheld-shuttle-console
-    - id: RubberStampApproved
-    - id: RubberStampDenied
-    - id: RubberStampQm
+    # - id: RubberStampApproved # Ganimed-Remove (duplicates)
+    # - id: RubberStampDenied # Ganimed-Remove
+    # - id: RubberStampQm # Ganimed-Remove
     - id: AstroNavCartridge
     - id: ClothingHandsKnuckleDustersQM
     - id: PrinterDocFlatpack # Corvax-Printer

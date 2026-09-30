@@ -832,10 +832,11 @@
     - NanoTaskCartridge
     - NewsReaderCartridge
     - AtmosTekCartridge # Gas analyzer
+    - AstroNavCartridge
     - NetProbeCartridge
     - NanoChatCartridge # ADT-tweak: Наночат
     - ADTWalletCartridge # ADT-Economy
-    diskSpace: 9 # Ganimed-Tweak (8)
+    diskSpace: 10 # Ganimed-Tweak (8)
   # Ganimed-Add-End
 
 - type: entity
@@ -960,6 +961,18 @@
     accentVColor: "#2a4b5b"
   - type: Icon
     state: pda-paramedic
+  # Ganimed-Add-Start
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
+    - AstroNavCartridge
+    - NanoChatCartridge # ADT-tweak: Наночат
+    - ADTWalletCartridge # ADT-Economy
+  # Ganimed-Add-End
 
 - type: entity
   parent: BaseMedicalPDA

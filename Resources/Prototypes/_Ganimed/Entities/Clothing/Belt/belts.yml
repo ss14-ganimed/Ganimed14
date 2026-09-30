@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2025 AltMapper <141431347+AltMapper@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent: ClothingBeltMedical
   id: ClothingBeltMilitaryWebbingCMO
@@ -158,7 +164,6 @@
           tags:
           - Sidearm
 
-
 - type: entity
   parent: ClothingBeltStorageBase
   id: ClothingBeltRevolverHolster
@@ -192,13 +197,13 @@
         priority: 2
         whitelist:
           components:
-            - RevolverAmmoProvider
+          - RevolverAmmoProvider
   - type: ItemMapper # в данный момент реализован только один спрайт в кобуре, для отображения других револьверов требуются изменения в их прототипах и тегах. Скорее всего это будет реализовано в другом PR.
     mapLayers:
       filled-inspector:
         whitelist:
           components: # tags
-            - RevolverAmmoProvider #WeaponRevolverInspector
+          - RevolverAmmoProvider #WeaponRevolverInspector
       #filled-mateba: # будет реализовано позже, спрайты уже есть в meta.json и тут
         #whitelist:
           #tags:
@@ -230,7 +235,7 @@
     maxItemSize: Small
     whitelist:
       tags:
-        - ShellShotgun
+      - ShellShotgun
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -248,22 +253,22 @@
     - 0,0,3,4
     whitelist:
       tags:
-        - Bottle
-        - Spray
-        - Brutepack
-        - Bloodpack
-        - Gauze
-        - Ointment
-        - CigPack
-        - PillCanister
-        - Radio
-        - Flashlight
-        - DiscreteHealthAnalyzer
-        - SecBeltEquip # ради жгута
+      - Bottle
+      - Spray
+      - Brutepack
+      - Bloodpack
+      - Gauze
+      - Ointment
+      - CigPack
+      - PillCanister
+      - Radio
+      - Flashlight
+      - DiscreteHealthAnalyzer
+      - SecBeltEquip # ради жгута
       components:
-        - Hypospray
-        - Injector
-        - Pill
+      - Hypospray
+      - Injector
+      - Pill
 
 - type: entity
   parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase]

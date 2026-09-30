@@ -1,4 +1,5 @@
-﻿using Content.Shared.MapText;
+﻿using Content.Client._Ganimed.Fonts; // Ganimed-Add (Japanese support)
+using Content.Shared.MapText;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
@@ -71,11 +72,12 @@ public sealed class MapTextSystem : SharedMapTextSystem
             component.Color = Color.Red;
 
             if(_prototypeManager.TryIndex<FontPrototype>(SharedMapTextComponent.DefaultFont, out var @default))
-                component.CachedFont = new VectorFont(_resourceCache.GetResource<FontResource>(@default.Path), 14);
+                // Ganimed-Edit: Japanese support (VectorFont -> GanimedFontStack)
+                component.CachedFont = GanimedFontStack.WithJapaneseFallback(_resourceCache, @default, 14);
             return;
         }
 
-        var fontResource = _resourceCache.GetResource<FontResource>(fontPrototype.Path);
-        component.CachedFont = new VectorFont(fontResource, component.FontSize);
+        // Ganimed-Edit: Japanese fallback so map labels can contain kana/kanji.
+        component.CachedFont = GanimedFontStack.WithJapaneseFallback(_resourceCache, fontPrototype, component.FontSize);
     }
 }

@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2024 RedTerror <37833085+RedTerrorDark@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   name: mashed potatoes with cutlets
   parent: FoodMealBase
@@ -18,8 +23,8 @@
           Quantity: 4
   - type: FlavorProfile
     flavors:
-      - meaty
-      - potatoes
+    - meaty
+    - potatoes
   - type: Tag
     tags:
     - Meat
@@ -46,8 +51,8 @@
           Quantity: 4
   - type: FlavorProfile
     flavors:
-      - salty
-      - juicy
+    - salty
+    - juicy
   - type: Tag
     tags:
     - Fruit

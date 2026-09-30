@@ -28,6 +28,7 @@ using Content.Client.Stylesheets;
 using Content.Client.UserInterface;
 using Content.Client.Viewport;
 using Content.Client.Voting;
+using Content.Client._Ganimed.Fonts; // Ganimed-Add (Japanese support)
 using Content.Shared.Ame.Components;
 using Content.Shared.Gravity;
 using Content.Shared.Localizations;
@@ -35,8 +36,10 @@ using Robust.Client;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Replays.Loading;
+using Robust.Client.ResourceManagement; // Ganimed-Add (Japanese support)
 using Robust.Client.State;
 using Robust.Client.UserInterface;
+using Robust.Client.UserInterface.RichText; // Ganimed-Add (Japanese support)
 using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
@@ -80,6 +83,7 @@ namespace Content.Client.Entry
         [Dependency] private readonly DiscordAuthManager _discordAuthManager = default!; // Corvax-DiscordAuth
         [Dependency] private readonly ContentReplayPlaybackManager _playbackMan = default!;
         [Dependency] private readonly IResourceManager _resourceManager = default!;
+        [Dependency] private readonly IResourceCache _resourceCache = default!; // Ganimed-Add (Japanese support)
         [Dependency] private readonly IReplayLoadManager _replayLoad = default!;
         [Dependency] private readonly ILogManager _logManager = default!;
         [Dependency] private readonly DebugMonitorManager _debugMonitorManager = default!;
@@ -173,6 +177,20 @@ namespace Content.Client.Entry
             base.PostInit();
 
             _stylesheetManager.Initialize();
+
+            // Ganimed-Add-Start: Japanese fallback for [font=...] markup fonts
+            // (station names on consoles, cargo manifests, etc.). Without this the
+            // markup font is a plain VectorFont with no CJK glyphs, so Japanese
+            // characters render as tofu boxes.
+            var fontTagHijack = IoCManager.Resolve<FontTagHijackHolder>();
+            fontTagHijack.Hijack = (protoId, size) =>
+            {
+                if (!_prototypeManager.TryIndex(protoId, out FontPrototype? prototype))
+                    return null;
+
+                return GanimedFontStack.WithJapaneseFallback(_resourceCache, prototype, size);
+            };
+            // Ganimed-Add-End
 
             // Setup key contexts
             ContentContexts.SetupContexts(_inputManager.Contexts);

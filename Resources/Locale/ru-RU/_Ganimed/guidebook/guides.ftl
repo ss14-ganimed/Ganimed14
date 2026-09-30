@@ -1,4 +1,9 @@
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 guide-entry-conspirators = Заговорщики
+guide-entry-experiment-scanner = Заказы на эксперименты
 
 # Rules
 guide-entry-rules-enterprise = Правила сервера Enterprise

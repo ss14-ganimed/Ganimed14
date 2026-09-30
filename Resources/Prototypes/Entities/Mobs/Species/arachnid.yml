@@ -146,6 +146,13 @@
     short: true
     shortscale: 0.95 # Ganimed-Tweak
   # ADT tweak end
+  # Ganimed-Add-Start: следы расы (Footstep)
+  - type: FootprintEmitter
+    leftBareFootState:
+      - "footprint-left-bare-spider"
+    rightBareFootState:
+      - "footprint-right-bare-spider"
+  # Ganimed-Add-End
 
 - type: entity
   parent: BaseSpeciesDummy

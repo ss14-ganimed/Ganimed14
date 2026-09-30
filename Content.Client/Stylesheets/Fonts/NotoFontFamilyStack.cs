@@ -40,6 +40,22 @@ public sealed class NotoFontFamilyStack(IResourceCache resCache, string variant 
     /// </summary>
     private string[] _extras = new[] { "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf" };
 
+    // Ganimed-Add-Start (Japanese support)
+    /// <summary>
+    ///     Japanese (kana + kanji) fallback paths. NotoSans has no CJK glyphs, so any
+    ///     kana/kanji in user text (chat, emotes, paper, consoles) renders as tofu boxes
+    ///     without this. Static Noto Sans JP is kind-aware, so bold text gets a bold
+    ///     Japanese face; italic falls back to regular (JP fonts have no italics).
+    /// </summary>
+    private static readonly Dictionary<FontKind, string> JapaneseFontPaths = new()
+    {
+        [FontKind.Regular] = "/Fonts/NotoSansJP/NotoSansJP-Regular.otf",
+        [FontKind.Bold] = "/Fonts/NotoSansJP/NotoSansJP-Bold.otf",
+        [FontKind.Italic] = "/Fonts/NotoSansJP/NotoSansJP-Regular.otf",
+        [FontKind.BoldItalic] = "/Fonts/NotoSansJP/NotoSansJP-Bold.otf"
+    };
+    // Ganimed-Add-End
+
     public HashSet<FontKind> AvailableKinds = [FontKind.Regular, FontKind.Bold, FontKind.Italic, FontKind.BoldItalic];
 
     /// <summary>
@@ -71,6 +87,7 @@ public sealed class NotoFontFamilyStack(IResourceCache resCache, string variant 
             string.Format(_fontSymbols, kindStr, simpleKindStr, boldOrRegularStr),
         };
         fontList.AddRange(_extras);
+        fontList.Add(JapaneseFontPaths[kind]); // Ganimed-Add (Japanese support)
         return fontList.ToArray();
     }
 

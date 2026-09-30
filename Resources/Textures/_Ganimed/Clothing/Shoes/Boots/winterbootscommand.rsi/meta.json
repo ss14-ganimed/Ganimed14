@@ -1,26 +1,26 @@
 {
-    "version": 1,
-    "license": "CC-BY-SA-3.0",
-    "copyright": "Original derived from UbaserB (GitHub) at Wizden SS14 at https://github.com/space-wizards/space-station-14/commit/2ad9ae6bc1ce15231ac14d4a1565ac0a44b30812 and modified by cadunkus (GitHub). Resprited by HyperB1 (GitHub) based on sprites by MureixloI (@mishutka09) and tamioki(discord)",
-    "size": {
-        "x": 32,
-        "y": 32
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Original derived from UbaserB (GitHub) at Wizden SS14 at https://github.com/space-wizards/space-station-14/commit/2ad9ae6bc1ce15231ac14d4a1565ac0a44b30812 and modified by cadunkus (GitHub). Resprited by HyperB1 (GitHub) based on sprites by MureixloI (@mishutka09) and tamioki(discord)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
     },
-    "states": [
-        {
-            "name": "icon"
-        },
-        {
-            "name": "equipped-FEET",
-            "directions": 4
-        },
-        {
-            "name": "inhand-left",
-            "directions": 4
-        },
-        {
-            "name": "inhand-right",
-            "directions": 4
-        }
-    ]
+    {
+      "name": "equipped-FEET",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    }
+  ]
 }

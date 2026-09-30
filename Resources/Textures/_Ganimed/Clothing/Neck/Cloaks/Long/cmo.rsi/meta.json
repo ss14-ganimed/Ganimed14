@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/2fea0a59470c476cf3f927833d3918d89cbe6af8, sprites in hand by PuroSlavKing (GitHub) and RudeyCoolLeet#3875",
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Made by Gorox221 (Discord: smeshinka112) based on cloak from TerraGov Marine Corps at https://github.com/tgstation/TerraGov-Marine-Corps/blob/07400b3edf5296feb715b39fd649b78dc04289a8/icons/mob/back.dmi and cmocloak from tgstation at commit https://github.com/tgstation/tgstation/commit/d62248c5e7697c082a4a9f0d6aac1c0b38552fb6, sprites in hand by PuroSlavKing (GitHub) and RudeyCoolLeet#3875",
   "size": {
     "x": 32,
     "y": 32

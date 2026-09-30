@@ -210,6 +210,11 @@
       - DoorBumpOpener
       - AnomalyHost
       - ADTDogEmotes
+    # Ganimed-Add-Start: следы расы (Footstep)
+    - type: FootprintEmitter
+      leftBareFootState: [ footprint-left-bare-cat ]
+      rightBareFootState: [ footprint-right-bare-cat ]
+    # Ganimed-Add-End
 
 - type: entity
   save: false

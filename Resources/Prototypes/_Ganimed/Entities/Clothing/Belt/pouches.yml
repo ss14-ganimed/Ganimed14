@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent: BaseStorageItem
   id: ClothingBeltPouchBase
@@ -46,21 +51,21 @@
     - 0,0,3,2
     whitelist:
       tags:
-        - Bottle
-        - Spray
-        - Brutepack
-        - Bloodpack
-        - Gauze
-        - Ointment
-        - CigPack
-        - PillCanister
-        - Radio
-        - DiscreteHealthAnalyzer
+      - Bottle
+      - Spray
+      - Brutepack
+      - Bloodpack
+      - Gauze
+      - Ointment
+      - CigPack
+      - PillCanister
+      - Radio
+      - DiscreteHealthAnalyzer
       components:
-        - Hypospray
-        - Injector
-        - Pill
-        - Healing
+      - Hypospray
+      - Injector
+      - Pill
+      - Healing
 
 - type: entity
   parent: ClothingBeltPouchBase
@@ -88,7 +93,7 @@
 #    maxItemSize: Normal
 #    whitelist:
 #      tags:
-#        - ShellShotgunLight
+#      - ShellShotgunLight
 #  - type: ItemSlots
 #    slots:
 #      item:

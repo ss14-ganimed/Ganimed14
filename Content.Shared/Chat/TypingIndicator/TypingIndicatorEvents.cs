@@ -14,9 +14,12 @@ public sealed class TypingChangedEvent : EntityEventArgs
 {
     public readonly TypingIndicatorState State;
 
-    public TypingChangedEvent(TypingIndicatorState state)
+    public readonly ChatChannel Channel; // Ganimed-Add (Typing indicator color based on chat type)
+
+    public TypingChangedEvent(TypingIndicatorState state, ChatChannel channel = ChatChannel.None) // Ganimed-Edit: Typing indicator color based on chat type (Added ChatChannel channel = ChatChannel.None)
     {
         State = state;
+        Channel = channel;
     }
 }
 

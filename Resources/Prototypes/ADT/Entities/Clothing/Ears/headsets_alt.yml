@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ ClothingHeadset, BaseCentcommContraband ] # Ganimed-Edit (ClothingHeadsetAltCentCom)
+  parent: [ ClothingHeadsetAlt, BaseCentcommContraband ] # Ganimed-Edit (ClothingHeadsetAltCentCom)
   id: ADTClothingHeadsetAltBlueshield
   name: blueshield over-ear headset
   components:

@@ -967,14 +967,14 @@ public sealed partial class ChatUIController : UIController
         return MapLocalIfGhost(PreferredChannel);
     }
 
-    public void NotifyChatTextChange()
+    public void NotifyChatTextChange(ChatChannel channel) // Ganimed-Edit: Typing indicator color based on chat type (Added ChatChannel channel)
     {
-        _typingIndicator?.ClientChangedChatText();
+        _typingIndicator?.ClientChangedChatText(channel); // Ganimed-Edit: Typing indicator color based on chat type (Added channel)
     }
 
-    public void NotifyChatFocus(bool isFocused)
+    public void NotifyChatFocus(bool isFocused, ChatChannel channel) // Ganimed-Edit: Typing indicator color based on chat type (Added ChatChannel channel)
     {
-        _typingIndicator?.ClientChangedChatFocus(isFocused);
+        _typingIndicator?.ClientChangedChatFocus(isFocused, channel); // Ganimed-Edit: Typing indicator color based on chat type (Added channel)
     }
 
     public void Repopulate()

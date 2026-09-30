@@ -74,6 +74,13 @@
       GalacticCommon: Speak
       Dwarf: Speak
   # ADT tweak end
+  # Ganimed-Add-Start: следы расы (Footstep)
+  - type: FootprintEmitter
+    leftBareFootState:
+    - "footprint-left-bare-dwarf"
+    rightBareFootState:
+    - "footprint-right-bare-dwarf"
+  # Ganimed-Add-End
 
 - type: entity
   parent: BaseSpeciesDummy

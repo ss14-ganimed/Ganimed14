@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2024 ArchRBX <5040911+ArchRBX@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Atmos.Components;
 using Content.Shared.CartridgeLoader;
 using Content.Server.Atmos.Components;

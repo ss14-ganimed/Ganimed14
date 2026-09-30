@@ -131,6 +131,13 @@
     shortscale: 0.9 # Ganimed-Tweak
   - type: CollectiveMindRank
   # ADT tweak end
+  # Ganimed-Add-Start: следы расы (Footstep)
+  - type: FootprintEmitter
+    leftBareFootState:
+      - "footprint-left-bare-diona"
+    rightBareFootState:
+      - "footprint-right-bare-diona"
+  # Ganimed-Add-End
 
 - type: entity
   parent: BaseSpeciesDummy

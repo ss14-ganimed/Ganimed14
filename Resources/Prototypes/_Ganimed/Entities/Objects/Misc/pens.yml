@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2023 temporaldarkness <94239354+temporaldarkness@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   name: atmospheric technician's pen
   parent: Pen
@@ -239,7 +245,7 @@
     state: scientist1
   - type: Tool
     qualities:
-      - Screwing
+    - Screwing
     useSound:
       collection: Screwdriver
 
@@ -332,7 +338,7 @@
         Piercing: 15
   - type: Tool
     qualities:
-      - Screwing
+    - Screwing
     useSound:
       collection: Screwdriver
 
@@ -359,7 +365,7 @@
 - type: entity
   name: cargo fountain pen
   parent: Pen
-  id: PenCargo1QM
+  id: PenCargoQM
   description: The quartermaster's fountain pen, it seems to be gilded. Your employees shouldn't know where you got it from.
   components:
   - type: Sprite

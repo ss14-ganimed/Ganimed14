@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 CrimeMoot <wakeafa@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Base target circle
 - type: entity
   id: BaseTargetCircle
@@ -9,8 +13,8 @@
     sprite: _Ganimed/Effects/telegraph.rsi
     drawdepth: FloorTiles
     layers:
-      - state: target_circle_holographic
-        shader: unshaded
+    - state: target_circle_holographic
+      shader: unshaded
     color: "#FF0000"
   - type: PointLight
     color: "#FF0000"
@@ -31,7 +35,7 @@
   components:
   - type: TimedSpawner
     prototypes:
-      -  BaseSupplyPodFallingAnimation
+    - BaseSupplyPodFallingAnimation
     intervalSeconds: 10
   - type: TimedDespawn
     lifetime: 12
@@ -52,7 +56,7 @@
   - type: Timer
   - type: TimedSpawner
     prototypes:
-      - SupplyPodCapsuleDefault
+    - SupplyPodCapsuleDefault
     intervalSeconds: 2
   - type: TimedDespawn
     lifetime: 2.1

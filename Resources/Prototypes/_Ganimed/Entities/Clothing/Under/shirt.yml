@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2024 Gorox221 <139872389+Gorox221@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 AltMapper <141431347+AltMapper@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Color
 - type: entity
   parent: ADTClothingUnderwearTopBase
   id: ClothingUnderBrassiereWhite
@@ -22,8 +29,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/white.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#3f3f3f"
+      - state: equipped-UNDERWEART
+        color: "#3f3f3f"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -38,8 +45,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/white.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#0089EF"
+      - state: equipped-UNDERWEART
+        color: "#0089EF"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -54,8 +61,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/white.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#5ABF2F"
+      - state: equipped-UNDERWEART
+        color: "#5ABF2F"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -70,8 +77,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/white.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#723A02"
+      - state: equipped-UNDERWEART
+        color: "#723A02"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -86,8 +93,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/white.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#940000"
+      - state: equipped-UNDERWEART
+        color: "#940000"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -102,8 +109,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/white.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#EBE216"
+      - state: equipped-UNDERWEART
+        color: "#EBE216"
 
 # Large
 - type: entity
@@ -130,8 +137,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/bigwhite.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#3f3f3f"
+      - state: equipped-UNDERWEART
+        color: "#3f3f3f"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -146,8 +153,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/bigwhite.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#0089EF"
+      - state: equipped-UNDERWEART
+        color: "#0089EF"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -162,8 +169,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/bigwhite.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#5ABF2F"
+      - state: equipped-UNDERWEART
+        color: "#5ABF2F"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -178,8 +185,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/bigwhite.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#723A02"
+      - state: equipped-UNDERWEART
+        color: "#723A02"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -194,8 +201,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/bigwhite.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#940000"
+      - state: equipped-UNDERWEART
+        color: "#940000"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -210,8 +217,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/bigwhite.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#EBE216"
+      - state: equipped-UNDERWEART
+        color: "#EBE216"
 
 # Alternate
 - type: entity
@@ -238,8 +245,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/alterwhite.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#3f3f3f"
+      - state: equipped-UNDERWEART
+        color: "#3f3f3f"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -254,8 +261,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/alterwhite.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#0089EF"
+      - state: equipped-UNDERWEART
+        color: "#0089EF"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -270,8 +277,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/alterwhite.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#5ABF2F"
+      - state: equipped-UNDERWEART
+        color: "#5ABF2F"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -286,8 +293,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/alterwhite.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#723A02"
+      - state: equipped-UNDERWEART
+        color: "#723A02"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -302,8 +309,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/alterwhite.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#940000"
+      - state: equipped-UNDERWEART
+        color: "#940000"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -318,8 +325,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Brassiere/alterwhite.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#EBE216"
+      - state: equipped-UNDERWEART
+        color: "#EBE216"
 
 # Misc
 - type: entity
@@ -402,8 +409,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Tshirt/shirt.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#3f3f3f"
+      - state: equipped-UNDERWEART
+        color: "#3f3f3f"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -418,8 +425,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Tshirt/shirt.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#0089EF"
+      - state: equipped-UNDERWEART
+        color: "#0089EF"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -434,8 +441,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Tshirt/shirt.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#5ABF2F"
+      - state: equipped-UNDERWEART
+        color: "#5ABF2F"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -450,8 +457,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Tshirt/shirt.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#723A02"
+      - state: equipped-UNDERWEART
+        color: "#723A02"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -466,8 +473,8 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Tshirt/shirt.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#940000"
+      - state: equipped-UNDERWEART
+        color: "#940000"
 
 - type: entity
   parent: ADTClothingUnderwearTopBase
@@ -482,5 +489,5 @@
     sprite: _Ganimed/Clothing/Under/Shirt/Tshirt/shirt.rsi
     clothingVisuals:
       underweart:
-        - state: equipped-UNDERWEART
-          color: "#EBE216"
+      - state: equipped-UNDERWEART
+        color: "#EBE216"

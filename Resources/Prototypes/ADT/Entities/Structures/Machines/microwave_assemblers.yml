@@ -103,6 +103,7 @@
   - type: Sprite
     sprite: ADT/Structures/Machines/medical_assembler.rsi
     snapCardinals: true
+    offset: "0.0,0.0" # Ganimed-Add (parent microwave had offset)
     layers:
     - state: mediwave-base
       map: ["enum.MicrowaveVisualizerLayers.Base"]

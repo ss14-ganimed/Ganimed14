@@ -1,35 +1,40 @@
-﻿- type: entity
-  name: paper lantern
-  parent: Lantern
-  id: LanternPaper
-  description: Like a flame in the wind we face the world. Take a good omen with you.
-  components:
-    - type: Sprite
-      sprite: _Ganimed/Objects/Tools/paperlantern.rsi
-      layers:
-        - state: lantern
-        - state: lantern-on
-          shader: unshaded
-          visible: false
-          map: [ "light" ]
-    - type: Item
-      sprite: _Ganimed/Objects/Tools/paperlantern.rsi
-      heldPrefix: off
+# SPDX-FileCopyrightText: 2023 temporaldarkness <94239354+temporaldarkness@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
+  parent: Lantern
+  id: LanternPaper
   name: paper lantern
-  parent: LanternPaper
-  id: LanternPaper2
   description: Like a flame in the wind we face the world. Take a good omen with you.
   components:
-    - type: Sprite
-      sprite: _Ganimed/Objects/Tools/paperlantern2.rsi
-      layers:
-        - state: lantern
-        - state: lantern-on
-          shader: unshaded
-          visible: false
-          map: [ "light" ]
-    - type: Item
-      sprite: _Ganimed/Objects/Tools/paperlantern2.rsi
-      heldPrefix: off
+  - type: Sprite
+    sprite: _Ganimed/Objects/Tools/paperlantern.rsi
+    layers:
+    - state: lantern
+    - state: lantern-on
+      shader: unshaded
+      visible: false
+      map: [ "light" ]
+  - type: Item
+    sprite: _Ganimed/Objects/Tools/paperlantern.rsi
+    heldPrefix: off
+
+- type: entity
+  parent: LanternPaper
+  id: LanternPaper2
+  name: paper lantern
+  description: Like a flame in the wind we face the world. Take a good omen with you.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Objects/Tools/paperlantern2.rsi
+    layers:
+    - state: lantern
+    - state: lantern-on
+      shader: unshaded
+      visible: false
+      map: [ "light" ]
+  - type: Item
+    sprite: _Ganimed/Objects/Tools/paperlantern2.rsi
+    heldPrefix: off

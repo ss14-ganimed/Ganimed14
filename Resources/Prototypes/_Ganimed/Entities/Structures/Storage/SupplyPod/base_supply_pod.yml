@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 CrimeMoot <wakeafa@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Base Supply Pod
 - type: entity
   parent: BaseStructure
@@ -58,7 +62,7 @@
     graph: SupplyPod
     node: SupplyPod
     containers:
-      - entity_storage
+    - entity_storage
   - type: Destructible
     thresholds:
     - trigger:

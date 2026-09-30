@@ -3088,7 +3088,7 @@ entities:
             5272: 50,21
         - node:
             zIndex: 100
-            color: '#E8E8E8FF'
+            color: '#E9E9E9FF'
             id: HalfTileOverlayGreyscale
           decals:
             5512: 47,6
@@ -3103,7 +3103,7 @@ entities:
             5290: 46,9
         - node:
             zIndex: 100
-            color: '#E8E8E8FF'
+            color: '#E9E9E9FF'
             id: HalfTileOverlayGreyscale180
           decals:
             5557: 46,24

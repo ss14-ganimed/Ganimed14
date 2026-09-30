@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 RedSpy <127129838+RedSpyy@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ent-ClothingNeckScarfCamo = камуфляжный шарф
     .desc = Полосатый шарф в камуфляжной расцветке.
 ent-ClothingNeckScarfStripedAzure = лазурный шарф
