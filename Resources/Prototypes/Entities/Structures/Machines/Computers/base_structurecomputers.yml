@@ -77,7 +77,7 @@
     blacklist:
       tags:
       - NoConsoleSound
-  # Ganimed-Add: spatialized keyboard click while somebody types on this console's UI
+  # Ganimed-Add-Start (Computer keyboard clicks on typing)
   - type: ConsoleKeyboardSound
     typingSound:
       collection: ConsoleKeyboardType
@@ -86,6 +86,7 @@
         variation: 0.12
         pitch: 1.1
         maxDistance: 8
+  # Ganimed-Add-End
   - type: ContainerContainer
     containers:
       board: !type:Container
