@@ -285,7 +285,10 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         // Ganimed-Add-Start: draw tracked projectiles (ship shells, RPG rockets)
         if (_projectiles.Count > 0)
         {
+            // Red contacts (RPG rockets, Mk.155 / D-100 shells) keep the full size, the yellow
+            // ones (DS-30 / GAU-32) are drawn smaller so they don't drown the red ones out.
             const float projRadius = 1.8f;
+            const float minorProjRadius = 1.1f;
 
             foreach (var proj in _projectiles)
             {
@@ -298,13 +301,17 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                 if (Math.Abs(posInShuttle.X) > WorldRange || Math.Abs(posInShuttle.Y) > WorldRange)
                     continue;
 
+                // Yellow = high red + high green + low blue.
+                var isMinorContact = proj.Color.R > 0.5f && proj.Color.G > 0.5f && proj.Color.B < 0.5f;
+                var radius = isMinorContact ? minorProjRadius : projRadius;
+
                 var posInView = Vector2.Transform(posInShuttle, shuttleToView);
                 var verts = new[]
                 {
-                    posInView + new Vector2(0f, -projRadius * MinimapScale),
-                    posInView + new Vector2(projRadius * MinimapScale, 0f),
-                    posInView + new Vector2(0f, projRadius * MinimapScale),
-                    posInView + new Vector2(-projRadius * MinimapScale, 0f),
+                    posInView + new Vector2(0f, -radius * MinimapScale),
+                    posInView + new Vector2(radius * MinimapScale, 0f),
+                    posInView + new Vector2(0f, radius * MinimapScale),
+                    posInView + new Vector2(-radius * MinimapScale, 0f),
                 };
 
                 // Contact color comes from the radar state (yellow for DS-30/GAU-32, red for the rest)
