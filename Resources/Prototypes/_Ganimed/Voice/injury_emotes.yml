@@ -1,0 +1,51 @@
+# SPDX-FileCopyrightText: 2026 Ganimed14 <ganimed14@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: emote
+  id: GanimedPainScream
+  parent: Scream
+  name: ganimed-emote-name-pain-scream
+  soundEmote: Scream
+  chatMessages: [ganimed-emote-msg-pain-scream]
+  chatTriggers:
+  - screams in pain
+  - scream in pain
+  - кричит от боли
+  - кричать от боли
+
+- type: emote
+  id: GanimedBloodCough
+  parent: Cough
+  name: ganimed-emote-name-blood-cough
+  soundEmote: Cough
+  chatMessages: [ganimed-emote-msg-blood-cough]
+  blacklist:
+    tags:
+    - SiliconEmotes
+    - Ipc
+    - ADTNovakidEmotes
+  chatTriggers:
+  - coughs up blood
+  - cough up blood
+  - кашляет кровью
+  - кашлять кровью
+
+# Novakids retain their existing plasma-specific text and blood reagent.
+- type: emote
+  id: GanimedPlasmaCough
+  parent: Cough
+  name: ganimed-emote-name-plasma-cough
+  soundEmote: Cough
+  whitelist:
+    requireAll: true
+    components:
+    - Vocal
+    tags:
+    - ADTNovakidEmotes
+  chatMessages: [ganimed-emote-msg-plasma-cough]
+  chatTriggers:
+  - coughs up plasma
+  - cough up plasma
+  - кашляет плазмой
+  - кашлять плазмой

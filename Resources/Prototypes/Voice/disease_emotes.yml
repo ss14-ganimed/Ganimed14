@@ -46,10 +46,7 @@
     - кашляет
     - кашлянул
     # Corvax-Localization-End
-    # Start-ADT-Tweak-AddComp-BloodCough
-    - кашляет кровью
-    - кашляет плазмой
-    # End-ADT-Tweak-AddComp-BloodCough
+    # Ganimed-Edit: blood/plasma triggers now belong to their own inherited cough emotes.
 
 - type: emote
   id: CatMeow

@@ -1,6 +1,7 @@
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array; // Ganimed-Add: emote inheritance.
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Chat.Prototypes;
@@ -10,10 +11,27 @@ namespace Content.Shared.Chat.Prototypes;
 ///     Entities can activate emotes by chat input, radial or code.
 /// </summary>
 [Prototype]
-public sealed partial class EmotePrototype : IPrototype
+public sealed partial class EmotePrototype : IPrototype, IInheritingPrototype // Ganimed-Edit: inherit existing emote definitions.
 {
     [IdDataField]
     public string ID { get; private set; } = default!;
+
+    // Ganimed-Add-Start: emote inheritance and reuse of another emote's voice sounds.
+    /// <inheritdoc/>
+    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<EmotePrototype>))]
+    public string[]? Parents { get; private set; }
+
+    /// <inheritdoc/>
+    [AbstractDataField, NeverPushInheritance]
+    public bool Abstract { get; private set; }
+
+    /// <summary>
+    /// Use this emote's sound entry in the character's current voice collection.
+    /// This allows variants to share species/sex-specific sounds without duplicating sound collections.
+    /// </summary>
+    [DataField]
+    public ProtoId<EmotePrototype>? SoundEmote;
+    // Ganimed-Add-End
 
     /// <summary>
     ///     Localization string for the emote name. Displayed in the radial UI.

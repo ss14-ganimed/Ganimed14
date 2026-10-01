@@ -178,6 +178,7 @@
   - type: StandingState
   - type: Crawler
   - type: PreCrit # Ganimed-Add: conscious forced crawling at 100 damage.
+  - type: InjuryEmotes # Ganimed-Add: pain screams and bloody coughing.
   # Ganimed-Add-Start: full critical starts after the pre-crit interval.
   - type: MobThresholds
     thresholds:
@@ -320,8 +321,7 @@
     alternateState: Standing
   - type: StunVisuals
   # Start-ADT Tweak
-  - type: BloodCough
-    postingSayDamage: blood-cough
+  # Ganimed-Edit: legacy BloodCough replaced by shared InjuryEmotes from BaseMobSpecies.
   - type: TimeDespawnDamage
   # End-ADT Tweak
   # Ganimed-Add: мобы пачкаются в лужах и оставляют следы (Footstep/DragMark).
