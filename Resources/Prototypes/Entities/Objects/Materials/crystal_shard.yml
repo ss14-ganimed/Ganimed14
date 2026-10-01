@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   abstract: true
   parent: BaseItem
   id: ShardCrystalBase
@@ -27,8 +27,9 @@
       types:
         Slash: 3.5
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -49,9 +50,11 @@
   - type: Sprite
     color: "#47f8ff"
   - type: PointLight
-    radius: 2
+    radius: 3 # ADT tweak 2 > 3
     energy: 2.5
     color: "#47f8ff"
+    mask: /Textures/ADT/Effects/Lightmasks/star.png # ADT tweak
+    autoRot: true # ADT tweak
   - type: Tag
     tags:
       - Trash
@@ -65,9 +68,11 @@
   - type: Sprite
     color: "#39a1ff"
   - type: PointLight
-    radius: 2
+    radius: 3 # ADT tweak 2 > 3
     energy: 2.5
     color: "#39a1ff"
+    mask: /Textures/ADT/Effects/Lightmasks/star.png # ADT tweak
+    autoRot: true # ADT tweak
   - type: Tag
     tags:
       - Trash
@@ -81,9 +86,11 @@
   - type: Sprite
     color: "#ffde46"
   - type: PointLight
-    radius: 2
+    radius: 3 # ADT tweak 2 > 3
     energy: 2.5
     color: "#ffde46"
+    mask: /Textures/ADT/Effects/Lightmasks/star.png # ADT tweak
+    autoRot: true # ADT tweak
   - type: Tag
     tags:
       - Trash
@@ -97,9 +104,11 @@
   - type: Sprite
     color: "#ff8227"
   - type: PointLight
-    radius: 2
+    radius: 3 # ADT tweak 2 > 3
     energy: 2.5
     color: "#ff8227"
+    mask: /Textures/ADT/Effects/Lightmasks/star.png # ADT tweak
+    autoRot: true # ADT tweak
   - type: Tag
     tags:
       - Trash
@@ -113,9 +122,11 @@
   - type: Sprite
     color: "#363636"
   - type: PointLight
-    radius: 2
+    radius: 3 # ADT tweak 2 > 3
     energy: 2.5
     color: "#363636"
+    mask: /Textures/ADT/Effects/Lightmasks/star.png # ADT tweak
+    autoRot: true # ADT tweak
   - type: Tag
     tags:
       - Trash
@@ -129,9 +140,11 @@
   - type: Sprite
     color: "#ff66cc"
   - type: PointLight
-    radius: 2
+    radius: 3 # ADT tweak 2 > 3
     energy: 2.5
     color: "#ff66cc"
+    mask: /Textures/ADT/Effects/Lightmasks/star.png # ADT tweak
+    autoRot: true # ADT tweak
   - type: Tag
     tags:
       - Trash
@@ -145,9 +158,11 @@
   - type: Sprite
     color: "#52ff39"
   - type: PointLight
-    radius: 2
+    radius: 3 # ADT tweak 2 > 3
     energy: 2.5
     color: "#52ff39"
+    mask: /Textures/ADT/Effects/Lightmasks/star.png # ADT tweak
+    autoRot: true # ADT tweak
   - type: Tag
     tags:
       - Trash
@@ -161,9 +176,11 @@
   - type: Sprite
     color: "#fb4747"
   - type: PointLight
-    radius: 2
+    radius: 3 # ADT tweak 2 > 3
     energy: 2.5
     color: "#fb4747"
+    mask: /Textures/ADT/Effects/Lightmasks/star.png # ADT tweak
+    autoRot: true # ADT tweak
   - type: Tag
     tags:
       - Trash
@@ -174,14 +191,14 @@
   id: ShardCrystalRandom
   name: random crystal shard
   components:
-  - type: RandomSpawner
-    prototypes:
-      - ShardCrystalGreen
-      - ShardCrystalPink
-      - ShardCrystalYellow
-      - ShardCrystalBlack
-      - ShardCrystalOrange
-      - ShardCrystalBlue
-      - ShardCrystalCyan
-      - ShardCrystalRed
-    chance: 1
+  - type: EntityTableSpawner
+    table: !type:GroupSelector
+      children:
+      - id: ShardCrystalGreen
+      - id: ShardCrystalPink
+      - id: ShardCrystalYellow
+      - id: ShardCrystalBlack
+      - id: ShardCrystalOrange
+      - id: ShardCrystalBlue
+      - id: ShardCrystalCyan
+      - id: ShardCrystalRed

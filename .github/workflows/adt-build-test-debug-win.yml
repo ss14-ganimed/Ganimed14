@@ -2,12 +2,12 @@ name: Build & Test Debug Windows
 
 on:
   # push:
-    # branches: [ master, staging, trying ]
+  #   branches: [ master, staging, stable ]
   # merge_group:
   # pull_request:
-    # types: [ opened, reopened, synchronize, ready_for_review ]
-    # branches: [ master ]
-  workflow_dispatch: # ручной запуск
+  #   types: [ opened, reopened, synchronize, ready_for_review ]
+  #   branches: [ master, staging, stable ]
+  workflow_dispatch: # ручной запуск ADT Tweak
 
 jobs:
   build:

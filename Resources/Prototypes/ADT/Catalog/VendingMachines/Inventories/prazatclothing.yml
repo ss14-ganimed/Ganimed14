@@ -1,82 +1,85 @@
 - type: vendingMachineInventory
   id: ADTPrazatClothesMateInventory
   startingInventory:
-    ADTClothingHeadHatCinnamonFlatCap: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingHeadHatGreyFlatCap: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingHeadDrinkCap: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitDenimPants: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitBlackPants: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitWhitePants: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitBlackShorts: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitWhiteShorts: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitDenim: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitCamouflageTshirt: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitCamouflageTshirtDesert: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitSerious: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitBlackShirt: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitBlueShirt: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitPurpleShirt: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitRedShirt: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitWhiteShirt: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitFancyShirt: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitRedPlaidShirt: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitHawaiiShirt: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitGothicAttire: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitOldGreySuit: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitOldBrownSuit: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitSweatshirtBright: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitDutch: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitTuxedo: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitTuxedoWhite: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitTuxedoRed: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitTuxedoHell: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformDressVintage: 1
-    ADTClothingUniformTangoDressBlack: 1
-    ADTClothingUniformTangoDressWhite: 1
-    ADTClothingUniformSwimBlack: 2
-    ADTClothingUniformSwimBlue: 1
-    ADTClothingUniformSwimDarkGreen: 1
-    ADTClothingUniformSwimGreen: 2
-    ADTClothingUniformSwimPurple: 2
-    ADTClothingUniformSwimRed: 1
-    ADTClothingUniformJumpsuitRedVictorianSuit: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingUniformJumpsuitBlackVictorianSuit: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingOuterDutch: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingOuterWhiteSweatshirtTop: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingOuterGraySweatshirtTop: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingOuterBlackSweatshirtTop: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingOuterLettermanNanoTrasen: 5
-    # ADTClothingOuterLettermanSyndie: 5 # Ganimed-Remove (moved to contrabandInventory)
-    ADTClothingOuterLettermanBlack: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingOuterWinterRussianCoat: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingNeckGoldChain: 2 # Ganimed-Tweak (5 -> 2)
-    ADTChokerWithSpike: 2 # Ganimed-Tweak (5 -> 2)
-    ADTChokerWithHeart: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingNeckGoldTie: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingVoucherTie: 8
-    ClothingShoesBootsLaceup: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingFootLightShoes: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingFootWhiteSandals: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingFootBlackBoots: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingEyesGlassesPink: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingEyesGlassesMonocle: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingHandsGlovesLongBlack: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingHandsGlovesLongWhite: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingBeltBlackSuspenders: 2 # Ganimed-Tweak (5 -> 2)
-    ADTClothingBeltBrownSuspenders: 2 # Ganimed-Tweak (5 -> 2)
-  # Бельё
-    ADTClothingUnderwearBottomPantiesLace: 2
-    ADTClothingUnderwearBottomPantiesLaceRed: 2
-    ADTClothingUnderwearBottomPantiesLaceBlack: 2
-    ADTClothingUnderwearBottomBriefsMoth: 2
-    ADTClothingUnderwearTopBraLaceRed: 2
-    ADTClothingUnderwearTopBraLaceBlack: 2
-    ADTClothingUnderwearTopBraSportsBlack: 2
-    ADTClothingUnderwearTopBraPea: 2
-    ADTClothingUnderwearTopBraLace: 2
-    ADTClothingUnderwearSocksStockingsBlack: 2
-    ADTClothingUnderwearSocksLaceThigh: 2
-    ADTClothingUnderwearSocksRabbit: 2
+    ADTVendingCategoryHead: # ADT-Tweak
+        ADTClothingHeadHatCinnamonFlatCap: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingHeadHatGreyFlatCap: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingHeadDrinkCap: 2 # Ganimed-Tweak (5 -> 2)
+    ADTVendingCategoryUniforms: # ADT-Tweak
+        ADTClothingUniformJumpsuitDenimPants: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitBlackPants: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitWhitePants: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitBlackShorts: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitWhiteShorts: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitDenim: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitCamouflageTshirt: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitCamouflageTshirtDesert: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitSerious: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitBlackShirt: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitBlueShirt: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitPurpleShirt: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitRedShirt: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitWhiteShirt: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitFancyShirt: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitRedPlaidShirt: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitHawaiiShirt: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitGothicAttire: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitOldGreySuit: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitOldBrownSuit: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitSweatshirtBright: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitDutch: 5
+        ADTClothingUniformJumpsuitTuxedo: 5
+        ADTClothingUniformJumpsuitTuxedoWhite: 5
+        ADTClothingUniformJumpsuitTuxedoRed: 5
+        ADTClothingUniformJumpsuitTuxedoHell: 5
+        ADTClothingUniformDressVintage: 1
+        ADTClothingUniformTangoDressBlack: 1
+        ADTClothingUniformTangoDressWhite: 1
+        ADTClothingUniformSwimBlack: 2
+        ADTClothingUniformSwimBlue: 1
+        ADTClothingUniformSwimDarkGreen: 1
+        ADTClothingUniformSwimGreen: 2
+        ADTClothingUniformSwimPurple: 2
+        ADTClothingUniformSwimRed: 1
+        ADTClothingUniformJumpsuitRedVictorianSuit: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingUniformJumpsuitBlackVictorianSuit: 2 # Ganimed-Tweak (5 -> 2)
+    ADTVendingCategoryOuter: # ADT-Tweak
+        ADTClothingOuterDutch: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingOuterWhiteSweatshirtTop: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingOuterGraySweatshirtTop: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingOuterBlackSweatshirtTop: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingOuterLettermanNanoTrasen: 2 # Ganimed-Tweak (5 -> 2)
+        # ADTClothingOuterLettermanSyndie: 5 # Ganimed-Remove (moved to contrabandInventory)
+        ADTClothingOuterLettermanBlack: 5
+        ADTClothingOuterWinterRussianCoat: 5
+    ADTVendingCategoryAccessories: # ADT-Tweak
+        ADTClothingNeckGoldChain: 2 # Ganimed-Tweak (5 -> 2)
+        ADTChokerWithSpike: 2 # Ganimed-Tweak (5 -> 2)
+        ADTChokerWithHeart: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingNeckGoldTie: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingVoucherTie: 2 # Ganimed-Tweak (8 -> 2)
+        ADTClothingEyesGlassesPink: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingEyesGlassesMonocle: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingHandsGlovesLongBlack: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingHandsGlovesLongWhite: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingBeltBlackSuspenders: 2 # Ganimed-Tweak (5 -> 2)
+        ADTClothingBeltBrownSuspenders: 2 # Ganimed-Tweak (5 -> 2)
+    ADTVendingCategoryShoes: # ADT-Tweak
+        ClothingShoesBootsLaceup: 5
+        ADTClothingFootLightShoes: 5
+        ADTClothingFootWhiteSandals: 5
+        ADTClothingFootBlackBoots: 5
+    ADTVendingCategoryUnderwear: # ADT-Tweak
+        # Бельё
+        ADTClothingVoucherUnderwearBoxers: 8
+        ADTClothingVoucherUnderwearBriefs: 8
+        ADTClothingVoucherUnderwearPanties: 8
+        ADTClothingVoucherUnderwearMonokiniBottom: 8
+        ADTClothingVoucherUnderwearBra: 8
+        ADTClothingVoucherUnderwearMonokiniTop: 8
+        ADTClothingVoucherUnderwearTShirt: 8
+        ADTClothingVoucherUnderwearSocks: 8
+        ADTClothingVoucherUnderwearSocksKnee: 8
+        ADTClothingVoucherUnderwearStockings: 8
   contrabandInventory:
     ADTClothingUniformJumpsuitAnarchyTshirt: 3
-    ADTClothingOuterLettermanSyndie: 2 # Ganimed-Add

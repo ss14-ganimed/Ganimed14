@@ -8,10 +8,20 @@
     Copper: 200
 
 - type: latheRecipe
-  id: RNDInducerRecipe
-  result: ADTRNDInducer
-  completetime: 8
+  id: ADTRPDBluespace
+  result: ADTRPDBluespace
+  completetime: 6
   materials:
-    Steel: 500
-    Plastic: 100
-    Copper: 100
+    Steel: 1200
+    Plastic: 300
+    Silver: 100
+    ADTBScrystal: 150
+
+#- type: latheRecipe
+#  id: RNDInducerRecipe
+#  result: ADTRNDInducer
+#  completetime: 8
+#  materials:
+#    Steel: 500
+#    Plastic: 100
+#    Copper: 100

@@ -1,0 +1,66 @@
+# Agzamov
+- type: sponsorPersonalLoadout
+  id: SponsorPersonalLoadoutAgzamov
+  userName: Agzamov
+  equipment: SponsorPersonalLoadoutAgzamov
+  whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden ]
+
+- type: startingGear
+  id: SponsorPersonalLoadoutAgzamov
+  storage:
+    back:
+    - StunbatonAgzamov
+
+# As04ka
+- type: sponsorPersonalLoadout
+  id: SponsorPersonalLoadoutAs04ka
+  userName: As04ka
+  equipment: SponsorPersonalLoadoutAs04ka
+  whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden ]
+
+- type: startingGear
+  id: SponsorPersonalLoadoutAs04ka
+  storage:
+    back:
+    - ShipKnife
+
+# Safno_S
+- type: sponsorPersonalLoadout
+  id: SponsorPersonalLoadoutSafno_S
+  userName: Safno_S
+  equipment: SponsorPersonalLoadoutSafno_S
+  whitelistJobs: [ HeadOfSecurity ]
+
+- type: startingGear
+  id: SponsorPersonalLoadoutSafno_S
+  equipment:
+    head: ClothingHeadHatBeretHoSSafno
+    mask: ClothingMaskGasHoSSafno
+    neck: ClothingNeckMantleHoSSafno
+    jumpsuit: ClothingUniformJumpsuitHoSSafno
+    outerClothing: ClothingOuterArmorHoSSafno
+    belt: ClothingBeltHoSSafno
+
+# Halo_Shivter
+- type: sponsorPersonalLoadout
+  id: SponsorPersonalLoadoutHalo_Shivter
+  userName: Halo_Shivter
+  equipment: SponsorPersonalLoadoutHalo_Shivter
+  whitelistJobs: [ Quartermaster, SalvageSpecialist ]
+
+- type: startingGear
+  id: SponsorPersonalLoadoutHalo_Shivter
+  inhand:
+  - ClothingModsuitBackBee
+
+# HackerEasy
+- type: sponsorPersonalLoadout
+  id: SponsorPersonalLoadoutHackerEasy
+  userName: HackerEasy
+  equipment: SponsorPersonalLoadoutHackerEasy
+  whitelistJobs: [ Paramedic ]
+
+- type: startingGear
+  id: SponsorPersonalLoadoutHackerEasy
+  inhand:
+  - ClothingModsuitBackResuscitator

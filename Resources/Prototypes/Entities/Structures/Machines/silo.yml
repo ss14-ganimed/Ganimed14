@@ -25,8 +25,7 @@
       - RawMaterial
       - Ingot
       - ADTBSCrystal #ADT Tweak
-      - PhantomEctoplasm #ADT Tweak
-      - RawMaterial  #ADT Tweak 
+      - RawMaterial  #ADT Tweak
   - type: ActivatableUI
     key: enum.OreSiloUiKey.Key
   - type: ActivatableUIRequiresPower
@@ -65,3 +64,4 @@
   - type: StaticPrice
     price: 150000 #ADT-tweak
   - type: CargoSellBlacklist # ADT-Tweak: запрет продажи силоса через карго
+  - type: ADTBlockAnchorOnLavaland # ADT-Tweak

@@ -3,13 +3,15 @@
   parent: ADTClothingBeltMedicalSecurity
   suffix: Filled
   components:
-  - type: StorageFill
-    contents:
-      - id: GrenadeFlashBang
-      - id: TearGasGrenade
-      - id: Stunbaton
-      - id: Handcuffs
-      - id: Handcuffs
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: GrenadeFlashBang
+        - id: TearGasGrenade
+        - id: Stunbaton
+        - id: Handcuffs
+        - id: Handcuffs
 
 #кобура следователя СБ
 - type: entity
@@ -17,72 +19,98 @@
   parent: ClothingBeltHolster
   suffix: Filled
   components:
-  - type: StorageFill
-    contents:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
         - id: WeaponPistolMk58
         - id: MagazinePistol
+
+- type: entity
+  id: ADTClothingBeltHolsterN1984Fill
+  parent: ClothingBeltHolster
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: WeaponPistolN1984
+        - id: MagazineMagnum
 
 - type: entity
   id: ADTClothingBeltMedicalBagFilled
   parent: ADTClothingBeltMedicalBag
   suffix: Filled
   components:
-  - type: StorageFill
-    contents:
-      - id: Brutepack
-        amount: 2
-      - id: Ointment
-        amount: 1
-      - id: ADTBloodPackTransfusionFull # ADT tweak: Blood IV
-        amount: 1
-      - id: Gauze
-      - id: EmergencyMedipen
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: Brutepack
+          amount: 2
+        - id: Ointment
+          amount: 1
+        - id: ADTBloodPackTransfusionFull # ADT tweak: Blood IV
+          amount: 1
+        - id: ADTSalineChemistryBottle
+          amount: 2
+        - id: Gauze
+        - id: EmergencyMedipen
 
 - type: entity
   id: ADTClothingBeltMedicalBagEMTFilled
   parent: ADTClothingBeltMedicalBag
   suffix: Filled, Paramedic
   components:
-  - type: StorageFill
-    contents:
-      - id: Brutepack
-      - id: Ointment
-      - id: ADTBloodPackTransfusionFull # ADT tweak: Blood IV
-      - id: Gauze
-      - id: EmergencyMedipen
-        amount: 3
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: Brutepack
+        - id: Ointment
+        - id: ADTBloodPackTransfusionFull # ADT tweak: Blood IV
+        - id: Gauze
+        - id: ADTSalineChemistryBottle
+          amount: 2
+        - id: EmergencyMedipen
+          amount: 3
 
 - type: entity
   id: ADTClothingBeltMilitaryWebbingCBURNFilled
   parent: ClothingBeltMilitaryWebbing
   suffix: Filled
   components:
-  - type: StorageFill
-    contents:
-      - id: CombatKnife
-      - id: MagazineShotgunIncendiary
-        amount: 3
-      - id: MagazineShotgun
-        amount: 2
-      - id: MagazineShotgunSlug
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: CombatKnife
+        - id: MagazineShotgunIncendiary
+          amount: 3
+        - id: MagazineShotgun
+          amount: 2
+        - id: MagazineShotgunSlug
 
 - type: entity
   id: ADTClothingBeltMedicalSecurityERTFilled
   parent: ADTClothingBeltMedicalSecurity
   suffix: Filled
   components:
-  - type: StorageFill
-    contents:
-      - id: ADTCombatHypospray
-      - id: MedicatedSuture
-      - id: RegenerativeMesh
-      - id: ADTBloodPackTransfusionFull # ADT tweak: Blood IV
-      - id: ChemistryBottleOmnizine
-      - id: ChemistryBottleEpinephrine
-      - id: ChemistryBottleEpinephrine
-      - id: ADTSalineChemistryBottle
-      - id: BruteAutoInjector
-      - id: BurnAutoInjector
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ADTCombatHypospray
+        - id: MedicatedSuture
+        - id: RegenerativeMesh
+        - id: ADTBloodPackTransfusionFull # ADT tweak: Blood IV
+        - id: ChemistryBottleOmnizine
+        - id: ChemistryBottleEpinephrine
+        - id: ChemistryBottleEpinephrine
+        - id: ADTSalineChemistryBottle
+        - id: BruteAutoInjector
+        - id: BurnAutoInjector
 
 - type: entity
   id: ADTClothingBeltSheathZeroFilled
@@ -124,3 +152,59 @@
     containers:
       storagebase: !type:NestedSelector
         tableId: BeltSecurityLigthbatonEntityTable
+
+#Варбелты ОБР
+- type: entity
+  id: ADTClothingWarBeltMedicERTFilled
+  parent: ADTShipBattleClothingBeltWarbelt
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ADTCombatHypospray
+        - id: MedicatedSuture
+        - id: RegenerativeMesh
+        - id: ADTBloodPackTransfusionFull # ADT tweak: Blood IV
+        - id: ChemistryBottleOmnizine
+        - id: ChemistryBottleEpinephrine
+        - id: ChemistryBottleEpinephrine
+        - id: ADTSalineChemistryBottle
+        - id: BruteAutoInjector
+        - id: BurnAutoInjector
+
+- type: entity
+  id: ADTClothingWarBeltEngineerERTFilled
+  parent: ADTShipBattleClothingBeltWarbelt
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: PowerDrill
+        - id: JawsOfLife
+        - id: WelderExperimental
+        - id: Multitool
+        - id: HolofanProjector
+        - id: GasAnalyzer
+        - id: trayScanner
+
+- type: entity
+  id: ADTClothingWarBeltJanitorERTFilled
+  parent: ADTShipBattleClothingBeltWarbelt
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: SoapNT
+        - id: SprayBottleSpaceCleaner
+          amount: 3
+        - id: CleanerGrenade
+          amount: 2
+        - id: FlashlightLantern
+        - id: LightReplacer
+        - id: WireBrush

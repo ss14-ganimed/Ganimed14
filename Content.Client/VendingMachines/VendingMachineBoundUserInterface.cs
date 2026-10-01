@@ -3,7 +3,6 @@ using Content.Client.UserInterface.Controls;
 using Content.Client.VendingMachines.UI;
 using Content.Shared.VendingMachines;
 using Robust.Client.UserInterface;
-using Robust.Shared.Input;
 using System.Linq;
 
 namespace Content.Client.VendingMachines
@@ -73,31 +72,20 @@ namespace Content.Client.VendingMachines
             _menu?.Populate(Owner, _cachedInventory, newState.PriceMultiplier, newState.Credits); //ADT-Economy-Tweak
         }
 
-        private void OnItemSelected(VendingMachineInventoryEntry entry)
+        protected override void ReceiveMessage(BoundUserInterfaceMessage message)
         {
-            SendPredictedMessage(new VendingMachineEjectCountMessage(entry, 1));
+            base.ReceiveMessage(message);
+
+            if (message is VendingMachineUserInfoMessage info)
+                _menu?.SetUserInfo(info.Balance, info.IgnoreBalance); // ADT-Tweak
+        }
+
+        private void OnItemSelected(VendingMachineInventoryEntry entry, int count, Color? paintColor) // ADT-tweak
+        {
+            SendPredictedMessage(new VendingMachineEjectCountMessage(entry, count, paintColor)); // ADT-tweak
         }
 
         // END-ADT-TWEAK
-
-        private void OnItemSelected(GUIBoundKeyEventArgs args, ListData data)
-        {
-            if (args.Function != EngineKeyFunctions.UIClick)
-                return;
-
-            if (data is not VendorItemsListData { ItemIndex: var itemIndex })
-                return;
-
-            if (_cachedInventory.Count == 0)
-                return;
-
-            var selectedItem = _cachedInventory.ElementAtOrDefault(itemIndex);
-
-            if (selectedItem == null)
-                return;
-
-            SendPredictedMessage(new VendingMachineEjectMessage(selectedItem.Type, selectedItem.ID));
-        }
 
         protected override void Dispose(bool disposing)
         {

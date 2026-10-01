@@ -48,7 +48,7 @@
         enum.ToggleableVisuals.Layer:
           True: { visible: true }
           False: { visible: false }
-  - type: ToggleableLightVisuals
+  - type: ToggleableVisuals
     spriteLayer: light
     inhandVisuals:
       left:

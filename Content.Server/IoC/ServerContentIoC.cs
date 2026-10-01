@@ -2,6 +2,7 @@ using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Notes;
+using Content.Server.ADT.Antag;
 using Content.Server.ADT.Discord.Bans;
 using Content.Server.ADT.Export;
 using Content.Server.Afk;
@@ -9,13 +10,16 @@ using Content.Server.Chat.Managers;
 using Content.Server.Connection;
 using Content.Server.Corvax.DiscordAuth;
 using Content.Server.Corvax.JoinQueue;
+using Content.Server.ADT.Sponsors;
 using Content.Server.Corvax.Sponsors;
-using Content.Server.Corvax.TTS;
+using Content.Shared.ADT.Sponsors;
+using Content.Server.ADT.TTS;
 using Content.Server.Database;
 using Content.Server.Discord;
 using Content.Server.Discord.DiscordLink;
 using Content.Server.Discord.WebhookMessages;
 using Content.Server.EUI;
+using Content.Server.FeedbackSystem;
 using Content.Server.GhostKick;
 using Content.Server.Info;
 using Content.Server.Mapping;
@@ -28,10 +32,10 @@ using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
 using Content.Server.Voting.Managers;
-using Content.Server.Worldgen.Tools;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Chat;
+using Content.Shared.FeedbackSystem;
 using Content.Shared.IoC;
 using Content.Shared.Kitchen;
 using Content.Shared.Players.PlayTimeTracking;
@@ -71,7 +75,7 @@ internal static class ServerContentIoC
         deps.Register<PlayTimeTrackingManager>();
         deps.Register<UserDbDataManager>();
         deps.Register<ServerInfoManager>();
-        deps.Register<PoissonDiskSampler>();
+        // deps.Register<PoissonDiskSampler>(); // ADT-Tweak-Fix
         deps.Register<DiscordWebhook>();
         deps.Register<VoteWebhooks>();
         deps.Register<ServerDbEntryManager>();
@@ -88,11 +92,18 @@ internal static class ServerContentIoC
         deps.Register<CVarControlManager>();
         deps.Register<DiscordLink>();
         deps.Register<DiscordChatLink>();
-        IoCManager.Register<TTSManager>(); // Corvax-TTS
+        IoCManager.Register<TTSManager>(); // ADT-Tweak
         IoCManager.Register<IDiscordBanInfoSender, DiscordBanInfoSender>(); //ADT Tweak: логи банов для диса
         IoCManager.Register<ExportManager>(); // ADT Export
         IoCManager.Register<ServerDiscordIdManager>(); // ADT Discord
+        IoCManager.Register<AntagRollBonusManager>(); // ADT Antag roll bonus
         IoCManager.Register<SponsorsManager>(); // Corvax-Sponsors
+        // ADT-Tweak-Start
+        IoCManager.Register<SponsorManager>();
+        IoCManager.Register<ISharedSponsorManager, SponsorManager>();
+        // ADT-Tweak-End
         IoCManager.Register<JoinQueueManager>(); // Corvax-Queue
+        deps.Register<ServerFeedbackManager>();
+        deps.Register<ISharedFeedbackManager, ServerFeedbackManager>();
     }
 }

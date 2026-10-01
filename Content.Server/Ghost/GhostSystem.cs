@@ -2,11 +2,17 @@ using System.Linq;
 using System.Numerics;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
-using Content.Server.Database;
 using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Server.Preferences.Managers;
+using Content.Server.Roles;
 using Content.Server.Roles.Jobs;
+using Content.Server.StationRecords.Systems;
+using Content.Shared.Access.Systems;
+using Content.Shared.ADT.Ghost;
+using Content.Shared.ADT.Ghost.GhostTypes;
+using Content.Shared.ADT.CustomGhostSystem;
+using Content.Shared.ADT.Roles;
 using Content.Shared.Actions;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
@@ -14,15 +20,18 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
-using Content.Shared.ADT.Poltergeist;
-using Content.Shared.Examine;
 using Content.Shared.Eye;
-using Content.Shared.Preferences;
 using Content.Shared.FixedPoint;
 using Content.Shared.Follower;
+using Content.Shared.DisplacementMap;
 using Content.Shared.Ghost;
-using Content.Shared.Mind;
+using Content.Shared.GhostTypes;
+using Content.Shared.Humanoid;
+using Content.Shared.Humanoid.Markings;
+using Content.Shared.Interaction.Components;
+using Content.Shared.Inventory;
 using Content.Shared.Medical.SuitSensors;
+using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -31,26 +40,22 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Popups;
+using Content.Shared.Roles;
+using Content.Shared.SSDIndicator;
+using Content.Shared.StationRecords;
+using Content.Shared.StatusIcon;
 using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Content.Shared.Warps;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
-using Content.Server.ADT.OnGhostAttemtpDamage;
-using Content.Shared.ADT.Ghost;
-using Content.Shared.Humanoid;
-using Content.Server.Humanoid;
-using Content.Server.Medical.SuitSensors;
-using Content.Shared.Inventory;
-using Content.Shared.Interaction.Components;
-
 
 namespace Content.Server.Ghost
 {
@@ -60,7 +65,6 @@ namespace Content.Server.Ghost
         [Dependency] private readonly IAdminLogManager _adminLog = default!;
         [Dependency] private readonly SharedEyeSystem _eye = default!;
         [Dependency] private readonly FollowerSystem _followerSystem = default!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly JobSystem _jobs = default!;
         [Dependency] private readonly EntityLookupSystem _lookup = default!;
         [Dependency] private readonly MindSystem _minds = default!;
@@ -81,17 +85,19 @@ namespace Content.Server.Ghost
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly TagSystem _tag = default!;
         [Dependency] private readonly NameModifierSystem _nameMod = default!;
-        //ADT tweak Start
-        [Dependency] private readonly UserDbDataManager _userDb = default!;
+        [Dependency] private readonly GhostSpriteStateSystem _ghostState = default!;
         [Dependency] private readonly InventorySystem _inventory = default!;
-        [Dependency] private readonly HumanoidAppearanceSystem _humanoidSystem = default!;
-        //ADT tweak End
+        [Dependency] private readonly SharedIdCardSystem _idCard = default!; // ADT-TWEAK
+        [Dependency] private readonly StationRecordsSystem _records = default!; // ADT-TWEAK
+        [Dependency] private readonly HumanoidProfileSystem _humanoidProfile = default!;
+        [Dependency] private readonly StoreBodyAppearanceOnMindSystem _bodyAppearance = default!;
 
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
 
         private static readonly ProtoId<TagPrototype> AllowGhostShownByEventTag = "AllowGhostShownByEvent";
         private static readonly ProtoId<DamageTypePrototype> AsphyxiationDamageType = "Asphyxiation";
+        public static readonly Color AntagonistButtonColor = Color.FromHex("#7F4141"); // ADT-TWEAK
 
         public override void Initialize()
         {
@@ -104,12 +110,9 @@ namespace Content.Server.Ghost
             SubscribeLocalEvent<GhostComponent, MapInitEvent>(OnMapInit);
             SubscribeLocalEvent<GhostComponent, ComponentShutdown>(OnGhostShutdown);
 
-            SubscribeLocalEvent<GhostComponent, ExaminedEvent>(OnGhostExamine);
-
             SubscribeLocalEvent<GhostComponent, MindRemovedMessage>(OnMindRemovedMessage);
             SubscribeLocalEvent<GhostComponent, MindUnvisitedMessage>(OnMindUnvisitedMessage);
             SubscribeLocalEvent<GhostComponent, PlayerDetachedEvent>(OnPlayerDetached);
-            SubscribeLocalEvent<GhostComponent, PlayerAttachedEvent>(OnPlayerAttached); //ADT tweak
 
             SubscribeLocalEvent<GhostOnMoveComponent, MoveInputEvent>(OnRelayMoveInput);
 
@@ -222,8 +225,10 @@ namespace Content.Server.Ghost
             }
 
             _eye.RefreshVisibilityMask(uid);
-            var time = _gameTiming.CurTime;
+            var time = _gameTiming.RealTime;
             component.TimeOfDeath = time;
+
+            Dirty(uid, component);
         }
 
         private void OnGhostShutdown(EntityUid uid, GhostComponent component, ComponentShutdown args)
@@ -254,16 +259,6 @@ namespace Content.Server.Ghost
             _actions.AddAction(uid, ref component.ToggleGhostsActionEntity, component.ToggleGhostsAction);
         }
 
-        private void OnGhostExamine(EntityUid uid, GhostComponent component, ExaminedEvent args)
-        {
-            var timeSinceDeath = _gameTiming.RealTime.Subtract(component.TimeOfDeath);
-            var deathTimeInfo = timeSinceDeath.Minutes > 0
-                ? Loc.GetString("comp-ghost-examine-time-minutes", ("minutes", timeSinceDeath.Minutes))
-                : Loc.GetString("comp-ghost-examine-time-seconds", ("seconds", timeSinceDeath.Seconds));
-
-            args.PushMarkup(deathTimeInfo);
-        }
-
         #region Ghost Deletion
 
         private void OnMindRemovedMessage(EntityUid uid, GhostComponent component, MindRemovedMessage args)
@@ -278,76 +273,8 @@ namespace Content.Server.Ghost
 
         private void OnPlayerDetached(EntityUid uid, GhostComponent component, PlayerDetachedEvent args)
         {
-            QueueDel(uid); // ADT tweak
+            DeleteEntity(uid);
         }
-
-        // ADT tweak start
-        private void OnPlayerAttached(EntityUid uid, GhostComponent component, PlayerAttachedEvent args)
-        {
-            if (!TryComp(uid, out HumanoidAppearanceComponent? humanoid) || !string.IsNullOrEmpty(humanoid.Initial))
-                return;
-
-            var player = args.Player;
-
-            if (!_userDb.IsLoadComplete(player))
-            {
-                ApplyAfterDb();
-                return;
-
-                async void ApplyAfterDb()
-                {
-                    try
-                    {
-                        await _userDb.WaitLoadComplete(player);
-
-                        if (Deleted(uid) || Terminating(uid))
-                            return;
-
-                        var profile = _gameTicker.GetPlayerProfile(player);
-                        _humanoidSystem.LoadProfile(uid, profile, humanoid);
-                        GiveClothesToGhost(uid, component, profile);
-                    }
-                    catch (Exception e)
-                    {
-                        Log.Error($"Load of ghost preferences failed (delayed): {e}");
-                    }
-                }
-            }
-            else
-            {
-                try
-                {
-                    var profile = _gameTicker.GetPlayerProfile(player);
-                    _humanoidSystem.LoadProfile(uid, profile, humanoid);
-                    GiveClothesToGhost(uid, component, profile);
-                }
-                catch (Exception e)
-                {
-                    Log.Error($"Load of ghost preferences failed: {e}");
-                }
-            }
-        }
-
-        private void GiveClothesToGhost(EntityUid uid, GhostComponent component, HumanoidCharacterProfile profile)
-        {
-            if (component.AvailableClothing == null)
-                return;
-
-            var mob = Spawn(_prototypeManager.Index(profile.Species).Prototype);
-            if (TryComp<InventoryComponent>(mob, out var inv) && TryComp<InventoryComponent>(uid, out var ghostInv))
-            {
-                ghostInv.Displacements = inv.Displacements;
-                DirtyField(uid, ghostInv, nameof(InventoryComponent.Displacements));
-            }
-            QueueDel(mob);
-
-            var clothing = Spawn(_random.Pick(component.AvailableClothing));
-            RemComp<SuitSensorComponent>(clothing);
-            EnsureComp<UnremoveableComponent>(clothing);
-            if (!_inventory.TryEquip(uid, clothing, "jumpsuit", true, true))
-                QueueDel(clothing);
-        }
-        // ADT tweak end
 
         private void DeleteEntity(EntityUid uid)
         {
@@ -384,7 +311,11 @@ namespace Content.Server.Ghost
                 return;
             }
 
-            var response = new GhostWarpsResponseEvent(GetPlayerWarps(entity).Concat(GetLocationWarps()).ToList());
+            // ADT-TWEAK start
+            var mindContainers = GetMindContainersWarps();
+            var places = GetLocationWarps();
+            var response = new GhostWarpsResponseEvent(mindContainers.Concat(places).ToList());
+            // ADT-TWEAK end
             RaiseNetworkEvent(response, args.SenderSession.Channel);
         }
 
@@ -398,13 +329,16 @@ namespace Content.Server.Ghost
             }
 
             var target = GetEntity(msg.Target);
-            if (HasComp<HideGhostWarpComponent>(target)) return;    // ADT TWEAK: НАХЕР ГОСТОВ ЗАЕБАЛИ,
-                                                                    // не сможет тепнуться к нему так как вышли из функции
-                                                                    // если цель "target" имеет HideGhostWarp Comp
 
             if (!Exists(target))
             {
                 Log.Warning($"User {args.SenderSession.Name} tried to warp to an invalid entity id: {msg.Target}");
+                return;
+            }
+
+            if (IsHiddenFromGhostWarps(target) || !IsValidWarpTarget(target))
+            {
+                Log.Warning($"User {args.SenderSession.Name} tried to warp to an invalid/hidden target: {ToPrettyString(target)}");
                 return;
             }
 
@@ -413,14 +347,14 @@ namespace Content.Server.Ghost
 
         private void OnGhostnadoRequest(GhostnadoRequestEvent msg, EntitySessionEventArgs args)
         {
-            if (args.SenderSession.AttachedEntity is not {} uid
+            if (args.SenderSession.AttachedEntity is not { Valid: true } uid
                 || !_ghostQuery.HasComp(uid))
             {
                 Log.Warning($"User {args.SenderSession.Name} tried to ghostnado without being a ghost.");
                 return;
             }
 
-            if (_followerSystem.GetMostGhostFollowed() is not {} target)
+            if (_followerSystem.GetMostGhostFollowed() is not { } target)
                 return;
 
             // If there is a ghostnado happening you almost definitely wanna join it, so we automatically follow instead of just warping.
@@ -444,38 +378,191 @@ namespace Content.Server.Ghost
                 _physics.SetLinearVelocity(uid, Vector2.Zero, body: physics);
         }
 
-        private IEnumerable<GhostWarp> GetLocationWarps()
+        // ADT-TWEAK START
+        private List<GhostWarp> GetMindContainersWarps()
         {
+            var warps = new List<GhostWarp>();
+
+            var query = EntityQueryEnumerator<MindContainerComponent>();
+
+            while (query.MoveNext(out var entity, out var mindContainer))
+            {
+                if (IsHiddenFromGhostWarps(entity))
+                    continue;
+
+                if (!IsValidWarpTarget(entity))
+                    continue;
+
+                if (TryComp<GhostComponent>(entity, out var ghostComp) && ghostComp.CanGhostInteract)
+                    continue;
+
+                var addedWarp = false;
+
+                TryComp<RoleCacheComponent>(entity, out var roleCacheComponent);
+
+                ProtoId<JobPrototype>? jobId = null;
+                DepartmentPrototype? cardDepartment = null;
+                string? cardJobName = null;
+
+                if (_idCard.TryFindIdCard(entity, out var idCard))
+                {
+                    jobId = idCard.Comp.JobPrototype;
+
+                    if (jobId is null
+                        && TryComp<StationRecordKeyStorageComponent>(idCard, out var keyStorage)
+                        && keyStorage.Key is { } key
+                        && _records.TryGetRecord<GeneralStationRecord>(key, out var record))
+                        jobId = record.JobPrototype;
+
+                    jobId ??= roleCacheComponent?.LastJobPrototype;
+
+                    foreach (var departmentId in idCard.Comp.JobDepartments)
+                    {
+                        if (_prototypeManager.TryIndex(departmentId, out var department) &&
+                            (cardDepartment == null || department.Weight > cardDepartment.Weight))
+                            cardDepartment = department;
+                    }
+
+                    if (_prototypeManager.TryIndex(idCard.Comp.JobIcon, out JobIconPrototype? jobIcon))
+                        cardJobName = jobIcon.LocalizedJobName;
+                }
+
+                if (jobId is { } job &&
+                    _prototypeManager.TryIndex(job, out var jobPrototype) &&
+                    _jobs.TryGetLowestWeightDepartment(jobPrototype.ID, out var departmentPrototype))
+                {
+                    var departmentName = Loc.GetString($"department-{departmentPrototype.ID}");
+                    var jobName = Loc.GetString(jobPrototype.Name);
+                    var warp = SetupWarp(entity, mindContainer, departmentName, departmentPrototype.Color, jobName, departmentPrototype.Weight);
+                    warp.Group |= WarpGroup.Department;
+
+                    warps.Add(warp);
+                    addedWarp = true;
+                }
+                else if (cardDepartment != null)
+                {
+                    var departmentName = Loc.GetString($"department-{cardDepartment.ID}");
+                    var warp = SetupWarp(entity, mindContainer, departmentName, cardDepartment.Color, cardJobName, cardDepartment.Weight);
+                    warp.Group |= WarpGroup.Department;
+
+                    warps.Add(warp);
+                    addedWarp = true;
+                }
+
+                if (mindContainer.Mind != null &&
+                    roleCacheComponent is { IsAntag: true } &&
+                    GetVisibleAntagName(entity, roleCacheComponent) is { } antagName)
+                {
+                    var warp = SetupWarp(entity, mindContainer, antagName, AntagonistButtonColor, null);
+                    warp.Group |= WarpGroup.Antag;
+
+                    warps.Add(warp);
+                    addedWarp = true;
+                }
+
+                if (!addedWarp)
+                {
+                    var warp = SetupWarp(entity, mindContainer, Loc.GetString("game-ticker-unknown-role"), null, null);
+                    warp.Group |= WarpGroup.Other;
+
+                    warps.Add(warp);
+                }
+            }
+
+            return warps;
+        }
+
+        private string? GetVisibleAntagName(EntityUid entity, RoleCacheComponent roleCache)
+        {
+            if (roleCache.VisibleAntagName is { } cached)
+                return cached;
+
+            if (TryComp<GhostVisibleAntagComponent>(entity, out var visible) && visible.Name is { } loc)
+                return Loc.GetString(loc);
+
+            return null;
+        }
+
+        private GhostWarp SetupWarp(EntityUid entity, MindContainerComponent mindContainer, string subGroup, Color? color, string? description, int departmentWeight = 0)
+        {
+            var hasAnyMind = mindContainer.Mind != null;
+            var isDead = _mobState.IsDead(entity);
+            var isLeft = TryComp<SSDIndicatorComponent>(entity, out var indicator) && indicator.IsSSD && !isDead &&
+                hasAnyMind;
+
+            var metadata = Comp<MetaDataComponent>(entity);
+
+            if (!string.IsNullOrEmpty(description))
+            {
+                try
+                {
+                    var localizedDesc = Loc.GetString(description);
+                    if (localizedDesc != description)
+                        description = localizedDesc;
+                }
+                catch
+                {
+
+                }
+            }
+
+            if (string.IsNullOrEmpty(description))
+                description = metadata.EntityDescription;
+
+            var warp = new GhostWarp(GetNetEntity(entity), metadata.EntityName, subGroup, description, color, departmentWeight);
+
+            if(isLeft)
+                warp.Group |= WarpGroup.Left;
+
+            if(HasComp<GhostComponent>(entity))
+            {
+                warp.Group |= WarpGroup.Ghost;
+            }
+            else
+            {
+                if(isDead)
+                    warp.Group |= WarpGroup.Dead;
+                else
+                    warp.Group |= WarpGroup.Alive;
+            }
+
+            warp.HasMind = hasAnyMind;
+
+            return warp;
+        }
+
+        private List<GhostWarp> GetLocationWarps()
+        {
+            var warps = new List<GhostWarp>();
             var allQuery = AllEntityQuery<WarpPointComponent>();
 
             while (allQuery.MoveNext(out var uid, out var warp))
             {
-                yield return new GhostWarp(GetNetEntity(uid), warp.Location ?? Name(uid), true);
-            }
-        }
-
-        private IEnumerable<GhostWarp> GetPlayerWarps(EntityUid except)
-        {
-            foreach (var player in _player.Sessions)
-            {
-                if (player.AttachedEntity is not {Valid: true} attached)
+                if (IsHiddenFromGhostWarps(uid) || !IsValidWarpTarget(uid))
                     continue;
 
-                if (attached == except) continue;
-
-                if (HasComp<HideGhostWarpComponent>(attached)) continue;    // ADT TWEAK: НАХЕР ГОСТОВ ЗАЕБАЛИ,
-                                                                            // не сможет тепнуться к нему так как вышли из функции
-                                                                            // если цель "attached" имеет HideGhostWarp Comp
-
-                TryComp<MindContainerComponent>(attached, out var mind);
-
-                var jobName = _jobs.MindTryGetJobName(mind?.Mind);
-                var playerInfo = $"{Comp<MetaDataComponent>(attached).EntityName} ({jobName})";
-
-                if (_mobState.IsAlive(attached) || _mobState.IsCritical(attached))
-                    yield return new GhostWarp(GetNetEntity(attached), playerInfo, false);
+                var newWarp = new GhostWarp(GetNetEntity(uid), warp.Location ?? Name(uid), "", Description(uid), null);
+                warps.Add(newWarp);
             }
+
+            return warps;
         }
+
+        private bool IsValidWarpTarget(EntityUid entity)
+        {
+            var transform = Transform(entity);
+            if (transform.MapID == MapId.Nullspace)
+                return false;
+
+            return true;
+        }
+
+        private bool IsHiddenFromGhostWarps(EntityUid entity)
+        {
+            return _tag.HasTag(entity, "HideFromGhostWarps");
+        }
+
+        // ADT-TWEAK END
 
         #endregion
 
@@ -529,6 +616,7 @@ namespace Content.Server.Ghost
         public EntityUid? SpawnGhost(Entity<MindComponent?> mind, EntityUid targetEntity,
             bool canReturn = false)
         {
+            _bodyAppearance.CapAppearance(targetEntity, mind.Owner); // ADT Tweak
             _transformSystem.TryGetMapOrGridCoordinates(targetEntity, out var spawnPosition);
             return SpawnGhost(mind, spawnPosition, canReturn);
         }
@@ -550,31 +638,8 @@ namespace Content.Server.Ghost
             return true;
         }
 
-        // ADT-tweak-start: Добавлена обработка ошибок при создании призрака
         public EntityUid? SpawnGhost(Entity<MindComponent?> mind, EntityCoordinates? spawnPosition = null,
             bool canReturn = false)
-        {
-            try
-            {
-                return SpawnGhostInternal(mind, spawnPosition, canReturn);
-            }
-            catch (Exception ex)
-            {
-                Log.Warning($"Failed to spawn ghost for mind {mind.Owner}: {ex.Message}");
-                
-                // Попытка трансфера без создания призрака
-                if (Resolve(mind, ref mind.Comp))
-                {
-                    _minds.TransferTo(mind.Owner, null, createGhost: false, mind: mind.Comp);
-                }
-                
-                return null;
-            }
-        }
-
-        private EntityUid? SpawnGhostInternal(Entity<MindComponent?> mind, EntityCoordinates? spawnPosition = null,
-            bool canReturn = false)
-        // ADT-tweak-end
         {
             if (!Resolve(mind, ref mind.Comp))
                 return null;
@@ -594,17 +659,19 @@ namespace Content.Server.Ghost
                 _minds.TransferTo(mind.Owner, null, createGhost: false, mind: mind.Comp);
                 return null;
             }
-            // ADT Poltergeist start
-            if (HasComp<PotentialPoltergeistComponent>(mind.Comp.OwnedEntity))
-            {
-                var polter = SpawnAtPosition("ADTMobPoltergeist", spawnPosition.Value);
-                _minds.TransferTo(mind.Owner, polter, mind: mind.Comp);
-                return polter;
-            }
-            // ADT Poltergeist end
 
             var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
             var ghostComponent = Comp<GhostComponent>(ghost);
+
+            if (TryComp<GhostSpriteStateComponent>(ghost, out var state))  // If more TryComps are added this should be turned into an event
+            {
+                _ghostState.SetGhostSprite((ghost, state), mind);
+            }
+
+            // ADT Tweak Start 
+            ApplyBodyAppearance(ghost, mind.Owner);
+            GiveGhostClothes(ghost, ghostComponent);
+            // ADT Tweak End
 
             // Try setting the ghost entity name to either the character name or the player name.
             // If all else fails, it'll default to the default entity prototype name, "observer".
@@ -632,6 +699,50 @@ namespace Content.Server.Ghost
             _nameMod.RefreshNameModifiers(ghost);
             return ghost;
         }
+
+        // ADT Tweak Start
+        public void ApplyBodyAppearance(EntityUid ghost, EntityUid mind)
+        {
+            if (!TryComp<GhostBodyAppearanceComponent>(mind, out var bodyAppearance))
+                return;
+
+            var ghostAppearance = EnsureComp<GhostBodyAppearanceComponent>(ghost);
+            ghostAppearance.Layers = new Dictionary<HumanoidVisualLayers, PrototypeLayerData>(bodyAppearance.Layers);
+            ghostAppearance.Markings = new Dictionary<HumanoidVisualLayers, List<Marking>>(bodyAppearance.Markings);
+            ghostAppearance.Sex = bodyAppearance.Sex;
+            Dirty(ghost, ghostAppearance);
+
+            if (TryComp<HumanoidProfileComponent>(ghost, out var profile))
+                _humanoidProfile.SetSex((ghost, profile), bodyAppearance.Sex);
+
+            if (TryComp<InventoryComponent>(ghost, out var ghostInventory))
+            {
+                ghostInventory.Displacements = new Dictionary<string, DisplacementData>(bodyAppearance.Displacements);
+                ghostInventory.FemaleDisplacements = new Dictionary<string, DisplacementData>(bodyAppearance.FemaleDisplacements);
+                ghostInventory.MaleDisplacements = new Dictionary<string, DisplacementData>(bodyAppearance.MaleDisplacements);
+                Dirty(ghost, ghostInventory);
+            }
+        }
+
+        public void GiveGhostClothes(EntityUid ghost, GhostComponent component)
+        {
+            if (component.AvailableClothing is not { Count: > 0 } clothing)
+                return;
+
+            foreach (var (slot, pool) in clothing)
+            {
+                if (pool.Count == 0)
+                    continue;
+
+                var item = Spawn(_random.Pick(pool));
+                RemComp<SuitSensorComponent>(item);
+                EnsureComp<UnremoveableComponent>(item);
+
+                if (!_inventory.TryEquip(ghost, item, slot, true, true))
+                    QueueDel(item);
+            }
+        }
+        // ADT Tweak End
 
         public bool OnGhostAttempt(EntityUid mindId, bool canReturnGlobal, bool viaCommand = false, bool forced = false, MindComponent? mind = null)
         {
@@ -708,23 +819,23 @@ namespace Content.Server.Ghost
                         && TryComp<MobThresholdsComponent>(playerEntity, out var thresholds))
                     {
                         var playerDeadThreshold = _mobThresholdSystem.GetThresholdForState(playerEntity.Value, MobState.Dead, thresholds);
-                        dealtDamage = playerDeadThreshold - damageable.TotalDamage;
+                        dealtDamage = playerDeadThreshold -
+                                      _damageable.GetTotalDamage((playerEntity.Value, damageable));
                     }
 
                     DamageSpecifier damage = new(_prototypeManager.Index(AsphyxiationDamageType), dealtDamage);
 
-                    // START-ADT-TWeak: Это блять ебучий щиткод для ХорниМух, Котька не кусай меня пожажуста >~<
-                    if (TryComp<OnGhostAttemtpDamageComponent>(playerEntity, out var damageComp))
-                    {
-                        damage = new(_prototypeManager.Index<DamageTypePrototype>(damageComp.BloodlossDamageType), dealtDamage);
-                    }
-                    // END-ADT-Tweak
                     _damageable.ChangeDamage(playerEntity.Value, damage, true);
                 }
             }
 
             if (playerEntity != null)
                 _adminLog.Add(LogType.Mind, $"{ToPrettyString(playerEntity.Value):player} ghosted{(!canReturn ? " (non-returnable)" : "")}");
+
+            // ADT Tweak Start
+            if (playerEntity != null)
+                _bodyAppearance.CapAppearance(playerEntity.Value);
+            // ADT Tweak End
 
             var ghost = SpawnGhost((mindId, mind), position, canReturn);
 
