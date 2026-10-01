@@ -17,8 +17,10 @@
   components:
   - type: Action
     icon:
-      sprite: Objects/Tools/crowbar.rsi #заменить спрайт с монтировки на что то сносное
-      state: icon
+      # Ganimed-Edit-Start: mass-scanner icon instead of the placeholder crowbar sprite
+      sprite: Interface/Actions/actions_ai.rsi
+      state: mass_scanner
+      # Ganimed-Edit-End
     useDelay: 1
     checkCanInteract: false
   - type: InstantAction
