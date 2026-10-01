@@ -34,6 +34,7 @@ using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Shared.GameTicking;
+using Content.Shared.Examine; // Ganimed-Add
 
 namespace Content.Shared.Silicons.StationAi;
 
@@ -114,6 +115,8 @@ public abstract partial class SharedStationAiSystem : EntitySystem
 
         SubscribeLocalEvent<StationAiCoreComponent, BreakageEventArgs>(OnBroken);
         SubscribeLocalEvent<StationAiCoreComponent, RepairedEvent>(OnRepaired);
+
+        SubscribeLocalEvent<StationAiWhitelistComponent, ExaminedEvent>(OnExamined); // Ganimed-Add
     }
 
     private void OnCoreVerbs(Entity<StationAiCoreComponent> ent, ref GetVerbsEvent<Verb> args)
@@ -388,6 +391,13 @@ public abstract partial class SharedStationAiSystem : EntitySystem
         if (TryComp<AppearanceComponent>(ent, out var appearance))
             _appearance.SetData(ent, StationAiVisuals.Broken, false, appearance);
     }
+
+    // Ganimed-Add-Start
+    private void OnExamined(EntityUid uid, StationAiWhitelistComponent component, ExaminedEvent args)
+    {
+        args.PushMarkup(Loc.GetString("station-ai-whitelist-examine"));
+    }
+    // Ganimed-Add-End
 
     public virtual void KillHeldAi(Entity<StationAiCoreComponent> ent)
     {
