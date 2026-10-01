@@ -90,6 +90,7 @@
 
 - type: reagent
   id: Plasma
+  flammability: 3 # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
   name: reagent-name-plasma
   desc: reagent-desc-plasma
   physicalDesc: reagent-physical-desc-gaseous
@@ -209,6 +210,7 @@
 
 - type: reagent
   id: Tritium
+  flammability: 4 # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
   name: reagent-name-tritium
   desc: reagent-desc-tritium
   physicalDesc: reagent-physical-desc-ionizing
@@ -249,6 +251,7 @@
 
 - type: reagent
   id: CarbonDioxide
+  flammability: -30 # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
   name: reagent-name-carbon-dioxide
   desc: reagent-desc-carbon-dioxide
   physicalDesc: reagent-physical-desc-odorless
@@ -420,6 +423,7 @@
 
 - type: reagent
   id: Frezon
+  flammability: -50 # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
   name: reagent-name-frezon
   desc: reagent-desc-frezon
   physicalDesc: reagent-physical-desc-gaseous

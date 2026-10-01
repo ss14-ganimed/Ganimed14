@@ -8,6 +8,28 @@
     - outerClothing
   - type: Sprite
     state: icon
+  # Ganimed-Port-Start: стайны (funky-station/forky-station#107)
+  - type: Appearance
+  - type: Stainable
+    clothingVisuals:
+      outerClothing:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: outerclothing
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: outerclothing
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+      stain:
+        maxVol: 5
+  - type: StainBlocker
+    slots: [INNERCLOTHING]
+  # Ganimed-Port-End
 
 - type: entity
   abstract: true
@@ -27,6 +49,18 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: HeldSpeedModifier
+  # Ganimed-Port-Start: стайны (funky-station/forky-station#107)
+  - type: Stainable
+    clothingVisuals:
+      outerClothing:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: suitblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: suitbloodicon
+  - type: StainBlocker
+    slots: [INNERCLOTHING, FEET, GLOVES]
+  # Ganimed-Port-End
   # ADT-Tweak-Start
   - type: HidesSlots
     hidesSlots: [ INNERCLOTHING, GLOVES, LEGS, FEET, SOCKS, UNDERWEART, UNDERWEARB, POCKET ]
@@ -50,6 +84,15 @@
         type: StorageBoundUserInterface
   - type: StaticPrice
     price: 70
+  # Ganimed-Port: стайны (funky-station/forky-station#107)
+  - type: Stainable
+    clothingVisuals:
+      outerClothing:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: coatblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: coatbloodicon
 
 - type: entity
   abstract: true
@@ -71,6 +114,15 @@
     - state: icon-open
       map: ["foldedLayer"]
       visible: false
+  # Ganimed-Port: стайны (funky-station/forky-station#107)
+  - type: Stainable
+    clothingVisuals:
+      outerClothing:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: outerclothing
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: outerclothing
 
 - type: entity
   abstract: true
@@ -167,6 +219,9 @@
     equipDelay: 1
     unequipDelay: 1
   # Ganimed-Add-End
+  # Ganimed-Port: стайны (funky-station/forky-station#107)
+  - type: StainBlocker
+    slots: [INNERCLOTHING, FEET, GLOVES]
 
 - type: entity
   abstract: true
@@ -210,6 +265,9 @@
     equipDelay: 1
     unequipDelay: 1
   # Ganimed-Add-End
+  # Ganimed-Port: стайны (funky-station/forky-station#107)
+  - type: StainBlocker
+    slots: [INNERCLOTHING, FEET, GLOVES]
 
 - type: entity
   parent: ClothingOuterBase

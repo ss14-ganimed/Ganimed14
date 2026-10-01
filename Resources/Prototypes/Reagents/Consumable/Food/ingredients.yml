@@ -187,6 +187,7 @@
 
 - type: reagent
   id: Oil
+  flammability: 1 # Ganimed-Port: реагентные пожары (funky-station/forky-station#127)
   name: reagent-name-oil
   group: Foods
   desc: reagent-desc-oil
