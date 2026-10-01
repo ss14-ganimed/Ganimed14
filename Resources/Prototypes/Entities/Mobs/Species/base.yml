@@ -177,6 +177,7 @@
   - type: SSDIndicator
   - type: StandingState
   - type: Crawler
+  - type: InjuryEmotes # Ganimed-Add: pain screams and bloody coughing.
   - type: Dna
   - type: MindContainer
     showExamineInfo: true
@@ -312,8 +313,7 @@
     alternateState: Standing
   - type: StunVisuals
   # Start-ADT Tweak
-  - type: BloodCough
-    postingSayDamage: blood-cough
+  # Ganimed-Edit: legacy BloodCough replaced by shared InjuryEmotes from BaseMobSpecies.
   - type: TimeDespawnDamage
   # End-ADT Tweak
   # Ganimed-Add: мобы пачкаются в лужах и оставляют следы (Footstep/DragMark).

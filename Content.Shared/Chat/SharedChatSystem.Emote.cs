@@ -134,7 +134,7 @@ public abstract partial class SharedChatSystem
     /// <returns>True if emote sound was played.</returns>
     public bool TryPlayEmoteSound(EntityUid uid, EmoteSoundsPrototype? proto, EmotePrototype emote, AudioParams? audioParams = null)
     {
-        return TryPlayEmoteSound(uid, proto, emote.ID, audioParams);
+        return TryPlayEmoteSound(uid, proto, emote.SoundEmote?.Id ?? emote.ID, audioParams); // Ganimed-Edit: inherited voice sound.
     }
 
     /// <summary>
