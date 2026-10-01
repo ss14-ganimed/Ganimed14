@@ -26,7 +26,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Critical
+      120: Critical # Ganimed-Edit: full critical follows pre-crit at 100-119 damage.
       185: Dead
   - type: SizeAttributeWhitelist
     tall: true

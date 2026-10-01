@@ -5,6 +5,7 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Rotation;
+using Content.Shared._Ganimed.PreCrit; // Ganimed-Add: injury-related standing restriction.
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
@@ -157,6 +158,13 @@ public sealed class StandingStateSystem : EntitySystem
 
         if (standingState.Standing)
             return true;
+
+        // Ganimed-Add-Start: forced posture changes must not bypass pre-crit.
+        var preCritAttempt = new PreCritStandAttemptEvent();
+        RaiseLocalEvent(uid, ref preCritAttempt);
+        if (preCritAttempt.Cancelled)
+            return false;
+        // Ganimed-Add-End
 
         if (!force)
         {

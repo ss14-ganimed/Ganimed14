@@ -67,6 +67,5 @@
         Asphyxiation: -1.0
   - type: FireVisuals
     alternateState: Standing
-  - type: BloodCough
-    postingSayDamage: blood-cough
+  # Ganimed-Edit: legacy BloodCough replaced by shared InjuryEmotes from BaseMobSpecies.
   - type: TimeDespawnDamage
