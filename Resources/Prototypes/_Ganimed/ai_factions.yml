@@ -1,0 +1,26 @@
+- type: npcFaction
+  id: BloodWorm
+  hostile:
+  - NanoTrasen
+  - Syndicate
+  - Xeno
+  - Zombie
+  - Revolutionary
+  - Dragon
+  - Wizard
+  - Xenoborg
+  - Heretic
+  - DroneAntag
+  - Ursus
+  - ADTSpaceMobs
+  - SpaceSecFaction
+  - Pirate
+  - KMT
+  - TSF
+  - Conspirator
+  - Mouse
+  - PetsNT
+  - Passive
+  - SimpleNeutral
+  - SimpleHostile
+  - AllHostile

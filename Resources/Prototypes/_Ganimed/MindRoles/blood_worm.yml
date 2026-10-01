@@ -1,0 +1,11 @@
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleBloodWorm
+  name: Blood Worm Role
+  components:
+  - type: MindRole
+    antagPrototype: BloodWorm
+    roleType: TeamAntagonist
+    exclusiveAntag: true
+    subtype: role-subtype-blood-worm
+  - type: BloodWormRole

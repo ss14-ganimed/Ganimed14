@@ -1,0 +1,14 @@
+action-name-blood-worm-leech = Высасывать кровь
+action-description-blood-worm-leech = Впейтесь в цель и непрерывно высасывайте кровь, пока действие не прервется.
+action-name-blood-worm-invade = Захватить труп
+action-description-blood-worm-invade = Проникните в мертвое гуманоидное тело и возьмите его под контроль.
+action-name-blood-worm-spit = Плюнуть кровью
+action-description-blood-worm-spit = Выплюньте едкую кровь в цель, тратя запас крови.
+action-name-blood-worm-mature = Созреть
+action-description-blood-worm-mature = Мгновенно сформируйте кокон и вылупитесь в следующую стадию через 30 секунд.
+action-name-blood-worm-leave-host = Покинуть носителя
+action-description-blood-worm-leave-host = С силой вырвитесь из тела носителя.
+action-name-blood-worm-heal-host = Исцелить носителя
+action-description-blood-worm-heal-host = Потратьте поглощенную кровь, чтобы исцелить тело носителя на 65 урона.
+action-name-blood-worm-revive-host = Воскресить носителя
+action-description-blood-worm-revive-host = Верните тело носителя к жизни и восстановите до 150 суммарного урона.

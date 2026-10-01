@@ -1,0 +1,67 @@
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseBloodWormObjective
+  components:
+  - type: Objective
+    issuer: objective-issuer-blood-worm
+  - type: RoleRequirement
+    roles:
+    - BloodWormRole
+
+- type: entity
+  parent: BaseBloodWormObjective
+  id: BloodWormGrowthObjective
+  components:
+  - type: Objective
+    difficulty: 1.8
+    unique: true
+    icon:
+      sprite: _Ganimed/Interface/Actions/blood_worm.rsi
+      state: leech_blood
+  - type: BloodWormGrowthCondition
+    minTargetConsumedBlood: 6000
+    maxTargetConsumedBlood: 10000
+
+- type: entity
+  parent: BaseBloodWormObjective
+  id: BloodWormTeamEscapeObjective
+  components:
+  - type: Objective
+    difficulty: 1.6
+    unique: true
+    icon:
+      sprite: Structures/Furniture/chairs.rsi
+      state: shuttle
+  - type: BloodWormTeamEscapeCondition
+    requiredEscaped: 3
+
+- type: entity
+  parent: BaseBloodWormObjective
+  id: BloodWormReproductionObjective
+  components:
+  - type: Objective
+    difficulty: 1.7
+    unique: true
+    icon:
+      sprite: _Ganimed/Mobs/Aliens/Blood_Worms/blood_worm_cocoon.rsi
+      state: reproduce
+  - type: BloodWormReproductionCondition
+    requiredWormCount: 6
+
+- type: entity
+  parent: BaseBloodWormObjective
+  id: BloodWormCommandHostEscapeObjective
+  components:
+  - type: Objective
+    difficulty: 2.1
+    unique: true
+    icon:
+      sprite: Objects/Misc/id_cards.rsi
+      state: gold
+  - type: BloodWormTeamEscapeCondition
+    requiredEscaped: 1
+    requireHostedBody: true
+    requireCommandHost: true
+    title: objective-blood-worm-command-host-escape-title
+    description: objective-blood-worm-command-host-escape-description

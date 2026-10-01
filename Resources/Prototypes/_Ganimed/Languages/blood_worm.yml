@@ -1,0 +1,16 @@
+- type: language
+  id: BloodWorm
+  uiColor: "#8f0000"
+  parent: BaseVocalLanguage
+  speech: !type:Generic
+    color: "#c40000"
+    whisperColor: "#8f0000"
+    font: Blackcraft
+    fontSize: 14
+    replacement:
+    - крр
+    - шрр
+    - глр
+    - сср
+    - дрр
+    - врр
