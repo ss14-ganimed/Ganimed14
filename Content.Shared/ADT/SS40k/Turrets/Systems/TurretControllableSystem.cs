@@ -4,8 +4,10 @@ using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.ADT.SS40k.Turrets.Components;
+using Content.Shared.ADT.Language; // Ganimed-Add
 using Content.Shared.Movement.Events;
 using Content.Shared.Destructible;
+using Content.Shared.UserInterface; // Ganimed-Add
 
 namespace Content.Shared.ADT.SS40k.Turrets.Systems;
 
@@ -15,6 +17,10 @@ public sealed class TurretControllableSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
+    [Dependency] private readonly SharedUserInterfaceSystem _uiSystem = default!; // Ganimed-Add
+
+    // Ganimed-Add: язык, на котором орудие понимает и говорит снаружи
+    private const string GalacticCommonLanguage = "GalacticCommon"; // Ganimed-Add
 
     public override void Initialize()
     {
@@ -25,17 +31,42 @@ public sealed class TurretControllableSystem : EntitySystem
         SubscribeLocalEvent<TurretControllableComponent, ControlReturnActionEvent>(OnReturn);//акшон возврата
         SubscribeLocalEvent<TurretControllableComponent, GettingControlledEvent>(OnGettingControlled);//сохраняем
         SubscribeLocalEvent<TurretControllableComponent, MoveInputEvent>(OnUserMoveInput);
+        // Ganimed-Add-Start: кнопка сканера массы и понимание внешней речи орудием
+        SubscribeLocalEvent<TurretControllableComponent, ToggleIntrinsicUIEvent>(OnToggleIntrinsicUi); // Ganimed-Add: кнопка сканера массы
     }
+
+    // Ganimed-Add: открывает/закрывает интерфейс сканера массы для пилота, сидящего в орудии
+    private void OnToggleIntrinsicUi(EntityUid uid, TurretControllableComponent component, ToggleIntrinsicUIEvent args)
+    {
+        if (args.Handled || args.Key == null)
+            return;
+
+        args.Handled = _uiSystem.TryToggleUi(uid, args.Key, uid);
+    }
+
+    // Ganimed-Add: орудие-«пульт» должно понимать и говорить по Общегалактическому,
+    // иначе для пилота внутри орудия внешняя речь приходит как нечитаемый бессмысленный набор звуков.
+    private void EnsureGalacticCommon(EntityUid uid)
+    {
+        var lang = EnsureComp<LanguageSpeakerComponent>(uid);
+        lang.Languages.TryAdd(GalacticCommonLanguage, LanguageKnowledge.Speak);
+        lang.CurrentLanguage ??= GalacticCommonLanguage;
+        Dirty(uid, lang);
+    }
+    // Ganimed-Add-End
+
     private void OnDestruction(EntityUid uid, TurretControllableComponent component, DestructionEventArgs args)
     {
         Return(uid, component);
 
         _actionsSystem.RemoveAction(component.ControlReturnActEntity);
+        _actionsSystem.RemoveAction(component.ShowRadarActionEntity); // Ganimed-Add
     }
     public void OnGettingControlled(EntityUid uid, TurretControllableComponent component, GettingControlledEvent args)
     {
         component.User = args.User;
         component.Controller = args.Controller;
+        EnsureGalacticCommon(uid); // Ganimed-Add: понимание Общегалактического, пока игрок внутри
     }
 
     public void OnReturn(EntityUid uid, TurretControllableComponent component, ControlReturnActionEvent args)
@@ -63,6 +94,8 @@ public sealed class TurretControllableSystem : EntitySystem
     public void OnStartup(EntityUid uid, TurretControllableComponent component, MapInitEvent args)
     {
         _actionsSystem.AddAction(uid, ref component.ControlReturnActEntity, component.ControlReturnAction);
+        _actionsSystem.AddAction(uid, ref component.ShowRadarActionEntity, component.ShowRadarAction); // Ganimed-Add
+        EnsureGalacticCommon(uid); // Ganimed-Add: понимание Общегалактического на старте
     }
 
     public void OnShutdown(EntityUid uid, TurretControllableComponent component, ComponentShutdown args)
@@ -70,6 +103,7 @@ public sealed class TurretControllableSystem : EntitySystem
         Return(uid, component);
 
         _actionsSystem.RemoveAction(component.ControlReturnActEntity);
+        _actionsSystem.RemoveAction(component.ShowRadarActionEntity); // Ganimed-Add
     }
 
     public bool TryReturnToBody(EntityUid uid, TurretControllableComponent component)
