@@ -239,6 +239,8 @@
     rightBareFootState:
     - "footprint-right-bare-lizard"
   # Ganimed-Add-End
+  # Ganimed-Add: duo emotes port (funky-station#179), хвостатый вид.
+  - type: TailDuoEmote
 
 - type: entity
   parent: BaseSpeciesDummy
