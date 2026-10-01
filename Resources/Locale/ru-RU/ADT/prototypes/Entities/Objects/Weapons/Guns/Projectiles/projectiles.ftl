@@ -1,8 +1,8 @@
-ent-ADTBulletIon = Ионный заряд
-ent-ADTBulletLaser = Лазерный заряд
-ent-ADTBulletDisabler = Оглушающий заряд
-ent-BulletLaserHeavySpread = Узкий лазерный залп
-ent-ADTBulletLaserGreenWeak = Лазер
-ent-ADTBulletCutterWeak = Резак
-ent-ADTBulletDisablerStrong = Оглушающий заряд
-ent-ADTBulletYellowLaser = Электрический лазерный заряд
+ent-ADTBulletIon = ионный заряд
+ent-ADTBulletLaser = лазерный заряд
+ent-ADTBulletDisabler = оглушающий заряд
+ent-BulletLaserHeavySpread = узкий лазерный залп
+ent-ADTBulletLaserGreenWeak = лазер
+ent-ADTBulletCutterWeak = резак
+ent-ADTBulletDisablerStrong = оглушающий заряд
+ent-ADTBulletYellowLaser = электрический лазерный заряд

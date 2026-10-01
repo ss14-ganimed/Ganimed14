@@ -234,8 +234,10 @@
       fireCost: 30
     - proto: ADTBulletLaser
       fireCost: 30
-    - proto: ADTBulletIon
-      fireCost: 90
+    # Ganimed-edit start
+    - proto: BulletTaser
+      fireCost: 200
+    # Ganimed-edit end
   - type: Battery
     maxCharge: 900
     startingCharge: 900

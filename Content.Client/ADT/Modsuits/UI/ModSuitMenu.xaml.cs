@@ -47,8 +47,13 @@ public sealed partial class ModSuitMenu : FancyWindow
 
         _buttonColors = modComp.ButtonColors;
 
+        // Ganimed-edit start
+        var attachedCount = _modsuit.GetAttachedToggleCount((_mod, modComp));
+        var displayRate = attachedCount > 0 ? modComp.ModEnergyBaseUsing : 0f;
+
         ModComplex.Text = Loc.GetString("mod-module-space", ("complexity", modComp.CurrentComplexity), ("maxcomplexity", modComp.MaxComplexity)) + Environment.NewLine +
-        Loc.GetString("mod-energy-waste", ("energy", modComp.ModEnergyBaseUsing.ToString("0.0")));
+        Loc.GetString("mod-energy-waste", ("energy", displayRate.ToString("0.0")));
+        // Ganimed-edit end
         var backpanelsStyle = new StyleBoxFlat(modComp.BackpanelsColor);
         var scrollStyle = new StyleBoxFlat(modComp.ScrollColor);
 
