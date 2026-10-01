@@ -33,7 +33,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      80: Critical
+      120: Critical # Ganimed-Edit: full critical follows pre-crit at 100-119 damage.
       160: Dead
   - type: SlowOnDamage
     speedModifierThresholds:

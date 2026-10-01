@@ -177,6 +177,14 @@
   - type: SSDIndicator
   - type: StandingState
   - type: Crawler
+  - type: PreCrit # Ganimed-Add: conscious forced crawling at 100 damage.
+  # Ganimed-Add-Start: full critical starts after the pre-crit interval.
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      120: Critical
+      200: Dead
+  # Ganimed-Add-End
   - type: Dna
   - type: MindContainer
     showExamineInfo: true
