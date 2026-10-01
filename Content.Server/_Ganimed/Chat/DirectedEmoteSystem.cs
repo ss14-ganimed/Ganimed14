@@ -15,6 +15,7 @@ using Content.Shared.Ghost;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Robust.Server.Player;
 using Robust.Shared.Player;
@@ -25,6 +26,7 @@ namespace Content.Server._Ganimed.Chat;
 /// <summary>
 ///     Handles directed emotes: a private emote that is delivered only to the targeted
 ///     player (and the sender). No range check - the target is resolved by session or mind.
+///     Only characters can be targeted; the verb is hidden client-side otherwise.
 /// </summary>
 public sealed class DirectedEmoteSystem : EntitySystem
 {
@@ -59,6 +61,12 @@ public sealed class DirectedEmoteSystem : EntitySystem
             return;
 
         if (!_actionBlocker.CanEmote(source))
+            return;
+
+        // Directed emotes may only target characters (any mob state, crit and dead
+        // included). Objects and spoofed targets from a modified client are rejected
+        // here; the verb is already hidden client-side, so this is the safety net.
+        if (!HasComp<MobStateComponent>(target))
             return;
 
         if (FindRecipient(target) is not { } recipient)
