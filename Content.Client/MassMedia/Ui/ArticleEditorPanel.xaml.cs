@@ -16,6 +16,9 @@ public sealed partial class ArticleEditorPanel : Control
     public event Action? PublishButtonPressed;
     public event Action<string, string>? ArticleDraftUpdated;
 
+    // Ganimed-Add: raised when the player actually edits one of the text fields
+    public event Action? TextEdited;
+
     private bool _preview;
 
     public ArticleEditorPanel()
@@ -54,6 +57,9 @@ public sealed partial class ArticleEditorPanel : Control
 
     private void OnTextChanged(long length, Control control, long maxLength)
     {
+        // Ganimed-Add: typing feedback for the console keyboard sound
+        TextEdited?.Invoke();
+
         if (length > maxLength)
         {
             control.ModulateSelfOverride = Color.Red;

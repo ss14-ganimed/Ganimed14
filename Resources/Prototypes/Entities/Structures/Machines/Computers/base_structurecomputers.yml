@@ -77,6 +77,16 @@
     blacklist:
       tags:
       - NoConsoleSound
+  # Ganimed-Add-Start (Computer keyboard clicks on typing)
+  - type: ConsoleKeyboardSound
+    typingSound:
+      collection: ConsoleKeyboardType
+      params:
+        volume: -10
+        variation: 0.12
+        pitch: 1.1
+        maxDistance: 8
+  # Ganimed-Add-End
   - type: ContainerContainer
     containers:
       board: !type:Container

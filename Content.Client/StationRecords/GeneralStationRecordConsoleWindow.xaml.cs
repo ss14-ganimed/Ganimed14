@@ -17,6 +17,9 @@ public sealed partial class GeneralStationRecordConsoleWindow : DefaultWindow
     public Action<StationRecordFilterType, string>? OnFiltersChanged;
     public Action<uint>? OnDeleted;
 
+    // Ganimed-Add: forwarded to the console BUI so it can click the keyboard while typing
+    public event Action? OnTextChanged;
+
     private bool _isPopulating;
 
     private StationRecordFilterType _currentFilterType;
@@ -62,6 +65,9 @@ public sealed partial class GeneralStationRecordConsoleWindow : DefaultWindow
         {
             FilterListingOfRecords(args.Text);
         };
+
+        // Ganimed-Add: typing feedback for the console keyboard sound
+        StationRecordsFiltersValue.OnTextChanged += _ => OnTextChanged?.Invoke();
 
         StationRecordsFilters.OnPressed += _ =>
         {
