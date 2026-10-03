@@ -1,0 +1,194 @@
+# SPDX-FileCopyrightText: 2026 Imperator-Shlepa <155736295+Imperator-Shlepa@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Root task of a soldier. What the soldier does is decided by the soldier systems (they set its mode),
+# the branches only turn the mode into movement. The first branch whose preconditions are met wins.
+- type: htnCompound
+  id: SoldierCompound
+  branches:
+  # The soldier has a target: fight.
+  - preconditions:
+    - !type:SoldierModePrecondition
+      mode: Engage
+    tasks:
+    - !type:HTNCompoundTask
+      task: SoldierEngageCompound
+
+  # Going to a place to search it: a noise that is checked or the enemy that has been lost.
+  - preconditions:
+    - !type:SoldierModePrecondition
+      mode: Hunt
+    tasks:
+    - !type:HTNCompoundTask
+      task: SoldierOrderCompound
+
+  - preconditions:
+    - !type:SoldierModePrecondition
+      mode: Investigate
+    tasks:
+    - !type:HTNCompoundTask
+      task: SoldierOrderCompound
+
+  # Going back to the place the soldier was sent from.
+  - preconditions:
+    - !type:SoldierModePrecondition
+      mode: Return
+    tasks:
+    - !type:HTNCompoundTask
+      task: SoldierReturnCompound
+
+  # Nothing is going on: patrol the room.
+  - tasks:
+    - !type:HTNCompoundTask
+      task: SoldierPatrolCompound
+
+# The fight. The whole behavior (cover, leaning out, reloading, ...) is run by the combat system
+# for as long as the soldier has a target, see SoldierEngageOperator.
+- type: htnCompound
+  id: SoldierEngageCompound
+  branches:
+  - tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:SoldierEngageOperator
+
+# Walk around the room, glance around, wait.
+- type: htnCompound
+  id: SoldierPatrolCompound
+  branches:
+  # Finish waiting at the current spot.
+  - tasks:
+    - !type:HTNPrimitiveTask
+      preconditions:
+      - !type:KeyExistsPrecondition
+        key: IdleTime
+      operator: !type:WaitOperator
+        key: IdleTime
+
+  # Walk to the next spot of the room.
+  - tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:SoldierPickPointOperator
+        kind: Patrol
+
+    - !type:HTNPrimitiveTask
+      operator: !type:MoveToOperator
+        pathfindInPlanning: true
+
+    - !type:HTNPrimitiveTask
+      operator: !type:PickRandomRotationOperator
+        targetKey: RotateTarget
+
+    - !type:HTNPrimitiveTask
+      operator: !type:RotateToTargetOperator
+        targetKey: RotateTarget
+
+    - !type:HTNPrimitiveTask
+      operator: !type:RandomOperator
+        targetKey: IdleTime
+        minKey: MinimumIdleTime
+        maxKey: MaximumIdleTime
+
+    - !type:HTNPrimitiveTask
+      preconditions:
+      - !type:KeyExistsPrecondition
+        key: IdleTime
+      operator: !type:WaitOperator
+        key: IdleTime
+
+  # The room is a closet or unknown: just look around.
+  - tasks:
+    - !type:HTNCompoundTask
+      task: IdleSpinCompound
+
+# The order of a soldier (investigate a noise / hunt the enemy): walk to the point, search the area, report.
+# The branches go from the last stage to the first one, so that a new stage takes over at once.
+- type: htnCompound
+  id: SoldierOrderCompound
+  branches:
+  # The soldier has to stand still: at a closed door waiting for the comrades, or looking around behind it.
+  - preconditions:
+    - !type:SoldierHoldPrecondition
+    tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:NoOperator
+
+  # Search is over, the soldier stands still while the team reports.
+  - preconditions:
+    - !type:SoldierOrderPhasePrecondition
+      phase: Reporting
+    tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:NoOperator
+
+  # Finish looking around at the current spot of the search.
+  - preconditions:
+    - !type:SoldierOrderPhasePrecondition
+      phase: Searching
+    tasks:
+    - !type:HTNPrimitiveTask
+      preconditions:
+      - !type:KeyExistsPrecondition
+        key: IdleTime
+      operator: !type:WaitOperator
+        key: IdleTime
+
+  # Search the area: walk to a random spot around the point and look around.
+  - preconditions:
+    - !type:SoldierOrderPhasePrecondition
+      phase: Searching
+    tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:SoldierPickPointOperator
+        kind: Search
+
+    - !type:HTNPrimitiveTask
+      operator: !type:MoveToOperator
+        pathfindInPlanning: true
+
+    - !type:HTNPrimitiveTask
+      operator: !type:PickRandomRotationOperator
+        targetKey: RotateTarget
+
+    - !type:HTNPrimitiveTask
+      operator: !type:RotateToTargetOperator
+        targetKey: RotateTarget
+
+    - !type:HTNPrimitiveTask
+      operator: !type:RandomOperator
+        targetKey: IdleTime
+        minKey: SoldierLookMinTime
+        maxKey: SoldierLookMaxTime
+
+    - !type:HTNPrimitiveTask
+      preconditions:
+      - !type:KeyExistsPrecondition
+        key: IdleTime
+      operator: !type:WaitOperator
+        key: IdleTime
+
+  # Walk to the point.
+  - preconditions:
+    - !type:SoldierOrderPhasePrecondition
+      phase: Moving
+    tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:SoldierPickPointOperator
+        kind: Order
+
+    - !type:HTNPrimitiveTask
+      operator: !type:MoveToOperator
+        pathfindInPlanning: true
+
+# Walk back to the place the soldier was sent from.
+- type: htnCompound
+  id: SoldierReturnCompound
+  branches:
+  - tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:SoldierPickPointOperator
+        kind: Return
+
+    - !type:HTNPrimitiveTask
+      operator: !type:MoveToOperator
+        pathfindInPlanning: true

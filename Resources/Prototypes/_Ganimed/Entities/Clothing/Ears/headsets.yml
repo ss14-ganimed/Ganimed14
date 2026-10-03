@@ -1,0 +1,15 @@
+# SPDX-FileCopyrightText: 2026 Imperator-Shlepa <155736295+Imperator-Shlepa@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# The radio of the soldier NPCs. It carries the common key only (";") and works without a telecommunications server,
+# so the soldiers can talk on any map, e.g. on a base that has no telecoms at all.
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetSoldier
+  components:
+  - type: TelecomExempt
+  - type: Sprite
+    sprite: ADT/Clothing/Ears/Headsets/armyheadset.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Ears/Headsets/armyheadset.rsi

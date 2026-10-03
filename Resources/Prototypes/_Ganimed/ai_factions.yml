@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2026 Imperator-Shlepa <155736295+Imperator-Shlepa@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Soldiers are friendly only to each other: they shoot every player and every hostile creature on sight.
+# Pets and other harmless animals (Passive, Mouse, PetsNT, SimpleNeutral) are left alone.
+# The other factions treat the soldiers as hostile too (the "Soldier" lines in their hostile lists).
+- type: npcFaction
+  id: Soldier
+  hostile:
+  - NanoTrasen
+  - Syndicate
+  - Revolutionary
+  - Wizard
+  - Heretic
+  - Conspirator
+  - Pirate
+  - SpaceSecFaction
+  - Xeno
+  - Zombie
+  - SimpleHostile
+  - Dragon
+  - Xenoborg
+  - DroneAntag
+  - ADTSpaceMobs
+  - Ursus

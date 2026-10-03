@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: 2026 Imperator-Shlepa <155736295+Imperator-Shlepa@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Gear of the soldier NPC: a rifle in the hands, spare magazines, grenades, first aid and a headset.
+# The soldier AI takes the rifle from the hands, reloads from the spare magazines, throws the grenades
+# and heals itself with the medical items, wherever they are stored.
+- type: startingGear
+  id: GanimedSoldierGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMercenary
+    outerClothing: ClothingOuterArmorBulletproof
+    head: ClothingHeadHelmetSwat
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsMerc
+    ears: ClothingHeadsetSoldier
+    belt: ClothingBeltMilitaryWebbing
+    back: ClothingBackpack
+    pocket1: WeaponPistolMk58
+    pocket2: MagazinePistol
+  inhand:
+  - WeaponRifleLecter
+  storage:
+    belt:
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifle
+    back:
+    - GrenadeFlashBang
+    - GrenadeFlashBang
+    - GrenadeShrapnel
+    - Brutepack
+    - Ointment
+    - Gauze

@@ -1,0 +1,73 @@
+# SPDX-FileCopyrightText: 2026 Imperator-Shlepa <155736295+Imperator-Shlepa@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# The soldier: a member of a squad (all soldiers of a grid), patrols its room, listens for gunshots and explosions,
+# talks over the radio, checks noises in pairs and fights as a team. See Content.Server/_Ganimed/NPC/Soldier.
+- type: entity
+  parent: BaseMobHuman
+  id: MobSoldier
+  components:
+  - type: NpcFactionMember
+    factions:
+    - Soldier
+  - type: Loadout
+    prototypes:
+    - GanimedSoldierGear
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: RandomMetadata
+    nameSegments:
+    - NamesFirstMilitary
+    - NamesLastMilitary
+    nameFormat: name-format-standard
+  - type: InputMover
+  - type: MobMover
+  # Soldiers go wherever the mission takes them: every door opens for them.
+  # The access is a part of the soldier, so there is no ID card to loot from the body.
+  - type: Access
+    groups:
+    - AllAccess
+  - type: Soldier
+  - type: HTN
+    rootTask:
+      task: SoldierCompound
+    # The soldier systems tell the HTN when the plan has to change (see SoldierBrainSystem): planning over and over
+    # again just to find out that the answer is the same is a waste, every plan may need a path.
+    constantlyReplan: false
+    blackboard:
+      # Soldiers open doors on their way (no smashing). The path finder plans through a door that needs access only
+      # for those who can pry it, so the soldiers are marked as such: they do not pry anything, SoldierBreachSystem
+      # opens the doors on the path with the access the soldiers have.
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      # Turn at a natural speed (radians per second) instead of snapping around.
+      RotateSpeed: !type:Single
+        4
+      # Pause at a patrol spot.
+      MinimumIdleTime: !type:Single
+        2
+      MaximumIdleTime: !type:Single
+        6
+      # Pause to look around while searching an area.
+      SoldierLookMinTime: !type:Single
+        0.8
+      SoldierLookMaxTime: !type:Single
+        2.2
+
+# Marker for mappers: spawns a soldier at round start of the map.
+- type: entity
+  id: SpawnerMobSoldier
+  suffix: Soldier
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Mobs/Species/Human/parts.rsi
+      state: full
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSoldier

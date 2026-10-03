@@ -1,0 +1,182 @@
+# SPDX-FileCopyrightText: 2026 Imperator-Shlepa <155736295+Imperator-Shlepa@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Radio phrases of the soldiers. Each dataset is a number of interchangeable lines of one situation,
+# the soldier says a random one. The lines are in Resources/Locale/*/_Ganimed/npc/soldier-barks.ftl.
+
+# Suspicion and investigation.
+- type: localizedDataset
+  id: SoldierBarkHeardGunfire
+  values:
+    prefix: soldier-bark-heard-gunfire-
+    count: 4
+
+- type: localizedDataset
+  id: SoldierBarkHeardExplosion
+  values:
+    prefix: soldier-bark-heard-explosion-
+    count: 4
+
+- type: localizedDataset
+  id: SoldierBarkAcknowledge
+  values:
+    prefix: soldier-bark-acknowledge-
+    count: 4
+
+- type: localizedDataset
+  id: SoldierBarkDispatch
+  values:
+    prefix: soldier-bark-dispatch-
+    count: 4
+
+- type: localizedDataset
+  id: SoldierBarkMoving
+  values:
+    prefix: soldier-bark-moving-
+    count: 4
+
+- type: localizedDataset
+  id: SoldierBarkArrived
+  values:
+    prefix: soldier-bark-arrived-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkAllClear
+  values:
+    prefix: soldier-bark-all-clear-
+    count: 4
+
+- type: localizedDataset
+  id: SoldierBarkClear
+  values:
+    prefix: soldier-bark-clear-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkReturningToPost
+  values:
+    prefix: soldier-bark-returning-to-post-
+    count: 3
+
+# Contact and alert levels.
+- type: localizedDataset
+  id: SoldierBarkContact
+  values:
+    prefix: soldier-bark-contact-
+    count: 4
+
+- type: localizedDataset
+  id: SoldierBarkRequestBackup
+  values:
+    prefix: soldier-bark-request-backup-
+    count: 4
+
+- type: localizedDataset
+  id: SoldierBarkBackupAcknowledge
+  values:
+    prefix: soldier-bark-backup-acknowledge-
+    count: 4
+
+- type: localizedDataset
+  id: SoldierBarkLostTarget
+  values:
+    prefix: soldier-bark-lost-target-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkEvasion
+  values:
+    prefix: soldier-bark-evasion-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkStandDown
+  values:
+    prefix: soldier-bark-stand-down-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkControlled
+  values:
+    prefix: soldier-bark-controlled-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkManDown
+  values:
+    prefix: soldier-bark-man-down-
+    count: 3
+
+# Tactics.
+- type: localizedDataset
+  id: SoldierBarkReloading
+  values:
+    prefix: soldier-bark-reloading-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkGrenade
+  values:
+    prefix: soldier-bark-grenade-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkSuppressing
+  values:
+    prefix: soldier-bark-suppressing-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkFlanking
+  values:
+    prefix: soldier-bark-flanking-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkEntering
+  values:
+    prefix: soldier-bark-entering-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkWounded
+  values:
+    prefix: soldier-bark-wounded-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkHealing
+  values:
+    prefix: soldier-bark-healing-
+    count: 3
+
+# The default voice of the soldiers.
+- type: soldierBarkSet
+  id: SoldierBarksDefault
+  lines:
+    HeardGunfire: SoldierBarkHeardGunfire
+    HeardExplosion: SoldierBarkHeardExplosion
+    Acknowledge: SoldierBarkAcknowledge
+    Dispatch: SoldierBarkDispatch
+    Moving: SoldierBarkMoving
+    Arrived: SoldierBarkArrived
+    AllClear: SoldierBarkAllClear
+    Clear: SoldierBarkClear
+    ReturningToPost: SoldierBarkReturningToPost
+    Contact: SoldierBarkContact
+    RequestBackup: SoldierBarkRequestBackup
+    BackupAcknowledge: SoldierBarkBackupAcknowledge
+    LostTarget: SoldierBarkLostTarget
+    Evasion: SoldierBarkEvasion
+    StandDown: SoldierBarkStandDown
+    Controlled: SoldierBarkControlled
+    ManDown: SoldierBarkManDown
+    Reloading: SoldierBarkReloading
+    Grenade: SoldierBarkGrenade
+    Suppressing: SoldierBarkSuppressing
+    Flanking: SoldierBarkFlanking
+    Entering: SoldierBarkEntering
+    Wounded: SoldierBarkWounded
+    Healing: SoldierBarkHealing

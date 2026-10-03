@@ -9,6 +9,7 @@
   - Zombie
   - Revolutionary
   - DroneAntag
+  - Soldier # Ganimed-Add
 
 - type: npcFaction
   id: ADTSpaceMobs
@@ -28,6 +29,7 @@
   - Xeno
   - Xenoborg
   - SimpleHostile
+  - Soldier # Ganimed-Add
 
 - type: npcFaction
   id: DroneAntag
@@ -45,6 +47,7 @@
   - Dragon
   - Ursus
   - SpaceSecFaction
+  - Soldier # Ganimed-Add
 
 - type: npcFaction
   id: SpaceSecFaction
@@ -54,6 +57,7 @@
   - Zombie
   - Dragon
   - DroneAntag
+  - Soldier # Ganimed-Add
 
 - type: npcFaction
   id: Pirate
@@ -66,3 +70,4 @@
   - Revolutionary
   - Heretic # goob edit - heretics
   - Ursus
+  - Soldier # Ganimed-Add
