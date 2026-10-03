@@ -1,0 +1,6 @@
+Liberation Fonts 2.1.5 (Liberation Sans, Liberation Serif)
+Originally taken from https://github.com/liberationfonts/liberation-fonts/releases/tag/2.1.5
+Created by Red Hat, Inc. (original design by Steve Matteson, Ascender), based on Google's Arimo and Tinos.
+Metric-compatible replacements for Helvetica/Arial (Liberation Sans) and Times New Roman (Liberation Serif).
+
+License: SIL Open Font License, Version 1.1 (see LICENSE.txt)

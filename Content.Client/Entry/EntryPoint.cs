@@ -84,6 +84,7 @@ namespace Content.Client.Entry
         [Dependency] private readonly ContentReplayPlaybackManager _playbackMan = default!;
         [Dependency] private readonly IResourceManager _resourceManager = default!;
         [Dependency] private readonly IResourceCache _resourceCache = default!; // Ganimed-Add (Japanese support)
+        [Dependency] private readonly UserFontManager _userFontManager = default!; // Ganimed-Add (UI font)
         [Dependency] private readonly IReplayLoadManager _replayLoad = default!;
         [Dependency] private readonly ILogManager _logManager = default!;
         [Dependency] private readonly DebugMonitorManager _debugMonitorManager = default!;
@@ -177,6 +178,7 @@ namespace Content.Client.Entry
             base.PostInit();
 
             _stylesheetManager.Initialize();
+            _userFontManager.Initialize(); // Ganimed-Add (UI font)
 
             // Ganimed-Add-Start: Japanese fallback for [font=...] markup fonts
             // (station names on consoles, cargo manifests, etc.). Without this the

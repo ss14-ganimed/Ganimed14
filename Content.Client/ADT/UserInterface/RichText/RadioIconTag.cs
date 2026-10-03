@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Client.Resources; // Ganimed-Add (UI font)
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
@@ -39,7 +40,7 @@ public sealed class RadioIconTag : BaseTextureTag, IMarkupTagHandler
 
         label.Text = text;
         label.FontColorOverride = Color.FromHex(color);
-        label.FontOverride = new VectorFont(_cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Bold.ttf"), 13);
+        label.FontOverride = _cache.GetFont("/Fonts/NotoSans/NotoSans-Bold.ttf", 13); // Ganimed-Edit (UI font): VectorFont -> GetFont
 
         return label;
     }

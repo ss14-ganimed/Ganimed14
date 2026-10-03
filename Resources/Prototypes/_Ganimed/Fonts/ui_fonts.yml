@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: 2026 Imperator-Shlepa <155736295+Imperator-Shlepa@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Fonts the player can pick in Options -> General -> "Game font". The built-in Noto Sans is the default and is not listed.
+# A face that is not set falls back (BoldItalic -> Bold -> Regular, Italic -> Regular).
+# Glyphs a font lacks (Japanese, symbols, ...) are still drawn by the stock Noto Sans fallback stack.
+
+- type: uiFont
+  id: LiberationSans
+  name: Liberation Sans
+  order: 10
+  regular: /Fonts/_Ganimed/Liberation/LiberationSans-Regular.ttf
+  bold: /Fonts/_Ganimed/Liberation/LiberationSans-Bold.ttf
+  italic: /Fonts/_Ganimed/Liberation/LiberationSans-Italic.ttf
+  boldItalic: /Fonts/_Ganimed/Liberation/LiberationSans-BoldItalic.ttf
+
+- type: uiFont
+  id: LiberationSerif
+  name: Liberation Serif
+  order: 20
+  regular: /Fonts/_Ganimed/Liberation/LiberationSerif-Regular.ttf
+  bold: /Fonts/_Ganimed/Liberation/LiberationSerif-Bold.ttf
+  italic: /Fonts/_Ganimed/Liberation/LiberationSerif-Italic.ttf
+  boldItalic: /Fonts/_Ganimed/Liberation/LiberationSerif-BoldItalic.ttf

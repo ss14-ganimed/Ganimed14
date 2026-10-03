@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Client.Resources;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface.RichText;
@@ -25,10 +26,10 @@ public static class GanimedFontStack
     /// </summary>
     public static Font WithJapaneseFallback(IResourceCache cache, ResPath fontPath, int size, bool bold = false)
     {
-        var primary = new VectorFont(cache.GetResource<FontResource>(fontPath), size);
-        var japanese = new VectorFont(
-            cache.GetResource<FontResource>(bold ? JapaneseBold : JapaneseRegular), size);
-        return new StackedFont(primary, japanese);
+        // GetFont puts the font the player picked in the options (UserFontManager) in front
+        // when fontPath is one of the stock Noto Sans faces; Japanese stays the last resort either way.
+        var japanese = new ResPath(bold ? JapaneseBold : JapaneseRegular);
+        return cache.GetFont(new[] { fontPath, japanese }, size);
     }
 
     /// <summary>

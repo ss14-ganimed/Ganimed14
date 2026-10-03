@@ -1,3 +1,4 @@
+using Content.Client.Resources; // Ganimed-Add (UI font)
 using Content.Client.Stylesheets;
 using Content.Shared.ADT.CCVar;
 using Content.Shared.ADT.Supermatter.Components;
@@ -149,8 +150,8 @@ public sealed partial class SupermatterEntryContainer : BoxContainer
         WasteBaseInfoLabel.Text = Loc.GetString("supermatter-console-window-label-waste-bar", ("waste", _wasteBase.ToString("0.00")));
 
         // Load fonts
-        var headerFont = new VectorFont(_cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Bold.ttf"), 11);
-        var normalFont = new VectorFont(_cache.GetResource<FontResource>("/Fonts/NotoSansDisplay/NotoSansDisplay-Regular.ttf"), 11);
+        var headerFont = _cache.GetFont("/Fonts/NotoSans/NotoSans-Bold.ttf", 11); // Ganimed-Edit (UI font): VectorFont -> GetFont
+        var normalFont = _cache.GetFont("/Fonts/NotoSansDisplay/NotoSansDisplay-Regular.ttf", 11); // Ganimed-Edit (UI font): VectorFont -> GetFont
         var monoFont = new VectorFont(_cache.GetResource<FontResource>("/EngineFonts/NotoSans/NotoSansMono-Regular.ttf"), 10);
 
         // Set fonts and font colors

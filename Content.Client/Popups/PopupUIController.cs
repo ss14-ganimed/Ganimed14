@@ -1,5 +1,7 @@
 using System.Numerics;
+using Content.Client._Ganimed.Fonts; // Ganimed-Add (UI font)
 using Content.Client.Gameplay;
+using Content.Client.Resources; // Ganimed-Add (UI font)
 using Content.Shared.Popups;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
@@ -24,12 +26,20 @@ public sealed class PopupUIController : UIController, IOnStateEntered<GameplaySt
     public override void Initialize()
     {
         base.Initialize();
+        LoadFonts(); // Ganimed-Edit (UI font): moved to a method to rebuild the fonts on change
+        IoCManager.Resolve<UserFontManager>().FontChanged += LoadFonts; // Ganimed-Add (UI font)
+    }
+
+    // Ganimed-Add-Start (UI font)
+    private void LoadFonts()
+    {
         var cache = IoCManager.Resolve<IResourceCache>();
 
-        _smallFont = new VectorFont(cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Italic.ttf"), 10);
-        _mediumFont = new VectorFont(cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Italic.ttf"), 12);
-        _largeFont = new VectorFont(cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-BoldItalic.ttf"), 14);
+        _smallFont = cache.GetFont("/Fonts/NotoSans/NotoSans-Italic.ttf", 10);
+        _mediumFont = cache.GetFont("/Fonts/NotoSans/NotoSans-Italic.ttf", 12);
+        _largeFont = cache.GetFont("/Fonts/NotoSans/NotoSans-BoldItalic.ttf", 14);
     }
+    // Ganimed-Add-End
 
     public void OnStateEntered(GameplayState state)
     {

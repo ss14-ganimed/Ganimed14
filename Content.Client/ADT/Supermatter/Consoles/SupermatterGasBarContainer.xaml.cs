@@ -1,3 +1,4 @@
+using Content.Client.Resources; // Ganimed-Add (UI font)
 using Content.Client.Stylesheets;
 using Content.Shared.ADT.CCVar;
 using Content.Shared.CCVar;
@@ -61,7 +62,7 @@ public sealed partial class SupermatterGasBarContainer : BoxContainer
         };
 
         // Load fonts
-        var normalFont = new VectorFont(_cache.GetResource<FontResource>("/Fonts/NotoSansDisplay/NotoSansDisplay-Regular.ttf"), 11);
+        var normalFont = _cache.GetFont("/Fonts/NotoSansDisplay/NotoSansDisplay-Regular.ttf", 11); // Ganimed-Edit (UI font): VectorFont -> GetFont
         var monoFont = new VectorFont(_cache.GetResource<FontResource>("/EngineFonts/NotoSans/NotoSansMono-Regular.ttf"), 10);
 
         // Set fonts and font colors

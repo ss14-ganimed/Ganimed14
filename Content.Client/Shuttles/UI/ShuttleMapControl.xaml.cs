@@ -1,5 +1,6 @@
 using System.Buffers;
 using System.Numerics;
+using Content.Client.Resources; // Ganimed-Add (UI font)
 using Content.Client.Shuttles.Systems;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.UI.MapObjects;
@@ -80,7 +81,7 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
 
         _physicsQuery = EntManager.GetEntityQuery<PhysicsComponent>();
 
-        _font = new VectorFont(cache.GetResource<FontResource>("/EngineFonts/NotoSans/NotoSans-Regular.ttf"), 10);
+        _font = cache.GetFont("/EngineFonts/NotoSans/NotoSans-Regular.ttf", 10); // Ganimed-Edit (UI font): VectorFont -> GetFont
     }
 
     public void SetMap(MapId mapId, Vector2 offset, bool recentering = false)

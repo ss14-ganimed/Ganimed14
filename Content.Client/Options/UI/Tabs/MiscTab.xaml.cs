@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using Content.Client.UserInterface.Screens;
+using Content.Client._Ganimed.Fonts; // Ganimed-Add (UI font)
+using Content.Shared._Ganimed.CCVar; // Ganimed-Add (UI font)
 using Content.Shared.ADT.CCVar; // ADT-Tweak
 using Content.Shared.CCVar;
 using Content.Shared.HUD;
@@ -17,6 +19,7 @@ public sealed partial class MiscTab : Control
 {
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly UserFontManager _userFonts = default!; // Ganimed-Add (UI font)
 
     public MiscTab()
     {
@@ -53,6 +56,7 @@ public sealed partial class MiscTab : Control
 
         Control.AddOptionDropDown(CVars.InterfaceTheme, DropDownHudTheme, themeEntries);
         Control.AddOptionDropDown(CCVars.UILayout, DropDownHudLayout, layoutEntries);
+        Control.AddOptionDropDown(GanimedCCVars.UiFont, DropDownUiFont, _userFonts.GetDropDownEntries()); // Ganimed-Add (UI font)
         Control.AddOptionDropDown<int>(CCVars.ChatStackLastLines, ChatStackLastLines, chatStackEntries); // Ganimed, EE - Chat stacking
 
         Control.AddOptionCheckBox(CVars.DiscordEnabled, DiscordRich);

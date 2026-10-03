@@ -33,6 +33,7 @@ using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Players.RateLimiting;
 using Content.Client.ADT.Export;
 using Content.Client.ADT.Discord;
+using Content.Client._Ganimed.Fonts; // Ganimed-Add (UI font)
 
 namespace Content.Client.IoC
 {
@@ -75,6 +76,7 @@ namespace Content.Client.IoC
             collection.Register<JoinQueueManager>(); // Corvax-Queue
             collection.Register<DiscordAuthManager>(); // Corvax-DiscordAuth
             collection.Register<ExportManager>(); // ADT Export
+            collection.Register<UserFontManager>(); // Ganimed-Add (UI font)
         }
     }
 }

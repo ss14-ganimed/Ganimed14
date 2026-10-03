@@ -9,6 +9,7 @@
                        StyleClasses="LabelKeyText"/>
                 <ui:OptionDropDown Name="DropDownHudTheme" Title="{Loc 'ui-options-hud-theme'}" />
                 <ui:OptionDropDown Name="DropDownHudLayout" Title="{Loc 'ui-options-hud-layout'}" />
+                <ui:OptionDropDown Name="DropDownUiFont" Title="{Loc 'ui-options-ui-font'}" /> <!-- Ganimed-Add (UI font) -->
                 <!-- Ganimed, EE - chat stacking -->
                 <ui:OptionDropDown Name="ChatStackLastLines" Title="{Loc 'ui-options-chatstack'}" />
                 <!-- Ganimed, EE - chat stacking -->
