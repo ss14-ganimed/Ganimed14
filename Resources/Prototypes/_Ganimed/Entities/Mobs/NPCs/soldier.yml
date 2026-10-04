@@ -71,3 +71,30 @@
   - type: ConditionalSpawner
     prototypes:
     - MobSoldier
+
+# The medic of a squad: a soldier that keeps behind the others and looks after them. It raises the comrades who have fallen
+# into critical condition (and drags them out of the line of fire first), bandages the wounded and brings the dead back with
+# the defibrillator. See SoldierMedicSystem.
+- type: entity
+  parent: MobSoldier
+  id: MobSoldierMedic
+  components:
+  - type: Loadout
+    prototypes:
+    - GanimedSoldierMedicGear
+  - type: SoldierMedic
+
+# Marker for mappers: spawns a soldier medic at round start of the map.
+- type: entity
+  id: SpawnerMobSoldierMedic
+  suffix: Soldier Medic
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: blue
+    - sprite: Mobs/Species/Human/parts.rsi
+      state: full
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSoldierMedic

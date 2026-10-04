@@ -136,13 +136,32 @@ public sealed partial class SoldierSquadSystem : EntitySystem
     }
 
     /// <summary>
-    /// Soldiers that are idle: not on any order and not fighting. Only those can be sent somewhere.
+    /// Soldiers that are idle: not on any order, not fighting, not bandaging themselves and not getting up from the ground
+    /// (or going for the gun they have dropped). Only those can be sent somewhere.
+    /// The medic is never sent to check a noise: it stays with the squad and looks after the comrades.
     /// </summary>
     private bool IsAvailable(Entity<SoldierComponent> soldier)
     {
         return IsOperational(soldier) &&
                soldier.Comp.Target == null &&
-               soldier.Comp.Mode is SoldierMode.Patrol or SoldierMode.Return;
+               soldier.Comp.FirstAid == SoldierFirstAidPhase.None &&
+               soldier.Comp.Recovery == SoldierRecoveryPhase.None &&
+               soldier.Comp.Mode is SoldierMode.Patrol or SoldierMode.Return &&
+               !HasComp<SoldierMedicComponent>(soldier);
+    }
+
+    /// <summary>
+    /// Is there a medic in the squad who can come (alive and on its feet)?
+    /// </summary>
+    private bool HasLivingMedic(Entity<SoldierSquadComponent> squad)
+    {
+        foreach (var member in squad.Comp.Members)
+        {
+            if (HasComp<SoldierMedicComponent>(member) && IsOperational(member))
+                return true;
+        }
+
+        return false;
     }
 
     private void GetAvailable(Entity<SoldierSquadComponent> squad, List<Entity<SoldierComponent>> result)
@@ -157,14 +176,18 @@ public sealed partial class SoldierSquadSystem : EntitySystem
     /// <summary>
     /// Picks a living member of the squad that can speak, preferably not the excluded one.
     /// </summary>
-    private bool TryPickSpeaker(Entity<SoldierSquadComponent> squad, EntityUid? exclude, out EntityUid speaker)
+    /// <param name="squad">The squad.</param>
+    /// <param name="exclude">Who is not picked.</param>
+    /// <param name="speaker">The one who is picked.</param>
+    /// <param name="excludeMedics">The medics are not picked either.</param>
+    private bool TryPickSpeaker(Entity<SoldierSquadComponent> squad, EntityUid? exclude, out EntityUid speaker, bool excludeMedics = false)
     {
         speaker = default;
 
         var candidates = new List<EntityUid>();
         foreach (var member in squad.Comp.Members)
         {
-            if (member != exclude && IsOperational(member))
+            if (member != exclude && IsOperational(member) && !(excludeMedics && HasComp<SoldierMedicComponent>(member)))
                 candidates.Add(member);
         }
 

@@ -14,8 +14,9 @@ using Robust.Shared.Timing;
 namespace Content.Server._Ganimed.NPC.Soldier.Systems;
 
 /// <summary>
-/// The eyes of the soldiers: looks for hostile players and creatures in the field of view, confirms the contact
-/// after a short moment and tells the squad about it. The field of view and the range grow while the squad is alert.
+/// The eyes of the soldiers: looks for hostile players and creatures around, confirms the contact
+/// after a short moment and tells the squad about it. The range grows and the doubt shrinks while the squad is alert.
+/// A soldier sees all around: a limited field of view made them weak and blind at the same time.
 /// </summary>
 public sealed class SoldierPerceptionSystem : EntitySystem
 {
@@ -147,10 +148,14 @@ public sealed class SoldierPerceptionSystem : EntitySystem
 
     /// <summary>
     /// Lost sight of the enemy: keep him in mind for a while, then give up. A soldier that has hidden from the enemy
-    /// (or is bandaging itself or reloading in cover) has lost sight of him on purpose and remembers him for longer.
+    /// (or is reloading in cover) has lost sight of him on purpose and remembers him for longer. A soldier that bandages
+    /// itself does not forget him at all until it is done: it would leave the fight with the bandage in its hand.
     /// </summary>
     private static void ForgetLostTarget(SoldierComponent soldier, TimeSpan now)
     {
+        if (soldier.Mode == SoldierMode.Engage && soldier.CombatState == SoldierCombatState.Heal)
+            return;
+
         var memory = soldier.CombatState is SoldierCombatState.MoveToCover or SoldierCombatState.Hidden or
             SoldierCombatState.Peek or SoldierCombatState.Retreat or SoldierCombatState.Heal or SoldierCombatState.Reload
             ? soldier.TargetMemory * CoverMemoryFactor
@@ -180,32 +185,31 @@ public sealed class SoldierPerceptionSystem : EntitySystem
     }
 
     /// <summary>
-    /// How far, how wide and how fast the soldier sees. A calm squad has its guard down.
+    /// How far and how fast the soldier sees. A calm squad has its guard down.
     /// </summary>
-    private static (float Range, float Fov, float Detection) GetSenses(SoldierComponent soldier, SoldierAlertLevel alert)
+    private static (float Range, float Detection) GetSenses(SoldierComponent soldier, SoldierAlertLevel alert)
     {
         return alert switch
         {
             SoldierAlertLevel.Alert or SoldierAlertLevel.Evasion =>
-                (soldier.VisionRange * 1.3f, 360f, 0.08f),
+                (soldier.VisionRange * 1.3f, 0.08f),
 
             SoldierAlertLevel.Suspicious or SoldierAlertLevel.Caution =>
-                (soldier.VisionRange * 1.15f, MathF.Min(360f, soldier.FieldOfView + 70f), soldier.DetectionTime * 0.6f),
+                (soldier.VisionRange * 1.15f, soldier.DetectionTime * 0.6f),
 
-            _ => (soldier.VisionRange, soldier.FieldOfView, soldier.DetectionTime),
+            _ => (soldier.VisionRange, soldier.DetectionTime),
         };
     }
 
     /// <summary>
-    /// The closest hostile that is alive, within the field of view and not hidden behind anything opaque.
+    /// The closest hostile that is alive and not hidden behind anything opaque.
     /// </summary>
-    private EntityUid? FindVisibleEnemy(Entity<SoldierComponent> ent, TransformComponent xform, (float Range, float Fov, float Detection) senses)
+    private EntityUid? FindVisibleEnemy(Entity<SoldierComponent> ent, TransformComponent xform, (float Range, float Detection) senses)
     {
         EntityUid? best = null;
         var bestDistance = float.MaxValue;
 
         var ourPosition = _transform.GetWorldPosition(xform);
-        var facing = _transform.GetWorldRotation(xform);
 
         foreach (var candidate in _faction.GetNearbyHostiles(ent.Owner, senses.Range))
         {
@@ -213,17 +217,9 @@ public sealed class SoldierPerceptionSystem : EntitySystem
             if (TerminatingOrDeleted(candidate) || !_mobState.IsAlive(candidate))
                 continue;
 
-            var offset = _transform.GetWorldPosition(candidate) - ourPosition;
-            var distance = offset.Length();
+            var distance = (_transform.GetWorldPosition(candidate) - ourPosition).Length();
             if (distance >= bestDistance)
                 continue;
-
-            if (distance > ent.Comp.PeripheralRange && senses.Fov < 359f)
-            {
-                var difference = Angle.ShortestDistance(facing, offset.ToWorldAngle());
-                if (MathF.Abs((float) difference.Degrees) > senses.Fov / 2f)
-                    continue;
-            }
 
             if (!_examine.InRangeUnOccluded(ent.Owner, candidate, senses.Range + 0.5f))
                 continue;
@@ -242,6 +238,9 @@ public sealed class SoldierPerceptionSystem : EntitySystem
     {
         if (!args.DamageIncreased || args.Origin is not { } origin || !_squad.IsOperational(ent))
             return;
+
+        // Somebody is shooting at us: a soldier that bandages itself has to know.
+        ent.Comp.LastHitAt = _timing.CurTime;
 
         // Do not abandon a fight for somebody else who is shooting at us from afar. (This is asked first: it is
         // the common case in a fight, and the look around below is not cheap.)

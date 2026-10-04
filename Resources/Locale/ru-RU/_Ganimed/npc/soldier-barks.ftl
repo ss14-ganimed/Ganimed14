@@ -117,3 +117,24 @@ soldier-bark-wounded-3 = Меня зацепило, прикройте!
 soldier-bark-healing-1 = Лечусь, прикройте!
 soldier-bark-healing-2 = Ставлю повязку, прикрой!
 soldier-bark-healing-3 = Перевязка, дайте минуту!
+
+# Медик
+soldier-bark-call-medic-1 = Медик! Боец на земле, быстро сюда!
+soldier-bark-call-medic-2 = Нужен медик! Свой в критическом состоянии!
+soldier-bark-call-medic-3 = Медика сюда, у нас раненый!
+
+soldier-bark-medic-coming-1 = Иду к раненому, прикройте!
+soldier-bark-medic-coming-2 = Медик выдвигается, держитесь!
+soldier-bark-medic-coming-3 = Вижу его, бегу!
+
+soldier-bark-medic-dragging-1 = Взял его, вытаскиваю!
+soldier-bark-medic-dragging-2 = Тащу в укрытие, не давайте им высунуться!
+soldier-bark-medic-dragging-3 = Выношу раненого с линии огня!
+
+soldier-bark-medic-treating-1 = Работаю, дайте место!
+soldier-bark-medic-treating-2 = Держись, сейчас поставлю на ноги!
+soldier-bark-medic-treating-3 = Накладываю повязку, потерпи!
+
+soldier-bark-medic-done-1 = Стабилизирован!
+soldier-bark-medic-done-2 = Он снова на ногах!
+soldier-bark-medic-done-3 = Поднял его, дальше он сам!

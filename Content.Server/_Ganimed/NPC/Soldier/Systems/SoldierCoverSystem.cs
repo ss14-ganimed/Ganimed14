@@ -4,6 +4,7 @@
 
 using System.Numerics;
 using Content.Server.NPC.Pathfinding;
+using Content.Shared.Doors.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC;
@@ -55,7 +56,7 @@ public enum SoldierSearchResult
 /// <item>a cover is looked for next to the things that stop bullets, which the navigation mesh knows for free,
 /// and only the few best spots get a ray cast (the ray casts are what costs);</item>
 /// <item>whether the soldier can walk to a spot is found out with a plain walk over the neighbors of the navigation mesh,
-/// once per search and only if there is a spot worth the walk;</item>
+/// once per search (the walk does not go through doors: the soldier fights in the room it is in);</item>
 /// <item>no memory is allocated: all the buffers are reused;</item>
 /// <item>all the searches of one tick share a small time budget, a search that does not fit in it is
 /// <see cref="SoldierSearchResult.Deferred"/> and the soldier asks again a moment later.</item>
@@ -63,6 +64,7 @@ public enum SoldierSearchResult
 /// </remarks>
 public sealed class SoldierCoverSystem : EntitySystem
 {
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
@@ -92,6 +94,18 @@ public sealed class SoldierCoverSystem : EntitySystem
     /// A cover closer than that (in tiles) to the enemy is a bad idea.
     /// </summary>
     private const float MinEnemyDistance = 3f;
+
+    /// <summary>
+    /// A soldier in a doorway may step to the polygons next to it that are not farther (in tiles) from the enemy than the
+    /// doorway plus this: the ones on the enemy's side.
+    /// </summary>
+    private const float DoorwayTolerance = 0.25f;
+
+    /// <summary>
+    /// A cover that is farther from the enemy than the soldier is now costs this much (per tile) for being a step back:
+    /// the soldier holds its ground when the enemy turns up instead of falling back.
+    /// </summary>
+    private const float FallbackPenalty = 1f;
 
     /// <summary>
     /// The distance (in tiles) to the enemy the soldier likes to fight from.
@@ -144,6 +158,7 @@ public sealed class SoldierCoverSystem : EntitySystem
 
     private static readonly Comparison<Spot> BestFirst = static (a, b) => b.Score.CompareTo(a.Score);
 
+    private EntityQuery<DoorComponent> _doorQuery;
     private EntityQuery<MapGridComponent> _gridQuery;
     private EntityQuery<MobStateComponent> _mobQuery;
     private EntityQuery<SoldierComponent> _soldierQuery;
@@ -174,6 +189,7 @@ public sealed class SoldierCoverSystem : EntitySystem
     {
         base.Initialize();
 
+        _doorQuery = GetEntityQuery<DoorComponent>();
         _gridQuery = GetEntityQuery<MapGridComponent>();
         _mobQuery = GetEntityQuery<MobStateComponent>();
         _soldierQuery = GetEntityQuery<SoldierComponent>();
@@ -262,19 +278,54 @@ public sealed class SoldierCoverSystem : EntitySystem
     private readonly Queue<PathPoly> _open = new();
 
     /// <summary>
+    /// The doors around the soldier, and the tiles they are on. Scratch buffers of the search in progress.
+    /// </summary>
+    private readonly HashSet<Entity<DoorComponent>> _doors = new();
+
+    private readonly HashSet<Vector2i> _doorTiles = new();
+
+    /// <summary>
     /// Fills <see cref="_reachable"/> with the polygons the soldier can walk to in the given number of steps. It is a plain
     /// walk over the neighbors, with no ray casts: a spot behind a wall that takes a long detour to get to is not in it.
     /// </summary>
-    private void GatherReachable(EntityUid soldier, int maxSteps)
+    /// <remarks>
+    /// A doorway is the end of the room: unless the soldier may <paramref name="throughDoors"/>, the walk does not go through
+    /// one. The soldier fights in the room it is in (or in the one it is just entering), and does not run back into the room
+    /// it came from when the enemy turns up: that would only be a retreat through the very door the others come in by.
+    /// A soldier that stands in a doorway is on the border of two rooms and keeps to the side of the enemy.
+    /// The doors are looked up as entities: an open door has no collision, so it is not on the navigation mesh at all.
+    /// </remarks>
+    private void GatherReachable(
+        EntityUid soldier,
+        EntityUid gridUid,
+        MapGridComponent grid,
+        int maxSteps,
+        bool throughDoors,
+        Vector2 enemy,
+        in Matrix3x2 gridMatrix)
     {
         _reachable.Clear();
         _open.Clear();
+        _doorTiles.Clear();
 
-        var start = _pathfinding.GetPoly(_xformQuery.GetComponent(soldier).Coordinates);
+        var xform = _xformQuery.GetComponent(soldier);
+        var start = _pathfinding.GetPoly(xform.Coordinates);
         if (start == null)
             return;
 
         var (layer, mask) = _physics.GetHardCollision(soldier);
+
+        var inDoorway = false;
+        var startDistance = 0f;
+
+        if (!throughDoors)
+        {
+            GatherDoorTiles(xform, gridUid, grid, maxSteps + 1f);
+
+            inDoorway = _doorTiles.Contains(_map.CoordinatesToTile(gridUid, grid, xform.Coordinates));
+            if (inDoorway)
+                startDistance = Vector2.Distance(Vector2.Transform(start.Box.Center, gridMatrix), enemy);
+        }
 
         _reachable[start] = 0;
         _open.Enqueue(start);
@@ -294,9 +345,43 @@ public sealed class SoldierCoverSystem : EntitySystem
                 if ((neighbor.Data.CollisionMask & layer) != 0 || (neighbor.Data.CollisionLayer & mask) != 0)
                     continue;
 
+                if (!throughDoors)
+                {
+                    var center = neighbor.Box.Center;
+
+                    // Another room.
+                    if (_doorTiles.Contains(new Vector2i((int) MathF.Floor(center.X), (int) MathF.Floor(center.Y))))
+                        continue;
+
+                    // The room behind the soldier's back.
+                    if (inDoorway &&
+                        poly.Equals(start) &&
+                        Vector2.Distance(Vector2.Transform(center, gridMatrix), enemy) > startDistance + DoorwayTolerance)
+                    {
+                        continue;
+                    }
+                }
+
                 if (_reachable.TryAdd(neighbor, steps + 1))
                     _open.Enqueue(neighbor);
             }
+        }
+    }
+
+    /// <summary>
+    /// Puts the tiles of the doors within the range of the soldier (on the same grid) into <see cref="_doorTiles"/>.
+    /// </summary>
+    private void GatherDoorTiles(TransformComponent soldier, EntityUid gridUid, MapGridComponent grid, float range)
+    {
+        _doors.Clear();
+        _lookup.GetEntitiesInRange(soldier.MapID, _transform.GetWorldPosition(soldier), range, _doors);
+
+        foreach (var door in _doors)
+        {
+            var doorXform = _xformQuery.GetComponent(door.Owner);
+
+            if (doorXform.ParentUid == gridUid)
+                _doorTiles.Add(_map.CoordinatesToTile(gridUid, grid, doorXform.Coordinates));
         }
     }
 
@@ -304,6 +389,27 @@ public sealed class SoldierCoverSystem : EntitySystem
     {
         var poly = _pathfinding.GetPoly(new EntityCoordinates(gridUid, tile.X + 0.5f, tile.Y + 0.5f));
         return poly != null && _reachable.ContainsKey(poly);
+    }
+
+    /// <summary>
+    /// Is the soldier standing in a doorway (on the tile of a door).
+    /// </summary>
+    public bool IsInDoorway(EntityUid soldier)
+    {
+        var xform = _xformQuery.GetComponent(soldier);
+
+        if (xform.GridUid is not { } gridUid || !_gridQuery.TryComp(gridUid, out var grid))
+            return false;
+
+        var anchored = _map.GetAnchoredEntitiesEnumerator(gridUid, grid, _map.CoordinatesToTile(gridUid, grid, xform.Coordinates));
+
+        while (anchored.MoveNext(out var uid))
+        {
+            if (_doorQuery.HasComp(uid.Value))
+                return true;
+        }
+
+        return false;
     }
 
     #endregion
@@ -346,22 +452,27 @@ public sealed class SoldierCoverSystem : EntitySystem
     #region Cover
 
     /// <summary>
-    /// Looks for a cover against the enemy near the soldier.
+    /// Looks for a cover against the enemy near the soldier, in the room the soldier is in.
     /// </summary>
-    public SoldierSearchResult TryFindCover(EntityUid soldier, EntityUid enemy, out SoldierCoverSpot spot)
+    /// <param name="soldier">The soldier.</param>
+    /// <param name="enemy">The enemy.</param>
+    /// <param name="spot">The cover.</param>
+    /// <param name="throughDoors">The soldier may run out of the room for the cover, and away from the enemy: it is
+    /// retreating (to bandage itself), not fighting.</param>
+    public SoldierSearchResult TryFindCover(EntityUid soldier, EntityUid enemy, out SoldierCoverSpot spot, bool throughDoors = false)
     {
         spot = default;
 
         if (!TryBegin(out var started))
             return SoldierSearchResult.Deferred;
 
-        var found = FindCover(soldier, enemy, out spot);
+        var found = FindCover(soldier, enemy, throughDoors, out spot);
         End(started);
 
         return found ? SoldierSearchResult.Found : SoldierSearchResult.NotFound;
     }
 
-    private bool FindCover(EntityUid soldier, EntityUid enemy, out SoldierCoverSpot spot)
+    private bool FindCover(EntityUid soldier, EntityUid enemy, bool throughDoors, out SoldierCoverSpot spot)
     {
         using var _ = _prof.Group("Soldier.Cover.Find");
 
@@ -430,6 +541,10 @@ public sealed class SoldierCoverSystem : EntitySystem
                 if (distanceToEnemy < enemyDistance - 2f)
                     score -= (enemyDistance - distanceToEnemy) * 0.4f;
 
+                // ...nor should it fall back (unless it is retreating): it holds its ground.
+                if (!throughDoors && distanceToEnemy > enemyDistance + 1f)
+                    score -= (distanceToEnemy - enemyDistance) * FallbackPenalty;
+
                 // A little noise: soldiers of one squad should not all pick the very same spot.
                 score += _random.NextFloat(0f, 0.6f);
 
@@ -442,26 +557,26 @@ public sealed class SoldierCoverSystem : EntitySystem
 
         _spots.Sort(BestFirst);
 
+        // Where the soldier can walk to: a plain walk over the neighbors, much cheaper than a ray. It comes first: the
+        // best spots by score are often the ones right behind the wall of the room (in the next room), and those must
+        // not use up the few rays that the search has.
+        GatherReachable(soldier, gridUid, grid, ScanRadius + 4, throughDoors, enemyMap.Position, gridMatrix);
+
         var checkedSpots = 0;
-        var gathered = false;
 
         foreach (var candidate in _spots)
         {
-            if (checkedSpots++ >= MaxChecked)
+            if (checkedSpots >= MaxChecked)
                 break;
 
-            // The enemy must not see the spot...
-            if (!IsCovered(soldier, enemy, enemyMap.MapId, enemyMap.Position, candidate.World))
+            // The soldier must be able to walk there without a long detour (and without leaving the room)...
+            if (!IsReachable(gridUid, candidate.Tile))
                 continue;
 
-            // ...and the soldier must be able to walk there without a long detour.
-            if (!gathered)
-            {
-                GatherReachable(soldier, ScanRadius + 4);
-                gathered = true;
-            }
+            checkedSpots++;
 
-            if (!IsReachable(gridUid, candidate.Tile))
+            // ...and the enemy must not see the spot.
+            if (!IsCovered(soldier, enemy, enemyMap.MapId, enemyMap.Position, candidate.World))
                 continue;
 
             if (!TryFindPeek(soldier, enemy, enemyMap, gridUid, gridMatrix, candidate.Tile, candidate.World, layer, mask, out var peek))
@@ -618,7 +733,7 @@ public sealed class SoldierCoverSystem : EntitySystem
             // The soldier has to be able to get there (a flank is a long way around, but not through a wall).
             if (!gathered)
             {
-                GatherReachable(soldier, FlankSteps);
+                GatherReachable(soldier, gridUid, grid, FlankSteps, throughDoors: false, enemyMap.Position, gridMatrix);
                 gathered = true;
             }
 
@@ -702,7 +817,7 @@ public sealed class SoldierCoverSystem : EntitySystem
 
             if (!gathered)
             {
-                GatherReachable(soldier, FiringPositionSteps);
+                GatherReachable(soldier, gridUid, grid, FiringPositionSteps, throughDoors: false, enemyMap.Position, gridMatrix);
                 gathered = true;
             }
 

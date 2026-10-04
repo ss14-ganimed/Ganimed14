@@ -87,9 +87,12 @@ public sealed class SoldierTacticsSystem : EntitySystem
         var query = EntityQueryEnumerator<SoldierComponent>();
         while (query.MoveNext(out var uid, out var soldier))
         {
-            if (soldier.Mode != SoldierMode.Engage || soldier.Target is not { } target || !_squad.IsOperational(uid))
+            if (soldier.Mode != SoldierMode.Engage ||
+                soldier.Target is not { } target ||
+                !_squad.IsOperational(uid) ||
+                HasComp<SoldierMedicComponent>(uid))
             {
-                // Only the fighting have roles.
+                // Only the fighting have roles (and the medic does not suppress or flank: it keeps behind the others).
                 soldier.Role = SoldierCombatRole.Assault;
                 continue;
             }

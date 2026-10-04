@@ -7,6 +7,22 @@
 - type: htnCompound
   id: SoldierCompound
   branches:
+  # The soldier lies on the ground or has dropped its gun (it has been knocked down, shoved, disarmed): the recovery
+  # system gets it up and puts the gun back into its hand, even in the middle of a fight. Without a gun there is no fight.
+  - preconditions:
+    - !type:SoldierRecoveryPrecondition
+    tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:NoOperator
+
+  # The medic is busy with a comrade (it walks to him, drags him away, bandages him): the medic system drives it,
+  # even in the middle of a fight.
+  - preconditions:
+    - !type:SoldierMedicJobPrecondition
+    tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:NoOperator
+
   # The soldier has a target: fight.
   - preconditions:
     - !type:SoldierModePrecondition
@@ -14,6 +30,13 @@
     tasks:
     - !type:HTNCompoundTask
       task: SoldierEngageCompound
+
+  # The soldier has to stand still: it bandages itself, or waits at a closed door for the comrades.
+  - preconditions:
+    - !type:SoldierHoldPrecondition
+    tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:NoOperator
 
   # Going to a place to search it: a noise that is checked or the enemy that has been lost.
   - preconditions:

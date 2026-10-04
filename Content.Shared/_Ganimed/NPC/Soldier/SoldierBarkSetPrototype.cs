@@ -41,6 +41,13 @@ public enum SoldierBark : byte
     Entering,
     Wounded,
     Healing,
+
+    // The medic: a comrade calls for it, it answers, drags the wounded out of the fire, bandages him and reports.
+    CallMedic,
+    MedicComing,
+    MedicDragging,
+    MedicTreating,
+    MedicDone,
 }
 
 /// <summary>

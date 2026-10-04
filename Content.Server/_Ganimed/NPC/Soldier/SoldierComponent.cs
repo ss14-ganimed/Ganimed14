@@ -47,19 +47,6 @@ public sealed partial class SoldierComponent : Component
     public float VisionRange = 12f;
 
     /// <summary>
-    /// Width of the field of view in degrees while the squad is calm.
-    /// An alerted squad looks all around.
-    /// </summary>
-    [DataField]
-    public float FieldOfView = 130f;
-
-    /// <summary>
-    /// Enemies closer than this (in tiles) are noticed regardless of the field of view.
-    /// </summary>
-    [DataField]
-    public float PeripheralRange = 2.5f;
-
-    /// <summary>
     /// For how long an enemy has to stay in sight before the soldier is sure about the contact (seconds).
     /// </summary>
     [DataField]
@@ -90,6 +77,13 @@ public sealed partial class SoldierComponent : Component
     public float WoundedFraction = 0.45f;
 
     /// <summary>
+    /// How far (in tiles) from itself the soldier looks for the gun it has dropped. A gun that lies farther is given up
+    /// (the soldier takes another one it carries, the pistol, if it has it).
+    /// </summary>
+    [DataField]
+    public float WeaponSearchRange = 12f;
+
+    /// <summary>
     /// A soldier does not hold the trigger down: it shoots bursts of this length (seconds, from and to) ...
     /// </summary>
     [DataField]
@@ -103,10 +97,37 @@ public sealed partial class SoldierComponent : Component
     public Vector2 PauseTime = new(0.35f, 0.9f);
 
     /// <summary>
-    /// The soldier stops bandaging itself when this share of its health is back (1 is unhurt).
+    /// The soldier stops bandaging itself in a fight when this share of its health is back (1 is unhurt).
     /// </summary>
     [DataField]
     public float HealedFraction = 0.8f;
+
+    /// <summary>
+    /// When there is no fight and the squad is calm, the soldier bandages itself as soon as this share of its health
+    /// (1 is unhurt) or less is left, and always when it bleeds.
+    /// </summary>
+    [DataField]
+    public float CalmHealFraction = 0.85f;
+
+    /// <summary>
+    /// The same, while the squad is alert (it looks for the enemy, there is no time for scratches).
+    /// </summary>
+    [DataField]
+    public float AlertHealFraction = 0.6f;
+
+    /// <summary>
+    /// A calm squad has time to get well: the soldier stops bandaging itself when this share of its health is back.
+    /// (A soldier that bandages itself while the squad is alert stops at <see cref="HealedFraction"/>.)
+    /// </summary>
+    [DataField]
+    public float CalmHealedFraction = 0.95f;
+
+    /// <summary>
+    /// A soldier with this share of its health or less left runs away from the fight, even through a door, to bandage
+    /// itself, and keeps on bandaging while its comrades deal with the enemy.
+    /// </summary>
+    [DataField]
+    public float CriticalFraction = 0.3f;
 
     /// <summary>
     /// The chance (0 to 1) that the soldier throws a grenade when the enemy has just ducked out of its sight.
@@ -139,10 +160,10 @@ public sealed partial class SoldierComponent : Component
     public TimeSpan GrenadeCooldown = TimeSpan.FromSeconds(16);
 
     /// <summary>
-    /// Radius (in tiles) around the noise source the soldier searches while investigating.
+    /// Radius (in tiles) around the noise source (a shot, an explosion) the soldier searches while investigating.
     /// </summary>
     [DataField]
-    public float InvestigateRadius = 8f;
+    public float InvestigateRadius = 3f;
 
     /// <summary>
     /// For how long the soldier searches the area after arriving at the noise source.
@@ -267,6 +288,11 @@ public sealed partial class SoldierComponent : Component
     /// </summary>
     [ViewVariables]
     public TimeSpan TargetLastSeenAt;
+
+    /// <summary>
+    /// When somebody has hurt the soldier last (it knows when it is being shot at).
+    /// </summary>
+    public TimeSpan LastHitAt;
 
     /// <summary>
     /// The enemy the soldier has noticed but is not sure about yet.
@@ -496,6 +522,25 @@ public sealed partial class SoldierComponent : Component
     public EntityUid? HealItem;
 
     /// <summary>
+    /// The container (and its id) the <see cref="HealItem"/> was taken from: the item is put back there.
+    /// </summary>
+    public EntityUid? HealItemHome;
+
+    public string? HealItemHomeId;
+
+    /// <summary>
+    /// The item the soldier has taken into its hand for medical work (a bandage, a body scanner, a defibrillator): it is put
+    /// away when the work is done.
+    /// </summary>
+    public EntityUid? HandTool;
+
+    /// <summary>
+    /// The medic who works on the soldier at the moment: the soldier stands still, see <see cref="SoldierFirstAidPhase.Treated"/>.
+    /// </summary>
+    [ViewVariables]
+    public EntityUid? TreatedBy;
+
+    /// <summary>
     /// The soldier is in the heal state but has not taken the bandage yet: it waits until it stands still.
     /// </summary>
     public bool HealPending;
@@ -504,6 +549,32 @@ public sealed partial class SoldierComponent : Component
     /// When the soldier has started to apply the bandage.
     /// </summary>
     public TimeSpan HealStartedAt;
+
+    /// <summary>
+    /// How many bandages the soldier has used since it started to tend to its wounds.
+    /// </summary>
+    public int HealAttempts;
+
+    /// <summary>
+    /// What the soldier does about its wounds while it does not fight.
+    /// </summary>
+    [ViewVariables]
+    public SoldierFirstAidPhase FirstAid;
+
+    /// <summary>
+    /// When the soldier has entered <see cref="FirstAid"/>.
+    /// </summary>
+    public TimeSpan FirstAidSince;
+
+    /// <summary>
+    /// The soldier stops the first aid when this share of its health is back.
+    /// </summary>
+    public float FirstAidGoal;
+
+    /// <summary>
+    /// The next time the soldier looks whether it needs first aid (while it does not fight).
+    /// </summary>
+    public TimeSpan NextFirstAidCheckAt;
 
     /// <summary>
     /// The gun the soldier holds is ready to shoot (a rifle is handed out with the bolt open and has to be closed first).
@@ -519,6 +590,45 @@ public sealed partial class SoldierComponent : Component
     /// The grenade that is going to be thrown.
     /// </summary>
     public EntityUid? GrenadeToThrow;
+
+    // Getting up and picking the gun up.
+
+    /// <summary>
+    /// What the soldier does to get back into the fight: it gets up, it picks the gun it has dropped up.
+    /// </summary>
+    [ViewVariables]
+    public SoldierRecoveryPhase Recovery;
+
+    /// <summary>
+    /// When the soldier has entered <see cref="Recovery"/>.
+    /// </summary>
+    public TimeSpan RecoverySince;
+
+    /// <summary>
+    /// The soldier does not start to recover before this time (it has just given up on something).
+    /// </summary>
+    public TimeSpan NextRecoveryAt;
+
+    /// <summary>
+    /// The next time the soldier looks whether it lies on the ground or has lost its gun.
+    /// </summary>
+    public TimeSpan NextRecoveryCheckAt;
+
+    /// <summary>
+    /// The next time the soldier tries to get up (an attempt that fails is not repeated on every tick).
+    /// </summary>
+    public TimeSpan NextGetUpAt;
+
+    /// <summary>
+    /// How many times in a row the soldier has failed to take the gun into its hand.
+    /// </summary>
+    public int RearmFailures;
+
+    /// <summary>
+    /// The gun the soldier has held last: the one it goes for when it drops it.
+    /// </summary>
+    [ViewVariables]
+    public EntityUid? Weapon;
 
     #endregion
 }

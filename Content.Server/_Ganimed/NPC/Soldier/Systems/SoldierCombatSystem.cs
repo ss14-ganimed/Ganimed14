@@ -78,6 +78,26 @@ public sealed class SoldierCombatSystem : EntitySystem
     private static readonly TimeSpan HealTimeout = TimeSpan.FromSeconds(25);
     private static readonly TimeSpan HealSettleTime = TimeSpan.FromSeconds(0.8);
     private static readonly TimeSpan HealStartGrace = TimeSpan.FromSeconds(1);
+
+    /// <summary>
+    /// A soldier that bandages itself is threatened if it has seen the enemy or has been hit for this long (seconds),
+    /// but not in the first moments of the bandage (what it saw before is old news), and it does not start a new
+    /// bandage for a while after it has been found.
+    /// </summary>
+    private static readonly TimeSpan ThreatMemory = TimeSpan.FromSeconds(0.5);
+    private static readonly TimeSpan HealThreatGrace = TimeSpan.FromSeconds(0.8);
+    private static readonly TimeSpan HealInterruptedCooldown = TimeSpan.FromSeconds(3);
+
+    /// <summary>
+    /// How many bandages (items of different kinds, for different wounds) the soldier uses in a row in one go.
+    /// </summary>
+    private const int MaxHealBandages = 3;
+
+    /// <summary>
+    /// A comrade this close (in tiles) is counted on to keep the enemy busy.
+    /// </summary>
+    private const float ComradeCoverRange = 14f;
+
     private static readonly TimeSpan LineCheckInterval = TimeSpan.FromSeconds(0.2);
 
     /// <summary>
@@ -201,6 +221,9 @@ public sealed class SoldierCombatSystem : EntitySystem
         soldier.NoSightSince = null;
         soldier.FlankSpot = null;
 
+        // A bandage the soldier was putting on in peace goes back into the backpack: the hands are needed for the gun.
+        _medical.AbortFirstAid(ent);
+
         // The bolt of the rifle may be open: nothing is fired until it is closed.
         _ammo.TryReadyGun(ent);
 
@@ -320,7 +343,7 @@ public sealed class SoldierCombatSystem : EntitySystem
                 break;
 
             case SoldierCombatState.Heal:
-                Heal(ent, ranged, now);
+                Heal(ent, ranged, target, now);
                 break;
 
             case SoldierCombatState.Flank:
@@ -378,8 +401,9 @@ public sealed class SoldierCombatSystem : EntitySystem
             return;
         }
 
-        // Run to a cover and do it there.
-        var search = _cover.TryFindCover(ent, target, out var spot);
+        // Run to a cover and do it there. A soldier that is hurt very badly may run out of the room for it.
+        var critical = _medical.GetHealthFraction(ent) <= soldier.CriticalFraction;
+        var search = _cover.TryFindCover(ent, target, out var spot, throughDoors: critical);
 
         // No time for the search right now: look again in a moment.
         if (search == SoldierSearchResult.Deferred)
@@ -585,7 +609,11 @@ public sealed class SoldierCombatSystem : EntitySystem
             soldier.Role = SoldierCombatRole.Assault;
         }
 
-        if (distance > EngageRange)
+        // A medic keeps behind the others: it never closes in on the enemy, and its cover is the safest one there is
+        // (even out of the room, away from the enemy).
+        var medic = HasComp<SoldierMedicComponent>(ent);
+
+        if (distance > EngageRange && !medic)
         {
             SetState(soldier, SoldierCombatState.Advance, now);
             return;
@@ -593,7 +621,7 @@ public sealed class SoldierCombatSystem : EntitySystem
 
         if (now >= soldier.NextCoverSearchAt)
         {
-            var search = _cover.TryFindCover(ent, target, out var spot);
+            var search = _cover.TryFindCover(ent, target, out var spot, throughDoors: medic);
 
             if (search == SoldierSearchResult.Found)
             {
@@ -612,8 +640,35 @@ public sealed class SoldierCombatSystem : EntitySystem
             soldier.NextCoverSearchAt = now + (search == SoldierSearchResult.Deferred ? DeferredRetry() : CoverSearchCooldown);
         }
 
+        // No cover in the room, and the soldier stands in the doorway: that is no place to shoot from. It holds up the
+        // comrades who come in behind it, and the whole room sees it. It steps in.
+        if (now >= soldier.NextRepositionAt && ranged.TargetInLOS && _cover.IsInDoorway(ent) && TryLeaveDoorway(ent, target, now))
+            return;
+
         // No cover around: stand and shoot.
         SetState(soldier, SoldierCombatState.Fire, now);
+    }
+
+    private bool TryLeaveDoorway(Entity<SoldierComponent> ent, EntityUid target, TimeSpan now)
+    {
+        var soldier = ent.Comp;
+
+        var search = _cover.TryFindFiringPosition(ent, target, out var spot);
+
+        // No time for the search right now: it is repeated at the next look.
+        if (search == SoldierSearchResult.Deferred)
+            return false;
+
+        soldier.NextRepositionAt = now + RepositionCooldown;
+
+        if (search != SoldierSearchResult.Found)
+            return false;
+
+        soldier.RepositionSpot = spot;
+        soldier.LineBlockedSince = null;
+        SetState(soldier, SoldierCombatState.Reposition, now);
+        MoveTo(ent, spot, 0.4f);
+        return true;
     }
 
     private void Advance(Entity<SoldierComponent> ent, NPCRangedCombatComponent ranged, EntityUid target, float distance, TimeSpan now)
@@ -794,8 +849,8 @@ public sealed class SoldierCombatSystem : EntitySystem
             return;
         }
 
-        // The enemy is out of sight: go and look for him.
-        if (soldier.NoSightSince is { } since && now - since > NoSightAdvanceDelay)
+        // The enemy is out of sight: go and look for him. (A medic does not: it stays behind the others.)
+        if (soldier.NoSightSince is { } since && now - since > NoSightAdvanceDelay && !HasComp<SoldierMedicComponent>(ent))
             SetState(soldier, SoldierCombatState.Advance, now);
     }
 
@@ -882,10 +937,11 @@ public sealed class SoldierCombatSystem : EntitySystem
         // The bandage is taken in a moment, when the soldier stands still.
         SetState(soldier, SoldierCombatState.Heal, now);
         soldier.HealPending = true;
+        soldier.HealAttempts = 0;
         soldier.CombatStateUntil = now + HealTimeout;
     }
 
-    private void Heal(Entity<SoldierComponent> ent, NPCRangedCombatComponent ranged, TimeSpan now)
+    private void Heal(Entity<SoldierComponent> ent, NPCRangedCombatComponent ranged, EntityUid target, TimeSpan now)
     {
         var soldier = ent.Comp;
         ranged.Status = CombatStatus.Unspecified;
@@ -907,7 +963,24 @@ public sealed class SoldierCombatSystem : EntitySystem
             }
 
             soldier.HealStartedAt = now;
-            _radio.Say(ent.AsNullable(), SoldierBark.Healing, 0.1f);
+
+            if (soldier.HealAttempts == 0)
+                _radio.Say(ent.AsNullable(), SoldierBark.Healing, 0.1f);
+
+            return;
+        }
+
+        // The enemy has found the soldier while it bandages itself. The bandage goes back into the backpack (it is not
+        // thrown away) and the soldier fights; it bandages itself again when it is hidden. Only a soldier that is hurt
+        // very badly goes on, if its comrades keep the enemy busy.
+        // (The stock combat system does not check the line of sight of a soldier that does not shoot, so the soldier goes
+        // by what it has seen of the enemy and by whether it was hit.)
+        if (IsThreatened(soldier, now) && now - soldier.HealStartedAt > HealThreatGrace && !CanRelyOnComrades(ent, target))
+        {
+            _medical.FinishHealing(ent);
+            soldier.HealItem = null;
+            soldier.NextHealAt = now + HealInterruptedCooldown;
+            SetState(soldier, SoldierCombatState.Assess, now);
             return;
         }
 
@@ -921,10 +994,62 @@ public sealed class SoldierCombatSystem : EntitySystem
 
         _medical.FinishHealing(ent);
         soldier.HealItem = null;
+        soldier.HealAttempts++;
+
+        // Still hurt, and a different kind of wounds is left (burns after the bruises were bandaged)? The next item follows.
+        if (!healed &&
+            now < soldier.CombatStateUntil &&
+            soldier.HealAttempts < MaxHealBandages &&
+            _medical.TryFindHealingItem(ent, out var next))
+        {
+            soldier.HealItem = next;
+            soldier.HealPending = true;
+            return;
+        }
 
         // Still hurt? The next bandage follows soon.
         soldier.NextHealAt = now + TimeSpan.FromSeconds(2);
         SetState(soldier, SoldierCombatState.Assess, now);
+    }
+
+    /// <summary>
+    /// Has the enemy found the soldier: it has seen him a moment ago, or he has just hit it.
+    /// </summary>
+    private static bool IsThreatened(SoldierComponent soldier, TimeSpan now)
+    {
+        return now - soldier.TargetLastSeenAt < ThreatMemory || now - soldier.LastHitAt < ThreatMemory;
+    }
+
+    /// <summary>
+    /// A soldier that is hurt very badly does not stop bandaging itself when the enemy sees it, as long as a comrade
+    /// is close and fights the same enemy: the comrades take the fire.
+    /// </summary>
+    private bool CanRelyOnComrades(Entity<SoldierComponent> ent, EntityUid target)
+    {
+        if (_medical.GetHealthFraction(ent) > ent.Comp.CriticalFraction ||
+            !_squad.TryGetSquad(ent.AsNullable(), out var squad))
+        {
+            return false;
+        }
+
+        var ourPosition = _transform.GetWorldPosition(ent);
+
+        foreach (var member in squad.Comp.Members)
+        {
+            if (member == ent.Owner ||
+                !TryComp(member, out SoldierComponent? other) ||
+                other.Target != target ||
+                other.CombatState is SoldierCombatState.Heal or SoldierCombatState.Retreat or SoldierCombatState.Reload ||
+                !_squad.IsOperational(member))
+            {
+                continue;
+            }
+
+            if (Vector2.Distance(_transform.GetWorldPosition(member), ourPosition) <= ComradeCoverRange)
+                return true;
+        }
+
+        return false;
     }
 
     private bool IsMoving(EntityUid uid)

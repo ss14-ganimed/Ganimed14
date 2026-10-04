@@ -95,11 +95,13 @@ public sealed class SoldierBreachSystem : EntitySystem
     {
         var soldier = ent.Comp;
 
-        // Doors matter only while the soldier walks to a place it was sent to.
+        // Doors matter only while the soldier walks to a place it was sent to. (A medic that works on a comrade is not
+        // on an order: it does not stop at the doors, it opens them on its way like a soldier that walks home does.)
         var onOrder = soldier.Mode is SoldierMode.Investigate or SoldierMode.Hunt &&
                       soldier.OrderPoint != null &&
                       soldier.OrderPhase != SoldierInvestigationPhase.Reporting &&
-                      _squad.IsOperational(ent);
+                      _squad.IsOperational(ent) &&
+                      !(TryComp(ent, out SoldierMedicComponent? medic) && medic.Phase != SoldierMedicPhase.None);
 
         if (!onOrder)
         {

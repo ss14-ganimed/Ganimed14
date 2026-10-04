@@ -7,5 +7,10 @@ ent-MobSoldier = soldier
 
 ent-SpawnerMobSoldier = soldier spawner
 
+ent-MobSoldierMedic = soldier medic
+    .desc = The combat medic of a squad. Keeps behind the others, raises fallen comrades, drags the wounded out of the line of fire and bandages them.
+
+ent-SpawnerMobSoldierMedic = soldier medic spawner
+
 ent-ClothingHeadsetSoldier = soldier headset
     .desc = A rugged military headset. It sends the voice straight to the common frequency.

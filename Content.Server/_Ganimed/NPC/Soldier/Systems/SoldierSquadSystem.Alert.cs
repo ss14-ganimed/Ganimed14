@@ -17,6 +17,11 @@ public sealed partial class SoldierSquadSystem
     /// </summary>
     private const float HuntRetargetDistance = 6f;
 
+    /// <summary>
+    /// A medic that has stopped short of the enemy looks around within this radius (in tiles) of the place, no farther.
+    /// </summary>
+    private const float MedicHuntRadius = 2f;
+
     private void UpdateAlert(Entity<SoldierSquadComponent> squad, TimeSpan now)
     {
         var comp = squad.Comp;
@@ -266,8 +271,47 @@ public sealed partial class SoldierSquadSystem
             return false;
         }
 
-        GiveOrder(soldier, SoldierMode.Hunt, pos, squad.Comp.HuntRadius);
+        GiveOrder(soldier, SoldierMode.Hunt, GetHuntPoint(soldier, pos), GetHuntRadius(soldier, squad));
         return true;
+    }
+
+    /// <summary>
+    /// Where the soldier goes to look for the enemy that was last seen at the given place. A medic does not go that far:
+    /// it stops <see cref="SoldierMedicComponent.StandOffDistance"/> short of the enemy, behind the others, where it can
+    /// look after the wounded.
+    /// </summary>
+    private EntityCoordinates GetHuntPoint(EntityUid soldier, EntityCoordinates enemyPos)
+    {
+        if (!TryComp(soldier, out SoldierMedicComponent? medic))
+            return enemyPos;
+
+        var enemyMap = _transform.ToMapCoordinates(enemyPos);
+        var ourMap = _transform.GetMapCoordinates(soldier);
+
+        if (enemyMap.MapId != ourMap.MapId)
+            return enemyPos;
+
+        var offset = ourMap.Position - enemyMap.Position;
+        var distance = offset.Length();
+
+        // Already as close as a medic goes: it stays where it is.
+        if (distance <= medic.StandOffDistance)
+            return Transform(soldier).Coordinates;
+
+        var point = new MapCoordinates(enemyMap.Position + offset / distance * medic.StandOffDistance, enemyMap.MapId);
+
+        // A spot to stand on close to it (the point itself may be inside a wall).
+        return _patrol.TryPickSearchPoint(soldier, _transform.ToCoordinates(point), 2f, out var spot)
+            ? spot
+            : Transform(soldier).Coordinates;
+    }
+
+    /// <summary>
+    /// How far around its point the hunter searches. A medic stays where it stopped.
+    /// </summary>
+    private float GetHuntRadius(EntityUid soldier, Entity<SoldierSquadComponent> squad)
+    {
+        return HasComp<SoldierMedicComponent>(soldier) ? MedicHuntRadius : squad.Comp.HuntRadius;
     }
 
     /// <summary>
@@ -289,7 +333,7 @@ public sealed partial class SoldierSquadSystem
             if (soldier.Mode == SoldierMode.Hunt && soldier.OrderPoint != null)
                 continue;
 
-            GiveOrder((member, soldier), SoldierMode.Hunt, pos, squad.Comp.HuntRadius);
+            GiveOrder((member, soldier), SoldierMode.Hunt, GetHuntPoint(member, pos), GetHuntRadius(member, squad));
         }
     }
 
@@ -301,7 +345,6 @@ public sealed partial class SoldierSquadSystem
         if (squad.Comp.LastKnownEnemyPos is not { } pos)
             return;
 
-        var enemyMap = _transform.ToMapCoordinates(pos);
         var now = _timing.CurTime;
 
         foreach (var member in squad.Comp.Members)
@@ -314,14 +357,18 @@ public sealed partial class SoldierSquadSystem
                 continue;
             }
 
+            // The place the hunter would head for now (for a medic it is not the place of the enemy itself).
+            var target = GetHuntPoint(member, pos);
+            var targetMap = _transform.ToMapCoordinates(target);
             var pointMap = _transform.ToMapCoordinates(point);
-            if (pointMap.MapId == enemyMap.MapId &&
-                Vector2.Distance(pointMap.Position, enemyMap.Position) < HuntRetargetDistance)
+
+            if (pointMap.MapId == targetMap.MapId &&
+                Vector2.Distance(pointMap.Position, targetMap.Position) < HuntRetargetDistance)
             {
                 continue;
             }
 
-            soldier.OrderPoint = pos;
+            soldier.OrderPoint = target;
             soldier.OrderPhase = SoldierInvestigationPhase.Moving;
             soldier.OrderStartedAt = _timing.CurTime;
             soldier.SearchStartedAt = null;
@@ -353,6 +400,14 @@ public sealed partial class SoldierSquadSystem
     {
         if (!TryPickSpeaker(squad, soldier, out var speaker))
             return;
+
+        // A comrade in critical condition can be saved: somebody (not the medic himself) calls for it.
+        if (_mobState.IsCritical(soldier) &&
+            HasLivingMedic(squad) &&
+            TryPickSpeaker(squad, soldier, out var caller, excludeMedics: true))
+        {
+            _radio.Say(caller, SoldierBark.CallMedic, 2.2f);
+        }
 
         // Already fighting: just say it. Otherwise the squad goes to see what happened.
         if (squad.Comp.Alert.Severity() >= SoldierAlertLevel.Evasion.Severity())

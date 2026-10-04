@@ -117,3 +117,24 @@ soldier-bark-wounded-3 = I'm wounded, cover me!
 soldier-bark-healing-1 = Patching up, cover me!
 soldier-bark-healing-2 = Applying a bandage, cover!
 soldier-bark-healing-3 = Treating the wound, give me a minute!
+
+# The medic
+soldier-bark-call-medic-1 = Medic! Man down, get over here!
+soldier-bark-call-medic-2 = Need a medic! One of ours is in critical condition!
+soldier-bark-call-medic-3 = Medic, we have a man on the ground!
+
+soldier-bark-medic-coming-1 = On my way to the wounded, cover me!
+soldier-bark-medic-coming-2 = Medic moving up, hold on!
+soldier-bark-medic-coming-3 = I see him, running!
+
+soldier-bark-medic-dragging-1 = I've got him, pulling him out!
+soldier-bark-medic-dragging-2 = Dragging him to cover, keep their heads down!
+soldier-bark-medic-dragging-3 = Getting the wounded out of the line of fire!
+
+soldier-bark-medic-treating-1 = Working, give me room!
+soldier-bark-medic-treating-2 = Hold on, I'll have you on your feet in a moment!
+soldier-bark-medic-treating-3 = Dressing the wounds, bear with me!
+
+soldier-bark-medic-done-1 = He's stable!
+soldier-bark-medic-done-2 = Back on his feet!
+soldier-bark-medic-done-3 = Got him up, he can take it from here!

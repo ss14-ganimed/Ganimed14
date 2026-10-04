@@ -14,6 +14,7 @@ using Content.Server._Ganimed.NPC.Soldier.Systems;
 using Content.Server.Radio;
 using Content.Shared._Ganimed.NPC.Soldier;
 using Content.Shared.Atmos;
+using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -21,14 +22,17 @@ using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Gravity;
+using Content.Shared.Medical.Healing;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Radio.Components;
+using Content.Shared.Storage;
 using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Server.GameObjects;
+using Robust.Shared.Containers;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -80,6 +84,7 @@ public sealed class SoldierRadioRecorderSystem : EntitySystem
 public sealed class SoldierTests
 {
     private const string SoldierId = "MobSoldier";
+    private const string MedicId = "MobSoldierMedic";
 
     // '#' wall, '.' floor, '+' door, ' ' nothing. One character is one tile, the first row is the northernmost one.
     private static readonly string[] Hall =
@@ -416,6 +421,9 @@ public sealed class SoldierTests
         var home = team.ToDictionary(s => s, s => WorldPos(pair, s));
         var sourceWorld = pair.Server.System<TransformSystem>().ToMapCoordinates(source).Position;
 
+        // The place of a shot is searched within three tiles around it, no wider.
+        Assert.That(team.All(s => Soldier(pair, s).OrderRadius == 3f), "three tiles around the source are searched");
+
         // They walk to the source and start to search.
         var searching = false;
         for (var i = 0; i < 25 && !searching; i++)
@@ -426,7 +434,7 @@ public sealed class SoldierTests
 
         Assert.That(searching, "the team has reached the place");
 
-        // While they search they stay within 8 tiles of the source.
+        // While they search they stay close to the source.
         var reporting = false;
         for (var i = 0; i < 45 && !reporting; i++)
         {
@@ -435,8 +443,9 @@ public sealed class SoldierTests
             foreach (var member in team)
             {
                 var distance = Vector2.Distance(WorldPos(pair, member), sourceWorld);
-                // Eight tiles around the source, plus how far from the chosen spot a walking soldier stops.
-                Assert.That(distance, Is.LessThan(11f), "the soldier strays from the area it has to search\n" + Dump(pair, grid, team));
+                // Three tiles around the source, plus how close the soldier has to get to start (3.5) and how far from
+                // the chosen spot a walking soldier stops.
+                Assert.That(distance, Is.LessThan(6.5f), "the soldier strays from the area it has to search\n" + Dump(pair, grid, team));
             }
 
             reporting = team.All(s => Soldier(pair, s).OrderPhase == SoldierInvestigationPhase.Reporting);
@@ -547,6 +556,9 @@ public sealed class SoldierTests
         return enemy;
     }
 
+    /// <summary>
+    /// Turns the soldier to the target. The soldiers see all around, the turn only makes the first shots come sooner.
+    /// </summary>
     private static async Task FaceTowards(TestPair pair, EntityUid soldier, EntityUid target)
     {
         await pair.Server.WaitPost(() =>
@@ -573,7 +585,7 @@ public sealed class SoldierTests
         await pair.RunSeconds(2);
 
         // The soldiers have walked about: the enemy appears two tiles from one of them, who notices him whichever way
-        // it looks (a soldier sees what is closer than that all around).
+        // it looks (a soldier sees all around, it has no field of view to hide from).
         var beside = WorldPos(pair, soldiers[2]);
         var enemy = await SpawnDurableEnemy(pair, new EntityCoordinates(grid, beside.X + 2f, beside.Y));
         await FaceTowards(pair, soldiers[2], enemy);
@@ -603,6 +615,38 @@ public sealed class SoldierTests
         var damage = pair.Server.EntMan.GetComponent<DamageableComponent>(enemy).TotalDamage;
         Assert.That(damage, Is.GreaterThan(FixedPoint2.Zero), "the soldiers hit the enemy\n" + Dump(pair, grid, soldiers, enemy));
         Assert.That(squad.BarkLog.Select(b => b.Bark), Does.Contain(SoldierBark.BackupAcknowledge));
+
+        await Finish(pair, grid);
+    }
+
+    [Test]
+    public async Task SoldierSeesAnEnemyBehindItsBack()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var (_, grid, _) = await BuildMap(pair, Hall);
+
+        EntityUid soldier = default;
+        await pair.Server.WaitPost(() => soldier = pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 5, 3)));
+        await pair.RunSeconds(1);
+
+        var enemy = await SpawnDurableEnemy(pair, At(grid, 11, 3));
+
+        // The soldier looks away from the enemy all the time: a soldier has no field of view that it could be crept up on in.
+        var seen = false;
+        for (var i = 0; i < 20 && !seen; i++)
+        {
+            await pair.Server.WaitPost(() =>
+            {
+                var transform = pair.Server.System<TransformSystem>();
+                var away = transform.GetWorldPosition(soldier) - transform.GetWorldPosition(enemy);
+                transform.SetWorldRotation(soldier, away.ToWorldAngle());
+            });
+
+            await pair.RunSeconds(0.25f);
+            seen = Soldier(pair, soldier).Mode == SoldierMode.Engage && Soldier(pair, soldier).Target == enemy;
+        }
+
+        Assert.That(seen, "the soldier sees the enemy behind its back\n" + Dump(pair, grid, new[] { soldier }, enemy));
 
         await Finish(pair, grid);
     }
@@ -809,6 +853,251 @@ public sealed class SoldierTests
         Assert.That(states, Does.Contain(SoldierCombatState.Heal), message);
         Assert.That(barks, Does.Contain(SoldierBark.Healing), message);
         Assert.That(after, Is.LessThan(before), "the bandage helps\n" + message);
+        Assert.That(BandagesOnTheFloor(pair), Is.Empty, "a bandage is never thrown on the floor\n" + message);
+
+        await Finish(pair, grid);
+    }
+
+    /// <summary>
+    /// Medical items that lie around, outside of any backpack or hand. A soldier puts its bandages away, it does not throw them.
+    /// </summary>
+    private static List<EntityUid> BandagesOnTheFloor(TestPair pair)
+    {
+        var containers = pair.Server.System<SharedContainerSystem>();
+        var result = new List<EntityUid>();
+        var query = pair.Server.EntMan.AllEntityQueryEnumerator<HealingComponent>();
+
+        while (query.MoveNext(out var uid, out _))
+        {
+            if (!containers.IsEntityInContainer(uid))
+                result.Add(uid);
+        }
+
+        return result;
+    }
+
+    private static DamageSpecifier Wounds(string type, int amount)
+    {
+        var wounds = new DamageSpecifier();
+        wounds.DamageDict[type] = FixedPoint2.New(amount);
+        return wounds;
+    }
+
+    [Test]
+    public async Task SoldierPutsTheBandageBackIntoTheBackpackInsteadOfDroppingIt()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var (_, grid, _) = await BuildMap(pair, Hall);
+
+        EntityUid soldier = default;
+        await pair.Server.WaitPost(() => soldier = pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 5, 3)));
+        await pair.RunSeconds(1);
+
+        var medical = pair.Server.System<SoldierMedicalSystem>();
+        var hands = pair.Server.System<Content.Server.Hands.Systems.HandsSystem>();
+        var containers = pair.Server.System<SharedContainerSystem>();
+        var guns = pair.Server.System<SharedGunSystem>();
+
+        await pair.Server.WaitAssertion(() =>
+        {
+            var component = Soldier(pair, soldier);
+            pair.Server.System<DamageableSystem>().ChangeDamage(soldier, Wounds("Blunt", 40), ignoreResistances: true);
+
+            // The soldier takes the bandage into the free hand and starts to apply it...
+            Assert.That(medical.TryFindHealingItem(soldier, out var item), "the soldier has something to bandage with");
+            Assert.That(medical.TryStartHealing((soldier, component), item, out _), "the bandage is taken");
+            Assert.That(hands.IsHolding(soldier, item), "the bandage is in the hand");
+            Assert.That(medical.IsHealing(soldier), "and is being applied");
+
+            // ...and has to stop (the enemy has turned up): the bandage goes into the backpack, the gun is in the hand again.
+            medical.FinishHealing((soldier, component));
+
+            Assert.That(hands.IsHolding(soldier, item), Is.False, "the hand is free again");
+            Assert.That(medical.IsHealing(soldier), Is.False, "nothing is applied anymore");
+            Assert.That(containers.TryGetContainingContainer(item, out var home), "the bandage is inside of something");
+            Assert.That(pair.Server.EntMan.HasComponent<StorageComponent>(home!.Owner), "inside of the backpack (or the belt)");
+            Assert.That(BandagesOnTheFloor(pair), Is.Empty, "and not on the floor");
+            Assert.That(guns.TryGetGun(soldier, out _, out _), "the soldier has its gun in the active hand again");
+        });
+
+        await Finish(pair, grid);
+    }
+
+    [Test]
+    public async Task SoldierPicksTheBandageThatFitsTheWounds()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var (_, grid, _) = await BuildMap(pair, Hall);
+
+        var soldiers = new List<EntityUid>();
+        await pair.Server.WaitPost(() =>
+        {
+            for (var i = 0; i < 3; i++)
+                soldiers.Add(pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 3 + i, 3)));
+        });
+
+        await pair.RunSeconds(1);
+
+        var medical = pair.Server.System<SoldierMedicalSystem>();
+
+        string? Chosen(EntityUid soldier)
+        {
+            return medical.TryFindHealingItem(soldier, out var item)
+                ? pair.Server.EntMan.GetComponent<MetaDataComponent>(item).EntityPrototype?.ID
+                : null;
+        }
+
+        await pair.Server.WaitAssertion(() =>
+        {
+            var damageable = pair.Server.System<DamageableSystem>();
+
+            // Burns: the ointment. Blows: the bruise pack. A cut that bleeds: the gauze, which stops the bleeding.
+            damageable.ChangeDamage(soldiers[0], Wounds("Heat", 30), ignoreResistances: true);
+            damageable.ChangeDamage(soldiers[1], Wounds("Blunt", 30), ignoreResistances: true);
+            damageable.ChangeDamage(soldiers[2], Wounds("Slash", 20), ignoreResistances: true);
+            pair.Server.System<SharedBloodstreamSystem>().TryModifyBleedAmount(soldiers[2], 2f);
+
+            Assert.That(Chosen(soldiers[0]), Is.EqualTo("Ointment"), "burns");
+            Assert.That(Chosen(soldiers[1]), Is.EqualTo("Brutepack"), "blows");
+            Assert.That(Chosen(soldiers[2]), Is.EqualTo("Gauze"), "a cut that bleeds");
+        });
+
+        await Finish(pair, grid);
+    }
+
+    [Test]
+    public async Task HurtSoldierBandagesItselfWhenThereIsNoFightAndPutsTheBandageAway()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var (_, grid, _) = await BuildMap(pair, Hall);
+
+        EntityUid soldier = default;
+        await pair.Server.WaitPost(() => soldier = pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 5, 3)));
+        await pair.RunSeconds(1);
+
+        // A few bruises: the soldier is hurt, but not badly.
+        FixedPoint2 before = default;
+        await pair.Server.WaitPost(() =>
+        {
+            pair.Server.System<DamageableSystem>().ChangeDamage(soldier, Wounds("Blunt", 20), ignoreResistances: true);
+            before = pair.Server.EntMan.GetComponent<DamageableComponent>(soldier).TotalDamage;
+        });
+
+        var phases = new HashSet<SoldierFirstAidPhase>();
+        var timeline = new System.Text.StringBuilder();
+        var lastLine = string.Empty;
+        var done = false;
+        var after = before;
+        var movedWhileAiding = false;
+        var where = WorldPos(pair, soldier);
+
+        for (var i = 0; i < 160 && !done; i++)
+        {
+            await pair.RunSeconds(0.5f);
+
+            var comp = Soldier(pair, soldier);
+            after = pair.Server.EntMan.GetComponent<DamageableComponent>(soldier).TotalDamage;
+            phases.Add(comp.FirstAid);
+
+            // The soldier stands still while it bandages itself (it may drift a little: it stops from a walk).
+            if (comp.FirstAid == SoldierFirstAidPhase.None)
+                where = WorldPos(pair, soldier);
+            else
+                movedWhileAiding |= Vector2.Distance(where, WorldPos(pair, soldier)) > 2.5f;
+
+            var line = $"{comp.Mode}/{comp.FirstAid} damage={after}";
+            if (line != lastLine)
+            {
+                timeline.AppendLine($"{i * 0.5f,6:F1}s {line} at {WorldPos(pair, soldier)}");
+                lastLine = line;
+            }
+
+            done = phases.Contains(SoldierFirstAidPhase.Apply) && comp.FirstAid == SoldierFirstAidPhase.None;
+        }
+
+        var message = timeline + Dump(pair, grid, new[] { soldier });
+        Assert.That(phases, Does.Contain(SoldierFirstAidPhase.Apply), "the bandage is applied\n" + message);
+        Assert.That(done, "the soldier is done and walks on\n" + message);
+        Assert.That(after, Is.LessThan(before), "the bandage helps\n" + message);
+        Assert.That(movedWhileAiding, Is.False, "the soldier does not walk about while it bandages itself\n" + message);
+        Assert.That(Squad(pair, grid).BarkLog.Select(b => b.Bark), Does.Contain(SoldierBark.Healing), message);
+
+        // The bandage is back in the backpack: nothing lies around and the hands are free.
+        Assert.That(BandagesOnTheFloor(pair), Is.Empty, "a bandage is never thrown on the floor\n" + message);
+
+        var hands = pair.Server.System<Content.Server.Hands.Systems.HandsSystem>();
+        Assert.That(hands.EnumerateHeld(soldier).Any(item => pair.Server.EntMan.HasComponent<HealingComponent>(item)), Is.False,
+            "no bandage is left in the hands\n" + message);
+
+        await Finish(pair, grid);
+    }
+
+    [Test]
+    public async Task SoldiersDoNotFallBackThroughTheDoorFromAnEnemyInTheRoom()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var (_, grid, _) = await BuildMap(pair, TwoRooms);
+
+        // Plain humans (no AI that would interfere): one stands two tiles inside the east room, the enemy is at the far end
+        // of it, and the door between the rooms is open. (An open door is not on the navigation mesh: it has no collision.)
+        EntityUid inside = default;
+        EntityUid inDoorway = default;
+        EntityUid enemy = default;
+
+        await pair.Server.WaitPost(() =>
+        {
+            inside = pair.Server.EntMan.SpawnEntity("MobHuman", At(grid, 12, 3));
+            inDoorway = pair.Server.EntMan.SpawnEntity("MobHuman", At(grid, 4, 3));
+            enemy = pair.Server.EntMan.SpawnEntity("MobHuman", At(grid, 24, 3));
+
+            var doors = pair.Server.System<SharedDoorSystem>();
+            var query = pair.Server.EntMan.AllEntityQueryEnumerator<DoorComponent>();
+
+            while (query.MoveNext(out var door, out _))
+            {
+                doors.TryOpen(door);
+            }
+        });
+
+        // The door opens and the pathfinding learns about it.
+        await pair.RunSeconds(1.2f);
+
+        var cover = pair.Server.System<SoldierCoverSystem>();
+
+        // Every search is made on a tick of its own: the searches of one tick share a time budget.
+        async Task<(SoldierSearchResult Result, float HideX)> Search(EntityUid who, bool throughDoors)
+        {
+            var result = SoldierSearchResult.NotFound;
+            var hideX = float.NaN;
+
+            await pair.Server.WaitAssertion(() =>
+            {
+                result = cover.TryFindCover(who, enemy, out var spot, throughDoors);
+                hideX = result == SoldierSearchResult.Found ? spot.Hide.X : float.NaN;
+            });
+
+            await pair.RunTicksSync(2);
+            return (result, hideX);
+        }
+
+        // The wall between the rooms is the only cover there is, and it is on the other side of the door.
+        var withDoors = await Search(inside, throughDoors: true);
+        Assert.That(withDoors.Result, Is.EqualTo(SoldierSearchResult.Found), "the cover behind the wall is there, the door is open");
+        Assert.That(withDoors.HideX, Is.LessThan(10f), "and it is in the other room");
+
+        // A soldier that fights in the room does not run out of it. It holds its ground.
+        var inTheRoom = await Search(inside, throughDoors: false);
+        Assert.That(inTheRoom.Result, Is.Not.EqualTo(SoldierSearchResult.Found), "no running back through the door");
+
+        // A soldier in the doorway does not step back from it either: it keeps to the side of the enemy. (The man in the
+        // doorway also keeps the door from closing.)
+        await pair.Server.WaitPost(() => pair.Server.System<TransformSystem>().SetCoordinates(inDoorway, At(grid, 10, 3)));
+        await pair.RunSeconds(0.3f);
+
+        await pair.Server.WaitAssertion(() => Assert.That(cover.IsInDoorway(inDoorway), "the man stands in the doorway"));
+
+        var doorway = await Search(inDoorway, throughDoors: false);
+        Assert.That(doorway.Result, Is.Not.EqualTo(SoldierSearchResult.Found), "no stepping back from the doorway");
 
         await Finish(pair, grid);
     }
@@ -1109,6 +1398,358 @@ public sealed class SoldierTests
 
         Assert.That(healthy, Is.LessThan(0.5), "a healthy server: the soldier looks around four times a second");
         Assert.That(lagging, Is.GreaterThan(0.7), "a lagging server: the soldier looks around less often");
+
+        await Finish(pair, grid);
+    }
+
+    [Test]
+    public async Task MedicCarriesTheEquipmentOfAMedic()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var (_, grid, _) = await BuildMap(pair, Hall);
+
+        EntityUid medic = default;
+        await pair.Server.WaitPost(() => medic = pair.Server.EntMan.SpawnEntity(MedicId, At(grid, 5, 3)));
+        await pair.RunSeconds(1);
+
+        await pair.Server.WaitAssertion(() =>
+        {
+            var inventory = pair.Server.System<SoldierInventorySystem>();
+            var ids = inventory.EnumerateCarried(medic)
+                .Select(item => pair.Server.EntMan.GetComponent<MetaDataComponent>(item).EntityPrototype?.ID)
+                .ToList();
+
+            Assert.That(ids, Does.Contain("HandheldHealthAnalyzer"), "a body scanner");
+            Assert.That(ids, Does.Contain("DefibrillatorOneHandedUnpowered"), "a hand-held defibrillator");
+            Assert.That(ids.Count(id => id == "MedkitCombatFilled"), Is.EqualTo(3), "combat medical kits");
+            Assert.That(ids, Does.Contain("MedicatedSuture"), "the kits are filled");
+            Assert.That(ids, Does.Contain("WeaponRifleLecter"), "and the medic has a rifle like the others");
+        });
+
+        await Finish(pair, grid);
+    }
+
+    /// <summary>
+    /// Puts the comrade into critical condition: a normal human falls into it at 100 damage and dies at 200.
+    /// </summary>
+    private static async Task PutIntoCriticalCondition(TestPair pair, EntityUid comrade, int damage = 105)
+    {
+        await pair.Server.WaitPost(() =>
+            pair.Server.System<DamageableSystem>().ChangeDamage(comrade, Wounds("Blunt", damage), ignoreResistances: true));
+
+        Assert.That(pair.Server.System<MobStateSystem>().IsCritical(comrade), "the comrade is down");
+    }
+
+    [Test]
+    public async Task MedicRaisesAComradeWhoHasFallenIntoCriticalCondition()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var (_, grid, _) = await BuildMap(pair, Hall);
+
+        EntityUid medic = default;
+        EntityUid comrade = default;
+
+        await pair.Server.WaitPost(() =>
+        {
+            medic = pair.Server.EntMan.SpawnEntity(MedicId, At(grid, 3, 3));
+            comrade = pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 9, 3));
+
+            // The test only needs the comrade back on his feet, not a full recovery.
+            pair.Server.EntMan.GetComponent<SoldierMedicComponent>(medic).ReviveGoal = 0.05f;
+        });
+
+        await pair.RunSeconds(1.5f);
+        await PutIntoCriticalCondition(pair, comrade);
+
+        var mobState = pair.Server.System<MobStateSystem>();
+        var phases = new HashSet<SoldierMedicPhase>();
+        var timeline = new System.Text.StringBuilder();
+        var lastLine = string.Empty;
+        var done = false;
+
+        for (var i = 0; i < 240 && !done; i++)
+        {
+            await pair.RunSeconds(0.5f);
+
+            var work = pair.Server.EntMan.GetComponent<SoldierMedicComponent>(medic);
+            phases.Add(work.Phase);
+
+            var line = $"{work.Phase} alive={mobState.IsAlive(comrade)} {DamageText(pair, comrade)} comrade-aid={Soldier(pair, comrade).FirstAid}";
+            if (line != lastLine)
+            {
+                timeline.AppendLine($"{i * 0.5f,6:F1}s {line} medic at {WorldPos(pair, medic)}");
+                lastLine = line;
+            }
+
+            done = mobState.IsAlive(comrade) && work.Phase == SoldierMedicPhase.None && phases.Contains(SoldierMedicPhase.Treat);
+        }
+
+        var message = timeline + Dump(pair, grid, new[] { medic, comrade });
+        Assert.That(mobState.IsAlive(comrade), "the medic has raised the comrade\n" + message);
+        Assert.That(phases, Does.Contain(SoldierMedicPhase.Approach), "the medic ran to him\n" + message);
+        Assert.That(phases, Does.Contain(SoldierMedicPhase.Treat), "and bandaged him\n" + message);
+        Assert.That(done, "the medic is done and is back to its business\n" + message);
+        Assert.That(Soldier(pair, comrade).FirstAid, Is.Not.EqualTo(SoldierFirstAidPhase.Treated), "the comrade is let go\n" + message);
+
+        var barks = Squad(pair, grid).BarkLog.Select(b => b.Bark).ToList();
+        Assert.That(barks, Does.Contain(SoldierBark.MedicComing), message);
+        Assert.That(barks, Does.Contain(SoldierBark.MedicTreating), message);
+
+        // The medic puts everything away: nothing lies around, nothing is left in its hands.
+        Assert.That(BandagesOnTheFloor(pair), Is.Empty, "a bandage is never thrown on the floor\n" + message);
+
+        var hands = pair.Server.System<Content.Server.Hands.Systems.HandsSystem>();
+        Assert.That(hands.EnumerateHeld(medic).Count(), Is.EqualTo(1), "only the rifle is in the hands of the medic\n" + message);
+
+        await Finish(pair, grid);
+    }
+
+    [Test]
+    public async Task MedicBandagesAWoundedComradeWhoDoesNotFight()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var (_, grid, _) = await BuildMap(pair, Hall);
+
+        EntityUid medic = default;
+        EntityUid comrade = default;
+
+        await pair.Server.WaitPost(() =>
+        {
+            medic = pair.Server.EntMan.SpawnEntity(MedicId, At(grid, 3, 3));
+            comrade = pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 7, 3));
+            pair.Server.EntMan.GetComponent<SoldierMedicComponent>(medic).AssistGoal = 0.7f;
+        });
+
+        await pair.RunSeconds(1.5f);
+
+        // A few bullets: the comrade is hurt, but not down.
+        FixedPoint2 before = default;
+        await pair.Server.WaitPost(() =>
+        {
+            pair.Server.System<DamageableSystem>().ChangeDamage(comrade, Wounds("Blunt", 50), ignoreResistances: true);
+            before = pair.Server.EntMan.GetComponent<DamageableComponent>(comrade).TotalDamage;
+        });
+
+        var phases = new HashSet<SoldierMedicPhase>();
+        var held = new HashSet<SoldierFirstAidPhase>();
+        var done = false;
+        var after = before;
+
+        for (var i = 0; i < 180 && !done; i++)
+        {
+            await pair.RunSeconds(0.5f);
+
+            var work = pair.Server.EntMan.GetComponent<SoldierMedicComponent>(medic);
+            phases.Add(work.Phase);
+            held.Add(Soldier(pair, comrade).FirstAid);
+            after = pair.Server.EntMan.GetComponent<DamageableComponent>(comrade).TotalDamage;
+
+            done = phases.Contains(SoldierMedicPhase.Treat) && work.Phase == SoldierMedicPhase.None;
+        }
+
+        var message = Dump(pair, grid, new[] { medic, comrade });
+        Assert.That(phases, Does.Contain(SoldierMedicPhase.Treat), "the medic bandages the comrade\n" + message);
+        Assert.That(held, Does.Contain(SoldierFirstAidPhase.Treated), "the comrade stands still while the medic works\n" + message);
+        Assert.That(after, Is.LessThan(before), "the bandages help\n" + message);
+        Assert.That(done, "the medic is done\n" + message);
+        Assert.That(Soldier(pair, comrade).FirstAid, Is.Not.EqualTo(SoldierFirstAidPhase.Treated), "the comrade is let go\n" + message);
+        Assert.That(BandagesOnTheFloor(pair), Is.Empty, "a bandage is never thrown on the floor\n" + message);
+
+        await Finish(pair, grid);
+    }
+
+    [Test]
+    public async Task MedicDragsAComradeOutOfTheLineOfFire()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var (_, grid, _) = await BuildMap(pair, Pillar);
+
+        // The enemy stands on the west side of the room and sees the comrade who lies in the open between him and the
+        // pillar. The medic comes from the east, from behind the pillar.
+        EntityUid medic = default;
+        EntityUid comrade = default;
+
+        await pair.Server.WaitPost(() =>
+        {
+            medic = pair.Server.EntMan.SpawnEntity(MedicId, At(grid, 17, 5));
+            comrade = pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 9, 5));
+            pair.Server.EntMan.GetComponent<SoldierMedicComponent>(medic).ReviveGoal = 0.05f;
+        });
+
+        var enemy = await SpawnDurableEnemy(pair, At(grid, 3, 5));
+        await pair.RunSeconds(1);
+        await PutIntoCriticalCondition(pair, comrade);
+
+        var start = WorldPos(pair, comrade);
+        var mobState = pair.Server.System<MobStateSystem>();
+        var phases = new HashSet<SoldierMedicPhase>();
+        var timeline = new System.Text.StringBuilder();
+        var lastLine = string.Empty;
+        var done = false;
+
+        for (var i = 0; i < 300 && !done; i++)
+        {
+            await pair.RunSeconds(0.5f);
+
+            var work = pair.Server.EntMan.GetComponent<SoldierMedicComponent>(medic);
+            phases.Add(work.Phase);
+
+            var line = $"{work.Phase} alive={mobState.IsAlive(comrade)} comrade at {WorldPos(pair, comrade)}";
+            if (line != lastLine)
+            {
+                timeline.AppendLine($"{i * 0.5f,6:F1}s {line} medic at {WorldPos(pair, medic)}");
+                lastLine = line;
+            }
+
+            done = mobState.IsAlive(comrade) && work.Phase == SoldierMedicPhase.None && phases.Contains(SoldierMedicPhase.Treat);
+        }
+
+        var message = timeline + Dump(pair, grid, new[] { medic, comrade }, enemy);
+        Assert.That(phases, Does.Contain(SoldierMedicPhase.Drag), "the medic takes the comrade out of the line of fire\n" + message);
+        Assert.That(WorldPos(pair, comrade).X, Is.GreaterThan(start.X + 1.5f), "he was dragged away from the enemy\n" + message);
+        Assert.That(mobState.IsAlive(comrade), "and then raised\n" + message);
+        Assert.That(Squad(pair, grid).BarkLog.Select(b => b.Bark), Does.Contain(SoldierBark.MedicDragging), message);
+
+        // Nobody is held on to any longer.
+        var pulling = pair.Server.System<Content.Shared.Movement.Pulling.Systems.PullingSystem>();
+        Assert.That(pulling.IsPulled(comrade), Is.False, "the comrade is let go\n" + message);
+
+        await Finish(pair, grid);
+    }
+
+    [Test]
+    public async Task MedicBringsADeadComradeBackWithTheDefibrillator()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var (_, grid, _) = await BuildMap(pair, Hall);
+
+        EntityUid medic = default;
+        EntityUid comrade = default;
+
+        await pair.Server.WaitPost(() =>
+        {
+            medic = pair.Server.EntMan.SpawnEntity(MedicId, At(grid, 3, 3));
+            comrade = pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 8, 3));
+            pair.Server.EntMan.GetComponent<SoldierMedicComponent>(medic).ReviveGoal = 0.05f;
+        });
+
+        await pair.RunSeconds(1.5f);
+
+        // Killed by a bit more than it takes (210 against 200), with all kinds of blows: the bruise kit heals 30 at a time.
+        await pair.Server.WaitPost(() =>
+        {
+            var wounds = new DamageSpecifier();
+            wounds.DamageDict["Blunt"] = FixedPoint2.New(70);
+            wounds.DamageDict["Slash"] = FixedPoint2.New(70);
+            wounds.DamageDict["Piercing"] = FixedPoint2.New(70);
+            pair.Server.System<DamageableSystem>().ChangeDamage(comrade, wounds, ignoreResistances: true);
+        });
+
+        var mobState = pair.Server.System<MobStateSystem>();
+        Assert.That(mobState.IsDead(comrade), "the comrade is dead\n" + DamageText(pair, comrade));
+
+        var phases = new HashSet<SoldierMedicPhase>();
+        var timeline = new System.Text.StringBuilder();
+        var lastLine = string.Empty;
+        var done = false;
+
+        for (var i = 0; i < 280 && !done; i++)
+        {
+            await pair.RunSeconds(0.5f);
+
+            var work = pair.Server.EntMan.GetComponent<SoldierMedicComponent>(medic);
+            phases.Add(work.Phase);
+
+            var line = $"{work.Phase} state={pair.Server.EntMan.GetComponent<MobStateComponent>(comrade).CurrentState} {DamageText(pair, comrade)} shocks={work.Shocks}";
+            if (line != lastLine)
+            {
+                timeline.AppendLine($"{i * 0.5f,6:F1}s {line}");
+                lastLine = line;
+            }
+
+            done = mobState.IsAlive(comrade) && work.Phase == SoldierMedicPhase.None && phases.Contains(SoldierMedicPhase.Shock);
+        }
+
+        var message = timeline + Dump(pair, grid, new[] { medic, comrade });
+        Assert.That(phases, Does.Contain(SoldierMedicPhase.Shock), "the medic uses the defibrillator\n" + message);
+        Assert.That(mobState.IsAlive(comrade), "and the comrade is back on his feet\n" + message);
+        Assert.That(BandagesOnTheFloor(pair), Is.Empty, "a bandage is never thrown on the floor\n" + message);
+
+        await Finish(pair, grid);
+    }
+
+    [Test]
+    public async Task MedicStaysBehindTheSquadWhileItHuntsTheEnemy()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var (_, grid, _) = await BuildMap(pair, Hall);
+
+        var soldiers = new List<EntityUid>();
+        EntityUid medic = default;
+
+        await pair.Server.WaitPost(() =>
+        {
+            soldiers.Add(pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 3, 2)));
+            soldiers.Add(pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 5, 4)));
+            medic = pair.Server.EntMan.SpawnEntity(MedicId, At(grid, 4, 3));
+        });
+
+        await pair.RunSeconds(1);
+
+        // The squad goes after the enemy, who was seen at the other end of the hall.
+        var squad = Squad(pair, grid);
+        var enemyPlace = At(grid, 30, 3);
+        var enemyWorld = pair.Server.System<TransformSystem>().ToMapCoordinates(enemyPlace).Position;
+
+        await pair.Server.WaitPost(() => pair.Server.System<SoldierSquadSystem>().RaiseAlert((grid, squad), SoldierAlertLevel.Alert, enemyPlace));
+        await pair.RunSeconds(0.5f);
+
+        Vector2 PointOf(EntityUid uid)
+        {
+            return pair.Server.System<TransformSystem>().ToMapCoordinates(Soldier(pair, uid).OrderPoint!.Value).Position;
+        }
+
+        var message = Dump(pair, grid, soldiers.Append(medic));
+        Assert.That(soldiers.All(s => Soldier(pair, s).Mode == SoldierMode.Hunt), "the soldiers hunt\n" + message);
+        Assert.That(soldiers.All(s => Vector2.Distance(PointOf(s), enemyWorld) < 0.5f), "they go all the way to the enemy\n" + message);
+
+        // The medic hunts too, but it stops short of him, behind the others.
+        Assert.That(Soldier(pair, medic).Mode, Is.EqualTo(SoldierMode.Hunt), message);
+        Assert.That(Vector2.Distance(PointOf(medic), enemyWorld), Is.InRange(7f, 13f), "the medic stops ten tiles short of the enemy\n" + message);
+        Assert.That(Soldier(pair, medic).OrderRadius, Is.EqualTo(2f), "and stays where it has stopped\n" + message);
+
+        await Finish(pair, grid);
+    }
+
+    [Test]
+    public async Task MedicIsNotSentToCheckANoise()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var (_, grid, _) = await BuildMap(pair, Hall);
+
+        EntityUid medic = default;
+        EntityUid soldier = default;
+
+        await pair.Server.WaitPost(() =>
+        {
+            medic = pair.Server.EntMan.SpawnEntity(MedicId, At(grid, 3, 3));
+            soldier = pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 4, 3));
+        });
+
+        await pair.RunSeconds(1.5f);
+        await FireGun(pair, grid, At(grid, 16, 3));
+
+        // The squad talks, then sends the soldiers who are free to check the place. The medic is not one of them.
+        var sent = false;
+        for (var i = 0; i < 20 && !sent; i++)
+        {
+            await pair.RunSeconds(0.5f);
+            sent = Soldier(pair, soldier).Mode == SoldierMode.Investigate;
+        }
+
+        var message = Dump(pair, grid, new[] { medic, soldier });
+        Assert.That(sent, "the soldier goes to check the noise\n" + message);
+        Assert.That(Soldier(pair, medic).Mode, Is.EqualTo(SoldierMode.Patrol), "the medic stays where it is\n" + message);
 
         await Finish(pair, grid);
     }

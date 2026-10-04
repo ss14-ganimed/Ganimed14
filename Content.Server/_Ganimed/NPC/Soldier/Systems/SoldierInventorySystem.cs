@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Inventory;
+using Content.Shared.Storage;
 using Robust.Shared.Containers;
 
 namespace Content.Server._Ganimed.NPC.Soldier.Systems;
@@ -19,6 +20,18 @@ public sealed class SoldierInventorySystem : EntitySystem
     /// How deep inside of other items (a medkit in a belt in a backpack) the search goes.
     /// </summary>
     private const int SearchDepth = 3;
+
+    /// <summary>
+    /// The storages the soldier carries (the backpack, the belt): the places things can be put away to.
+    /// </summary>
+    public IEnumerable<Container> EnumerateStorages(EntityUid soldier)
+    {
+        foreach (var item in _inventory.GetHandOrInventoryEntities(soldier))
+        {
+            if (TryComp(item, out StorageComponent? storage) && storage.Container != null)
+                yield return storage.Container;
+        }
+    }
 
     /// <summary>
     /// Everything the soldier carries, including the items inside of the carried containers.

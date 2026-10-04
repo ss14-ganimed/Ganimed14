@@ -135,10 +135,23 @@ public sealed class SoldierStatusCommand : LocalizedEntityCommands
                 if (!EntityManager.TryGetComponent(member, out SoldierComponent? soldier))
                     continue;
 
+                // What the soldier does in a fight, and what it does about wounds (its own, or a comrade's if it is a medic).
+                var state = soldier.Mode == SoldierMode.Engage ? soldier.CombatState.ToString() : "-";
+
+                if (soldier.FirstAid != SoldierFirstAidPhase.None)
+                    state += $"+aid:{soldier.FirstAid}";
+
+                // Getting up from the ground, or going for the dropped gun.
+                if (soldier.Recovery != SoldierRecoveryPhase.None)
+                    state += $"+recovery:{soldier.Recovery}";
+
+                if (EntityManager.TryGetComponent(member, out SoldierMedicComponent? medic) && medic.Phase != SoldierMedicPhase.None)
+                    state += $"+medic:{medic.Phase}";
+
                 builder.AppendLine(Loc.GetString("cmd-soldier_status-soldier",
                     ("soldier", EntityManager.ToPrettyString(member)),
                     ("mode", soldier.Mode.ToString()),
-                    ("state", soldier.Mode == SoldierMode.Engage ? soldier.CombatState.ToString() : "-"),
+                    ("state", state),
                     ("target", soldier.Target?.ToString() ?? "-")));
             }
         }

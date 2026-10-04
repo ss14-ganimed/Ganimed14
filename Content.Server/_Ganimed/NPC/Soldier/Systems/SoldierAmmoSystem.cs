@@ -63,6 +63,37 @@ public sealed class SoldierAmmoSystem : EntitySystem
     }
 
     /// <summary>
+    /// The gun the soldier holds in one of its hands. (Every hand counts, not only the active one: the other one may hold
+    /// a bandage while the gun waits in the first.)
+    /// </summary>
+    public bool TryFindHeldGun(EntityUid soldier, out EntityUid gun)
+    {
+        foreach (var held in _hands.EnumerateHeld(soldier))
+        {
+            if (!HasComp<GunComponent>(held))
+                continue;
+
+            gun = held;
+            return true;
+        }
+
+        gun = default;
+        return false;
+    }
+
+    /// <summary>
+    /// Is the gun worth picking up (and shooting): it has rounds left, or the soldier carries a magazine that fits it.
+    /// An empty gun that was put down for another one stays where it is.
+    /// </summary>
+    public bool IsUsable(EntityUid soldier, EntityUid gun)
+    {
+        if (CountAmmo(gun) > 0)
+            return true;
+
+        return _slots.TryGetSlot(gun, MagazineSlot, out var slot) && TryFindSpareMagazine(soldier, gun, slot, out _);
+    }
+
+    /// <summary>
     /// The gun the soldier holds has a magazine slot and no rounds left.
     /// </summary>
     public bool NeedsReload(EntityUid soldier)

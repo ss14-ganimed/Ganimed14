@@ -33,3 +33,34 @@
     - Brutepack
     - Ointment
     - Gauze
+
+# Gear of the squad medic: the same armor and the same rifle as the soldiers have, but the backpack holds combat medical
+# kits (bandages, sutures and auto-injectors), a body scanner and a defibrillator instead of the grenades. The one-handed
+# defibrillator is always powered: the soldier has no one to change its battery. The medic AI takes everything it needs out
+# of the backpack, wherever it is stored (see SoldierMedicSystem).
+- type: startingGear
+  id: GanimedSoldierMedicGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMercenary
+    outerClothing: ClothingOuterArmorBulletproof
+    head: ClothingHeadHelmetSwat
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsMerc
+    ears: ClothingHeadsetSoldier
+    belt: ClothingBeltMilitaryWebbingMed
+    back: ClothingBackpack
+    pocket1: WeaponPistolMk58
+    pocket2: MagazinePistol
+  inhand:
+  - WeaponRifleLecter
+  storage:
+    belt:
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifle
+    back:
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    - HandheldHealthAnalyzer
+    - DefibrillatorOneHandedUnpowered

@@ -53,7 +53,39 @@ public sealed partial class SoldierOrderPhasePrecondition : HTNPrecondition
 }
 
 /// <summary>
-/// Does the soldier have to stand still right now (at a door it is about to go through)?
+/// Is the medic busy with a comrade right now (walks to him, drags him away, bandages him)? The medic system drives the
+/// soldier then, the HTN only stands by.
+/// </summary>
+public sealed partial class SoldierMedicJobPrecondition : HTNPrecondition
+{
+    [Dependency] private readonly IEntityManager _entManager = default!;
+
+    public override bool IsMet(NPCBlackboard blackboard)
+    {
+        var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+
+        return _entManager.TryGetComponent(owner, out SoldierMedicComponent? medic) && medic.Phase != SoldierMedicPhase.None;
+    }
+}
+
+/// <summary>
+/// Is the soldier getting up from the ground or going for the gun it has dropped? The recovery system drives the soldier
+/// then, the HTN only stands by.
+/// </summary>
+public sealed partial class SoldierRecoveryPrecondition : HTNPrecondition
+{
+    [Dependency] private readonly IEntityManager _entManager = default!;
+
+    public override bool IsMet(NPCBlackboard blackboard)
+    {
+        var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+
+        return _entManager.TryGetComponent(owner, out SoldierComponent? soldier) && soldier.Recovery != SoldierRecoveryPhase.None;
+    }
+}
+
+/// <summary>
+/// Does the soldier have to stand still right now (at a door it is about to go through, or while it bandages itself)?
 /// </summary>
 public sealed partial class SoldierHoldPrecondition : HTNPrecondition
 {
@@ -63,6 +95,7 @@ public sealed partial class SoldierHoldPrecondition : HTNPrecondition
     {
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
 
-        return _entManager.TryGetComponent(owner, out SoldierComponent? soldier) && soldier.HoldPosition;
+        return _entManager.TryGetComponent(owner, out SoldierComponent? soldier) &&
+               (soldier.HoldPosition || soldier.FirstAid != SoldierFirstAidPhase.None);
     }
 }

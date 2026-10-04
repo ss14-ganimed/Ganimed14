@@ -89,6 +89,63 @@ public enum SoldierCombatState : byte
 }
 
 /// <summary>
+/// Stage of the first aid a soldier gives itself while there is no fight (in a fight it is a part of the combat state).
+/// </summary>
+public enum SoldierFirstAidPhase : byte
+{
+    /// <summary>No first aid.</summary>
+    None,
+
+    /// <summary>The soldier has stopped and is about to take the bandage (it has to stand still for it).</summary>
+    Settle,
+
+    /// <summary>The bandage is on, the soldier waits for it to do its work.</summary>
+    Apply,
+
+    /// <summary>A medic works on the soldier: it stands still until the medic is done.</summary>
+    Treated,
+}
+
+/// <summary>
+/// What the medic of the squad does for a comrade who needs help.
+/// </summary>
+public enum SoldierMedicPhase : byte
+{
+    /// <summary>No comrade to help.</summary>
+    None,
+
+    /// <summary>Walking to the patient.</summary>
+    Approach,
+
+    /// <summary>Running the body scanner over the patient.</summary>
+    Scan,
+
+    /// <summary>Dragging the patient (who cannot walk) out of the line of fire.</summary>
+    Drag,
+
+    /// <summary>Applying bandages and the like to the patient.</summary>
+    Treat,
+
+    /// <summary>Shocking a dead patient with the defibrillator.</summary>
+    Shock,
+}
+
+/// <summary>
+/// What a soldier does to get back into the fight after it has been knocked down or has lost its gun.
+/// </summary>
+public enum SoldierRecoveryPhase : byte
+{
+    /// <summary>On its feet and armed: nothing to recover from.</summary>
+    None,
+
+    /// <summary>Lying on the ground (shoved, stunned, thrown down by a blast): getting up.</summary>
+    GetUp,
+
+    /// <summary>On its feet without a gun: going for the gun it has dropped.</summary>
+    Rearm,
+}
+
+/// <summary>
 /// The job of a soldier in a fight that several soldiers of the squad take part in.
 /// </summary>
 public enum SoldierCombatRole : byte

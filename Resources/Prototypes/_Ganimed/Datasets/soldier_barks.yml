@@ -152,6 +152,37 @@
     prefix: soldier-bark-healing-
     count: 3
 
+# The medic.
+- type: localizedDataset
+  id: SoldierBarkCallMedic
+  values:
+    prefix: soldier-bark-call-medic-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkMedicComing
+  values:
+    prefix: soldier-bark-medic-coming-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkMedicDragging
+  values:
+    prefix: soldier-bark-medic-dragging-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkMedicTreating
+  values:
+    prefix: soldier-bark-medic-treating-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkMedicDone
+  values:
+    prefix: soldier-bark-medic-done-
+    count: 3
+
 # The default voice of the soldiers.
 - type: soldierBarkSet
   id: SoldierBarksDefault
@@ -180,3 +211,8 @@
     Entering: SoldierBarkEntering
     Wounded: SoldierBarkWounded
     Healing: SoldierBarkHealing
+    CallMedic: SoldierBarkCallMedic
+    MedicComing: SoldierBarkMedicComing
+    MedicDragging: SoldierBarkMedicDragging
+    MedicTreating: SoldierBarkMedicTreating
+    MedicDone: SoldierBarkMedicDone

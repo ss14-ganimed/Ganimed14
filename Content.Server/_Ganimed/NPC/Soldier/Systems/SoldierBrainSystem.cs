@@ -111,4 +111,17 @@ public sealed class SoldierBrainSystem : EntitySystem
         soldier.Comp.HoldPosition = hold;
         Interrupt(soldier);
     }
+
+    /// <summary>
+    /// Moves the soldier on to another stage of the first aid it gives itself. A soldier that gives first aid stands still,
+    /// so the plan is dropped when the aid begins and when it ends.
+    /// </summary>
+    public void SetFirstAid(Entity<SoldierComponent> soldier, SoldierFirstAidPhase phase)
+    {
+        var wasBusy = soldier.Comp.FirstAid != SoldierFirstAidPhase.None;
+        soldier.Comp.FirstAid = phase;
+
+        if (wasBusy != (phase != SoldierFirstAidPhase.None))
+            Interrupt(soldier);
+    }
 }
