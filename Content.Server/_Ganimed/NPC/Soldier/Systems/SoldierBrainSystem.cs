@@ -43,6 +43,8 @@ public sealed class SoldierBrainSystem : EntitySystem
         // Whatever the systems have decided during the tick is carried out on the same tick.
         UpdatesAfter.Add(typeof(SoldierBehaviorSystem));
         UpdatesAfter.Add(typeof(SoldierBreachSystem));
+        UpdatesAfter.Add(typeof(SoldierCommandSystem));
+        UpdatesAfter.Add(typeof(SoldierCommsSystem));
         UpdatesAfter.Add(typeof(SoldierPerceptionSystem));
         UpdatesAfter.Add(typeof(SoldierSquadSystem));
         UpdatesBefore.Add(typeof(NPCSystem));

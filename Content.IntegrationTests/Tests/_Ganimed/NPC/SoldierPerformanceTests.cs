@@ -232,9 +232,13 @@ public sealed class SoldierPerformanceTests
                     soldiers.Add(server.EntMan.SpawnEntity("MobSoldier", SoldierTests.At(grid, column + 3, row)));
                 }
             }
+
+            // The headquarters in the first room: it thinks for the whole squad, the soldiers only report and obey.
+            var (hqColumn, hqRow) = RoomCenter(0, 0);
+            server.EntMan.SpawnEntity("MobSoldierHQ", SoldierTests.At(grid, hqColumn, hqRow));
         });
 
-        report.AppendLine($"soldiers: {soldiers.Count}");
+        report.AppendLine($"soldiers: {soldiers.Count} and the headquarters");
 
         // The first run of every piece of code is slow (it gets compiled): that is not what the server lives with.
         await Phase("warm-up", 10, async () =>

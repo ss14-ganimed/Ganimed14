@@ -45,18 +45,6 @@ public sealed partial class SoldierSquadComponent : Component
     public TimeSpan LoseSightDelay = TimeSpan.FromSeconds(6);
 
     /// <summary>
-    /// Minimum time between two requests for backup.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
-    public TimeSpan BackupCooldown = TimeSpan.FromSeconds(25);
-
-    /// <summary>
-    /// Minimum time between two "contact" reports.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
-    public TimeSpan ContactCooldown = TimeSpan.FromSeconds(8);
-
-    /// <summary>
     /// How many noises the squad checks at the same time.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
@@ -87,30 +75,72 @@ public sealed partial class SoldierSquadComponent : Component
     public TimeSpan ReportPause = TimeSpan.FromSeconds(2.5);
 
     /// <summary>
-    /// How far around the last known position of the enemy the hunters search.
+    /// How long a squad that has no headquarters (or cannot reach it) holds out with the reflexes of its soldiers alone
+    /// before one of the soldiers takes the command over.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
-    public float HuntRadius = 12f;
+    public TimeSpan SuccessionDelay = TimeSpan.FromSeconds(30);
 
     /// <summary>
-    /// How often the hunters are told where the enemy is now. Every new course is a new search for a path.
+    /// How long a report of a soldier may stay without an answer of the headquarters before the headquarters is considered
+    /// unreachable.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
-    public TimeSpan HuntRefreshInterval = TimeSpan.FromSeconds(1.5);
+    public TimeSpan AnswerPatience = TimeSpan.FromSeconds(14);
 
     /// <summary>
-    /// A hunter holds its course for at least this long before it takes another one.
+    /// How long a room that was cleared stays cleared: the squad does not storm it again unless something happens in it.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
-    public TimeSpan HuntCourseMinTime = TimeSpan.FromSeconds(4);
+    public TimeSpan ClearedMemory = TimeSpan.FromMinutes(6);
+
+    /// <summary>
+    /// How long a room in which something has happened (a shot, a contact, a fallen comrade) stays dangerous: it is
+    /// entered with a flashbang.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan HotMemory = TimeSpan.FromSeconds(120);
 
     #endregion
+
+    /// <summary>
+    /// The plan of the rooms the squad lives in (built when somebody asks for it), and what the squad remembers about
+    /// the rooms: which are cleared, which are dangerous.
+    /// </summary>
+    public SoldierRoomMap? Rooms;
+
+    public readonly Dictionary<int, SoldierRoomMark> RoomMarks = new();
+
+    /// <summary>
+    /// The soldiers that are clearing a room behind a door at the moment, one team per door.
+    /// </summary>
+    public readonly List<SoldierEntryTeam> EntryTeams = new();
 
     /// <summary>
     /// Soldiers of this squad.
     /// </summary>
     [ViewVariables]
     public HashSet<EntityUid> Members = new();
+
+    /// <summary>
+    /// Who commands the squad now: the headquarters, or a soldier who has taken the command over. Null while nobody does.
+    /// </summary>
+    [ViewVariables]
+    public EntityUid? Commander;
+
+    /// <summary>
+    /// How many times the command of the squad has changed hands. The orders carry the number of the term they were given
+    /// in: of two commanders of the same rank the one with the later term is obeyed.
+    /// </summary>
+    [ViewVariables]
+    public int CommandTerm;
+
+    /// <summary>
+    /// Since when the squad has had nobody to take orders from (the headquarters is down or gone and nobody has taken the
+    /// command over yet).
+    /// </summary>
+    [ViewVariables]
+    public TimeSpan? NoCommanderSince;
 
     /// <summary>
     /// Current alert level of the whole squad.
@@ -132,33 +162,24 @@ public sealed partial class SoldierSquadComponent : Component
     public TimeSpan AlertUntil = TimeSpan.MaxValue;
 
     /// <summary>
-    /// The enemy the squad has seen last.
-    /// </summary>
-    [ViewVariables]
-    public EntityUid? LastKnownEnemy;
-
-    /// <summary>
-    /// Where the enemy was seen last.
+    /// Where the commander thinks the enemy was seen last (a mirror of its picture, handy to look at through view
+    /// variables).
     /// </summary>
     [ViewVariables]
     public EntityCoordinates? LastKnownEnemyPos;
 
     /// <summary>
-    /// When any member of the squad has seen the enemy the last time.
+    /// When the commander has heard of the enemy the last time (a mirror of its picture).
     /// </summary>
     [ViewVariables]
     public TimeSpan LastEnemySeenAt;
 
     /// <summary>
-    /// Noises the squad is looking into.
+    /// The enemy a soldier reported neutralized last, and when: the comrades who saw the same enemy fall do not say it again
+    /// (one call on the radio is enough, and the radio says one phrase at a time).
     /// </summary>
-    [ViewVariables]
-    public List<SoldierInvestigation> Investigations = new();
-
-    /// <summary>
-    /// Id of the next investigation.
-    /// </summary>
-    public int NextInvestigationId = 1;
+    public EntityUid? LastEnemyDown;
+    public TimeSpan LastEnemyDownAt;
 
     /// <summary>
     /// Radio phrases waiting for their turn.
@@ -171,79 +192,10 @@ public sealed partial class SoldierSquadComponent : Component
     public TimeSpan NextBarkAt;
 
     /// <summary>
-    /// The squad is not going to ask for backup again before this time.
-    /// </summary>
-    public TimeSpan NextBackupRequestAt;
-
-    /// <summary>
-    /// The squad is not going to report a contact again before this time.
-    /// </summary>
-    public TimeSpan NextContactBarkAt;
-
-    /// <summary>
-    /// The hunters are not told where the enemy is before this time.
-    /// </summary>
-    public TimeSpan NextHuntRefreshAt;
-
-    /// <summary>
-    /// The squad is not going to report a neutralized enemy again before this time.
-    /// </summary>
-    public TimeSpan NextControlledBarkAt;
-
-    /// <summary>
     /// The last phrases the squad has said. Handy for debugging via view variables and for tests.
     /// </summary>
     [ViewVariables]
     public List<SoldierBarkLogEntry> BarkLog = new();
-}
-
-/// <summary>
-/// A noise the squad has decided to check.
-/// </summary>
-public sealed class SoldierInvestigation
-{
-    public int Id;
-
-    public SoldierInvestigationState State = SoldierInvestigationState.Talking;
-
-    /// <summary>
-    /// Where the noise came from.
-    /// </summary>
-    public EntityCoordinates Point;
-
-    public SoldierNoiseKind Kind;
-
-    /// <summary>
-    /// The soldier who heard the noise first (the closest one).
-    /// </summary>
-    public EntityUid Reporter;
-
-    /// <summary>
-    /// Soldiers sent to check the noise.
-    /// </summary>
-    public List<EntityUid> Team = new();
-
-    public TimeSpan CreatedAt;
-
-    /// <summary>
-    /// When the radio talk is over and the team is sent.
-    /// </summary>
-    public TimeSpan DispatchAt;
-
-    /// <summary>
-    /// When the team has reported that nothing was found.
-    /// </summary>
-    public TimeSpan? ReportedAt;
-
-    /// <summary>
-    /// The team has been told to go back after the report.
-    /// </summary>
-    public bool Released;
-
-    /// <summary>
-    /// A dispatch attempt is given up after this time if there was nobody free to send.
-    /// </summary>
-    public TimeSpan GiveUpAt;
 }
 
 /// <summary>
@@ -263,7 +215,32 @@ public sealed class SoldierPendingBark
     /// Direction word (e.g. "north") substituted into the phrase, if the phrase has a place for it.
     /// </summary>
     public string? Direction;
+
+    /// <summary>
+    /// The other words substituted into the phrase (names, distance, number).
+    /// </summary>
+    public SoldierBarkArgs Args;
+
+    /// <summary>
+    /// The message the phrase carries: it is handed over to those who receive the transmission.
+    /// </summary>
+    public SoldierMessage? Message;
 }
+
+/// <summary>
+/// The words that are put into a radio phrase, where the phrase has a place for them.
+/// </summary>
+/// <param name="Names">The soldiers an order is for ("Ivanov and Petrov").</param>
+/// <param name="Who">Somebody the phrase is about (a comrade who has fallen, the soldier who reports).</param>
+/// <param name="Count">How many (enemies).</param>
+/// <param name="Distance">How far (in tiles).</param>
+/// <param name="Text">A phrase that is passed on (a relay says it again).</param>
+public readonly record struct SoldierBarkArgs(
+    string? Names = null,
+    string? Who = null,
+    int Count = 0,
+    int Distance = 0,
+    string? Text = null);
 
 /// <summary>
 /// A phrase a soldier has said.

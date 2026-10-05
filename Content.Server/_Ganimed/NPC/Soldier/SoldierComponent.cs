@@ -4,6 +4,7 @@
 
 using System.Numerics;
 using Content.Shared._Ganimed.NPC.Soldier;
+using Content.Shared.DoAfter;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
@@ -160,10 +161,11 @@ public sealed partial class SoldierComponent : Component
     public TimeSpan GrenadeCooldown = TimeSpan.FromSeconds(16);
 
     /// <summary>
-    /// Radius (in tiles) around the noise source (a shot, an explosion) the soldier searches while investigating.
+    /// How far (in tiles) from its post the soldier may be when it comes back to it: the return is not exact, a soldier
+    /// that is close enough starts to patrol.
     /// </summary>
     [DataField]
-    public float InvestigateRadius = 3f;
+    public float PostTolerance = 3f;
 
     /// <summary>
     /// For how long the soldier searches the area after arriving at the noise source.
@@ -192,6 +194,19 @@ public sealed partial class SoldierComponent : Component
     /// </summary>
     [ViewVariables]
     public SoldierMode Mode = SoldierMode.Patrol;
+
+    /// <summary>
+    /// The alert level the soldier knows about: the one the commander has declared (the soldier has heard it on the radio),
+    /// or a higher one if the soldier has met the enemy itself. It sharpens the eyes and tells the soldier how much time it
+    /// has for its scratches.
+    /// </summary>
+    [ViewVariables]
+    public SoldierAlertLevel KnownAlert = SoldierAlertLevel.Calm;
+
+    /// <summary>
+    /// When the soldier learned the alert level.
+    /// </summary>
+    public TimeSpan KnownAlertAt;
 
     /// <summary>
     /// The post: the soldier patrols the room around this point.
@@ -284,6 +299,12 @@ public sealed partial class SoldierComponent : Component
     public EntityUid? Target;
 
     /// <summary>
+    /// The enemy the soldier has fought last: it is still remembered when the soldier has lost him.
+    /// </summary>
+    [ViewVariables]
+    public EntityUid? LastEnemy;
+
+    /// <summary>
     /// When the soldier last saw <see cref="Target"/>.
     /// </summary>
     [ViewVariables]
@@ -315,6 +336,171 @@ public sealed partial class SoldierComponent : Component
     /// </summary>
     public TimeSpan NextFullScanAt;
 
+    // Supplies: ammunition and medicines from the crates.
+
+    /// <summary>
+    /// What the soldier does to get supplies (it walks to a crate, takes what it needs, fills the magazines).
+    /// </summary>
+    [ViewVariables]
+    public SoldierSupplyPhase Supply;
+
+    /// <summary>
+    /// The crate the soldier goes to.
+    /// </summary>
+    [ViewVariables]
+    public EntityUid? SupplyCrate;
+
+    /// <summary>
+    /// When the soldier has entered <see cref="Supply"/>, and the do-after of taking the supplies.
+    /// </summary>
+    public TimeSpan SupplySince;
+    public DoAfterId? SupplyDoAfter;
+
+    /// <summary>
+    /// The commander has sent the soldier for supplies (and is told when it is done).
+    /// </summary>
+    public bool SupplyOrdered;
+
+    /// <summary>
+    /// How many times in a row the soldier has failed to take the supplies (the progress bar did not start or broke) or to
+    /// fill a magazine.
+    /// </summary>
+    public int SupplyFailures;
+
+    /// <summary>
+    /// The soldier has to stand closer to the crate (it could not take the supplies from where it was).
+    /// </summary>
+    public bool SupplyCloser;
+
+    /// <summary>
+    /// The next time the soldier looks how it is with its supplies.
+    /// </summary>
+    public TimeSpan NextSupplyCheckAt;
+
+    /// <summary>
+    /// How much the soldier had when it started: the rounds in the magazines and the medical items (units of the stacks). What
+    /// it has now, as a share of this, tells it when to go for supplies. Zero until it is looked at the first time.
+    /// </summary>
+    public int SupplyAmmoFull;
+    public int SupplyMedicalFull;
+
+    // Loot: what lies around and is of use to the soldier (cartridges, medicines, grenades, guns, a crowbar).
+
+    /// <summary>
+    /// What the soldier does about the things lying around it (it walks to something it wants and takes it).
+    /// </summary>
+    [ViewVariables]
+    public SoldierLootPhase Loot;
+
+    /// <summary>
+    /// What the soldier goes after, and what kind of a thing it is (a thing on the floor, a locker, a bag or a body).
+    /// </summary>
+    [ViewVariables]
+    public EntityUid? LootTarget;
+    public SoldierLootKind LootKind;
+
+    /// <summary>
+    /// When the trip has begun, when the soldier has entered <see cref="SoldierLootPhase.Take"/>, and the progress bar of the
+    /// taking.
+    /// </summary>
+    public TimeSpan LootSince;
+    public DoAfterId? LootDoAfter;
+
+    /// <summary>
+    /// How many times in a row the soldier has failed to take what it came for (the progress bar broke, the thing was too
+    /// far to reach).
+    /// </summary>
+    public int LootFailures;
+
+    /// <summary>
+    /// The soldier has to stand closer to the thing (it could not reach it from where it was).
+    /// </summary>
+    public bool LootCloser;
+
+    /// <summary>
+    /// The next time the soldier looks around for things to pick up, and the earliest time it goes after any.
+    /// </summary>
+    public TimeSpan NextLootCheckAt;
+    public TimeSpan NextLootAt;
+
+    // The sector: the part of the base the commander has given the soldier to look after.
+
+    /// <summary>
+    /// The rooms of the sector the soldier patrols (see <see cref="SoldierRoomMap"/>). Empty: the soldier patrols the room
+    /// around its post.
+    /// </summary>
+    [ViewVariables]
+    public List<Vector2i> SectorRooms = new();
+
+    /// <summary>
+    /// The sector is a key place (a junction, an entrance): the soldier is the only one there.
+    /// </summary>
+    [ViewVariables]
+    public bool SectorKey;
+
+    /// <summary>
+    /// The room of the sector the soldier has been sent to patrol last.
+    /// </summary>
+    public int? LastSectorRoom;
+
+    // The maneuver the commander has ordered.
+
+    /// <summary>
+    /// What the commander has ordered the soldier to do on the field (push, hold a place), and until when.
+    /// </summary>
+    [ViewVariables]
+    public SoldierManeuver Maneuver;
+
+    public TimeSpan ManeuverUntil;
+
+    /// <summary>
+    /// Where the maneuver leads: the place to hold, or (for a push) the place the soldier goes to after the way point it has
+    /// been sent to first (the other entrance of the room of the enemy).
+    /// </summary>
+    [ViewVariables]
+    public EntityCoordinates? ManeuverPoint;
+
+    /// <summary>
+    /// Where the soldier that holds a place looks.
+    /// </summary>
+    public EntityCoordinates? ManeuverFace;
+
+    /// <summary>
+    /// The room of the enemy the push is going to.
+    /// </summary>
+    public int? ManeuverRoom;
+
+    /// <summary>
+    /// The soldier has got to the place it holds and stands there (the HTN stands by).
+    /// </summary>
+    public bool ManeuverHolding;
+
+    /// <summary>
+    /// An assault from two sides (an encirclement): the soldier waits outside its door until the commander gives the signal
+    /// (<see cref="PushGo"/>) or until <see cref="PushGoBy"/>, whichever comes first. It tells the commander once that it is
+    /// there (<see cref="PushReady"/>).
+    /// </summary>
+    [ViewVariables]
+    public bool PushWaitGo;
+
+    public bool PushGo;
+    public bool PushReady;
+    public TimeSpan PushGoBy;
+
+    /// <summary>
+    /// The soldiers of one order set out one after another, so that they walk in a column and do not crowd the doors: this
+    /// soldier waits until this time before it goes (the HTN stands by).
+    /// </summary>
+    public TimeSpan MoveDelayUntil;
+    public bool MoveDelayHolding;
+
+    /// <summary>
+    /// The side the soldier keeps to while it walks in a file with the comrades of its order (1 is left, -1 is right, 0 is
+    /// none): the soldiers of an order keep to the sides in turn, the first on the left, the second on the right, and so on.
+    /// </summary>
+    [ViewVariables]
+    public int GroupSide;
+
     // Closed doors on the way.
 
     /// <summary>
@@ -328,6 +514,18 @@ public sealed partial class SoldierComponent : Component
     /// </summary>
     [ViewVariables]
     public EntityUid? BreachDoor;
+
+    /// <summary>
+    /// The team the soldier clears the room behind the door with.
+    /// </summary>
+    public SoldierEntryTeam? EntryTeam;
+
+    /// <summary>
+    /// The only room the soldier clears with a team on its way (a push goes through the rooms between without stopping and
+    /// storms the room of the enemy). Null: every room whose door is closed is cleared, except those that are clear already.
+    /// </summary>
+    [ViewVariables]
+    public int? CqbRoom;
 
     /// <summary>
     /// When the soldier has entered <see cref="BreachState"/>.
@@ -358,6 +556,19 @@ public sealed partial class SoldierComponent : Component
     /// The door that does not open for the soldier.
     /// </summary>
     public EntityUid? BlockedDoor;
+
+    /// <summary>
+    /// The closed door the soldier pries open (it stands in front of it until the door is open or the soldier gives up), since
+    /// when, and how: with a tool (a crowbar from the backpack) or with its hands (then the progress bar is its own).
+    /// </summary>
+    public EntityUid? PryDoor;
+    public TimeSpan PrySince;
+    public bool PryUsingTool;
+    public bool PryStarted;
+    public DoAfterId? PryDoAfter;
+    public EntityCoordinates? PryFront;
+    public TimeSpan? PryArrivedAt;
+    public int PryFailures;
 
     /// <summary>
     /// The soldier has to stand still (waiting at a door, looking around behind it).

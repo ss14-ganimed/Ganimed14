@@ -21,21 +21,6 @@ soldier-bark-heard-explosion-2 = Something just blew up { $dir }! All units, hea
 soldier-bark-heard-explosion-3 = There was a blast { $dir }, we need to check it.
 soldier-bark-heard-explosion-4 = Heard a detonation { $dir }! This is not a drill.
 
-soldier-bark-acknowledge-1 = Copy, I hear you.
-soldier-bark-acknowledge-2 = Understood. I heard it too.
-soldier-bark-acknowledge-3 = Copy that. Give me the situation.
-soldier-bark-acknowledge-4 = Roger, standing by.
-
-soldier-bark-dispatch-1 = Two of you, check the source. Everybody else stay put!
-soldier-bark-dispatch-2 = Check it out { $dir }. The rest hold your posts.
-soldier-bark-dispatch-3 = Sending a pair to check. Stay on the line.
-soldier-bark-dispatch-4 = Check the place. No heroics.
-
-soldier-bark-moving-1 = Moving out.
-soldier-bark-moving-2 = Going to check.
-soldier-bark-moving-3 = Copy, heading to the spot.
-soldier-bark-moving-4 = Moving to the source.
-
 soldier-bark-arrived-1 = On site. Looking around.
 soldier-bark-arrived-2 = Arrived. Starting the search.
 soldier-bark-arrived-3 = At the spot, checking the perimeter.
@@ -58,16 +43,6 @@ soldier-bark-contact-1 = Contact { $dir }!
 soldier-bark-contact-2 = I see a hostile { $dir }! Contact!
 soldier-bark-contact-3 = Contact! Hostile { $dir }!
 soldier-bark-contact-4 = Intruder { $dir }! Engaging!
-
-soldier-bark-request-backup-1 = Need backup! All units to my position!
-soldier-bark-request-backup-2 = Requesting reinforcements, I'm engaged!
-soldier-bark-request-backup-3 = Requesting backup, contact confirmed!
-soldier-bark-request-backup-4 = All posts, converge on me, I need support!
-
-soldier-bark-backup-acknowledge-1 = Copy, moving to support!
-soldier-bark-backup-acknowledge-2 = Coming to you, hold on!
-soldier-bark-backup-acknowledge-3 = Help is on the way, hold your position!
-soldier-bark-backup-acknowledge-4 = Understood, on my way!
 
 soldier-bark-lost-target-1 = Lost the target!
 soldier-bark-lost-target-2 = Hostile is out of sight!
@@ -138,3 +113,147 @@ soldier-bark-medic-treating-3 = Dressing the wounds, bear with me!
 soldier-bark-medic-done-1 = He's stable!
 soldier-bark-medic-done-2 = Back on his feet!
 soldier-bark-medic-done-3 = Got him up, he can take it from here!
+
+# The command: the reports of the soldiers and the answers of the commander. The words of the situation: $dir (where),
+# $dist (how far, in meters), $names (whom an order is for), $who (whom it is about), $count (how many), $text (what is
+# passed on).
+
+soldier-bark-contact-many-1 = Contact { $dir }! I count { $count } hostiles!
+soldier-bark-contact-many-2 = Hostile group { $dir }: { $count } of them!
+soldier-bark-contact-many-3 = Multiple targets { $dir }, { $count } at least! Engaging!
+
+soldier-bark-status-ready-1 = { $who }, on the net, I'm fine.
+soldier-bark-status-ready-2 = { $who } at the post, all quiet.
+soldier-bark-status-ready-3 = { $who } reporting: unhurt and ready.
+
+soldier-bark-status-wounded-1 = { $who }, wounded, holding on.
+soldier-bark-status-wounded-2 = { $who } reporting: hurt, but still going.
+soldier-bark-status-wounded-3 = { $who }: I need help, but I'm on my feet.
+
+soldier-bark-status-fighting-1 = { $who }, engaged!
+soldier-bark-status-fighting-2 = { $who } is in a fight, don't distract me!
+soldier-bark-status-fighting-3 = { $who } is busy, working the target!
+
+soldier-bark-declined-1 = Can't do it, I'm busy!
+soldier-bark-declined-2 = Unable, I'm in a fight!
+soldier-bark-declined-3 = Negative, I'm tied up!
+
+soldier-bark-ack-1 = Copy.
+soldier-bark-ack-2 = Understood, on it.
+soldier-bark-ack-3 = Roger!
+
+soldier-bark-relay-1 = Relaying: { $text }
+soldier-bark-relay-2 = For HQ, repeating: { $text }
+soldier-bark-relay-3 = Passing on: { $text }
+
+soldier-bark-link-lost-1 = Lost contact with HQ! Stick together!
+soldier-bark-link-lost-2 = Comms are down, grouping up!
+soldier-bark-link-lost-3 = HQ is silent! Everybody stay close, we talk by voice!
+
+soldier-bark-order-alert-1 = All posts, alert! Hostile { $dir }, { $dist } meters.
+soldier-bark-order-alert-2 = Attention all! Contact { $dir }, bringing the squad up.
+soldier-bark-order-alert-3 = Alert! Enemy { $dir }, everybody stay ready.
+
+soldier-bark-order-investigate-1 = { $names }, check { $dir }, { $dist } meters. The rest hold your posts.
+soldier-bark-order-investigate-2 = { $names }, move out { $dir } and look the place over.
+soldier-bark-order-investigate-3 = { $names }, go check { $dir }. No heroics.
+
+soldier-bark-order-reinforce-1 = { $names }, backup needed! Contact { $dir }, { $dist } meters.
+soldier-bark-order-reinforce-2 = { $names }, get to the contact { $dir } now!
+soldier-bark-order-reinforce-3 = { $names }, support the fight { $dir }!
+
+soldier-bark-order-search-1 = { $names }, sweep the sector { $dir }.
+soldier-bark-order-search-2 = { $names }, search for the enemy { $dir }, { $dist } meters.
+soldier-bark-order-search-3 = { $names }, comb { $dir }. Report in.
+
+soldier-bark-order-intercept-1 = { $names }, intercept { $dir }! He's heading there.
+soldier-bark-order-intercept-2 = { $names }, cut off the way { $dir }.
+soldier-bark-order-intercept-3 = { $names }, meet him { $dir }.
+
+soldier-bark-order-post-1 = { $names }, take the position { $dir }.
+soldier-bark-order-post-2 = { $names }, to the post { $dir }, hold the sector.
+soldier-bark-order-post-3 = { $names }, new position { $dir }, { $dist } meters.
+
+soldier-bark-order-suppress-1 = { $names }, lay down fire, the rest move!
+soldier-bark-order-suppress-2 = { $names }, suppress him!
+soldier-bark-order-suppress-3 = { $names }, keep him pinned, don't let him peek!
+
+soldier-bark-order-flank-1 = { $names }, flank him! Get on his side.
+soldier-bark-order-flank-2 = { $names }, go around, we'll cover you.
+soldier-bark-order-flank-3 = { $names }, come in from the side and finish it.
+
+soldier-bark-order-fallback-1 = { $names }, fall back! Back to me, cover each other.
+soldier-bark-order-fallback-2 = { $names }, pull back, don't walk into the fire!
+soldier-bark-order-fallback-3 = { $names }, break contact and withdraw!
+
+soldier-bark-order-assault-1 = { $names }, cancel the withdrawal! Back on the enemy.
+soldier-bark-order-assault-2 = { $names }, back into the fight!
+soldier-bark-order-assault-3 = { $names }, hold the ground, open fire!
+
+soldier-bark-order-medic-1 = { $names }, { $who } is down { $dir }, { $dist } meters. Get to him!
+soldier-bark-order-medic-2 = Medic { $names }, wounded { $who } { $dir }, get him out!
+soldier-bark-order-medic-3 = { $names }, go to { $who } { $dir } at once!
+
+soldier-bark-roll-call-1 = All posts, report your status.
+soldier-bark-roll-call-2 = { $names }, report in, how do you copy?
+soldier-bark-roll-call-3 = Roll call! Everybody sound off.
+
+soldier-bark-ack-report-1 = Copy, { $who }.
+soldier-bark-ack-report-2 = { $who }, understood.
+soldier-bark-ack-report-3 = Got you, { $who }. Working on it.
+
+soldier-bark-assume-command-1 = No word from HQ. { $who } is taking command!
+soldier-bark-assume-command-2 = I'm taking command. Listen to my orders!
+soldier-bark-assume-command-3 = { $who } commanding! Report to me.
+
+soldier-bark-hq-ack-report-1 = HQ copies, { $who }.
+soldier-bark-hq-ack-report-2 = { $who }, HQ hears you.
+soldier-bark-hq-ack-report-3 = HQ understood, { $who }. Carry on.
+
+soldier-bark-hq-assume-command-1 = HQ is on the net. Assuming command. Report your status.
+soldier-bark-hq-assume-command-2 = HQ speaking. The squad is under my command.
+soldier-bark-hq-assume-command-3 = HQ on the air. Orders come from me only.
+
+soldier-bark-order-sectors-1 = All posts, spreading out to the sectors. Hold your zone.
+soldier-bark-order-sectors-2 = Take your sectors as planned. Everybody to your place.
+soldier-bark-order-sectors-3 = HQ is assigning the sectors. Take your posts, keep your eyes open.
+
+soldier-bark-order-push-1 = { $names }, push! Hostile { $dir }, { $dist } meters. Going in!
+soldier-bark-order-push-2 = { $names }, press him! The enemy is dug in { $dir } — we assault.
+soldier-bark-order-push-3 = { $names }, assault { $dir }, { $dist } meters. Enter when ready!
+
+soldier-bark-order-hold-1 = { $names }, hold the entrance { $dir }. Let nobody out.
+soldier-bark-order-hold-2 = { $names }, take the passage { $dir } and hold it.
+soldier-bark-order-hold-3 = { $names }, hold the corridor { $dir }, don't fall back without orders.
+
+soldier-bark-order-cordon-1 = { $names }, block the exits { $dir }!
+soldier-bark-order-cordon-2 = { $names }, cordon { $dir }: let nobody out.
+soldier-bark-order-cordon-3 = { $names }, seal the doors { $dir }, he must not get away.
+
+soldier-bark-order-resupply-1 = { $names }, resupply — crate { $dir }, { $dist } meters.
+soldier-bark-order-resupply-2 = { $names }, to the supply crate { $dir }. Take what you need.
+soldier-bark-order-resupply-3 = { $names }, to the stores { $dir }, { $dist } meters. Restock and get back.
+
+soldier-bark-resupplying-1 = Taking supplies.
+soldier-bark-resupplying-2 = Restocking, cover me.
+soldier-bark-resupplying-3 = Restocking.
+
+soldier-bark-restocked-1 = Restocked.
+soldier-bark-restocked-2 = Got my supplies, ready.
+soldier-bark-restocked-3 = Ammo is good.
+
+soldier-bark-need-supply-1 = { $who }, low on ammo and bandages, need a resupply.
+soldier-bark-need-supply-2 = { $who }, supplies are running out. Need restocking.
+soldier-bark-need-supply-3 = { $who }, requesting a resupply: ammo and medical are almost gone.
+
+soldier-bark-order-encircle-1 = { $names }, encircle! Hostile { $dir }, { $dist } meters. Groups to the doors, wait for the signal!
+soldier-bark-order-encircle-2 = { $names }, we go in from two sides — hostile { $dir }. Take the doors and wait for my call.
+soldier-bark-order-encircle-3 = { $names }, going around him { $dir }, { $dist } meters. To the doors, we enter on my signal!
+
+soldier-bark-order-go-1 = { $names }, go, go! Entering!
+soldier-bark-order-go-2 = { $names }, both groups in place — go, go in!
+soldier-bark-order-go-3 = { $names }, on my signal — entering now!
+
+soldier-bark-ready-1 = { $who }, at the door, ready.
+soldier-bark-ready-2 = { $who } in position, waiting for the signal.
+soldier-bark-ready-3 = { $who }, door covered. Ready to go in.

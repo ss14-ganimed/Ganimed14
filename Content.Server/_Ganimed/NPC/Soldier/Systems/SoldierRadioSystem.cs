@@ -24,6 +24,7 @@ public sealed class SoldierRadioSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly SoldierCommsSystem _comms = default!;
 
     /// <summary>
     /// Minimum pause between two phrases of one squad, so the radio sounds like a conversation and not like spam.
@@ -36,9 +37,15 @@ public sealed class SoldierRadioSystem : EntitySystem
     private static readonly TimeSpan SoldierGap = TimeSpan.FromSeconds(1.6);
 
     /// <summary>
-    /// A phrase that could not be said for this long is not relevant anymore and is dropped.
+    /// A phrase that could not be said for this long is not relevant anymore and is dropped. Talk that carries nothing but
+    /// itself ("reloading!") goes stale soonest: said late, it is worse than not said. An order of the commander is good for a
+    /// little longer; a report, and the answer to it, stay good for long: they are what the squad holds together with, and a
+    /// report that was lost (or an answer that was) made the soldiers take a working radio for a dead one.
     /// </summary>
-    private static readonly TimeSpan Staleness = TimeSpan.FromSeconds(12);
+    private static readonly TimeSpan Staleness = TimeSpan.FromSeconds(8);
+    private static readonly TimeSpan OrderStaleness = TimeSpan.FromSeconds(12);
+    private static readonly TimeSpan MessageStaleness = TimeSpan.FromSeconds(30);
+    private static readonly TimeSpan AcknowledgementStaleness = TimeSpan.FromSeconds(20);
 
     /// <summary>
     /// How many phrases a squad remembers in <see cref="SoldierSquadComponent.BarkLog"/>.
@@ -56,7 +63,8 @@ public sealed class SoldierRadioSystem : EntitySystem
             if (squad.BarkQueue.Count == 0 || now < squad.NextBarkAt)
                 continue;
 
-            // Take the earliest phrase that is due.
+            // Take the phrase that is due and matters the most, the earliest of them. On a busy radio the squad has to hear
+            // the decisions of the commander first, then its acknowledgements; the reports wait their turn.
             var index = -1;
             for (var i = 0; i < squad.BarkQueue.Count; i++)
             {
@@ -64,8 +72,12 @@ public sealed class SoldierRadioSystem : EntitySystem
                 if (pending.At > now)
                     continue;
 
-                if (index < 0 || pending.At < squad.BarkQueue[index].At)
+                if (index < 0 ||
+                    Priority(pending) > Priority(squad.BarkQueue[index]) ||
+                    Priority(pending) == Priority(squad.BarkQueue[index]) && pending.At < squad.BarkQueue[index].At)
+                {
                     index = i;
+                }
             }
 
             if (index < 0)
@@ -74,7 +86,7 @@ public sealed class SoldierRadioSystem : EntitySystem
             var bark = squad.BarkQueue[index];
             squad.BarkQueue.RemoveAt(index);
 
-            if (now - bark.At > Staleness)
+            if (now - bark.At > StalenessOf(bark))
                 continue;
 
             if (!TryComp(bark.Speaker, out SoldierComponent? soldier))
@@ -88,16 +100,47 @@ public sealed class SoldierRadioSystem : EntitySystem
                 continue;
             }
 
-            if (!Speak((bark.Speaker, soldier), bark.Bark, bark.Direction))
+            if (!Speak((bark.Speaker, soldier), bark))
                 continue;
 
+            // The commander has a lot to say: it is not held back longer than the radio of the squad itself is.
             squad.NextBarkAt = now + SquadGap;
-            soldier.NextBarkAt = now + SoldierGap;
+            soldier.NextBarkAt = now + (HasComp<SoldierCommandComponent>(bark.Speaker) ? SquadGap : SoldierGap);
 
             squad.BarkLog.Add(new SoldierBarkLogEntry(now, bark.Speaker, bark.Bark));
             if (squad.BarkLog.Count > BarkLogSize)
                 squad.BarkLog.RemoveAt(0);
         }
+    }
+
+    /// <summary>
+    /// How much a phrase matters when the radio is busy: the decisions of the commander (orders) first; then what holds the
+    /// squad together, the reports of the soldiers and the acknowledgements of the commander (they go in the order they were
+    /// written); the rest of the talk goes after them.
+    /// </summary>
+    private static int Priority(SoldierPendingBark pending)
+    {
+        return pending.Message switch
+        {
+            AcknowledgementOrder => 2,
+            SoldierOrder => 3,
+            not null => 2,
+            _ => 0,
+        };
+    }
+
+    /// <summary>
+    /// How long a phrase may wait for its turn before it is dropped.
+    /// </summary>
+    private static TimeSpan StalenessOf(SoldierPendingBark pending)
+    {
+        return pending.Message switch
+        {
+            AcknowledgementOrder => AcknowledgementStaleness,
+            SoldierOrder => OrderStaleness,
+            not null => MessageStaleness,
+            _ => Staleness,
+        };
     }
 
     /// <summary>
@@ -108,6 +151,27 @@ public sealed class SoldierRadioSystem : EntitySystem
     /// <param name="delay">Do not say it earlier than that (seconds).</param>
     /// <param name="direction">Direction word for phrases that mention one.</param>
     public void Say(Entity<SoldierComponent?> soldier, SoldierBark bark, float delay = 0f, string? direction = null)
+    {
+        Say(soldier, bark, delay, default, null, direction);
+    }
+
+    /// <summary>
+    /// Queues a phrase of a soldier that carries a message (a report, an order). The message is handed over to those who
+    /// receive the transmission of the phrase, see <see cref="SoldierCommsSystem"/>.
+    /// </summary>
+    /// <param name="soldier">Who is going to speak.</param>
+    /// <param name="bark">What situation the phrase is about.</param>
+    /// <param name="delay">Do not say it earlier than that (seconds).</param>
+    /// <param name="args">The words put into the phrase (names, distance, number).</param>
+    /// <param name="message">The message the phrase carries, if there is one.</param>
+    /// <param name="direction">Direction word for phrases that mention one.</param>
+    public void Say(
+        Entity<SoldierComponent?> soldier,
+        SoldierBark bark,
+        float delay,
+        SoldierBarkArgs args,
+        SoldierMessage? message = null,
+        string? direction = null)
     {
         if (!Resolve(soldier, ref soldier.Comp, false))
             return;
@@ -121,6 +185,8 @@ public sealed class SoldierRadioSystem : EntitySystem
             Bark = bark,
             At = _timing.CurTime + TimeSpan.FromSeconds(delay),
             Direction = direction,
+            Args = args,
+            Message = message,
         });
     }
 
@@ -136,21 +202,37 @@ public sealed class SoldierRadioSystem : EntitySystem
     /// Says a random phrase for the situation over the radio right now.
     /// </summary>
     /// <returns>False if the soldier cannot speak or has no phrases for the situation.</returns>
-    private bool Speak(Entity<SoldierComponent> soldier, SoldierBark bark, string? direction)
+    private bool Speak(Entity<SoldierComponent> soldier, SoldierPendingBark pending)
     {
         if (!_mobState.IsAlive(soldier))
             return false;
 
         if (!_proto.TryIndex(soldier.Comp.Barks, out var set) ||
-            !set.Lines.TryGetValue(bark, out var datasetId) ||
+            !set.Lines.TryGetValue(pending.Bark, out var datasetId) ||
             !_proto.TryIndex(datasetId, out LocalizedDatasetPrototype? dataset) ||
             dataset.Values.Count == 0)
         {
             return false;
         }
 
+        var args = pending.Args;
         var line = _random.Pick(dataset.Values);
-        var text = Loc.GetString(line, ("dir", direction ?? Loc.GetString("soldier-direction-unknown")));
+        var text = Loc.GetString(
+            line,
+            ("dir", pending.Direction ?? Loc.GetString("soldier-direction-unknown")),
+            ("names", args.Names ?? string.Empty),
+            ("who", args.Who ?? string.Empty),
+            ("count", args.Count),
+            ("dist", args.Distance),
+            ("text", args.Text ?? string.Empty));
+
+        // A phrase that carries a message goes the way the message does: over the radio if the soldier has one, aloud to
+        // the comrades around if it has not, nowhere if there is nobody to hear it.
+        if (pending.Message is { } message)
+        {
+            message.Text = text;
+            return _comms.Transmit(soldier, message, text);
+        }
 
         _chat.TrySendInGameICMessage(
             soldier,

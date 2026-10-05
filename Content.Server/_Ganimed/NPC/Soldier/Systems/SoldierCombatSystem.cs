@@ -37,6 +37,7 @@ public sealed class SoldierCombatSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SoldierAmmoSystem _ammo = default!;
     [Dependency] private readonly SoldierBrainSystem _brain = default!;
+    [Dependency] private readonly SoldierCommsSystem _comms = default!;
     [Dependency] private readonly SoldierCoverSystem _cover = default!;
     [Dependency] private readonly SoldierGrenadeSystem _grenades = default!;
     [Dependency] private readonly SoldierMedicalSystem _medical = default!;
@@ -283,6 +284,10 @@ public sealed class SoldierCombatSystem : EntitySystem
 
         ranged.Target = target;
 
+        // The role the commander has given the soldier has run out.
+        if (soldier.Role != SoldierCombatRole.Assault && now >= soldier.RoleUntil)
+            soldier.Role = SoldierCombatRole.Assault;
+
         var distance = Vector2.Distance(_transform.GetWorldPosition(ent), _transform.GetWorldPosition(target));
 
         if (ranged.TargetInLOS)
@@ -455,7 +460,7 @@ public sealed class SoldierCombatSystem : EntitySystem
 
         soldier.NextAmmoCheckAt = now + AmmoCheckInterval;
 
-        if (!_ammo.NeedsReload(ent) || !(_ammo.HasSpareMagazine(ent) || _ammo.HasBackupGun(ent)))
+        if (!_ammo.NeedsReload(ent) || !(_ammo.HasSpareMagazine(ent) || _ammo.HasReserveBox(ent) || _ammo.HasBackupGun(ent)))
             return;
 
         // Hide first if there is a cover, otherwise reload right here.
@@ -610,10 +615,10 @@ public sealed class SoldierCombatSystem : EntitySystem
         }
 
         // A medic keeps behind the others: it never closes in on the enemy, and its cover is the safest one there is
-        // (even out of the room, away from the enemy).
-        var medic = HasComp<SoldierMedicComponent>(ent);
+        // (even out of the room, away from the enemy). So do the headquarters and a soldier that is falling back.
+        var behind = KeepsBehind(ent);
 
-        if (distance > EngageRange && !medic)
+        if (distance > EngageRange && MayAdvance(ent))
         {
             SetState(soldier, SoldierCombatState.Advance, now);
             return;
@@ -621,7 +626,7 @@ public sealed class SoldierCombatSystem : EntitySystem
 
         if (now >= soldier.NextCoverSearchAt)
         {
-            var search = _cover.TryFindCover(ent, target, out var spot, throughDoors: medic);
+            var search = _cover.TryFindCover(ent, target, out var spot, throughDoors: behind);
 
             if (search == SoldierSearchResult.Found)
             {
@@ -849,9 +854,39 @@ public sealed class SoldierCombatSystem : EntitySystem
             return;
         }
 
-        // The enemy is out of sight: go and look for him. (A medic does not: it stays behind the others.)
-        if (soldier.NoSightSince is { } since && now - since > NoSightAdvanceDelay && !HasComp<SoldierMedicComponent>(ent))
+        // The enemy is out of sight: go and look for him. (A medic does not: it stays behind the others. Neither does a
+        // soldier that has a commander: going forward is the commander's business.)
+        if (soldier.NoSightSince is { } since && now - since > NoSightAdvanceDelay && MayAdvance(ent))
             SetState(soldier, SoldierCombatState.Advance, now);
+    }
+
+    /// <summary>
+    /// The medic and the headquarters keep behind the others in a fight, and so does a soldier that has been told to fall
+    /// back: they do not close in on the enemy.
+    /// </summary>
+    private bool KeepsBehind(Entity<SoldierComponent> ent)
+    {
+        return ent.Comp.Role == SoldierCombatRole.Fallback ||
+               HasComp<SoldierMedicComponent>(ent) ||
+               HasComp<SoldierHQComponent>(ent);
+    }
+
+    /// <summary>
+    /// May the soldier close in on the enemy on its own. A soldier that is under the command of a commander it can hear does
+    /// not: it shoots, takes cover close by, reloads and bandages itself, and goes forward when it is ordered to (a push).
+    /// A soldier that has no commander (nobody on the air, no radio) goes by its own reflexes.
+    /// </summary>
+    private bool MayAdvance(Entity<SoldierComponent> ent)
+    {
+        if (KeepsBehind(ent))
+            return false;
+
+        var soldier = ent.Comp;
+
+        if (soldier.Maneuver == SoldierManeuver.Push && _timing.CurTime < soldier.ManeuverUntil)
+            return true;
+
+        return !_comms.IsUnderCommand(ent);
     }
 
     private void EnterReload(Entity<SoldierComponent> ent, NPCRangedCombatComponent ranged, TimeSpan now)
@@ -874,7 +909,9 @@ public sealed class SoldierCombatSystem : EntitySystem
         if (now < soldier.CombatStateUntil)
             return;
 
-        if (!_ammo.TryReload(ent))
+        // A spare magazine, or (when there is none) the magazine of the gun is filled from the box kept in the backpack, and
+        // only then the pistol.
+        if (!_ammo.TryReload(ent) && !_ammo.TryRefillFromBox(ent))
             _ammo.TrySwitchToBackupGun(ent);
 
         SetState(soldier, SoldierCombatState.Assess, now);

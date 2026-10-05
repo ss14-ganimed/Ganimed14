@@ -15,9 +15,6 @@ public enum SoldierBark : byte
     // Suspicion and investigation.
     HeardGunfire,
     HeardExplosion,
-    Acknowledge,
-    Dispatch,
-    Moving,
     Arrived,
     AllClear,
     Clear,
@@ -25,8 +22,6 @@ public enum SoldierBark : byte
 
     // Contact and alert levels.
     Contact,
-    RequestBackup,
-    BackupAcknowledge,
     LostTarget,
     Evasion,
     StandDown,
@@ -48,6 +43,48 @@ public enum SoldierBark : byte
     MedicDragging,
     MedicTreating,
     MedicDone,
+
+    // Reports of the soldiers to the commander (the phrases that are not covered by the ones above).
+    ContactMany,
+    StatusReady,
+    StatusWounded,
+    StatusFighting,
+    Declined,
+    Ack,
+    Relay,
+    LinkLost,
+
+    // Orders and answers of the commander.
+    OrderAlert,
+    OrderInvestigate,
+    OrderReinforce,
+    OrderSearch,
+    OrderIntercept,
+    OrderPost,
+    OrderSuppress,
+    OrderFlank,
+    OrderFallback,
+    OrderAssault,
+    OrderMedic,
+    RollCall,
+    AckReport,
+    AssumeCommand,
+    OrderSectors,
+    OrderPush,
+    OrderHold,
+    OrderCordon,
+    OrderResupply,
+
+    // The supplies: a soldier takes ammunition and medicines from a crate, and says so.
+    Resupplying,
+    Restocked,
+    NeedSupply,
+
+    // The assault from two sides: the commander sends the groups to their doors, the soldiers say they are ready, the
+    // commander gives the signal to go in.
+    OrderEncircle,
+    OrderGo,
+    Ready,
 }
 
 /// <summary>

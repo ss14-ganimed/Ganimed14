@@ -19,24 +19,6 @@
     count: 4
 
 - type: localizedDataset
-  id: SoldierBarkAcknowledge
-  values:
-    prefix: soldier-bark-acknowledge-
-    count: 4
-
-- type: localizedDataset
-  id: SoldierBarkDispatch
-  values:
-    prefix: soldier-bark-dispatch-
-    count: 4
-
-- type: localizedDataset
-  id: SoldierBarkMoving
-  values:
-    prefix: soldier-bark-moving-
-    count: 4
-
-- type: localizedDataset
   id: SoldierBarkArrived
   values:
     prefix: soldier-bark-arrived-
@@ -65,18 +47,6 @@
   id: SoldierBarkContact
   values:
     prefix: soldier-bark-contact-
-    count: 4
-
-- type: localizedDataset
-  id: SoldierBarkRequestBackup
-  values:
-    prefix: soldier-bark-request-backup-
-    count: 4
-
-- type: localizedDataset
-  id: SoldierBarkBackupAcknowledge
-  values:
-    prefix: soldier-bark-backup-acknowledge-
     count: 4
 
 - type: localizedDataset
@@ -183,22 +153,234 @@
     prefix: soldier-bark-medic-done-
     count: 3
 
+# The command: the reports of the soldiers to the commander and what the commander answers. A line may have the words of
+# the situation put into it: $dir (where), $dist (how far, in meters), $names (whom an order is for), $who (whom it is
+# about), $count (how many), $text (what is passed on).
+- type: localizedDataset
+  id: SoldierBarkContactMany
+  values:
+    prefix: soldier-bark-contact-many-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkStatusReady
+  values:
+    prefix: soldier-bark-status-ready-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkStatusWounded
+  values:
+    prefix: soldier-bark-status-wounded-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkStatusFighting
+  values:
+    prefix: soldier-bark-status-fighting-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkDeclined
+  values:
+    prefix: soldier-bark-declined-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkAck
+  values:
+    prefix: soldier-bark-ack-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkRelay
+  values:
+    prefix: soldier-bark-relay-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkLinkLost
+  values:
+    prefix: soldier-bark-link-lost-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderAlert
+  values:
+    prefix: soldier-bark-order-alert-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderInvestigate
+  values:
+    prefix: soldier-bark-order-investigate-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderReinforce
+  values:
+    prefix: soldier-bark-order-reinforce-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderSearch
+  values:
+    prefix: soldier-bark-order-search-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderIntercept
+  values:
+    prefix: soldier-bark-order-intercept-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderPost
+  values:
+    prefix: soldier-bark-order-post-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderSuppress
+  values:
+    prefix: soldier-bark-order-suppress-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderFlank
+  values:
+    prefix: soldier-bark-order-flank-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderFallback
+  values:
+    prefix: soldier-bark-order-fallback-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderAssault
+  values:
+    prefix: soldier-bark-order-assault-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderMedic
+  values:
+    prefix: soldier-bark-order-medic-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkRollCall
+  values:
+    prefix: soldier-bark-roll-call-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkAckReport
+  values:
+    prefix: soldier-bark-ack-report-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkAssumeCommand
+  values:
+    prefix: soldier-bark-assume-command-
+    count: 3
+
+# Sectors, the push, holding a place, the cordon and the supplies.
+- type: localizedDataset
+  id: SoldierBarkOrderSectors
+  values:
+    prefix: soldier-bark-order-sectors-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderPush
+  values:
+    prefix: soldier-bark-order-push-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderHold
+  values:
+    prefix: soldier-bark-order-hold-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderCordon
+  values:
+    prefix: soldier-bark-order-cordon-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderResupply
+  values:
+    prefix: soldier-bark-order-resupply-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkResupplying
+  values:
+    prefix: soldier-bark-resupplying-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkRestocked
+  values:
+    prefix: soldier-bark-restocked-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkNeedSupply
+  values:
+    prefix: soldier-bark-need-supply-
+    count: 3
+
+# The assault from two sides: the order, the soldiers at their doors, the signal to go in.
+- type: localizedDataset
+  id: SoldierBarkOrderEncircle
+  values:
+    prefix: soldier-bark-order-encircle-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkOrderGo
+  values:
+    prefix: soldier-bark-order-go-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkReady
+  values:
+    prefix: soldier-bark-ready-
+    count: 3
+
+# The voice of the headquarters differs from the voice of a soldier who has taken the command over where they say who they
+# are.
+- type: localizedDataset
+  id: SoldierBarkAckReportHQ
+  values:
+    prefix: soldier-bark-hq-ack-report-
+    count: 3
+
+- type: localizedDataset
+  id: SoldierBarkAssumeCommandHQ
+  values:
+    prefix: soldier-bark-hq-assume-command-
+    count: 3
+
 # The default voice of the soldiers.
 - type: soldierBarkSet
   id: SoldierBarksDefault
   lines:
     HeardGunfire: SoldierBarkHeardGunfire
     HeardExplosion: SoldierBarkHeardExplosion
-    Acknowledge: SoldierBarkAcknowledge
-    Dispatch: SoldierBarkDispatch
-    Moving: SoldierBarkMoving
     Arrived: SoldierBarkArrived
     AllClear: SoldierBarkAllClear
     Clear: SoldierBarkClear
     ReturningToPost: SoldierBarkReturningToPost
     Contact: SoldierBarkContact
-    RequestBackup: SoldierBarkRequestBackup
-    BackupAcknowledge: SoldierBarkBackupAcknowledge
     LostTarget: SoldierBarkLostTarget
     Evasion: SoldierBarkEvasion
     StandDown: SoldierBarkStandDown
@@ -216,3 +398,91 @@
     MedicDragging: SoldierBarkMedicDragging
     MedicTreating: SoldierBarkMedicTreating
     MedicDone: SoldierBarkMedicDone
+    ContactMany: SoldierBarkContactMany
+    StatusReady: SoldierBarkStatusReady
+    StatusWounded: SoldierBarkStatusWounded
+    StatusFighting: SoldierBarkStatusFighting
+    Declined: SoldierBarkDeclined
+    Ack: SoldierBarkAck
+    Relay: SoldierBarkRelay
+    LinkLost: SoldierBarkLinkLost
+    OrderAlert: SoldierBarkOrderAlert
+    OrderInvestigate: SoldierBarkOrderInvestigate
+    OrderReinforce: SoldierBarkOrderReinforce
+    OrderSearch: SoldierBarkOrderSearch
+    OrderIntercept: SoldierBarkOrderIntercept
+    OrderPost: SoldierBarkOrderPost
+    OrderSuppress: SoldierBarkOrderSuppress
+    OrderFlank: SoldierBarkOrderFlank
+    OrderFallback: SoldierBarkOrderFallback
+    OrderAssault: SoldierBarkOrderAssault
+    OrderMedic: SoldierBarkOrderMedic
+    RollCall: SoldierBarkRollCall
+    AckReport: SoldierBarkAckReport
+    AssumeCommand: SoldierBarkAssumeCommand
+    OrderSectors: SoldierBarkOrderSectors
+    OrderPush: SoldierBarkOrderPush
+    OrderHold: SoldierBarkOrderHold
+    OrderCordon: SoldierBarkOrderCordon
+    OrderResupply: SoldierBarkOrderResupply
+    Resupplying: SoldierBarkResupplying
+    Restocked: SoldierBarkRestocked
+    NeedSupply: SoldierBarkNeedSupply
+    OrderEncircle: SoldierBarkOrderEncircle
+    OrderGo: SoldierBarkOrderGo
+    Ready: SoldierBarkReady
+
+# The voice of the headquarters: the same phrases, but it says who it is when it takes the command and answers the reports.
+- type: soldierBarkSet
+  id: SoldierBarksHQ
+  lines:
+    HeardGunfire: SoldierBarkHeardGunfire
+    HeardExplosion: SoldierBarkHeardExplosion
+    Arrived: SoldierBarkArrived
+    AllClear: SoldierBarkAllClear
+    Clear: SoldierBarkClear
+    ReturningToPost: SoldierBarkReturningToPost
+    Contact: SoldierBarkContact
+    LostTarget: SoldierBarkLostTarget
+    Evasion: SoldierBarkEvasion
+    StandDown: SoldierBarkStandDown
+    Controlled: SoldierBarkControlled
+    ManDown: SoldierBarkManDown
+    Reloading: SoldierBarkReloading
+    Grenade: SoldierBarkGrenade
+    Suppressing: SoldierBarkSuppressing
+    Flanking: SoldierBarkFlanking
+    Entering: SoldierBarkEntering
+    Wounded: SoldierBarkWounded
+    Healing: SoldierBarkHealing
+    CallMedic: SoldierBarkCallMedic
+    ContactMany: SoldierBarkContactMany
+    StatusReady: SoldierBarkStatusReady
+    StatusWounded: SoldierBarkStatusWounded
+    StatusFighting: SoldierBarkStatusFighting
+    Declined: SoldierBarkDeclined
+    Ack: SoldierBarkAck
+    Relay: SoldierBarkRelay
+    LinkLost: SoldierBarkLinkLost
+    OrderAlert: SoldierBarkOrderAlert
+    OrderInvestigate: SoldierBarkOrderInvestigate
+    OrderReinforce: SoldierBarkOrderReinforce
+    OrderSearch: SoldierBarkOrderSearch
+    OrderIntercept: SoldierBarkOrderIntercept
+    OrderPost: SoldierBarkOrderPost
+    OrderSuppress: SoldierBarkOrderSuppress
+    OrderFlank: SoldierBarkOrderFlank
+    OrderFallback: SoldierBarkOrderFallback
+    OrderAssault: SoldierBarkOrderAssault
+    OrderMedic: SoldierBarkOrderMedic
+    RollCall: SoldierBarkRollCall
+    AckReport: SoldierBarkAckReportHQ
+    AssumeCommand: SoldierBarkAssumeCommandHQ
+    OrderSectors: SoldierBarkOrderSectors
+    OrderPush: SoldierBarkOrderPush
+    OrderHold: SoldierBarkOrderHold
+    OrderCordon: SoldierBarkOrderCordon
+    OrderResupply: SoldierBarkOrderResupply
+    OrderEncircle: SoldierBarkOrderEncircle
+    OrderGo: SoldierBarkOrderGo
+    Ready: SoldierBarkReady

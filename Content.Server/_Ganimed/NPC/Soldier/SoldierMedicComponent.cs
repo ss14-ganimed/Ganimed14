@@ -72,13 +72,6 @@ public sealed partial class SoldierMedicComponent : Component
     public TimeSpan GiveUpCooldown = TimeSpan.FromSeconds(25);
 
     /// <summary>
-    /// While the squad hunts the enemy, the medic does not come closer to him than this (in tiles): it stays behind the
-    /// others.
-    /// </summary>
-    [DataField]
-    public float StandOffDistance = 10f;
-
-    /// <summary>
     /// A comrade in critical condition is dragged away if the enemy is this close (in tiles) and can see him.
     /// </summary>
     [DataField]
@@ -147,6 +140,11 @@ public sealed partial class SoldierMedicComponent : Component
     public bool DragPlanned;
 
     /// <summary>
+    /// How many doors the medic has opened by hand because the path finder found no way to the patient.
+    /// </summary>
+    public int DoorTries;
+
+    /// <summary>
     /// The body scanner has been run over the patient.
     /// </summary>
     public bool Scanned;
@@ -179,6 +177,14 @@ public sealed partial class SoldierMedicComponent : Component
     public EntityUid? IgnoredPatient;
 
     public TimeSpan IgnoredUntil;
+
+    /// <summary>
+    /// The comrade the commander has told the medic to look after, and the time until which the order stands: such a
+    /// comrade is helped first (the medic still helps others if he is out of reach or well again).
+    /// </summary>
+    public EntityUid? PreferredPatient;
+
+    public TimeSpan PreferredUntil;
 
     #endregion
 }

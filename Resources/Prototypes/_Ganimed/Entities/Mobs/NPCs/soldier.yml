@@ -98,3 +98,37 @@
   - type: ConditionalSpawner
     prototypes:
     - MobSoldierMedic
+
+# The headquarters of a squad: it stays in the rear (in the room it has been put in) and commands the soldiers of its grid.
+# The soldiers report to it over the radio (";") what they see, hear and do, it builds the picture of the situation from the
+# reports and gives the orders: who checks a noise, where the hunters go, who suppresses and who goes around the enemy, where
+# the medic goes, where the posts are. The soldiers keep their reflexes (they shoot at what they see, take cover, reload,
+# bandage themselves, get up). A squad whose headquarters is gone is commanded by one of its soldiers until the
+# headquarters is back. See SoldierCommandSystem.
+- type: entity
+  parent: MobSoldier
+  id: MobSoldierHQ
+  components:
+  - type: Loadout
+    prototypes:
+    - GanimedSoldierHQGear
+  - type: Soldier
+    barks: SoldierBarksHQ
+    # The headquarters does not roam: it stays within a few tiles of where it was put.
+    patrolRadius: 4
+  - type: SoldierHQ
+
+# Marker for mappers: spawns the headquarters of the squad of the grid at round start of the map.
+- type: entity
+  id: SpawnerMobSoldierHQ
+  suffix: Soldier HQ
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Mobs/Species/Human/parts.rsi
+      state: full
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSoldierHQ

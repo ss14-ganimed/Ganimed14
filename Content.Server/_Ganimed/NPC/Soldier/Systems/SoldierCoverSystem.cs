@@ -145,6 +145,13 @@ public sealed class SoldierCoverSystem : EntitySystem
     private const float FriendlyFireWidth = 0.9f;
 
     /// <summary>
+    /// A comrade closer than this (in tiles) to the shooter is in the way whichever way the shooter faces: the bullets are born
+    /// inside of him (a soldier is a circle of 0.35 tiles, and a bullet starts at the middle of the shooter). Two soldiers who
+    /// have jammed together at one place shoot each other dead this way: every bullet of the one hits the other.
+    /// </summary>
+    private const float PointBlankRange = 0.6f;
+
+    /// <summary>
     /// The bullets that miss the enemy keep on flying: a comrade this far (in tiles) behind the enemy is still in danger.
     /// </summary>
     public const float FriendlyFireOvershoot = 25f;
@@ -837,7 +844,7 @@ public sealed class SoldierCoverSystem : EntitySystem
 
     /// <summary>
     /// Is a comrade of the soldier standing on the line between the shooter and the target (or right behind the target,
-    /// where the bullets that miss end up).
+    /// where the bullets that miss end up, or right next to the shooter, where the bullets are born).
     /// </summary>
     /// <param name="shooter">The soldier who would shoot. It is not a comrade of itself.</param>
     /// <param name="from">Where the shooter would stand.</param>
@@ -877,6 +884,11 @@ public sealed class SoldierCoverSystem : EntitySystem
             }
 
             var offset = _transform.GetWorldPosition(xform) - from.Position;
+
+            // Right next to the shooter: the bullets hit him at once, he is in the way even if he stands beside or behind.
+            if (offset.LengthSquared() < PointBlankRange * PointBlankRange)
+                return true;
+
             var along = Vector2.Dot(offset, direction);
 
             // Behind the shooter or too far beyond the target.

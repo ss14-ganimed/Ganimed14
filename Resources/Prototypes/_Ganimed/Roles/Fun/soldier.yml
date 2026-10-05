@@ -64,3 +64,31 @@
     - MedkitCombatFilled
     - HandheldHealthAnalyzer
     - DefibrillatorOneHandedUnpowered
+
+# Gear of the headquarters: the armor and the headset of the soldiers (the headset is the whole point: the headquarters lives
+# on the radio), a command beret and a pistol. The headquarters keeps behind the others and only defends itself, so there is
+# no rifle. The backpack holds the spare magazines and a few bandages.
+- type: startingGear
+  id: GanimedSoldierHQGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMercenary
+    outerClothing: ClothingOuterArmorBulletproof
+    head: ClothingHeadHatBeretCommand
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsMerc
+    ears: ClothingHeadsetSoldier
+    belt: ClothingBeltMilitaryWebbing
+    back: ClothingBackpack
+    pocket1: MagazinePistol
+    pocket2: MagazinePistol
+  inhand:
+  - WeaponPistolMk58
+  storage:
+    back:
+    - MagazinePistol
+    - MagazinePistol
+    - MagazinePistol
+    - GrenadeFlashBang
+    - Brutepack
+    - Ointment
+    - Gauze

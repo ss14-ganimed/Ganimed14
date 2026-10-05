@@ -17,6 +17,10 @@
         <Button Name="AiOverlayButton" Access="Public" Text="{Loc sandbox-window-ai-overlay-button}" ToggleMode="True"/>
         <Button Name="ShowMarkersButton" Access="Public" Text="{Loc sandbox-window-show-spawns-button}" ToggleMode="True"/>
         <Button Name="ShowBbButton" Access="Public" Text="{Loc sandbox-window-show-bb-button}" ToggleMode="True"/>
+        <!-- Ganimed-Add: the info panel of the soldier NPCs (it is shown to the admins only, see SandboxUIController) -->
+        <Button Name="NpcInfoButton" Access="Public" Text="{Loc sandbox-window-npc-info-button}" ToggleMode="True" Visible="False"/>
+        <!-- Ganimed-Add: the zones of the soldier NPCs over the map (it is shown to the admins only, see SandboxUIController) -->
+        <Button Name="NpcZonesButton" Access="Public" Text="{Loc sandbox-window-npc-zones-button}" ToggleMode="True" Visible="False"/>
 
         <Label Text="{Loc sandbox-window-your-character-label}"/>
         <Button Name="GiveAghostButton" Access="Public" Text="{Loc sandbox-window-ghost-button}"/>

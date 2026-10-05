@@ -145,8 +145,29 @@ public sealed class SoldierStatusCommand : LocalizedEntityCommands
                 if (soldier.Recovery != SoldierRecoveryPhase.None)
                     state += $"+recovery:{soldier.Recovery}";
 
+                // Who commands the squad (the headquarters, or a soldier that has taken the command over).
+                if (EntityManager.TryGetComponent(member, out SoldierCommandComponent? command) && squad.Commander == member)
+                    state += $"+cmd:{command.Rank}";
+
+                // A soldier that cannot reach the commander.
+                if (EntityManager.TryGetComponent(member, out SoldierLinkComponent? link) && link.State != SoldierLinkState.Linked)
+                    state += $"+link:{link.State}";
+
                 if (EntityManager.TryGetComponent(member, out SoldierMedicComponent? medic) && medic.Phase != SoldierMedicPhase.None)
                     state += $"+medic:{medic.Phase}";
+
+                // Clearing a room behind a door, a maneuver of the commander, supplies, the sector.
+                if (soldier.BreachState != SoldierBreachState.None)
+                    state += $"+breach:{soldier.BreachState}";
+
+                if (soldier.Maneuver != SoldierManeuver.None)
+                    state += $"+maneuver:{soldier.Maneuver}";
+
+                if (soldier.Supply != SoldierSupplyPhase.None)
+                    state += $"+supply:{soldier.Supply}";
+
+                if (soldier.SectorRooms.Count > 0)
+                    state += $"+sector:{soldier.SectorRooms.Count}{(soldier.SectorKey ? "k" : string.Empty)}";
 
                 builder.AppendLine(Loc.GetString("cmd-soldier_status-soldier",
                     ("soldier", EntityManager.ToPrettyString(member)),

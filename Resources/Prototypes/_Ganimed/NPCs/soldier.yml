@@ -31,6 +31,22 @@
     - !type:HTNCompoundTask
       task: SoldierEngageCompound
 
+  # The soldier is after supplies (it walks to a supply crate, takes what it needs, fills its magazines): the supply system
+  # drives it. A fight comes first, so this branch is below the one of the fight.
+  - preconditions:
+    - !type:SoldierSupplyJobPrecondition
+    tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:NoOperator
+
+  # The soldier picks things up (it walks to a thing it wants, opens a locker, searches a body): the loot system drives it.
+  # A fight comes first, so this branch is below the one of the fight.
+  - preconditions:
+    - !type:SoldierLootJobPrecondition
+    tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:NoOperator
+
   # The soldier has to stand still: it bandages itself, or waits at a closed door for the comrades.
   - preconditions:
     - !type:SoldierHoldPrecondition

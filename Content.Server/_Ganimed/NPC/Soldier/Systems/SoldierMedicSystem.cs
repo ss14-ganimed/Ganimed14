@@ -37,8 +37,8 @@ namespace Content.Server._Ganimed.NPC.Soldier.Systems;
 /// takes into its hand goes back into the backpack afterwards (see <see cref="SoldierMedicalSystem.FinishHealing"/>).
 /// </para>
 /// <para>
-/// A medic does not get orders to check noises or to hunt the enemy up close: the squad system keeps it behind the others
-/// (see <see cref="SoldierMedicComponent.StandOffDistance"/>), and in a fight it never advances.
+/// A medic is not sent anywhere by the commander (it does not check noises or hunt the enemy; the commander only names the
+/// patient it is to look after): it stays behind the others, and in a fight it never advances.
 /// </para>
 /// </remarks>
 public sealed class SoldierMedicSystem : EntitySystem
@@ -55,11 +55,15 @@ public sealed class SoldierMedicSystem : EntitySystem
     [Dependency] private readonly SharedRottingSystem _rotting = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SoldierBrainSystem _brain = default!;
+    [Dependency] private readonly SoldierBreachSystem _breach = default!;
     [Dependency] private readonly SoldierCoverSystem _cover = default!;
     [Dependency] private readonly SoldierLoadSystem _load = default!;
+    [Dependency] private readonly SoldierLootSystem _loot = default!;
     [Dependency] private readonly SoldierMedicalSystem _medical = default!;
     [Dependency] private readonly SoldierRadioSystem _radio = default!;
+    [Dependency] private readonly SoldierRoomSystem _rooms = default!;
     [Dependency] private readonly SoldierSquadSystem _squad = default!;
+    [Dependency] private readonly SoldierSupplySystem _supply = default!;
 
     /// <summary>
     /// How often an idle medic looks for a comrade who needs help.
@@ -96,9 +100,14 @@ public sealed class SoldierMedicSystem : EntitySystem
     private const float ReachSlack = 1f;
 
     /// <summary>
-    /// The medic has dragged the patient to the place when it is this close (in tiles) to it.
+    /// The medic has dragged the patient to the place when the patient is this close (in tiles) to it, or this close (the
+    /// slack) when the medic has got where it was going and the patient cannot come any closer. The medic walks this much
+    /// (in tiles) past the place, and stops this close to the point it walks to.
     /// </summary>
-    private const float DragArriveRange = 1.3f;
+    private const float DragArriveRange = 0.7f;
+    private const float DragSlack = 1.5f;
+    private const float DragOvershoot = 1f;
+    private const float DragMedicRange = 0.5f;
 
     /// <summary>
     /// The place the medic walks to has to move this far (in tiles) for the medic to change its course: every new course
@@ -113,6 +122,11 @@ public sealed class SoldierMedicSystem : EntitySystem
     private const int MaxTreatments = 10;
     private const int MaxFailedTreatments = 3;
     private const int MaxShocks = 3;
+
+    /// <summary>
+    /// How many doors the medic opens by hand when the path finder finds no way to the patient.
+    /// </summary>
+    private const int MaxDoorTries = 3;
 
     /// <summary>
     /// A dead patient is shocked when his damage is this much (in units) below the dead threshold: the shock itself
@@ -265,6 +279,13 @@ public sealed class SoldierMedicSystem : EntitySystem
             if (distance > medic.PatientRange)
                 continue;
 
+            // The comrade the commander has named is helped first.
+            if (member == medic.PreferredPatient && now < medic.PreferredUntil)
+            {
+                priority = Math.Min(priority, 0);
+                distance = -1f;
+            }
+
             if (priority > bestPriority || priority == bestPriority && distance >= bestDistance)
                 continue;
 
@@ -359,8 +380,14 @@ public sealed class SoldierMedicSystem : EntitySystem
         var soldier = ent.Comp1;
         var medic = ent.Comp2;
 
-        // What the medic was doing for itself is dropped.
+        // What the medic was doing for itself is dropped (and the trip for supplies: a comrade needs it more).
         _medical.AbortFirstAid((ent.Owner, soldier));
+        _supply.CancelSupply((ent.Owner, soldier));
+        _loot.CancelLoot((ent.Owner, soldier));
+
+        // The medic remembers its post: when the work is done it goes back there, and the room of the patient does not become
+        // its post (a post that is far from where the soldier stands is taken to be wherever it ended up).
+        soldier.ReturnTo ??= soldier.Home ?? Transform(ent.Owner).Coordinates;
 
         medic.Patient = patient;
         medic.Phase = SoldierMedicPhase.Approach;
@@ -369,6 +396,7 @@ public sealed class SoldierMedicSystem : EntitySystem
         medic.ArrivedAt = null;
         medic.SafeSpot = null;
         medic.DragPlanned = false;
+        medic.DoorTries = 0;
         medic.Scanned = false;
         medic.Treatments = 0;
         medic.FailedTreatments = 0;
@@ -456,10 +484,13 @@ public sealed class SoldierMedicSystem : EntitySystem
         if (_mobState.IsCritical(patient))
             medic.Revive = true;
 
-        // A patient who died (or cannot be brought back) is not worked on.
-        if (dead && (!medic.UseDefibrillator || !medic.Revive && !CanBeBroughtBack(patient, medic)))
+        // A patient who is dead is worked on only while he can still be brought back (and the medic still has the
+        // defibrillator): a body that has got worse on the way (it has rotted) is left alone, and not a word is said about it.
+        if (dead && (!medic.UseDefibrillator ||
+                     !CanBeBroughtBack(patient, medic) ||
+                     !_medical.TryFindTool<DefibrillatorComponent>(uid, out _)))
         {
-            EndJob(ent, now, success: false, giveUp: true);
+            EndJob(ent, now, success: false, giveUp: true, ignoreFactor: 6f);
             return;
         }
 
@@ -562,12 +593,37 @@ public sealed class SoldierMedicSystem : EntitySystem
         var medic = ent.Comp2;
         var where = Transform(patient).Coordinates;
 
+        // A door that does not open to a click is being pried: the medic stands in front of it until it is open.
+        if (_breach.IsPrying((uid, ent.Comp1)))
+            return;
+
         if (DistanceTo(uid, where) > medic.WorkRange + ArriveSlack)
         {
             medic.ArrivedAt = null;
             MoveTo(uid, where, medic.WorkRange);
 
-            if (IsUnreachable(uid) || now - medic.PhaseSince > ApproachTimeout)
+            if (IsUnreachable(uid))
+            {
+                // A closed door may be all that stops the path finder: the medic opens it itself (or pries it open) and the
+                // way is planned anew.
+                var opening = medic.DoorTries < MaxDoorTries
+                    ? _breach.TryOpenDoorToward(uid, where)
+                    : SoldierDoorResult.Cannot;
+
+                if (opening != SoldierDoorResult.Cannot)
+                {
+                    if (opening == SoldierDoorResult.Opened)
+                        medic.DoorTries++;
+
+                    StopMoving(uid);
+                    return;
+                }
+
+                EndJob(ent, now, success: false, giveUp: true);
+                return;
+            }
+
+            if (now - medic.PhaseSince > ApproachTimeout)
                 EndJob(ent, now, success: false, giveUp: true);
 
             return;
@@ -650,7 +706,7 @@ public sealed class SoldierMedicSystem : EntitySystem
     {
         spot = default;
 
-        if (FindThreat(ent) is not { } enemy)
+        if (FindThreat(ent, patient) is not { } enemy)
             return SoldierSearchResult.NotFound;
 
         var enemyPosition = _transform.GetMapCoordinates(enemy);
@@ -667,23 +723,41 @@ public sealed class SoldierMedicSystem : EntitySystem
             return SoldierSearchResult.NotFound;
 
         var search = _cover.TryFindCover(ent.Owner, enemy, out var cover, throughDoors: true);
-        if (search == SoldierSearchResult.Found)
-            spot = cover.Hide;
+        if (search != SoldierSearchResult.Found)
+            return search;
 
+        // A place the patient is at already is no place to carry him to.
+        if (DistanceTo(patient, cover.Hide) <= DragArriveRange)
+            return SoldierSearchResult.NotFound;
+
+        spot = cover.Hide;
         return search;
     }
 
     /// <summary>
-    /// The enemy the medic is afraid of: the one it sees, or the one the squad is after.
+    /// The enemy the medic is afraid of: the one it sees, the one the patient was fighting when he fell (the medic knows who
+    /// has shot him: it is one of the comrades, and they fight together), or the one it has seen lately while it knows that
+    /// the squad is on alert.
     /// </summary>
-    private EntityUid? FindThreat(Entity<SoldierComponent, SoldierMedicComponent> ent)
+    private EntityUid? FindThreat(Entity<SoldierComponent, SoldierMedicComponent> ent, EntityUid patient)
     {
-        if (ent.Comp1.Target is { } target && !TerminatingOrDeleted(target) && _mobState.IsAlive(target))
+        var soldier = ent.Comp1;
+
+        if (soldier.Target is { } target && !TerminatingOrDeleted(target) && _mobState.IsAlive(target))
             return target;
 
-        if (_squad.TryGetSquad(new Entity<SoldierComponent?>(ent.Owner, ent.Comp1), out var squad) &&
-            squad.Comp.Alert is SoldierAlertLevel.Alert or SoldierAlertLevel.Evasion &&
-            squad.Comp.LastKnownEnemy is { } enemy &&
+        if (TryComp(patient, out SoldierComponent? fallen) &&
+            fallen.LastEnemy is { } shooter &&
+            _timing.CurTime - fallen.TargetLastSeenAt < RecentEnemyMemory &&
+            !TerminatingOrDeleted(shooter) &&
+            _mobState.IsAlive(shooter))
+        {
+            return shooter;
+        }
+
+        if (soldier.KnownAlert is SoldierAlertLevel.Alert or SoldierAlertLevel.Evasion &&
+            soldier.LastEnemy is { } enemy &&
+            _timing.CurTime - soldier.TargetLastSeenAt < RecentEnemyMemory &&
             !TerminatingOrDeleted(enemy) &&
             _mobState.IsAlive(enemy))
         {
@@ -692,6 +766,11 @@ public sealed class SoldierMedicSystem : EntitySystem
 
         return null;
     }
+
+    /// <summary>
+    /// The enemy the medic saw this lately is still a threat for a comrade it drags out of the fire.
+    /// </summary>
+    private static readonly TimeSpan RecentEnemyMemory = TimeSpan.FromSeconds(40);
 
     /// <summary>
     /// The medic takes hold of the patient to drag him. It frees its hand for that, and it is not in combat mode: a hold
@@ -718,22 +797,48 @@ public sealed class SoldierMedicSystem : EntitySystem
 
         var holding = _pullerQuery.TryComp(uid, out var puller) && puller.Pulling == patient;
 
-        if (!holding ||
-            medic.SafeSpot is not { } spot ||
-            DistanceTo(uid, spot) <= DragArriveRange ||
-            IsUnreachable(uid) ||
-            now - medic.PhaseSince > DragTimeout)
+        if (holding && medic.SafeSpot is { } spot && now - medic.PhaseSince <= DragTimeout)
         {
-            // The patient is not carried any farther: the medic works where it stands (it steps to him first if it has to).
-            Release(uid, patient);
-            StopMoving(uid);
-            medic.SafeSpot = null;
-            medic.ArrivedAt = null;
-            SetPhase(ent, SoldierMedicPhase.Approach, now);
-            return;
+            // It is the patient who has to get to the place (the medic stands beside him, so the place may be right next to
+            // the medic while the patient still lies in the open). He follows the medic, so the medic goes a step past it,
+            // and the patient is delivered when he is at the place, or when the medic has got where it was going and the
+            // patient is as close as he will come.
+            var goal = PastTheSpot(uid, patient, spot);
+            var gap = DistanceTo(patient, spot);
+            var arrived = gap <= DragArriveRange || DistanceTo(uid, goal) <= DragMedicRange + 0.2f && gap <= DragSlack;
+
+            if (!arrived && !IsUnreachable(uid))
+            {
+                MoveTo(uid, goal, DragMedicRange);
+                return;
+            }
         }
 
-        MoveTo(uid, spot, 0.6f);
+        // The patient is not carried any farther: the medic works where it stands (it steps to him first if it has to).
+        Release(uid, patient);
+        StopMoving(uid);
+        medic.SafeSpot = null;
+        medic.ArrivedAt = null;
+        SetPhase(ent, SoldierMedicPhase.Approach, now);
+    }
+
+    /// <summary>
+    /// The place a medic walks to carry the patient to the place: a step farther along the same way, because the patient
+    /// follows the medic one step behind. If there is no room for that, the place itself.
+    /// </summary>
+    private EntityCoordinates PastTheSpot(EntityUid medic, EntityUid patient, EntityCoordinates spot)
+    {
+        var from = _transform.GetWorldPosition(patient);
+        var target = _transform.ToMapCoordinates(spot);
+        var way = target.Position - from;
+
+        if (way.LengthSquared() < 0.25f)
+            return spot;
+
+        var past = _transform.ToCoordinates(new MapCoordinates(target.Position + Vector2.Normalize(way) * DragOvershoot, target.MapId));
+
+        // Not behind a wall (the place is next to the cover, and the cover may be a thin wall).
+        return _rooms.CanStandAt(patient, past) && _rooms.IsSameRoom(medic, spot, past) ? past : spot;
     }
 
     private void UpdateTreat(Entity<SoldierComponent, SoldierMedicComponent> ent, EntityUid patient, TimeSpan now)

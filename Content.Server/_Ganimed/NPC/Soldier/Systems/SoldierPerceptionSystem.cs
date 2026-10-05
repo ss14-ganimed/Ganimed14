@@ -26,6 +26,7 @@ public sealed class SoldierPerceptionSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly NpcFactionSystem _faction = default!;
     [Dependency] private readonly SoldierBrainSystem _brain = default!;
+    [Dependency] private readonly SoldierCommsSystem _comms = default!;
     [Dependency] private readonly SoldierLoadSystem _load = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SoldierSquadSystem _squad = default!;
@@ -49,6 +50,16 @@ public sealed class SoldierPerceptionSystem : EntitySystem
     /// A soldier that is shot knows where the shot came from, as long as the shooter is that close (in tiles).
     /// </summary>
     private const float ShooterAwarenessRange = 40f;
+
+    /// <summary>
+    /// The enemies this close (in tiles) to the one a soldier sees are counted as seen with him.
+    /// </summary>
+    private const float EnemyGroupRadius = 8f;
+
+    /// <summary>
+    /// The hostiles around a soldier. A scratch buffer: it is cleared on every look.
+    /// </summary>
+    private readonly List<EntityUid> _hostiles = new();
 
     public override void Initialize()
     {
@@ -81,8 +92,7 @@ public sealed class SoldierPerceptionSystem : EntitySystem
     private void Perceive(Entity<SoldierComponent> ent, TransformComponent xform, TimeSpan now)
     {
         var soldier = ent.Comp;
-        var alert = _squad.TryGetSquad(ent.AsNullable(), out var squad) ? squad.Comp.Alert : SoldierAlertLevel.Calm;
-        var senses = GetSenses(soldier, alert);
+        var senses = GetSenses(soldier, soldier.KnownAlert);
 
         // The enemy has been neutralized (or has vanished).
         if (soldier.Target is { } current && (TerminatingOrDeleted(current) || !_mobState.IsAlive(current)))
@@ -90,7 +100,15 @@ public sealed class SoldierPerceptionSystem : EntitySystem
             soldier.Target = null;
 
             if (!TerminatingOrDeleted(current))
-                _squad.ReportEnemyDown(ent, current);
+            {
+                // The enemy has been put down: there is nobody to look for where he was seen last.
+                soldier.TargetLastSeenPos = null;
+                _comms.ReportEnemyDown(ent, current);
+            }
+            else
+            {
+                _comms.ReportContactLost(ent);
+            }
         }
 
         // A soldier that fights keeps its eyes on the target: the shooting checks the line of sight to it anyway.
@@ -103,13 +121,13 @@ public sealed class SoldierPerceptionSystem : EntitySystem
         {
             if (ranged.TargetInLOS && soldier.Target is { } watched)
             {
-                // The target is in sight: the squad keeps on learning where he is.
+                // The target is in sight: the commander keeps on learning where he is.
                 soldier.TargetLastSeenAt = now;
-                _squad.ReportContact(ent, watched);
+                _comms.ReportContact(ent, watched, 1);
             }
             else
             {
-                ForgetLostTarget(soldier, now);
+                ForgetLostTarget(ent, now);
             }
 
             return;
@@ -117,15 +135,15 @@ public sealed class SoldierPerceptionSystem : EntitySystem
 
         soldier.NextFullScanAt = now + _load.Scale(FullScanInterval);
 
-        var visible = FindVisibleEnemy(ent, xform, senses);
+        var (visible, count) = FindVisibleEnemy(ent, xform, senses);
 
         if (visible is { } enemy)
         {
             if (soldier.Target == enemy)
             {
-                // Still the same enemy: the squad learns where he is now.
+                // Still the same enemy: the commander learns where he is now.
                 soldier.TargetLastSeenAt = now;
-                _squad.ReportContact(ent, enemy);
+                _comms.ReportContact(ent, enemy, count);
                 return;
             }
 
@@ -137,22 +155,25 @@ public sealed class SoldierPerceptionSystem : EntitySystem
 
             // Not sure yet: the enemy has to stay in sight for a moment. An alerted soldier does not hesitate.
             if ((now - soldier.SuspectSince).TotalSeconds >= senses.Detection)
-                Engage(ent, enemy, now);
+                Engage(ent, enemy, now, count);
 
             return;
         }
 
         soldier.Suspect = null;
-        ForgetLostTarget(soldier, now);
+        ForgetLostTarget(ent, now);
     }
 
     /// <summary>
-    /// Lost sight of the enemy: keep him in mind for a while, then give up. A soldier that has hidden from the enemy
-    /// (or is reloading in cover) has lost sight of him on purpose and remembers him for longer. A soldier that bandages
-    /// itself does not forget him at all until it is done: it would leave the fight with the bandage in its hand.
+    /// Lost sight of the enemy: keep him in mind for a while, then give up (and tell the commander). A soldier that has
+    /// hidden from the enemy (or is reloading in cover) has lost sight of him on purpose and remembers him for longer. A
+    /// soldier that bandages itself does not forget him at all until it is done: it would leave the fight with the bandage
+    /// in its hand.
     /// </summary>
-    private static void ForgetLostTarget(SoldierComponent soldier, TimeSpan now)
+    private void ForgetLostTarget(Entity<SoldierComponent> ent, TimeSpan now)
     {
+        var soldier = ent.Comp;
+
         if (soldier.Mode == SoldierMode.Engage && soldier.CombatState == SoldierCombatState.Heal)
             return;
 
@@ -161,18 +182,27 @@ public sealed class SoldierPerceptionSystem : EntitySystem
             ? soldier.TargetMemory * CoverMemoryFactor
             : soldier.TargetMemory;
 
-        if (soldier.Target != null && now - soldier.TargetLastSeenAt >= memory)
-            soldier.Target = null;
+        if (soldier.Target == null || now - soldier.TargetLastSeenAt < memory)
+            return;
+
+        soldier.Target = null;
+        _comms.ReportContactLost(ent);
     }
 
     /// <summary>
-    /// Makes the soldier fight the enemy: its current order is dropped and the squad is told about the contact.
+    /// Makes the soldier fight the enemy: its current order is dropped and the commander is told about the contact (the
+    /// soldier does not wait for anybody to tell it what to do: it fights, and reports at the same time).
     /// </summary>
-    public void Engage(Entity<SoldierComponent> ent, EntityUid enemy, TimeSpan now)
+    /// <param name="ent">The soldier.</param>
+    /// <param name="enemy">The enemy.</param>
+    /// <param name="now">The time.</param>
+    /// <param name="count">How many enemies the soldier sees.</param>
+    public void Engage(Entity<SoldierComponent> ent, EntityUid enemy, TimeSpan now, int count = 1)
     {
         var soldier = ent.Comp;
 
         soldier.Target = enemy;
+        soldier.LastEnemy = enemy;
         soldier.TargetLastSeenAt = now;
         soldier.Suspect = null;
 
@@ -181,7 +211,7 @@ public sealed class SoldierPerceptionSystem : EntitySystem
         soldier.SearchStartedAt = null;
         soldier.InvestigationId = null;
 
-        _squad.ReportContact(ent, enemy);
+        _comms.ReportContact(ent, enemy, count);
     }
 
     /// <summary>
@@ -202,16 +232,20 @@ public sealed class SoldierPerceptionSystem : EntitySystem
     }
 
     /// <summary>
-    /// The closest hostile that is alive and not hidden behind anything opaque.
+    /// The closest hostile that is alive and not hidden behind anything opaque, and how many there are around him (the
+    /// enemies that stand close to the one that is seen are seen with him).
     /// </summary>
-    private EntityUid? FindVisibleEnemy(Entity<SoldierComponent> ent, TransformComponent xform, (float Range, float Detection) senses)
+    private (EntityUid? Enemy, int Count) FindVisibleEnemy(Entity<SoldierComponent> ent, TransformComponent xform, (float Range, float Detection) senses)
     {
         EntityUid? best = null;
         var bestDistance = float.MaxValue;
 
         var ourPosition = _transform.GetWorldPosition(xform);
 
-        foreach (var candidate in _faction.GetNearbyHostiles(ent.Owner, senses.Range))
+        _hostiles.Clear();
+        _hostiles.AddRange(_faction.GetNearbyHostiles(ent.Owner, senses.Range));
+
+        foreach (var candidate in _hostiles)
         {
             // Downed and dead enemies are not a threat anymore.
             if (TerminatingOrDeleted(candidate) || !_mobState.IsAlive(candidate))
@@ -228,7 +262,23 @@ public sealed class SoldierPerceptionSystem : EntitySystem
             bestDistance = distance;
         }
 
-        return best;
+        if (best is not { } seen)
+            return (null, 0);
+
+        var group = 0;
+        var seenPosition = _transform.GetWorldPosition(seen);
+
+        foreach (var candidate in _hostiles)
+        {
+            if (!TerminatingOrDeleted(candidate) &&
+                _mobState.IsAlive(candidate) &&
+                (_transform.GetWorldPosition(candidate) - seenPosition).Length() <= EnemyGroupRadius)
+            {
+                group++;
+            }
+        }
+
+        return (seen, Math.Max(1, group));
     }
 
     /// <summary>

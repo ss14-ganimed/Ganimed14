@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using Content.Client._Ganimed.NPC.Soldier.UI; // Ganimed-Add
 using Content.Client.Administration.Managers;
 using Content.Client.Gameplay;
 using Content.Client.Markers;
@@ -7,6 +8,7 @@ using Content.Client.SubFloor;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.DecalPlacer;
 using Content.Client.UserInterface.Systems.Sandbox.Windows;
+using Content.Shared.Administration; // Ganimed-Add
 using Content.Shared.Input;
 using JetBrains.Annotations;
 using Robust.Client.Debugging;
@@ -152,6 +154,8 @@ public sealed class SandboxUIController : UIController, IOnStateChanged<Gameplay
         _window.ToggleSubfloorButton.OnPressed += _ => _sandbox.ToggleSubFloor();
         _window.ShowMarkersButton.OnPressed += _ => _sandbox.ShowMarkers();
         _window.ShowBbButton.OnPressed += _ => _sandbox.ShowBb();
+        _window.NpcInfoButton.OnToggled += args => UIManager.GetUIController<SoldierInfoUIController>().SetShown(args.Pressed); // Ganimed-Add
+        _window.NpcZonesButton.OnToggled += args => UIManager.GetUIController<SoldierZonesUIController>().SetShown(args.Pressed); // Ganimed-Add
     }
 
     private void CheckSandboxVisibility()
@@ -211,6 +215,14 @@ public sealed class SandboxUIController : UIController, IOnStateChanged<Gameplay
         if (_sandbox.SandboxAllowed && _window.IsOpen != true)
         {
             UIManager.ClickSound();
+
+            // Ganimed-Add-Start: the NPC info and NPC zones buttons are for the admins, and show whether the panel is on
+            _window.NpcInfoButton.Visible = _admin.HasFlag(AdminFlags.Fun);
+            _window.NpcInfoButton.Pressed = UIManager.GetUIController<SoldierInfoUIController>().Shown;
+            _window.NpcZonesButton.Visible = _admin.HasFlag(AdminFlags.Fun);
+            _window.NpcZonesButton.Pressed = UIManager.GetUIController<SoldierZonesUIController>().Shown;
+            // Ganimed-Add-End
+
             _window.Open();
         }
         else

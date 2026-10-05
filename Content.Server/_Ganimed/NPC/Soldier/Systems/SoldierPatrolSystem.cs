@@ -4,12 +4,10 @@
 
 using System.Numerics;
 using Content.Server.Atmos.Components;
-using Content.Server.NPC.Pathfinding;
 using Content.Shared.Doors.Components;
 using Content.Shared.NPC;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Physics.Systems;
 using Robust.Shared.Profiling;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -25,11 +23,10 @@ public sealed class SoldierPatrolSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly PathfindingSystem _pathfinding = default!;
     [Dependency] private readonly ProfManager _prof = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SoldierRoomSystem _rooms = default!;
 
     /// <summary>
     /// How often the cached room is recomputed. Walls get destroyed and doors get built.
@@ -81,6 +78,11 @@ public sealed class SoldierPatrolSystem : EntitySystem
     public bool TryPickPatrolPoint(Entity<SoldierComponent> soldier, out EntityCoordinates point)
     {
         point = default;
+
+        // A sector of several rooms: the soldier walks from room to room.
+        if (soldier.Comp.SectorRooms.Count > 1 && TryPickSectorPoint(soldier, out point))
+            return true;
+
         EnsureRoom(soldier);
 
         var comp = soldier.Comp;
@@ -105,6 +107,159 @@ public sealed class SoldierPatrolSystem : EntitySystem
 
             comp.LastPatrolTile = tile;
             point = coordinates;
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// A way that is longer than this (in tiles, as the crow flies) is walked in legs.
+    /// </summary>
+    private const float LongWay = 28f;
+
+    /// <summary>
+    /// A leg is about this long at the most (the farthest room of the route that is that close to the soldier).
+    /// </summary>
+    private const float LegLength = 22f;
+
+    /// <summary>
+    /// A file of soldiers that walks together keeps to the sides in turn: the point a soldier walks to is shifted this far (in
+    /// tiles; a narrower shift is tried if there is no room for it) to the left or to the right of the way, but only if the
+    /// way is at least that long.
+    /// </summary>
+    private static readonly float[] SpreadWidths = { 1.2f, 0.6f };
+    private const float SpreadMinDistance = 6f;
+
+    /// <summary>
+    /// The place the soldier walks to first on its way to the goal. The path finder gives up on a long route (it looks at a
+    /// limited number of places, and a route around walls is much longer than the straight line), so a goal that is far away
+    /// is reached in legs: the soldier goes to a room of the route that is not too far, and there it plans the next leg.
+    /// A goal that is close is the leg itself. A soldier that walks in a file with its comrades (see
+    /// <see cref="SoldierComponent.GroupSide"/>) is sent a little to one side of it: the soldiers do not walk in each other's
+    /// footsteps, every one of them covers its own side, like pieces on a chess board.
+    /// </summary>
+    public EntityCoordinates NextLeg(Entity<SoldierComponent> soldier, EntityCoordinates goal)
+    {
+        var leg = ChooseLeg(soldier, goal);
+        return soldier.Comp.GroupSide != 0 ? Spread(soldier, leg) : leg;
+    }
+
+    private EntityCoordinates Spread(Entity<SoldierComponent> soldier, EntityCoordinates point)
+    {
+        var ours = _transform.GetMapCoordinates(soldier);
+        var there = _transform.ToMapCoordinates(point);
+
+        if (ours.MapId != there.MapId)
+            return point;
+
+        var offset = there.Position - ours.Position;
+        var distance = offset.Length();
+
+        if (distance < SpreadMinDistance)
+            return point;
+
+        var direction = offset / distance;
+        var left = new Vector2(-direction.Y, direction.X);
+
+        foreach (var width in SpreadWidths)
+        {
+            var shifted = _transform.ToCoordinates(new MapCoordinates(there.Position + left * (soldier.Comp.GroupSide * width), there.MapId));
+
+            // Not behind a wall: the other side of a thin wall is another room, and the way there is a long one.
+            if (CanStandAt(soldier, shifted) && _rooms.IsSameRoom(soldier, point, shifted))
+                return shifted;
+        }
+
+        return point;
+    }
+
+    private EntityCoordinates ChooseLeg(Entity<SoldierComponent> soldier, EntityCoordinates goal)
+    {
+        var ours = _transform.GetMapCoordinates(soldier);
+        var there = _transform.ToMapCoordinates(goal);
+
+        // An encirclement: the soldier walks to the place outside its door and waits there for the signal. It does not cut
+        // through the room of the enemy on the way (the path finder takes the shorter way, and that is often through the
+        // room): it goes room by room around it.
+        var comp = soldier.Comp;
+        var around = comp is { Maneuver: SoldierManeuver.Push, PushWaitGo: true, PushGo: false, ManeuverRoom: not null };
+
+        if (ours.MapId != there.MapId || !around && Vector2.Distance(ours.Position, there.Position) <= LongWay)
+            return goal;
+
+        if (comp.Squad is not { } squadUid ||
+            !TryComp(squadUid, out SoldierSquadComponent? squad) ||
+            _rooms.GetMap((squadUid, squad)) is not { } map)
+        {
+            return goal;
+        }
+
+        var from = _rooms.RoomAt(map, Transform(soldier).Coordinates);
+        var to = _rooms.RoomAt(map, goal);
+
+        if (around)
+        {
+            var enemy = comp.ManeuverRoom!.Value;
+
+            // The next room of a way that does not lead through the room of the enemy. (The last room is the goal itself.)
+            if (from < 0 || to < 0 || from == to || from == enemy || to == enemy ||
+                _rooms.Route(map, from, to, new HashSet<int> { enemy }) is not { Count: > 2 } detour)
+            {
+                return goal;
+            }
+
+            return _rooms.TryPickPoint(map, detour[1], soldier, out var step) ? step : goal;
+        }
+
+        if (from < 0 || to < 0 || from == to || _rooms.Route(map, from, to) is not { Count: > 2 } route)
+            return goal;
+
+        // The next room of the route is a must; the farther ones are taken while they are not too far.
+        var leg = route[1];
+
+        for (var i = 2; i < route.Count - 1; i++)
+        {
+            var center = _transform.ToMapCoordinates(_rooms.CenterOf(map, route[i])).Position;
+
+            if (Vector2.Distance(ours.Position, center) > LegLength)
+                break;
+
+            leg = route[i];
+        }
+
+        return _rooms.TryPickPoint(map, leg, soldier, out var point) ? point : goal;
+    }
+
+    /// <summary>
+    /// A place in another room of the sector of the soldier (a sector is several rooms the commander has given to the
+    /// soldier to look after).
+    /// </summary>
+    private bool TryPickSectorPoint(Entity<SoldierComponent> soldier, out EntityCoordinates point)
+    {
+        point = default;
+        var comp = soldier.Comp;
+
+        if (comp.Squad is not { } squadUid ||
+            !TryComp(squadUid, out SoldierSquadComponent? squad) ||
+            _rooms.GetMap((squadUid, squad)) is not { } map)
+        {
+            return false;
+        }
+
+        var rooms = _rooms.ResolveAnchors(map, comp.SectorRooms);
+        if (rooms.Count < 2)
+            return false;
+
+        for (var i = 0; i < PickAttempts; i++)
+        {
+            var room = _random.Pick(rooms);
+
+            if (room == comp.LastSectorRoom || !_rooms.TryPickPoint(map, room, soldier, out var picked))
+                continue;
+
+            comp.LastSectorRoom = room;
+            point = picked;
             return true;
         }
 
@@ -148,15 +303,7 @@ public sealed class SoldierPatrolSystem : EntitySystem
     /// </summary>
     public bool CanStandAt(EntityUid uid, EntityCoordinates coordinates)
     {
-        var poly = _pathfinding.GetPoly(coordinates);
-        if (poly == null || !poly.IsValid())
-            return false;
-
-        if ((poly.Data.Flags & PathfindingBreadcrumbFlag.Space) != 0)
-            return false;
-
-        var (layer, mask) = _physics.GetHardCollision(uid);
-        return (poly.Data.CollisionMask & layer) == 0 && (poly.Data.CollisionLayer & mask) == 0;
+        return _rooms.CanStandAt(uid, coordinates);
     }
 
     /// <summary>
@@ -186,6 +333,15 @@ public sealed class SoldierPatrolSystem : EntitySystem
         if (!home.IsValid(EntityManager))
             return true;
 
+        // A soldier that has a place to go back to (it is on its way, or it has been given a post while it was busy) has
+        // not "ended up somewhere else": its post is where it is going.
+        if (soldier.Comp.ReturnTo != null)
+            return false;
+
+        // A soldier that has a sector of several rooms walks all over it: it is not away from its post.
+        if (soldier.Comp.SectorRooms.Count > 1)
+            return false;
+
         var homeMap = _transform.ToMapCoordinates(home);
         var ourMap = _transform.GetMapCoordinates(soldier);
 
@@ -204,8 +360,10 @@ public sealed class SoldierPatrolSystem : EntitySystem
         comp.PatrolGrid = null;
         comp.PatrolDirty = false;
 
-        if (comp.Home is not { } home || !home.IsValid(EntityManager))
+        if (comp.Home is not { } post || !post.IsValid(EntityManager))
             return;
+
+        var home = _rooms.OnGrid(post);
 
         if (_transform.GetGrid(home) is not { } gridUid || !TryComp(gridUid, out MapGridComponent? grid))
             return;

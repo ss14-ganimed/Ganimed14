@@ -107,6 +107,10 @@ public sealed partial class SoldierPickPointOperator : HTNOperator
         if (!point.IsValid(_entManager))
             return (false, null);
 
+        // A way that is long is walked in legs: the path finder gives up on a route much longer than the straight line.
+        if (Kind is SoldierPointKind.Order or SoldierPointKind.Return or SoldierPointKind.Patrol)
+            point = _patrol.NextLeg((owner, soldier), point);
+
         return (true, new Dictionary<string, object>
         {
             { TargetKey, point },

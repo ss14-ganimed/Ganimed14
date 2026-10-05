@@ -33,6 +33,33 @@ public sealed class SoldierGrenadeSystem : EntitySystem
     [Dependency] private readonly SoldierInventorySystem _inventory = default!;
 
     /// <summary>
+    /// Is the item a grenade that is not primed yet (one a soldier can prime and throw).
+    /// </summary>
+    public bool IsGrenade(EntityUid item)
+    {
+        return HasComp<TriggerOnUseComponent>(item) &&
+               HasComp<TimerTriggerComponent>(item) &&
+               !HasComp<ActiveTimerTriggerComponent>(item);
+    }
+
+    /// <summary>
+    /// How many grenades the soldier carries.
+    /// </summary>
+    public int CountGrenades(EntityUid soldier)
+    {
+        EntityUid? gun = _gun.TryGetGun(soldier, out var gunUid, out _) ? gunUid : null;
+        var count = 0;
+
+        foreach (var candidate in _inventory.EnumerateCarried(soldier, gun))
+        {
+            if (IsGrenade(candidate))
+                count++;
+        }
+
+        return count;
+    }
+
+    /// <summary>
     /// Finds a grenade the soldier carries that is not primed yet. Stun grenades are preferred: they are the soldiers'
     /// way to flush somebody out of a cover.
     /// </summary>
@@ -66,6 +93,43 @@ public sealed class SoldierGrenadeSystem : EntitySystem
 
         grenade = lethal.Value;
         return true;
+    }
+
+    /// <summary>
+    /// Finds a flashbang the soldier carries that is not primed yet. (A grenade that kills is not thrown into a room the
+    /// soldiers are going to enter.)
+    /// </summary>
+    public bool TryFindFlash(EntityUid soldier, out EntityUid grenade)
+    {
+        grenade = default;
+        EntityUid? gun = _gun.TryGetGun(soldier, out var gunUid, out _) ? gunUid : null;
+
+        foreach (var candidate in _inventory.EnumerateCarried(soldier, gun))
+        {
+            if (!HasComp<TriggerOnUseComponent>(candidate) ||
+                !HasComp<TimerTriggerComponent>(candidate) ||
+                HasComp<ActiveTimerTriggerComponent>(candidate) ||
+                !HasComp<FlashOnTriggerComponent>(candidate))
+            {
+                continue;
+            }
+
+            grenade = candidate;
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// When the grenade that has just been thrown goes off (it is primed by the throw).
+    /// </summary>
+    public TimeSpan FuseOf(EntityUid grenade, TimeSpan now)
+    {
+        if (!TryComp(grenade, out TimerTriggerComponent? timer))
+            return now + TimeSpan.FromSeconds(3.5);
+
+        return timer.NextTrigger > now ? timer.NextTrigger : now + timer.Delay;
     }
 
     /// <summary>

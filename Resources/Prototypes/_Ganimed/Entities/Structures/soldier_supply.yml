@@ -1,0 +1,74 @@
+# SPDX-FileCopyrightText: 2026 Imperator-Shlepa <155736295+Imperator-Shlepa@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Supply crates of the soldiers (see Content.Server/_Ganimed/NPC/Soldier/Systems/SoldierSupplySystem.cs). A soldier that is
+# low on ammunition or medicines comes to a crate when it is calm, uses it (a progress bar runs over its head) and gets what
+# it needs. The stock is limited and fills up very slowly. Mappers put them in the places where the soldiers live.
+- type: entity
+  id: BaseSoldierSupplyCrate
+  parent: BaseStructure
+  abstract: true
+  components:
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    noRot: true
+  - type: InteractionOutline
+
+# Boxes of cartridges, grenades.
+- type: entity
+  id: SoldierSupplyAmmoCrate
+  parent: BaseSoldierSupplyCrate
+  components:
+  - type: Icon
+    sprite: Structures/Storage/Crates/weapon.rsi
+    state: icon
+  - type: Sprite
+    sprite: Structures/Storage/Crates/weapon.rsi
+    layers:
+    - state: base
+    - state: closed
+  - type: SoldierSupply
+    kind: Ammo
+    stock: 8
+    maxStock: 8
+    box: SoldierRifleAmmoBox
+    boxes: 2
+    items:
+    - id: GrenadeFlashBang
+      count: 2
+    - id: GrenadeShrapnel
+      count: 1
+
+# Bandages for the soldiers, and what the medic fills its kits up with.
+- type: entity
+  id: SoldierSupplyMedicalCrate
+  parent: BaseSoldierSupplyCrate
+  components:
+  - type: Icon
+    sprite: Structures/Storage/Crates/medical.rsi
+    state: icon
+  - type: Sprite
+    sprite: Structures/Storage/Crates/medical.rsi
+    layers:
+    - state: base
+    - state: closed
+  - type: SoldierSupply
+    kind: Medical
+    stock: 8
+    maxStock: 8
+    items:
+    - id: Brutepack
+    - id: Ointment
+    - id: Gauze
+
+# A box of rifle cartridges the soldiers get from the ammunition crates: it is quick to fill a magazine from (a soldier loads
+# its magazines one cartridge after another, with a progress bar over its head).
+- type: entity
+  id: SoldierRifleAmmoBox
+  parent: MagazineBoxRifle
+  suffix: Soldier
+  components:
+  - type: BallisticAmmoProvider
+    fillDelay: 0.12

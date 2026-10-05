@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
+using Content.Shared._Ganimed.NPC.Soldier;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Map;
@@ -12,19 +14,28 @@ using Robust.Shared.Timing;
 namespace Content.Server._Ganimed.NPC.Soldier.Systems;
 
 /// <summary>
-/// The network that connects soldiers into one team: keeps the squad of every grid, its alert level,
-/// what the squad knows about the enemy and the orders the team members get.
+/// The squad of soldiers: who belongs to it, the alert level it is on, and the ways to send a soldier somewhere. A squad is
+/// all the soldiers of one grid (or of one map, if they are off grid), and it is held on that grid.
 /// </summary>
 /// <remarks>
-/// Split into parts: <c>Alert</c> (alert levels and contacts) and <c>Investigation</c> (noises and the teams sent to check them).
+/// The squad does not decide anything: the decisions are made by its commander (see <see cref="SoldierCommandSystem"/>)
+/// from the reports of the soldiers, and the orders reach the soldiers over the radio (see <see cref="SoldierCommsSystem"/>).
+/// What is left here is the roster, and what the soldiers do when an order is carried out.
 /// </remarks>
 public sealed partial class SoldierSquadSystem : EntitySystem
 {
+    /// <summary>
+    /// A comrade that sees a soldier fall within this distance (in tiles) tells the commander about it.
+    /// </summary>
+    private const float CasualtyWitnessRange = 25f;
+
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SoldierBrainSystem _brain = default!;
+    [Dependency] private readonly SoldierCommandSystem _command = default!;
+    [Dependency] private readonly SoldierCommsSystem _comms = default!;
     [Dependency] private readonly SoldierPatrolSystem _patrol = default!;
     [Dependency] private readonly SoldierRadioSystem _radio = default!;
 
@@ -41,19 +52,6 @@ public sealed partial class SoldierSquadSystem : EntitySystem
         SubscribeLocalEvent<SoldierComponent, MapInitEvent>(OnSoldierMapInit);
         SubscribeLocalEvent<SoldierComponent, ComponentShutdown>(OnSoldierShutdown);
         SubscribeLocalEvent<SoldierComponent, MobStateChangedEvent>(OnMobStateChanged);
-    }
-
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        var now = _timing.CurTime;
-        var query = EntityQueryEnumerator<SoldierSquadComponent>();
-        while (query.MoveNext(out var uid, out var squad))
-        {
-            UpdateAlert((uid, squad), now);
-            UpdateInvestigations((uid, squad), now);
-        }
     }
 
     #region Membership
@@ -81,8 +79,12 @@ public sealed partial class SoldierSquadSystem : EntitySystem
 
     private void OnMobStateChanged(Entity<SoldierComponent> ent, ref MobStateChangedEvent args)
     {
+        // A soldier that is on its feet again (a medic has raised it) tells the commander that it is back.
         if (args.NewMobState == MobState.Alive)
+        {
+            _comms.ReportStatus(ent, delay: 1.2f);
             return;
+        }
 
         // A dead or downed soldier takes no part in anything: drop its orders and let the others notice.
         var squadUid = ent.Comp.Squad;
@@ -91,7 +93,7 @@ public sealed partial class SoldierSquadSystem : EntitySystem
         ent.Comp.Suspect = null;
 
         if (squadUid is { } uid && _squadQuery.TryComp(uid, out var squad))
-            OnMemberDowned((uid, squad), ent);
+            OnMemberDowned((uid, squad), ent, args.NewMobState == MobState.Dead);
     }
 
     private void Leave(Entity<SoldierComponent> ent)
@@ -102,6 +104,53 @@ public sealed partial class SoldierSquadSystem : EntitySystem
         squad.Members.Remove(ent);
         _radio.Forget(ent, squad);
         ent.Comp.Squad = null;
+    }
+
+    /// <summary>
+    /// A soldier has been downed. The comrade nearest to him sees it and tells the commander (over the radio, if the
+    /// comrade has one), and somebody calls for the medic if he can still be saved: the soldiers do not wait for anybody to
+    /// decide that.
+    /// </summary>
+    private void OnMemberDowned(Entity<SoldierSquadComponent> squad, Entity<SoldierComponent> soldier, bool dead)
+    {
+        if (!TryPickWitness(squad, soldier, out var witness))
+            return;
+
+        // A comrade in critical condition can be saved: somebody (not the medic himself) calls for it.
+        if (!dead &&
+            HasLivingMedic(squad) &&
+            TryPickSpeaker(squad, soldier, out var caller, excludeMedics: true))
+        {
+            _radio.Say(caller, SoldierBark.CallMedic, 2.2f);
+        }
+
+        _comms.ReportCasualty(witness, soldier, dead);
+    }
+
+    /// <summary>
+    /// The comrade that has seen the soldier fall: the nearest one that is on its feet and sees him (or hears the fall).
+    /// </summary>
+    private bool TryPickWitness(Entity<SoldierSquadComponent> squad, EntityUid fallen, out EntityUid witness)
+    {
+        witness = default;
+
+        var origin = _transform.GetWorldPosition(fallen);
+        var best = float.MaxValue;
+
+        foreach (var member in squad.Comp.Members)
+        {
+            if (member == fallen || !IsOperational(member))
+                continue;
+
+            var distance = Vector2.Distance(_transform.GetWorldPosition(member), origin);
+            if (distance >= best || distance > CasualtyWitnessRange)
+                continue;
+
+            witness = member;
+            best = distance;
+        }
+
+        return best < float.MaxValue;
     }
 
     #endregion
@@ -136,21 +185,6 @@ public sealed partial class SoldierSquadSystem : EntitySystem
     }
 
     /// <summary>
-    /// Soldiers that are idle: not on any order, not fighting, not bandaging themselves and not getting up from the ground
-    /// (or going for the gun they have dropped). Only those can be sent somewhere.
-    /// The medic is never sent to check a noise: it stays with the squad and looks after the comrades.
-    /// </summary>
-    private bool IsAvailable(Entity<SoldierComponent> soldier)
-    {
-        return IsOperational(soldier) &&
-               soldier.Comp.Target == null &&
-               soldier.Comp.FirstAid == SoldierFirstAidPhase.None &&
-               soldier.Comp.Recovery == SoldierRecoveryPhase.None &&
-               soldier.Comp.Mode is SoldierMode.Patrol or SoldierMode.Return &&
-               !HasComp<SoldierMedicComponent>(soldier);
-    }
-
-    /// <summary>
     /// Is there a medic in the squad who can come (alive and on its feet)?
     /// </summary>
     private bool HasLivingMedic(Entity<SoldierSquadComponent> squad)
@@ -162,15 +196,6 @@ public sealed partial class SoldierSquadSystem : EntitySystem
         }
 
         return false;
-    }
-
-    private void GetAvailable(Entity<SoldierSquadComponent> squad, List<Entity<SoldierComponent>> result)
-    {
-        foreach (var member in squad.Comp.Members)
-        {
-            if (_soldierQuery.TryComp(member, out var soldier) && IsAvailable((member, soldier)))
-                result.Add((member, soldier));
-        }
     }
 
     /// <summary>
@@ -201,14 +226,21 @@ public sealed partial class SoldierSquadSystem : EntitySystem
     /// <summary>
     /// Word for the direction from one point to another, used in radio phrases.
     /// </summary>
-    private string? GetDirectionWord(EntityUid from, EntityCoordinates to)
+    public string? GetDirectionWord(EntityUid from, EntityCoordinates to)
     {
         var fromMap = _transform.GetMapCoordinates(from);
         var toMap = _transform.ToMapCoordinates(to);
         if (fromMap.MapId != toMap.MapId)
             return null;
 
-        var offset = toMap.Position - fromMap.Position;
+        return GetDirectionWord(toMap.Position - fromMap.Position);
+    }
+
+    /// <summary>
+    /// Word for the direction of the offset (north is up). Null if the offset is too small to tell.
+    /// </summary>
+    public string? GetDirectionWord(Vector2 offset)
+    {
         if (offset.LengthSquared() < 4f)
             return null;
 
@@ -235,8 +267,46 @@ public sealed partial class SoldierSquadSystem : EntitySystem
         comp.OrderPhase = SoldierInvestigationPhase.Moving;
         comp.SearchStartedAt = null;
         comp.InvestigationId = null;
+        comp.GroupSide = 0;
 
+        ResetManeuver(soldier);
         _brain.SetMode(soldier, comp.Target != null ? SoldierMode.Engage : SoldierMode.Patrol);
+    }
+
+    /// <summary>
+    /// The maneuver the commander has ordered (a push, a place to hold) is over: the soldier is not told to storm or to hold
+    /// anything any more, and goes back to where it was sent from if it was on its way to the place.
+    /// </summary>
+    public void EndManeuver(Entity<SoldierComponent> soldier)
+    {
+        var comp = soldier.Comp;
+
+        if (comp.Maneuver == SoldierManeuver.None && !comp.ManeuverHolding)
+            return;
+
+        ResetManeuver(soldier);
+
+        if (comp.Mode is SoldierMode.Hunt or SoldierMode.Investigate && comp.Target == null)
+            SendBack(soldier);
+    }
+
+    private void ResetManeuver(Entity<SoldierComponent> soldier)
+    {
+        var comp = soldier.Comp;
+        comp.Maneuver = SoldierManeuver.None;
+        comp.ManeuverPoint = null;
+        comp.ManeuverFace = null;
+        comp.ManeuverRoom = null;
+        comp.CqbRoom = null;
+        comp.PushWaitGo = false;
+        comp.PushGo = false;
+        comp.PushReady = false;
+
+        if (comp.ManeuverHolding)
+        {
+            comp.ManeuverHolding = false;
+            _brain.SetHold(soldier, false);
+        }
     }
 
     /// <summary>
@@ -256,6 +326,9 @@ public sealed partial class SoldierSquadSystem : EntitySystem
         comp.SearchStartedAt = null;
         comp.InvestigationId = investigationId;
 
+        // A new order has its own file of soldiers (the order handlers say which side the soldier keeps to).
+        comp.GroupSide = 0;
+
         // A new order is carried out at once, even by a soldier that is on an order already.
         _brain.SetMode(soldier, mode);
         _brain.Interrupt(soldier);
@@ -270,6 +343,7 @@ public sealed partial class SoldierSquadSystem : EntitySystem
         comp.OrderPoint = null;
         comp.SearchStartedAt = null;
         comp.InvestigationId = null;
+        comp.GroupSide = 0;
         comp.OrderStartedAt = _timing.CurTime;
         _brain.SetMode(soldier, comp.Target != null ? SoldierMode.Engage : SoldierMode.Return);
     }

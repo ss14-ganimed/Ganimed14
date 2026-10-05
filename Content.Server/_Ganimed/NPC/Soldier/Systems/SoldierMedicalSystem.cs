@@ -148,7 +148,10 @@ public sealed class SoldierMedicalSystem : EntitySystem
     /// </summary>
     private bool IsApplying(EntityUid soldier, DoAfterComponent component, ushort index, DoAfterEvent used)
     {
-        return used is not TryStandDoAfterEvent && _doAfter.IsRunning(soldier, index, component);
+        // (Taking supplies from a crate, and picking things up, are do-afters too, and the supply and the loot system look
+        // after them themselves.)
+        return used is not (TryStandDoAfterEvent or SoldierSupplyDoAfterEvent or SoldierLootDoAfterEvent) &&
+               _doAfter.IsRunning(soldier, index, component);
     }
 
     public bool IsWounded(Entity<SoldierComponent> soldier)
@@ -199,6 +202,55 @@ public sealed class SoldierMedicalSystem : EntitySystem
         }
 
         return bestBenefit > 0f;
+    }
+
+    /// <summary>
+    /// How much medical stuff the carrier has: the units of all the bandages, sutures and the like it carries (a stack counts
+    /// for the number of things in it).
+    /// </summary>
+    public int CountHealingUnits(EntityUid carrier)
+    {
+        EntityUid? gun = _gun.TryGetGun(carrier, out var gunUid, out _) ? gunUid : null;
+        var units = 0;
+
+        foreach (var candidate in _inventory.EnumerateCarried(carrier, gun))
+        {
+            if (!HasComp<HealingComponent>(candidate))
+                continue;
+
+            units += TryComp(candidate, out StackComponent? stack) ? Math.Max(0, stack.Count) : 1;
+        }
+
+        return units;
+    }
+
+    /// <summary>
+    /// An item that has been handed to the soldier goes into one of the storages it carries (the backpack, the belt). With no
+    /// room in any of them it stays in a free hand.
+    /// </summary>
+    /// <returns>False if the soldier could not take the item at all (both hands busy and the storages are full).</returns>
+    public bool StoreNewItem(Entity<SoldierComponent> soldier, EntityUid item)
+    {
+        // A hand is freed if both are busy: what the soldier has taken for its medical work goes back where it was.
+        if (!_hands.TryGetEmptyHand(soldier.Owner, out var hand))
+        {
+            FinishHealing(soldier);
+
+            if (!_hands.TryGetEmptyHand(soldier.Owner, out hand))
+                return false;
+        }
+
+        if (!_hands.TryPickup(soldier.Owner, item, hand, checkActionBlocker: false, animate: false))
+            return false;
+
+        foreach (var storage in _inventory.EnumerateStorages(soldier))
+        {
+            if (_hands.TryDropIntoContainer(soldier.Owner, item, storage, checkActionBlocker: false))
+                return true;
+        }
+
+        // There is no room: the item stays in the hand.
+        return true;
     }
 
     /// <summary>
@@ -558,8 +610,8 @@ public sealed class SoldierMedicalSystem : EntitySystem
         if (damageable.TotalDamage <= 0 && !bleeding)
             return false;
 
-        var calm = !_squad.TryGetSquad(ent.AsNullable(), out var squad) ||
-                   squad.Comp.Alert is SoldierAlertLevel.Calm or SoldierAlertLevel.Caution;
+        // The soldier tends to its scratches as the alert level it knows about allows.
+        var calm = ent.Comp.KnownAlert is SoldierAlertLevel.Calm or SoldierAlertLevel.Caution;
 
         // A calm squad has time to get well, one that hunts the enemy only patches its soldiers up.
         goal = calm ? ent.Comp.CalmHealedFraction : ent.Comp.HealedFraction;
@@ -582,6 +634,7 @@ public sealed class SoldierMedicalSystem : EntitySystem
             soldier.HoldPosition ||
             soldier.Recovery != SoldierRecoveryPhase.None ||
             soldier.BreachState != SoldierBreachState.None ||
+            soldier.Supply != SoldierSupplyPhase.None ||
             now < soldier.NextHealAt ||
             TryComp(ent, out SoldierMedicComponent? medic) && medic.Phase != SoldierMedicPhase.None ||
             !TryComp(ent, out DamageableComponent? damageable) ||

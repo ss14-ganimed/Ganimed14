@@ -24,6 +24,7 @@ public sealed class SoldierHearingSystem : EntitySystem
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly NpcFactionSystem _faction = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SoldierCommsSystem _comms = default!;
     [Dependency] private readonly SoldierSquadSystem _squad = default!;
 
     private static readonly ProtoId<NpcFactionPrototype> SoldierFaction = "Soldier";
@@ -141,7 +142,7 @@ public sealed class SoldierHearingSystem : EntitySystem
 
         foreach (var (_, listener) in _listeners)
         {
-            _squad.ReportNoise(listener.Soldier, point, kind);
+            _comms.ReportNoise(listener.Soldier, point, kind);
         }
     }
 }

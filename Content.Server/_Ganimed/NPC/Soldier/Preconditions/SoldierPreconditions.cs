@@ -69,6 +69,38 @@ public sealed partial class SoldierMedicJobPrecondition : HTNPrecondition
 }
 
 /// <summary>
+/// Is the soldier after supplies (it walks to a crate, takes what it needs, fills its magazines)? The supply system drives
+/// the soldier then, the HTN only stands by.
+/// </summary>
+public sealed partial class SoldierSupplyJobPrecondition : HTNPrecondition
+{
+    [Dependency] private readonly IEntityManager _entManager = default!;
+
+    public override bool IsMet(NPCBlackboard blackboard)
+    {
+        var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+
+        return _entManager.TryGetComponent(owner, out SoldierComponent? soldier) && soldier.Supply != SoldierSupplyPhase.None;
+    }
+}
+
+/// <summary>
+/// Is the soldier picking things up (it walks to a thing it wants, opens a locker, searches a body)? The loot system drives
+/// the soldier then, the HTN only stands by.
+/// </summary>
+public sealed partial class SoldierLootJobPrecondition : HTNPrecondition
+{
+    [Dependency] private readonly IEntityManager _entManager = default!;
+
+    public override bool IsMet(NPCBlackboard blackboard)
+    {
+        var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+
+        return _entManager.TryGetComponent(owner, out SoldierComponent? soldier) && soldier.Loot != SoldierLootPhase.None;
+    }
+}
+
+/// <summary>
 /// Is the soldier getting up from the ground or going for the gun it has dropped? The recovery system drives the soldier
 /// then, the HTN only stands by.
 /// </summary>
