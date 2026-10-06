@@ -1,16 +1,19 @@
 ﻿using Content.Client.Gameplay;
 using Content.Client.Ghost;
+using Content.Client.Lobby;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Ghost.Widgets;
 using Content.Shared.Ghost;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
+using Content.Shared.ADT.Thunderdome;
 
 namespace Content.Client.UserInterface.Systems.Ghost;
 
 // TODO hud refactor BEFORE MERGE fix ghost gui being too far up
 public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSystem>
 {
+    [Dependency] private readonly IEntityManager _entManager = default!; // ADT-tweak
     [Dependency] private readonly IEntityNetworkManager _net = default!;
 
     [UISystemDependency] private readonly GhostSystem? _system = default;
@@ -24,6 +27,8 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         var gameplayStateLoad = UIManager.GetUIController<GameplayStateLoadController>();
         gameplayStateLoad.OnScreenLoad += OnScreenLoad;
         gameplayStateLoad.OnScreenUnload += OnScreenUnload;
+
+        _entManager.EventBus.SubscribeEvent<ThunderdomePlayerCountEvent>(EventSource.Network, this, OnThunderdomePlayerCount); // ADT-tweak
     }
 
     private void OnScreenLoad()
@@ -97,7 +102,6 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
             return;
 
         window.UpdateWarps(msg.Warps);
-        window.Populate();
     }
 
     private void OnRoleCountUpdated(GhostUpdateGhostRoleCountEvent msg)
@@ -125,8 +129,11 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.RequestWarpsPressed += RequestWarps;
         Gui.ReturnToBodyPressed += ReturnToBody;
         Gui.GhostRolesPressed += GhostRolesPressed;
+        Gui.CharacterEditorPressed += CharacterEditorPressed; // ADT-Tweak 
         Gui.TargetWindow.WarpClicked += OnWarpClicked;
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
+        Gui.ThunderdomePressed += ThunderdomePressed; // ADT-Tweak
+        Gui.ThunderdomeLeaderboardPressed += ThunderdomeLeaderboardPressed; // ADT-Tweak
 
         UpdateGui();
     }
@@ -139,7 +146,11 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.RequestWarpsPressed -= RequestWarps;
         Gui.ReturnToBodyPressed -= ReturnToBody;
         Gui.GhostRolesPressed -= GhostRolesPressed;
+        Gui.CharacterEditorPressed -= CharacterEditorPressed; // ADT-Tweak 
         Gui.TargetWindow.WarpClicked -= OnWarpClicked;
+
+        Gui.ThunderdomePressed -= ThunderdomePressed; // ADT-Tweak
+        Gui.ThunderdomeLeaderboardPressed -= ThunderdomeLeaderboardPressed; // ADT-Tweak
 
         Gui.Hide();
     }
@@ -160,4 +171,28 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
     {
         _system?.OpenGhostRoles();
     }
+
+    // ADT Tweak start
+    private void CharacterEditorPressed()
+    {
+        UIManager.GetUIController<LobbyUIController>().OpenCharacterSetupWindow();
+    }
+    // ADT Tweak end
+
+    // ADT-tweak-start
+    private void ThunderdomePressed()
+    {
+        _net.SendSystemNetworkMessage(new ThunderdomeJoinRequestEvent());
+    }
+
+    private void ThunderdomeLeaderboardPressed()
+    {
+        _net.SendSystemNetworkMessage(new ThunderdomeLeaderboardRequestEvent());
+    }
+
+    private void OnThunderdomePlayerCount(ThunderdomePlayerCountEvent ev)
+    {
+        Gui?.UpdateThunderdome(ev.Count);
+    }
+    // ADT-tweak-end
 }

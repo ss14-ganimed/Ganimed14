@@ -1,9 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared.Corvax.Sponsors;
-using Robust.Shared.Network;
+using Content.Shared.ADT.Sponsors;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.Preferences.Loadouts.Effects;
 
@@ -27,22 +25,12 @@ public sealed partial class SponsorLoadoutEffect : LoadoutEffect
         if (session == null)
             return true;
 
-        var net = collection.Resolve<INetManager>();
-        var isSponsor = false;
-        SponsorInfo? info = null;
+        if (!collection.TryResolveType<ISharedSponsorManager>(out var sponsors))
+            return true;
 
-        if (net.IsClient)
-        {
-            if (collection.TryResolveType<ISponsorsManager>(out var sponsorsClient))
-                isSponsor = sponsorsClient.TryGetInfo(out info) && info != null;
-        }
-        else
-        {
-            if (collection.TryResolveType<ISponsorsManager>(out var sponsorsServer))
-                isSponsor = sponsorsServer.TryGetInfo(session.UserId, out info) && info != null;
-        }
+        var data = sponsors.GetData(session);
 
-        if (!isSponsor || info == null)
+        if (!data.HasAnyBenefit)
         {
             reason = FormattedMessage.FromMarkupOrThrow(Loc.GetString("loadout-sponsor-only"));
             return false;
@@ -50,7 +38,13 @@ public sealed partial class SponsorLoadoutEffect : LoadoutEffect
 
         if (RequiredTier.HasValue)
         {
-            var userTier = info.Tier ?? 0;
+            var userTier = 0;
+            foreach (var tier in data.Tiers)
+            {
+                if (tier.Id > userTier)
+                    userTier = tier.Id;
+            }
+
             if (userTier < RequiredTier.Value)
             {
                 reason = FormattedMessage.FromMarkupOrThrow(Loc.GetString(

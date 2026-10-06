@@ -1,12 +1,15 @@
-- type: entity
+﻿- type: entity
   id: StasisBed
   name: stasis bed
   parent: [ BaseMachinePowered, ConstructibleMachine ]
   description: A bed that massively slows down the patient's metabolism and prevents bodily decay, allowing more time to administer a proper treatment for stabilization.
   components:
   - type: StasisBed
+  - type: StasisBedMachinePart #ADT-Tweak: machine parts
+    powerLoad: 1000
+    powerMultiplier: 1
   - type: InjectorBoost # ADT-Tweak (P4A) Ускорение Шприцов на койках и каталках
-  - type: AntiRotOnBuckle
+  - type: StasisBedRot # ADT-Tweak
   - type: HealOnBuckle
     damage:
       types:
@@ -31,8 +34,9 @@
     powerLoad: 1000
   - type: ExtensionCableReceiver
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:

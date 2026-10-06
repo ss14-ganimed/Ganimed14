@@ -90,6 +90,10 @@
         Heat: 0.7
   - type: ExplosionResistance
     damageCoefficient: 0.75
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+      badge: !type:ContainerSlot
 
 - type: entity
   parent: ClothingBeltSecurity
@@ -105,7 +109,7 @@
   - type: ContainerContainer
     containers:
       katana: !type:ContainerSlot
-      # wakizashi: !type:ContainerSlot # Second slot temporarily unused
+      storagebase: !type:Container
   - type: ItemSlots
     slots:
       katana:

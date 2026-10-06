@@ -31,7 +31,10 @@ public sealed partial class SpeciesWindow : FancyWindow
     private readonly LobbyUIController _uIController;
     private readonly IResourceManager _resMan;
     [Dependency] private readonly DocumentParsingManager _parsingMan = default!;
+    [Dependency] private readonly Content.Client.ADT.Sponsors.SponsorManager _adtSponsors = default!;
+    [Dependency] private readonly Robust.Client.Player.IPlayerManager _players = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly ILocalizationManager _loc = default!;
 
     public SpeciesWindow(HumanoidCharacterProfile profile,
                         IPrototypeManager proto,
@@ -51,8 +54,36 @@ public sealed partial class SpeciesWindow : FancyWindow
         _uIController = uIController;
         _resMan = resManager;
 
+        CurrentSpecies = Profile.Species;
+
+        BuildSpeciesList();
+        SelectSpecies(Profile.Species);
+
+        _adtSponsors.Updated += OnSponsorsUpdated;
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        base.Dispose(disposing);
+
+        if (disposing)
+            _adtSponsors.Updated -= OnSponsorsUpdated;
+    }
+
+    private void OnSponsorsUpdated()
+    {
+        if (Disposed)
+            return;
+
+        BuildSpeciesList();
+    }
+
+    private void BuildSpeciesList()
+    {
+        SpeciesContainer.RemoveAllChildren();
+
         var protoList = _proto.EnumeratePrototypes<SpeciesPrototype>().Where(x => x.RoundStart).ToList();
-        protoList.Sort((x, y) => Loc.GetString(x.Name)[0].CompareTo(Loc.GetString(y.Name)[0]));
+        protoList.Sort((x, y) => LocOrLiteral(x.Name)[0].CompareTo(LocOrLiteral(y.Name)[0]));
 
         AddLabel("Классические");
         foreach (var item in protoList.Where(x => x.Category == SpeciesCategory.Classic))
@@ -61,8 +92,8 @@ public sealed partial class SpeciesWindow : FancyWindow
             {
                 HorizontalExpand = true,
                 ToggleMode = true,
-                Pressed = Profile.Species == item.ID,
-                Text = Loc.GetString(item.Name),
+                Pressed = CurrentSpecies == item.ID,
+                Text = LocOrLiteral(item.Name),
                 Margin = new Thickness(5f, 5f),
             };
             button.OnToggled += args => SelectSpecies(item.ID);
@@ -76,8 +107,8 @@ public sealed partial class SpeciesWindow : FancyWindow
             {
                 HorizontalExpand = true,
                 ToggleMode = true,
-                Pressed = Profile.Species == item.ID,
-                Text = Loc.GetString(item.Name),
+                Pressed = CurrentSpecies == item.ID,
+                Text = LocOrLiteral(item.Name),
                 Margin = new Thickness(5f, 5f),
             };
             button.OnToggled += args => SelectSpecies(item.ID);
@@ -91,35 +122,41 @@ public sealed partial class SpeciesWindow : FancyWindow
             {
                 HorizontalExpand = true,
                 ToggleMode = true,
-                Pressed = Profile.Species == item.ID,
-                Text = Loc.GetString(item.Name),
+                Pressed = CurrentSpecies == item.ID,
+                Text = LocOrLiteral(item.Name),
                 Margin = new Thickness(5f, 5f),
             };
             button.OnToggled += args => SelectSpecies(item.ID);
             SpeciesContainer.AddChild(button);
         }
 
-        if (IoCManager.Resolve<SponsorsManager>().TryGetInfo(out var sponsor))
+        var localSession = _players.LocalSession;
+
+        if (IoCManager.Resolve<SponsorsManager>().TryGetInfo(out var sponsor) || _adtSponsors.Data.HasAnyBenefit)
         {
             AddLabel("Спонсорские");
             foreach (var item in protoList.Where(x => x.Category == SpeciesCategory.Sponsor))
             {
+                if (item.SponsorOnly && !_adtSponsors.IsSpeciesAllowed(localSession, item.ID) && sponsor == null)
+                    continue;
+
                 var button = new SpeciesButton(item)
                 {
                     HorizontalExpand = true,
                     ToggleMode = true,
-                    Pressed = Profile.Species == item.ID,
-                    Text = Loc.GetString(item.Name),
+                    Pressed = CurrentSpecies == item.ID,
+                    Text = LocOrLiteral(item.Name),
                     Margin = new Thickness(5f, 5f),
                 };
                 button.OnToggled += args => SelectSpecies(item.ID);
                 SpeciesContainer.AddChild(button);
             }
         }
-
-        CurrentSpecies = Profile.Species;
-        SelectSpecies(Profile.Species);
     }
+
+    private string LocOrLiteral(string id)
+        => _loc.TryGetString(id, out var value) ? value : id;
+
     private void AddLabel(string text)
     {
         var container = new BoxContainer()
@@ -169,6 +206,9 @@ public sealed partial class SpeciesWindow : FancyWindow
 
         var previewProfile = Profile;
         previewProfile = previewProfile.WithSpecies(protoId);
+
+        previewProfile = previewProfile.WithCharacterAppearance(
+            HumanoidCharacterAppearance.EnsureValid(previewProfile.Appearance, protoId, previewProfile.Sex));
 
         var skin = proto.SkinColoration;
         var skinType = _proto.Index(protoId).SkinColoration;
@@ -228,7 +268,7 @@ public sealed partial class SpeciesWindow : FancyWindow
                 {
                     var label = new RichTextLabel()
                     {
-                        Text = "[color=#13f244]- " + Loc.GetString(item) + "[/color]",
+                        Text = "[color=#13f244]- " + LocOrLiteral(item) + "[/color]",
                         StyleClasses = { "LowDivider" },
                         Margin = new(4f, 2f),
                     };
@@ -243,7 +283,7 @@ public sealed partial class SpeciesWindow : FancyWindow
                 {
                     var label = new RichTextLabel()
                     {
-                        Text = "- " + Loc.GetString(item),
+                        Text = "- " + LocOrLiteral(item),
                         StyleClasses = { "LowDivider" },
                         Margin = new(4f, 2f),
                     };
@@ -258,7 +298,7 @@ public sealed partial class SpeciesWindow : FancyWindow
                 {
                     var label = new RichTextLabel()
                     {
-                        Text = "[color=#d63636]- " + Loc.GetString(item) + "[/color]",
+                        Text = "[color=#d63636]- " + LocOrLiteral(item) + "[/color]",
                         StyleClasses = { "LowDivider" },
                         Margin = new(4f, 2f),
                     };

@@ -5,9 +5,10 @@ using Content.Client.DebugMon;
 using Content.Client.Corvax.DiscordAuth;
 using Content.Client.Corvax.JoinQueue;
 using Content.Client.Corvax.Sponsors;
-using Content.Client.Corvax.TTS;
+using Content.Client.ADT.TTS;
 using Content.Client.Options;
 using Content.Client.Eui;
+using Content.Client.FeedbackPopup;
 using Content.Client.Fullscreen;
 using Content.Client.GameTicking.Managers;
 using Content.Client.GhostKick;
@@ -30,6 +31,7 @@ using Content.Client.Viewport;
 using Content.Client.Voting;
 using Content.Client._Ganimed.Fonts; // Ganimed-Add (Japanese support)
 using Content.Shared.Ame.Components;
+using Content.Shared.FeedbackSystem;
 using Content.Shared.Gravity;
 using Content.Shared.Localizations;
 using Robust.Client;
@@ -79,6 +81,7 @@ namespace Content.Client.Entry
         [Dependency] private readonly JobRequirementsManager _jobRequirements = default!;
         [Dependency] private readonly ContentLocalizationManager _contentLoc = default!;
         [Dependency] private readonly SponsorsManager _sponsorsManager = default!; // Corvax-Sponsors
+        [Dependency] private readonly Content.Client.ADT.Sponsors.SponsorManager _adtSponsorManager = default!; // ADT-Tweak
         [Dependency] private readonly JoinQueueManager _queueManager = default!; // Corvax-Queue
         [Dependency] private readonly DiscordAuthManager _discordAuthManager = default!; // Corvax-DiscordAuth
         [Dependency] private readonly ContentReplayPlaybackManager _playbackMan = default!;
@@ -92,6 +95,7 @@ namespace Content.Client.Entry
         [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
         [Dependency] private readonly DiscordIdManager _discordIdManager = default!;  // ADT export
         [Dependency] private readonly ClientsidePlaytimeTrackingManager _clientsidePlaytimeManager = default!;
+        [Dependency] private readonly ClientFeedbackManager _feedbackManager = null!;
 
         public override void PreInit()
         {
@@ -128,12 +132,10 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("htnPrimitive");
             _prototypeManager.RegisterIgnore("gameMap");
             _prototypeManager.RegisterIgnore("gameMapPool");
-            _prototypeManager.RegisterIgnore("lobbyBackground");
             _prototypeManager.RegisterIgnore("gamePreset");
             _prototypeManager.RegisterIgnore("noiseChannel");
             _prototypeManager.RegisterIgnore("playerConnectionWhitelist");
             _prototypeManager.RegisterIgnore("spaceBiome");
-            _prototypeManager.RegisterIgnore("worldgenConfig");
             _prototypeManager.RegisterIgnore("gameRule");
             _prototypeManager.RegisterIgnore("worldSpell");
             _prototypeManager.RegisterIgnore("entitySpell");
@@ -150,7 +152,6 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("sponsorLoadout"); // ADT-Sponsor-Loadout
             _prototypeManager.RegisterIgnore("sponsorPersonalLoadout"); // ADT-Sponsor-Loadout
             _prototypeManager.RegisterIgnore("sponsorLoadoutTierSetting"); // ADT-Sponsor-Loadout
-            _prototypeManager.RegisterIgnore("debugSponsor"); // Ganimed-Debug-Sponsor
 
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();
@@ -206,12 +207,14 @@ namespace Content.Client.Entry
             _userInterfaceManager.SetDefaultTheme("SS14DefaultTheme");
             _userInterfaceManager.SetActiveTheme(_configManager.GetCVar(CVars.InterfaceTheme));
             _sponsorsManager.Initialize(); // Corvax-Sponsors
+            _adtSponsorManager.Initialize(); // ADT-Tweak
             _queueManager.Initialize(); // Corvax-Queue
             _discordAuthManager.Initialize(); // Corvax-DiscordAuth
             _discordIdManager.Initialize(); // ADT-Discord
             _exportManager.Initialize();    // ADT Export
             _documentParsingManager.Initialize();
             _titleWindowManager.Initialize();
+            _feedbackManager.Initialize();
 
             _baseClient.RunLevelChanged += (_, args) =>
             {

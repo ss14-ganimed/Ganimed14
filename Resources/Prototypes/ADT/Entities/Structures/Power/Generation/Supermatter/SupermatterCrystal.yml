@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   abstract: true
   id: BaseSupermatter
   placement:
@@ -93,7 +93,7 @@
       GlowDelam: { state: supermatter-glow-delam }
   - type: Explosive
     explosionType: Supermatter
-    totalIntensity: 250000
+    totalIntensity: 1350000
     intensitySlope: 5
     maxIntensity: 100
   - type: GravityWell
@@ -284,8 +284,9 @@
     energy: 5.0
     netsync: false
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:

@@ -51,6 +51,7 @@
     maxItemSize: Small
     whitelist:
       tags:
+      - ADTBolt #ADT-Tweak
       - Arrow
       - Plunger
   - type: Appearance
@@ -108,9 +109,14 @@
   description: 'A holster to carry a handgun and ammo. WARNING: Badasses only.'
   components:
   - type: Sprite
-    sprite: Clothing/Belt/holster.rsi
+    sprite: ADT/Clothing/Belt/holster.rsi # ADT-Tweak-HolsterResprite
   - type: Clothing
-    sprite: Clothing/Belt/holster.rsi
+    sprite: ADT/Clothing/Belt/holster.rsi # ADT-Tweak-HolsterResprite
+    # ADT-Tweak-Start
+    slots:
+    - belt
+    - neck
+    # ADT-Tweak-End
   - type: Storage
     grid:
     - 0,0,3,1
@@ -125,6 +131,11 @@
     sprite: Clothing/Belt/syndieholster.rsi
   - type: Clothing
     sprite: Clothing/Belt/syndieholster.rsi
+    # ADT-Tweak-Start
+    slots:
+    - belt
+    - neck
+    # ADT-Tweak-End
   - type: Storage
     maxItemSize: Huge
     grid:
@@ -199,3 +210,14 @@
     sprite: Clothing/Belt/militarywebbingmed.rsi
   - type: Clothing
     sprite: Clothing/Belt/militarywebbingmed.rsi
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbing
+  id: ClothingBeltMilitaryWebbingERT
+  name: ERT chest rig
+  description: A set of tactical webbing worn by Emergency Response Team operatives.
+  components:
+  - type: Sprite
+    sprite: Clothing/Belt/militarywebbingert.rsi
+  - type: Clothing
+    sprite: Clothing/Belt/militarywebbingert.rsi

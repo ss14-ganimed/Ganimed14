@@ -50,7 +50,11 @@ internal sealed partial class ChatManager : IChatManager
     [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly DiscordChatLink _discordLink = default!;
     [Dependency] private readonly SponsorsManager _sponsorsManager = default!; // Corvax-Sponsors
+    [Dependency] private readonly Content.Server.ADT.Sponsors.SponsorManager _adtSponsors = default!;
     [Dependency] private readonly DiscordWebhook _discord = default!;
+    [Dependency] private readonly ILogManager _logManager = default!;
+
+    private ISawmill _sawmill = default!;
 
     /// <summary>
     /// The maximum length a player-sent message can be sent
@@ -69,6 +73,8 @@ internal sealed partial class ChatManager : IChatManager
 
         _configurationManager.OnValueChanged(CCVars.OocEnabled, OnOocEnabledChanged, true);
         _configurationManager.OnValueChanged(CCVars.AdminOocEnabled, OnAdminOocEnabledChanged, true);
+
+        _sawmill = _logManager.GetSawmill("SERVER");
 
         RegisterRateLimits();
     }
@@ -117,7 +123,7 @@ internal sealed partial class ChatManager : IChatManager
     {
         var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", FormattedMessage.EscapeText(message)));
         ChatMessageToAll(ChatChannel.Server, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride);
-        Logger.InfoS("SERVER", message);
+        _sawmill.Info(message);
 
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Server announcement: {message}");
     }
@@ -358,6 +364,18 @@ internal sealed partial class ChatManager : IChatManager
 
         // Определяем цвет ника
         string sponsorColorStr = sponsorData?.OOCColor ?? "";
+
+        // ADT-Tweak-Start
+        var adtColor = _adtSponsors.GetOocColor(player.UserId);
+
+        if (adtColor != null)
+        {
+            isSponsor = true;
+            sponsorColorStr = adtColor.Value.ToHex();
+            colorOverride = adtColor;
+        }
+        else
+        // ADT-Tweak-End
         if (isSponsor && Color.TryFromName(sponsorColorStr, out var sponsorColor))
         {
             colorOverride = sponsorColor;

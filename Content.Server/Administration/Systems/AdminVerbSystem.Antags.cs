@@ -1,7 +1,11 @@
+using Content.Server.ADT.Blob.GameTicking;
+using Content.Server.ADT.Shadowling;
 using Content.Server._Harmony.GameTicking.Rules.Components; // Harmony conspirators add
 using Content.Server.Antag;
 using Content.Server.GameTicking;
+using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking.Rules.Components;
+using Content.Goobstation.Server.Changeling.GameTicking.Rules;
 using Content.Server.Zombies;
 using Content.Shared.Administration;
 using Content.Server.Clothing.Systems;
@@ -13,6 +17,7 @@ using Content.Shared.Verbs;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Shared.Roles.Components;
 
 namespace Content.Server.Administration.Systems;
 
@@ -22,6 +27,7 @@ public sealed partial class AdminVerbSystem
     [Dependency] private readonly ZombieSystem _zombie = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly OutfitSystem _outfit = default!;
+    [Dependency] private readonly RevolutionaryRuleSystem _rev = default!;
 
     private static readonly EntProtoId DefaultTraitorRule = "TraitorOnly"; //ADT-tweak
     private static readonly EntProtoId DefaultInitialInfectedRule = "Zombie";
@@ -31,8 +37,11 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultChangelingRule = "Changeling";
     private static readonly EntProtoId DefaultConspiratorRule = "Conspirators"; // Harmony conspirators add
     private static readonly EntProtoId ParadoxCloneRuleId = "ParadoxCloneSpawn";
+    static readonly EntProtoId DefaultWizardRule = "Wizard";
+    private static readonly EntProtoId DefaultNinjaRule = "NinjaSpawn";
+    private static readonly EntProtoId DefaultBlobRule = "BlobGameMode"; // ADT-tweak
+    private static readonly EntProtoId DefaultShadowlingRule = "ADTShadowlingSpawn"; // ADT-tweak
     private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
-
 
     // All antag verbs have names so invokeverb works.
     private void AddAntagVerbs(GetVerbsEvent<Verb> args)
@@ -141,6 +150,23 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(headRev);
 
+        // ADT-Tweak-start
+        var revName = Loc.GetString("admin-verb-text-make-rev");
+        Verb rev = new()
+        {
+            Text = revName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "Revolutionary"),
+            Act = () =>
+            {
+                _rev.MakeRegularRev(args.Target, args.User);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", revName, Loc.GetString("admin-verb-make-rev")),
+        };
+        args.Verbs.Add(rev);
+        //ADT-Tweak-end
+
         var thiefName = Loc.GetString("admin-verb-text-make-thief");
         Verb thief = new()
         {
@@ -171,23 +197,38 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(heretic);
 
-        // ADT-Changeling-Tweak-Start
+        // ADT-Tweak start: shadowlings
+        var shadowlingName = Loc.GetString("admin-verb-text-make-adt-shadowling");
+        Verb shadowling = new()
+        {
+            Text = shadowlingName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/ADT/Interface/Actions/shadowling.rsi"), "hatch"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<ADTShadowlingRuleComponent>(targetPlayer, DefaultShadowlingRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", shadowlingName, Loc.GetString("admin-verb-make-adt-shadowling")),
+        };
+        args.Verbs.Add(shadowling);
+        // ADT-Tweak end
+
+        var changelingName = Loc.GetString("admin-verb-text-make-changeling");
         Verb changeling = new()
         {
-            Text = Loc.GetString("admin-verb-text-make-changeling"),
+            Text = changelingName,
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/ADT/Changeling/Objects/armblade.rsi"), "icon"),
+            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_Goobstation/Changeling/arm_blade.rsi"), "icon"), // ADT-Tweak
             Act = () =>
             {
                 _antag.ForceMakeAntag<ChangelingRuleComponent>(targetPlayer, DefaultChangelingRule);
             },
             Impact = LogImpact.High,
-            Message = Loc.GetString("admin-verb-make-changeling"),
+            Message = string.Join(": ", changelingName, Loc.GetString("admin-verb-make-changeling")),
         };
         args.Verbs.Add(changeling);
-        // ADT-Changeling-Tweak-End
 
-        // Paradox clone
         var paradoxCloneName = Loc.GetString("admin-verb-text-make-paradox-clone");
         Verb paradox = new()
         {
@@ -209,7 +250,38 @@ public sealed partial class AdminVerbSystem
             Message = string.Join(": ", paradoxCloneName, Loc.GetString("admin-verb-make-paradox-clone")),
         };
 
-        if (HasComp<HumanoidAppearanceComponent>(args.Target)) // only humanoids can be cloned
+        var wizardName = Loc.GetString("admin-verb-text-make-wizard");
+        Verb wizard = new()
+        {
+            Text = wizardName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "Wizard"),
+            Act = () =>
+            {
+                // Wizard has no rule components as of writing, but I gotta put something here to satisfy the machine so just make it wizard mind rule :)
+                _antag.ForceMakeAntag<WizardRoleComponent>(targetPlayer, DefaultWizardRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", wizardName, Loc.GetString("admin-verb-make-wizard")),
+        };
+        args.Verbs.Add(wizard);
+
+        var ninjaName = Loc.GetString("admin-verb-text-make-space-ninja");
+        Verb ninja = new()
+        {
+            Text = ninjaName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Weapons/Melee/energykatana.rsi"), "icon"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<NinjaRoleComponent>(targetPlayer, DefaultNinjaRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", ninjaName, Loc.GetString("admin-verb-make-space-ninja")),
+        };
+        args.Verbs.Add(ninja);
+
+        if (HasComp<HumanoidProfileComponent>(args.Target)) // only humanoids can be cloned
             args.Verbs.Add(paradox);
 
         // Harmony conspirators add start

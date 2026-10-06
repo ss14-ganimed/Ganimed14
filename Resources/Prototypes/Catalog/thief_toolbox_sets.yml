@@ -9,7 +9,6 @@
   - ADTClothingBackpackChameleonThiefFill # ADT-Tweak: ClothingBackpackChameleonFill --> ADTClothingBackpackChameleonThiefFill
   - ChameleonProjector
   - FakeMindShieldImplanter
-  - AgentIDCard
 
 - type: thiefBackpackSet
   id: ToolsSet
@@ -20,7 +19,7 @@
     state: icon
   content:
   - WelderIndustrialAdvanced
-  - ClothingEyesGlassesMeson
+  - ADTClothingEyesWeldingOldStyle # ADT-Tweak
   - ClothingHandsGlovesColorYellow
   - JawsOfLife
   - RemoteSignaller
@@ -84,7 +83,7 @@
   - EncryptionKeyStationMaster
   - CyberPen
   - BriefcaseThiefBribingBundleFilled
-  - ClothingMaskGasVoiceChameleon
+  - VoiceMaskImplanter
   #- todo Chameleon Stamp
 
 - type: thiefBackpackSet
@@ -97,6 +96,14 @@
   content:
   - InvisibleCrate
   - FultonBeacon
+  - Fulton
+  - Fulton
+  - Fulton
+  - Fulton
+  - Fulton
+  - Fulton
+  - Fulton
+  - Fulton
   - Fulton
   - SmokeGrenade
   - SmokeGrenade
