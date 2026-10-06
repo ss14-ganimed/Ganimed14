@@ -1,4 +1,5 @@
-﻿using Content.Shared.CCVar;
+﻿using Content.Shared._Ganimed.ConsoleKeyboardSound.Systems;
+using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Communications;
 using Robust.Client.UserInterface;
@@ -14,6 +15,9 @@ namespace Content.Client.Communications.UI
         [ViewVariables]
         private CommunicationsConsoleMenu? _menu;
 
+        // Ganimed-Add: plays the keyboard click while somebody types on this console
+        private ConsoleKeyboardSoundSystem _typingSound = default!;
+
         public CommunicationsConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
         {
         }
@@ -22,11 +26,15 @@ namespace Content.Client.Communications.UI
         {
             base.Open();
 
+            _typingSound = EntMan.System<ConsoleKeyboardSoundSystem>();
+
             _menu = this.CreateWindow<CommunicationsConsoleMenu>();
             _menu.OnAnnounce += AnnounceButtonPressed;
             _menu.OnBroadcast += BroadcastButtonPressed;
             _menu.OnAlertLevel += AlertLevelSelected;
             _menu.OnEmergencyLevel += EmergencyShuttleButtonPressed;
+            // Ganimed-Add: notify the keyboard sound system whenever the announcement text changes
+            _menu.OnTextChanged += () => _typingSound.HandleTextChanged(this);
         }
 
         public void AlertLevelSelected(string level)
