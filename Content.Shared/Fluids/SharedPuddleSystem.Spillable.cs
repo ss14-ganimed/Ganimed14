@@ -15,6 +15,7 @@ using Content.Shared.Spillable;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared._Funkystation.Fluids; // Ganimed-Port: стайны (funky-station/forky-station#107)
 using Robust.Shared.Player;
 
 namespace Content.Shared.Fluids;
@@ -147,6 +148,14 @@ public abstract partial class SharedPuddleSystem
                 continue;
 
             var splitSolution = _solutionContainerSystem.SplitSolution(soln.Value, totalSplit / hitCount);
+
+            // Ganimed-Port-Start: стайны на одежде (funky-station/forky-station#107)
+            if (splitSolution.Volume > 0)
+            {
+                var stainEv = new SpilledOnEvent(entity.Owner, splitSolution.Clone());
+                RaiseLocalEvent(hit, stainEv);
+            }
+            // Ganimed-Port-End
 
             AdminLogger.Add(LogType.MeleeHit,
                 $"{ToPrettyString(args.User):actor} "

@@ -11,6 +11,7 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
+using Content.Shared._Funkystation.Fluids; // Ganimed-Port: стайны (funky-station/forky-station#107)
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
@@ -120,6 +121,10 @@ public sealed class VomitSystem : EntitySystem
             // Makes a vomit solution the size of 90% of the chemicals removed from the chemstream
             solution.AddReagent(new ReagentId(VomitPrototype, _bloodstream.GetEntityBloodData(uid)), vomitAmount);
         }
+
+        // Ganimed-Port: стайны на одежде (funky-station/forky-station#107)
+        var stainEv = new SpilledOnEvent(uid, solution.Clone());
+        RaiseLocalEvent(uid, stainEv);
 
         if (_puddle.TrySpillAt(uid, solution, out var puddle, false))
         {
