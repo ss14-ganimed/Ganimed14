@@ -27,7 +27,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      110: Critical
+      120: Critical # Ganimed-Edit: full critical follows pre-crit at 100-119 damage.
       325: Dead
   - type: Explosive
     explosionType: Default
@@ -170,8 +170,10 @@
     tallscale: 1.1
     short: true
     shortscale: 0.9
-  - type: BloodCough
-    postingSayDamage: blood-cough-novakid
+  # Ganimed-Edit-Start: shared injury reactions retain the plasma cough variant.
+  - type: InjuryEmotes
+    bloodCoughEmote: GanimedPlasmaCough
+  # Ganimed-Edit-End
   - type: Tag
     tags:
     - CanPilot

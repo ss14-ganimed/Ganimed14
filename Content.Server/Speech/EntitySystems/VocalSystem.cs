@@ -76,7 +76,7 @@ public sealed class VocalSystem : EntitySystem
             return;
 
         // snowflake case for wilhelm scream easter egg
-        if (args.Emote.ID == component.ScreamId)
+        if ((args.Emote.SoundEmote?.Id ?? args.Emote.ID) == component.ScreamId) // Ganimed-Edit: scream variants share normal scream behavior.
         {
             args.Handled = TryPlayScreamSound(uid, component);
             return;

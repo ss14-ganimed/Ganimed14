@@ -25,7 +25,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      85: Critical
+      120: Critical # Ganimed-Edit: full critical follows pre-crit at 100-119 damage.
       180: Dead
   - type: PassiveDamage # Slight passive regen. Assuming one damage type, comes out to about 4 damage a minute.
     allowedStates:

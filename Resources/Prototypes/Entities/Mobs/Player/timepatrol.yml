@@ -10,7 +10,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      170: Critical
+      120: Critical # Ganimed-Edit: humanoid full critical follows pre-crit at 100-119 damage.
       300: Dead
   - type: ElectrionPulseAct  # Тут имя менять потом
   - type: TeleportAct
