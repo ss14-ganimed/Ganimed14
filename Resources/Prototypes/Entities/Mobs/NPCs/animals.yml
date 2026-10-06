@@ -1503,6 +1503,9 @@
   - type: VentCrawler
     allowInventory: false
   # ADT-Tweak end
+  # Ganimed-Add: duo emotes port (funky-station#179), обезьяны участвуют в парных эмоутах.
+  - type: DuoEmote
+  - type: TailDuoEmote
 
 
 - type: entity
@@ -1701,6 +1704,9 @@
     name: ghost-role-information-kobold-name
     description: ghost-role-information-kobold-description
     rules: ghost-role-information-nonantagonist-rules
+  # Ganimed-Add: duo emotes port (funky-station#179), кобольды участвуют в парных эмоутах.
+  - type: DuoEmote
+  - type: TailDuoEmote
 
 - type: entity
   name: kobold

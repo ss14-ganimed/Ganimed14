@@ -92,9 +92,10 @@ fence-rattle-success = *бдзынь*
 
 ## Hugging players
 
-hugging-success-generic = Вы обнимаете { $target }.
-hugging-success-generic-others = { CAPITALIZE($user) } обнимает { $target }.
-hugging-success-generic-target = { CAPITALIZE($user) } обнимает вас.
+# Ganimed-Edit: duo emotes port (funky-station#179), hug -> neutral pat on the back
+hugging-success-generic = Вы похлопываете { $target } по спине.
+hugging-success-generic-others = { CAPITALIZE($user) } похлопывает { $target } по спине.
+hugging-success-generic-target = { CAPITALIZE($user) } похлопывает вас по спине.
 
 ## Other
 
