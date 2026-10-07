@@ -152,7 +152,7 @@ public sealed partial class SoldierCommandSystem : EntitySystem
             }
 
             // A headquarters that has been without a radio for the whole delay has waited the delay out already.
-            var mute = HasComp<SoldierHQComponent>(commander) && IsMute(commander, comp, now);
+            var mute = _squad.IsHeadquarters(commander) && IsMute(commander, comp, now);
 
             // The commander has fallen (or is not what it was): the command is empty.
             if (_soldierQuery.TryComp(commander, out var fallen))
@@ -183,30 +183,18 @@ public sealed partial class SoldierCommandSystem : EntitySystem
     /// </summary>
     private Entity<SoldierComponent>? FindHeadquarters(Entity<SoldierSquadComponent> squad, TimeSpan now)
     {
-        Entity<SoldierComponent>? best = null;
+        if (squad.Comp.Headquarters is not { } member ||
+            !squad.Comp.Members.Contains(member) || !_squad.IsOperational(member) ||
+            !_soldierQuery.TryComp(member, out var soldier) || soldier.Squad != squad.Owner)
+            return null;
 
-        foreach (var member in squad.Comp.Members)
-        {
-            if (!HasComp<SoldierHQComponent>(member) || !_squad.IsOperational(member) || !_soldierQuery.TryComp(member, out var soldier))
-                continue;
+        if (member == squad.Comp.Commander)
+            return IsMute(member, squad.Comp, now) ? null : (member, soldier);
 
-            if (member == squad.Comp.Commander)
-            {
-                if (IsMute(member, squad.Comp, now))
-                    continue;
+        if (_linkQuery.TryComp(member, out var link) && !link.RadioOk)
+            return null;
 
-                return (member, soldier);
-            }
-
-            // A headquarters that cannot use the radio does not take the command over.
-            if (_linkQuery.TryComp(member, out var link) && !link.RadioOk)
-                continue;
-
-            if (best == null || member.Id < best.Value.Owner.Id)
-                best = (member, soldier);
-        }
-
-        return best;
+        return (member, soldier);
     }
 
     /// <summary>
@@ -249,7 +237,7 @@ public sealed partial class SoldierCommandSystem : EntitySystem
         {
             // (A headquarters that cannot use its radio is not given the command back as an acting commander: it takes it as
             // the headquarters, when the radio works.)
-            if (!_squad.IsOperational(member) || HasComp<SoldierHQComponent>(member) || !_soldierQuery.TryComp(member, out var soldier))
+            if (!_squad.IsOperational(member) || _squad.IsHeadquarters(member) || !_soldierQuery.TryComp(member, out var soldier))
                 continue;
 
             // The medic looks after the wounded, and the headquarters is not here.
@@ -400,7 +388,7 @@ public sealed partial class SoldierCommandSystem : EntitySystem
     public void Ingest(Entity<SoldierCommandComponent> commander, SoldierMessage message)
     {
         // Only the one who commands thinks about reports (a soldier that has not stepped down yet only listens).
-        if (!IsCommanding(commander.Owner))
+        if (!IsCommanding(commander.Owner) || !_squad.IsCurrentMessage(commander.Owner, message))
             return;
 
         var picture = commander.Comp.Picture;
@@ -567,7 +555,7 @@ public sealed partial class SoldierCommandSystem : EntitySystem
             Post = post,
             HomePost = post,
             Medic = HasComp<SoldierMedicComponent>(uid),
-            Hq = HasComp<SoldierHQComponent>(uid),
+            Hq = _squad.IsHeadquarters(uid),
             HeardAt = _timing.CurTime,
             ReportedAt = _timing.CurTime,
         };

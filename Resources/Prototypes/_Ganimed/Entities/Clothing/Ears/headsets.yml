@@ -13,3 +13,20 @@
     sprite: ADT/Clothing/Ears/Headsets/armyheadset.rsi
   - type: Clothing
     sprite: ADT/Clothing/Ears/Headsets/armyheadset.rsi
+
+# Portable field radios keep their faction keys and remain subject to jamming, stuns and map range.
+- type: entity
+  parent: ClothingHeadsetSecurity
+  id: ClothingHeadsetSoldierNT
+  name: NT field headset
+  description: A portable NT military radio with a security channel, independent of station telecomms.
+  components:
+  - type: TelecomExempt
+
+- type: entity
+  parent: ClothingHeadsetAltSecurity
+  id: ClothingHeadsetSoldierNTHQ
+  name: NT field command headset
+  description: A portable NT squad command radio with security and command encryption keys.
+  components:
+  - type: TelecomExempt

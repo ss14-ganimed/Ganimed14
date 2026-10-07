@@ -5,6 +5,7 @@
 # The commander of a squad: what it thinks and decides (the feed of thoughts and the line of decisions in the NPC info panel).
 
 soldier-name-and = and
+soldier-name-unknown = unknown soldier
 soldier-relay-aloud = Relaying: { $text }
 
 soldier-state-dead = dead

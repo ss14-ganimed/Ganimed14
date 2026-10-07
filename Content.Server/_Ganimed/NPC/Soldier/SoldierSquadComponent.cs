@@ -3,14 +3,15 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._Ganimed.NPC.Soldier;
+using Content.Shared.NPC.Prototypes;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Ganimed.NPC.Soldier;
 
 /// <summary>
-/// The network that connects soldiers into one team. Lives on the grid (or on the map, if the soldiers are off grid)
-/// the soldiers have appeared on: every soldier of that grid shares the alert level, the knowledge about the enemy,
-/// the radio chatter and the orders that are handed out to the team.
+/// A persistent squad identity independent of the grid its members occupy.
+/// Its roster, command, messages and tactical memory belong only to this squad.
 /// </summary>
 /// <remarks>
 /// Pure runtime data, never saved to maps.
@@ -18,6 +19,25 @@ namespace Content.Server._Ganimed.NPC.Soldier;
 [RegisterComponent, UnsavedComponent]
 public sealed partial class SoldierSquadComponent : Component
 {
+    /// <summary>The faction accepted by this squad.</summary>
+    [ViewVariables]
+    public ProtoId<NpcFactionPrototype> Faction = "Soldier";
+
+    /// <summary>Mapper-defined spawn group or administrator-provided squad name.</summary>
+    [ViewVariables]
+    public string Group = "Default";
+
+    /// <summary>Explicit headquarters; acting commanders do not replace this assignment.</summary>
+    [ViewVariables]
+    public EntityUid? Headquarters;
+    public int MissionVersion;
+
+    /// <summary>Geometry for each visited grid; membership is independent of these caches.</summary>
+    public readonly Dictionary<EntityUid, SoldierRoomMap> RoomMaps = new();
+
+    /// <summary>Private tactical room memory per grid; equal room indices on different grids never alias.</summary>
+    public readonly Dictionary<EntityUid, Dictionary<int, SoldierRoomMark>> RoomMemory = new();
+
     #region Tuning (can be changed live through view variables)
 
     /// <summary>
@@ -109,7 +129,7 @@ public sealed partial class SoldierSquadComponent : Component
     /// </summary>
     public SoldierRoomMap? Rooms;
 
-    public readonly Dictionary<int, SoldierRoomMark> RoomMarks = new();
+    public Dictionary<int, SoldierRoomMark> RoomMarks = new();
 
     /// <summary>
     /// The soldiers that are clearing a room behind a door at the moment, one team per door.

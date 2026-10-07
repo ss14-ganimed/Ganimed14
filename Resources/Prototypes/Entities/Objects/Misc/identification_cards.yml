@@ -16,6 +16,9 @@
     heldPrefix: default
     storedRotation: -90
   - type: Access
+  # Ganimed-Add-Start: explicit NPC command permissions on preset command cards.
+  - type: SoldierCommandCard
+  # Ganimed-Add-End
   - type: IdCard
   - type: StationRecordKeyStorage
   - type: Tag

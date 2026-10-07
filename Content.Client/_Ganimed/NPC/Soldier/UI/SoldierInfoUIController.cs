@@ -62,11 +62,14 @@ public sealed class SoldierInfoUIController : UIController, IOnSystemChanged<Sol
             _window.OnClose += () => SetShown(false);
             _window.IntervalChanged += interval => _system.Request(interval);
             _window.OverlayChanged += SetOverlay;
+            _window.Commands.Requested += request => _system.Control(request);
+            _window.ZonesChanged += shown => UIManager.GetUIController<SoldierZonesUIController>().SetShown(shown);
         }
 
         _window.OpenCentered();
 
         SetOverlay(_window.OverlayShown);
+        UIManager.GetUIController<SoldierZonesUIController>().SetShown(_window.ZonesShown);
 
         // What the server has already said is shown at once, the rest comes in a moment.
         if (_system.Latest is { } latest)
@@ -80,6 +83,7 @@ public sealed class SoldierInfoUIController : UIController, IOnSystemChanged<Sol
         _system?.Request(0f);
 
         SetOverlay(false);
+        UIManager.GetUIController<SoldierZonesUIController>().SetShown(false);
         _window?.Close();
     }
 
@@ -107,6 +111,8 @@ public sealed class SoldierInfoUIController : UIController, IOnSystemChanged<Sol
         _overlays.AddOverlay(_overlay);
     }
 
+    private void OnResult(string status) => _window?.Commands.SetStatus(status);
+
     private void Show(SoldierInfoEvent info)
     {
         _window?.SetInfo(info);
@@ -118,11 +124,13 @@ public sealed class SoldierInfoUIController : UIController, IOnSystemChanged<Sol
     public void OnSystemLoaded(SoldierInfoSystem system)
     {
         system.InfoReceived += Show;
+        system.ControlResult += OnResult;
     }
 
     public void OnSystemUnloaded(SoldierInfoSystem system)
     {
         system.InfoReceived -= Show;
+        system.ControlResult -= OnResult;
 
         // The connection is gone with the system: the panel goes with it.
         if (Shown)

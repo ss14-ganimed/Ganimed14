@@ -75,19 +75,15 @@ public sealed partial class SoldierCommandSystem
         if (soldiers.Count == 0)
             return;
 
-        // The sectors are divided the first time, and when the squad has got smaller or bigger.
-        if (!picture.SectorsDirty && soldiers.Count == picture.SectorSoldiers)
+        var here = Transform(cmd).Coordinates;
+        if (_rooms.GetMap(squad, here) is not { } map)
+            return;
+
+        // A rebuilt room graph also invalidates the sector allocation, even if the roster is unchanged.
+        if (!picture.SectorsDirty && soldiers.Count == picture.SectorSoldiers && ReferenceEquals(picture.SectorMap, map))
             return;
 
         if (picture.SectorsPlannedAt != TimeSpan.Zero && now - picture.SectorsPlannedAt < SectorMinGap)
-            return;
-
-        picture.SectorsDirty = false;
-        picture.SectorSoldiers = soldiers.Count;
-        picture.SectorsPlannedAt = now;
-
-        var here = Transform(cmd).Coordinates;
-        if (_rooms.GetMap(squad, here) is not { } map)
             return;
 
         var home = _rooms.RoomAt(map, here);
@@ -103,7 +99,7 @@ public sealed partial class SoldierCommandSystem
         var order = new SectorOrder();
         var addressees = new List<EntityUid>(assigned.Count);
         var plan = new List<SectorTrack>(assigned.Count);
-        var changed = false;
+        var changed = !ReferenceEquals(picture.SectorMap, map);
         var keys = 0;
         var zones = new HashSet<SectorSlot>();
 
@@ -143,6 +139,12 @@ public sealed partial class SoldierCommandSystem
 
             addressees.Add(friend.Soldier);
         }
+
+        // Only record a completed plan after the room graph and all seats were successfully resolved.
+        picture.SectorsDirty = false;
+        picture.SectorSoldiers = soldiers.Count;
+        picture.SectorsPlannedAt = now;
+        picture.SectorMap = map;
 
         // Nothing is different from what the soldiers have already: nobody is bothered.
         if (!changed)

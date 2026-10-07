@@ -82,6 +82,9 @@ public sealed class SoldierBehaviorSystem : EntitySystem
                     _brain.SetHold((uid, soldier), false);
             }
 
+            if (HasComp<SoldierAssignmentComponent>(uid))
+                continue;
+
             switch (soldier.Mode)
             {
                 case SoldierMode.Investigate:
@@ -132,7 +135,7 @@ public sealed class SoldierBehaviorSystem : EntitySystem
         if (soldier.TargetLastSeenPos is { } place &&
             now - soldier.TargetLastSeenAt < LostEnemyMemory &&
             !HasComp<SoldierMedicComponent>(ent) &&
-            !HasComp<SoldierHQComponent>(ent) &&
+            !_squad.IsHeadquarters(ent) &&
             !_comms.IsUnderCommand(ent))
         {
             _squad.GiveOrder(ent, SoldierMode.Hunt, place, LostEnemySearchRadius);

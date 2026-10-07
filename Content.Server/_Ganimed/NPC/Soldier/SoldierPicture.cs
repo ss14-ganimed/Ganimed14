@@ -118,6 +118,7 @@ public sealed class SoldierPicture
     public bool SectorsDirty = true;
     public TimeSpan SectorsPlannedAt;
     public int SectorSoldiers;
+    public SoldierRoomMap? SectorMap;
 
     /// <summary>
     /// The sectors as the commander has divided them, for the information panel.

@@ -33,6 +33,7 @@ public sealed class SoldierBrainSystem : EntitySystem
     /// Soldiers whose plan has to be dropped. A scratch buffer: it is cleared on every update.
     /// </summary>
     private readonly HashSet<EntityUid> _pending = new();
+    private readonly List<EntityUid> _processing = new();
 
     public override void Initialize()
     {
@@ -57,7 +58,11 @@ public sealed class SoldierBrainSystem : EntitySystem
         if (_pending.Count == 0)
             return;
 
-        foreach (var uid in _pending)
+        // HTN shutdown callbacks may request more replans. Process a separate batch and preserve new requests.
+        _processing.Clear();
+        _processing.AddRange(_pending);
+        _pending.Clear();
+        foreach (var uid in _processing)
         {
             if (TerminatingOrDeleted(uid) || !_htnQuery.TryComp(uid, out var htn) || !htn.Enabled)
                 continue;
@@ -67,7 +72,7 @@ public sealed class SoldierBrainSystem : EntitySystem
             _htn.SetHTNEnabled((uid, htn), true);
         }
 
-        _pending.Clear();
+        _processing.Clear();
     }
 
     /// <summary>

@@ -45,7 +45,7 @@ public sealed class SoldierHearingSystem : EntitySystem
     /// The places soldiers have thrown grenades at lately. Their explosions are not an alarm for the squad: the squad knows
     /// what is going on. A small list that clears itself as the entries run out.
     /// </summary>
-    private readonly List<(MapCoordinates Point, TimeSpan Until)> _expectedExplosions = new();
+    private readonly List<(EntityUid Squad, MapCoordinates Point, TimeSpan Until)> _expectedExplosions = new();
 
     /// <summary>
     /// Closest listener per squad. A scratch buffer: it is cleared on every noise and holds nothing in between.
@@ -77,9 +77,6 @@ public sealed class SoldierHearingSystem : EntitySystem
 
             var epicenter = visuals.Epicenter;
 
-            if (IsExpected(epicenter))
-                continue;
-
             var point = _mapManager.TryFindGridAt(epicenter, out var gridUid, out _)
                 ? _transform.ToCoordinates(gridUid, epicenter)
                 : _transform.ToCoordinates(epicenter);
@@ -91,19 +88,20 @@ public sealed class SoldierHearingSystem : EntitySystem
     /// <summary>
     /// A soldier has thrown a grenade at the place: the squad does not take its explosion for an alarm.
     /// </summary>
-    public void ExpectExplosion(EntityCoordinates where)
+    public void ExpectExplosion(Entity<SoldierComponent> thrower, EntityCoordinates where)
     {
-        _expectedExplosions.Add((_transform.ToMapCoordinates(where), _timing.CurTime + ExpectedExplosionWindow));
+        if (_squad.TryGetSquad(thrower.AsNullable(), out var squad))
+            _expectedExplosions.Add((squad.Owner, _transform.ToMapCoordinates(where), _timing.CurTime + ExpectedExplosionWindow));
     }
 
-    private bool IsExpected(MapCoordinates epicenter)
+    private bool IsExpected(EntityUid squad, MapCoordinates epicenter)
     {
         var now = _timing.CurTime;
         _expectedExplosions.RemoveAll(entry => entry.Until < now);
 
-        foreach (var (point, _) in _expectedExplosions)
+        foreach (var (expectedSquad, point, _) in _expectedExplosions)
         {
-            if (point.MapId == epicenter.MapId && Vector2.Distance(point.Position, epicenter.Position) <= ExpectedExplosionRadius)
+            if (expectedSquad == squad && point.MapId == epicenter.MapId && Vector2.Distance(point.Position, epicenter.Position) <= ExpectedExplosionRadius)
                 return true;
         }
 
@@ -112,14 +110,14 @@ public sealed class SoldierHearingSystem : EntitySystem
 
     private void OnGunShot(Entity<GunComponent> gun, ref GunShotEvent args)
     {
-        // Soldiers are used to the sound of their own guns.
-        if (_soldierQuery.HasComp(args.User) || _faction.IsMember(args.User, SoldierFaction))
-            return;
-
-        Propagate(_transform.ToMapCoordinates(args.FromCoordinates), args.FromCoordinates, SoldierNoiseKind.Gunfire);
+        // Suppress friendly soldier gunfire for each listener; enemy soldiers are still audible.
+        EntityUid? soldierShooter = _soldierQuery.HasComp(args.User) || _faction.IsMember(args.User, SoldierFaction)
+            ? args.User
+            : null;
+        Propagate(_transform.ToMapCoordinates(args.FromCoordinates), args.FromCoordinates, SoldierNoiseKind.Gunfire, soldierShooter);
     }
 
-    private void Propagate(MapCoordinates source, EntityCoordinates point, SoldierNoiseKind kind)
+    private void Propagate(MapCoordinates source, EntityCoordinates point, SoldierNoiseKind kind, EntityUid? soldierShooter = null)
     {
         if (source.MapId == MapId.Nullspace)
             return;
@@ -130,6 +128,10 @@ public sealed class SoldierHearingSystem : EntitySystem
         while (query.MoveNext(out var uid, out var soldier, out var xform))
         {
             if (soldier.Squad is not { } squad || xform.MapID != source.MapId || !_squad.IsOperational(uid))
+                continue;
+
+            if (soldierShooter is { } shooter && _faction.IsEntityFriendly(uid, shooter) ||
+                kind == SoldierNoiseKind.Explosion && IsExpected(squad, source))
                 continue;
 
             var distance = Vector2.Distance(_transform.GetWorldPosition(xform), source.Position);

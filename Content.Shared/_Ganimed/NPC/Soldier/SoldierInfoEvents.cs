@@ -43,6 +43,7 @@ public sealed class SoldierSquadInfo
     /// </summary>
     public NetEntity Squad;
     public string Name = string.Empty;
+    public string Faction = string.Empty;
 
     /// <summary>
     /// The alert level in words, and how serious it is (0 is calm, 4 is the alert itself).
@@ -82,6 +83,8 @@ public readonly record struct SoldierThoughtInfo(double Time, string Text);
 public sealed class SoldierInfo
 {
     public NetEntity Entity;
+    public string Name = string.Empty;
+    public string Class = string.Empty;
 
     /// <summary>
     /// What the soldier does, in words.

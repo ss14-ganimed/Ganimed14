@@ -8,6 +8,8 @@ using Content.Shared.Doors.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC;
+using Content.Shared.NPC.Components;
+using Content.Shared.NPC.Systems;
 using Content.Shared.Physics;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -67,13 +69,13 @@ public sealed class SoldierCoverSystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly PathfindingSystem _pathfinding = default!;
     [Dependency] private readonly ProfManager _prof = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SoldierLoadSystem _load = default!;
+    [Dependency] private readonly NpcFactionSystem _faction = default!;
 
     /// <summary>
     /// How far (in tiles) from itself the soldier looks for cover.
@@ -168,8 +170,6 @@ public sealed class SoldierCoverSystem : EntitySystem
     private EntityQuery<DoorComponent> _doorQuery;
     private EntityQuery<MapGridComponent> _gridQuery;
     private EntityQuery<MobStateComponent> _mobQuery;
-    private EntityQuery<SoldierComponent> _soldierQuery;
-    private EntityQuery<SoldierSquadComponent> _squadQuery;
     private EntityQuery<TransformComponent> _xformQuery;
 
     private GameTick _budgetTick;
@@ -199,8 +199,6 @@ public sealed class SoldierCoverSystem : EntitySystem
         _doorQuery = GetEntityQuery<DoorComponent>();
         _gridQuery = GetEntityQuery<MapGridComponent>();
         _mobQuery = GetEntityQuery<MobStateComponent>();
-        _soldierQuery = GetEntityQuery<SoldierComponent>();
-        _squadQuery = GetEntityQuery<SoldierSquadComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
     }
 
@@ -587,7 +585,11 @@ public sealed class SoldierCoverSystem : EntitySystem
                 continue;
 
             if (!TryFindPeek(soldier, enemy, enemyMap, gridUid, gridMatrix, candidate.Tile, candidate.World, layer, mask, out var peek))
-                continue;
+            {
+                if (!throughDoors)
+                    continue;
+                peek = candidate.Tile; // A wounded soldier or rear role may take protection without a shot.
+            }
 
             spot = new SoldierCoverSpot(ToCoordinates(gridUid, candidate.Tile), ToCoordinates(gridUid, peek));
             return true;
@@ -632,7 +634,7 @@ public sealed class SoldierCoverSystem : EntitySystem
                         continue;
 
                     var distance = Vector2.Distance(world, hideWorld) + _random.NextFloat(0f, 0.2f);
-                    if (distance >= bestDistance || !CanStand(gridUid, tile, layer, mask))
+                    if (distance >= bestDistance || !CanStand(gridUid, tile, layer, mask) || !IsReachable(gridUid, tile))
                         continue;
 
                     // The enemy sees the spot, and also the place just before it: the soldier stops as soon as it is close
@@ -856,15 +858,7 @@ public sealed class SoldierCoverSystem : EntitySystem
         if (from.MapId != to.MapId)
             return false;
 
-        // Only the squad of the shooter is looked at, not every soldier of the server.
-        if (!_soldierQuery.TryComp(shooter, out var soldier) ||
-            soldier.Squad is not { } squadUid ||
-            !_squadQuery.TryComp(squadUid, out var squad) ||
-            squad.Members.Count < 2)
-        {
-            return false;
-        }
-
+        // Other allied squads and players need the same protection as members of this squad.
         var line = to.Position - from.Position;
         var length = line.Length();
         if (length < 0.5f)
@@ -872,13 +866,14 @@ public sealed class SoldierCoverSystem : EntitySystem
 
         var direction = line / length;
 
-        foreach (var member in squad.Members)
+        foreach (var ally in _lookup.GetEntitiesInRange<NpcFactionMemberComponent>(from, Vector2.Distance(to.Position, from.Position) + overshoot + PointBlankRange))
         {
-            // A comrade who is down does not mind (and does not stop the others from doing their job).
-            if (member == shooter ||
+            var member = ally.Owner;
+            // Protect allied bodies too: a downed ally can still be saved.
+            if (member == shooter || EntityManager.System<SoldierRulesSystem>().IsThreat(shooter, member) ||
+                !_faction.IsEntityFriendly(shooter, member) ||
                 !_xformQuery.TryComp(member, out var xform) ||
-                xform.MapID != from.MapId ||
-                !_mobState.IsAlive(member))
+                xform.MapID != from.MapId)
             {
                 continue;
             }

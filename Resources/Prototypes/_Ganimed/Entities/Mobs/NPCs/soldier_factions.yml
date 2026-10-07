@@ -1,0 +1,160 @@
+# SPDX-FileCopyrightText: 2026 Ganimed14 contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Faction profiles share the existing combat skills. Group can be overridden by mappers.
+- type: entity
+  parent: MobSoldier
+  id: MobSoldierNT
+  suffix: NT
+  components:
+  - type: Loadout
+    prototypes: [GanimedSoldierNTGear]
+  - type: NpcFactionMember
+    factions: [GanimedSoldierNT]
+  - type: Soldier
+    squadFaction: GanimedSoldierNT
+    radioChannel: Security
+  - type: SoldierClass
+    profile: Rifleman
+
+- type: entity
+  parent: MobSoldier
+  id: MobSoldierSyndicate
+  suffix: Syndicate
+  components:
+  - type: Loadout
+    prototypes: [GanimedSoldierSyndicateGear]
+  - type: NpcFactionMember
+    factions: [GanimedSoldierSyndicate]
+  - type: Soldier
+    squadFaction: GanimedSoldierSyndicate
+    radioChannel: Syndicate
+  - type: SoldierClass
+    profile: Rifleman
+
+- type: entity
+  parent: MobSoldier
+  id: MobSoldierERT
+  suffix: ERT
+  components:
+  - type: Loadout
+    prototypes: [GanimedSoldierERTGear]
+  - type: NpcFactionMember
+    factions: [GanimedSoldierERT]
+  - type: Soldier
+    squadFaction: GanimedSoldierERT
+    radioChannel: CentCom
+  - type: SoldierClass
+    profile: Operator
+    expeditionary: true
+    shop: ADTBaseUplinkBOBERT
+
+- type: entity
+  parent: MobSoldier
+  id: MobSoldierNuclear
+  suffix: Nuclear Operatives
+  components:
+  - type: Loadout
+    prototypes: [GanimedSoldierNuclearGear]
+  - type: NpcFactionMember
+    factions: [GanimedSoldierNuclear]
+  - type: Soldier
+    squadFaction: GanimedSoldierNuclear
+    radioChannel: Syndicate
+  - type: SoldierClass
+    profile: Operator
+    expeditionary: true
+    shop: BaseUplinkRadio40TC
+
+- type: entity
+  parent: MobSoldierNT
+  id: MobSoldierNTMedic
+  suffix: NT, Medic
+  components:
+  - type: Loadout
+    prototypes: [GanimedSoldierNTMedicGear]
+  - type: SoldierMedic
+  - type: SoldierClass
+    profile: Medic
+
+- type: entity
+  parent: MobSoldierNT
+  id: MobSoldierNTHQ
+  suffix: NT, HQ
+  components:
+  - type: Loadout
+    prototypes: [GanimedSoldierNTHQGear]
+  - type: Soldier
+    barks: SoldierBarksHQ
+    patrolRadius: 4
+  - type: SoldierHQ
+
+- type: entity
+  parent: MobSoldierSyndicate
+  id: MobSoldierSyndicateMedic
+  suffix: Syndicate, Medic
+  components:
+  - type: Loadout
+    prototypes: [GanimedSoldierSyndicateMedicGear]
+  - type: SoldierMedic
+  - type: SoldierClass
+    profile: Medic
+
+- type: entity
+  parent: MobSoldierSyndicate
+  id: MobSoldierSyndicateHQ
+  suffix: Syndicate, HQ
+  components:
+  - type: Loadout
+    prototypes: [GanimedSoldierSyndicateHQGear]
+  - type: Soldier
+    barks: SoldierBarksHQ
+    patrolRadius: 4
+  - type: SoldierHQ
+
+- type: entity
+  parent: MobSoldierERT
+  id: MobSoldierERTMedic
+  suffix: ERT, Medic
+  components:
+  - type: Loadout
+    prototypes: [GanimedSoldierERTMedicGear]
+  - type: SoldierMedic
+  - type: SoldierClass
+    profile: OperatorMedic
+
+- type: entity
+  parent: MobSoldierERT
+  id: MobSoldierERTHQ
+  suffix: ERT, HQ
+  components:
+  - type: Loadout
+    prototypes: [GanimedSoldierERTHQGear]
+  - type: Soldier
+    barks: SoldierBarksHQ
+    patrolRadius: 4
+  - type: SoldierHQ
+
+- type: entity
+  parent: MobSoldierNuclear
+  id: MobSoldierNuclearMedic
+  suffix: Nuclear, Medic
+  components:
+  - type: Loadout
+    prototypes: [GanimedSoldierNuclearMedicGear]
+  - type: SoldierMedic
+  - type: SoldierClass
+    profile: OperatorMedic
+
+- type: entity
+  parent: MobSoldierNuclear
+  id: MobSoldierNuclearHQ
+  suffix: Nuclear, HQ
+  components:
+  - type: Loadout
+    prototypes: [GanimedSoldierNuclearHQGear]
+  - type: Soldier
+    barks: SoldierBarksHQ
+    patrolRadius: 4
+  - type: SoldierHQ

@@ -49,7 +49,7 @@ public sealed partial class SoldierCommandSystem
 
         foreach (var friend in picture.Friends.Values)
         {
-            if (!IsFreeForSupply(cmd.Comp2, friend, now))
+            if (TryComp(friend.Soldier, out SoldierClassComponent? cls) && cls.Expeditionary || !IsFreeForSupply(cmd.Comp2, friend, now))
                 continue;
 
             if (friend.Ammo < bestShare)

@@ -4,6 +4,13 @@
 
 namespace Content.Server._Ganimed.NPC.Soldier;
 
+/// <summary>Runtime topology revision; door movement does not change room boundaries.</summary>
+[RegisterComponent]
+public sealed partial class SoldierRoomGeometryComponent : Component
+{
+    public int Version;
+}
+
 /// <summary>
 /// The plan of the place the squad lives in: the floor around the soldiers cut into rooms, and the doors (and open
 /// passages) that join the rooms. The commander divides the sectors, remembers which rooms are cleared and tells where to
@@ -25,6 +32,9 @@ public sealed class SoldierRoomMap
     /// When the plan was made.
     /// </summary>
     public TimeSpan ComputedAt;
+
+    /// <summary>The grid geometry revision used to build this snapshot.</summary>
+    public int GeometryVersion;
 
     public readonly List<SoldierRoom> Rooms = new();
 

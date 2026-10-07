@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
+using System.Linq;
 using Content.Server.Medical;
 using Content.Server.Medical.Components;
 using Content.Server.NPC.Components;
@@ -69,6 +70,8 @@ public sealed class SoldierMedicSystem : EntitySystem
     /// How often an idle medic looks for a comrade who needs help.
     /// </summary>
     private static readonly TimeSpan SearchInterval = TimeSpan.FromSeconds(1);
+    // A committed medical job takes precedence over ordinary combat; immediate danger still interrupts it.
+    private const int MedicalPriority = 75;
 
     /// <summary>
     /// How long the medic may walk to the patient, wait for a scan, drag the patient, or wait for the defibrillator.
@@ -161,6 +164,16 @@ public sealed class SoldierMedicSystem : EntitySystem
 
         while (query.MoveNext(out var uid, out var medic, out var soldier))
         {
+            if (HasComp<SoldierClassComponent>(uid))
+            {
+                var actions = EntityManager.System<SoldierActionSystem>();
+                if (!actions.Can(uid, SoldierCapability.Medic) || actions.IsBlocked(uid, SoldierActionResource.Movement | SoldierActionResource.Hands, MedicalPriority))
+                    continue;
+                if (medic.Phase != SoldierMedicPhase.None)
+                    actions.TryAcquire((uid, soldier), "medic", SoldierActionResource.Movement | SoldierActionResource.Hands | SoldierActionResource.Interaction, MedicalPriority, out _);
+                else
+                    actions.Release(uid, "medic");
+            }
             // The medic has been knocked down (everything it held is on the floor) or has lost its gun: it gets up and takes
             // the gun first, and the job is over. (It looks for a patient again when it is ready.)
             if (soldier.Recovery != SoldierRecoveryPhase.None)
@@ -228,6 +241,8 @@ public sealed class SoldierMedicSystem : EntitySystem
     {
         var medic = ent.Comp2;
         var ourPosition = _transform.GetMapCoordinates(ent.Owner);
+        foreach (var expired in medic.IgnoredPatients.Where(p => p.Value <= now || TerminatingOrDeleted(p.Key)).Select(p => p.Key).ToArray())
+            medic.IgnoredPatients.Remove(expired);
 
         EntityUid? best = null;
         var bestPriority = int.MaxValue;
@@ -239,6 +254,7 @@ public sealed class SoldierMedicSystem : EntitySystem
             if (member == ent.Owner ||
                 TerminatingOrDeleted(member) ||
                 !_soldierQuery.TryComp(member, out var other) ||
+                medic.IgnoredPatients.ContainsKey(member) ||
                 medic.IgnoredPatient == member && now < medic.IgnoredUntil ||
                 IsLookedAfter(member, ent.Owner))
             {
@@ -253,7 +269,10 @@ public sealed class SoldierMedicSystem : EntitySystem
             }
             else if (_mobState.IsDead(member))
             {
-                if (!medic.UseDefibrillator || fighting || !CanBeBroughtBack(member, medic))
+                // Revive behind cover even during a fight; an exposed corpse is not worth a suicidal rush.
+                if (!medic.UseDefibrillator || !CanBeBroughtBack(member, medic) ||
+                    fighting && FindThreat(ent, member) is { } threat &&
+                    !_cover.IsCovered(ent.Owner, threat, _transform.GetMapCoordinates(threat), _transform.GetMapCoordinates(member)))
                     continue;
 
                 hasDefibrillator ??= _medical.TryFindTool<DefibrillatorComponent>(ent.Owner, out _);
@@ -380,6 +399,11 @@ public sealed class SoldierMedicSystem : EntitySystem
         var soldier = ent.Comp1;
         var medic = ent.Comp2;
 
+        var actions = EntityManager.System<SoldierActionSystem>();
+        if (!actions.TryAcquire((ent.Owner, soldier), "medic",
+                SoldierActionResource.Movement | SoldierActionResource.Hands | SoldierActionResource.Interaction, MedicalPriority, out _))
+            return;
+
         // What the medic was doing for itself is dropped (and the trip for supplies: a comrade needs it more).
         _medical.AbortFirstAid((ent.Owner, soldier));
         _supply.CancelSupply((ent.Owner, soldier));
@@ -419,6 +443,20 @@ public sealed class SoldierMedicSystem : EntitySystem
     /// <param name="giveUp">The medic has given up on the patient and leaves him alone for a while.</param>
     /// <param name="ignoreFactor">How many times longer than usual the medic leaves the patient alone (a comrade whose
     /// wounds the kits cannot help is not worth coming back to every few seconds).</param>
+    /// <summary>Releases treatments and patient reservations belonging to the old squad.</summary>
+    public void CancelForTransfer(Entity<SoldierComponent> soldier)
+    {
+        var query = EntityQueryEnumerator<SoldierMedicComponent, SoldierComponent>();
+        while (query.MoveNext(out var uid, out var medic, out var member))
+        {
+            if (uid != soldier.Owner && medic.Patient != soldier.Owner)
+                continue;
+
+            EndJob((uid, member, medic), _timing.CurTime, success: false, giveUp: false);
+            medic.PreferredPatient = null;
+        }
+    }
+
     private void EndJob(
         Entity<SoldierComponent, SoldierMedicComponent> ent,
         TimeSpan now,
@@ -443,6 +481,7 @@ public sealed class SoldierMedicSystem : EntitySystem
             {
                 medic.IgnoredPatient = patient;
                 medic.IgnoredUntil = now + medic.GiveUpCooldown * ignoreFactor;
+                medic.IgnoredPatients[patient] = medic.IgnoredUntil;
             }
         }
 
@@ -454,6 +493,7 @@ public sealed class SoldierMedicSystem : EntitySystem
         medic.SafeSpot = null;
         medic.ArrivedAt = null;
         medic.NextJobAt = now + (success ? JobPause : FailPause);
+        EntityManager.System<SoldierActionSystem>().Release(ent.Owner, "medic");
 
         // The HTN takes the medic over again (a medic that is down has nothing to plan).
         if (_mobState.IsAlive(ent.Owner))
@@ -960,6 +1000,8 @@ public sealed class SoldierMedicSystem : EntitySystem
     /// </summary>
     private void MoveTo(EntityUid uid, EntityCoordinates where, float range)
     {
+        // Dragging can project a point into map space; navigation requires coordinates on its grid.
+        where = _rooms.OnGrid(where);
         var steering = CompOrNull<NPCSteeringComponent>(uid);
 
         if (steering != null &&

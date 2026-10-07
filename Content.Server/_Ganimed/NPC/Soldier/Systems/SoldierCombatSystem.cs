@@ -157,6 +157,11 @@ public sealed class SoldierCombatSystem : EntitySystem
         var soldier = ent.Comp;
         var now = _timing.CurTime;
 
+        if (soldier.LineBlocked || EntityManager.System<SoldierActionSystem>().IsBlocked(ent, SoldierActionResource.Hands, 70))
+        {
+            args.Cancel();
+            return;
+        }
         if (now < soldier.BurstUntil)
             return;
 
@@ -219,6 +224,7 @@ public sealed class SoldierCombatSystem : EntitySystem
         soldier.CoverPeek = null;
         soldier.PeekReached = false;
         soldier.NextCoverSearchAt = TimeSpan.Zero;
+        soldier.ReloadRequestedAt = null;
         soldier.NoSightSince = null;
         soldier.FlankSpot = null;
 
@@ -254,6 +260,8 @@ public sealed class SoldierCombatSystem : EntitySystem
             _medical.FinishHealing(ent);
 
         soldier.HealPending = false;
+        soldier.ReloadRequestedAt = null;
+        EntityManager.System<SoldierActionSystem>().Release(ent, "combat");
 
         soldier.CombatState = SoldierCombatState.Assess;
         soldier.CoverHide = null;
@@ -282,7 +290,18 @@ public sealed class SoldierCombatSystem : EntitySystem
         if (!TryComp(ent, out NPCRangedCombatComponent? ranged))
             return HTNOperatorStatus.Failed;
 
+        var actions = EntityManager.System<SoldierActionSystem>();
+        if (!actions.Can(ent, SoldierCapability.Fight) ||
+            !actions.TryAcquire(ent, "combat", SoldierActionResource.Movement | SoldierActionResource.Hands, 70, out var combatLease))
+        {
+            ranged.Target = default;
+            return HTNOperatorStatus.Continuing;
+        }
         ranged.Target = target;
+
+        // Select the held weapon after tools, while preserving the active hand of an ongoing treatment/throw.
+        if (soldier.CombatState is not (SoldierCombatState.Heal or SoldierCombatState.Grenade))
+            _ammo.TryReadyGun(ent);
 
         // The role the commander has given the soldier has run out.
         if (soldier.Role != SoldierCombatRole.Assault && now >= soldier.RoleUntil)
@@ -460,12 +479,28 @@ public sealed class SoldierCombatSystem : EntitySystem
 
         soldier.NextAmmoCheckAt = now + AmmoCheckInterval;
 
-        if (!_ammo.NeedsReload(ent) || !(_ammo.HasSpareMagazine(ent) || _ammo.HasReserveBox(ent) || _ammo.HasBackupGun(ent)))
+        if (!_ammo.NeedsReload(ent))
+        {
+            soldier.ReloadRequestedAt = null;
+            return;
+        }
+        if (!(_ammo.HasSpareMagazine(ent) || _ammo.HasReserveBox(ent) || _ammo.HasBackupGun(ent)))
             return;
 
-        // Hide first if there is a cover, otherwise reload right here.
-        if (soldier.CombatState == SoldierCombatState.Hidden || soldier.CoverHide == null)
+        soldier.ReloadRequestedAt ??= now;
+        // Prefer cover, but never spend an entire peek/approach cycle holding an empty primary.
+        if (soldier.CombatState == SoldierCombatState.Hidden || soldier.CoverHide == null ||
+            now - soldier.ReloadRequestedAt.Value >= TimeSpan.FromSeconds(3))
+        {
             EnterReload(ent, ranged, now);
+            return;
+        }
+        if (soldier.CombatState != SoldierCombatState.MoveToCover)
+        {
+            SetState(soldier, SoldierCombatState.MoveToCover, now);
+            MoveTo(ent, soldier.CoverHide.Value, CoverArriveRange);
+        }
+        ranged.Status = CombatStatus.Unspecified;
     }
 
     /// <summary>
@@ -512,7 +547,7 @@ public sealed class SoldierCombatSystem : EntitySystem
             return;
 
         var where = soldier.TargetLastSeenPos ?? Transform(target).Coordinates;
-        if (_grenades.HasAlliesNear(where, GrenadeSafeRadius) ||
+        if (_grenades.HasAlliesNear(ent, where, GrenadeSafeRadius) ||
             !_grenades.IsThrowPathClear(ent, where) ||
             _cover.HasComradeInLineOfFire(ent, _transform.GetMapCoordinates(ent), _transform.ToMapCoordinates(where), overshoot: 0f))
         {
@@ -562,15 +597,14 @@ public sealed class SoldierCombatSystem : EntitySystem
             return;
         }
 
-        if (ranged.Status == CombatStatus.Normal)
-            ranged.Status = CombatStatus.Unspecified;
-
+        // Cancel the actual shot in OnShotAttempted; disabling ranged combat also freezes its LOS observation.
         soldier.LineBlockedSince ??= now;
 
         // The comrade stands still (he is behind a cover, or he is blocked by somebody else): get out of the line.
         if (now - soldier.LineBlockedSince < LineBlockedPatience ||
             now < soldier.NextRepositionAt ||
-            soldier.CombatState is not (SoldierCombatState.Fire or SoldierCombatState.Peek or SoldierCombatState.Hidden))
+            !(soldier.CombatState is SoldierCombatState.Fire or SoldierCombatState.Peek or SoldierCombatState.Hidden ||
+              soldier.CombatState == SoldierCombatState.Advance && DistanceTo(ent, Transform(target).Coordinates) <= AdvanceStopRange))
         {
             return;
         }
@@ -598,8 +632,10 @@ public sealed class SoldierCombatSystem : EntitySystem
     {
         var soldier = ent.Comp;
 
-        // The squad has sent this soldier around the enemy.
-        if (soldier.Role == SoldierCombatRole.Flanker)
+        var underFire = soldier.LastHitAt > TimeSpan.Zero && now - soldier.LastHitAt < TimeSpan.FromSeconds(4);
+
+        // Being hit takes precedence over a squad flanking assignment.
+        if (soldier.Role == SoldierCombatRole.Flanker && !underFire && _medical.GetHealthFraction(ent) >= 0.65f)
         {
             switch (TryStartFlank(ent, ranged, target, now))
             {
@@ -616,13 +652,7 @@ public sealed class SoldierCombatSystem : EntitySystem
 
         // A medic keeps behind the others: it never closes in on the enemy, and its cover is the safest one there is
         // (even out of the room, away from the enemy). So do the headquarters and a soldier that is falling back.
-        var behind = KeepsBehind(ent);
-
-        if (distance > EngageRange && MayAdvance(ent))
-        {
-            SetState(soldier, SoldierCombatState.Advance, now);
-            return;
-        }
+        var behind = KeepsBehind(ent) || underFire || _medical.GetHealthFraction(ent) < 0.65f;
 
         if (now >= soldier.NextCoverSearchAt)
         {
@@ -643,6 +673,13 @@ public sealed class SoldierCombatSystem : EntitySystem
 
             // Deferred: no time for the search right now, it is repeated in a moment. Otherwise it is repeated later.
             soldier.NextCoverSearchAt = now + (search == SoldierSearchResult.Deferred ? DeferredRetry() : CoverSearchCooldown);
+        }
+
+        // Consider protection before closing on a distant enemy. Being shot overrides the urge to advance.
+        if (distance > EngageRange && MayAdvance(ent) && !underFire)
+        {
+            SetState(soldier, SoldierCombatState.Advance, now);
+            return;
         }
 
         // No cover in the room, and the soldier stands in the doorway: that is no place to shoot from. It holds up the
@@ -753,7 +790,8 @@ public sealed class SoldierCombatSystem : EntitySystem
         ranged.Status = CombatStatus.Unspecified;
 
         // The squad wants this soldier to go around the enemy.
-        if (soldier.Role == SoldierCombatRole.Flanker && soldier.FlankSpot == null)
+        if (soldier.Role == SoldierCombatRole.Flanker && soldier.FlankSpot == null &&
+            now - soldier.LastHitAt >= TimeSpan.FromSeconds(4) && _medical.GetHealthFraction(ent) >= 0.65f)
         {
             SetState(soldier, SoldierCombatState.Assess, now);
             return;
@@ -778,6 +816,14 @@ public sealed class SoldierCombatSystem : EntitySystem
 
         if (now < soldier.CombatStateUntil)
             return;
+
+        // A protected retreat can be useful without an immediate firing position (reload, wounds, rear roles).
+        if (hide == peek)
+        {
+            soldier.NextCoverSearchAt = now + CoverSearchCooldown;
+            SetState(soldier, SoldierCombatState.Assess, now);
+            return;
+        }
 
         // Time to lean out.
         SetState(soldier, SoldierCombatState.Peek, now);
@@ -868,7 +914,7 @@ public sealed class SoldierCombatSystem : EntitySystem
     {
         return ent.Comp.Role == SoldierCombatRole.Fallback ||
                HasComp<SoldierMedicComponent>(ent) ||
-               HasComp<SoldierHQComponent>(ent);
+               _squad.IsHeadquarters(ent);
     }
 
     /// <summary>
@@ -914,6 +960,7 @@ public sealed class SoldierCombatSystem : EntitySystem
         if (!_ammo.TryReload(ent) && !_ammo.TryRefillFromBox(ent))
             _ammo.TrySwitchToBackupGun(ent);
 
+        soldier.ReloadRequestedAt = null;
         SetState(soldier, SoldierCombatState.Assess, now);
     }
 

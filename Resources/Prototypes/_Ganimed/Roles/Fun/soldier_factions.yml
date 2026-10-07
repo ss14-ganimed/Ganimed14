@@ -1,0 +1,279 @@
+# SPDX-FileCopyrightText: 2026 Ganimed14 contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Field units and expeditionary operators use faction equipment, not the legacy test loadout.
+# Role children inherit the primary weapon; storage lists replace the corresponding bag contents.
+# Uplinks are issued once by SoldierLogisticsSystem, not duplicated in starting gear.
+
+- type: startingGear
+  id: GanimedSoldierNTGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSecGrey
+    outerClothing: ClothingOuterArmorBulletproof
+    head: ClothingHeadHelmetSwat
+    back: ClothingBackpackSecurity
+    mask: ClothingMaskGasSwat
+    ears: ClothingHeadsetSoldierNT
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsCombat
+    belt: ClothingBeltSecurityWebbing
+    id: SecurityIDCard
+    pocket1: WeaponPistolMk58
+    pocket2: MagazinePistol
+  inhand:
+  - WeaponRifleLecter
+  storage:
+    belt:
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifle
+    back:
+    - GrenadeFlashBang
+    - GrenadeFlashBang
+    - GrenadeShrapnel
+    - Brutepack
+    - Ointment
+    - Gauze
+
+- type: startingGear
+  parent: GanimedSoldierNTGear
+  id: GanimedSoldierNTMedicGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBrigmedic
+    back: ClothingBackpackDuffelBrigmedic
+    eyes: ClothingEyesHudMedSec
+    id: BrigmedicIDCard
+  storage:
+    back:
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    - HandheldHealthAnalyzer
+    - DefibrillatorOneHandedUnpowered
+
+- type: startingGear
+  parent: GanimedSoldierNTGear
+  id: GanimedSoldierNTHQGear
+  equipment:
+    jumpsuit: ClothingUniformSecurityTrooper
+    ears: ClothingHeadsetSoldierNTHQ
+    id: HoSIDCard
+    pocket2: SoldierCommandTabletNT
+  storage:
+    back:
+    - GrenadeFlashBang
+    - GrenadeFlashBang
+    - GrenadeShrapnel
+    - Brutepack
+    - Ointment
+    - Gauze
+    - MagazinePistol
+
+- type: startingGear
+  id: GanimedSoldierSyndicateGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitOperative
+    outerClothing: ClothingOuterArmorRaid
+    head: ClothingHeadHelmetSwatSyndicate
+    back: ClothingBackpackSyndicate
+    mask: ClothingMaskGasSyndicate
+    ears: ClothingHeadsetAltSyndicate
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsCombat
+    belt: ClothingBeltMilitaryWebbing
+    id: SyndicateIDCard
+    pocket1: WeaponPistolViper
+    pocket2: MagazinePistol
+  inhand:
+  - WeaponRifleAk
+  storage:
+    belt:
+    - MagazineLightRifle
+    - MagazineLightRifle
+    - MagazineLightRifle
+    - MagazineLightRifle
+    back:
+    - GrenadeFlashBang
+    - GrenadeFlashBang
+    - GrenadeShrapnel
+    - Brutepack
+    - Ointment
+    - Gauze
+
+- type: startingGear
+  parent: GanimedSoldierSyndicateGear
+  id: GanimedSoldierSyndicateMedicGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitParamedicSyndie
+    back: ClothingBackpackDuffelSyndicateMedical
+    belt: ClothingBeltMilitaryWebbingMed
+    eyes: ClothingEyesHudSyndicateAgent
+    id: SyndiCorpsmanIDCard
+  storage:
+    back:
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    - HandheldHealthAnalyzer
+    - DefibrillatorOneHandedUnpowered
+
+- type: startingGear
+  parent: GanimedSoldierSyndicateGear
+  id: GanimedSoldierSyndicateHQGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSyndieFormal
+    id: SoldierSyndicateCommanderIDCard
+    pocket2: SoldierCommandTabletSyndicate
+  storage:
+    back:
+    - GrenadeFlashBang
+    - GrenadeFlashBang
+    - GrenadeShrapnel
+    - Brutepack
+    - Ointment
+    - Gauze
+    - MagazinePistol
+
+- type: startingGear
+  id: GanimedSoldierERTGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTSecurity
+    outerClothing: ClothingOuterHardsuitERTSecurity
+    head: ClothingHeadHelmetHardsuitERTSecurity
+    back: ClothingBackpackERTSecurity
+    mask: ClothingMaskGasERT
+    ears: ClothingHeadsetAltCentCom
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsMag
+    belt: ClothingBeltSecurityWebbing
+    id: ERTSecurityIDCard
+    pocket1: WeaponPistolMk58
+    pocket2: MagazinePistol
+    eyes: ClothingEyesGlassesSecurity
+    suitstorage: OxygenTankFilled
+  inhand:
+  - WeaponRifleM90GrenadeLauncher
+  storage:
+    belt:
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifle
+    back:
+    - GrenadeFlashBang
+    - GrenadeFlashBang
+    - GrenadeShrapnel
+    - Brutepack
+    - Ointment
+    - Gauze
+
+- type: startingGear
+  parent: GanimedSoldierERTGear
+  id: GanimedSoldierERTMedicGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTMedic
+    outerClothing: ClothingOuterHardsuitERTMedical
+    head: ClothingHeadHelmetHardsuitERTMedical
+    back: ClothingBackpackERTMedical
+    eyes: ClothingEyesHudMedSec
+    id: ERTMedicIDCard
+  storage:
+    back:
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    - HandheldHealthAnalyzer
+    - DefibrillatorOneHandedUnpowered
+
+- type: startingGear
+  parent: GanimedSoldierERTGear
+  id: GanimedSoldierERTHQGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTLeader
+    outerClothing: ClothingOuterHardsuitERTLeader
+    head: ClothingHeadHelmetHardsuitERTLeader
+    back: ClothingBackpackERTLeader
+    id: ERTLeaderIDCard
+    pocket2: SoldierCommandTabletERT
+  storage:
+    back:
+    - GrenadeFlashBang
+    - GrenadeFlashBang
+    - GrenadeShrapnel
+    - Brutepack
+    - Ointment
+    - Gauze
+    - MagazinePistol
+
+- type: startingGear
+  id: GanimedSoldierNuclearGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitOperative
+    outerClothing: ClothingOuterHardsuitSyndie
+    head: ClothingHeadHelmetHardsuitSyndie
+    back: ClothingBackpackDuffelSyndicateAmmo
+    mask: ClothingMaskGasSyndicate
+    ears: ClothingHeadsetAltSyndicate
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsMagSyndie
+    belt: ClothingBeltMilitaryWebbing
+    id: SyndiOperativeIDCard
+    pocket1: WeaponPistolViper
+    pocket2: MagazinePistol
+    eyes: ClothingEyesHudSyndicate
+    suitstorage: OxygenTankFilled
+  inhand:
+  - WeaponRifleEstoc
+  storage:
+    belt:
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifle
+    back:
+    - GrenadeFlashBang
+    - GrenadeFlashBang
+    - GrenadeShrapnel
+    - Brutepack
+    - Ointment
+    - Gauze
+
+- type: startingGear
+  parent: GanimedSoldierNuclearGear
+  id: GanimedSoldierNuclearMedicGear
+  equipment:
+    outerClothing: ClothingOuterHardsuitSyndieMedic
+    head: ClothingHeadHelmetHardsuitSyndieMedic
+    back: ClothingBackpackDuffelSyndicateMedical
+    belt: ClothingBeltMilitaryWebbingMed
+    eyes: ClothingEyesHudSyndicateAgent
+    id: SyndiCorpsmanIDCard
+  storage:
+    back:
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    - HandheldHealthAnalyzer
+    - DefibrillatorOneHandedUnpowered
+
+- type: startingGear
+  parent: GanimedSoldierNuclearGear
+  id: GanimedSoldierNuclearHQGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSyndieFormal
+    outerClothing: ClothingOuterHardsuitSyndieCommander
+    head: ClothingHeadHelmetHardsuitSyndieCommander
+    back: ClothingBackpackDuffelSyndicate
+    id: SoldierNuclearCommanderIDCard
+    pocket2: SoldierCommandTabletNuclear
+  storage:
+    back:
+    - GrenadeFlashBang
+    - GrenadeFlashBang
+    - GrenadeShrapnel
+    - Brutepack
+    - Ointment
+    - Gauze
+    - MagazinePistol

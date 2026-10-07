@@ -137,21 +137,29 @@ public sealed partial class StoreSystem
     /// <summary>
     /// Handles whenever a purchase was made.
     /// </summary>
+    // Ganimed-Add-Start: NPC purchases use the same validated transaction as the UI.
     private void OnBuyRequest(EntityUid uid, StoreComponent component, StoreBuyListingMessage msg)
     {
-        var listing = component.FullListingsCatalog.FirstOrDefault(x => x.ID.Equals(msg.Listing.Id));
+        TryPurchase((uid, component), msg.Actor, msg.Listing, out _);
+    }
+
+    public bool TryPurchase(Entity<StoreComponent> store, EntityUid buyer, ProtoId<ListingPrototype> listingId, out EntityUid? purchased)
+    {
+        var uid = store.Owner;
+        var component = store.Comp;
+        purchased = null;
+        var listing = component.FullListingsCatalog.FirstOrDefault(x => x.ID.Equals(listingId.Id));
 
         if (listing == null) //make sure this listing actually exists
         {
             Log.Debug("listing does not exist");
-            return;
+            return false;
         }
 
-        var buyer = msg.Actor;
 
         //verify that we can actually buy this listing and it wasn't added
         if (!ListingHasCategory(listing, component.Categories))
-            return;
+            return false;
 
         //condition checking because why not
         if (listing.Conditions != null)
@@ -160,7 +168,7 @@ public sealed partial class StoreSystem
             var conditionsMet = listing.Conditions.All(condition => condition.Condition(args));
 
             if (!conditionsMet)
-                return;
+                return false;
         }
 
         //check that we have enough money
@@ -169,7 +177,7 @@ public sealed partial class StoreSystem
         {
             if (!component.Balance.TryGetValue(currency, out var balance) || balance < amount)
             {
-                return;
+                return false;
             }
         }
 
@@ -207,6 +215,7 @@ public sealed partial class StoreSystem
         if (listing.ProductEntity != null)
         {
             var product = Spawn(listing.ProductEntity, Transform(buyer).Coordinates);
+            purchased = product;
             _hands.PickupOrDrop(buyer, product);
 
             HandleRefundComp(uid, component, product);
@@ -274,7 +283,7 @@ public sealed partial class StoreSystem
                 if (listing.ProductActionEntity != null)
                     HandleRefundComp(uid, component, listing.ProductActionEntity.Value);
 
-                return;
+                return false;
             }
 
             listing.ProductActionEntity = upgradeActionId;
@@ -302,7 +311,7 @@ public sealed partial class StoreSystem
             $"{ToPrettyString(buyer):player} purchased listing \"{ListingLocalisationHelpers.GetLocalisedNameOrEntityName(listing, _proto)}\" from {ToPrettyString(uid)}");
 
         listing.PurchaseAmount++; //track how many times something has been purchased
-        _audio.PlayEntity(component.BuySuccessSound, msg.Actor, uid); //cha-ching!
+        _audio.PlayEntity(component.BuySuccessSound, buyer, uid); //cha-ching!
 
         var buyFinished = new StoreBuyFinishedEvent
         {
@@ -312,7 +321,9 @@ public sealed partial class StoreSystem
         RaiseLocalEvent(ref buyFinished);
 
         UpdateUserInterface(buyer, uid, component);
+        return true;
     }
+    // Ganimed-Add-End
 
     /// <summary>
     /// Handles dispensing the currency you requested to be withdrawn.
@@ -321,42 +332,42 @@ public sealed partial class StoreSystem
     /// This would need to be done should a currency with decimal values need to use it.
     /// not quite sure how to handle that
     /// </remarks>
+    // Ganimed-Add-Start: shared UI/NPC withdrawal, with exact physical denominations.
     private void OnRequestWithdraw(EntityUid uid, StoreComponent component, StoreRequestWithdrawMessage msg)
     {
-        if (msg.Amount <= 0)
-            return;
-
-        //make sure we have enough cash in the bank and we actually support this currency
-        if (!component.Balance.TryGetValue(msg.Currency, out var currentAmount) || currentAmount < msg.Amount)
-            return;
-
-        //make sure a malicious client didn't send us random shit
-        if (!_proto.TryIndex<CurrencyPrototype>(msg.Currency, out var proto))
-            return;
-
-        //we need an actually valid entity to spawn. This check has been done earlier, but just in case.
-        if (proto.Cash == null || !proto.CanWithdraw)
-            return;
-
-        var buyer = msg.Actor;
-
-        FixedPoint2 amountRemaining = msg.Amount;
-        var coordinates = Transform(buyer).Coordinates;
-
-        var sortedCashValues = proto.Cash.Keys.OrderByDescending(x => x).ToList();
-        foreach (var value in sortedCashValues)
-        {
-            var cashId = proto.Cash[value];
-            var amountToSpawn = (int) MathF.Floor((float) (amountRemaining / value));
-            var ents = _stack.SpawnMultipleAtPosition(cashId, amountToSpawn, coordinates);
-            if (ents.FirstOrDefault() is {} ent)
-                _hands.PickupOrDrop(buyer, ent);
-            amountRemaining -= value * amountToSpawn;
-        }
-
-        component.Balance[msg.Currency] -= msg.Amount;
-        UpdateUserInterface(buyer, uid, component);
+        TryWithdraw((uid, component), msg.Actor, msg.Currency, msg.Amount, out _);
     }
+
+    public bool TryWithdraw(Entity<StoreComponent> store, EntityUid buyer, ProtoId<CurrencyPrototype> currency,
+        FixedPoint2 amount, out List<EntityUid> cash)
+    {
+        cash = new List<EntityUid>();
+        if (amount <= 0 || !store.Comp.Balance.TryGetValue(currency, out var balance) || balance < amount ||
+            !_proto.TryIndex(currency, out var proto) || proto.Cash == null || !proto.CanWithdraw)
+            return false;
+        var remaining = amount;
+        var denominations = new List<(string Prototype, int Count)>();
+        foreach (var value in proto.Cash.Keys.OrderByDescending(x => x))
+        {
+            if (value <= 0)
+                continue;
+            var count = (int) MathF.Floor((float) (remaining / value));
+            if (count > 0)
+                denominations.Add((proto.Cash[value], count));
+            remaining -= value * count;
+        }
+        if (remaining != FixedPoint2.Zero)
+            return false;
+        // Deduct before spawning: callbacks cannot spend the same balance twice.
+        store.Comp.Balance[currency] -= amount;
+        foreach (var (prototype, count) in denominations)
+            cash.AddRange(_stack.SpawnMultipleAtPosition(new EntProtoId(prototype), count, Transform(buyer).Coordinates));
+        if (cash.Count > 0)
+            _hands.PickupOrDrop(buyer, cash[0]);
+        UpdateUserInterface(buyer, store, store.Comp);
+        return true;
+    }
+    // Ganimed-Add-End
 
     private void OnRequestRefund(EntityUid uid, StoreComponent component, StoreRequestRefundMessage args)
     {

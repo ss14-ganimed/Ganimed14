@@ -236,7 +236,7 @@ public sealed class SoldierRadioSystem : EntitySystem
 
         _chat.TrySendInGameICMessage(
             soldier,
-            soldier.Comp.RadioPrefix + text,
+            _comms.HasWorkingRadio(soldier) ? _comms.GetRadioPrefix(soldier) + text : text,
             InGameICChatType.Speak,
             hideChat: false);
 

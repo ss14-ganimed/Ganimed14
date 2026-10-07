@@ -232,6 +232,15 @@ public sealed class SoldierMedicalSystem : EntitySystem
     public bool StoreNewItem(Entity<SoldierComponent> soldier, EntityUid item)
     {
         // A hand is freed if both are busy: what the soldier has taken for its medical work goes back where it was.
+        if (_hands.IsHolding(soldier.Owner, item))
+        {
+            foreach (var storage in _inventory.EnumerateStorages(soldier))
+            {
+                if (_hands.TryDropIntoContainer(soldier.Owner, item, storage, checkActionBlocker: false))
+                    return true;
+            }
+            return true;
+        }
         if (!_hands.TryGetEmptyHand(soldier.Owner, out var hand))
         {
             FinishHealing(soldier);
@@ -572,6 +581,16 @@ public sealed class SoldierMedicalSystem : EntitySystem
         var query = EntityQueryEnumerator<SoldierComponent>();
         while (query.MoveNext(out var uid, out var soldier))
         {
+            if (HasComp<SoldierClassComponent>(uid))
+            {
+                var actions = EntityManager.System<SoldierActionSystem>();
+                if (!actions.Can(uid, SoldierCapability.FirstAid) || actions.IsBlocked(uid, SoldierActionResource.Movement | SoldierActionResource.Hands, 60))
+                    continue;
+                if (soldier.FirstAid != SoldierFirstAidPhase.None)
+                    actions.TryAcquire((uid, soldier), "firstaid", SoldierActionResource.Movement | SoldierActionResource.Hands | SoldierActionResource.Interaction, 60, out _);
+                else
+                    actions.Release(uid, "firstaid");
+            }
             if (soldier.FirstAid != SoldierFirstAidPhase.None)
             {
                 // The order the soldier is on waits for it: its timers stand still while it bandages itself.

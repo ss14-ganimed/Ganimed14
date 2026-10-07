@@ -244,6 +244,7 @@ public sealed class SoldierPerceptionSystem : EntitySystem
 
         _hostiles.Clear();
         _hostiles.AddRange(_faction.GetNearbyHostiles(ent.Owner, senses.Range));
+        _hostiles.AddRange(EntityManager.System<SoldierRulesSystem>().KnownAggressors(ent));
 
         foreach (var candidate in _hostiles)
         {
@@ -289,6 +290,8 @@ public sealed class SoldierPerceptionSystem : EntitySystem
         if (!args.DamageIncreased || args.Origin is not { } origin || !_squad.IsOperational(ent))
             return;
 
+        EntityManager.System<SoldierRulesSystem>().ObserveAttack(ent, origin);
+
         // Somebody is shooting at us: a soldier that bandages itself has to know.
         ent.Comp.LastHitAt = _timing.CurTime;
 
@@ -300,7 +303,8 @@ public sealed class SoldierPerceptionSystem : EntitySystem
         if (TerminatingOrDeleted(origin) || !_mobState.IsAlive(origin))
             return;
 
-        if (!_faction.GetNearbyHostiles(ent.Owner, ShooterAwarenessRange).Contains(origin))
+        if (!_faction.GetNearbyHostiles(ent.Owner, ShooterAwarenessRange).Contains(origin) &&
+            !EntityManager.System<SoldierRulesSystem>().IsThreat(ent, origin))
             return;
 
         Engage(ent, origin, _timing.CurTime);

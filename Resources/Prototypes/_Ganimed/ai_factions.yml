@@ -24,3 +24,24 @@
   - DroneAntag
   - ADTSpaceMobs
   - Ursus
+
+# Explicit AI profiles. Covert antagonist status is not a hostile faction in these profiles.
+- type: npcFaction
+  id: GanimedSoldierNT
+  friendly: [NanoTrasen, GanimedSoldierERT]
+  hostile: [Syndicate, GanimedSoldierSyndicate, GanimedSoldierNuclear, SimpleHostile, Xeno, Zombie]
+
+- type: npcFaction
+  id: GanimedSoldierERT
+  friendly: [NanoTrasen, GanimedSoldierNT]
+  hostile: [Syndicate, GanimedSoldierSyndicate, GanimedSoldierNuclear, SimpleHostile, Xeno, Zombie]
+
+- type: npcFaction
+  id: GanimedSoldierSyndicate
+  friendly: [Syndicate, GanimedSoldierNuclear]
+  hostile: [NanoTrasen, GanimedSoldierNT, GanimedSoldierERT, SimpleHostile, Xeno, Zombie]
+
+- type: npcFaction
+  id: GanimedSoldierNuclear
+  friendly: [Syndicate, GanimedSoldierSyndicate]
+  hostile: [NanoTrasen, GanimedSoldierNT, GanimedSoldierERT, SimpleHostile, Xeno, Zombie]

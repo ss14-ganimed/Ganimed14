@@ -65,6 +65,16 @@ public sealed partial class SoldierCommandSystem
         Refresh(cmd, squad, now);
         AnswerWaitingReports((cmd.Owner, command), now);
         UpdateAlert(cmd, squad, now);
+        if (TryComp(squad, out SoldierMissionComponent? activeMission) && activeMission.Kind != SoldierMissionKind.None)
+        {
+            if (TryComp(squad, out SoldierMissionComponent? mission) &&
+                mission.Kind is SoldierMissionKind.Assault or SoldierMissionKind.Capture &&
+                mission.Phase != SoldierMissionPhase.Preparing)
+                PlanFight(cmd, squad, now);
+            PlanMedic(cmd, squad, now);
+            RollCall(cmd, squad, now);
+            return;
+        }
         PlanFight(cmd, squad, now);
         PlanMedic(cmd, squad, now);
         PlanChecks(cmd, squad, now);

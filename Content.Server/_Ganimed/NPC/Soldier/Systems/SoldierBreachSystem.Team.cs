@@ -434,7 +434,7 @@ public sealed partial class SoldierBreachSystem
                 other.Mode != leader.Mode ||
                 other.OrderPoint is not { } point ||
                 HasComp<SoldierMedicComponent>(member) ||
-                HasComp<SoldierHQComponent>(member))
+                _squad.IsHeadquarters(member))
             {
                 continue;
             }
@@ -753,6 +753,8 @@ public sealed partial class SoldierBreachSystem
     /// </summary>
     private void MoveTo(EntityUid uid, EntityCoordinates where, float range)
     {
+        // Entry geometry is calculated in map space, while navigation runs on a grid.
+        where = _rooms.OnGrid(where);
         var steering = CompOrNull<NPCSteeringComponent>(uid);
 
         if (steering != null &&

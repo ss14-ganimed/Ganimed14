@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Content.Client._Ganimed.NPC.Soldier.UI; // Ganimed-Add
 using Content.Client.Administration.Managers;
 using Content.Client.Gameplay;
@@ -219,7 +219,7 @@ public sealed class SandboxUIController : UIController, IOnStateChanged<Gameplay
             // Ganimed-Add-Start: the NPC info and NPC zones buttons are for the admins, and show whether the panel is on
             _window.NpcInfoButton.Visible = _admin.HasFlag(AdminFlags.Fun);
             _window.NpcInfoButton.Pressed = UIManager.GetUIController<SoldierInfoUIController>().Shown;
-            _window.NpcZonesButton.Visible = _admin.HasFlag(AdminFlags.Fun);
+            _window.NpcZonesButton.Visible = false; // Ganimed-Edit: zones are inside NPC info.
             _window.NpcZonesButton.Pressed = UIManager.GetUIController<SoldierZonesUIController>().Shown;
             // Ganimed-Add-End
 

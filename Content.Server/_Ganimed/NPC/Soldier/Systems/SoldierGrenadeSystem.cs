@@ -4,7 +4,10 @@
 
 using Content.Server.Hands.Systems;
 using Content.Shared.Interaction;
+using Content.Shared._Ganimed.NPC.Soldier;
 using Content.Shared.Physics;
+using Content.Shared.NPC.Components;
+using Content.Shared.NPC.Systems;
 using Content.Shared.Trigger.Components;
 using Content.Shared.Trigger.Components.Triggers;
 using Content.Shared.Trigger.Components.Effects;
@@ -31,6 +34,7 @@ public sealed class SoldierGrenadeSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SoldierHearingSystem _hearing = default!;
     [Dependency] private readonly SoldierInventorySystem _inventory = default!;
+    [Dependency] private readonly NpcFactionSystem _faction = default!;
 
     /// <summary>
     /// Is the item a grenade that is not primed yet (one a soldier can prime and throw).
@@ -66,6 +70,8 @@ public sealed class SoldierGrenadeSystem : EntitySystem
     public bool TryFindGrenade(EntityUid soldier, out EntityUid grenade)
     {
         grenade = default;
+        if (!EntityManager.System<SoldierActionSystem>().Can(soldier, SoldierCapability.Grenade))
+            return false;
         EntityUid? gun = _gun.TryGetGun(soldier, out var gunUid, out _) ? gunUid : null;
 
         EntityUid? lethal = null;
@@ -102,6 +108,8 @@ public sealed class SoldierGrenadeSystem : EntitySystem
     public bool TryFindFlash(EntityUid soldier, out EntityUid grenade)
     {
         grenade = default;
+        if (!EntityManager.System<SoldierActionSystem>().Can(soldier, SoldierCapability.Grenade))
+            return false;
         EntityUid? gun = _gun.TryGetGun(soldier, out var gunUid, out _) ? gunUid : null;
 
         foreach (var candidate in _inventory.EnumerateCarried(soldier, gun))
@@ -178,13 +186,14 @@ public sealed class SoldierGrenadeSystem : EntitySystem
     /// <summary>
     /// Is there a soldier close to the point that would be hurt by the grenade.
     /// </summary>
-    public bool HasAlliesNear(EntityCoordinates point, float radius)
+    public bool HasAlliesNear(EntityUid thrower, EntityCoordinates point, float radius)
     {
         var position = _transform.ToMapCoordinates(point);
 
-        foreach (var _ in _lookup.GetEntitiesInRange<SoldierComponent>(position, radius))
+        foreach (var ally in _lookup.GetEntitiesInRange<NpcFactionMemberComponent>(position, radius))
         {
-            return true;
+            if (ally.Owner == thrower || _faction.IsEntityFriendly(thrower, ally.Owner))
+                return true;
         }
 
         return false;
@@ -195,7 +204,9 @@ public sealed class SoldierGrenadeSystem : EntitySystem
     /// </summary>
     public bool TryThrow(Entity<SoldierComponent> soldier, EntityUid grenade, EntityCoordinates target)
     {
-        if (!_hands.TryGetEmptyHand(soldier.Owner, out var hand))
+        if (!EntityManager.System<SoldierActionSystem>().Can(soldier, SoldierCapability.Grenade) ||
+            EntityManager.System<SoldierActionSystem>().IsBlocked(soldier, SoldierActionResource.Hands | SoldierActionResource.Interaction, 70) ||
+            !_hands.TryGetEmptyHand(soldier.Owner, out var hand))
             return false;
 
         var gunHand = _hands.GetActiveHand(soldier.Owner);
@@ -213,7 +224,7 @@ public sealed class SoldierGrenadeSystem : EntitySystem
 
         // The explosion is not an alarm for the squad.
         if (thrown)
-            _hearing.ExpectExplosion(target);
+            _hearing.ExpectExplosion(soldier, target);
 
         if (!thrown && _hands.GetActiveItem(soldier.Owner) == grenade)
             _hands.TryDrop(soldier.Owner, grenade, checkActionBlocker: false);

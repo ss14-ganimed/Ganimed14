@@ -183,6 +183,18 @@ public sealed partial class SoldierLootSystem : EntitySystem
         var query = EntityQueryEnumerator<SoldierComponent>();
         while (query.MoveNext(out var uid, out var soldier))
         {
+            if (HasComp<SoldierClassComponent>(uid))
+            {
+                var actions = EntityManager.System<SoldierActionSystem>();
+                if (actions.IsBlocked(uid, SoldierActionResource.Movement | SoldierActionResource.Hands, 20))
+                    continue;
+                if (soldier.Loot != SoldierLootPhase.None)
+                    actions.TryAcquire((uid, soldier), "loot", SoldierActionResource.Movement | SoldierActionResource.Hands | SoldierActionResource.Interaction, 20, out _);
+                else
+                    actions.Release(uid, "loot");
+            }
+            if (TryComp(uid, out SoldierAssignmentComponent? task) && task.Kind != SoldierMissionKind.Prepare)
+                continue;
             if (soldier.Loot != SoldierLootPhase.None)
             {
                 UpdateJob((uid, soldier), now);
@@ -238,7 +250,7 @@ public sealed partial class SoldierLootSystem : EntitySystem
         }
 
         return _squad.IsOperational(ent) &&
-               !HasComp<SoldierHQComponent>(ent) &&
+               !_squad.IsHeadquarters(ent) &&
                !(TryComp(ent, out SoldierMedicComponent? medic) && medic.Phase != SoldierMedicPhase.None);
     }
 

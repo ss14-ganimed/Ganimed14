@@ -23,11 +23,15 @@ public sealed class SoldierInfoSystem : EntitySystem
     /// </summary>
     public event Action<SoldierInfoEvent>? InfoReceived;
 
+    public event Action<string>? ControlResult;
+    public void Control(SoldierControlRequest request) => RaiseNetworkEvent(request);
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeNetworkEvent<SoldierInfoEvent>(OnInfo);
+        SubscribeNetworkEvent<SoldierControlResultEvent>(ev => ControlResult?.Invoke(ev.Status));
     }
 
     private void OnInfo(SoldierInfoEvent ev)

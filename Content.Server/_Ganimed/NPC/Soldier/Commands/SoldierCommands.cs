@@ -65,14 +65,14 @@ public sealed class SoldierAlertCommand : LocalizedEntityCommands
             return;
         }
 
-        if (!EntityManager.TryGetComponent(hostUid, out SoldierSquadComponent? squadComponent))
+        var targets = FindSquads(hostUid);
+        if (targets.Count == 0)
         {
             shell.WriteError(Loc.GetString("cmd-soldier_alert-no-squad"));
             return;
         }
 
-        var squad = (hostUid, squadComponent);
-
+        foreach (var squad in targets)
         switch (level)
         {
             case SoldierAlertLevel.Calm:
@@ -98,6 +98,33 @@ public sealed class SoldierAlertCommand : LocalizedEntityCommands
         }
 
         shell.WriteLine(Loc.GetString("cmd-soldier_alert-done", ("level", level.ToString())));
+    }
+
+    /// <summary>Accepts a squad, one of its members, or all squads currently present on a grid/map.</summary>
+    private List<Entity<SoldierSquadComponent>> FindSquads(EntityUid target)
+    {
+        if (EntityManager.TryGetComponent(target, out SoldierSquadComponent? explicitSquad))
+            return new List<Entity<SoldierSquadComponent>> { (target, explicitSquad) };
+
+        if (EntityManager.TryGetComponent(target, out SoldierComponent? member) &&
+            _squads.TryGetSquad((target, member), out var memberSquad))
+            return new List<Entity<SoldierSquadComponent>> { memberSquad };
+
+        var result = new List<Entity<SoldierSquadComponent>>();
+        var query = EntityManager.AllEntityQueryEnumerator<SoldierSquadComponent>();
+        while (query.MoveNext(out var uid, out var squad))
+        {
+            foreach (var soldier in squad.Members)
+            {
+                if (!EntityManager.TryGetComponent(soldier, out TransformComponent? xform) ||
+                    xform.GridUid != target && xform.MapUid != target)
+                    continue;
+
+                result.Add((uid, squad));
+                break;
+            }
+        }
+        return result;
     }
 
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)

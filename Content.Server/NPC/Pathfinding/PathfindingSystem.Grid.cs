@@ -9,6 +9,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Physics.Components; // Ganimed-Add
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -44,6 +45,7 @@ public sealed partial class PathfindingSystem
         SubscribeLocalEvent<CollisionChangeEvent>(OnCollisionChange);
         SubscribeLocalEvent<CollisionLayerChangeEvent>(OnCollisionLayerChange);
         SubscribeLocalEvent<PhysicsBodyTypeChangedEvent>(OnBodyTypeChange);
+        SubscribeLocalEvent<PhysicsComponent, EntityTerminatingEvent>(OnBodyTerminating); // Ganimed-Add
         SubscribeLocalEvent<TileChangedEvent>(OnTileChange);
         _transform.OnGlobalMoveEvent += OnMoveEvent;
     }
@@ -267,6 +269,16 @@ public sealed partial class PathfindingSystem
             DirtyChunkArea(xform.GridUid.Value, aabb);
         }
     }
+
+    // Ganimed-Add-Start: deleting a wall must invalidate navigation before physics shuts down without collision events.
+    private void OnBodyTerminating(Entity<PhysicsComponent> ent, ref EntityTerminatingEvent args)
+    {
+        if (!ent.Comp.CanCollide || !TryComp(ent, out FixturesComponent? fixtures) || !IsBodyRelevant(fixtures) ||
+            !TryComp(ent, out TransformComponent? xform) || xform.GridUid is not { } grid || _gridQuery.HasComponent(ent))
+            return;
+        DirtyChunkArea(grid, _lookup.GetAABBNoContainer(ent, xform.Coordinates.Position, xform.LocalRotation));
+    }
+    // Ganimed-Add-End
 
     private void OnMoveEvent(ref MoveEvent ev)
     {

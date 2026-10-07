@@ -102,7 +102,7 @@ public sealed class SoldierPatrolSystem : EntitySystem
             if (Vector2.Distance(worldPos, ourPos) < MinPatrolStep)
                 continue;
 
-            if (!CanStandAt(soldier, coordinates))
+            if (!CanStandAt(soldier, coordinates) || !EntityManager.System<SoldierSafetySystem>().IsSafe(soldier, coordinates, patrol: true))
                 continue;
 
             comp.LastPatrolTile = tile;
@@ -288,7 +288,7 @@ public sealed class SoldierPatrolSystem : EntitySystem
             var tile = _map.TileIndicesFor(gridUid, grid, mapPos);
             var coordinates = _map.GridTileToLocal(gridUid, grid, tile);
 
-            if (!CanStandAt(soldier, coordinates))
+            if (!CanStandAt(soldier, coordinates) || !EntityManager.System<SoldierSafetySystem>().IsSafe(soldier, coordinates, patrol: true))
                 continue;
 
             point = coordinates;
@@ -315,7 +315,7 @@ public sealed class SoldierPatrolSystem : EntitySystem
         var now = _timing.CurTime;
 
         // The soldier has ended up somewhere else (carried away, teleported, got off the grid): that place is its post now.
-        if (comp.Home is not { } home || ShouldRehome(soldier, home))
+        if (comp.Home is not { } home || !HasComp<SoldierAssignmentComponent>(soldier) && ShouldRehome(soldier, home))
         {
             comp.Home = Transform(soldier).Coordinates;
             comp.PatrolDirty = true;

@@ -447,6 +447,10 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
         }
 
         steering.PathfindToken = new CancellationTokenSource();
+        // Ganimed-Add-Start: a replaced steering/order must never receive an old async path.
+        var requestToken = steering.PathfindToken;
+        var requestedGoal = steering.Coordinates;
+        // Ganimed-Add-End
 
         var flags = _pathfindingSystem.GetFlags(uid);
 
@@ -458,6 +462,12 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
             steering.PathfindToken.Token,
             flags);
 
+        // Ganimed-Add-Start
+        if (TerminatingOrDeleted(uid) || requestToken.IsCancellationRequested ||
+            !TryComp(uid, out NPCSteeringComponent? current) || current != steering ||
+            steering.PathfindToken != requestToken || steering.Coordinates != requestedGoal)
+            return;
+        // Ganimed-Add-End
         steering.PathfindToken = null;
 
         if (result.Result == PathResult.NoPath)

@@ -1,0 +1,84 @@
+# SPDX-FileCopyrightText: 2026 Ganimed14 contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseItem
+  id: SoldierCommandTabletNT
+  name: NT squad command tablet
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/tablets.rsi
+    state: tablet
+  - type: Item
+    size: Small
+  - type: SoldierTablet
+    faction: GanimedSoldierNT
+  - type: AccessReader
+    access: [[Command], [CentralCommand]]
+  - type: UserInterface
+    interfaces:
+      enum.SoldierTabletUiKey.Key:
+        type: SoldierTabletBoundUserInterface
+  - type: ActivatableUI
+    key: enum.SoldierTabletUiKey.Key
+
+- type: entity
+  parent: SoldierCommandTabletNT
+  id: SoldierCommandTabletERT
+  components:
+  - type: SoldierTablet
+    faction: GanimedSoldierERT
+  - type: AccessReader
+    access: [[GanimedNPCCommandERT]]
+
+- type: entity
+  parent: SoldierCommandTabletNT
+  id: SoldierCommandTabletSyndicate
+  components:
+  - type: SoldierTablet
+    faction: GanimedSoldierSyndicate
+  - type: AccessReader
+    access: [[GanimedNPCCommandSyndicate]]
+
+- type: entity
+  parent: SoldierCommandTabletSyndicate
+  id: SoldierCommandTabletNuclear
+  components:
+  - type: SoldierTablet
+    faction: GanimedSoldierNuclear
+  - type: AccessReader
+    access: [[GanimedNPCCommandNuclear]]
+
+- type: accessLevel
+  id: GanimedNPCCommandSyndicate
+  name: soldier-access-syndicate-command
+
+- type: accessLevel
+  id: GanimedNPCCommandNuclear
+  name: soldier-access-nuclear-command
+
+- type: entity
+  parent: SyndiCommanderIDCard
+  id: SoldierSyndicateCommanderIDCard
+  components:
+  - type: Access
+    groups: [AllAccess]
+    tags: [SyndicateAgent, GanimedNPCCommandSyndicate]
+
+- type: entity
+  parent: SoldierSyndicateCommanderIDCard
+  id: SoldierNuclearCommanderIDCard
+  components:
+  - type: Access
+    groups: [AllAccess]
+    tags: [NuclearOperative, GanimedNPCCommandNuclear]
+
+- type: accessLevel
+  id: GanimedNPCCommandERT
+  name: soldier-access-ert-command
+
+- type: soldierCommandAccess
+  id: GanimedERTCommandCards
+  jobs: [CentralCommandOfficial, ERTLeader]
+  tags: [GanimedNPCCommandERT]

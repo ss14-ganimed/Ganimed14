@@ -15,7 +15,7 @@ namespace Content.Server._Ganimed.NPC.Soldier.Systems;
 
 /// <summary>
 /// The squad of soldiers: who belongs to it, the alert level it is on, and the ways to send a soldier somewhere. A squad is
-/// all the soldiers of one grid (or of one map, if they are off grid), and it is held on that grid.
+/// an explicit roster on its own entity, independent of the grid its members occupy.
 /// </summary>
 /// <remarks>
 /// The squad does not decide anything: the decisions are made by its commander (see <see cref="SoldierCommandSystem"/>)
@@ -39,6 +39,12 @@ public sealed partial class SoldierSquadSystem : EntitySystem
     [Dependency] private readonly SoldierPatrolSystem _patrol = default!;
     [Dependency] private readonly SoldierRadioSystem _radio = default!;
 
+    [Dependency] private readonly SoldierBreachSystem _breach = default!;
+    [Dependency] private readonly SoldierMedicSystem _medic = default!;
+    [Dependency] private readonly SoldierMedicalSystem _medical = default!;
+    [Dependency] private readonly SoldierSupplySystem _supply = default!;
+    [Dependency] private readonly SoldierLootSystem _loot = default!;
+
     private EntityQuery<SoldierComponent> _soldierQuery;
     private EntityQuery<SoldierSquadComponent> _squadQuery;
 
@@ -60,16 +66,20 @@ public sealed partial class SoldierSquadSystem : EntitySystem
     {
         var xform = Transform(ent);
 
-        // The squad of a soldier is the grid it has appeared on (or the map if it is off grid).
+        // Preserve legacy spawn grouping, but never use a grid as the squad entity.
         var host = xform.GridUid ?? xform.MapUid;
         if (host is not { } hostUid)
             return;
 
-        var squad = EnsureComp<SoldierSquadComponent>(hostUid);
-        squad.Members.Add(ent);
-        ent.Comp.Squad = hostUid;
+        var registry = EnsureComp<SoldierSquadRegistryComponent>(hostUid);
+        var key = (ent.Comp.SquadFaction, ent.Comp.SquadGroup);
+        if (!registry.Squads.TryGetValue(key, out var squadUid) || TerminatingOrDeleted(squadUid) || EntityManager.IsQueuedForDeletion(squadUid))
+        {
+            squadUid = CreateSquad(ent.Comp.SquadFaction, ent.Comp.SquadGroup);
+            registry.Squads[key] = squadUid;
+        }
 
-        _patrol.SetHome(ent, xform.Coordinates);
+        TryAssign(ent, (squadUid, Comp<SoldierSquadComponent>(squadUid)));
     }
 
     private void OnSoldierShutdown(Entity<SoldierComponent> ent, ref ComponentShutdown args)
@@ -96,6 +106,114 @@ public sealed partial class SoldierSquadSystem : EntitySystem
             OnMemberDowned((uid, squad), ent, args.NewMobState == MobState.Dead);
     }
 
+    /// <summary>Creates a squad in nullspace: deleting its old grid cannot delete a travelling squad.</summary>
+    public EntityUid CreateSquad(Robust.Shared.Prototypes.ProtoId<Content.Shared.NPC.Prototypes.NpcFactionPrototype> faction, string group)
+    {
+        var uid = Spawn();
+        var squad = AddComp<SoldierSquadComponent>(uid);
+        squad.Faction = faction;
+        squad.Group = group;
+        return uid;
+    }
+
+    /// <summary>Transfers a member after validating the destination; invalid requests leave the old squad intact.</summary>
+    public bool TryAssign(Entity<SoldierComponent> soldier, Entity<SoldierSquadComponent> destination)
+    {
+        if (TerminatingOrDeleted(soldier) || TerminatingOrDeleted(destination) || EntityManager.IsQueuedForDeletion(destination) ||
+            soldier.Comp.SquadFaction != destination.Comp.Faction)
+            return false;
+
+        if (soldier.Comp.Squad == destination.Owner)
+            return true;
+
+        if (soldier.Comp.Squad != null)
+        {
+            _breach.CancelForTransfer(soldier);
+            _medic.CancelForTransfer(soldier);
+            _supply.CancelSupply(soldier);
+            _loot.CancelLoot(soldier);
+            _medical.AbortFirstAid(soldier);
+            ClearOrder(soldier);
+            soldier.Comp.ReturnTo = null;
+            soldier.Comp.Role = SoldierCombatRole.Assault;
+            soldier.Comp.SectorRooms.Clear();
+            soldier.Comp.SectorKey = false;
+            soldier.Comp.LastSectorRoom = null;
+            soldier.Comp.KnownAlert = SoldierAlertLevel.Calm;
+            soldier.Comp.MoveDelayHolding = false;
+            _brain.SetHold(soldier, false);
+            _brain.Interrupt(soldier);
+            Leave(soldier);
+            RemComp<SoldierLinkComponent>(soldier);
+            RemComp<SoldierAssignmentComponent>(soldier);
+            soldier.Comp.LastMissionVersion = 0;
+            RemComp<SoldierActionComponent>(soldier);
+        }
+
+        soldier.Comp.MembershipVersion++;
+        soldier.Comp.Squad = destination.Owner;
+        destination.Comp.Members.Add(soldier);
+
+        if (destination.Comp.Headquarters == null && HasComp<SoldierHQComponent>(soldier))
+            TrySetHeadquarters(destination, soldier);
+
+        _patrol.SetHome(soldier, Transform(soldier).Coordinates);
+        return true;
+    }
+
+    /// <summary>Assigns an explicit headquarters from this squad, without changing its class or faction.</summary>
+    public bool TrySetHeadquarters(Entity<SoldierSquadComponent> squad, EntityUid? headquarters)
+    {
+        if (headquarters is { } candidate &&
+            (!squad.Comp.Members.Contains(candidate) || !_soldierQuery.TryComp(candidate, out var soldier) ||
+             soldier.Squad != squad.Owner || TerminatingOrDeleted(candidate)))
+            return false;
+
+        if (squad.Comp.Headquarters == headquarters)
+            return true;
+
+        if (squad.Comp.Commander != null)
+        {
+            squad.Comp.Commander = null;
+            squad.Comp.CommandTerm++;
+        }
+
+        squad.Comp.Headquarters = headquarters;
+        squad.Comp.NoCommanderSince = null;
+        return true;
+    }
+
+    /// <summary>Identifies a squad in diagnostics even when different factions use the same spawn group name.</summary>
+    public string DisplayName(SoldierSquadComponent squad)
+    {
+        var faction = Loc.TryGetString("soldier-faction-" + squad.Faction.Id, out var label)
+            ? label
+            : squad.Faction.Id;
+        var group = squad.Group == "Default" ? Loc.GetString("soldier-squad-default") : squad.Group;
+        return $"{faction}: {group}";
+    }
+
+    /// <summary>Headquarters is an assignment, independent of the member's class or spawn prototype.</summary>
+    public bool IsHeadquarters(EntityUid member)
+    {
+        return _soldierQuery.TryComp(member, out var soldier) &&
+               soldier.Squad is { } squadUid && _squadQuery.TryComp(squadUid, out var squad) &&
+               squad.Headquarters == member && squad.Members.Contains(member);
+    }
+
+    /// <summary>Messages are accepted only for the original memberships captured when they were written.</summary>
+    public bool IsCurrentMessage(EntityUid receiver, SoldierMessage message)
+    {
+        return _soldierQuery.TryComp(receiver, out var recipient) &&
+               message.Squad is { } squadUid && recipient.Squad == squadUid &&
+               _squadQuery.TryComp(squadUid, out var squad) && squad.Members.Contains(receiver) &&
+               _soldierQuery.TryComp(message.Sender, out var sender) && sender.Squad == squadUid &&
+               squad.Members.Contains(message.Sender) &&
+               sender.MembershipVersion == message.SenderMembershipVersion &&
+               message.RecipientVersions.TryGetValue(receiver, out var version) &&
+               recipient.MembershipVersion == version;
+    }
+
     private void Leave(Entity<SoldierComponent> ent)
     {
         if (ent.Comp.Squad is not { } squadUid || !_squadQuery.TryComp(squadUid, out var squad))
@@ -103,7 +221,19 @@ public sealed partial class SoldierSquadSystem : EntitySystem
 
         squad.Members.Remove(ent);
         _radio.Forget(ent, squad);
+        if (squad.Headquarters == ent.Owner)
+            squad.Headquarters = null;
+        if (squad.Commander == ent.Owner)
+        {
+            squad.Commander = null;
+            squad.CommandTerm++;
+            squad.NoCommanderSince = null;
+        }
+
+        ent.Comp.MembershipVersion++;
         ent.Comp.Squad = null;
+        if (squad.Members.Count == 0)
+            QueueDel(squadUid);
     }
 
     /// <summary>

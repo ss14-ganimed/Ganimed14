@@ -7,7 +7,7 @@ using Robust.Shared.Map;
 namespace Content.Server._Ganimed.NPC.Soldier;
 
 /// <summary>
-/// The headquarters of a squad: a soldier who stays in the rear, takes in the reports of the others and gives the orders.
+/// Marks an initial headquarters candidate at spawn. The squad's explicit Headquarters assignment determines the active HQ role.
 /// While it is alive and on the air, it commands the squad (see <see cref="SoldierCommandComponent"/>); the soldiers
 /// keep their reflexes (they shoot at what they see, take cover, reload, bandage themselves), the decisions of the
 /// squad are the business of the headquarters.

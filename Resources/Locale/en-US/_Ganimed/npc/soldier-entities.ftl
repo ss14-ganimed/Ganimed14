@@ -29,3 +29,8 @@ ent-SoldierRifleAmmoBox = ammunition box (.20 rifle)
 
 ent-ClothingHeadsetSoldier = soldier headset
     .desc = A rugged military headset. It sends the voice straight to the common frequency.
+
+ent-ClothingHeadsetSoldierNT = NT field headset
+    .desc = A portable NT military radio with a security channel, independent of station telecomms.
+ent-ClothingHeadsetSoldierNTHQ = NT field command headset
+    .desc = A portable NT squad command radio with security and command encryption keys.

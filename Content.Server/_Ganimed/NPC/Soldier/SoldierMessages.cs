@@ -28,6 +28,15 @@ public abstract class SoldierMessage
     /// </summary>
     public EntityUid Sender;
 
+    /// <summary>Squad identity when written; relays preserve it.</summary>
+    public EntityUid? Squad;
+
+    /// <summary>Sender membership when written.</summary>
+    public int SenderMembershipVersion;
+
+    /// <summary>Intended memberships, so joining or rejoining never revives a queued old message.</summary>
+    public readonly Dictionary<EntityUid, int> RecipientVersions = new();
+
     /// <summary>
     /// When the message was written.
     /// </summary>
@@ -57,6 +66,7 @@ public abstract class SoldierMessage
 public sealed class ContactReport : SoldierMessage
 {
     public EntityUid Enemy;
+    public bool ObservedAttack;
 
     /// <summary>
     /// Where the enemy is.

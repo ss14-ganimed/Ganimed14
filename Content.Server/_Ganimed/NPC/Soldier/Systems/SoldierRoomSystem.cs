@@ -2,8 +2,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using System.Numerics;
 using Content.Server.Atmos.Components;
+using Content.Server.Atmos.EntitySystems;
 using Content.Server.NPC.Pathfinding;
 using Content.Shared.Doors.Components;
 using Content.Shared.NPC;
@@ -96,52 +98,97 @@ public sealed class SoldierRoomSystem : EntitySystem
 
         _airtightQuery = GetEntityQuery<AirtightComponent>();
         _doorQuery = GetEntityQuery<DoorComponent>();
+        SubscribeLocalEvent<AirtightChanged>(OnGeometryChanged);
+        SubscribeLocalEvent<TileChangedEvent>(OnTileChanged);
+    }
+
+    private void OnGeometryChanged(ref AirtightChanged args)
+    {
+        // Opening a door changes airflow, but the doorway still separates the same rooms.
+        if (args.AirBlockedChanged && HasComp<DoorComponent>(args.Entity) && !TerminatingOrDeleted(args.Entity))
+            return;
+        InvalidateGeometry(args.Position.Grid);
+        if (Transform(args.Entity).GridUid is { } grid && grid != args.Position.Grid)
+            InvalidateGeometry(grid);
+    }
+
+    private void OnTileChanged(ref TileChangedEvent args)
+    {
+        if (args.Changes.Any(change => change.OldTile.IsEmpty != change.NewTile.IsEmpty))
+            InvalidateGeometry(args.Entity);
+    }
+
+    private void InvalidateGeometry(EntityUid grid)
+    {
+        if (!TerminatingOrDeleted(grid) && HasComp<MapGridComponent>(grid))
+            EnsureComp<SoldierRoomGeometryComponent>(grid).Version++;
     }
 
     #region The plan
 
     /// <summary>
-    /// The plan of the squad's rooms. Null if the squad is not on a grid.
+    /// The plan on the requested grid, or the commander's current grid. Null if no suitable member grid is available.
     /// </summary>
     /// <param name="squad">The squad.</param>
     /// <param name="need">A place the plan has to cover: if it does not (the squad has walked away), it is made again.</param>
     public SoldierRoomMap? GetMap(Entity<SoldierSquadComponent> squad, EntityCoordinates? need = null)
     {
         var comp = squad.Comp;
+        EntityUid? selectedGrid = null;
+
+        if (need is { } requested)
+            selectedGrid = _transform.GetGrid(OnGrid(requested));
+        else if (comp.Commander is { } commander && !TerminatingOrDeleted(commander))
+            selectedGrid = Transform(commander).GridUid;
+        else
+        {
+            foreach (var member in comp.Members)
+            {
+                if (!TerminatingOrDeleted(member) && Transform(member).GridUid is { } memberGrid)
+                {
+                    selectedGrid = memberGrid;
+                    break;
+                }
+            }
+        }
+
+        if (selectedGrid is not { } gridUid || !TryComp(gridUid, out MapGridComponent? grid))
+            return null;
+
         var now = _timing.CurTime;
-        var current = comp.Rooms;
+        comp.RoomMaps.TryGetValue(gridUid, out var current);
+        if (!comp.RoomMemory.TryGetValue(gridUid, out var marks))
+            comp.RoomMemory[gridUid] = marks = new Dictionary<int, SoldierRoomMark>();
+        comp.RoomMarks = marks;
+        comp.Rooms = current;
 
         if (current != null)
         {
             var age = now - current.ComputedAt;
-
-            if (age < RoomRefresh && (need == null || age < MinRebuildGap || Covers(current, need.Value)))
+            var geometry = TryComp(gridUid, out SoldierRoomGeometryComponent? changes) ? changes.Version : 0;
+            if (age < MinRebuildGap || current.GeometryVersion == geometry && age < RoomRefresh && (need == null || Covers(current, need.Value)))
                 return current;
         }
 
-        if (!TryComp(squad.Owner, out MapGridComponent? grid))
-            return current;
-
         var seeds = new List<Vector2i>(comp.Members.Count + 1);
-
-        if (need is { } wanted && OnGrid(wanted) is var place && _transform.GetGrid(place) == squad.Owner)
-            seeds.Add(_map.CoordinatesToTile(squad.Owner, grid, place));
+        if (need is { } wanted && OnGrid(wanted) is var place && _transform.GetGrid(place) == gridUid)
+            seeds.Add(_map.CoordinatesToTile(gridUid, grid, place));
 
         foreach (var member in comp.Members)
         {
             if (TerminatingOrDeleted(member))
                 continue;
-
             var xform = Transform(member);
-            if (xform.GridUid == squad.Owner)
-                seeds.Add(_map.CoordinatesToTile(squad.Owner, grid, xform.Coordinates));
+            if (xform.GridUid == gridUid)
+                seeds.Add(_map.CoordinatesToTile(gridUid, grid, xform.Coordinates));
         }
 
         if (seeds.Count == 0)
             return current;
 
-        var map = Build(squad.Owner, grid, seeds, now);
+        var map = Build(gridUid, grid, seeds, now);
         RemapMarks(comp, current, map);
+        comp.RoomMaps[gridUid] = map;
         comp.Rooms = map;
         return map;
     }
@@ -161,7 +208,11 @@ public sealed class SoldierRoomSystem : EntitySystem
     {
         using var _ = _prof.Group("Soldier.Rooms.Build");
 
-        var map = new SoldierRoomMap { Grid = gridUid, ComputedAt = now };
+        var map = new SoldierRoomMap
+        {
+            Grid = gridUid, ComputedAt = now,
+            GeometryVersion = TryComp(gridUid, out SoldierRoomGeometryComponent? changes) ? changes.Version : 0
+        };
 
         // The region: the floor that can be walked to from the soldiers (doors are walked through), ring after ring.
         var floor = new HashSet<Vector2i>();
@@ -819,6 +870,8 @@ public sealed class SoldierRoomSystem : EntitySystem
     /// </summary>
     public bool CanStandAt(EntityUid uid, EntityCoordinates coordinates)
     {
+        if (!EntityManager.System<SoldierSafetySystem>().IsSafe(uid, coordinates))
+            return false;
         var poly = _pathfinding.GetPoly(OnGrid(coordinates));
         if (poly == null || !poly.IsValid())
             return false;

@@ -178,6 +178,9 @@ public sealed partial class SoldierMedicComponent : Component
 
     public TimeSpan IgnoredUntil;
 
+    /// <summary>Failures are remembered per patient so several unreachable casualties cannot cause a retry loop.</summary>
+    public readonly Dictionary<EntityUid, TimeSpan> IgnoredPatients = new();
+
     /// <summary>
     /// The comrade the commander has told the medic to look after, and the time until which the order stands: such a
     /// comrade is helped first (the medic still helps others if he is out of reach or well again).

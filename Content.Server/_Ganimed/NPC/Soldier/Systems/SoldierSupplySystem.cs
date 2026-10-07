@@ -144,6 +144,22 @@ public sealed class SoldierSupplySystem : EntitySystem
         var query = EntityQueryEnumerator<SoldierComponent>();
         while (query.MoveNext(out var uid, out var soldier))
         {
+            if (HasComp<SoldierClassComponent>(uid))
+            {
+                var actions = EntityManager.System<SoldierActionSystem>();
+                if (actions.IsBlocked(uid, SoldierActionResource.Movement | SoldierActionResource.Hands, 30))
+                    continue;
+                if (soldier.Supply != SoldierSupplyPhase.None)
+                    actions.TryAcquire((uid, soldier), "supply", SoldierActionResource.Movement | SoldierActionResource.Hands | SoldierActionResource.Interaction, 30, out _);
+                else
+                    actions.Release(uid, "supply");
+            }
+            if (TryComp(uid, out SoldierClassComponent? cls) && cls.Expeditionary)
+            {
+                if (soldier.Supply != SoldierSupplyPhase.None)
+                    CancelSupply((uid, soldier));
+                continue;
+            }
             if (soldier.Supply != SoldierSupplyPhase.None)
             {
                 UpdateJob((uid, soldier), now);
@@ -211,7 +227,7 @@ public sealed class SoldierSupplySystem : EntitySystem
         var soldier = ent.Comp;
 
         if (!_squad.IsOperational(ent) ||
-            HasComp<SoldierHQComponent>(ent) ||
+            _squad.IsHeadquarters(ent) ||
             soldier.Mode == SoldierMode.Engage ||
             soldier.Target != null ||
             soldier.Recovery != SoldierRecoveryPhase.None ||

@@ -61,13 +61,14 @@ public sealed partial class SoldierCommsSystem
         float delay = 0.3f,
         string? direction = null)
     {
-        if (!_commandQuery.TryComp(commander, out var command))
+        if (!_commandQuery.TryComp(commander, out var command) || !_command.IsCommanding(commander))
             return;
 
         var link = EnsureComp<SoldierLinkComponent>(commander);
 
         order.Id = link.NextMessageId++;
         order.Sender = commander;
+        StampMembership(commander, order);
         order.Written = _timing.CurTime;
         order.Rank = command.Rank;
         order.Term = command.Term;
@@ -87,7 +88,9 @@ public sealed partial class SoldierCommsSystem
         var link = EnsureComp<SoldierLinkComponent>(ent);
 
         // Nobody takes orders from itself, or from a commander it does not recognize.
-        if (order.Sender == ent.Owner || !Obeys(link, order))
+        if (order.Sender == ent.Owner || !_command.IsCommanding(order.Sender) ||
+            !_commandQuery.TryComp(order.Sender, out var authority) ||
+            authority.Term != order.Term || authority.Rank != order.Rank || !Obeys(link, order))
             return;
 
         // An order that was heard twice (aloud and over the radio) is carried out once.
@@ -134,6 +137,9 @@ public sealed partial class SoldierCommsSystem
 
         switch (order)
         {
+            case MissionOrder mission:
+                EntityManager.System<SoldierMissionSystem>().Accept(ent, mission);
+                break;
             case AlertOrder alert:
                 HandleAlert(ent, alert);
                 break;
@@ -253,7 +259,7 @@ public sealed partial class SoldierCommsSystem
                soldier.Recovery == SoldierRecoveryPhase.None &&
                soldier.FirstAid == SoldierFirstAidPhase.None &&
                soldier.Supply == SoldierSupplyPhase.None &&
-               !HasComp<SoldierHQComponent>(ent) &&
+               !_squad.IsHeadquarters(ent) &&
                !(TryComp(ent, out SoldierMedicComponent? medic) && medic.Phase != SoldierMedicPhase.None);
     }
 
@@ -353,7 +359,7 @@ public sealed partial class SoldierCommsSystem
     /// </summary>
     private void HandleSector(Entity<SoldierComponent> ent, SectorOrder order)
     {
-        if (HasComp<SoldierHQComponent>(ent) || !order.Assignments.TryGetValue(ent, out var assignment))
+        if (_squad.IsHeadquarters(ent) || !order.Assignments.TryGetValue(ent, out var assignment))
             return;
 
         TakePost(ent, assignment.Post, assignment.Radius, assignment.Rooms, assignment.Key);
@@ -428,7 +434,7 @@ public sealed partial class SoldierCommsSystem
         var soldier = ent.Comp;
 
         // The medic and the headquarters do not storm anything.
-        if (HasComp<SoldierMedicComponent>(ent) || HasComp<SoldierHQComponent>(ent))
+        if (HasComp<SoldierMedicComponent>(ent) || _squad.IsHeadquarters(ent))
             return;
 
         // A soldier that gets up, or bandages itself, is not a part of the assault: another one is sent.
@@ -490,7 +496,7 @@ public sealed partial class SoldierCommsSystem
     /// </summary>
     private void HandleResupply(Entity<SoldierComponent> ent, SoldierLinkComponent link, ResupplyOrder order)
     {
-        if (HasComp<SoldierHQComponent>(ent))
+        if (_squad.IsHeadquarters(ent))
             return;
 
         // The soldier is on its way to that crate already (the commander did not answer for long, and the soldier did not wait
@@ -520,7 +526,7 @@ public sealed partial class SoldierCommsSystem
     {
         var soldier = ent.Comp;
 
-        if (HasComp<SoldierMedicComponent>(ent) || HasComp<SoldierHQComponent>(ent))
+        if (HasComp<SoldierMedicComponent>(ent) || _squad.IsHeadquarters(ent))
             return;
 
         if (soldier.Recovery != SoldierRecoveryPhase.None || soldier.FirstAid != SoldierFirstAidPhase.None)
@@ -554,7 +560,7 @@ public sealed partial class SoldierCommsSystem
         var now = _timing.CurTime;
 
         // The medic and the headquarters keep behind the others whatever they are told.
-        if (HasComp<SoldierMedicComponent>(ent) || HasComp<SoldierHQComponent>(ent))
+        if (HasComp<SoldierMedicComponent>(ent) || _squad.IsHeadquarters(ent))
             return;
 
         soldier.Role = order.Role;

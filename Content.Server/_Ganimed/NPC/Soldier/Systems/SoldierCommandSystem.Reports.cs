@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Shared._Ganimed.NPC.Soldier;
 using Robust.Shared.Map;
 
@@ -208,6 +209,10 @@ public sealed partial class SoldierCommandSystem
 
     private void OnCasualty(Entity<SoldierCommandComponent> commander, CasualtyReport report, TimeSpan now)
     {
+        // Radio delivery can outlive the casualty (gibbing, deletion, transfer cleanup).
+        if (TerminatingOrDeleted(report.Casualty))
+            return;
+
         var picture = commander.Comp.Picture;
 
         if (Friend(commander, report.Sender) is { } reporter)
@@ -314,6 +319,8 @@ public sealed partial class SoldierCommandSystem
                 assignment.Acknowledged = true;
                 assignment.Arrived = true;
                 assignment.Done = true;
+                if (report.Progress == SoldierProgress.Cleared)
+                    RememberClearedRoom(commander, assignment, report);
                 AddThought(commander.Comp, "soldier-thought-progress-cleared", ("name", _comms.ShortName(report.Sender)));
                 break;
 
@@ -323,5 +330,23 @@ public sealed partial class SoldierCommandSystem
                 AddThought(commander.Comp, "soldier-thought-progress-declined", ("name", _comms.ShortName(report.Sender)));
                 break;
         }
+    }
+
+    /// <summary>A completed search also clears an already occupied room, without needing an entry through a door.</summary>
+    private void RememberClearedRoom(Entity<SoldierCommandComponent> commander, SoldierAssignment assignment, ProgressReport report)
+    {
+        if (assignment.Kind is not (SoldierAssignmentKind.Check or SoldierAssignmentKind.Search or SoldierAssignmentKind.Push) ||
+            !TryComp(commander.Owner, out SoldierComponent? soldier) ||
+            !_squad.TryGetSquad(new Entity<SoldierComponent?>(commander.Owner, soldier), out var squad) ||
+            _transform.GetGrid(report.Position) != _transform.GetGrid(assignment.Position) ||
+            _rooms.GetMap(squad, report.Position) is not { } map)
+            return;
+        var room = _rooms.RoomAt(map, report.Position);
+        if (room < 0 || room != _rooms.RoomAt(map, assignment.Position))
+            return; // A timed-out walk did not clear a room the reporter never reached.
+        if (squad.Comp.RoomMarks.TryGetValue(room, out var mark) && mark.HotAt > report.Written ||
+            commander.Comp.Picture.Enemies.Values.Any(e => !e.Down && e.SeenAt >= report.Written && _rooms.RoomAt(map, e.Position) == room))
+            return; // A delayed report cannot erase newer activity or a contact.
+        _rooms.MarkCleared(squad, room, report.Written);
     }
 }

@@ -34,6 +34,10 @@ public sealed class SoldierInfoWindow : DefaultWindow
     private readonly Label _decision = new() { FontColorOverride = Color.Gold };
     private readonly OutputPanel _feed = new() { VerticalExpand = true, MinHeight = 180 };
     private readonly OptionButton _squads = new() { Visible = false };
+    public readonly SoldierControlPanel Commands = new();
+    private readonly CheckBox _zones = new() { Text = Loc.GetString("soldier-control-zones") };
+    public event Action<bool>? ZonesChanged;
+
     private readonly OptionButton _interval = new();
     private readonly CheckBox _overlay = new() { Text = Loc.GetString("soldier-info-overlay"), Pressed = true };
 
@@ -58,12 +62,13 @@ public sealed class SoldierInfoWindow : DefaultWindow
     public float Interval => Intervals[Math.Clamp(_interval.SelectedId, 0, Intervals.Length - 1)];
 
     public bool OverlayShown => _overlay.Pressed;
+    public bool ZonesShown => _zones.Pressed;
 
     public SoldierInfoWindow()
     {
         Title = Loc.GetString("soldier-info-title");
         MinSize = new Vector2(440, 380);
-        SetSize = new Vector2(520, 460);
+        SetSize = new Vector2(600, 740);
 
         var root = new BoxContainer
         {
@@ -94,6 +99,8 @@ public sealed class SoldierInfoWindow : DefaultWindow
 
         settings.AddChild(_interval);
         settings.AddChild(_overlay);
+        settings.AddChild(_zones);
+        _zones.OnToggled += args => ZonesChanged?.Invoke(args.Pressed);
         _overlay.OnToggled += args => OverlayChanged?.Invoke(args.Pressed);
 
         _squads.OnItemSelected += args =>
@@ -110,6 +117,7 @@ public sealed class SoldierInfoWindow : DefaultWindow
         };
 
         root.AddChild(settings);
+        root.AddChild(Commands);
         root.AddChild(_squads);
         root.AddChild(_alert);
         root.AddChild(_commander);
@@ -126,6 +134,7 @@ public sealed class SoldierInfoWindow : DefaultWindow
     public void SetInfo(SoldierInfoEvent info)
     {
         _last = info;
+        Commands.SetInfo(info.Squads);
 
         if (info.Squads.Count == 0)
         {

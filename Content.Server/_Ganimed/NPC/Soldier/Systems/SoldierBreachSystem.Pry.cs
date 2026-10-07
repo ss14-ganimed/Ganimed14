@@ -57,6 +57,21 @@ public sealed partial class SoldierBreachSystem
     /// </summary>
     private const int MaxPryFailures = 2;
 
+    /// <summary>Checks actual access and available prying tools without opening or reserving the door.</summary>
+    public bool CanPassDoor(Entity<SoldierComponent> ent, EntityUid door)
+    {
+        if (!TryComp(door, out DoorComponent? comp))
+            return false;
+        if (comp.State is DoorState.Open or DoorState.Opening || _door.CanOpen(door, comp, ent.Owner))
+            return true;
+        if (comp.State != DoorState.Closed || !comp.CanPry ||
+            !EntityManager.System<SoldierActionSystem>().Can(ent, Content.Shared._Ganimed.NPC.Soldier.SoldierCapability.Breach))
+            return false;
+        if (_medical.TryFindTool<PryingComponent>(ent, out var tool))
+            return CanPryOpen(ent, door, CompOrNull<PryingComponent>(tool));
+        return HasComp<PryUnpoweredComponent>(door) && CanPryOpen(ent, door, null);
+    }
+
     /// <summary>
     /// Opens the closed door in front of the soldier. A door that opens to a click opens at once; a door that does not (no
     /// power) is pried open, if there is a way to: the soldier starts to work on it, and the answer is "working" until the

@@ -313,9 +313,13 @@ public sealed class SoldierTests
         });
     }
 
-    internal static SoldierSquadComponent Squad(TestPair pair, EntityUid grid)
+    internal static SoldierSquadComponent Squad(TestPair pair, EntityUid grid) => SquadEntity(pair, grid).Comp;
+
+    internal static Entity<SoldierSquadComponent> SquadEntity(TestPair pair, EntityUid grid)
     {
-        return pair.Server.EntMan.GetComponent<SoldierSquadComponent>(grid);
+        var registry = pair.Server.EntMan.GetComponent<SoldierSquadRegistryComponent>(grid);
+        var uid = registry.Squads[(new Robust.Shared.Prototypes.ProtoId<Content.Shared.NPC.Prototypes.NpcFactionPrototype>("Soldier"), "Default")];
+        return (uid, pair.Server.EntMan.GetComponent<SoldierSquadComponent>(uid));
     }
 
     private static SoldierLinkComponent Link(TestPair pair, EntityUid uid)
@@ -398,6 +402,13 @@ public sealed class SoldierTests
                                $"shots={recorder.Shots.GetValueOrDefault(uid)} ammo={ammo.GetAmmoCount(uid)} hands=[{hands}] ranged={ranged} link={link} " +
                                $"known-alert={comp.KnownAlert} no-sight-since={comp.NoSightSince?.TotalSeconds:F1} " +
                                $"rolled={comp.GrenadeRolledForHiding} next-grenade={comp.NextGrenadeAt.TotalSeconds:F1}");
+            var em = pair.Server.EntMan;
+            var leases = em.GetComponentOrNull<SoldierActionComponent>(uid);
+            var safety = em.GetComponentOrNull<SoldierSafetyComponent>(uid);
+            var steering = em.GetComponentOrNull<NPCSteeringComponent>(uid);
+            builder.AppendLine($"hold={comp.HoldPosition} blocked-line={comp.LineBlocked} steering={steering?.Status} goal={steering?.Coordinates} " +
+                               $"safe-route={safety?.Detour.Count} safety-hold={safety?.OwnHold} stopped={safety?.Stopped} " +
+                               $"leases=[{(leases == null ? "" : string.Join(", ", leases.Leases.Select(l => $"{l.Key}:{l.Value.Priority}/{(l.Value.Until - now).TotalSeconds:F1}s")))}]");
         }
 
         return builder.ToString();
@@ -539,7 +550,7 @@ public sealed class SoldierTests
     }
 
     [Test]
-    public async Task SoldiersJoinTheSquadOfTheirGrid()
+    public async Task SoldiersJoinAnIndependentDefaultSquad()
     {
         await using var pair = await PoolManager.GetServerClient();
         var (_, grid, _) = await BuildMap(pair, Hall);
@@ -559,7 +570,8 @@ public sealed class SoldierTests
 
         foreach (var soldier in soldiers)
         {
-            Assert.That(Soldier(pair, soldier).Squad, Is.EqualTo(grid));
+            Assert.That(Soldier(pair, soldier).Squad, Is.EqualTo(SquadEntity(pair, grid).Owner));
+            Assert.That(SquadEntity(pair, grid).Owner, Is.Not.EqualTo(grid));
             Assert.That(Soldier(pair, soldier).Mode, Is.EqualTo(SoldierMode.Patrol));
         }
 
@@ -811,10 +823,11 @@ public sealed class SoldierTests
         });
     }
 
-    [Test]
-    public async Task SeeingTheEnemyIsReportedAndHeadquartersRaisesTheAlertWhileTheSquadFights()
+    [TestCase(1844476971, 1301157232)]
+    [TestCase(1128114381, 2122234752)] // Covers a patrol/formation that first has to clear its line of fire.
+    public async Task SeeingTheEnemyIsReportedAndHeadquartersRaisesTheAlertWhileTheSquadFights(int? serverSeed, int? clientSeed)
     {
-        await using var pair = await PoolManager.GetServerClient();
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { ServerSeed = serverSeed, ClientSeed = clientSeed });
         var (_, grid, _) = await BuildMap(pair, HallRear);
 
         // The headquarters is in the rear room, the soldiers are in the hall.
@@ -877,10 +890,9 @@ public sealed class SoldierTests
         Assert.That(soldiers.All(s => Soldier(pair, s).KnownAlert == SoldierAlertLevel.Alert),
             "the soldiers know about the alert\n" + Dump(pair, grid, everybody, enemy));
 
-        // The squad shoots: the enemy is hurt.
-        await pair.RunSeconds(10);
-        var damage = pair.Server.EntMan.GetComponent<DamageableComponent>(enemy).TotalDamage;
-        Assert.That(damage, Is.GreaterThan(FixedPoint2.Zero), "the soldiers hit the enemy\n" + Dump(pair, grid, everybody, enemy));
+        // Allow a bounded repositioning/advance cycle when comrades initially block the shot.
+        var hit = await Until(pair, 10, () => pair.Server.EntMan.GetComponent<DamageableComponent>(enemy).TotalDamage > FixedPoint2.Zero);
+        Assert.That(hit, "the soldiers hit the enemy\n" + Dump(pair, grid, everybody, enemy));
 
         await Finish(pair, grid);
     }
@@ -1507,7 +1519,8 @@ public sealed class SoldierTests
         });
 
         var tape = new BarkTape(pair, grid);
-        await SettleCommand(pair, grid);
+        // Start as soon as HQ is elected: a calm patrol may otherwise already enter the other room.
+        await SettleCommand(pair, grid, chatter: 0f);
         Assert.That(soldiers.All(s => pair.Server.System<MobStateSystem>().IsAlive(s)), "alive before the shot\n" + Dump(pair, grid, soldiers));
 
         // A shot is fired in the other room, behind the door: the commander sends the soldiers to look.
@@ -2009,7 +2022,7 @@ public sealed class SoldierTests
         var enemyPlace = At(grid, 30, 3);
         var enemyWorld = pair.Server.System<TransformSystem>().ToMapCoordinates(enemyPlace).Position;
 
-        await pair.Server.WaitPost(() => pair.Server.System<SoldierSquadSystem>().RaiseAlert((grid, squad), SoldierAlertLevel.Alert, enemyPlace));
+        await pair.Server.WaitPost(() => pair.Server.System<SoldierSquadSystem>().RaiseAlert(SquadEntity(pair, grid), SoldierAlertLevel.Alert, enemyPlace));
 
         Vector2 PointOf(EntityUid uid)
         {
@@ -2228,14 +2241,14 @@ public sealed class SoldierTests
         await SettleCommand(pair, grid);
 
         // Alert: the enemy is somewhere there, and the commander sends the squad to the place.
-        await pair.Server.WaitPost(() => systems.RaiseAlert((grid, squad), SoldierAlertLevel.Alert, At(grid, 30, 3)));
+        await pair.Server.WaitPost(() => systems.RaiseAlert(SquadEntity(pair, grid), SoldierAlertLevel.Alert, At(grid, 30, 3)));
         Assert.That(squad.Alert, Is.EqualTo(SoldierAlertLevel.Alert));
 
         var hunting = await Until(pair, 12, () => soldiers.All(s => Soldier(pair, s).Mode == SoldierMode.Hunt));
         Assert.That(hunting, "the whole squad hunts\n" + Dump(pair, grid, soldiers));
 
         // The admin calls the alert off: the commander forgets the enemy and tells the squad to stand down.
-        await pair.Server.WaitPost(() => systems.ClearAlert((grid, squad)));
+        await pair.Server.WaitPost(() => systems.ClearAlert(SquadEntity(pair, grid)));
         Assert.That(squad.Alert, Is.EqualTo(SoldierAlertLevel.Calm));
 
         await pair.RunSeconds(5);
@@ -2820,7 +2833,7 @@ public sealed class SoldierTests
     private static int RoomOf(TestPair pair, EntityUid grid, EntityCoordinates place)
     {
         var rooms = pair.Server.System<SoldierRoomSystem>();
-        var squad = new Entity<SoldierSquadComponent>(grid, Squad(pair, grid));
+        var squad = SquadEntity(pair, grid);
         var map = rooms.GetMap(squad);
 
         return map == null ? -1 : rooms.RoomAt(map, place);
@@ -2841,7 +2854,7 @@ public sealed class SoldierTests
         await pair.RunSeconds(1);
 
         var rooms = pair.Server.System<SoldierRoomSystem>();
-        var squad = new Entity<SoldierSquadComponent>(grid, Squad(pair, grid));
+        var squad = SquadEntity(pair, grid);
         var map = rooms.GetMap(squad);
         Assert.That(map, Is.Not.Null, "the squad has a plan of its rooms");
 
@@ -2876,7 +2889,7 @@ public sealed class SoldierTests
         await pair.RunSeconds(1);
 
         var rooms = pair.Server.System<SoldierRoomSystem>();
-        var map = rooms.GetMap(new Entity<SoldierSquadComponent>(grid, Squad(pair, grid)));
+        var map = rooms.GetMap(SquadEntity(pair, grid));
         Assert.That(map, Is.Not.Null);
         Assert.That(map!.Rooms.Count, Is.GreaterThan(1), "a hall of 195 tiles is not one room");
         Assert.That(map.Rooms.All(room => room.Tiles.Count <= 140), "no piece is bigger than the limit");
@@ -2905,7 +2918,7 @@ public sealed class SoldierTests
                 soldiers.Add(pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 3 + i, 2 + i)));
         });
 
-        var squad = new Entity<SoldierSquadComponent>(grid, Squad(pair, grid));
+        var squad = SquadEntity(pair, grid);
         var rooms = pair.Server.System<SoldierRoomSystem>();
         await SettleCommand(pair, grid);
 
@@ -2951,10 +2964,11 @@ public sealed class SoldierTests
         await Finish(pair, grid);
     }
 
-    [Test]
-    public async Task HotRoomIsEnteredWithAFlashbangAndTheTeamGoesInBySectors()
+    [TestCase(null, null)]
+    [TestCase(1568655223, 2101529057)] // Reproduces a hold in the doorway after a map-space entry goal.
+    public async Task HotRoomIsEnteredWithAFlashbangAndTheTeamGoesInBySectors(int? serverSeed, int? clientSeed)
     {
-        await using var pair = await PoolManager.GetServerClient();
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { ServerSeed = serverSeed, ClientSeed = clientSeed });
         var (_, grid, _) = await BuildMap(pair, TwoRooms);
 
         await SpawnHeadquarters(pair, At(grid, 1, 2));
@@ -3207,7 +3221,7 @@ public sealed class SoldierTests
 
             var homeRoom = RoomOf(pair, grid, comp.Home!.Value);
             var rooms = pair.Server.System<SoldierRoomSystem>();
-            var map = rooms.GetMap(new Entity<SoldierSquadComponent>(grid, Squad(pair, grid)));
+            var map = rooms.GetMap(SquadEntity(pair, grid));
             Assert.That(rooms.ResolveAnchors(map!, comp.SectorRooms), Does.Contain(homeRoom), "the post is in the sector of the soldier");
         }
 
@@ -3498,7 +3512,7 @@ public sealed class SoldierTests
         });
 
         var tape = new BarkTape(pair, grid);
-        var squad = new Entity<SoldierSquadComponent>(grid, Squad(pair, grid));
+        var squad = SquadEntity(pair, grid);
         await SettleCommand(pair, grid);
 
         var (enemyColumn, enemyRow) = SoldierPerformanceTests.RoomCenter(1, 1);
@@ -3550,7 +3564,7 @@ public sealed class SoldierTests
         await pair.RunSeconds(1);
 
         var rooms = pair.Server.System<SoldierRoomSystem>();
-        var map = rooms.GetMap(new Entity<SoldierSquadComponent>(grid, Squad(pair, grid)))!;
+        var map = rooms.GetMap(SquadEntity(pair, grid))!;
 
         var (enemyColumn, enemyRow) = SoldierPerformanceTests.RoomCenter(1, 1);
         var enemyRoom = rooms.RoomAt(map, At(grid, enemyColumn, enemyRow));
@@ -4460,13 +4474,18 @@ public sealed class SoldierTests
         await pair.Server.WaitPost(() => soldier = pair.Server.EntMan.SpawnEntity(SoldierId, At(grid, 5, 3)));
         await pair.RunSeconds(5);
 
-        // A magazine far away: the trip takes a while.
-        await pair.Server.WaitPost(() => pair.Server.EntMan.SpawnEntity("MagazineRifle", At(grid, 24, 3)));
+        // A visible magazine far enough away that pickup cannot finish before the enemy arrives.
+        // Use the current position: the initial patrol is random, and a fixed x=24 can stay outside the 14-tile scan.
+        await pair.Server.WaitPost(() => pair.Server.EntMan.SpawnEntity("MagazineRifle",
+            pair.Server.EntMan.GetComponent<TransformComponent>(soldier).Coordinates.Offset(new Vector2(12f, 0f))));
 
         var started = await Until(pair, 40, () => Soldier(pair, soldier).Loot != SoldierLootPhase.None, 0.25f);
         Assert.That(started, "the soldier sets out for the magazine\n" + Dump(pair, grid, new[] { soldier }));
 
-        var enemy = await SpawnDurableEnemy(pair, At(grid, 20, 4));
+        // Keep the contact in actual sight: random patrol/loot movement can leave the fixed x=20 outside vision.
+        var enemyPosition = pair.Server.EntMan.GetComponent<TransformComponent>(soldier).Coordinates.Offset(new Vector2(6f, 0f));
+        var enemy = await SpawnDurableEnemy(pair, enemyPosition);
+        await FaceTowards(pair, soldier, enemy);
 
         var dropped = await Until(pair, 10, () => Soldier(pair, soldier).Loot == SoldierLootPhase.None, 0.1f);
         var message = Dump(pair, grid, new[] { soldier }, enemy);
@@ -4624,7 +4643,7 @@ public sealed class SoldierTests
         Assert.That(planned, "the headquarters has divided the base\n" + Dump(pair, grid, soldiers));
 
         var zonesSystem = pair.Server.System<SoldierZonesSystem>();
-        var squadEntity = new Entity<SoldierSquadComponent>(grid, Squad(pair, grid));
+        var squadEntity = SquadEntity(pair, grid);
         var rooms = pair.Server.System<SoldierRoomSystem>();
         var map = rooms.GetMap(squadEntity)!;
         var now = Now(pair);
@@ -4723,7 +4742,7 @@ public sealed class SoldierTests
             await PutUnderCommand(pair, grid, soldier, headquarters);
         }
 
-        var squadEntity = new Entity<SoldierSquadComponent>(grid, Squad(pair, grid));
+        var squadEntity = SquadEntity(pair, grid);
         var rooms = pair.Server.System<SoldierRoomSystem>();
         var map = rooms.GetMap(squadEntity)!;
 

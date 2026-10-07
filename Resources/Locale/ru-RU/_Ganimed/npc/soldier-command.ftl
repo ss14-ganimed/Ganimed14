@@ -5,6 +5,7 @@
 # Командир отряда: что он думает и решает (лента мыслей и строка решений в панели «Инфо NPC»).
 
 soldier-name-and = и
+soldier-name-unknown = неизвестный боец
 soldier-relay-aloud = Передаю: { $text }
 
 soldier-state-dead = погиб

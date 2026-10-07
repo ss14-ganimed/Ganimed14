@@ -30,6 +30,7 @@ public sealed class SoldierZonesSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SoldierCommsSystem _comms = default!;
     [Dependency] private readonly SoldierRoomSystem _rooms = default!;
+    [Dependency] private readonly SoldierSquadSystem _squad = default!;
 
     /// <summary>
     /// Who may see the zones.
@@ -157,7 +158,7 @@ public sealed class SoldierZonesSystem : EntitySystem
         var info = new SoldierZonesSquad
         {
             Grid = GetNetEntity(map.Grid),
-            Name = Name(squad),
+            Name = _squad.DisplayName(squad.Comp),
         };
 
         SoldierPicture? picture = null;

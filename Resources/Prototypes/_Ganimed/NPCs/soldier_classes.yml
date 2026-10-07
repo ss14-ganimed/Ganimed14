@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: 2026 Ganimed14 contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: soldierClass
+  id: Rifleman
+  capabilities: "Fight, FirstAid, Breach, Grenade"
+  purchases: [ADTBoberAmmoM90, UplinkEstocAmmo, ADTBoberGrenadeFlashBang, UplinkExplosiveGrenadeFlash, ADTBoberMediKit, UplinkCombatMedkit]
+
+- type: soldierClass
+  id: Medic
+  medicalKits: 4
+  capabilities: "Fight, FirstAid, Medic, Breach"
+  purchases: [ADTBoberMediKit, UplinkCombatMedkit, ADTBoberAmmoM90, UplinkEstocAmmo]
+
+- type: soldierClass
+  id: Operator
+  capabilities: "Fight, FirstAid, Breach, Grenade, ReturnGrenade, Shop"
+  purchases: [ADTBoberAmmoM90, UplinkEstocAmmo, ADTBoberMediKit, UplinkCombatMedkit, ADTBoberGrenadeFlashBang, UplinkExplosiveGrenadeFlash]
+
+- type: soldierClass
+  id: OperatorMedic
+  medicalKits: 4
+  capabilities: "Fight, FirstAid, Medic, Breach, ReturnGrenade, Shop"
+  purchases: [ADTBoberMediKit, UplinkCombatMedkit, ADTBoberAmmoM90, UplinkEstocAmmo]

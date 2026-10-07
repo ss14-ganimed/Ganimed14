@@ -54,8 +54,9 @@ public sealed class SoldierAmmoSystem : EntitySystem
     /// <returns>False if the soldier holds no gun.</returns>
     public bool TryReadyGun(EntityUid soldier)
     {
-        if (!_gun.TryGetGun(soldier, out var gunUid, out _))
+        if (!TryFindHeldGun(soldier, out var gunUid) || !_hands.IsHolding(soldier, gunUid, out var hand))
             return false;
+        _hands.TrySetActiveHand(soldier, hand);
 
         // Nothing happens if the bolt is closed already.
         if (TryComp(gunUid, out ChamberMagazineAmmoProviderComponent? chamber))
@@ -92,7 +93,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
         if (CountAmmo(gun) > 0)
             return true;
 
-        return _slots.TryGetSlot(gun, MagazineSlot, out var slot) && TryFindSpareMagazine(soldier, gun, slot, out _);
+        return TryGetMagazineSlot(gun, out var slot) && TryFindSpareMagazine(soldier, gun, slot, out _);
     }
 
     /// <summary>
@@ -100,7 +101,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
     /// </summary>
     public bool NeedsReload(EntityUid soldier)
     {
-        if (!_gun.TryGetGun(soldier, out var gunUid, out _) || !_slots.TryGetSlot(gunUid, MagazineSlot, out _))
+        if (!_gun.TryGetGun(soldier, out var gunUid, out _) || !TryGetMagazineSlot(gunUid, out _))
             return false;
 
         return CountAmmo(gunUid) == 0;
@@ -130,7 +131,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
     public bool HasSpareMagazine(EntityUid soldier)
     {
         return _gun.TryGetGun(soldier, out var gunUid, out _) &&
-               _slots.TryGetSlot(gunUid, MagazineSlot, out var slot) &&
+               TryGetMagazineSlot(gunUid, out var slot) &&
                TryFindSpareMagazine(soldier, gunUid, slot, out _);
     }
 
@@ -141,7 +142,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
     public bool TryReload(EntityUid soldier)
     {
         if (!_gun.TryGetGun(soldier, out var gunUid, out _) ||
-            !_slots.TryGetSlot(gunUid, MagazineSlot, out var slot) ||
+            !TryGetMagazineSlot(gunUid, out var slot) ||
             !TryFindSpareMagazine(soldier, gunUid, slot, out var found))
         {
             return false;
@@ -216,7 +217,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
     /// </summary>
     public int CountRounds(EntityUid soldier)
     {
-        if (!_gun.TryGetGun(soldier, out var gunUid, out _) || !_slots.TryGetSlot(gunUid, MagazineSlot, out var slot))
+        if (!_gun.TryGetGun(soldier, out var gunUid, out _) || !TryGetMagazineSlot(gunUid, out var slot))
             return 0;
 
         var cartridge = GetCartridge(slot);
@@ -241,7 +242,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
     {
         magazine = null;
 
-        if (!_gun.TryGetGun(soldier, out var gunUid, out _) || !_slots.TryGetSlot(gunUid, MagazineSlot, out var slot))
+        if (!_gun.TryGetGun(soldier, out var gunUid, out _) || !TryGetMagazineSlot(gunUid, out var slot))
             return false;
 
         if (slot.Item is { } loaded && HasRoom(loaded))
@@ -269,7 +270,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
     {
         box = null;
 
-        if (!_gun.TryGetGun(soldier, out var gunUid, out _) || !_slots.TryGetSlot(gunUid, MagazineSlot, out var slot))
+        if (!_gun.TryGetGun(soldier, out var gunUid, out _) || !TryGetMagazineSlot(gunUid, out var slot))
             return false;
 
         var cartridge = GetCartridge(slot);
@@ -305,7 +306,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
     /// </summary>
     public void DiscardEmptyBoxes(EntityUid soldier)
     {
-        if (!_gun.TryGetGun(soldier, out var gunUid, out _) || !_slots.TryGetSlot(gunUid, MagazineSlot, out var slot))
+        if (!_gun.TryGetGun(soldier, out var gunUid, out _) || !TryGetMagazineSlot(gunUid, out var slot))
             return;
 
         var cartridge = GetCartridge(slot);
@@ -335,7 +336,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
     public bool TryRefillFromBox(EntityUid soldier)
     {
         if (!_gun.TryGetGun(soldier, out var gunUid, out _) ||
-            !_slots.TryGetSlot(gunUid, MagazineSlot, out var slot) ||
+            !TryGetMagazineSlot(gunUid, out var slot) ||
             slot.Item is not { } magazine ||
             !TryComp(magazine, out BallisticAmmoProviderComponent? target) ||
             !TryFindBox(soldier, out var found))
@@ -384,6 +385,13 @@ public sealed class SoldierAmmoSystem : EntitySystem
 
     #region Ammunition that lies around
 
+    private bool TryGetMagazineSlot(EntityUid gun, [NotNullWhen(true)] out ItemSlot? slot)
+    {
+        slot = null;
+        // Guns also include sprayers, energy weapons and other providers with no item slots.
+        return TryComp(gun, out ItemSlotsComponent? slots) && _slots.TryGetSlot(gun, MagazineSlot, out slot, slots);
+    }
+
     /// <summary>
     /// What the gun the soldier holds fires: the slot its magazines go into, and the cartridge they are filled with (it is
     /// not known while the magazine slot is empty).
@@ -398,7 +406,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
     {
         profile = default;
 
-        if (!_gun.TryGetGun(soldier, out var gunUid, out _) || !_slots.TryGetSlot(gunUid, MagazineSlot, out var slot))
+        if (!_gun.TryGetGun(soldier, out var gunUid, out _) || !TryGetMagazineSlot(gunUid, out var slot))
             return false;
 
         profile = new SoldierAmmoProfile(gunUid, slot, GetCartridge(slot));
@@ -439,7 +447,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
     {
         var total = CountAmmo(gun);
 
-        if (!_slots.TryGetSlot(gun, MagazineSlot, out var slot))
+        if (!TryGetMagazineSlot(gun, out var slot))
             return total;
 
         var cartridge = GetCartridge(slot);
@@ -462,7 +470,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
     /// </summary>
     public EntProtoId? GetCartridgeOf(EntityUid gun)
     {
-        if (_slots.TryGetSlot(gun, MagazineSlot, out var slot) && GetCartridge(slot) is { } loaded)
+        if (TryGetMagazineSlot(gun, out var slot) && GetCartridge(slot) is { } loaded)
             return loaded;
 
         return TryComp(gun, out BallisticAmmoProviderComponent? own) ? own.Proto : null;
@@ -478,7 +486,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
 
         if (!TryGetAmmoProfile(soldier, out var profile) ||
             gun == profile.Gun ||
-            !_slots.TryGetSlot(gun, MagazineSlot, out var slot) ||
+            !TryGetMagazineSlot(gun, out var slot) ||
             slot.Item is not { } loaded ||
             !IsMagazineFor(profile, loaded) ||
             CountAmmo(loaded) == 0)
@@ -500,7 +508,7 @@ public sealed class SoldierAmmoSystem : EntitySystem
     {
         return TryGetAmmoProfile(soldier, out var profile) &&
                gun != profile.Gun &&
-               _slots.TryGetSlot(gun, MagazineSlot, out var slot) &&
+               TryGetMagazineSlot(gun, out var slot) &&
                slot.Item is { } loaded &&
                IsMagazineFor(profile, loaded) &&
                CountAmmo(loaded) > 0;

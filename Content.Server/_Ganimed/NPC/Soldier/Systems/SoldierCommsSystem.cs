@@ -21,7 +21,7 @@ namespace Content.Server._Ganimed.NPC.Soldier.Systems;
 
 /// <summary>
 /// How the soldiers talk to the commander and the commander talks to the soldiers. A message is a phrase that is said on
-/// the radio (the common channel, ";") and the data that goes with it. The data reaches only those who really receive the
+/// the configured faction radio channel and the data that goes with it. The data reaches only those who really receive the
 /// transmission, so what the engine does to a radio message happens to the messages of the soldiers as well: a soldier
 /// without a headset cannot send anything, a jammer stops a transmission, a stun silences the soldier.
 /// </summary>
@@ -57,11 +57,6 @@ public sealed partial class SoldierCommsSystem : EntitySystem
     [Dependency] private readonly SoldierRoomSystem _rooms = default!;
     [Dependency] private readonly SoldierSquadSystem _squad = default!;
     [Dependency] private readonly SoldierSupplySystem _supply = default!;
-
-    /// <summary>
-    /// The channel the soldiers talk on (the one ";" stands for).
-    /// </summary>
-    private static readonly ProtoId<RadioChannelPrototype> CommonChannel = "Common";
 
     /// <summary>
     /// How far (in tiles) a soldier is heard when it speaks aloud.
@@ -165,29 +160,39 @@ public sealed partial class SoldierCommsSystem : EntitySystem
     #region The radio
 
     /// <summary>
-    /// Can the soldier send a message on the radio now: it wears a headset that has the common channel, it is not stunned,
+    /// Can the soldier send a message on the radio now: it wears a headset with the configured channel, it is not stunned,
     /// and nothing around it (a jammer) stops the transmission. This asks the engine the questions it asks itself when a
     /// radio message is sent.
     /// </summary>
     public bool HasWorkingRadio(EntityUid soldier)
     {
-        if (!TryComp(soldier, out WearingHeadsetComponent? wearing) || HasComp<StunnedComponent>(soldier))
+        if (!TryComp(soldier, out SoldierComponent? config) ||
+            !TryComp(soldier, out WearingHeadsetComponent? wearing) || HasComp<StunnedComponent>(soldier))
             return false;
 
-        if (!TryComp(wearing.Headset, out EncryptionKeyHolderComponent? keys) || !keys.Channels.Contains(CommonChannel))
+        if (!TryComp(wearing.Headset, out EncryptionKeyHolderComponent? keys) || !keys.Channels.Contains(config.RadioChannel))
             return false;
 
-        var sendAttempt = new RadioSendAttemptEvent(_proto.Index(CommonChannel), wearing.Headset);
+        var sendAttempt = new RadioSendAttemptEvent(_proto.Index(config.RadioChannel), wearing.Headset);
         RaiseLocalEvent(ref sendAttempt);
         RaiseLocalEvent(wearing.Headset, ref sendAttempt);
 
         return !sendAttempt.Cancelled;
     }
 
+    /// <summary>Use the channel prototype keycode so localization and key checks cannot disagree with speech.</summary>
+    public string GetRadioPrefix(Entity<SoldierComponent> soldier)
+    {
+        return soldier.Comp.RadioChannel == SharedChatSystem.CommonChannel
+            ? SharedChatSystem.RadioCommonPrefix.ToString()
+            : $"{SharedChatSystem.RadioChannelPrefix}{_proto.Index(soldier.Comp.RadioChannel).KeyCode}";
+    }
+
     private void OnHeadsetReceive(Entity<SoldierComponent> ent, ref HeadsetRadioReceiveRelayEvent args)
     {
         // Only the transmission of a message of a soldier carries data, and the sender hears itself.
-        if (_transmission is not { } transmission ||
+        if (args.RelayedEvent.Channel.ID != ent.Comp.RadioChannel ||
+            _transmission is not { } transmission ||
             transmission.Sender != args.RelayedEvent.MessageSource ||
             transmission.Sender == ent.Owner)
         {
@@ -204,13 +209,16 @@ public sealed partial class SoldierCommsSystem : EntitySystem
     /// <returns>False if the soldier could not say it to anybody.</returns>
     public bool Transmit(Entity<SoldierComponent> speaker, SoldierMessage message, string text)
     {
+        if (!_squad.IsCurrentMessage(speaker, message))
+            return false;
+
         if (HasWorkingRadio(speaker))
         {
             _transmission = (speaker, message);
 
             try
             {
-                _chat.TrySendInGameICMessage(speaker, speaker.Comp.RadioPrefix + text, InGameICChatType.Speak, hideChat: false);
+                _chat.TrySendInGameICMessage(speaker, GetRadioPrefix(speaker) + text, InGameICChatType.Speak, hideChat: false);
             }
             finally
             {
@@ -290,6 +298,46 @@ public sealed partial class SoldierCommsSystem : EntitySystem
 
     #endregion
 
+    public void SendMissionOrder(Entity<SoldierComponent> commander, MissionOrder order)
+    {
+        if (!_commandQuery.TryComp(commander, out var authority) || !_command.IsCommanding(commander))
+            return;
+        order.Id = EnsureComp<SoldierLinkComponent>(commander).NextMessageId++;
+        order.Sender = commander;
+        order.Rank = authority.Rank;
+        order.Term = authority.Term;
+        order.Written = _timing.CurTime;
+        StampMembership(commander, order);
+        order.Text = Loc.GetString("soldier-mission-order", ("task", EntityManager.System<SoldierMissionSystem>().TaskName(order.Kind)));
+        Transmit(commander, order, order.Text);
+    }
+
+    public void SendMissionReport(Entity<SoldierComponent> sender, MissionMemberReport report)
+    {
+        report.Id = EnsureComp<SoldierLinkComponent>(sender).NextMessageId++;
+        report.Sender = sender;
+        report.Written = _timing.CurTime;
+        StampMembership(sender, report);
+        report.Text = Loc.GetString(report.Blocked ? "soldier-mission-blocked" : "soldier-mission-report");
+        Transmit(sender, report, report.Text);
+    }
+
+    public void SendGrenadeWarning(Entity<SoldierComponent> sender, GrenadeThreatReport report)
+    {
+        report.Sender = sender;
+        report.Written = _timing.CurTime;
+        StampMembership(sender, report);
+        report.Text = Loc.GetString("soldier-grenade-warning");
+        Transmit(sender, report, report.Text);
+    }
+
+    public void Announce(Entity<SoldierComponent> sender, string text)
+    {
+        var message = new SoldierNoticeMessage { Sender = sender, Text = text, Written = _timing.CurTime };
+        StampMembership(sender, message);
+        Transmit(sender, message, text);
+    }
+
     #region Receiving
 
     /// <summary>
@@ -298,7 +346,7 @@ public sealed partial class SoldierCommsSystem : EntitySystem
     private void Receive(Entity<SoldierComponent> ent, SoldierMessage message, bool byRadio, bool relayThisOne)
     {
         // A soldier that is down hears nothing.
-        if (!_squad.IsOperational(ent))
+        if (!_squad.IsOperational(ent) || !_squad.IsCurrentMessage(ent, message))
             return;
 
         if (message is SoldierOrder order)
@@ -306,6 +354,15 @@ public sealed partial class SoldierCommsSystem : EntitySystem
             ReceiveOrder(ent, order, byRadio);
             return;
         }
+
+        if (message is ContactReport { ObservedAttack: true } contact)
+            EntityManager.System<SoldierRulesSystem>().ObserveAttack(ent, contact.Enemy);
+
+        if (message is GrenadeThreatReport grenade)
+            EntityManager.System<SoldierThreatSystem>().Hear(ent, grenade);
+
+        if (message is MissionMemberReport missionReport)
+            EntityManager.System<SoldierMissionSystem>().ReceiveReport(ent, missionReport);
 
         // Reports are for the commander.
         if (_commandQuery.TryComp(ent, out var command))
@@ -358,6 +415,7 @@ public sealed partial class SoldierCommsSystem : EntitySystem
         var report = new ContactReport
         {
             Enemy = enemy,
+            ObservedAttack = EntityManager.System<SoldierRulesSystem>().IsThreat(soldier, enemy),
             Position = enemyPosition,
             SenderPosition = Transform(soldier).Coordinates,
             Count = Math.Max(1, count),
@@ -593,6 +651,22 @@ public sealed partial class SoldierCommsSystem : EntitySystem
             link.OrderId = 0;
     }
 
+    /// <summary>Captures intended memberships once; relay delivery never restamps old data.</summary>
+    private void StampMembership(Entity<SoldierComponent> sender, SoldierMessage message)
+    {
+        message.Squad = sender.Comp.Squad;
+        message.SenderMembershipVersion = sender.Comp.MembershipVersion;
+        message.RecipientVersions.Clear();
+        if (!_squad.TryGetSquad(sender.AsNullable(), out var squad))
+            return;
+
+        foreach (var member in squad.Comp.Members)
+        {
+            if (_soldierQuery.TryComp(member, out var soldier))
+                message.RecipientVersions[member] = soldier.MembershipVersion;
+        }
+    }
+
     /// <summary>
     /// Writes the message and gives it to the radio. A commander does not need the radio to hear itself.
     /// </summary>
@@ -610,6 +684,7 @@ public sealed partial class SoldierCommsSystem : EntitySystem
 
         message.Id = link.NextMessageId++;
         message.Sender = soldier;
+        StampMembership(soldier, message);
         message.Written = now;
         message.NeedsAnswer = needsAnswer;
 
@@ -713,8 +788,8 @@ public sealed partial class SoldierCommsSystem : EntitySystem
         }
 
         // The commander and the headquarters stay where they are.
-        if (HasComp<SoldierHQComponent>(ent))
-            return;
+        if (_squad.IsHeadquarters(ent) || HasComp<SoldierAssignmentComponent>(ent))
+            return; // A mission keeps its last heard contract; only inability to execute it triggers its rally rule.
 
         if (link.CutOffSince is { } since && now - since >= CutOffBeforeCohesion)
             StayTogether(ent, link, now);
@@ -927,7 +1002,10 @@ public sealed partial class SoldierCommsSystem : EntitySystem
     /// </summary>
     public string ShortName(EntityUid soldier)
     {
-        var name = Name(soldier);
+        // Delayed reports and cached tracks may outlive the original entity.
+        if (!TryComp(soldier, out MetaDataComponent? metadata))
+            return Loc.GetString("soldier-name-unknown");
+        var name = metadata.EntityName;
         var space = name.LastIndexOf(' ');
         return space >= 0 && space < name.Length - 1 ? name[(space + 1)..] : name;
     }

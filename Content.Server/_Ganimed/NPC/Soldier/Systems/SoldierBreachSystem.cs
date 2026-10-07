@@ -171,6 +171,16 @@ public sealed partial class SoldierBreachSystem : EntitySystem
         var query = EntityQueryEnumerator<SoldierComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var soldier, out var xform))
         {
+            if (HasComp<SoldierClassComponent>(uid))
+            {
+                var actions = EntityManager.System<SoldierActionSystem>();
+                if (!actions.Can(uid, SoldierCapability.Breach) || actions.IsBlocked(uid, SoldierActionResource.Movement | SoldierActionResource.Hands, 40))
+                    continue;
+                if (soldier.BreachState != SoldierBreachState.None || soldier.PryDoor != null)
+                    actions.TryAcquire((uid, soldier), "breach", SoldierActionResource.Movement | SoldierActionResource.Hands | SoldierActionResource.Interaction, 40, out _);
+                else
+                    actions.Release(uid, "breach");
+            }
             if (soldier.PryDoor == null && soldier.BreachState == SoldierBreachState.None && now < soldier.NextBreachCheckAt)
                 continue;
 
@@ -295,7 +305,7 @@ public sealed partial class SoldierBreachSystem : EntitySystem
     /// </summary>
     private bool IsCqbExempt(Entity<SoldierComponent> ent)
     {
-        if (!HasComp<SoldierMedicComponent>(ent) && !HasComp<SoldierHQComponent>(ent))
+        if (!HasComp<SoldierMedicComponent>(ent) && !_squad.IsHeadquarters(ent))
             return false;
 
         if (!_squad.TryGetSquad(ent.AsNullable(), out var squad))
@@ -431,6 +441,12 @@ public sealed partial class SoldierBreachSystem : EntitySystem
     /// <summary>
     /// The soldier is not a member of the team anymore: it has other business (the order is over, the enemy has been met).
     /// </summary>
+    /// <summary>Releases the old squad's entry team before changing membership.</summary>
+    public void CancelForTransfer(Entity<SoldierComponent> ent)
+    {
+        LeaveTeam(ent, _timing.CurTime, contact: false);
+    }
+
     private void LeaveTeam(Entity<SoldierComponent> ent, TimeSpan now, bool contact)
     {
         var team = ent.Comp.EntryTeam;

@@ -24,6 +24,7 @@ public sealed class SoldierInfoSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SoldierMedicalSystem _medical = default!;
+    [Dependency] private readonly SoldierSquadSystem _squad = default!;
 
     /// <summary>
     /// Who may see the information.
@@ -149,7 +150,8 @@ public sealed class SoldierInfoSystem : EntitySystem
         var info = new SoldierSquadInfo
         {
             Squad = GetNetEntity(squad),
-            Name = Name(squad),
+            Name = _squad.DisplayName(comp),
+            Faction = comp.Faction.Id,
             Alert = Loc.GetString("soldier-alert-" + comp.Alert.ToString().ToLowerInvariant()),
             Severity = (byte) comp.Alert.Severity(),
         };
@@ -174,6 +176,9 @@ public sealed class SoldierInfoSystem : EntitySystem
             info.Commander = Loc.GetString("soldier-info-commander-none");
         }
 
+        if (TryComp(squad, out SoldierMissionComponent? mission))
+            info.Decision = EntityManager.System<SoldierMissionSystem>().TaskName(mission.Kind) + ": " + mission.Report;
+
         foreach (var member in comp.Members)
         {
             if (TerminatingOrDeleted(member) || !TryComp(member, out SoldierComponent? soldier))
@@ -182,6 +187,8 @@ public sealed class SoldierInfoSystem : EntitySystem
             var entry = new SoldierInfo
             {
                 Entity = GetNetEntity(member),
+                Name = Name(member),
+                Class = TryComp(member, out SoldierClassComponent? cls) ? cls.Profile.Id : "Rifleman",
                 Action = DescribeAction((member, soldier)),
                 Health = (byte) Math.Clamp((int) MathF.Round(_medical.GetHealthFraction(member) * 100f), 0, 100),
                 Commander = comp.Commander == member,
@@ -280,7 +287,7 @@ public sealed class SoldierInfoSystem : EntitySystem
                 return Loc.GetString("soldier-info-action-return");
 
             default:
-                return Loc.GetString(HasComp<SoldierHQComponent>(ent) ? "soldier-info-action-hq" : "soldier-info-action-patrol");
+                return Loc.GetString(_squad.IsHeadquarters(ent) ? "soldier-info-action-hq" : "soldier-info-action-patrol");
         }
     }
 

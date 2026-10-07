@@ -23,6 +23,19 @@ public sealed partial class SoldierComponent : Component
 {
     #region Configuration
 
+    /// <summary>Faction used to separate spawn groups and reject transfers to an incompatible squad.</summary>
+    [DataField]
+    public ProtoId<Content.Shared.NPC.Prototypes.NpcFactionPrototype> SquadFaction = "Soldier";
+
+    /// <summary>Mapper-defined group within the spawn host. Moving does not change squad membership.</summary>
+    [DataField]
+    public string SquadGroup = "Default";
+
+    /// <summary>Changes on membership transitions; queued messages from an old membership are rejected.</summary>
+    [ViewVariables]
+    public int MembershipVersion;
+    public int LastMissionVersion;
+
     /// <summary>
     /// Phrases the soldier uses on the radio.
     /// </summary>
@@ -30,10 +43,10 @@ public sealed partial class SoldierComponent : Component
     public ProtoId<SoldierBarkSetPrototype> Barks = "SoldierBarksDefault";
 
     /// <summary>
-    /// Prefix that makes the chat send a message over the radio. ";" is the common channel.
+    /// Channel for orders, reports and barks. Transmission requires its physical encryption key.
     /// </summary>
     [DataField]
-    public string RadioPrefix = ";";
+    public ProtoId<Content.Shared.Radio.RadioChannelPrototype> RadioChannel = "Common";
 
     /// <summary>
     /// How far (in tiles) the soldier hears gunshots and explosions.
@@ -184,7 +197,7 @@ public sealed partial class SoldierComponent : Component
     #region Runtime state
 
     /// <summary>
-    /// Entity (grid or map) that holds the <see cref="SoldierSquadComponent"/> of the squad the soldier belongs to.
+    /// Independent entity that holds the <see cref="SoldierSquadComponent"/> of the squad the soldier belongs to.
     /// </summary>
     [ViewVariables]
     public EntityUid? Squad;
@@ -694,6 +707,9 @@ public sealed partial class SoldierComponent : Component
     /// The next time the soldier looks whether its gun is empty.
     /// </summary>
     public TimeSpan NextAmmoCheckAt;
+
+    /// <summary>When the current empty weapon first requested a reload; taking cover has a bounded delay.</summary>
+    public TimeSpan? ReloadRequestedAt;
 
     /// <summary>
     /// The burst the soldier is shooting lasts until this time, and the pause after it until <see cref="PauseUntil"/>.
