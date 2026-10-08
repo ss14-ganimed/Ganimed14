@@ -62,6 +62,10 @@
 
 - type: tile
   id: Lattice
+  # Ganimed-Add-Start: lattice supports travellers but opens sight and air between storeys.
+  zLevelTransparent: true
+  zLevelAirPermeable: true
+  # Ganimed-Add-End
   name: tiles-lattice
   sprite: /Textures/Tiles/lattice.png
   baseTurf: Space
@@ -78,6 +82,10 @@
 
 - type: tile
   id: TrainLattice
+  # Ganimed-Add-Start: lattice supports travellers but opens sight and air between storeys.
+  zLevelTransparent: true
+  zLevelAirPermeable: true
+  # Ganimed-Add-End
   name: tiles-lattice-train
   sprite: /Textures/Tiles/latticeTrain.png
   baseTurf: Space

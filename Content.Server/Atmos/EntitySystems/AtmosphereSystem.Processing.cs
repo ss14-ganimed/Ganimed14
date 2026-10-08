@@ -144,6 +144,9 @@ namespace Content.Server.Atmos.EntitySystems
                 if (!tile.NoGridTile)
                     continue;
 
+                if (_zLevels.IsInteriorCell(ent, tile.GridIndices)) // Ganimed-Add: retain finite air volumes in shafts.
+                    continue;
+
                 var connected = false;
                 for (var i = 0; i < Atmospherics.Directions; i++)
                 {
@@ -199,6 +202,11 @@ namespace Content.Server.Atmos.EntitySystems
                     QueueTileTrim(ent.Comp1, tile);
                 }
             }
+
+            // Ganimed-Add-Start: a shaft inside a multi-storey hull is not the exterior map atmosphere.
+            if (_zLevels.IsInteriorCell(ent, idx))
+                mapAtmosphere = false;
+            // Ganimed-Add-End
 
             UpdateAirtightData(ent.Owner, ent.Comp1, ent.Comp3, tile);
 

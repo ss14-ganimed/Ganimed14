@@ -1,0 +1,21 @@
+// SPDX-FileCopyrightText: 2026 Ganimed14 contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+light_mode unshaded;
+
+uniform sampler2D LOWER_TEXTURE;
+uniform highp vec2 pixelSize;
+uniform highp vec2 depthOffset;
+uniform highp float blurPixels;
+
+void fragment() {
+    highp vec2 uv = (FRAGCOORD.xy + depthOffset) * pixelSize;
+    highp vec2 radius = pixelSize * blurPixels;
+    highp vec4 col = zTextureSpec(LOWER_TEXTURE, uv) * 0.4;
+    col += zTextureSpec(LOWER_TEXTURE, uv + vec2(radius.x, 0.0)) * 0.15;
+    col += zTextureSpec(LOWER_TEXTURE, uv - vec2(radius.x, 0.0)) * 0.15;
+    col += zTextureSpec(LOWER_TEXTURE, uv + vec2(0.0, radius.y)) * 0.15;
+    col += zTextureSpec(LOWER_TEXTURE, uv - vec2(0.0, radius.y)) * 0.15;
+    COLOR = vec4(col.rgb * 0.88, 1.0);
+}

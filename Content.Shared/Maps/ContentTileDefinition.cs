@@ -98,6 +98,16 @@ namespace Content.Shared.Maps
         /// </summary>
         [DataField("isSpace")] public bool MapAtmosphere { get; private set; }
 
+        // Ganimed-Add-Start: independent properties of multi-storey floor surfaces.
+        /// <summary>Allows the scene below this tile to be displayed on multi-storey grids.</summary>
+        [DataField]
+        public bool ZLevelTransparent;
+
+        /// <summary>Allows gas exchange through this tile to the storey below.</summary>
+        [DataField]
+        public bool ZLevelAirPermeable;
+        // Ganimed-Add-End
+
         /// <summary>
         ///     Friction override for mob mover in <see cref="SharedMoverController"/>
         /// </summary>

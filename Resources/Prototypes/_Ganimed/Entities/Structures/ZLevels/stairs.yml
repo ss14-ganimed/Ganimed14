@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2026 Ganimed14 contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: ZLevelStairsUp
+  name: stairs up
+  description: Stairs to the storey above. Step onto them to ascend.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: Structures/stairs.rsi
+    state: stairs_steel
+    drawdepth: FloorTiles
+    color: "#a4e7a4"
+  - type: ZLevelStairs
+    direction: 1
+
+- type: entity
+  parent: ZLevelStairsUp
+  id: ZLevelStairsDown
+  name: stairs down
+  description: Stairs to the storey below. Step onto them to descend.
+  components:
+  - type: Sprite
+    color: "#9bbcef"
+  - type: ZLevelStairs
+    direction: -1

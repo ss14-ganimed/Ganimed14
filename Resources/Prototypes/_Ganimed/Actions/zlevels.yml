@@ -1,0 +1,53 @@
+# SPDX-FileCopyrightText: 2026 Ganimed14 contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseAction
+  id: ActionZLevelAscend
+  name: Fly up a storey
+  description: Use an active jetpack to fly through an open ceiling.
+  components:
+  - type: Action
+    icon: Interface/NavMap/beveled_arrow_north.png
+    useDelay: 0.4
+  - type: InstantAction
+    event: !type:ZLevelAscendEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionZLevelDescend
+  name: Fly down a storey
+  description: Use an active jetpack to fly through an open floor.
+  components:
+  - type: Action
+    icon: Interface/NavMap/beveled_arrow_south.png
+    useDelay: 0.4
+  - type: InstantAction
+    event: !type:ZLevelDescendEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionZLevelGhostAscend
+  name: Observe the storey above
+  description: Move to the floor above, passing through solid ceilings.
+  components:
+  - type: Action
+    icon: Interface/NavMap/beveled_arrow_north.png
+    checkCanInteract: false
+    useDelay: 0.4
+  - type: InstantAction
+    event: !type:ZLevelGhostAscendEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionZLevelGhostDescend
+  name: Observe the storey below
+  description: Move to the floor below, passing through solid floors.
+  components:
+  - type: Action
+    icon: Interface/NavMap/beveled_arrow_south.png
+    checkCanInteract: false
+    useDelay: 0.4
+  - type: InstantAction
+    event: !type:ZLevelGhostDescendEvent

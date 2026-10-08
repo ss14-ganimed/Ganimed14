@@ -71,6 +71,12 @@ public partial class AtmosphereSystem
             // And ideally some fast way to get the innermost airtight container.
         }
 
+        // Ganimed-Add-Start: travellers over a shaft may be attached to the map instead of a solid grid tile.
+        if (grid == null && _zLevels.TryGetFloor(ent.Owner, out var floor, out var local) &&
+            TryComp<MapGridComponent>(floor, out var shaftGrid))
+            return GetTileMixture(floor.Owner, map, (local / shaftGrid.TileSize).Floored(), excite);
+        // Ganimed-Add-End
+
         var position = _transformSystem.GetGridTilePositionOrDefault((ent, ent.Comp));
         return GetTileMixture(grid, map, position, excite);
     }
@@ -240,6 +246,12 @@ public partial class AtmosphereSystem
     {
         if (!Resolve(entity.Owner, ref entity.Comp))
             return null;
+
+        // Ganimed-Add-Start: a finite shaft volume supplies air even when the floor tile is absent.
+        if (entity.Comp.GridUid == null && _zLevels.TryGetFloor(entity.Owner, out var floor, out var local) &&
+            TryComp<MapGridComponent>(floor, out var shaftGrid))
+            return GetTileMixture(floor.Owner, entity.Comp.MapUid, (local / shaftGrid.TileSize).Floored(), excite);
+        // Ganimed-Add-End
 
         var indices = _transformSystem.GetGridTilePositionOrDefault(entity);
         return GetTileMixture(entity.Comp.GridUid, entity.Comp.MapUid, indices, excite);

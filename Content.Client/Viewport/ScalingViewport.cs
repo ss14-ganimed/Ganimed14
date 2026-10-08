@@ -150,6 +150,7 @@ namespace Content.Client.Viewport
 
             DebugTools.AssertNotNull(_viewport);
 
+            _entityManager.System<Content.Client._Ganimed.ZLevels.Systems.ZLevelSystem>().PrepareViewport(_viewport!); // Ganimed-Add: prepare lower storeys before the main lighting pass.
             _viewport!.Render();
 
             if (_queuedScreenshots.Count != 0)

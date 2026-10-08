@@ -101,6 +101,7 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
         base.Update(frameTime);
 
         UpdateProcessing(frameTime);
+        UpdateZLevelAtmosphere(); // Ganimed-Add: exchange air between linked storeys after horizontal processing.
         UpdateHighPressure(frameTime);
 
         _exposedTimer += frameTime;

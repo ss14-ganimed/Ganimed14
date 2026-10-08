@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Ganimed14 contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: shader
+  id: ZLevelDepth
+  kind: source
+  path: /Textures/_Ganimed/Shaders/zlevel_depth.swsl
