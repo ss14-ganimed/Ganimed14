@@ -1,0 +1,10 @@
+- type: entity
+  id: BulletBloodWormSpit
+  name: blood worm spit
+  parent: BulletAcid
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Objects/Weapons/Guns/Projectiles/blood_worm_spit.rsi
+    layers:
+    - state: worm_spit

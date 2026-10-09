@@ -1,0 +1,6 @@
+- type: antag
+  id: BloodWorm
+  name: roles-antag-blood-worm-name
+  antagonist: true
+  setPreference: false
+  objective: roles-antag-blood-worm-objective

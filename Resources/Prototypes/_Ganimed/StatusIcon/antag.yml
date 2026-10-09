@@ -1,0 +1,7 @@
+- type: factionIcon
+  id: BloodWormInfectedFaction
+  priority: 11
+  icon:
+    sprite: /Textures/_Ganimed/Interface/Misc/job_icons.rsi
+    state: BloodWorm
+  visibleToOwner: false

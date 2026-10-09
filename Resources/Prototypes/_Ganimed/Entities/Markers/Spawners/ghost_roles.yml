@@ -1,0 +1,19 @@
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostBloodWorm
+  components:
+  - type: GhostRole
+    name: ghost-role-information-blood-worm-name
+    description: ghost-role-information-blood-worm-description
+    rules: ghost-role-information-rules-team-antagonist
+    mindRoles:
+    - MindRoleBloodWorm
+    raffle:
+      settings: default
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: ADT/Changeling/Mobs/headslug.rsi
+      state: headslug

@@ -614,6 +614,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             return;
 
         args.Minds = ent.Comp.AssignedMinds;
+
         args.AgentName = Loc.GetString(name);
     }
 }
