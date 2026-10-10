@@ -12,17 +12,17 @@
 - type: loadout
   id: ADTParamedicBackpack
   equipment:
-    back: ADTClothingBackpackParamedicFilled
+    back: ADTClothingBackpackParamedic # Ganimed-edit Криворукий гугу гага разраб АДТ, почему у тебя челюсти жизни привязаны к рюкзаку а не к самой роли?
 
 - type: loadout
   id: ADTParamedicSatchel
   equipment:
-    back: ADTClothingBackpackSatchelParamedicFilled
+    back: ADTClothingBackpackSatchelParamedic # Ganimed-edit
 
 - type: loadout
   id: ADTParamedicDuffel
   equipment:
-    back: ADTClothingBackpackDuffelParamedicFilled
+    back: ADTClothingBackpackDuffelParamedic # Ganimed-edit
 
 - type: loadout
   id: ADTParamedicBeltEMT
