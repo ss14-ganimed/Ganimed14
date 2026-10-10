@@ -1,0 +1,87 @@
+# SPDX-FileCopyrightText: 2026 Ganimed14 contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: construction
+  id: ZLevelStairsUp
+  name: construction-name-zlevel-stairs-up
+  description: construction-desc-zlevel-stairs-up
+  graph: ZLevelStairsUp
+  startNode: start
+  targetNode: stairs
+  category: construction-category-structures
+  conditions:
+  - !type:TileNotBlocked
+  - !type:ZLevelStairsSite
+    heightDirection: 1
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+
+- type: construction
+  id: ZLevelStairsDown
+  name: construction-name-zlevel-stairs-down
+  description: construction-desc-zlevel-stairs-down
+  graph: ZLevelStairsDown
+  startNode: start
+  targetNode: stairs
+  category: construction-category-structures
+  conditions:
+  - !type:TileNotBlocked
+  - !type:ZLevelStairsSite
+    heightDirection: -1
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+
+- type: constructionGraph
+  id: ZLevelStairsUp
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DeleteEntity {}
+    edges:
+    - to: stairs
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Steel
+        amount: 10
+        doAfter: 5
+  - node: stairs
+    entity: ZLevelStairsUp
+    edges:
+    - to: start
+      completed:
+      - !type:ZLevelStairsRefund {}
+      steps:
+      - tool: Anchoring
+        doAfter: 5
+
+- type: constructionGraph
+  id: ZLevelStairsDown
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DeleteEntity {}
+    edges:
+    - to: stairs
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Steel
+        amount: 10
+        doAfter: 5
+  - node: stairs
+    entity: ZLevelStairsDown
+    edges:
+    - to: start
+      completed:
+      - !type:ZLevelStairsRefund {}
+      steps:
+      - tool: Anchoring
+        doAfter: 5

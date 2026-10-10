@@ -2,24 +2,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Numerics;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._Ganimed.ZLevels.Components;
-
-/// <summary>Tile trigger for automatic travel to the adjacent storey.</summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class ZLevelStairsComponent : Component
-{
-    /// <summary>Relative storey index: 1 for up, -1 for down.</summary>
-    [DataField, AutoNetworkedField]
-    public int Direction = 1;
-
-    /// <summary>Grid-local displacement of the landing from the entrance.</summary>
-    [DataField, AutoNetworkedField]
-    public Vector2 LandingOffset;
-}
 
 /// <summary>Traversal state follows the entity through maps and pauses.</summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]

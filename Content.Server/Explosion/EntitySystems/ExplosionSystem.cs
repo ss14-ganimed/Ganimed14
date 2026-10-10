@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server._Ganimed.ZLevels.Systems; // Ganimed-Add (uniform explosions on linked storeys)
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
@@ -277,7 +278,8 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         float tileBreakScale = 1f,
         int maxTileBreak = int.MaxValue,
         bool canCreateVacuum = true,
-        bool addLog = true)
+        bool addLog = true, // Ganimed-Edit (allow suppressing repeated Z-level propagation)
+        bool propagateZLevels = true) // Ganimed-Add (mirrored explosions do not mirror themselves)
     {
         if (totalIntensity <= 0 || slope <= 0)
             return;
@@ -287,6 +289,14 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
             Log.Error($"Attempted to spawn unknown explosion prototype: {type}");
             return;
         }
+
+        // Ganimed-Add-Start (mirror each requested explosion before same-map merging can return early)
+        if (propagateZLevels)
+        {
+            EntityManager.System<ZLevelExplosionSystem>().QueueOnOtherFloors(epicenter, typeId,
+                totalIntensity, slope, maxTileIntensity, cause, tileBreakScale, maxTileBreak, canCreateVacuum);
+        }
+        // Ganimed-Add-End
 
         if (addLog) // dont log if already created a separate, more detailed, log.
             _adminLogger.Add(LogType.Explosion, LogImpact.High, $"Explosion ({typeId}) spawned at {epicenter:coordinates} with intensity {totalIntensity} slope {slope}");

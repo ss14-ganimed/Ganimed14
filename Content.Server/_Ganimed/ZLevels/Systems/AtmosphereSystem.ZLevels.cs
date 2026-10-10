@@ -106,8 +106,8 @@ public sealed partial class AtmosphereSystem
             lower.Temperature = lowerEnergy / lowerCapacity;
     }
 
-    /// <summary>Fill a freshly built demo plane with room-temperature breathable air.</summary>
-    public void FillZLevelDemo(EntityUid uid)
+    /// <summary>Fill a freshly built plane with room-temperature breathable air.</summary>
+    public void FillZLevelFloor(EntityUid uid)
     {
         var atmos = Comp<GridAtmosphereComponent>(uid);
         var grid = Comp<MapGridComponent>(uid);

@@ -62,8 +62,10 @@ public sealed class ZLevelSystem : SharedZLevelSystem
     /// <summary>Configure a plane after creating its map and tiles.</summary>
     public void ConfigureFloor(EntityUid grid, EntityUid master, int level, Box2 bounds)
     {
-        if (bounds.Width <= 0 || bounds.Height <= 0 || bounds.Width > 64 || bounds.Height > 64)
-            throw new ArgumentOutOfRangeException(nameof(bounds), "Prototype floor footprints must be at most 64 by 64 metres.");
+        if (!float.IsFinite(bounds.Left) || !float.IsFinite(bounds.Right) ||
+            !float.IsFinite(bounds.Top) || !float.IsFinite(bounds.Bottom) ||
+            bounds.Width <= 0 || bounds.Height <= 0 || bounds.Width > MaxFloorDimension || bounds.Height > MaxFloorDimension)
+            throw new ArgumentOutOfRangeException(nameof(bounds), $"Floor footprints must be at most {MaxFloorDimension} by {MaxFloorDimension} metres.");
         var controller = EnsureComp<ZLevelGridComponent>(master);
         if (string.IsNullOrEmpty(controller.StackId))
             controller.StackId = Guid.NewGuid().ToString();
@@ -160,6 +162,9 @@ public sealed class ZLevelSystem : SharedZLevelSystem
             while (anchored.MoveNext(out var stairs))
             {
                 if (!TryComp<ZLevelStairsComponent>(stairs, out var stair) ||
+                    stair.Partner is not { } partner || TerminatingOrDeleted(partner) ||
+                    !TryComp<ZLevelStairsComponent>(partner, out var other) || other.Partner != stairs ||
+                    other.ConnectionId != stair.ConnectionId ||
                     !TryGetFloor(floor.AsNullable(), stair.Direction, out var destination))
                     continue;
                 var landing = local + stair.LandingOffset;

@@ -6,11 +6,43 @@ using System.Globalization;
 using System.Numerics;
 using Content.Server._Ganimed.ZLevels.Systems;
 using Content.Server.Administration;
+using Content.Shared._Ganimed.ZLevels.Systems;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
 
 namespace Content.Server._Ganimed.ZLevels.Commands;
+
+[AdminCommand(AdminFlags.Debug)]
+public sealed class ZLevelInitCommand : IConsoleCommand
+{
+    [Dependency] private readonly IEntityManager _entities = default!;
+    public string Command => "zlevels_init";
+    public string Description => Loc.GetString("zlevels-init-help");
+    public string Help => Description;
+
+    public void Execute(IConsoleShell shell, string argStr, string[] args)
+    {
+        EntityUid grid;
+        if (args.Length == 1 && NetEntity.TryParse(args[0], out var netGrid) &&
+            _entities.TryGetEntity(netGrid, out var parsed))
+            grid = parsed.Value;
+        else if (args.Length == 0 && shell.Player?.AttachedEntity is { } player &&
+                 _entities.GetComponent<TransformComponent>(player).GridUid is { } currentGrid)
+            grid = currentGrid;
+        else
+        {
+            shell.WriteError(Help);
+            return;
+        }
+        if (!_entities.System<ZLevelConstructionSystem>().TryInitializeStructure(grid, out var master, out var error))
+        {
+            shell.WriteError(Loc.GetString(error));
+            return;
+        }
+        shell.WriteLine(Loc.GetString("zlevels-init-done", ("grid", _entities.GetNetEntity(master))));
+    }
+}
 
 [AdminCommand(AdminFlags.Debug)]
 public sealed class ZLevelDemoCommand : IConsoleCommand
@@ -52,7 +84,7 @@ public sealed class ZLevelGravityCommand : IConsoleCommand
             shell.WriteError(Help);
             return;
         }
-        _entities.System<ZLevelDemoSystem>().SetGravity(floor.Comp.MasterGrid, args[0] == "on");
+        _entities.System<ZLevelConstructionSystem>().SetGravity(floor.Comp.MasterGrid, args[0] == "on");
     }
 }
 
@@ -91,7 +123,7 @@ public sealed class ZLevelCreateCommand : IConsoleCommand
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
         if (args.Length != 2 || !int.TryParse(args[0], out var width) || !int.TryParse(args[1], out var height) ||
-            width is < 3 or > 64 || height is < 3 or > 64)
+            width < 3 || width > SharedZLevelSystem.MaxFloorDimension || height < 3 || height > SharedZLevelSystem.MaxFloorDimension)
         {
             shell.WriteError(Help);
             return;

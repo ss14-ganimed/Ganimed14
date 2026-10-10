@@ -7,7 +7,6 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Shared._Ganimed.ZLevels.Components;
-using Content.Shared.Gravity;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Systems;
@@ -25,9 +24,9 @@ public sealed class ZLevelDemoSystem : EntitySystem
     [Dependency] private readonly ITileDefinitionManager _tiles = default!;
     [Dependency] private readonly ShuttleSystem _shuttles = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly ZLevelStairsSystem _stairs = default!;
     private static readonly EntProtoId Wall = "WallSolid";
     private static readonly EntProtoId StairsUp = "ZLevelStairsUp";
-    private static readonly EntProtoId StairsDown = "ZLevelStairsDown";
 
     /// <summary>Create isolated storeys with stairs, a shaft, glass and grating; return the master grid.</summary>
     public EntityUid CreateDemo()
@@ -73,13 +72,11 @@ public sealed class ZLevelDemoSystem : EntitySystem
                 if (x is -6 or 5 || y is -6 or 5)
                     Spawn(Wall, new EntityCoordinates(grid, x + 0.5f, y + 0.5f));
             }
-            _atmos.FillZLevelDemo(grid);
+            _atmos.FillZLevelFloor(grid);
         }
 
-        Spawn(StairsUp, new EntityCoordinates(grids[0], -3.5f, -2.5f));
-        Spawn(StairsDown, new EntityCoordinates(grids[1], -3.5f, -2.5f));
-        Spawn(StairsUp, new EntityCoordinates(grids[1], -3.5f, 2.5f));
-        Spawn(StairsDown, new EntityCoordinates(grids[2], -3.5f, 2.5f));
+        _stairs.TryConnect(Spawn(StairsUp, new EntityCoordinates(grids[0], -3.5f, -2.5f)));
+        _stairs.TryConnect(Spawn(StairsUp, new EntityCoordinates(grids[1], -3.5f, 2.5f)));
 
         foreach (var grid in grids)
         {
@@ -95,25 +92,7 @@ public sealed class ZLevelDemoSystem : EntitySystem
     /// <summary>Apply one gravity setting to every linked grid and its space map for the demo.</summary>
     public void SetGravity(EntityUid master, bool enabled)
     {
-        var query = EntityQueryEnumerator<ZLevelGridComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var floor, out var xform))
-        {
-            if (floor.MasterGrid != master)
-                continue;
-            SetPlaneGravity(uid, enabled);
-            if (xform.MapUid is { } map)
-                SetPlaneGravity(map, enabled);
-        }
-    }
-
-    private void SetPlaneGravity(EntityUid uid, bool enabled)
-    {
-        var gravity = EnsureComp<GravityComponent>(uid);
-        gravity.Inherent = true;
-        gravity.Enabled = enabled;
-        Dirty(uid, gravity);
-        var ev = new GravityChangedEvent(uid, enabled);
-        RaiseLocalEvent(uid, ref ev, true);
+        EntityManager.System<ZLevelConstructionSystem>().SetGravity(master, enabled);
     }
 
     /// <summary>Drive the master body to inspect aligned movement and rotation of the prototype.</summary>

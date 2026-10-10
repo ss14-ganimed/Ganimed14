@@ -27,6 +27,12 @@ namespace Content.Shared._Ganimed.ZLevels.Systems;
 /// <summary>Coordinate mapping and surface rules shared by traversal, atmosphere and rendering.</summary>
 public abstract class SharedZLevelSystem : EntitySystem
 {
+    /// <summary>Safety limit for automatically created floor footprints, in grid-local metres.</summary>
+    public const int MaxFloorDimension = 256;
+
+    /// <summary>Supported absolute storey indices for administrative and player construction.</summary>
+    public const int MaxFloorIndex = 32;
+
     [Dependency] protected readonly SharedTransformSystem Xform = default!;
     [Dependency] protected readonly SharedMapSystem Map = default!;
     [Dependency] protected readonly IGameTiming Timing = default!;

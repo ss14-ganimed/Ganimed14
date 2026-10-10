@@ -11,6 +11,18 @@
   components:
   - type: Transform
     anchored: true
+  - type: Clickable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
   - type: Sprite
     sprite: Structures/stairs.rsi
     state: stairs_steel
@@ -18,6 +30,9 @@
     color: "#a4e7a4"
   - type: ZLevelStairs
     direction: 1
+  - type: Construction
+    graph: ZLevelStairsUp
+    node: stairs
 
 - type: entity
   parent: ZLevelStairsUp
@@ -29,3 +44,7 @@
     color: "#9bbcef"
   - type: ZLevelStairs
     direction: -1
+    counterpartPrototype: ZLevelStairsUp
+  - type: Construction
+    graph: ZLevelStairsDown
+    node: stairs
