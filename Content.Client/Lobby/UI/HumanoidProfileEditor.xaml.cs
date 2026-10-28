@@ -147,6 +147,8 @@ namespace Content.Client.Lobby.UI
             _allowFlavorText = _cfgManager.GetCVar(CCVars.FlavorText);
 
             Markings.SetModel(_markingsModel);
+            HairStylePicker.SetModel(_markingsModel); // Ganimed-Add: hair/facial hair are back on the appearance tab
+            FacialHairPicker.SetModel(_markingsModel); // Ganimed-Add
 
             ImportButton.OnPressed += args =>
             {

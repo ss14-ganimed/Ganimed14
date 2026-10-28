@@ -1,3 +1,40 @@
 <Control xmlns="https://spacestation14.io">
-    <TabContainer Name="OrganTabs" />
+    <!-- Ganimed-Edit: classic two-column marking picker (unused/used lists + categories) on top of MarkingsViewModel -->
+    <!-- Primary container -->
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+        <!-- Marking lists -->
+        <BoxContainer Orientation="Horizontal" SeparationOverride="5" HorizontalExpand="True" VerticalExpand="True">
+            <!-- Unused markings -->
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                    <Label Text="{Loc 'markings-unused'}" HorizontalAlignment="Stretch" HorizontalExpand="True" />
+                    <Label Name="MarkingPoints" HorizontalAlignment="Right" />
+                </BoxContainer>
+
+                <OptionButton Name="CategoryButton" StyleClasses="OpenLeft" />
+                <LineEdit Name="SearchBar" PlaceHolder="{Loc 'markings-search'}" />
+
+                <ItemList Name="UnusedList" VerticalExpand="True" MinSize="300 250" />
+                <Button Name="AddButton" Text="{Loc 'markings-add'}" StyleClasses="OpenRight" />
+            </BoxContainer>
+
+            <!-- Used markings -->
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                <Label Text="{Loc 'markings-used'}" />
+
+                <ItemList Name="UsedList" VerticalExpand="True" MinSize="300 250" />
+
+                <BoxContainer Orientation="Horizontal">
+                    <Button Name="RankUpButton" Text="{Loc 'markings-rank-up'}" StyleClasses="OpenBoth" HorizontalExpand="True" />
+                    <Button Name="RankDownButton" Text="{Loc 'markings-rank-down'}" StyleClasses="OpenBoth" HorizontalExpand="True" />
+                </BoxContainer>
+                <Button Name="RemoveButton" Text="{Loc 'markings-remove'}" StyleClasses="OpenRight" />
+            </BoxContainer>
+        </BoxContainer>
+
+        <!-- Colors -->
+        <ScrollContainer Name="ColorScroll" MinHeight="180" HorizontalExpand="True" Visible="False">
+            <BoxContainer Name="ColorsContainer" Orientation="Vertical" HorizontalExpand="True" />
+        </ScrollContainer>
+    </BoxContainer>
 </Control>

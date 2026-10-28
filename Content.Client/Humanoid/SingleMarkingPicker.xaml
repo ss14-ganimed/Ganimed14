@@ -1,0 +1,20 @@
+<BoxContainer xmlns="https://spacestation14.io"
+              Orientation="Vertical"
+              HorizontalExpand="True"
+              VerticalExpand="True">
+    <!-- Ganimed-Edit: classic single-layer picker (hair / facial hair) on top of MarkingsViewModel -->
+    <Label Name="CategoryName" />
+    <LineEdit Name="Search" PlaceHolder="{Loc 'markings-search'}" HorizontalExpand="True" />
+
+    <!-- Item list -->
+    <BoxContainer Name="MarkingSelectorContainer" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+        <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+            <ItemList Name="MarkingList" VerticalExpand="True" />
+        </ScrollContainer>
+
+        <!-- Color sliders -->
+        <ScrollContainer Name="ColorScroll" MinHeight="200" HorizontalExpand="True">
+            <BoxContainer Name="ColorSelectorContainer" HorizontalExpand="True" Access="Public" />
+        </ScrollContainer>
+    </BoxContainer>
+</BoxContainer>

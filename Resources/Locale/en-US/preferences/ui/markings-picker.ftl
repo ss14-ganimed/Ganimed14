@@ -1,4 +1,15 @@
 markings-search = Search
+# Ganimed-Add-Start: strings of the classic marking picker
+markings-used = Used Markings
+markings-unused = Unused Markings
+markings-add = Add Marking
+markings-remove = Remove Marking
+markings-rank-up = Up
+markings-rank-down = Down
+markings-none = None
+marking-used = {$marking-name}
+marking-used-forced = {$marking-name} (Forced)
+# Ganimed-Add-End
 -markings-selection = { $selectable ->
     [0] You have no markings remaining.
     [one] You can select one more marking.
