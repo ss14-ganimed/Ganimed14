@@ -46,8 +46,6 @@ public sealed class MidroundCustomizationUiState : BoundUserInterfaceState
     public string Species = string.Empty;
     public Sex Sex;
 
-    public string? Voice;
-
     public string? BarkProto;
     public float BarkPitch = 1f;
     public float BarkMinVar = 0.1f;
@@ -55,17 +53,6 @@ public sealed class MidroundCustomizationUiState : BoundUserInterfaceState
 
     public bool PointLightColor;
     public bool PointLightColorEnabled;
-}
-
-[Serializable, NetSerializable]
-public sealed class MidroundCustomizationChangeVoiceMessage : BoundUserInterfaceMessage
-{
-    public MidroundCustomizationChangeVoiceMessage(string voice)
-    {
-        Voice = voice;
-    }
-
-    public string Voice { get; }
 }
 
 [Serializable, NetSerializable]
@@ -100,14 +87,6 @@ public sealed class MidroundCustomizationPointLightColorToggleMessage : BoundUse
 public sealed partial class MidroundCustomizationSelectDoAfterEvent : DoAfterEvent
 {
     public Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>> Markings = new();
-
-    public override DoAfterEvent Clone() => this;
-}
-
-[Serializable, NetSerializable]
-public sealed partial class MidroundCustomizationChangeVoiceDoAfterEvent : DoAfterEvent
-{
-    public string Voice = string.Empty;
 
     public override DoAfterEvent Clone() => this;
 }

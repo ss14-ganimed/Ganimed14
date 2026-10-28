@@ -63,8 +63,6 @@
     radius: 1.8
     energy: 1.6
     color: "#c2adff"
-  - type: TTS # Corvax-TTS
-    voice: bebey
   - type: StaticPrice
     price: -4000
 

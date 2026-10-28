@@ -5,8 +5,6 @@
   placement:
     mode: SnapgridCenter
   components:
-  - type: TTS
-    voice: officer_enclave
   - type: SignalingLoudspeak
   - type: RadioMicrophone
     broadcastChannel: Security

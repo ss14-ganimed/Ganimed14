@@ -2,7 +2,6 @@ using System.Linq;
 using Content.Server.DoAfter;
 using Content.Shared.ADT.MidroundCustomization;
 using Content.Shared.ADT.SpeechBarks;
-using Content.Shared.ADT.TTS;
 using Content.Shared.Body;
 using Content.Shared.UserInterface;
 using Content.Shared.DoAfter;
@@ -17,7 +16,6 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 using Content.Server.Actions;
-using Content.Server.Corvax.Sponsors;
 using Robust.Shared.Player;
 
 namespace Content.Server.ADT.MidroundCustomization;
@@ -31,7 +29,6 @@ public sealed class MidroundCustomizationSystem : EntitySystem
     [Dependency] private readonly ActionsSystem _action = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
-    [Dependency] private readonly SponsorsManager _sponsors = default!;
 
     public override void Initialize()
     {
@@ -43,7 +40,6 @@ public sealed class MidroundCustomizationSystem : EntitySystem
             subs.Event<BoundUIOpenedEvent>(OnUIOpened);
             subs.Event<BoundUIClosedEvent>(OnUIClosed);
             subs.Event<MidroundCustomizationSelectMessage>(OnMidroundCustomizationSelect);
-            subs.Event<MidroundCustomizationChangeVoiceMessage>(OnChangeVoice);
             subs.Event<MidroundCustomizationChangeBarkMessage>(OnChangeBark);
             subs.Event<MidroundCustomizationPointLightColorToggleMessage>(OnPointLightColorToggle);
         });
@@ -52,7 +48,6 @@ public sealed class MidroundCustomizationSystem : EntitySystem
         SubscribeLocalEvent<MidroundCustomizationComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<MidroundCustomizationComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<MidroundCustomizationComponent, MidroundCustomizationSelectDoAfterEvent>(OnSelectSlotDoAfter);
-        SubscribeLocalEvent<MidroundCustomizationComponent, MidroundCustomizationChangeVoiceDoAfterEvent>(OnChangeVoiceDoAfter);
         SubscribeLocalEvent<MidroundCustomizationComponent, MidroundCustomizationChangeBarkDoAfterEvent>(OnChangeBarkDoAfter);
 
         SubscribeLocalEvent<MidroundCustomizationComponent, MidroundCustomizationActionEvent>(OnMidroundCustomizationAction);
@@ -112,62 +107,6 @@ public sealed class MidroundCustomizationSystem : EntitySystem
         _audio.PlayPvs(component.ChangeHairSound, uid);
         UpdatePointLightColor(uid, component);
         UpdateInterface(uid, component);
-    }
-
-    private void OnChangeVoice(Entity<MidroundCustomizationComponent> ent, ref MidroundCustomizationChangeVoiceMessage args)
-    {
-        if (!HasComp<TTSComponent>(ent))
-            return;
-
-        if (!_proto.TryIndex<TTSVoicePrototype>(args.Voice, out var proto))
-            return;
-
-        if (!CanUseVoice(args.Actor, proto))
-            return;
-
-        var doAfter = new MidroundCustomizationChangeVoiceDoAfterEvent()
-        {
-            Voice = args.Voice,
-        };
-
-        StartVoiceDoAfter(ent, doAfter);
-    }
-
-    private void OnChangeVoiceDoAfter(EntityUid uid, MidroundCustomizationComponent component, MidroundCustomizationChangeVoiceDoAfterEvent args)
-    {
-        if (args.Handled || args.Cancelled)
-            return;
-
-        if (!TryComp<TTSComponent>(uid, out var tts) || !TryComp<HumanoidProfileComponent>(uid, out var humanoid))
-            return;
-
-        if (!_proto.TryIndex<TTSVoicePrototype>(args.Voice, out var proto))
-            return;
-
-        if (!HumanoidCharacterProfile.CanHaveVoice(proto, humanoid.Sex, humanoid.Species))
-            return;
-
-        if (!CanUseVoice(args.User, proto))
-            return;
-
-        tts.VoicePrototypeId = args.Voice;
-
-        PlayVoiceChangeSound(uid, component);
-        UpdateInterface(uid, component);
-    }
-
-    private bool CanUseVoice(EntityUid player, TTSVoicePrototype voice)
-    {
-        if (!voice.SponsorOnly)
-            return true;
-
-        if (!TryComp<ActorComponent>(player, out var actor))
-            return false;
-
-        if (!_sponsors.TryGetInfo(actor.PlayerSession.UserId, out var sponsor))
-            return false;
-
-        return sponsor.AllowedMarkings.Contains(voice.ID);
     }
 
     private void OnChangeBark(Entity<MidroundCustomizationComponent> ent, ref MidroundCustomizationChangeBarkMessage args)
@@ -427,9 +366,6 @@ public sealed class MidroundCustomizationSystem : EntitySystem
             state.Species = humanoid.Species;
             state.Sex = humanoid.Sex;
         }
-
-        if (TryComp<TTSComponent>(uid, out var tts))
-            state.Voice = tts.VoicePrototypeId?.Id;
 
         if (TryComp<SpeechBarksComponent>(uid, out var barks))
         {

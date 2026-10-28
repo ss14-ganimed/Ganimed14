@@ -47,12 +47,6 @@ public sealed partial class VoiceMaskComponent : Component
     [DataField]
     public EntProtoId? Action = "ActionChangeVoiceMask"; //ADT tweaked
 
-    // ADT-Tweak-Start
-    [DataField]
-    [ViewVariables(VVAccess.ReadWrite)]
-    public string VoiceId = HumanoidCharacterProfile.DefaultVoice;
-    // ADT-Tweak-End
-
     // ADT Barks start
     [DataField]
     [ViewVariables(VVAccess.ReadWrite)]

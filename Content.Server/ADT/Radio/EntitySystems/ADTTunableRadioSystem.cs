@@ -1,13 +1,12 @@
 using System.Linq;
 using Content.Server.ADT.Language;
-using Content.Server.ADT.TTS;
 using Content.Server.Chat.Managers;
 using Content.Server.Popups;
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.ADT.Language;
 using Content.Shared.ADT.Radio;
 using Content.Shared.ADT.Radio.Components;
-using Content.Shared.ADT.TTS;
+using Content.Shared.ADT.Speech;
 using Content.Shared.Chat;
 using Content.Shared.Examine;
 using Content.Shared.Radio;
@@ -251,7 +250,6 @@ public sealed class ADTTunableRadioSystem : EntitySystem
         if (receivers.Count == 0)
             return;
 
-        var devices = new List<EntityUid>(receivers.Count);
         var understood = new HashSet<ICommonSession>();
         var foreign = new HashSet<ICommonSession>();
 
@@ -262,22 +260,9 @@ public sealed class ADTTunableRadioSystem : EntitySystem
             _audio.PlayPvs(receiver.Comp.SoundOnReceive, receiver);
 
             CollectListeners(receiver, language, understood, foreign);
-            devices.Add(receiver.Owner);
         }
 
         SendChat(transmitter, speaker, message, generic, understood, foreign);
-
-        var isWhisper = !receivers[0].Comp.Loud;
-
-        var ttsEv = new ADTTunableRadioSpokeEvent(
-            speaker,
-            message,
-            devices,
-            language,
-            transmitter.Comp.Effect,
-            isWhisper);
-
-        RaiseLocalEvent(ref ttsEv);
     }
 
     private void CollectListeners(

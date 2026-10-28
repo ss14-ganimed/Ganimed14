@@ -151,12 +151,4 @@ public sealed partial class BorgTypePrototype : IPrototype
     /// </summary>
     [DataField]
     public SoundSpecifier FootstepCollection { get; set; } = new SoundCollectionSpecifier(DefaultFootsteps);
-
-    // ADT-Tweak-Start
-    /// <summary>
-    /// TTS voice.
-    /// </summary>
-    [DataField]
-    public string? VoicePrototypeId { get; set; } = "TrainingRobot";
-    // ADT-Tweak-End
 }

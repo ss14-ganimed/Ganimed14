@@ -252,7 +252,6 @@
   - type: Deathgasp
     prototype: IPCDeathgasp
     onAnyState: true
-  - type: TTS # Corvax-TTS
   - type: LanguageSpeaker
     languages:
       GalacticCommon: Speak

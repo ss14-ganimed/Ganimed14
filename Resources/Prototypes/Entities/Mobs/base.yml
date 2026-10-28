@@ -36,7 +36,6 @@
   - type: ContentEye
   - type: CameraRecoil
   - type: MindContainer
-  - type: TTS # Corvax-TTS
   - type: RequireProjectileTarget
     active: False
   # ADT-tweak-start

@@ -15,18 +15,16 @@ public sealed class VoiceMaskBuiState : BoundUserInterfaceState
 {
     public readonly string Name;
     public readonly string? Verb;
-    public readonly string Voice; // ADT-Tweak
     public readonly string Bark; // ADT Barks
     public readonly float Pitch; // ADT Barks
     public readonly string? JobIconId; // ADT-Tweak start
     public readonly bool Active;
     public readonly bool AccentHide;
 
-    public VoiceMaskBuiState(string name, string voice, string bark, float pitch, string? verb, bool active, bool accentHide, string? jobIconId = null)
+    public VoiceMaskBuiState(string name, string bark, float pitch, string? verb, bool active, bool accentHide, string? jobIconId = null)
     {
         Name = name;
         Verb = verb;
-        Voice = voice;
         Bark = bark;
         Pitch = pitch;
         JobIconId = jobIconId;

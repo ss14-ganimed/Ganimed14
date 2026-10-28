@@ -1,6 +1,6 @@
 using Content.Server.Chat.Systems;
 using Content.Shared.ADT.Language;
-using Content.Shared.ADT.TTS;
+using Content.Shared.ADT.Speech;
 using Content.Shared.Chat;
 using Content.Shared.Speech;
 using Robust.Shared.Prototypes;

@@ -5,7 +5,6 @@ using Content.Server.Speech;
 using Content.Shared.ADT.Language;
 using Content.Shared.ADT.SpeechBarks;
 using Content.Shared.Chat;
-using Content.Shared.ADT.TTS;
 using Content.Shared.Paper;
 using Content.Shared.Speech;
 using Content.Shared.TapeRecorder;
@@ -51,11 +50,6 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
                 var barkOverride = EnsureComp<SpeechBarksComponent>(ent);
                 barkOverride.Data = message.Bark;
             }
-            if (message.TTS.HasValue)
-            {
-                var ttsOverride = EnsureComp<TTSComponent>(ent);
-                ttsOverride.VoicePrototypeId = message.TTS.Value;
-            }
 
             // TODO: mimic the exact string chosen when the message was recorded
             var verb = message.Verb ?? SharedChatSystem.DefaultSpeechVerb;
@@ -67,7 +61,6 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
             _chat.TrySendInGameICMessage(ent, message.Message, InGameICChatType.Speak, false, nameOverride: message.Name ?? ent.Comp.DefaultName, language: _proto.Index(language));
 
             RemComp<SpeechBarksComponent>(ent);
-            RemComp<TTSComponent>(ent);
         }
     }
 
@@ -101,21 +94,14 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
         var verb = _chat.GetSpeechVerb(args.Source, args.Message);
 
         BarkData? bark = null;
-        ProtoId<TTSVoicePrototype>? tts = null;
         if (TryComp<SpeechBarksComponent>(args.Source, out var barksComponent))
         {
             var barkEv = new TransformSpeakerBarkEvent(args.Source, barksComponent.Data.Copy());
             RaiseLocalEvent(args.Source, barkEv);
             bark = barkEv.Data;
         }
-        if (TryComp<TTSComponent>(args.Source, out var ttsComp) && ttsComp.VoicePrototypeId is { } voiceId)
-        {
-            var ttsEv = new TransformSpeakerVoiceEvent(args.Source, voiceId);
-            RaiseLocalEvent(args.Source, ttsEv);
-            tts = ttsEv.VoiceId;
-        }
 
-        cassette.Comp.Buffer.Add(new TapeCassetteRecordedMessage(cassette.Comp.CurrentPosition, name, verb, bark, tts, _language.GetCurrentLanguage(args.Source), args.Message));
+        cassette.Comp.Buffer.Add(new TapeCassetteRecordedMessage(cassette.Comp.CurrentPosition, name, verb, bark, _language.GetCurrentLanguage(args.Source), args.Message));
     }
 
     private void OnPrintMessage(Entity<TapeRecorderComponent> ent, ref PrintTapeRecorderMessage args)

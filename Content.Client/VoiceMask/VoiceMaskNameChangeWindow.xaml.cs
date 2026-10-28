@@ -1,5 +1,4 @@
 using System.Linq;
-using Content.Shared.ADT.TTS;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Speech;
 using Content.Shared.StatusIcon;
@@ -22,7 +21,6 @@ public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
     public Action<string>? OnNameChange;
     public Action<string?>? OnVerbChange;
     // ADT-Tweak-Start
-    public Action<string>? OnVoiceChange;
     public Action<string>? OnBarkChange;
     public Action<string>? OnPitchChange;
     // ADT-Tweak-End
@@ -31,7 +29,6 @@ public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
     public Action? OnAccentToggle;
 
     private List<(string, string)> _verbs = new();
-    private List<TTSVoicePrototype> _voices = new(); // ADT-Tweak
     private List<BarkPrototype> _barks = new(); // ADT Barks
 
     private string? _verb;
@@ -62,12 +59,6 @@ public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
             SpeechVerbSelector.SelectId(args.Id);
         };
 
-        if (IoCManager.Resolve<IConfigurationManager>().GetCVar(ADTTTSCVars.TTSEnabled))// ADT-Tweak
-        {
-            TTSContainer.Visible = true;
-            ReloadVoices(IoCManager.Resolve<IPrototypeManager>());
-        }
-        // // ADT-Tweak-End
         // ADT Barks start
         if (IoCManager.Resolve<IConfigurationManager>().GetCVar(ADTCCVars.BarksEnabled))
         {
@@ -121,28 +112,6 @@ public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
         if (verb == _verb)
             SpeechVerbSelector.SelectId(id);
     }
-
-    // ADT-Tweak-Start
-    private void ReloadVoices(IPrototypeManager proto)
-    {
-        VoiceSelector.OnItemSelected += args =>
-        {
-            VoiceSelector.SelectId(args.Id);
-            if (VoiceSelector.SelectedMetadata != null)
-                OnVoiceChange!((string)VoiceSelector.SelectedMetadata);
-        };
-        _voices = proto
-            .EnumeratePrototypes<TTSVoicePrototype>()
-            .Where(o => o.RoundStart)
-            .OrderBy(o => o.Name)
-            .ToList();
-        for (var i = 0; i < _voices.Count; i++)
-        {
-            VoiceSelector.AddItem(_voices[i].Name);
-            VoiceSelector.SetItemMetadata(i, _voices[i].ID);
-        }
-    }
-    // ADT-Tweak-End
 
     // ADT Barks start
     private void ReloadBarks(IPrototypeManager proto)
@@ -239,7 +208,7 @@ public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
     }
     // ADT-Tweak end Job Icons
 
-    public void UpdateState(string name, string voice, string barkId, float barkPitch, string? verb, string? jobIconId = null, bool active = false, bool accentHide = false)
+    public void UpdateState(string name, string barkId, float barkPitch, string? verb, string? jobIconId = null, bool active = false, bool accentHide = false)
     {
         NameSelector.Text = name;
         _verb = verb;
@@ -254,12 +223,6 @@ public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
                 break;
             }
         }
-
-        // ADT-Tweak-Start
-        var voiceIdx = _voices.FindIndex(v => v.ID == voice);
-        if (voiceIdx != -1)
-            VoiceSelector.Select(voiceIdx);
-        // ADT-Tweak-End
 
         // ADT Barks start
         var barkIdx = _barks.FindIndex(b => b.ID == barkId);

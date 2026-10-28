@@ -3,14 +3,6 @@
                Title="{Loc 'midround-customization-window-title'}"
                MinSize="700 600">
     <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
-        <BoxContainer Name="VoiceContainer" Orientation="Vertical" Margin="8 8 8 0">
-            <Label Text="{Loc 'humanoid-profile-editor-voice-tab'}" />
-            <BoxContainer Orientation="Horizontal" Margin="0 4 0 0">
-                <OptionButton Name="VoiceButton" HorizontalExpand="True" />
-                <Button Name="VoicePlayButton" Text="{Loc 'humanoid-profile-editor-voice-play'}" MaxWidth="80" />
-            </BoxContainer>
-        </BoxContainer>
-
         <BoxContainer Name="BarkContainer" Orientation="Vertical" Margin="8 8 8 0">
             <Label Text="{Loc 'humanoid-profile-editor-bark-label'}" />
             <BoxContainer Orientation="Horizontal" Margin="0 4 0 0">

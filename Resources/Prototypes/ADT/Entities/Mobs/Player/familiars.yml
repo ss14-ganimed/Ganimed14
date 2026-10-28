@@ -29,8 +29,6 @@
     - PetsNT
   - type: Alerts
   - type: Familiar
-  - type: TTS
-    voice: kleiner
   - type: SpeechBarks
     data:
       proto: Synth3
@@ -67,8 +65,6 @@
     - PetsNT
   - type: Alerts
   - type: Familiar
-  - type: TTS
-    voice: mossman
   - type: SpeechBarks
     data:
       proto: Toriel
@@ -111,8 +107,6 @@
       0: Alive
       40: Critical
       100: Dead
-  - type: TTS
-    voice: twitch
   - type: SpeechBarks
     data:
       proto: Flowey
@@ -150,8 +144,6 @@
     - PetsNT
   - type: Alerts
   - type: Familiar
-  - type: TTS
-    voice: queen_of_pain_dota_2
   - type: SpeechBarks
     data:
       proto: Queen
@@ -188,8 +180,6 @@
     - PetsNT
   - type: Alerts
   - type: Familiar
-  - type: TTS
-    voice: ziggs
   - type: SpeechBarks
     data:
       proto: Chujin
@@ -227,8 +217,6 @@
     - PetsNT
   - type: Alerts
   - type: Familiar
-  - type: TTS
-    voice: zenobianoke
   - type: SpeechBarks
     data:
       proto: Noelle
@@ -268,8 +256,6 @@
   - type: PointLight
     enabled: true
     radius: 2
-  - type: TTS
-    voice: kate_smirnova_tb
   - type: SpeechBarks
     data:
       proto: Ceroba
@@ -309,8 +295,6 @@
   - type: MovementSpeedModifier
     baseWalkSpeed : 2
     baseSprintSpeed : 2
-  - type: TTS
-    voice: matildaweasley
   - type: SpeechBarks
     data:
       proto: Toriel

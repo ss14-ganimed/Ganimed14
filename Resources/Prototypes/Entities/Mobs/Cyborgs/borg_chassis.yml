@@ -99,8 +99,6 @@
   components:
   - type: BorgSwitchableType
     selectedBorgType: medical
-  - type: TTS # Corvax-TTS
-    voice: fact_core
   #Start ADT Tweak
   - type: BorgSwitchableSubtype
     borgSubtype: default_medical

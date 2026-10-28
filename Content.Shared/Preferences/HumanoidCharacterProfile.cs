@@ -6,7 +6,6 @@ using Content.Shared.ADT.CharecterFlavor;
 using Content.Shared.ADT.Language;
 using Content.Shared.ADT.SpeechBarks;
 using Content.Shared.CCVar;
-using Content.Shared.ADT.TTS;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
@@ -36,13 +35,8 @@ namespace Content.Shared.Preferences
     public sealed partial class HumanoidCharacterProfile
     {
         public static readonly ProtoId<SpeciesPrototype> DefaultSpecies = "Human";
+        // Legacy TTS voice id. TTS was removed, the value is only kept so the DB column and old exports stay compatible.
         public const string DefaultVoice = "VoiceHuman";
-        public static readonly Dictionary<Sex, string> DefaultSexVoice = new()
-        {
-            { Sex.Male, "VoiceHumanMale" },
-            { Sex.Female, "VoiceHumanFemale" },
-            { Sex.Unsexed, "VoiceHuman" }
-        };
         private static readonly Regex RestrictedNameRegex = new("[^A-Za-zА-Яа-яёЁ0-9' _.<>^%~ -]"); //ADT-Tweak
         private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
@@ -342,13 +336,6 @@ namespace Content.Shared.Preferences
                 languages = speciesPrototype.DefaultLanguages.ToHashSet();  // ADT Languages
             }
 
-            // ADT-Tweak-Start
-            var voiceId = random.Pick(prototypeManager
-                .EnumeratePrototypes<TTSVoicePrototype>()
-                .Where(o => CanHaveVoice(o, sex, species)).ToArray()
-            ).ID;
-            // ADT-Tweak-End
-
             var gender = Gender.Epicene;
 
             switch (sex)
@@ -370,7 +357,6 @@ namespace Content.Shared.Preferences
                 Age = age,
                 Gender = gender,
                 Species = species,
-                Voice = voiceId, // ADT-Tweak
                 Appearance = HumanoidCharacterAppearance.Random(species, sex),
                 _languages = languages,
             };
@@ -420,10 +406,6 @@ namespace Content.Shared.Preferences
         }
 
         // ADT-Tweak-Start
-        public HumanoidCharacterProfile WithVoice(string voice)
-        {
-            return new(this) { Voice = voice };
-        }
         // ADT-Tweak-End
 
         // ADT Barks start
@@ -814,12 +796,6 @@ namespace Content.Shared.Preferences
             _traitPreferences.Clear();
             _traitPreferences.UnionWith(traits); // ADT-Tweak
 
-            // ADT-Tweak-Start
-            prototypeManager.TryIndex<TTSVoicePrototype>(Voice, out var voice);
-            if (voice is null || !CanHaveVoice(voice, Sex, Species)) // ADT-Tweak
-                Voice = DefaultSexVoice[sex];
-            // ADT-Tweak-End
-
             // Checks prototypes exist for all loadouts and dump / set to default if not.
             var toRemove = new ValueList<string>();
 
@@ -918,22 +894,6 @@ namespace Content.Shared.Preferences
 
             return result;
         }
-
-        // ADT-Tweak-Start
-        // SHOULD BE NOT PUBLIC, BUT....
-        public static bool CanHaveVoice(TTSVoicePrototype voice, Sex sex, ProtoId<SpeciesPrototype> species)
-        {
-            // ADT-Tweak-Start
-            if (voice.SpeciesBlacklist.Contains(species))
-                return false;
-
-            if (voice.SpeciesWhitelist.Count > 0 && !voice.SpeciesWhitelist.Contains(species))
-                return false;
-            // ADT-Tweak-End
-
-            return voice.RoundStart && sex == Sex.Unsexed || (voice.Sex == sex || voice.Sex == Sex.Unsexed);
-        }
-        // ADT-Tweak-End
 
         public HumanoidCharacterProfile Validated(ICommonSession session, IDependencyCollection collection, string[] sponsorPrototypes)
         {

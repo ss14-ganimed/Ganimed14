@@ -115,8 +115,6 @@
     followEntity: true
   - type: TypingIndicator
     proto: robot
-  - type: TTS # Corvax-TTS
-    voice: skippy
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai

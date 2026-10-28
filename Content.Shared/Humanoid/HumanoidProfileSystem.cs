@@ -1,4 +1,3 @@
-using Content.Shared.ADT.TTS;
 using Content.Shared.ADT.SpeechBarks;
 using Content.Shared.ADT.Language;
 using Content.Shared.Examine;
@@ -60,9 +59,6 @@ public sealed class HumanoidProfileSystem : EntitySystem
         }
 
         // ADT-Tweak-Start
-        if (TryComp<TTSComponent>(ent, out var tts))
-            tts.VoicePrototypeId = profile.Voice;
-
         if (TryComp<SpeechBarksComponent>(ent, out var barks))
         {
             barks.Data = profile.Bark;

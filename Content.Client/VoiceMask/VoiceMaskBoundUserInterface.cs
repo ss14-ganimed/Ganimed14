@@ -27,7 +27,6 @@ public sealed class VoiceMaskBoundUserInterface : BoundUserInterface
 
         _window.OnNameChange += OnNameSelected;
         _window.OnVerbChange += verb => SendMessage(new VoiceMaskChangeVerbMessage(verb));
-        _window.OnVoiceChange += voice => SendMessage(new VoiceMaskChangeVoiceMessage(voice)); // ADT-Tweak
         _window.OnBarkChange += bark => SendMessage(new VoiceMaskChangeBarkMessage(bark)); // ADT Barks
         _window.OnPitchChange += pitch => SendMessage(new VoiceMaskChangeBarkPitchMessage(pitch)); // ADT Barks
         _window.OnJobIconChange += jobIconId => SendMessage(new VoiceMaskChangeJobIconMessage(jobIconId)); // ADT-Tweak
@@ -57,7 +56,7 @@ public sealed class VoiceMaskBoundUserInterface : BoundUserInterface
             return;
         }
 
-        _window.UpdateState(cast.Name, cast.Voice, cast.Bark, cast.Pitch, cast.Verb, cast.JobIconId, cast.Active, cast.AccentHide);
+        _window.UpdateState(cast.Name, cast.Bark, cast.Pitch, cast.Verb, cast.JobIconId, cast.Active, cast.AccentHide);
     }
 
     protected override void Dispose(bool disposing)

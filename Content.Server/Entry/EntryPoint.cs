@@ -10,7 +10,6 @@ using Content.Server.Corvax.GuideGenerator;
 using Content.Server.Corvax.DiscordAuth;
 using Content.Server.Corvax.JoinQueue;
 using Content.Server.Corvax.Sponsors;
-using Content.Server.ADT.TTS;
 using Content.Server.Database;
 using Content.Server.Discord.DiscordLink;
 using Content.Server.EUI;
@@ -146,7 +145,6 @@ namespace Content.Server.Entry
             _job.Initialize();
             _rateLimit.Initialize();
             IoCManager.Resolve<ExportManager>().Initialize(); // ADT-tweak: export
-            IoCManager.Resolve<TTSManager>().Initialize(); // ADT-Tweak
             IoCManager.Resolve<SponsorsManager>().Initialize(); // Corvax-Sponsors
             IoCManager.Resolve<JoinQueueManager>().Initialize(); // Corvax-Queue
             IoCManager.Resolve<AntagRollBonusManager>().Initialize(); // ADT Antag roll bonus

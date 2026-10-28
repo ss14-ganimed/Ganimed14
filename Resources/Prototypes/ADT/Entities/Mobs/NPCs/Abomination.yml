@@ -118,8 +118,6 @@
         Blunt: 30
   - type: ReplacementAccent
     accent: ADTReplaceAbomination
-  - type: TTS
-    voice: moriarti
 
 - type: entity
   id: ADTAbominationDeath
@@ -179,8 +177,6 @@
     description: ghost-role-information-Abomination-Death-description
     rules: ghost-role-information-antagonist-rules
   - type: GhostTakeoverAvailable
-  - type: TTS
-    voice: ranrak
   - type: AshStormImmune
 
 - type: entity
@@ -239,8 +235,6 @@
   - type: TriggerOnMobstateChange
     mobState:
     - Dead
-  - type: TTS
-    voice: briman
 
 # - type: entity
 #   parent: BaseMobFleshSalvage

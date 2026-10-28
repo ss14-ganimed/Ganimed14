@@ -36,17 +36,6 @@ public sealed class ADTDeafnessSystem : EntitySystem
         return TryComp<ADTDeafenedComponent>(uid, out var comp) && comp.Severity > 0;
     }
 
-    public bool TryGetTTSHearing(EntityUid uid, out bool muffled)
-    {
-        muffled = false;
-
-        if (!TryComp<ADTDeafenedComponent>(uid, out var comp) || comp.Severity <= 0)
-            return false;
-
-        muffled = comp.Severity < comp.TotalThreshold;
-        return true;
-    }
-
     public bool TryInterceptRadio(EntityUid listener, ICommonSession session, string message, EntityUid source)
     {
         if (listener == source)

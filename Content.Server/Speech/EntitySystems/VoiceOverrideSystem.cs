@@ -10,7 +10,6 @@ public sealed partial class VoiceOverrideSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<VoiceOverrideComponent, TransformSpeakerNameEvent>(OnTransformSpeakerName);
 
-        InitializeTTS();    // ADT TTS
         InitializeBarks();  // ADT Barks
     }
 

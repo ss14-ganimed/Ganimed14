@@ -155,8 +155,6 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
-  - type: TTS # Corvax-TTS
-    voice: neco_arc_2 #ADT-Tweak
   - type: LanguageSpeaker
     languages:
       Bubblish: Speak

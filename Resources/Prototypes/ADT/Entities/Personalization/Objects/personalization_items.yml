@@ -2963,8 +2963,6 @@
     raffle:
       settings: short
   - type: GhostTakeoverAvailable
-  - type: TTS
-    voice: shadow_fiend_dota_2
 
 - type: entity
   parent: SpawnMobWatcherPride
@@ -3872,8 +3870,6 @@
     speechSounds: Squeak
   - type: SpeakOnTrigger
     pack: ADTFigurinesPlushieEmiliaEvenwood
-  - type: TTS
-    voice: mitakind
 
 #honelin111
 - type: entity

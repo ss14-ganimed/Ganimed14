@@ -26,7 +26,6 @@ public sealed class MidroundCustomizationBoundUserInterface : BoundUserInterface
         _window.MarkingsPicker.SetModel(_markingsModel);
         _markingsModel.MarkingsChanged += (_, _) => SendMarkingSet();
 
-        _window.OnVoiceChanged += voice => SendMessage(new MidroundCustomizationChangeVoiceMessage(voice));
         _window.OnBarkChanged += bark => SendMessage(new MidroundCustomizationChangeBarkMessage(bark.Proto, bark.Pitch, bark.MinVar, bark.MaxVar));
         _window.OnPointLightColorToggled += enabled => SendMessage(new MidroundCustomizationPointLightColorToggleMessage(enabled));
     }

@@ -552,8 +552,6 @@
         Base: shadow_of_cluwne_sleep
       Dead:
         Base: shadow_of_cluwne_dead
-  - type: TTS
-    voice: "bloodseeker_dota_2"
 
 - type: entity
   parent: ADTMobBaseCreature
@@ -630,8 +628,6 @@
         Base: butcher_sleep
       Dead:
         Base: butcher_dead
-  - type: TTS
-    voice: "bloodseeker_dota_2"
   - type: Vocal
     sounds:
       Male: MaleButcher

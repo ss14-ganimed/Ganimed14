@@ -20,8 +20,6 @@
   - type: RandomMetadata
     nameSegments:
     - NamesClown
-  - type: TTS
-    voice: clockwerk_dota_2
   - type: SpeechBarks
     data:
       proto: Jevil

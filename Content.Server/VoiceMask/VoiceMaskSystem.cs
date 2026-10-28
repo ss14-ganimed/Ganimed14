@@ -56,7 +56,6 @@ public sealed partial class VoiceMaskSystem : EntitySystem
         SubscribeLocalEvent<VoiceMaskComponent, ImplantRelayEvent<TransformSpeechEvent>>(OnTransformSpeechImplant, before: [typeof(AccentSystem)]);
 
         Subs.CVar(_cfg, CCVars.MaxNameLength, value => _maxNameLength = value, true);
-        InitializeTTS(); // ADT-Tweak
         InitializeBarks(); // ADT Barks
     }
 
@@ -224,7 +223,7 @@ public sealed partial class VoiceMaskSystem : EntitySystem
     private void UpdateUI(Entity<VoiceMaskComponent> entity)
     {
         if (_uiSystem.HasUi(entity, VoiceMaskUIKey.Key))
-            _uiSystem.SetUiState(entity.Owner, VoiceMaskUIKey.Key, new VoiceMaskBuiState(GetCurrentVoiceName(entity), entity.Comp.VoiceId, entity.Comp.BarkId, entity.Comp.BarkPitch, entity.Comp.VoiceMaskSpeechVerb, entity.Comp.Active, entity.Comp.AccentHide, entity.Comp.VoiceMaskJobIcon)); // ADT-Tweak
+            _uiSystem.SetUiState(entity.Owner, VoiceMaskUIKey.Key, new VoiceMaskBuiState(GetCurrentVoiceName(entity), entity.Comp.BarkId, entity.Comp.BarkPitch, entity.Comp.VoiceMaskSpeechVerb, entity.Comp.Active, entity.Comp.AccentHide, entity.Comp.VoiceMaskJobIcon)); // ADT-Tweak
     }
     #endregion
 

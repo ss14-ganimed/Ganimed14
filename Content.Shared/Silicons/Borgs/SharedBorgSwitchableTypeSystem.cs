@@ -1,5 +1,4 @@
 using Content.Shared.Actions;
-using Content.Shared.ADT.TTS;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Movement.Components;
@@ -121,13 +120,6 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
         {
             footstepModifier.FootstepSoundCollection = prototype.FootstepCollection;
         }
-
-        // ADT-Tweak-Start
-        if (TryComp(entity, out TTSComponent? tts))
-        {
-            tts.VoicePrototypeId = prototype.VoicePrototypeId;
-        }
-        // ADT-Tweak-End
 
         if (prototype.SpriteBodyMovementState is { } movementState)
         {

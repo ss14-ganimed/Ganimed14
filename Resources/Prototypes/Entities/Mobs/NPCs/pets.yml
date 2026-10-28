@@ -909,8 +909,6 @@
     attributes:
       proper: true
       gender: female
-  - type: TTS # Corvax-TTS
-    voice: angry_neco_arc
 
 - type: entity
   name: Pun Pun

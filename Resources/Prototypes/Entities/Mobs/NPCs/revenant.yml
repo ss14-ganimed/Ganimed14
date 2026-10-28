@@ -26,8 +26,6 @@
   - type: Injurable
     damageContainer: ManifestedSpirit
   - type: NoSlip
-  - type: TTS # Corvax-TTS
-    voice: illidan
   - type: Eye
     drawFov: false
     visMask:

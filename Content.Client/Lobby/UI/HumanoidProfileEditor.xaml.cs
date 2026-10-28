@@ -42,7 +42,6 @@ using Robust.Shared.Toolshed.Errors;
 using Robust.Shared.Utility;
 using Direction = Robust.Shared.Maths.Direction;
 using static Content.Client.Corvax.SponsorOnlyHelpers; // Corvax-Sponsors
-using Content.Client.ADT.TTS;
 using Content.Client.ADT.UserInterface.Controls;
 using Content.Client.ADT.CharecterFlavor;
 using Content.Shared.ADT.CharecterFlavor;
@@ -71,8 +70,6 @@ namespace Content.Client.Lobby.UI
 
         // CCvar.
         private int _maxNameLength;
-
-        private TTSTab? _ttsTab; // ADT-Tweak
 
         /// <summary>
         /// If we're attempting to save.
@@ -385,7 +382,7 @@ namespace Content.Client.Lobby.UI
             RefreshTraits();
             Traits.OnTraitsChanged += OnTraitsSelectionChanged; // ADT-Tweak new Traits
 
-            /*TabContainer.SetTabTitle(5, Loc.GetString("humanoid-profile-editor-traits-tab")); // Corvax-TTS-Edit
+            /*TabContainer.SetTabTitle(5, Loc.GetString("humanoid-profile-editor-traits-tab"));
             Вынесено в HumanoidProfileEditor в регионе InvokeRefresh, чтобы не накладывало названия друг на друга*/
 
             #region Markings
@@ -400,22 +397,14 @@ namespace Content.Client.Lobby.UI
 
             RefreshFlavorText();
 
-            RefreshVoiceTab(); // ADT-Tweak
-
             // ADT-Tweak start. Корректно вставляем вкладки для кастомизации персонажа и их названия
             #region InvokeRefresh
-            bool ttsIsEnabled = _cfgManager.GetCVar(ADTTTSCVars.TTSEnabled); // ADT-Tweak
-            int valueTTSEnable = ttsIsEnabled ? 1 : 0; // Переменная для перехода на следующий индекс вкладки, если ТТС включён, чтобы их названия не накладывались друг на друга
-
             TabContainer.SetTabTitle(0, Loc.GetString("humanoid-profile-editor-appearance-tab"));
-            if (ttsIsEnabled)
-                TabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-voice-tab"));
-
-            TabContainer.SetTabTitle(1 + valueTTSEnable, Loc.GetString("humanoid-profile-editor-languages-tab"));
-            TabContainer.SetTabTitle(2 + valueTTSEnable, Loc.GetString("humanoid-profile-editor-jobs-tab"));
-            TabContainer.SetTabTitle(3 + valueTTSEnable, Loc.GetString("humanoid-profile-editor-antags-tab"));
-            TabContainer.SetTabTitle(4 + valueTTSEnable, Loc.GetString("humanoid-profile-editor-traits-tab"));
-            TabContainer.SetTabTitle(5 + valueTTSEnable, Loc.GetString("humanoid-profile-editor-markings-tab"));
+            TabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-languages-tab"));
+            TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-jobs-tab"));
+            TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-antags-tab"));
+            TabContainer.SetTabTitle(4, Loc.GetString("humanoid-profile-editor-traits-tab"));
+            TabContainer.SetTabTitle(5, Loc.GetString("humanoid-profile-editor-markings-tab"));
 
             if (_allowFlavorText)
                 TabContainer.SetTabTitle(TabContainer.ChildCount - 1, Loc.GetString("humanoid-profile-editor-flavortext-tab"));
@@ -451,57 +440,6 @@ namespace Content.Client.Lobby.UI
             ReloadPreview();
             IsDirty = false;
         }
-
-        // ADT-Tweak-Start
-        #region Voice
-
-        private void RefreshVoiceTab()
-        {
-            if (!_cfgManager.GetCVar(ADTTTSCVars.TTSEnabled))
-                return;
-
-            _ttsTab = new TTSTab();
-            var children = new List<Control>();
-            foreach (var child in TabContainer.Children)
-                children.Add(child);
-
-            TabContainer.RemoveAllChildren();
-
-            for (int i = 0; i < children.Count; i++)
-            {
-                if (i == 1) // Set the tab to the 2nd place.
-                {
-                    TabContainer.AddChild(_ttsTab);
-                }
-                TabContainer.AddChild(children[i]);
-            }
-
-            /*TabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-voice-tab"));
-            Вынесено в HumanoidProfileEditor в регионе InvokeRefresh, чтобы не накладывало названия друг на друга*/
-
-            _ttsTab.OnVoiceSelected += voiceId =>
-            {
-                SetVoice(voiceId);
-                _ttsTab.SetSelectedVoice(voiceId);
-            };
-
-            _ttsTab.OnPreviewRequested += voiceId =>
-            {
-                _entManager.System<TTSSystem>().RequestPreviewTTS(voiceId);
-            };
-        }
-
-        private void UpdateTTSVoicesControls()
-        {
-            if (Profile is null || _ttsTab is null)
-                return;
-
-            _ttsTab.UpdateControls(Profile, Profile.Sex, Profile.Species); //ADT-tweak: добавлена раса
-            _ttsTab.SetSelectedVoice(Profile.Voice);
-        }
-
-        #endregion
-        // ADT-Tweak-End
 
         private void SetDirty()
         {
@@ -563,7 +501,6 @@ namespace Content.Client.Lobby.UI
             UpdateEyePickers();
             UpdateSaveButton();
             UpdateMarkings();
-            UpdateTTSVoicesControls(); // ADT-Tweak
             UpdateBarkVoicesControls(); // ADT Barks
 
             RefreshLanguages(); // ADT Languages
@@ -708,13 +645,6 @@ namespace Content.Client.Lobby.UI
             SpriteView.PreviewDummy = EntityUid.Invalid;
         }
 
-        // ADT-Tweak-Start
-        private void SetVoice(string newVoice)
-        {
-            Profile = Profile?.WithVoice(newVoice);
-            IsDirty = true;
-        }
-        // ADT-Tweak-End
         // ADT Barks start
         private void SetBarkProto(string prototype)
         {
