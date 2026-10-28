@@ -1,7 +1,6 @@
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Content.Shared.ADT.Sponsors;
 using Content.Shared.ADT.CCVar;
 using Content.Shared.ADT.CharecterFlavor;
 using Content.Shared.ADT.Language;
@@ -660,14 +659,6 @@ namespace Content.Shared.Preferences
             }
             // Corvax-Sponsors-End
 
-            // ADT-Tweak-Start
-            if (!SponsorProfileValidation.IsSpeciesAllowed(session, collection, speciesPrototype))
-            {
-                Species = DefaultSpecies;
-                speciesPrototype = prototypeManager.Index(Species);
-            }
-            // ADT-Tweak-End
-
             var sex = Sex switch
             {
                 Sex.Male => Sex.Male,
@@ -749,8 +740,6 @@ namespace Content.Shared.Preferences
             }
             //ADT-tweak-end
 
-            SponsorProfileValidation.StripMarkings(Appearance, session, collection); // ADT-Tweak
-
             var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex);
 
             var prefsUnavailableMode = PreferenceUnavailable switch
@@ -797,8 +786,6 @@ namespace Content.Shared.Preferences
                          .Where(prototypeManager.HasIndex)
                          .ToList();
 
-            traits = SponsorProfileValidation.FilterTraits(traits, session, collection); // ADT-Tweak
-
             Name = name;
             FlavorText = flavortext;
             //ADT-tweak-start
@@ -829,12 +816,8 @@ namespace Content.Shared.Preferences
 
             // ADT-Tweak-Start
             prototypeManager.TryIndex<TTSVoicePrototype>(Voice, out var voice);
-            if (voice is null
-                || !CanHaveVoice(voice, Sex, Species)
-                || !SponsorProfileValidation.IsTtsVoiceAllowed(session, collection, voice))
-            {
+            if (voice is null || !CanHaveVoice(voice, Sex, Species)) // ADT-Tweak
                 Voice = DefaultSexVoice[sex];
-            }
             // ADT-Tweak-End
 
             // Checks prototypes exist for all loadouts and dump / set to default if not.

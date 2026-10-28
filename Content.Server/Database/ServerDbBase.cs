@@ -26,7 +26,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Database
 {
-    public abstract partial class ServerDbBase // ADT-Tweak
+    public abstract class ServerDbBase
     {
         private readonly ISawmill _opsLog;
         public event Action<DatabaseNotification>? OnNotificationReceived;

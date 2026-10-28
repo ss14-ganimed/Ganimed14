@@ -41,7 +41,6 @@ namespace Content.Server.Preferences.Managers
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IDependencyCollection _dependencies = default!;
         [Dependency] private readonly SponsorsManager _sponsors = default!;
-        [Dependency] private readonly Content.Server.ADT.Sponsors.SponsorManager _adtSponsors = default!;
         [Dependency] private readonly ILogManager _log = default!;
         [Dependency] private readonly UserDbDataManager _userDb = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
@@ -454,7 +453,7 @@ namespace Content.Server.Preferences.Managers
             msg.Preferences = prefsData.Prefs;
             msg.Settings = new GameSettings
             {
-                MaxCharacterSlots = GetMaxUserCharacterSlots(session.UserId) // ADT-Tweak
+                MaxCharacterSlots = MaxCharacterSlots
             };
             _netManager.ServerSendMessage(msg, session.Channel);
         }
@@ -469,7 +468,6 @@ namespace Content.Server.Preferences.Managers
         {
             var maxSlots = _cfg.GetCVar(CCVars.GameMaxCharacterSlots);
             var extraSlots = _sponsors.TryGetInfo(userId, out var sponsor) ? sponsor.ExtraSlots : 0;
-            extraSlots = Math.Max(extraSlots, _adtSponsors.GetData(userId).ExtraCharacterSlots); // ADT-Tweak
             return maxSlots + extraSlots;
         }
         // Corvax-Sponsors-End

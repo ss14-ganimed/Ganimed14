@@ -29,7 +29,7 @@ using MSLogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace Content.Server.Database
 {
-    public partial interface IServerDbManager // ADT-Tweak
+    public interface IServerDbManager
     {
         void Init();
 
@@ -408,7 +408,7 @@ namespace Content.Server.Database
         public string? Payload { get; set; }
     }
 
-    public sealed partial class ServerDbManager : IServerDbManager // ADT-Tweak
+    public sealed class ServerDbManager : IServerDbManager
     {
         public static readonly Counter DbReadOpsMetric = Metrics.CreateCounter(
             "db_read_ops",

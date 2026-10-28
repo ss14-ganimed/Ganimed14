@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Client.ADT.Discord;
 using Content.Client.Corvax.Sponsors;
 using Content.Client.Message;
@@ -18,7 +17,6 @@ namespace Content.Client.Lobby.UI
     {
         [Dependency] private readonly IClientConsoleHost _consoleHost = default!;
         [Dependency] private readonly SponsorsManager _sponsorsManager = default!;
-        [Dependency] private readonly Content.Client.ADT.Sponsors.SponsorManager _adtSponsors = default!; // ADT-Tweak
         [Dependency] private readonly DiscordIdManager _discordIdManager = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         private float _updateTimer;
@@ -69,19 +67,7 @@ namespace Content.Client.Lobby.UI
 
             CollapseButton.OnPressed += _ => TogglePanel(false);
             ExpandButton.OnPressed += _ => TogglePanel(true);
-
-            _adtSponsors.Updated += UpdateButtons; // ADT-Tweak
         }
-
-        // ADT-Tweak-Start
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-
-            if (disposing)
-                _adtSponsors.Updated -= UpdateButtons;
-        }
-        // ADT-Tweak-End
 
         public void SwitchState(LobbyGuiState state)
         {
@@ -141,11 +127,15 @@ namespace Content.Client.Lobby.UI
         // ADT-Tweak-Start: Покраска кнопок в зависимости от спонсорки и привязки к Discord
         private void UpdateButtons()
         {
-            if (!_panelUpdate)
-                return;
-
             // Проверяем статус спонсорки
-            UpdateSponsorButton();
+            if (_sponsorsManager?.TryGetInfo(out var sponsorInfo) == true)
+            {
+                UpdateSponsorButtonColor(true, sponsorInfo.Tier);
+            }
+            else
+            {
+                UpdateSponsorButtonColor(false, null);
+            }
             SponsorInfoButton.Visible = true;
 
             // Проверяем статус Discord
@@ -153,32 +143,7 @@ namespace Content.Client.Lobby.UI
             DiscordLinkButton.Visible = true;
         }
 
-        private void UpdateSponsorButton()
-        {
-            var adtData = _adtSponsors.Data;
-
-            if (adtData.Tiers.Count > 0)
-            {
-                UpdateSponsorButtonColor(true, string.Join(", ", adtData.Tiers.Select(t => t.DisplayName)));
-                return;
-            }
-
-            if (adtData.HasAnyBenefit)
-            {
-                UpdateSponsorButtonColor(true, Loc.GetString("ui-lobby-sponsor-button-custom"));
-                return;
-            }
-
-            if (_sponsorsManager.TryGetInfo(out var sponsorInfo))
-            {
-                UpdateSponsorButtonColor(true, sponsorInfo.Tier?.ToString());
-                return;
-            }
-
-            UpdateSponsorButtonColor(false, null);
-        }
-
-        public void UpdateSponsorButtonColor(bool hasSponsor, string? sponsorTier)
+        public void UpdateSponsorButtonColor(bool hasSponsor, int? sponsorTier)
         {
             if (SponsorInfoButton == null)
                 return;
@@ -187,13 +152,9 @@ namespace Content.Client.Lobby.UI
                 ? ColorBlue  // Синий
                 : ColorRed;  // Красный
 
-            if (hasSponsor && sponsorTier != null)
-            {
-                SponsorInfoButton.Text = Loc.GetString("ui-lobby-sponsor-button-level", ("sponsorTier", sponsorTier));
-                return;
-            }
-
-            SponsorInfoButton.Text = Loc.GetString("ui-lobby-sponsor-button-main-level");
+            SponsorInfoButton.Text = hasSponsor && sponsorTier != null
+                ? Loc.GetString("ui-lobby-sponsor-button-level", ("sponsorTier", sponsorTier))
+                : Loc.GetString("ui-lobby-sponsor-button-main-level");
         }
 
         public void UpdateDiscordLinkButtonColor(bool? isLinked)

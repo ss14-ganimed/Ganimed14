@@ -81,7 +81,6 @@ namespace Content.Client.Entry
         [Dependency] private readonly JobRequirementsManager _jobRequirements = default!;
         [Dependency] private readonly ContentLocalizationManager _contentLoc = default!;
         [Dependency] private readonly SponsorsManager _sponsorsManager = default!; // Corvax-Sponsors
-        [Dependency] private readonly Content.Client.ADT.Sponsors.SponsorManager _adtSponsorManager = default!; // ADT-Tweak
         [Dependency] private readonly JoinQueueManager _queueManager = default!; // Corvax-Queue
         [Dependency] private readonly DiscordAuthManager _discordAuthManager = default!; // Corvax-DiscordAuth
         [Dependency] private readonly ContentReplayPlaybackManager _playbackMan = default!;
@@ -152,6 +151,7 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("sponsorLoadout"); // ADT-Sponsor-Loadout
             _prototypeManager.RegisterIgnore("sponsorPersonalLoadout"); // ADT-Sponsor-Loadout
             _prototypeManager.RegisterIgnore("sponsorLoadoutTierSetting"); // ADT-Sponsor-Loadout
+            _prototypeManager.RegisterIgnore("debugSponsor"); // Ganimed-Debug-Sponsor
 
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();
@@ -207,7 +207,6 @@ namespace Content.Client.Entry
             _userInterfaceManager.SetDefaultTheme("SS14DefaultTheme");
             _userInterfaceManager.SetActiveTheme(_configManager.GetCVar(CVars.InterfaceTheme));
             _sponsorsManager.Initialize(); // Corvax-Sponsors
-            _adtSponsorManager.Initialize(); // ADT-Tweak
             _queueManager.Initialize(); // Corvax-Queue
             _discordAuthManager.Initialize(); // Corvax-DiscordAuth
             _discordIdManager.Initialize(); // ADT-Discord
