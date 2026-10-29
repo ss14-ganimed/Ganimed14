@@ -19,6 +19,20 @@ public sealed partial class TurretControllableComponent : Component
     [DataField("ControlReturnActionEntity")]
     public EntityUid? ControlReturnActEntity;
 
+    // Ganimed-Add-Start: действие «показать сканер массы», которое выдаётся пилоту орудия
+    /// <summary>
+    /// Прототип действия, открывающего/закрывающего интерфейс сканера массы у орудия.
+    /// </summary>
+    [DataField("ShowRadarAction")] // Ganimed-Add
+    public EntProtoId ShowRadarAction = "ActionTurretShowRadar"; // Ganimed-Add
+
+    /// <summary>
+    /// Сущность действия сканера массы, выданного орудию.
+    /// </summary>
+    [DataField("ShowRadarActionEntity")] // Ganimed-Add
+    public EntityUid? ShowRadarActionEntity; // Ganimed-Add
+    // Ganimed-Add-End
+
     [DataField("Range")]
     public float Range = 50f;
 

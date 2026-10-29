@@ -6,7 +6,7 @@
   completetime: 2
   applyMaterialDiscount: false
   materials:
-    Steel: 50
+    Steel: 200 # Ganimed-Edit: was 50, deconstruction refunds 2 full steel sheets (dupe)
 
 - type: latheRecipe
   id: DisposalTagger
@@ -14,7 +14,7 @@
   completetime: 2
   applyMaterialDiscount: false
   materials:
-    Steel: 50
+    Steel: 200 # Ganimed-Edit: was 50, deconstruction refunds 2 full steel sheets (dupe)
 
 - type: latheRecipe
   id: DisposalTrunk
@@ -22,7 +22,7 @@
   completetime: 2
   applyMaterialDiscount: false
   materials:
-    Steel: 50
+    Steel: 200 # Ganimed-Edit: was 50, deconstruction refunds 2 full steel sheets (dupe)
 
 - type: latheRecipe
   id: DisposalRouter
@@ -30,7 +30,7 @@
   completetime: 2
   applyMaterialDiscount: false
   materials:
-    Steel: 50
+    Steel: 200 # Ganimed-Edit: was 50, deconstruction refunds 2 full steel sheets (dupe)
 
 - type: latheRecipe
   id: DisposalRouterFlipped
@@ -38,7 +38,7 @@
   completetime: 2
   applyMaterialDiscount: false
   materials:
-    Steel: 50
+    Steel: 200 # Ganimed-Edit: was 50, deconstruction refunds 2 full steel sheets (dupe)
 
 - type: latheRecipe
   id: DisposalJunction
@@ -46,7 +46,7 @@
   completetime: 2
   applyMaterialDiscount: false
   materials:
-    Steel: 50
+    Steel: 200 # Ganimed-Edit: was 50, deconstruction refunds 2 full steel sheets (dupe)
 
 - type: latheRecipe
   id: DisposalJunctionFlipped
@@ -54,7 +54,7 @@
   completetime: 2
   applyMaterialDiscount: false
   materials:
-    Steel: 50
+    Steel: 200 # Ganimed-Edit: was 50, deconstruction refunds 2 full steel sheets (dupe)
 
 - type: latheRecipe
   id: DisposalYJunction
@@ -62,7 +62,7 @@
   completetime: 2
   applyMaterialDiscount: false
   materials:
-    Steel: 50
+    Steel: 200 # Ganimed-Edit: was 50, deconstruction refunds 2 full steel sheets (dupe)
 
 - type: latheRecipe
   id: DisposalBend
@@ -70,7 +70,7 @@
   completetime: 2
   applyMaterialDiscount: false
   materials:
-    Steel: 50
+    Steel: 200 # Ganimed-Edit: was 50, deconstruction refunds 2 full steel sheets (dupe)
 
 - type: latheRecipe
   id: DisposalSignalRouter
@@ -78,7 +78,7 @@
   completetime: 2
   applyMaterialDiscount: false
   materials:
-    Steel: 50
+    Steel: 200 # Ganimed-Edit: was 50, deconstruction refunds 2 full steel sheets (dupe)
 
 - type: latheRecipe
   id: DisposalSignalRouterFlipped
@@ -86,7 +86,7 @@
   completetime: 2
   applyMaterialDiscount: false
   materials:
-    Steel: 50
+    Steel: 200 # Ganimed-Edit: was 50, deconstruction refunds 2 full steel sheets (dupe)
 
 # Atmos
 
@@ -96,7 +96,7 @@
   completetime: 1
   applyMaterialDiscount: false
   materials:
-    Steel: 25
+    Steel: 100 # Ganimed-Edit: was 25, deconstruction refunds a full steel sheet (dupe)
 
 - type: latheRecipe
   id: GasPipeStraight
@@ -104,7 +104,7 @@
   completetime: 1
   applyMaterialDiscount: false
   materials:
-    Steel: 25
+    Steel: 100 # Ganimed-Edit: was 25, deconstruction refunds a full steel sheet (dupe)
 
 - type: latheRecipe
   id: GasPipeBend
@@ -112,7 +112,7 @@
   completetime: 1
   applyMaterialDiscount: false
   materials:
-    Steel: 25
+    Steel: 100 # Ganimed-Edit: was 25, deconstruction refunds a full steel sheet (dupe)
 
 - type: latheRecipe
   id: GasPipeTJunction
@@ -120,7 +120,7 @@
   completetime: 1
   applyMaterialDiscount: false
   materials:
-    Steel: 25
+    Steel: 100 # Ganimed-Edit: was 25, deconstruction refunds a full steel sheet (dupe)
 
 - type: latheRecipe
   id: GasPipeFourway
@@ -128,4 +128,4 @@
   completetime: 1
   applyMaterialDiscount: false
   materials:
-    Steel: 25
+    Steel: 100 # Ganimed-Edit: was 25, deconstruction refunds a full steel sheet (dupe)

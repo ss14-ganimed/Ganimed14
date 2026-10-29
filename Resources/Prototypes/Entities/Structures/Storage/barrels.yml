@@ -645,6 +645,8 @@
   name: open radioactive barrel (empty)
   description: An empty open radioactive barrel.
   components:
+  - type: RadiationSource # Ganimed-Edit: empty barrel must not radiate (inherited from ADTBarrelRadOpen)
+    enabled: false
   - type: Construction
     graph: ADTBarrelRadOpen
     node: barrel

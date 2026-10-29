@@ -829,6 +829,7 @@
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:
+  - type: RadarTracked # Ganimed-Add: RPG rockets are shown on radars/mass scanners
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
@@ -851,6 +852,7 @@
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:
+  - type: RadarTracked # Ganimed-Add: RPG rockets are shown on radars/mass scanners
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:

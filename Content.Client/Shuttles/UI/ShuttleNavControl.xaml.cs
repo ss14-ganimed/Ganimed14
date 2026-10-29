@@ -104,6 +104,10 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         return coords;
     }
 
+    // Ganimed-Add-Start: projectile positions for radar
+    private List<NavProjectile> _projectiles = new();
+    // Ganimed-Add-End
+
     public void UpdateState(NavInterfaceState state)
     {
         SetMatrix(EntManager.GetCoordinates(state.Coordinates), state.Angle);
@@ -123,6 +127,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         RotateWithEntity = state.RotateWithEntity;
 
         _docks = state.Docks;
+        _projectiles = state.ProjectileCoordinates ?? new List<NavProjectile>(); // Ganimed-Add
     }
 
     protected override void Draw(DrawingHandleScreen handle)
@@ -276,6 +281,45 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
             DrawGrid(handle, curGridToView, grid, labelColor);
             DrawDocks(handle, gUid, curGridToView);
         }
+
+        // Ganimed-Add-Start: draw tracked projectiles (ship shells, RPG rockets)
+        if (_projectiles.Count > 0)
+        {
+            // Red contacts (RPG rockets, Mk.155 / D-100 shells) keep the full size, the yellow
+            // ones (DS-30 / GAU-32) are drawn smaller so they don't drown the red ones out.
+            const float projRadius = 1.8f;
+            const float minorProjRadius = 1.1f;
+
+            foreach (var proj in _projectiles)
+            {
+                var projMap = proj.Coordinates;
+                if (projMap.MapId != xform.MapID)
+                    continue;
+
+                // Cull everything outside of the visible radar square.
+                var posInShuttle = Vector2.Transform(projMap.Position, worldToShuttle);
+                if (Math.Abs(posInShuttle.X) > WorldRange || Math.Abs(posInShuttle.Y) > WorldRange)
+                    continue;
+
+                // Yellow = high red + high green + low blue.
+                var isMinorContact = proj.Color.R > 0.5f && proj.Color.G > 0.5f && proj.Color.B < 0.5f;
+                var radius = isMinorContact ? minorProjRadius : projRadius;
+
+                var posInView = Vector2.Transform(posInShuttle, shuttleToView);
+                var verts = new[]
+                {
+                    posInView + new Vector2(0f, -radius * MinimapScale),
+                    posInView + new Vector2(radius * MinimapScale, 0f),
+                    posInView + new Vector2(0f, radius * MinimapScale),
+                    posInView + new Vector2(-radius * MinimapScale, 0f),
+                };
+
+                // Contact color comes from the radar state (yellow for DS-30/GAU-32, red for the rest)
+                handle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, verts, proj.Color.WithAlpha(0.85f));
+                handle.DrawPrimitives(DrawPrimitiveTopology.LineStrip, verts, proj.Color.WithAlpha(0.95f));
+            }
+        }
+        // Ganimed-Add-End
 
         // If we've set the controlling console, and it's on a different grid
         // to the shuttle itself, then draw an additional marker to help the
