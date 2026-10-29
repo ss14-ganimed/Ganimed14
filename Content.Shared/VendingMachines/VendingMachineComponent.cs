@@ -51,8 +51,6 @@ namespace Content.Shared.VendingMachines
         public bool DispenseOnHitCoolingDown;
 
         public string? NextItemToEject;
-        public int NextItemReturnedCount; // ADT-Return 
-        public Color? NextItemPaintColor; // ADT-Tweak
 
         [DataField]
         public bool Broken;
@@ -227,9 +225,6 @@ namespace Content.Shared.VendingMachines
         [DataField]
         public Color UiButtonDisabledColor = Color.FromHex("#3f3f3fff");
 
-        [DataField, ViewVariables(VVAccess.ReadWrite)]
-        public Dictionary<string, uint> ReturnedInventory = new();
-
         //ADT-Economy-End
     }
 
@@ -247,24 +242,14 @@ namespace Content.Shared.VendingMachines
         //ADT-Economy-Start
         [ViewVariables(VVAccess.ReadWrite)]
         public int Price;
-
-        [DataField]
-        public uint MaxAmount;
-
-        [DataField]
-        public string? Category;
         //ADT-Economy-End
 
-        public VendingMachineInventoryEntry(InventoryType type, string id, uint amount, int price, uint maxAmount, string? category = null) //ADT-Economy
+        public VendingMachineInventoryEntry(InventoryType type, string id, uint amount, int price) //ADT-Economy
         {
             Type = type;
             ID = id;
             Amount = amount;
-            //ADT-Economy start
-            Price = price;
-            MaxAmount = maxAmount;
-            Category = category;
-            //ADT-Economy end
+            Price = price; //ADT-Economy
         }
 
         public VendingMachineInventoryEntry(VendingMachineInventoryEntry entry)
@@ -272,11 +257,7 @@ namespace Content.Shared.VendingMachines
             Type = entry.Type;
             ID = entry.ID;
             Amount = entry.Amount;
-            //ADT-Economy start
-            Price = entry.Price;
-            MaxAmount = entry.MaxAmount;
-            Category = entry.Category;
-            //ADT-Economy end
+            Price = entry.Price; //ADT-Economy
         }
     }
 
@@ -346,8 +327,6 @@ namespace Content.Shared.VendingMachines
         public Dictionary<string, VendingMachineInventoryEntry> EmaggedInventory = new();
 
         public Dictionary<string, VendingMachineInventoryEntry> ContrabandInventory = new();
-
-        public Dictionary<string, uint> ReturnedInventory = new(); // ADT-Return 
 
         public bool Contraband;
 

@@ -72,17 +72,9 @@ namespace Content.Client.VendingMachines
             _menu?.Populate(Owner, _cachedInventory, newState.PriceMultiplier, newState.Credits); //ADT-Economy-Tweak
         }
 
-        protected override void ReceiveMessage(BoundUserInterfaceMessage message)
+        private void OnItemSelected(VendingMachineInventoryEntry entry)
         {
-            base.ReceiveMessage(message);
-
-            if (message is VendingMachineUserInfoMessage info)
-                _menu?.SetUserInfo(info.Balance, info.IgnoreBalance); // ADT-Tweak
-        }
-
-        private void OnItemSelected(VendingMachineInventoryEntry entry, int count, Color? paintColor) // ADT-tweak
-        {
-            SendPredictedMessage(new VendingMachineEjectCountMessage(entry, count, paintColor)); // ADT-tweak
+            SendPredictedMessage(new VendingMachineEjectCountMessage(entry, 1));
         }
 
         // END-ADT-TWEAK

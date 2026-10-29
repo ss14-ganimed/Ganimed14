@@ -1,23 +1,19 @@
 - type: vendingMachineInventory
   id: CuraDrobeInventory
   startingInventory:
-    ADTVendingCategoryAccessories:  # ADT-Tweak
-        ClothingEyesGlasses: 2
-        ClothingEyesGlassesJamjar: 2
-        ClothingNeckScarfStripedGreen: 2
-        ClothingHeadsetService: 2
-        ADTBureaucraticBelt: 2 # ADT-Tweak
-    ADTVendingCategoryUniforms:  # ADT-Tweak
-        ClothingUniformJumpsuitCurator: 3
-        ClothingUniformJumpskirtCurator: 3
-        ClothingUniformJumpsuitLibrarian: 3
-        ClothingUniformJumpskirtLibrarian: 3
-    ADTVendingCategoryShoes:  # ADT-Tweak
-        ClothingShoesBootsLaceup: 2
+    ClothingEyesGlasses: 2
+    ClothingEyesGlassesJamjar: 2
+    ClothingNeckScarfStripedGreen: 2
+    ClothingHeadsetService: 2
+    ADTBureaucraticBelt: 2 # ADT-Tweak
+    ClothingUniformJumpsuitCurator: 3
+    ClothingUniformJumpskirtCurator: 3
+    ClothingUniformJumpsuitLibrarian: 3
+    ClothingUniformJumpskirtLibrarian: 3
+    ClothingShoesBootsLaceup: 2
     # ADT tweak start wiki books
-    ADTVendingCategoryBooks:
-        ADTBookSRPsrv: 2
-        BookRandom: 10
+    ADTBookSRPsrv: 2
+    BookRandom: 10
     # ADT tweak end wiki books
     BooksBag: 2
     BriefcaseBrown: 2

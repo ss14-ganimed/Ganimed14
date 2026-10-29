@@ -1,28 +1,22 @@
 - type: vendingMachineInventory
   id: SciDrobeInventory
   startingInventory:
-    ADTVendingCategoryBackpacks:  # ADT-Tweak
-        ClothingBackpackScience: 3
-        ClothingBackpackSatchelScience: 3
-        ClothingBackpackDuffelScience: 3
-    ADTVendingCategoryUniforms:  # ADT-Tweak
-        ClothingUniformJumpsuitScientist: 3
-        ClothingUniformJumpskirtScientist: 3
-        ClothingUniformJumpsuitScientistFormal: 3
-    ADTVendingCategoryOuter:  # ADT-Tweak
-        ClothingOuterCoatRnd: 3
-        ClothingOuterWinterSci: 2
-    ADTVendingCategoryShoes:  # ADT-Tweak
-        ClothingShoesColorWhite: 3
-        ClothingShoesBootsWinterSci: 2
-    ADTVendingCategoryAccessories:  # ADT-Tweak
-        ClothingNeckTieSci: 3
-        ClothingHeadsetScience: 3
-        ClothingMaskGas: 3
-        ClothingNeckScarfStripedPurple: 3
+    ClothingBackpackScience: 3
+    ClothingBackpackSatchelScience: 3
+    ClothingBackpackDuffelScience: 3
+    ClothingUniformJumpsuitScientist: 3
+    ClothingUniformJumpskirtScientist: 3
+    ClothingUniformJumpsuitScientistFormal: 3
+    ClothingOuterCoatRnd: 3
+    ClothingOuterWinterSci: 2
+    ClothingShoesColorWhite: 3
+    ClothingShoesBootsWinterSci: 2
+    ClothingNeckTieSci: 3
+    ClothingHeadsetScience: 3
+    ClothingMaskGas: 3
+    ClothingNeckScarfStripedPurple: 3
     # ADT tweak start wiki books
-    ADTVendingCategoryBooks:
-        ADTBookSRPrnd: 2
+    ADTBookSRPrnd: 2
     # ADT tweak end wiki books
   contrabandInventory:
     ToyFigurineResearchDirector: 1
