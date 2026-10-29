@@ -105,7 +105,6 @@
     - DoorBumpOpener
     - AnomalyHost
     - ChangelingBlacklist
-    - HideFromGhostWarps
   # ADT Tweak end
 
 - type: entity

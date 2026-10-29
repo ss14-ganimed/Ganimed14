@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared.ADT.Roles;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -24,7 +23,7 @@ public abstract class SharedRoleSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] protected readonly ISharedPlayerManager Player = default!;
-    [Dependency] private readonly EntityWhitelistSystem ADTlist = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly SharedMindSystem _minds = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
 
@@ -177,11 +176,6 @@ public abstract class SharedRoleSystem : EntitySystem
         var update = MindRolesUpdate((mindId, mind));
 
         // RoleType refresh, Role time tracking, Update Admin playerlist
-
-        // ADT-TWEAK start
-        var addMessage = new RoleAddingEvent(mindId, mind, mindRoleId.Value, mindRoleComp); // WWDP
-        RaiseLocalEvent(mindId, addMessage); 
-        // ADT-TWEAK end
 
         var message = new RoleAddedEvent(mindId, mind, update, silent);
         RaiseLocalEvent(mindId, message, true);
@@ -412,11 +406,7 @@ public abstract class SharedRoleSystem : EntitySystem
 
         foreach (var role in delete)
         {
-            // ADT-TWEAK start
-            var removingMessage = new RoleRemovingEvent(mind.Owner, mind.Comp, role, Comp<MindRoleComponent>(role));
-            RaiseLocalEvent(mind, removingMessage);
-            EntityManager.DeleteEntity(role);
-            // ADT-TWEAK end
+            PredictedDel(role);
         }
 
         var update = MindRolesUpdate(mind);
@@ -517,7 +507,7 @@ public abstract class SharedRoleSystem : EntitySystem
     {
         foreach (var roleEnt in mind.Comp.MindRoleContainer.ContainedEntities)
         {
-            if (ADTlist.IsWhitelistPass(whitelist, roleEnt)) // ADT-TWEAK
+            if (_whitelist.IsWhitelistPass(whitelist, roleEnt))
                 return true;
         }
 

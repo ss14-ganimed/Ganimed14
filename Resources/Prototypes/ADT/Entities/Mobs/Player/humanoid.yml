@@ -55,7 +55,6 @@
       name: ghost-role-information-ert-leader-name
       description: ghost-role-information-ert-leader-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTLeader
       raffle:
         settings: short
     - type: Loadout
@@ -74,7 +73,6 @@
       name: ghost-role-information-ert-leader-name
       description: ghost-role-information-ert-leader-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTLeader
       raffle:
         settings: short
     - type: Loadout
@@ -100,7 +98,6 @@
       name: ghost-role-information-ert-leader-name
       description: ghost-role-information-ert-leader-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTLeader
       raffle:
         settings: short
     - type: Loadout
@@ -152,7 +149,6 @@
       name: ghost-role-information-ert-janitor-name
       description: ghost-role-information-ert-janitor-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTJanitor
       raffle:
         settings: short
     - type: RandomMetadata
@@ -183,7 +179,6 @@
       name: ghost-role-information-ert-janitor-name
       description: ghost-role-information-ert-janitor-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTJanitor
       raffle:
         settings: short
     - type: Loadout
@@ -209,7 +204,6 @@
       name: ghost-role-information-ert-janitor-name
       description: ghost-role-information-ert-janitor-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTJanitor
       raffle:
         settings: short
     - type: Loadout
@@ -261,7 +255,6 @@
       name: ghost-role-information-ert-engineer-name
       description: ghost-role-information-ert-engineer-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTEngineer
       raffle:
         settings: short
     - type: RandomMetadata
@@ -292,7 +285,6 @@
       name: ghost-role-information-ert-engineer-name
       description: ghost-role-information-ert-engineer-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTEngineer
       raffle:
         settings: short
     - type: Loadout
@@ -318,7 +310,6 @@
       name: ghost-role-information-ert-engineer-name
       description: ghost-role-information-ert-engineer-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTEngineer
       raffle:
         settings: short
     - type: Loadout
@@ -370,7 +361,6 @@
       name: ghost-role-information-ert-security-name
       description: ghost-role-information-ert-security-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTSecurity
       raffle:
         settings: short
     - type: RandomMetadata
@@ -401,7 +391,6 @@
       name: ghost-role-information-ert-security-name
       description: ghost-role-information-ert-security-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTSecurity
       raffle:
         settings: short
     - type: Loadout
@@ -423,7 +412,6 @@
       name: ghost-role-information-ert-security-name
       description: ghost-role-information-ert-security-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTSecurity
       raffle:
         settings: short
     - type: Loadout
@@ -475,7 +463,6 @@
       name: ghost-role-information-ert-medical-name
       description: ghost-role-information-ert-medical-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTMedical
       raffle:
         settings: short
     - type: RandomMetadata
@@ -506,7 +493,6 @@
       name: ghost-role-information-ert-medical-name
       description: ghost-role-information-ert-medical-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTMedical
       raffle:
         settings: short
     - type: Loadout
@@ -532,7 +518,6 @@
       name: ghost-role-information-ert-medical-name
       description: ghost-role-information-ert-medical-description
       rules: ghost-role-information-nonantagonist-rules
-      job: ERTMedical
       raffle:
         settings: short
     - type: Loadout
@@ -581,7 +566,6 @@
     - type: GhostRole
       name: ghost-role-information-cmnd-cburn-agent-name
       description: ghost-role-information-cmnd-cburn-agent-description
-      job: CBURN
       raffle:
         settings: short
     - type: GhostTakeoverAvailable
@@ -810,8 +794,6 @@
     name: ghost-role-information-pirate-name
     description: ghost-role-information-pirate-description
     rules: ghost-role-information-pirate-rules
-  - type: GhostVisibleAntag
-    name: ghost-role-information-pirate-name
   - type: GhostTakeoverAvailable
 
 
@@ -827,8 +809,6 @@
     randomizeName: true
   - type: Loadout
     prototypes: [ADTPirateCaptainGear]
-  - type: GhostVisibleAntag
-    name: ghost-role-information-captain-pirate-name
 
 - type: entity
   name: Firstmate Pirate
@@ -842,8 +822,6 @@
     randomizeName: true
   - type: Loadout
     prototypes: [ADTPirateFirstmateGear]
-  - type: GhostVisibleAntag
-    name: ghost-role-information-pirate-firstmate-name
 
 
 - type: entity
@@ -858,8 +836,6 @@
     randomizeName: true
   - type: Loadout
     prototypes: [ADTRoleMobVoxRaiderGear]
-  - type: GhostVisibleAntag
-    name: ghost-role-information-vox_raider-name
 
 - type: startingGear
   id: ADTRoleMobVoxRaiderGear

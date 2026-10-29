@@ -102,6 +102,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
             return;
 
         window.UpdateWarps(msg.Warps);
+        window.Populate();
     }
 
     private void OnRoleCountUpdated(GhostUpdateGhostRoleCountEvent msg)
