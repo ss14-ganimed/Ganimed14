@@ -1,5 +1,4 @@
-﻿using Content.Shared.ADT.Mobs; // ADT-Tweak - Thunderdome
-using Content.Shared.Database;
+﻿using Content.Shared.Database;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Player;
@@ -113,17 +112,10 @@ public partial class MobStateSystem
         var ev = new MobStateChangedEvent(target, component, oldState, newState, origin);
         OnStateChanged(target, component, oldState, newState);
         RaiseLocalEvent(target, ev, true);
-        // ADT-Tweak-start - Thunderdome: allow suppressing admin log spam from arena deaths
-        var shouldLog = new ShouldLogMobStateChangeEvent(target, origin);
-        RaiseLocalEvent(ref shouldLog);
-        if (!shouldLog.Cancelled)
-        {
-            if (origin != null && HasComp<ActorComponent>(origin) && HasComp<ActorComponent>(target) && oldState < newState)
-                _adminLogger.Add(LogType.Damaged, LogImpact.High, $"{ToPrettyString(origin):player} caused {ToPrettyString(target):player} state to change from {oldState} to {newState}");
-            else
-                _adminLogger.Add(LogType.Damaged, oldState == MobState.Alive ? LogImpact.Low : LogImpact.Medium, $"{ToPrettyString(target):user} state changed from {oldState} to {newState}");
-        }
-        // ADT-Tweak-end
+        if (origin != null && HasComp<ActorComponent>(origin) && HasComp<ActorComponent>(target) && oldState < newState)
+            _adminLogger.Add(LogType.Damaged, LogImpact.High, $"{ToPrettyString(origin):player} caused {ToPrettyString(target):player} state to change from {oldState} to {newState}");
+        else
+            _adminLogger.Add(LogType.Damaged, oldState == MobState.Alive ? LogImpact.Low : LogImpact.Medium, $"{ToPrettyString(target):user} state changed from {oldState} to {newState}");
         Dirty(target, component);
     }
 
