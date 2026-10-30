@@ -6,7 +6,6 @@ using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Server.Roles.Jobs;
 using Content.Shared.ADT.Ghost.GhostTypes;
-using Content.Shared.ADT.CustomGhostSystem;
 using Content.Shared.Actions;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;

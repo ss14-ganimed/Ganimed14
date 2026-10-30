@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server.GameTicking;
 using Content.Server.Ghost;
 using Content.Server.Mind;
+using Content.Shared.ADT.Ghost.GhostTypes;
 using Content.Shared.Administration;
 using Content.Shared.Ghost;
 using Content.Shared.Mind;
@@ -103,6 +104,10 @@ public sealed class AGhostCommand : LocalizedCommands
 
         // ADT-Tweak-Start
         var adminGhostComponent = _entities.GetComponent<GhostComponent>(ghost);
+        // Ganimed-Edit: a living admin's mind has no stored appearance yet (it is only stored on death / ghosting),
+        // so capture it from the current body first; otherwise the admin ghost keeps the default ghost sprite.
+        if (player!.AttachedEntity is { } currentBody)
+            _entities.System<StoreBodyAppearanceOnMindSystem>().CapAppearance(currentBody, mindId);
         serverGhostSystem.ApplyBodyAppearance(ghost, mindId);
         serverGhostSystem.GiveGhostClothes(ghost, adminGhostComponent);
         // ADT-Tweak-End
