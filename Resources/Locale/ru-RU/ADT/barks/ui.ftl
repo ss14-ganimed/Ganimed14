@@ -1,5 +1,6 @@
 humanoid-profile-editor-bark-label = Голос (Барк):
 humanoid-profile-editor-bark-play = Прослушать
+humanoid-profile-editor-voice-play = ▶
 humanoid-profile-editor-bark-window-title = Выбор барка
 humanoid-profile-editor-bark-none = Не выбран
 humanoid-profile-editor-bark-categories = Категории
