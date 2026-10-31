@@ -10,6 +10,7 @@ using Content.Shared.Anomaly.Effects;
 using Content.Shared.Body.Components;
 using Content.Shared.Chat;
 using Content.Shared.Database;
+using Content.Shared.Gibbing;
 using Content.Shared.Mobs;
 using Content.Shared.Popups;
 using Content.Shared.Whitelist;
@@ -26,7 +27,7 @@ public sealed class InnerBodyAnomalySystem : SharedInnerBodyAnomalySystem
     [Dependency] private readonly IAdminLogManager _adminLog = default!;
     [Dependency] private readonly AnomalySystem _anomaly = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly BodySystem _body = default!;
+    [Dependency] private readonly GibbingSystem _gibbing = default!;
     [Dependency] private readonly IChatManager _chat = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
@@ -100,12 +101,10 @@ public sealed class InnerBodyAnomalySystem : SharedInnerBodyAnomalySystem
         foreach (var entry in injectedAnom.Components.Values)
         {
             var reg = _compFactory.GetRegistration(entry.Component.GetType());
-            if (reg.NetID is ushort netId)
-            {
-                EntityManager.AddComponent(ent, netId);
-                ent.Comp.AddedComponentNetIds.Add(netId);
-            }
+            if (!EntityManager.HasComponent(ent, reg))
+                ent.Comp.AddedComponentRegistrations.Add(reg);
         }
+        EntityManager.AddComponents(ent, injectedAnom.Components, removeExisting: false);
         // ADT-tweak end
 
         _stun.TryUpdateParalyzeDuration(ent, TimeSpan.FromSeconds(ent.Comp.StunDuration));
@@ -143,10 +142,7 @@ public sealed class InnerBodyAnomalySystem : SharedInnerBodyAnomalySystem
 
     private void OnAnomalySupercritical(Entity<InnerBodyAnomalyComponent> ent, ref AnomalySupercriticalEvent args)
     {
-        if (!TryComp<BodyComponent>(ent, out var body))
-            return;
-
-        _body.GibBody(ent, true, body, splatModifier: 5f);
+        _gibbing.Gib(ent.Owner);
     }
 
     private void OnSeverityChanged(Entity<InnerBodyAnomalyComponent> ent, ref AnomalySeverityChangedEvent args)
@@ -224,14 +220,12 @@ public sealed class InnerBodyAnomalySystem : SharedInnerBodyAnomalySystem
 
         // ADT-tweak start: Remove only the specific components that were added by the anomaly
         var metadata = MetaData(ent);
-        foreach (var netId in ent.Comp.AddedComponentNetIds)
+        foreach (var reg in ent.Comp.AddedComponentRegistrations)
         {
-            if (EntityManager.TryGetComponent(ent, netId, out var component, metadata))
-            {
+            if (EntityManager.TryGetComponent(ent, reg, out var component))
                 EntityManager.RemoveComponent(ent, component, metadata);
-            }
         }
-        ent.Comp.AddedComponentNetIds.Clear();
+        ent.Comp.AddedComponentRegistrations.Clear();
         // ADT-tweak end
 
         _stun.TryUpdateParalyzeDuration(ent, TimeSpan.FromSeconds(ent.Comp.StunDuration));

@@ -7,14 +7,17 @@
     ClothingUniformJumpsuitCargo: 3
     ClothingUniformJumpskirtCargo: 3
     ClothingShoesColorBlack: 3
+    ClothingShoesBootsWinterCargo: 2
     ClothingHandsGlovesFingerless: 3
+    ClothingHeadsetCargo: 3
+    ClothingNeckScarfStripedBrown: 3
     ClothingHeadHatCargosoft: 3
     ClothingHeadBandBrown: 3
-    ClothingHeadsetCargo: 3
     ClothingOuterWinterCargo: 2
     ClothingOuterWinterMiner: 2
-    ClothingNeckScarfStripedBrown: 3
-    ClothingShoesBootsWinterCargo: 2
+    # ADT tweak start wiki books
+    ADTBookSRPcrg: 2
+    # ADT tweak end wiki books
     MailBag: 2
   contrabandInventory:
     ToyFigurineCargoTech: 1

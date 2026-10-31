@@ -4,76 +4,47 @@
   description: flavor-complex-eldritch
 
 - type: reagent
-  id: EldritchEssence
-  parent: BaseDrink
-  group: Unknown
+  id: EssenceEldritch
+  group: Medicine
   name: reagent-name-eldritch
   desc: reagent-desc-eldritch
   physicalDesc: reagent-physical-desc-eldritch
   flavor: eldritch
   color: "#1f8016"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
-          groups:
-            Burn: -1
-            Toxin: -1
-            Airloss: -1
-            Brute: -1
-            Genetic: -1
+          types:
+            Heat: -1
+            Radiation: -1
+            Caustic: -1
+            Poison: -1
+            Asphyxiation: -1
+            Bloodloss: -1
+            Blunt: -1
+            Slash: -1
+            Piercing: -1
+            Cellular: -1
         conditions:
-        - !type:HasComponentCondition
-          components:
-            - Heretic
-            - Ghoul
-          guidebookComponentName: reagent-comp-condition-heretic-or-ghoul
+        - !type:HereticOrGhoulCondition
       - !type:ModifyBleed
         amount: -1.5
         conditions:
-        - !type:HasComponentCondition
-          components:
-            - Heretic
-            - Ghoul
-          guidebookComponentName: reagent-comp-condition-heretic-or-ghoul
+        - !type:HereticOrGhoulCondition
       - !type:CleanBloodstream
         cleanseRate: 1
         conditions:
-        - !type:HasComponentCondition
-          components:
-            - Heretic
-            - Ghoul
-          guidebookComponentName: reagent-comp-condition-heretic-or-ghoul
+        - !type:HereticOrGhoulCondition
       - !type:GenericStatusEffect
         key: SeeingRainbows
         time: 15.0
         type: Remove
         conditions:
-        - !type:HasComponentCondition
-          components:
-            - Heretic
-            - Ghoul
-          guidebookComponentName: reagent-comp-condition-heretic-or-ghoul
-    Poison:
-      effects:
+        - !type:HereticOrGhoulCondition
       - !type:Electrocute
         conditions:
-        - !type:HasComponentCondition
-          components:
-            - Heretic
-            - Ghoul
-          guidebookComponentName: reagent-comp-condition-heretic-or-ghoul
-          invert: true
-        probability: 0.5
-      - !type:HealthChange
-        damage:
-          groups:
-            Toxin: 5
-        conditions:
-        - !type:HasComponentCondition
-          components:
-            - Heretic
-            - Ghoul
-          guidebookComponentName: reagent-comp-condition-heretic-or-ghoul
-          invert: true
+        - !type:HereticOrGhoulCondition
+          inverted: true
+        probability: 0.2

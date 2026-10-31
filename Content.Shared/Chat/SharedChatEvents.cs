@@ -28,8 +28,9 @@ public sealed class TransformSpeakerNameEvent : EntityEventArgs, IInventoryRelay
 /// <summary>
 /// Raised broadcast in order to transform speech.transmit
 /// </summary>
-public sealed class TransformSpeechEvent : EntityEventArgs
+public sealed class TransformSpeechEvent : CancellableEntityEventArgs, IInventoryRelayEvent
 {
+    public SlotFlags TargetSlots { get; } = SlotFlags.WITHOUT_POCKET;
     public EntityUid Sender;
     public string Message;
 
@@ -60,7 +61,7 @@ public sealed class EntitySpokeEvent : EntityEventArgs
     public readonly EntityUid Source;
     public readonly string Message;
     public readonly string? ObfuscatedMessage; // not null if this was a whisper
-    public readonly string OriginalMessage; // Corvax-TTS
+    public readonly string OriginalMessage; // ADT-Tweak
     public readonly LanguagePrototype Language; // ADT-Tweak - languages
 
     /// <summary>
@@ -69,11 +70,11 @@ public sealed class EntitySpokeEvent : EntityEventArgs
     /// </summary>
     public RadioChannelPrototype? Channel;
 
-    public EntitySpokeEvent(EntityUid source, string message, string originalMessage, LanguagePrototype language, RadioChannelPrototype? channel, string? obfuscatedMessage)// Corvax-TTS originalMessage   // ADT-Tweak - languages
+    public EntitySpokeEvent(EntityUid source, string message, string originalMessage, LanguagePrototype language, RadioChannelPrototype? channel, string? obfuscatedMessage)// ADT-Tweak - languages
     {
         Source = source;
         Message = message;
-        OriginalMessage = originalMessage; // Corvax-TTS: Spec symbol sanitize
+        OriginalMessage = originalMessage; // ADT-Tweak
         Channel = channel;
         ObfuscatedMessage = obfuscatedMessage;
         Language = language;    // ADT-Tweak - languages

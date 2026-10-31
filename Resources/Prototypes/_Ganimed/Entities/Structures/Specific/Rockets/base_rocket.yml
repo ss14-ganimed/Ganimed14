@@ -25,8 +25,9 @@
       map: ["base"]
   - type: InteractionOutline
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Biological
   - type: Destructible
     thresholds:
     - trigger:

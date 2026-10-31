@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   id: MobRevenant
   parent:
   - Incorporeal
@@ -22,11 +22,10 @@
     allowed:
     - Corporeal
   - type: Damageable
-    damageContainer: ManifestedSpirit
     damageModifierSet: ManifestedSpirit
+  - type: Injurable
+    damageContainer: ManifestedSpirit
   - type: NoSlip
-  - type: TTS # Corvax-TTS
-    voice: illidan
   - type: Eye
     drawFov: false
     visMask:
@@ -62,6 +61,7 @@
     color: MediumPurple
     radius: 2
     softness: 1
+    mask: /Textures/ADT/Effects/Lightmasks/circle_b.png # ADT tweak
   - type: UserInterface
     interfaces:
       enum.StoreUiKey.Key:
@@ -90,7 +90,6 @@
     damageContainers:
     - Biological
   - type: ShowHealthIcons
-  - type: OuijaBoardUser
   - type: Reactive
     groups:
       Acidic: [Touch]

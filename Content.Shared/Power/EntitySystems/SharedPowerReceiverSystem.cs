@@ -92,8 +92,29 @@ public abstract class SharedPowerReceiverSystem : EntitySystem
         // NOOP on server because client has 0 idea of load so we can't raise it properly in shared.
     }
 
-	/// <summary>
-	/// Checks if entity is APC-powered device, and if it have power.
+    /// <summary>
+    /// Sets the power load of this power receiver.
+    /// </summary>
+    public void SetLoad(Entity<SharedApcPowerReceiverComponent?> entity, float load)
+    {
+        if (!ResolveApc(entity.Owner, ref entity.Comp))
+            return;
+
+        entity.Comp.Load = load;
+    }
+
+    // ADT-Tweak start
+    public void SetBatteryRechargeRate(EntityUid uid, float rechargeRate, ApcPowerReceiverBatteryComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        component.BatteryRechargeRate = rechargeRate;
+    }
+    // ADT-Tweak end
+
+    /// <summary>
+    /// Checks if entity is APC-powered device, and if it have power.
     /// </summary>
     public bool IsPowered(Entity<SharedApcPowerReceiverComponent?> entity)
     {

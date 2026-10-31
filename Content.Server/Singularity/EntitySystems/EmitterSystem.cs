@@ -4,9 +4,16 @@ using Content.Server.Administration.Logs;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Projectiles;
+using Content.Server.Pinpointer;
+using Content.Server.Radio.EntitySystems;
 using Content.Server.Weapons.Ranged.Systems;
+using Content.Shared.ADT.Construction;
+using Content.Shared.ADT.Construction.Events;
+using Content.Shared.Construction;
 using Content.Shared.Database;
+using Content.Shared.Destructible;
 using Content.Shared.DeviceLinking.Events;
+using Content.Shared.Emag.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
@@ -33,6 +40,8 @@ namespace Content.Server.Singularity.EntitySystems
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly ProjectileSystem _projectile = default!;
         [Dependency] private readonly GunSystem _gun = default!;
+        [Dependency] private readonly RadioSystem _radio = default!;
+        [Dependency] private readonly NavMapSystem _navMap = default!;
 
         public override void Initialize()
         {
@@ -43,6 +52,24 @@ namespace Content.Server.Singularity.EntitySystems
             SubscribeLocalEvent<EmitterComponent, ActivateInWorldEvent>(OnActivate);
             SubscribeLocalEvent<EmitterComponent, AnchorStateChangedEvent>(OnAnchorStateChanged);
             SubscribeLocalEvent<EmitterComponent, SignalReceivedEvent>(OnSignalReceived);
+            SubscribeLocalEvent<EmitterComponent, DestructionAttemptEvent>(OnDestructionAttempted);
+            SubscribeLocalEvent<EmitterComponent, MachineDeconstructedEvent>(OnDeconstructed); // you shouldn't be able to deconstruct locked emitters but out of scope to fix
+            SubscribeLocalEvent<EmitterComponent, LockToggledEvent>(OnLockToggled);
+        // ADT-Tweak start
+            SubscribeLocalEvent<EmitterComponent, RefreshPartsEvent>(OnPartsRefresh);
+            SubscribeLocalEvent<EmitterComponent, UpgradeExamineEvent>(OnUpgradeExamine);
+        }
+
+        private void OnPartsRefresh(EntityUid uid, EmitterComponent component, RefreshPartsEvent args)
+        {
+            component.FireRateMultiplier = Math.Clamp(args.GetStatMultiplier(MachineStat.Speed), 0.5f, 4f);
+            Dirty(uid, component);
+        }
+
+        private static void OnUpgradeExamine(EntityUid uid, EmitterComponent component, UpgradeExamineEvent args)
+        {
+            args.AddPercentageUpgrade("machine-upgrade-fire-rate", component.FireRateMultiplier, benefit: true);
+        // ADT-Tweak end
         }
 
         private void OnAnchorStateChanged(EntityUid uid, EmitterComponent component, ref AnchorStateChangedEvent args)
@@ -80,9 +107,10 @@ namespace Content.Server.Singularity.EntitySystems
                         ("target", uid)), uid, args.User);
                 }
 
+                var stateText = component.IsOn ? "on" : "off";
                 _adminLogger.Add(LogType.FieldGeneration,
                     component.IsOn ? LogImpact.Medium : LogImpact.High,
-                    $"{ToPrettyString(args.User):player} toggled {ToPrettyString(uid):emitter}");
+                    $"{ToPrettyString(args.User):player} toggled {ToPrettyString(uid):emitter} to {stateText}");
                 args.Handled = true;
             }
             else
@@ -163,6 +191,8 @@ namespace Content.Server.Singularity.EntitySystems
                 return;
             }
 
+            AlertRadio((uid, component), component.LocUnpowered);
+
             component.IsPowered = false;
 
             // Must be set while emitter powered.
@@ -184,7 +214,7 @@ namespace Content.Server.Singularity.EntitySystems
             component.FireShotCounter = 0;
             component.TimerCancel = new CancellationTokenSource();
 
-            Timer.Spawn(component.FireBurstDelayMax, () => ShotTimerCallback(uid, component), component.TimerCancel.Token);
+            Timer.Spawn(component.FireBurstDelayMax / component.FireRateMultiplier, () => ShotTimerCallback(uid, component), component.TimerCancel.Token); // ADT-Tweak
 
             UpdateAppearance(uid, component);
         }
@@ -205,14 +235,14 @@ namespace Content.Server.Singularity.EntitySystems
             if (component.FireShotCounter < component.FireBurstSize)
             {
                 component.FireShotCounter += 1;
-                delay = component.FireInterval;
+                delay = component.FireInterval / component.FireRateMultiplier; // ADT-Tweak
             }
             else
             {
                 component.FireShotCounter = 0;
                 var diff = component.FireBurstDelayMax - component.FireBurstDelayMin;
                 // TIL you can do TimeSpan * double.
-                delay = component.FireBurstDelayMin + _random.NextFloat() * diff;
+                delay = (component.FireBurstDelayMin + _random.NextFloat() * diff) / component.FireRateMultiplier; // ADT-Tweak
             }
 
             // Must be set while emitter powered.
@@ -232,7 +262,7 @@ namespace Content.Server.Singularity.EntitySystems
 
             var targetPos = new EntityCoordinates(uid, new Vector2(0, -1));
 
-            _gun.Shoot(uid, gunComponent, ent, xform.Coordinates, targetPos, out _);
+            _gun.Shoot((uid, gunComponent), ent, xform.Coordinates, targetPos, out _);
         }
 
         private void UpdateAppearance(EntityUid uid, EmitterComponent component)
@@ -282,6 +312,40 @@ namespace Content.Server.Singularity.EntitySystems
             {
                 component.BoltType = boltType;
             }
+        }
+
+        private void OnDestructionAttempted(Entity<EmitterComponent> ent, ref DestructionAttemptEvent args)
+        {
+            // warn engineering their containment engine needs IMMEDIATE repairs
+            // this doesn't change much for natural loosing through emitter destruction given any meteor warning serves the same purpose
+            // can also be used to scare engineering though given it broadcasts its location you need a renamed station beacon to really scare them
+            AlertRadio(ent, ent.Comp.LocDestroyed);
+        }
+
+        private void OnDeconstructed(Entity<EmitterComponent> ent, ref MachineDeconstructedEvent args)
+        {
+            // right now you don't even need to unlock the emitter to deconstruct it. that's almost certainly a bug but even without it it probably still needs an alert
+            AlertRadio(ent, ent.Comp.LocDeconstructed);
+        }
+
+        private void AlertRadio(Entity<EmitterComponent> ent, string locString)
+        {
+            if (!ent.Comp.AlertRadio || !ent.Comp.IsOn || !ent.Comp.IsPowered)
+                return; // APEs do not need to scream over engineering radio, and an emitter that is off is probably not going to be alerting radios
+
+            var message = Loc.GetString(
+                locString,
+                ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(ent.Owner)))
+            );
+            _radio.SendRadioMessage(ent.Owner, message, ent.Comp.RadioChannel, ent.Owner);
+        }
+
+        private void OnLockToggled(Entity<EmitterComponent> ent, ref LockToggledEvent args)
+        {
+            if (args.Locked)
+                return;
+
+            AlertRadio(ent, ent.Comp.LocUnlocked);
         }
     }
 }

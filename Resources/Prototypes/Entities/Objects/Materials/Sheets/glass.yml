@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   abstract: true
   parent: BaseItem
   id: SheetGlassBase
@@ -18,10 +18,12 @@
     - ConstructionMaterial
     - NoPaint #ADT tweak
     - ADTGlassSheet #ADT tweak
+    - SheetGlass # ADT-Heretic: ритуал клинка Космоса
   - type: Material
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Appearance
   - type: Destructible
     thresholds:
@@ -614,7 +616,7 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Extractable
-    grindableSolutionName: brassglass
+    grindableSolutionName: cglass
   - type: SolutionContainerManager
     solutions:
       cglass:

@@ -142,6 +142,16 @@
     outerClothing: ClothingOuterBioSecurity
     head: ClothingHeadHatHoodBioSecurity
 
+- type: loadout
+  id: ADTOuterCoatBrigmedicWB
+  equipment:
+    outerClothing: ADTClothingOuterCoatBrigmedicWB
+
+- type: loadout
+  id: ADTOuterVestSecurityMedic
+  equipment:
+    outerClothing: ClothingOuterVestSecurityMedic
+
 # Mask
 - type: loadout
   id: CorpsmanBreathMask

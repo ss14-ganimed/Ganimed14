@@ -19,7 +19,7 @@
         - type: StationJobs
           availableJobs:
             #centcom specialists
-            ADTCentcomConsultant: [ 1, 1 ] #ADT-Roles
+          #  ADTCentcomConsultant: [ 1, 1 ] #ADT-Roles
             ADTBlueShieldOfficer: [ 1, 1 ] #ADT-Roles
             # command
             Captain: [ 1, 1 ]
@@ -32,6 +32,7 @@
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
             ServiceWorker: [ 2, 2 ]
+            Reporter: [ 2, 2 ]
             #engineering
             ChiefEngineer: [ 1, 1 ]
             AtmosphericTechnician: [ 3, 3 ]
@@ -64,7 +65,7 @@
             #Lawyer: [ 2, 2 ] # Corvax-IAA
             #supply
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 3, 3 ]
+            SalvageSpecialist: [ 7, 7 ]
             CargoTechnician: [ 4, 4 ]
             #civilian
             Passenger: [ -1, -1 ]
@@ -74,7 +75,7 @@
             # juridical
             Lawyer: [ 1, 1 ]
             IAA: [ 1, 1 ]
-            Magistrat: [ 1, 1 ] #ADT-Roles
+        #    Magistrat: [ 1, 1 ] #ADT-Roles
             #silicon
             StationAi: [ 1, 1 ]
             Borg: [ 2, 2 ]

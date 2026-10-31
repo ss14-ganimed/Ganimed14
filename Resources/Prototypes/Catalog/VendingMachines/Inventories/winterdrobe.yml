@@ -5,7 +5,6 @@
     ADTClothingVoucherScarfStriped: 8
     ADTClothingVoucherFacescarf: 8
     ADTClothingVoucherScarfLong: 8
-    ADTClothingVoucherWinterCoatLight: 8
     #ClothingNeckScarfStripedRed: 3
     #ClothingNeckScarfStripedGreen: 3
     #ClothingNeckScarfStripedBlue: 3
@@ -15,26 +14,6 @@
     #ClothingNeckScarfStripedOrange: 3
     #ClothingNeckScarfStripedPurple: 3
     #ADT-Tweak-ClothingVoucher-End
-    ClothingOuterCoatTrench: 6
-    ClothingOuterWinterCoatToggleable: 6 #ADT-Tweak
-    ClothingShoesBootsWinter: 6
-    ClothingOuterFlannelRed: 2
-    ClothingOuterFlannelBlue: 2
-    ClothingOuterFlannelGreen: 2
-    ClothingOuterCoatBomber: 3
-    ClothingHeadHatCanadaBeanie: 4
-    ClothingHeadHatSantahat: 2
-    ClothingHeadHatXmasCrown: 2
-    ClothingHeadHatUshanka: 3 #ADT-Tweak
-    ADTClothingHeadHatDarkBenie: 3 #ADT-Tweak
-    ADTClothingHeadHatBlueBenie: 3 #ADT-Tweak
-    ADTClothingHeadHatGreenBenie: 3 #ADT-Tweak
-    ADTClothingHeadHatPurpleBenie: 3 #ADT-Tweak
-    ADTClothingHeadHatRedBenie: 3 #ADT-Tweak
-    ADTClothingOuterHoodyBlack: 3 #ADT-Tweak
-    ADTClothingOuterHoodyWhite: 3 #ADT-Tweak
-    ADTClothingUnderwearSocksKneeHolyday: 2 #ADT-Tweak
-    ADTClothingUnderwearSocksThighHolyday: 2 #ADT-Tweak
     ClothingUniformTurtleneckColorWhite: 2 #Ganimed-Tweak-Turtlenecks-Start
     ClothingUniformTurtleneckColorGrey: 2
     ClothingUniformTurtleneckColorBlack: 2
@@ -67,7 +46,31 @@
     ClothingUniformTurtleneckSkirtColorLightBrown: 2
     ClothingUniformTurtleneckSkirtColorBrown: 2
     ClothingUniformTurtleneckSkirtColorMaroon: 2 #Ganimed-Tweak-Turtlenecks-End
-
+    ADTClothingVoucherWinterCoatLight: 8 #ADT-Tweak-ClothingVoucher
+    ClothingOuterCoatTrench: 6
+    ClothingOuterWinterCoatToggleable: 6 #ADT-Tweak
+    ClothingOuterFlannelRed: 2
+    ClothingOuterFlannelBlue: 2
+    ClothingOuterFlannelGreen: 2
+    ClothingOuterCoatBomber: 3
+    # ADT-Tweak start
+    ADTClothingOuterHoodyBlack: 3 #ADT-Tweak
+    ADTClothingOuterHoodyWhite: 3 #ADT-Tweak
+    # ADT-Tweak end
+    ClothingShoesBootsWinter: 6
+    ClothingHeadHatCanadaBeanie: 4
+    ClothingHeadHatSantahat: 2
+    ClothingHeadHatXmasCrown: 2
+    ClothingHeadHatUshanka: 3 #ADT-Tweak
+    # ADT-Tweak start
+    ADTClothingHeadHatDarkBenie: 3 #ADT-Tweak
+    ADTClothingHeadHatBlueBenie: 3 #ADT-Tweak
+    ADTClothingHeadHatGreenBenie: 3 #ADT-Tweak
+    ADTClothingHeadHatPurpleBenie: 3 #ADT-Tweak
+    ADTClothingHeadHatRedBenie: 3 #ADT-Tweak
+    # ADT-Tweak end
+    ADTClothingUnderwearSocksKneeHolyday: 2 #ADT-Tweak
+    ADTClothingUnderwearSocksThighHolyday: 2 #ADT-Tweak
   emaggedInventory:
     ClothingNeckScarfStripedSyndieGreen: 3
     ClothingNeckScarfStripedSyndieRed: 3

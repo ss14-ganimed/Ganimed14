@@ -2,24 +2,19 @@
               Orientation="Vertical"
               HorizontalExpand="True"
               VerticalExpand="True">
-    <!-- "Slot" selection -->
+    <!-- Ganimed-Edit: classic single-layer picker (hair / facial hair) on top of MarkingsViewModel -->
     <Label Name="CategoryName" />
-    <BoxContainer Name="SlotSelectorContainer" HorizontalExpand="True">
-        <OptionButton Name="SlotSelector" HorizontalExpand="True" StyleClasses="OpenBoth" />
-        <Button Name="AddButton" Text="{Loc 'marking-slot-add'}" StyleClasses="OpenBoth" />
-        <Button Name="RemoveButton" Text="{Loc 'marking-slot-remove'}" StyleClasses="OpenLeft" />
-    </BoxContainer>
     <LineEdit Name="Search" PlaceHolder="{Loc 'markings-search'}" HorizontalExpand="True" />
 
     <!-- Item list -->
     <BoxContainer Name="MarkingSelectorContainer" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
-        <ScrollContainer VerticalExpand="True" HorizontalExpand="True">  <!-- ADT tweak - removed MinHeight="500" -->
+        <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
             <ItemList Name="MarkingList" VerticalExpand="True" />
         </ScrollContainer>
 
         <!-- Color sliders -->
-        <ScrollContainer Name="ColorScroll" MinHeight="200" HorizontalExpand="True">    <!-- ADT tweak - name added -->
-            <BoxContainer Name="ColorSelectorContainer" HorizontalExpand="True" Access="Public" />  <!-- ADT tweak - public access -->
+        <ScrollContainer Name="ColorScroll" MinHeight="200" HorizontalExpand="True">
+            <BoxContainer Name="ColorSelectorContainer" HorizontalExpand="True" Access="Public" />
         </ScrollContainer>
     </BoxContainer>
 </BoxContainer>

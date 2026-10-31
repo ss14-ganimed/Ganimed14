@@ -5,11 +5,13 @@ using Content.Shared.ADT.Traits.Effects;
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Inventory;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
 using Content.Shared.Whitelist;
 using Robust.Shared.Configuration;
+using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
@@ -26,6 +28,8 @@ public sealed class TraitSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
 
     private int _maxTraitCount;
     private int _maxTraitPoints;
@@ -78,6 +82,7 @@ public sealed class TraitSystem : EntitySystem
     }
 
     /// <summary>
+    /// ADT-Tweak start
     /// Applies traits to an entity without requiring a player session (for admin spawning).
     /// </summary>
     public void ApplyTraits(EntityUid mob, HumanoidCharacterProfile profile, ProtoId<JobPrototype>? jobId = null)
@@ -92,6 +97,7 @@ public sealed class TraitSystem : EntitySystem
             ApplyTrait(mob, trait);
         }
     }
+     /// ADT-Tweak end
 
     /// <summary>
     /// Validates a set of trait selections against all rules and returns the valid subset.
@@ -301,7 +307,7 @@ public sealed class TraitSystem : EntitySystem
     private void ApplyTrait(EntityUid player, TraitPrototype trait)
     {
         if (_whitelistSystem.IsWhitelistFail(trait.Whitelist, player) ||
-            _whitelistSystem.IsBlacklistPass(trait.Blacklist, player))
+            _whitelistSystem.IsWhitelistPass(trait.Blacklist, player))
             return;
 
         var transform = Transform(player);
@@ -320,9 +326,11 @@ public sealed class TraitSystem : EntitySystem
         {
             try
             {
-                // Handle SpawnItemInHandEffect specially since it needs server-side systems
+                // Handle spawn effects specially since they need server-side systems
                 if (effect is SpawnItemInHandEffect spawnEffect)
                     ApplySpawnItemEffect(player, spawnEffect, transform);
+                else if (effect is SpawnItemInBackpackEffect backpackEffect)
+                    ApplySpawnItemBackpackEffect(player, backpackEffect, transform);
                 else
                     effect.Apply(effectCtx);
             }
@@ -365,6 +373,24 @@ public sealed class TraitSystem : EntitySystem
 
         if (!_hands.TryPickup(player, item, checkActionBlocker: false, handsComp: hands))
             Log.Debug($"Could not pick up trait item {effect.Item}, leaving at feet");
+    }
+
+    /// <summary>
+    /// Spawns the item in the backpack, or at the feet if it doesn't fit.
+    /// </summary>
+    private void ApplySpawnItemBackpackEffect(EntityUid player, SpawnItemInBackpackEffect effect, TransformComponent transform)
+    {
+        var coords = transform.Coordinates;
+        var item = Spawn(effect.Item, coords);
+
+        if (_inventory.TryGetSlotEntity(player, "back", out var backpack) &&
+            _container.TryGetContainer(backpack.Value, "storagebase", out var container) &&
+            _container.Insert(item, container))
+        {
+            return;
+        }
+
+        Log.Debug($"Could not put trait item {effect.Item} into backpack, leaving at feet");
     }
 }
 // Система полностью переписана под ADT, под новые трейты

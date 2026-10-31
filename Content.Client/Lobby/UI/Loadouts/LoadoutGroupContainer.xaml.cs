@@ -8,7 +8,6 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Client.Lobby.UI.Loadouts;
 
@@ -78,32 +77,8 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
         LoadoutsContainer.RemoveAllChildren();
 
-        // Ganimed sponsor start
-        IEnumerable<ProtoId<LoadoutPrototype>> groupLoadouts = _groupProto.Loadouts;
-
-        if (_groupProto.ID == "Inventory")
-        {
-            // Для группы Inventory — отображаем только те вещи, что указаны в HTTP API (allowedMarkings).
-            // Это работает даже если игрок не спонсор.
-            string[] allowedItems = Array.Empty<string>();
-
-            if (_sponsorsManager.TryGetInfo(out var sponsor))
-            {
-                allowedItems = sponsor.AllowedMarkings ?? Array.Empty<string>();
-            }
-
-            groupLoadouts = protoMan.EnumeratePrototypes<LoadoutPrototype>()
-                .Where(p => allowedItems.Contains(p.ID))
-                .Select(p => (ProtoId<LoadoutPrototype>)p.ID)
-                .ToList();
-        }
-        // Ganimed sponsor end
-
         // Get all loadout prototypes for this group.
-        var validProtos = groupLoadouts
-            .Where(id => protoMan.TryIndex<LoadoutPrototype>(id, out _))
-            .Select(id => protoMan.Index(id))
-            .ToList(); // Ganimed sponsor
+        var validProtos = _groupProto.Loadouts.Select(id => protoMan.Index(id));
 
         /*
          * Group the prototypes based on their GroupBy field.
@@ -135,7 +110,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
                 var uiElements = protos
                     .Select(proto =>
                     {
-                        var elem = CreateLoadoutUI(proto, profile, loadout, session, collection, loadoutSystem);
+                        var elem = CreateLoadoutUI(proto, profile, loadout, session, collection, loadoutSystem, isSponsor);
                         if (elem == null) // Ganimed sponsor
                             return null;
                         elem.HorizontalExpand = true;
@@ -185,7 +160,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
             }
             else
             {
-                var elem = CreateLoadoutUI(protos[0], profile, loadout, session, collection, loadoutSystem); // Ganimed sponsor
+                var elem = CreateLoadoutUI(protos[0], profile, loadout, session, collection, loadoutSystem, isSponsor); // Ganimed sponsor
                 if (elem != null)
                     LoadoutsContainer.AddChild(elem);
             }
@@ -247,15 +222,12 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
     /// <param name="session">The user's session.</param>
     /// <param name="collection">The dependency injection container.</param>
     /// <param name="loadoutSystem">The loadout system instance.</param>
-    /// <returns>A fully initialized LoadoutContainer for UI display.</returns>
-    private LoadoutContainer? CreateLoadoutUI(LoadoutPrototype proto, HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession session, IDependencyCollection collection, LoadoutSystem loadoutSystem)
+    /// <param name="isSponsor">Whether the player is a sponsor.</param>
+    /// <returns>A fully initialized LoadoutContainer for UI display, or null if not allowed.</returns>
+    private LoadoutContainer? CreateLoadoutUI(LoadoutPrototype proto, HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession session, IDependencyCollection collection, LoadoutSystem loadoutSystem, bool isSponsor)
     {
-        // Проверяем, выбран ли этот лодаут в любой группе
-        var pressed = loadout.SelectedLoadouts.Values.Any(groupLoadouts =>
-            groupLoadouts.Any(l => l.Prototype == proto.ID));
-
         // Ganimed sponsor start
-         // Лоадуты с SponsorOnly допускаются только при наличии разрешения в API
+        // Лоадуты с SponsorOnly допускаются только при наличии разрешения в API
         if (proto.SponsorOnly)
         {
             if (!_sponsorsManager.TryGetInfo(out var sponsor))
@@ -265,6 +237,10 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
                 return null;
         }
         // Ganimed sponsor end
+
+        var selected = loadout.SelectedLoadouts[_groupProto.ID];
+
+        var pressed = selected.Any(e => e.Prototype == proto.ID);
 
         var enabled = loadout.IsValid(profile, session, proto.ID, collection, out var reason);
 

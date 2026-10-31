@@ -11,10 +11,12 @@ namespace Content.Shared.Temperature.Systems;
 /// <summary>
 /// This handles predicting temperature based speedup.
 /// </summary>
-public abstract class SharedTemperatureSystem : EntitySystem
+public abstract partial class SharedTemperatureSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeedModifier = default!;
+
+    [Dependency] protected EntityQuery<TemperatureComponent> TemperatureQuery = default!;
 
     /// <summary>
     /// Band-aid for unpredicted atmos. Delays the application for a short period so that laggy clients can get the replicated temperature.
@@ -31,6 +33,19 @@ public abstract class SharedTemperatureSystem : EntitySystem
 
     private void OnTemperatureChanged(Entity<TemperatureSpeedComponent> ent, ref OnTemperatureChangeEvent args)
     {
+        // ADT-Heretic: путь Пустоты иммунен к замедлению от холода
+        if (HasComp<Content.Goobstation.Common.Temperature.Components.SpecialLowTempImmunityComponent>(ent))
+        {
+            if (ent.Comp.CurrentSpeedModifier != null)
+            {
+                ent.Comp.CurrentSpeedModifier = null;
+                ent.Comp.NextSlowdownUpdate = null;
+                Dirty(ent);
+                _movementSpeedModifier.RefreshMovementSpeedModifiers(ent);
+            }
+            return;
+        }
+
         foreach (var (threshold, modifier) in ent.Comp.Thresholds)
         {
             if (args.CurrentTemperature < threshold && args.LastTemperature > threshold ||
@@ -87,7 +102,7 @@ public abstract class SharedTemperatureSystem : EntitySystem
 
     public float GetHeatCapacity(EntityUid uid, TemperatureComponent? comp = null, PhysicsComponent? physics = null)
     {
-        if (!Resolve(uid, ref comp) || !Resolve(uid, ref physics, false) || physics.FixturesMass <= 0)
+        if (!TemperatureQuery.Resolve(uid, ref comp) || !Resolve(uid, ref physics, false) || physics.FixturesMass <= 0)
         {
             return Atmospherics.MinimumHeatCapacity;
         }

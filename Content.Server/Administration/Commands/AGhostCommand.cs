@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server.GameTicking;
 using Content.Server.Ghost;
 using Content.Server.Mind;
+using Content.Shared.ADT.Ghost.GhostTypes;
 using Content.Shared.Administration;
 using Content.Shared.Ghost;
 using Content.Shared.Mind;
@@ -73,6 +74,7 @@ public sealed class AGhostCommand : LocalizedCommands
         var mindSystem = _entities.System<SharedMindSystem>();
         var metaDataSystem = _entities.System<MetaDataSystem>();
         var ghostSystem = _entities.System<SharedGhostSystem>();
+        var serverGhostSystem = _entities.System<GhostSystem>();
         var transformSystem = _entities.System<TransformSystem>();
         var gameTicker = _entities.System<GameTicker>();
 
@@ -100,6 +102,16 @@ public sealed class AGhostCommand : LocalizedCommands
         var ghost = _entities.SpawnEntity(GameTicker.AdminObserverPrototypeName, coordinates);
         transformSystem.AttachToGridOrMap(ghost, _entities.GetComponent<TransformComponent>(ghost));
 
+        // ADT-Tweak-Start
+        var adminGhostComponent = _entities.GetComponent<GhostComponent>(ghost);
+        // Ganimed-Edit: a living admin's mind has no stored appearance yet (it is only stored on death / ghosting),
+        // so capture it from the current body first; otherwise the admin ghost keeps the default ghost sprite.
+        if (player!.AttachedEntity is { } currentBody)
+            _entities.System<StoreBodyAppearanceOnMindSystem>().CapAppearance(currentBody, mindId);
+        serverGhostSystem.ApplyBodyAppearance(ghost, mindId);
+        serverGhostSystem.GiveGhostClothes(ghost, adminGhostComponent);
+        // ADT-Tweak-End
+
         if (canReturn)
         {
             // TODO: Remove duplication between all this and "GamePreset.OnGhostAttempt()"...
@@ -116,7 +128,6 @@ public sealed class AGhostCommand : LocalizedCommands
             mindSystem.TransferTo(mindId, ghost, mind: mind);
         }
 
-        var comp = _entities.GetComponent<GhostComponent>(ghost);
-        ghostSystem.SetCanReturnToBody((ghost, comp), canReturn);
+        ghostSystem.SetCanReturnToBody((ghost, adminGhostComponent), canReturn); // ADT-Tweak
     }
 }

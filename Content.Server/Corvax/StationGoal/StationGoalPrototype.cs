@@ -3,13 +3,18 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Corvax.StationGoal
 {
     [Serializable, Prototype("stationGoal")]
-    public sealed class StationGoalPrototype : IPrototype
+    public sealed partial class StationGoalPrototype : IPrototype
     {
         [IdDataFieldAttribute]
-        public string ID { get; } = default!;
+        public string ID { get; set; } = default!;
 
         [DataField]
         public string Text { get; set; } = string.Empty;
+
+        // ADT-Tweak start
+        [DataField]
+        public string Name { get; set; } = string.Empty;
+        // ADT-Tweak end
 
         [DataField]
         public int? MinPlayers;

@@ -8,12 +8,15 @@
     ClothingUniformJumpskirtScientist: 3
     ClothingUniformJumpsuitScientistFormal: 3
     ClothingOuterCoatRnd: 3
+    ClothingOuterWinterSci: 2
     ClothingShoesColorWhite: 3
+    ClothingShoesBootsWinterSci: 2
     ClothingNeckTieSci: 3
     ClothingHeadsetScience: 3
     ClothingMaskGas: 3
-    ClothingOuterWinterSci: 2
     ClothingNeckScarfStripedPurple: 3
-    ClothingShoesBootsWinterSci: 2
+    # ADT tweak start wiki books
+    ADTBookSRPrnd: 2
+    # ADT tweak end wiki books
   contrabandInventory:
-    ToyFigurineResearchDirector: 1  
+    ToyFigurineResearchDirector: 1

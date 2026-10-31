@@ -1,6 +1,7 @@
 using System.Linq;
+using System.Numerics;
+using Content.Client.Body;
 using Content.Client.Guidebook;
-using Content.Client.Humanoid;
 using Content.Client.Inventory;
 using Content.Client.Lobby.UI;
 using Content.Client.Players.PlayTimeTracking;
@@ -9,7 +10,6 @@ using Content.Shared.ADT.Language;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing;
 using Content.Shared.GameTicking;
-using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
@@ -23,6 +23,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.State;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
+using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -43,7 +44,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     [Dependency] private readonly MarkingManager _markings = default!;
     [Dependency] private readonly IDynamicTypeFactory _factory = default!;
     [Dependency] private readonly IEntityManager _entMan = default!;
-    [UISystemDependency] private readonly HumanoidAppearanceSystem _humanoid = default!;
+    [UISystemDependency] private readonly VisualBodySystem _visualBody = default!;
     [UISystemDependency] private readonly ClientInventorySystem _inventory = default!;
     [UISystemDependency] private readonly StationSpawningSystem _spawn = default!;
     [UISystemDependency] private readonly GuidebookSystem _guide = default!;
@@ -51,6 +52,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     private CharacterSetupGui? _characterSetup;
     private HumanoidProfileEditor? _profileEditor;
     private CharacterSetupGuiSavePanel? _savePanel;
+    private CharacterSetupWindow? _characterSetupWindow; // ADT-Tweak 
 
     /// <summary>
     /// This is the characher preview panel in the chat. This should only update if their character updates.
@@ -77,6 +79,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         });
 
         _configurationManager.OnValueChanged(CCVars.GameRoleTimers, _ => RefreshProfileEditor());
+        _configurationManager.OnValueChanged(CCVars.GameRoleLoadoutTimers, _ => RefreshProfileEditor());
         _configurationManager.OnValueChanged(CCVars.GameRoleLoadoutTimers, _ => RefreshProfileEditor());
 
         _configurationManager.OnValueChanged(CCVars.GameRoleWhitelist, _ => RefreshProfileEditor());
@@ -160,6 +163,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     public void OnStateExited(LobbyState state)
     {
         PreviewPanel?.SetLoaded(false);
+        _characterSetupWindow?.Close(); // ADT-Tweak 
         _profileEditor?.Dispose();
         _characterSetup?.Dispose();
 
@@ -176,7 +180,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         var (characterGui, profileEditor) = EnsureGui();
         characterGui.ReloadCharacterPickers();
         profileEditor.SetProfile(
-            (HumanoidCharacterProfile?) _preferencesManager.Preferences?.SelectedCharacter,
+            _preferencesManager.Preferences?.SelectedCharacter,
             _preferencesManager.Preferences?.SelectedCharacterIndex);
     }
 
@@ -193,13 +197,12 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
 
         if (character is not HumanoidCharacterProfile humanoid)
         {
-            PreviewPanel.SetSprite(EntityUid.Invalid);
+            PreviewPanel.ProfilePreviewSpriteView.ClearPreview();
             PreviewPanel.SetSummaryText(string.Empty);
             return;
         }
 
-        var dummy = LoadProfileEntity(humanoid, null, true);
-        PreviewPanel.SetSprite(dummy);
+        PreviewPanel.ProfilePreviewSpriteView.LoadPreview(humanoid);
         PreviewPanel.SetSummaryText(humanoid.Summary);
     }
 
@@ -238,6 +241,8 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         {
             lobbyGui.SwitchState(LobbyGui.LobbyGuiState.Default);
         }
+
+        _characterSetupWindow?.Close(); // ADT-Tweak 
     }
 
     private void OpenSavePanel()
@@ -266,12 +271,72 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         _savePanel.OpenCentered();
     }
 
+    // ADT Tweak start
+    /// <summary>
+    /// Opens the character editor in its own window, reusing the one from the lobby.
+    /// Used from the ghost gui to edit characters in round.
+    /// </summary>
+    public void OpenCharacterSetupWindow()
+    {
+        if (_characterSetupWindow is { IsOpen: true })
+        {
+            _characterSetupWindow.MoveToFront();
+            return;
+        }
+
+        var (characterGui, _) = EnsureGui();
+
+        characterGui.ReloadCharacterPickers();
+        _profileEditor?.ResetToDefault();
+
+        characterGui.Orphan();
+
+        var window = new CharacterSetupWindow
+        {
+            Title = Loc.GetString("ghost-gui-character-editor-button"),
+        };
+        window.MinSize = window.SetSize = new Vector2(1400, 700);
+
+        window.Contents.AddChild(characterGui);
+
+        window.OnClose += () =>
+        {
+            var lobbyContainer = (_stateManager.CurrentState as LobbyState)?.Lobby?.CharacterSetupState;
+            if (characterGui.Parent != lobbyContainer)
+                characterGui.Orphan();
+
+            _characterSetupWindow = null;
+        };
+
+        _characterSetupWindow = window;
+        window.OpenCentered();
+    }
+
+    private sealed class CharacterSetupWindow : DefaultWindow
+    {
+        public CharacterSetupWindow()
+        {
+            CloseButton.Visible = false;
+        }
+    }
+    // ADT Tweak end
+
     private (CharacterSetupGui, HumanoidProfileEditor) EnsureGui()
     {
         if (_characterSetup != null && _profileEditor != null)
         {
             _characterSetup.Visible = true;
             _profileEditor.Visible = true;
+            // ADT Tweak start
+            if (_stateManager.CurrentState is LobbyState lobbyState
+                && lobbyState.Lobby?.CharacterSetupState is { } container
+                && _characterSetup.Parent != container)
+            {
+                _characterSetupWindow?.Close();
+                _characterSetup.Orphan();
+                container.AddChild(_characterSetup);
+            }
+            // ADT Tweak end
             return (_characterSetup, _profileEditor);
         }
 
@@ -495,15 +560,14 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         }
         else if (humanoid is not null)
         {
-            var dummy = _prototypeManager.Index<SpeciesPrototype>(humanoid.Species).DollPrototype;
+            var dummy = _prototypeManager.Index(humanoid.Species).DollPrototype;
             dummyEnt = EntityManager.SpawnEntity(dummy, MapCoordinates.Nullspace);
+            _visualBody.ApplyProfileTo(dummyEnt, humanoid);
         }
         else
         {
-            dummyEnt = EntityManager.SpawnEntity(_prototypeManager.Index<SpeciesPrototype>(SharedHumanoidAppearanceSystem.DefaultSpecies).DollPrototype, MapCoordinates.Nullspace);
+            dummyEnt = EntityManager.SpawnEntity(_prototypeManager.Index(HumanoidCharacterProfile.DefaultSpecies).DollPrototype, MapCoordinates.Nullspace);
         }
-
-        _humanoid.LoadProfile(dummyEnt, humanoid);
 
         if (humanoid != null && jobClothes)
         {
