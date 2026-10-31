@@ -4,12 +4,12 @@
     Gauze: 3
     Brutepack: 3
     Ointment: 3
-#        Bloodpack: 3 # ADT Tweak
-        ADTSprayBottleStypticPowder: 3 # ADT-Tweak
-        ADTSprayBottleSilverSulfadiazine: 3 # ADT-Tweak
-        ADTBloodPackTransfusionFull: 3 # ADT Tweak: Blood IV
-        ChemistryBottleEpinephrine: 3
-        PillCanisterTricordrazine: 2
+#    Bloodpack: 3 # ADT Tweak
+    ADTSprayBottleStypticPowder: 3 # ADT-Tweak
+    ADTSprayBottleSilverSulfadiazine: 3 # ADT-Tweak
+    ADTBloodPackTransfusionFull: 3 # ADT Tweak: Blood IV
+    ChemistryBottleEpinephrine: 3
+    PillCanisterTricordrazine: 2
     HandheldHealthAnalyzer: 1
     Syringe: 3
   contrabandInventory:
@@ -22,12 +22,12 @@
     Tourniquet: 3
     Brutepack: 3
     AloeCream: 3 # Currently just a reskin of Ointment but it's something
-#        Bloodpack: 3 # ADT Tweak
-        ADTSprayBottleStypticPowder: 3 # ADT-Tweak
-        ADTSprayBottleSilverSulfadiazine: 3 # ADT-Tweak
-        ADTBloodPackTransfusionFull: 3 # ADT Tweak: Blood IV
-        ChemistryBottleInaprovaline: 3
-        PillTricordrazine: 10
+#    Bloodpack: 3 # ADT Tweak
+    ADTSprayBottleStypticPowder: 3 # ADT-Tweak
+    ADTSprayBottleSilverSulfadiazine: 3 # ADT-Tweak
+    ADTBloodPackTransfusionFull: 3 # ADT Tweak: Blood IV
+    ChemistryBottleInaprovaline: 3
+    PillTricordrazine: 10
     HandheldHealthAnalyzer: 1
     Syringe: 3
   contrabandInventory:
@@ -47,8 +47,8 @@
     # ADT tweak end
     Brutepack: 4
     Ointment: 4
-#        Bloodpack: 4  # ADT-Tweak
-        PillCanisterTricordrazine: 4
+#    Bloodpack: 4  # ADT-Tweak
+    PillCanisterTricordrazine: 4
     # Medical Essential Gear
     ClothingBeltMedicalFilled: 2
     # Shared Essential
@@ -81,14 +81,14 @@
     Tourniquet: 5
     Brutepack: 5
     AloeCream: 5
-#        Bloodpack: 5 # ADT Tweak
-        ADTBloodPackTransfusionFull: 5 # ADT Tweak: Blood IV
-        ADTSprayBottleStypticPowder: 3 # ADT-Tweak
-        ADTSprayBottleSilverSulfadiazine: 3 # ADT-Tweak
-        ChemistryBottleInaprovaline: 5
-        PillTricordrazine: 10
-        PillIron: 5
-        PillCopper: 5
+#    Bloodpack: 5 # ADT Tweak
+    ADTBloodPackTransfusionFull: 5 # ADT Tweak: Blood IV
+    ADTSprayBottleStypticPowder: 3 # ADT-Tweak
+    ADTSprayBottleSilverSulfadiazine: 3 # ADT-Tweak
+    ChemistryBottleInaprovaline: 5
+    PillTricordrazine: 10
+    PillIron: 5
+    PillCopper: 5
     HandheldHealthAnalyzer: 3
     Syringe: 5
   contrabandInventory:
