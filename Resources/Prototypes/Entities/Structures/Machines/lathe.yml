@@ -152,7 +152,6 @@
     - ADTServiceStaticPack
     - ADTRecorderStaticPack
     - ADTMicsStaticPack
-    - ADTSprayPaintStaticPack
     # ADT-tweak-end
   - type: EmagLatheRecipes
     emagStaticPacks:
