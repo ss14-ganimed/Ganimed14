@@ -66,9 +66,6 @@ public sealed class SpeechBarksSystem : EntitySystem
 
     private void OnEntitySpoke(PlaySpeechBarksEvent ev)
     {
-        if (!_cfg.GetCVar(ADTCCVars.ReplaceTTSWithBarks))
-            return;
-
         if (ev.Message == null)
             return;
 

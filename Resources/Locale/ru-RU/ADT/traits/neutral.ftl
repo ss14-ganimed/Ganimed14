@@ -31,6 +31,15 @@ trait-female-ipc-desc = Вы способны издавать звуки жен
 trait-male-ipc-name = Голосовой модуль (Мужской)
 trait-male-ipc-desc = Вы способны издавать звуки мужских человеческих особей.
 
+trait-cute-ipc-name = Голосовой модуль (Милый)
+trait-cute-ipc-desc = Вы способны издавать милые женские звуки.
+
+trait-xenoborg-ipc-name = Голосовой модуль (Ксеноборг)
+trait-xenoborg-ipc-desc = Вы способны издавать жуткие звуки ксеноборгов.
+
+trait-robotic-voice-ipc-name = Синтезатор речи
+trait-robotic-voice-ipc-desc = Ваш голосовой модуль не скрывает своего происхождения и звучит роботизированно.
+
 trait-polite-accent-name = Вежливый
 trait-polite-accent-desc = Вы говорите без грубых выражений, которые используют другие.
 
@@ -38,10 +47,37 @@ trait-nerd-accent-name = Ботаник
 trait-nerd-accent-desc = Вы говорите техническим жаргоном чаще, чем кто-либо хочет слышать!
 
 trait-chav-accent-name = Кокни
-trait-chav-accent-desc = Эй, приятель, что ты там сказал про мою бабушку? (Вы будите только мычать, как в наморднике)
+trait-chav-accent-desc = Эй, приятель, что ты там сказал про мою бабушку? (Вы будете только мычать, как в наморднике)
 
 trait-archaic-accent-name = Архаичный
-trait-archaic-accent-desc = Вы говорите так, как многие считают устаревшим.
+trait-archaic-accent-desc = Вы говорите задом наперёд! 
 
 trait-scottish-accent-name = Шотландский акцент
 trait-scottish-accent-desc = Вы говорите, словно собираетесь отправиться к Лох-Несс!
+
+trait-echolalia-name = Эхолалия
+trait-echolalia-desc = Вы непроизвольно повторяете слова и фразы, произнесённые другими.
+
+trait-soft-walk-name = Мягкая походка
+trait-soft-walk-desc = Вы достаточно осторожны, чтобы не наступать на опасные места даже без обуви.
+
+trait-freerunning-name = Фрираннинг
+trait-freerunning-desc = Вы умеете эффективно и более быстро заползать на столы, и перепрыгивать препятствие.
+
+trait-sprinter-name = Спринтер
+trait-sprinter-desc = Вы можете бегать немного быстрее остальных.
+
+trait-hard-thrower-name = Сильный бросок
+trait-hard-thrower-desc = Вы можете бросать предметы дальше и с большей силой.
+
+trait-voracious-name = Ненасытный
+trait-voracious-desc = Вы едите быстрее других, ваш метаболизм ускорен.
+
+trait-drunk-tolerance-name = Толерантность к алкоголю
+trait-drunk-tolerance-desc = Вы менее подвержены воздействию алкоголя, вам нужно больше, чтобы опьянеть.
+
+trait-invert-run-name = Шустрый
+trait-invert-run-desc = По умолчанию вы бегаете, а не ходите.
+
+trait-polyglot-name = Полиглот
+trait-polyglot-desc = Вы знаете один дополнительный язык: в редакторе персонажа доступен ещё один слот языка.

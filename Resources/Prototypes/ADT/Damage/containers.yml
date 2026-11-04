@@ -3,4 +3,26 @@
   supportedGroups:
     - Brute
     - Burn
-    - Metaphysical
+  #  - Metaphysical
+
+- type: damageContainer
+  id: ADTBiologicalDrask
+  supportedGroups:
+  - Brute
+  - Toxin
+  - Airloss
+  - Genetic
+  supportedTypes:
+  - Heat
+  - Shock
+  - Caustic
+
+- type: damageContainer
+  id: ADTBiologicalShadekin
+  supportedGroups:
+  - Brute
+  - Burn
+  - Toxin
+  - Genetic
+  supportedTypes:
+  - Bloodloss

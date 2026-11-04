@@ -133,7 +133,7 @@
   recipeUnlocks:
   - WeaponPistolCHIMP
   - AnomalySynchronizerCircuitboard
-  - AnomalyVesselExperimentalCircuitboard
+  # - AnomalyVesselExperimentalCircuitboard # ADT-Tweak
   technologyPrerequisites:
   - BasicAnomalousResearch
   # ADT Research Console Rework start

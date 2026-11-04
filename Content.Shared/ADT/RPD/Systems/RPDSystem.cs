@@ -1,4 +1,6 @@
 using Content.Shared.Administration.Logs;
+using Content.Shared.Atmos.Components;
+using Content.Shared.Atmos.EntitySystems;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.ADT.Construction;
@@ -32,7 +34,6 @@ namespace Content.Shared.ADT.RPD.Systems;
 [Virtual]
 public class RPDSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -46,7 +47,11 @@ public class RPDSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+    [Dependency] private readonly IComponentFactory _componentFactory = default!;
+    [Dependency] private readonly SharedAtmosPipeLayersSystem _atmosPipeLayers = default!;
 
+
+    private const float InstantPlacementDelay = 0.7f;
 
     private HashSet<EntityUid> _intersectingEntities = new();
 
@@ -61,6 +66,7 @@ public class RPDSystem : EntitySystem
         SubscribeLocalEvent<RPDComponent, DoAfterAttemptEvent<RPDDoAfterEvent>>(OnDoAfterAttempt);
         SubscribeLocalEvent<RPDComponent, RPDSystemMessage>(OnRPDSystemMessage);
         SubscribeNetworkEvent<RPDConstructionGhostRotationEvent>(OnRPDconstructionGhostRotationEvent);
+        SubscribeNetworkEvent<RPDConstructionGhostLayerEvent>(OnRPDconstructionGhostLayerEvent);
     }
 
     #region Event handling
@@ -122,7 +128,9 @@ public class RPDSystem : EntitySystem
 
     private void OnAfterInteract(EntityUid uid, RPDComponent component, AfterInteractEvent args)
     {
-        if (args.Handled || !args.CanReach)
+        var bluespace = component.IgnoreRangeCheck && component.CachedPrototype.Mode == RpdMode.ConstructObject;
+
+        if (args.Handled || (!args.CanReach && !bluespace))
             return;
 
         var user = args.User;
@@ -176,9 +184,16 @@ public class RPDSystem : EntitySystem
 
         #endregion
 
-        // Try to start the do after
+        if (component.InstantPlacement && component.CachedPrototype.Mode == RpdMode.ConstructObject)
+            delay = InstantPlacementDelay;
+            
         var effect = Spawn(effectPrototype, location);
-        var ev = new RPDDoAfterEvent(GetNetCoordinates(location), component.ConstructionDirection, component.ProtoId, cost, GetNetEntity(effect));
+
+        if (component.BeamPrototype is { } beamPrototype)
+            RaiseLocalEvent(new RPDInstantPlacementEvent(args.User, effect, beamPrototype));
+
+        // Try to start the do after
+        var ev = new RPDDoAfterEvent(GetNetCoordinates(location), component.ConstructionDirection, component.ConstructionLayer, component.ProtoId, cost, GetNetEntity(effect));
 
         var doAfterArgs = new DoAfterArgs(EntityManager, user, delay, ev, uid, target: args.Target, used: uid)
         {
@@ -254,7 +269,8 @@ public class RPDSystem : EntitySystem
             return;
 
         // Finalize the operation
-        FinalizeRPDOperation(uid, component, gridUid.Value, mapGrid, position, args.Direction, args.Target, args.User);
+        if (!FinalizeRPDOperation(uid, component, gridUid.Value, mapGrid, position, args.Direction, args.ConstructionLayer, args.Target, args.User))
+            return;
 
         // Play audio and consume charges
         _audio.PlayPredicted(component.SuccessSound, uid, args.User);
@@ -278,6 +294,24 @@ public class RPDSystem : EntitySystem
 
         // Update the construction direction
         rpd.ConstructionDirection = ev.Direction;
+        Dirty(uid, rpd);
+    }
+
+    private void OnRPDconstructionGhostLayerEvent(RPDConstructionGhostLayerEvent ev, EntitySessionEventArgs session)
+    {
+        var uid = GetEntity(ev.NetEntity);
+
+        if (session.SenderSession.AttachedEntity is not { } player)
+            return;
+
+        if (!TryComp<HandsComponent>(player, out var hands) ||
+            _hands.GetActiveItem(player) != uid)
+            return;
+
+        if (!TryComp<RPDComponent>(uid, out var rpd))
+            return;
+
+        rpd.ConstructionLayer = ev.Layer;
         Dirty(uid, rpd);
     }
 
@@ -310,9 +344,10 @@ public class RPDSystem : EntitySystem
         }
 
         // Exit if the target / target location is obstructed
+        var range = component.CachedPrototype.Mode == RpdMode.ConstructObject ? component.Range : SharedInteractionSystem.InteractionRange;
         var unobstructed = (target == null)
-            ? _interaction.InRangeUnobstructed(user, _mapSystem.GridTileToWorld(gridUid, mapGrid, position), popup: popMsgs)
-            : _interaction.InRangeUnobstructed(user, target.Value, popup: popMsgs);
+            ? _interaction.InRangeUnobstructed(user, _mapSystem.GridTileToWorld(gridUid, mapGrid, position), range, popup: popMsgs)
+            : _interaction.InRangeUnobstructed(user, target.Value, range, popup: popMsgs);
 
         if (!unobstructed)
             return false;
@@ -410,18 +445,19 @@ public class RPDSystem : EntitySystem
 
     #region Entity construction/deconstruction
 
-    private void FinalizeRPDOperation(EntityUid uid, RPDComponent component, EntityUid gridUid, MapGridComponent mapGrid, Vector2i position, Direction direction, EntityUid? target, EntityUid user)
+    private bool FinalizeRPDOperation(EntityUid uid, RPDComponent component, EntityUid gridUid, MapGridComponent mapGrid, Vector2i position, Direction direction, AtmosPipeLayer layer, EntityUid? target, EntityUid user)
     {
         if (!_net.IsServer)
-            return;
+            return false;
 
         if (component.CachedPrototype.Prototype == null)
-            return;
+            return false;
 
         switch (component.CachedPrototype.Mode)
         {
             case RpdMode.ConstructObject:
-                var ent = Spawn(component.CachedPrototype.Prototype, _mapSystem.GridTileToLocal(gridUid, mapGrid, position));
+                var entityProto = GetPrototypeForLayer(component, layer) ?? component.CachedPrototype.Prototype;
+                var ent = Spawn(entityProto, _mapSystem.GridTileToLocal(gridUid, mapGrid, position));
 
                 switch (component.CachedPrototype.Rotation)
                 {
@@ -436,8 +472,17 @@ public class RPDSystem : EntitySystem
                         break;
                 }
 
+                var validated = new RPDPlacementValidatedEvent(ent, user);
+                RaiseLocalEvent(validated);
+
+                if (validated.Rejected)
+                {
+                    QueueDel(ent);
+                    return false;
+                }
+
                 _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RPD to spawn {ToPrettyString(ent)} at {position} on grid {gridUid}");
-                break;
+                return true;
 
             case RpdMode.Deconstruct:
 
@@ -446,10 +491,13 @@ public class RPDSystem : EntitySystem
                     // Deconstruct object
                     _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RPD to delete {ToPrettyString(target):target}");
                     QueueDel(target);
+                    return true;
                 }
 
-                break;
+                return false;
         }
+
+        return false;
     }
 
     #endregion
@@ -459,23 +507,21 @@ public class RPDSystem : EntitySystem
     public bool TryGetMapGridData(EntityCoordinates location, [NotNullWhen(true)] out MapGridData? mapGridData)
     {
         mapGridData = null;
-        var gridUid = location.GetGridUid(EntityManager);
+        var gridUid = _transform.GetGrid(location);
 
         if (!TryComp<MapGridComponent>(gridUid, out var mapGrid))
         {
             location = location.AlignWithClosestGridTile(1.75f, EntityManager);
-            gridUid = location.GetGridUid(EntityManager);
+            gridUid = _transform.GetGrid(location);
 
             // Check if we got a grid ID the second time round
             if (!TryComp(gridUid, out mapGrid))
                 return false;
         }
 
-        gridUid = mapGrid.Owner;
-
-        var tile = _mapSystem.GetTileRef(gridUid.Value, mapGrid, location);
-        var position = _mapSystem.TileIndicesFor(gridUid.Value, mapGrid, location);
-        mapGridData = new MapGridData(gridUid.Value, mapGrid, location, tile, position);
+        var tile = _mapSystem.GetTileRef(gridUid!.Value, mapGrid, location);
+        var position = _mapSystem.TileIndicesFor(gridUid!.Value, mapGrid, location);
+        mapGridData = new MapGridData(gridUid!.Value, mapGrid, location, tile, position);
 
         return true;
     }
@@ -492,6 +538,17 @@ public class RPDSystem : EntitySystem
     {
         if (component.ProtoId.Id != component.CachedPrototype?.Prototype)
             component.CachedPrototype = _protoManager.Index(component.ProtoId);
+    }
+
+    public EntProtoId? GetPrototypeForLayer(RPDComponent component, AtmosPipeLayer layer)
+    {
+        if (component.CachedPrototype.Prototype == null ||
+            !_protoManager.TryIndex<EntityPrototype>(component.CachedPrototype.Prototype, out var entProto) ||
+            !entProto.TryGetComponent<AtmosPipeLayersComponent>(out var atmosPipeLayers, _componentFactory) ||
+            !_atmosPipeLayers.TryGetAlternativePrototype(atmosPipeLayers, layer, out var altProto))
+            return null;
+
+        return altProto;
     }
 
     #endregion
@@ -525,6 +582,9 @@ public sealed partial class RPDDoAfterEvent : DoAfterEvent
     public Direction Direction { get; private set; } = default!;
 
     [DataField]
+    public AtmosPipeLayer ConstructionLayer { get; private set; } = AtmosPipeLayer.Primary;
+
+    [DataField]
     public ProtoId<RPDPrototype> StartingProtoId { get; private set; } = default!;
 
     [DataField]
@@ -535,10 +595,11 @@ public sealed partial class RPDDoAfterEvent : DoAfterEvent
 
     private RPDDoAfterEvent() { }
 
-    public RPDDoAfterEvent(NetCoordinates location, Direction direction, ProtoId<RPDPrototype> startingProtoId, int cost, NetEntity? effect = null)
+    public RPDDoAfterEvent(NetCoordinates location, Direction direction, AtmosPipeLayer constructionLayer, ProtoId<RPDPrototype> startingProtoId, int cost, NetEntity? effect = null)
     {
         Location = location;
         Direction = direction;
+        ConstructionLayer = constructionLayer;
         StartingProtoId = startingProtoId;
         Cost = cost;
         Effect = effect;

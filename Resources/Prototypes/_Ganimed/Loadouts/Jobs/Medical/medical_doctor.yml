@@ -27,7 +27,7 @@
     head: ClothingHeadFaceshield
   effects:
   - !type:GroupLoadoutEffect
-    proto: MedicalHeadMirrorTimer
+    proto: MedicalJourneymanTimer
 
 # Neck
 - type: loadout
@@ -242,7 +242,7 @@
   effects:
   # - !type:WhitelistedLoadoutEffect
   - !type:GroupLoadoutEffect
-    proto: MedicalHeadMirrorTimer
+    proto: MedicalJourneymanTimer
   equipment:
     outerClothing: ClothingOuterBioVirology
     head: ClothingHeadHatHoodBioVirology

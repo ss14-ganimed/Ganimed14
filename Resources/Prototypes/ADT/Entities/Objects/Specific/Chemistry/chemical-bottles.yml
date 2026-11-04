@@ -1,4 +1,4 @@
-# бутылочки
+﻿# бутылочки
 
 ##пластиковая
 
@@ -68,6 +68,7 @@
       types:
         Blunt: 0
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:
@@ -159,31 +160,8 @@
 
 #пластиковые
 - type: entity
-  id: ADTPeroHydrogenBottle
-  name: perohydrogen bottle
-  parent: ADTPlasticBottle
-  description: A small plastic bottle. The letters on the label so small that they form a funny face.
-  components:
-  - type: Sprite
-    sprite: ADT/Objects/Specific/Chemistry/plastic-bottle.rsi
-    layers:
-      - state: icon
-        map: [ "enum.SolutionContainerLayers.Base" ]
-      - state: fill1
-        map: [ "enum.SolutionContainerLayers.Fill" ]
-        visible: false
-      - state: icon-front-perohydrogen
-        map: [ "enum.SolutionContainerLayers.Overlay" ]
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: ADTPeroHydrogen
-          Quantity: 30
-
-- type: entity
-  id: ADTNikematideBottle
-  name: nikematide bottle
+  id: ADTVestineBottle
+  name: vestine bottle
   description: A small plastic bottle. The letters on the label so small that they form a funny face.
   parent: ADTPlasticBottle
   components:
@@ -201,7 +179,7 @@
     solutions:
       drink:
         reagents:
-        - ReagentId: ADTNikematide
+        - ReagentId: Vestine
           Quantity: 30
 
 - type: entity
@@ -511,4 +489,30 @@
         maxVol: 30
         reagents:
         - ReagentId: Dylovene
+          Quantity: 30
+
+- type: entity
+  id: ADTStypticPowderChemistryBottle
+  name: styptic powder bottle
+  parent: BaseChemistryEmptyBottle
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: ADTStypticPowder
+          Quantity: 30
+
+- type: entity
+  id: ADTSilverSulfadiazineChemistryBottle
+  name: silver sulfadiazine bottle
+  parent: BaseChemistryEmptyBottle
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: ADTSilverSulfadiazine
           Quantity: 30

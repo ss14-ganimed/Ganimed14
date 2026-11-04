@@ -62,7 +62,6 @@
       - Radio
       - DiscreteHealthAnalyzer
       components:
-      - Hypospray
       - Injector
       - Pill
       - Healing

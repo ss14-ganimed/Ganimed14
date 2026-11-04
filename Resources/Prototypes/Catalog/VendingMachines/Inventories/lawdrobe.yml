@@ -14,8 +14,6 @@
     ClothingShoesBootsLaceup: 2
     ClothingHeadsetLawyer: 2 # ADT-Tweak
     ClothingNeckLawyerbadge: 2
-    BriefcaseBrown: 2
-    ADTBookSpaceLaw: 3 #ADT-WikiBooks
     ADTBureaucraticBelt: 1 # ADT-Tweak
     # Corvax-LawyerDrip-Start
     ClothingHandsGlovesColorWhite: 1
@@ -23,10 +21,17 @@
     ClothingHandsGlovesColorBlack: 1
     ClothingHandsGlovesColorRed: 1
     ClothingHandsGlovesColorBlue: 1
+    # Corvax-LawyerDrip-End
+    # Corvax-LawyerDrip-Start
     ClothingHeadHatBowlerHat: 1
     ClothingHeadHatOutlawHat: 1
     ClothingHeadHatTophat: 1
     # Corvax-LawyerDrip-End
+    # ADT tweak start wiki books
+    ADTBookSRPjrd: 2
+    ADTBookSpaceLaw: 3
+    # ADT tweak end wiki books
+    BriefcaseBrown: 2
     LuxuryPen: 2
     HandLabeler: 2
   contrabandInventory:

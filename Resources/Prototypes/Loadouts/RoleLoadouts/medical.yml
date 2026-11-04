@@ -1,0 +1,130 @@
+## Role Loadouts
+
+- type: roleLoadout
+  id: JobChiefMedicalOfficer
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ChiefMedicalOfficerHead
+  - ChiefMedicalOfficerMedicalMask # Ganimed-Loadouts-Edit (MedicalMask)
+  - ChiefMedicalOfficerJumpsuit
+  - MedicalGloves
+  - ChiefMedicalOfficerBackpack # Ganimed-Loadouts-Edit (MedicalBackpack)
+  - ChiefMedicalOfficerBelt # Ganimed-Loadouts-Edit (ADTMedicalBelt)
+  - ChiefMedicalOfficerOuterClothing
+  - ChiefMedicalOfficerNeck
+  - ADTChiefMedicalOfficerEars # ADT tweak
+  - ChiefMedicalOfficerShoes
+  - ChiefMedicalOfficerGlasses # Ganimed-Loadouts-Edit (MedicalEyewear)
+  - ADTCMOPDA # ADT tweak
+  # ADT underwear tweak start
+  - ADTTopCMO
+  - ADTBottomCMO
+  - ADTSocks
+  # ADT underwear tweak end
+  - SurvivalMedical
+  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
+  - Trinkets
+  - GroupSpeciesBreathToolMedical
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobMedicalDoctor
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - MedicalDoctorHead
+  - MedicalMask
+  - MedicalDoctorNeck # Ganimed-Loadouts-Add
+  - MedicalDoctorJumpsuit
+  - MedicalGloves
+  - MedicalBackpackExtended # Ganimed-Loadouts-Edit (MedicalBackpack)
+  - ADTMedicalBelt # ADT tweak
+  - MedicalDoctorOuterClothing
+  - MedicalShoes
+  - MedicalDoctorPDA
+  - MedicalEyewear
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - SurvivalMedical
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - GroupSpeciesBreathToolMedical
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobMedicalIntern
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - MedicalInternJumpsuit
+  - MedicalBackpack
+  - MedicalEyewear
+  # - ADTMedicalBelt # ADT tweak # Ganimed-Loadouts-Remove
+  - ADTMedicalInternPDA # ADT tweak
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - SurvivalMedical
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - GroupSpeciesBreathToolMedical
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobChemist
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ChemistHead # Ganimed-Loadouts-Add
+  - MedicalMask
+  - ChemistJumpsuit
+  - MedicalGloves
+  - ChemistBackpack
+  - ChemistGlasses # Ganimed-Loadouts-Add
+  - ChemistOuterClothing
+  - ChemistBelt # Ganimed-Loadouts-Add
+  - ChemistShoes # Ganimed-Loadouts-Edit (MedicalShoes)
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - SurvivalMedical
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - GroupSpeciesBreathToolMedical
+  - SpareClothing # Ganimed-Loadouts-Add
+
+- type: roleLoadout
+  id: JobParamedic
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ParamedicHead
+  - MedicalMask
+  - ParamedicJumpsuit
+  - MedicalGloves
+  # ADT tweak Start
+  - ADTParamedicBelt
+  - ADTParamedicBackpack
+#  - MedicalBackpack   Закоментил для нашего
+  # ADT tweak End
+  - ParamedicOuterClothing
+  - ParamedicShoes
+  - MedicalEyewear
+  # ADT underwear tweak start
+  - ADTTop
+  - ADTBottom
+  - ADTSocks
+  # ADT underwear tweak end
+  - SurvivalMedical
+  - Trinkets
+  - ADTSprayPaints # ADT-Tweak
+  - GroupSpeciesBreathToolMedical
+  - SpareClothing # Ganimed-Loadouts-Add

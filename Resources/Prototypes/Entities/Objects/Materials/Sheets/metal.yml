@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   abstract: true
   parent: BaseItem
   id: SheetMetalBase
@@ -17,9 +17,11 @@
     - Metal
     - ConstructionMaterial
     - NoPaint #ADT tweak
+    - Steel # ADT: rust ritual
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -88,6 +90,8 @@
     - ADTSteelSheet
     - Sheet
     - Metal
+    - ConstructionMaterial
+    - Steel
   # ADT-UPD-End
 
 - type: entity

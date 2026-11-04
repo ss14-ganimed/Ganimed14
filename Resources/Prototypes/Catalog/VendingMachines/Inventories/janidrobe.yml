@@ -4,12 +4,15 @@
     ClothingUniformJumpsuitJanitor: 2
     ClothingUniformJumpskirtJanitor: 2
     ClothingHandsGlovesJanitor: 2
-    ClothingShoesColorBlack: 2
-    ClothingHeadHatPurplesoft: 2
     ClothingBeltJanitor: 2
     ClothingHeadsetService: 2
-    ClothingOuterWinterJani: 2
     ClothingNeckScarfStripedPurple: 3
+    ClothingShoesColorBlack: 2
+    ClothingHeadHatPurplesoft: 2
+    ClothingOuterWinterJani: 2
+    # ADT tweak start wiki books
+    ADTBookSRPsrv: 2
+    # ADT tweak end wiki books
   contrabandInventory:
     ToyFigurineJanitor: 1
   emaggedInventory:

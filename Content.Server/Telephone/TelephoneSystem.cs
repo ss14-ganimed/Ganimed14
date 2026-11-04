@@ -8,7 +8,6 @@ using Content.Server.Speech.Components;
 using Content.Shared.ADT.Language;
 using Content.Shared.ADT.SpeechBarks;
 using Content.Shared.Chat;
-using Content.Shared.Corvax.TTS;
 using Content.Shared.Database;
 using Content.Shared.Labels.Components;
 using Content.Shared.Mind.Components;
@@ -118,24 +117,18 @@ public sealed class TelephoneSystem : SharedTelephoneSystem
 
         var range = args.TelephoneSource.Comp.LinkedTelephones.Count > 1 ? ChatTransmitRange.HideChat : ChatTransmitRange.GhostRangeLimit;
         var volume = entity.Comp.SpeakerVolume == TelephoneVolume.Speak ? InGameICChatType.Speak : InGameICChatType.Whisper;
-        // Corvax-TTS-Start
-        // If speaker entity has TTS, the telephone will speak with the same voice
-        if(TryComp<TTSComponent>(args.MessageSource, out var ttsSpeaker))
-        {
-            EnsureComp<TTSComponent>(speaker, out var ttsTelephone);
-            ttsTelephone.VoicePrototypeId = ttsSpeaker.VoicePrototypeId;
-        }
-        else if(TryComp<SpeechBarksComponent>(args.MessageSource, out var barkSpeaker))
+        // ADT-Tweak-Start
+        // If speaker entity has barks, the telephone will speak with the same bark voice
+        if(TryComp<SpeechBarksComponent>(args.MessageSource, out var barkSpeaker))
         {
             EnsureComp<SpeechBarksComponent>(speaker, out var barkTelephone);
             barkTelephone.Data = barkSpeaker.Data;
         }
-        else // Remove TTS if the speaker has no TTS
+        else // Remove barks if the speaker has none
         {
-            RemComp<TTSComponent>(speaker);
             RemComp<SpeechBarksComponent>(speaker);
         }
-        // Corvax-TTS-End
+        // ADT-Tweak-End
         _chat.TrySendInGameICMessage(speaker, args.Message, volume, range, nameOverride: name, checkRadioPrefix: false, language: args.Language); // ADT-Telephone-Language
     }
 

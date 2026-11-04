@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ BaseItem, StorePresetUplink ] #PDA's have uplinks so they have to inherit the data.
+  parent: [ BaseItem ]
   id: BasePDA
   name: PDA
   description: Personal Data Assistant.
@@ -114,6 +114,7 @@
       enum.GasAnalyzerUiKey.Key:
         type: GasAnalyzerBoundUserInterface
       # Ganimed-Add-End
+  - type: RemoteStore # PDAs can access uplinks so they need this component.
   - type: Tag
     tags:
     - DoorBumpOpener
@@ -350,8 +351,6 @@
     borderColor: "#d7d7d0"
   - type: Icon
     state: pda-cook
-  - type: ReplacementAccent # for random sentience event
-    accent: italian
 
 - type: entity
   parent: BasePDA
@@ -477,6 +476,11 @@
       whitelist:
         components:
         - Cartridge
+    preinstalled:
+    - CrewManifestCartridge
+    - NewsReaderCartridge
+    - NanoChatCartridge # ADT-tweak: Наночат
+    - ADTWalletCartridge # ADT-Economy
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -487,7 +491,7 @@
     accentHColor: "#333333"
   - type: Icon
     state: pda-mime
-  - type: Muted # for random sentience event
+  - type: Muted # for random sentience eventывыв
 
 - type: entity
   name: chaplain PDA
@@ -1220,17 +1224,6 @@
   components:
   - type: Pda
     id: CentcomIDCardDeathsquad
-  - type: Icon
-    state: pda-ds
-  - type: Appearance
-    appearanceDataInit:
-     enum.PdaVisuals.PdaType:
-       !type:String
-       pda-ds
-  - type: PdaBorderColor
-    borderColor: "##1C1C1C"
-    accentHColor: "#2851a4"
-    accentVColor: "#8B0000"
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1359,7 +1352,6 @@
       - NotekeeperCartridge
       - NanoChatCartridge # ADT-tweak: Наночат
       - NanoTaskCartridge
-    diskSpace: 8 # ADT tweak
 
 - type: entity
   parent: [ SyndiPDA, BaseSyndicateContraband ]
@@ -1859,6 +1851,22 @@
     state: pda-seniorcourier
 
 - type: entity
+  parent: [ BaseHighlyIllegalContraband, BasePDA ]
+  id: NinjaPDA
+  name: ninja PDA
+  description: You stealthy bastard, you!
+  components:
+  - type: Pda
+    id: NinjaIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ninja
+  - type: Icon
+    state: pda-ninja
+
+- type: entity
   parent: [ BaseMajorContraband, SyndiPDA ]
   id: PiratePDA
   name: pirate PDA
@@ -1908,6 +1916,14 @@
       enum.GasAnalyzerUiKey.Key:
         type: GasAnalyzerBoundUserInterface
       # Ganimed-Add-End
+
+- type: entity
+  parent: ChameleonPDA
+  id: ChameleonAgentPDA
+  suffix: Chameleon, Agent ID
+  components:
+  - type: Pda
+    id: AgentIDCard
 
 - type: entity
   parent: BaseWidePDA

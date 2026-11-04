@@ -1,25 +1,28 @@
 - type: vendingMachineInventory
   id: CuraDrobeInventory
   startingInventory:
-    BooksBag: 2
-    BriefcaseBrown: 2
-    HandLabeler: 2
-    Cane: 3
     ClothingEyesGlasses: 2
     ClothingEyesGlassesJamjar: 2
     ClothingNeckScarfStripedGreen: 2
+    ClothingHeadsetService: 2
+    ADTBureaucraticBelt: 2 # ADT-Tweak
     ClothingUniformJumpsuitCurator: 3
     ClothingUniformJumpskirtCurator: 3
     ClothingUniformJumpsuitLibrarian: 3
     ClothingUniformJumpskirtLibrarian: 3
     ClothingShoesBootsLaceup: 2
-    ClothingHeadsetService: 2
+    # ADT tweak start wiki books
+    ADTBookSRPsrv: 2
+    BookRandom: 10
+    # ADT tweak end wiki books
+    BooksBag: 2
+    BriefcaseBrown: 2
+    HandLabeler: 2
+    Cane: 3
     PrinterDocFlatpack: 2 # Corvax-Printer
-    ADTBureaucraticBelt: 2 # ADT-Tweak
     # ADT-BookPrinter-Start
     ADTBookPrinterFlatpack: 1
     ADTBookPrinterInkCartridge: 2
     # ADT-BookPrinter-End
   contrabandInventory:
     ToyFigurineLibrarian: 1
-

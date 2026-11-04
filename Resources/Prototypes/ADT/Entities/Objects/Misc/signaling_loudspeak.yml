@@ -1,12 +1,10 @@
-- type: entity
+﻿- type: entity
   parent: BaseItem
   id: ADTSignalingLoudspeak
   name: signaling loudspeak
   placement:
     mode: SnapgridCenter
   components:
-  - type: TTS
-    voice: officer_enclave
   - type: SignalingLoudspeak
   - type: RadioMicrophone
     broadcastChannel: Security
@@ -20,8 +18,9 @@
   - type: Transform
     anchored: true
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: CollideOnAnchor
   - type: Anchorable
   - type: Rotatable

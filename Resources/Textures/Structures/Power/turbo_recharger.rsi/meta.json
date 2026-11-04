@@ -5,7 +5,7 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "Derived from Artea-Station at commit https://github.com/Artea-Station/Artea-Station-Server/commit/44e1572df09b1fc6c30afe5316b8a3a757d30b53 and modified by HyperB1 (GitHub)",
+    "copyright": "adapted from https://github.com/discordia-space/CEV-Eris/raw/9ea3eccbe22e18d24653949067f3d7dd12194ea9/icons/obj/stationobjs.dmi by EmoGarbage404 (github), in-hands by spanky-spanky (GitHub)",
     "states": [
         {
             "name": "empty"
@@ -44,6 +44,14 @@
                     0.6
                 ]
             ]
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
         }
     ]
 }

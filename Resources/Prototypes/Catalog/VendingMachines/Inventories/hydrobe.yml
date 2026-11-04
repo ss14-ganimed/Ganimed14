@@ -5,13 +5,15 @@
     ClothingBackpackSatchelHydroponics: 2
     ClothingBackpackDuffelHydroponics: 2
     ClothingOuterApronBotanist: 2
+    ClothingOuterWinterHydro: 2
     ClothingUniformOveralls: 3
     ClothingUniformJumpsuitHydroponics: 3
     ClothingUniformJumpskirtHydroponics: 3
     ClothingNeckScarfStripedGreen: 3
-    ClothingHeadBandBotany: 3
     ClothingHeadsetService: 2
-    ClothingOuterWinterHydro: 2
+    ClothingHeadBandBotany: 3
+    # ADT tweak start wiki books
+    ADTBookSRPsrv: 2
+    # ADT tweak end wiki books
   contrabandInventory:
     ToyFigurineBotanist: 1
-

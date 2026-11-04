@@ -7,7 +7,6 @@ seed-dna-window-replace-all = Перезаписать весь геном се�
 
 seed-dna-slot-component-slot-name-disk = Диск
 seed-dna-slot-component-slot-name-seeds = Семена
-
 seed-dna-eject-btn = Извлечь
 seed-dna-insert-btn = Вставить
 
@@ -42,8 +41,10 @@ seed-dna-row-CanScream = Крикливость
 
 # -------------------------------------------------
 
+
 # Локализация химикатов — заполнить по необходимости
 # seed-dna-chemical-??? = ???
+
 
 seed-dna-chemicalProp-Min = Минимальное значение
 seed-dna-chemicalProp-Max = Максимальное значение
@@ -52,3 +53,4 @@ seed-dna-chemicalProp-Inherent = Врождённый
 
 # Локализация газов — заполнить по необходимости
 # seed-dna-gas-??? = ???
+

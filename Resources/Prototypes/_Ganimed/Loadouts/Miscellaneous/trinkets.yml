@@ -120,7 +120,7 @@
     proto: TenOverall
   storage:
     back:
-    - GlowstickBase
+    - GlowstickGreen
   groupBy: "glowsticks"
 
 - type: loadout

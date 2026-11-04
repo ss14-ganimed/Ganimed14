@@ -10,57 +10,57 @@ namespace Content.Server.Corvax.Sponsors;
 /// Прототип для локальной проверки спонсорства в Debug-сборках.
 /// Использует ckey вместо UUID.
 /// </summary>
-[Prototype("debugSponsor")]
-public sealed class DebugSponsorPrototype : IPrototype
+[Prototype("debugSponsor"), DataDefinition]
+public sealed partial class DebugSponsorPrototype : IPrototype
 {
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; private set; } = default!;
 
     /// <summary>
     /// Ckey спонсора.
     /// </summary>
     [DataField("ckey", required: true)]
-    public string Ckey { get; } = default!;
+    public string Ckey { get; private set; } = default!;
 
     /// <summary>
     /// Tier спонсора.
     /// </summary>
     [DataField("tier")]
-    public int? Tier { get; } = null;
+    public int? Tier { get; private set; } = null;
 
     /// <summary>
     /// Цвет для OOC чата.
     /// </summary>
     [DataField("oocColor")]
-    public string? OOCColor { get; } = null;
+    public string? OOCColor { get; private set; } = null;
 
     /// <summary>
     /// Имеет ли приоритетный вход.
     /// </summary>
     [DataField("priorityJoin")]
-    public bool HavePriorityJoin { get; } = false;
+    public bool HavePriorityJoin { get; private set; } = false;
 
     /// <summary>
     /// Дополнительные слоты.
     /// </summary>
     [DataField("extraSlots")]
-    public int ExtraSlots { get; } = 0;
+    public int ExtraSlots { get; private set; } = 0;
 
     /// <summary>
     /// Разрешённые маркировки (спец. лоадауты, расы и т.д.).
     /// </summary>
     [DataField("allowedMarkings")]
-    public string[] AllowedMarkings { get; } = Array.Empty<string>();
+    public string[] AllowedMarkings { get; private set; } = Array.Empty<string>();
 
     /// <summary>
     /// Дата истечения спонсорства.
     /// </summary>
     [DataField("expireDate")]
-    public DateTime? ExpireDate { get; } = null;
+    public DateTime? ExpireDate { get; private set; } = null;
 
     /// <summary>
     /// Разрешить ли обход требований по времени для должностей.
     /// </summary>
     [DataField("allowJob")]
-    public bool AllowJob { get; } = false;
+    public bool AllowJob { get; private set; } = false;
 }

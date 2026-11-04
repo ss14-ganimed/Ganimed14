@@ -3,6 +3,8 @@ using Content.Shared.Traits.Assorted;
 using Content.Shared.ADT.MesonVision;
 using Content.Shared.Doors.Components;
 using Content.Shared.Light.Components;
+using Content.Shared.Mining.Components;
+using Content.Shared.Tag;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -17,6 +19,7 @@ public sealed class MesonVisionOverlay : Overlay
     [Dependency] private readonly IPlayerManager _player = default!;
     private readonly SharedTransformSystem _xformSystem;
     private readonly ContainerSystem _container;
+    private readonly SpriteSystem _spriteSystem;
     private readonly EntityQuery<SpriteComponent> _spriteQuery;
     private readonly EntityQuery<TransformComponent> _xformQuery;
 
@@ -28,6 +31,7 @@ public sealed class MesonVisionOverlay : Overlay
         IoCManager.InjectDependencies(this);
         _container = _entity.System<ContainerSystem>();
         _xformSystem = _entity.System<SharedTransformSystem>();
+        _spriteSystem = _entity.System<SpriteSystem>();
         _spriteQuery = _entity.GetEntityQuery<SpriteComponent>();
         _xformQuery = _entity.GetEntityQuery<TransformComponent>();
     }
@@ -103,10 +107,29 @@ public sealed class MesonVisionOverlay : Overlay
         handle.SetTransform(position, rotation);
 
         var originalColor = sprite.Color;
-        sprite.Color = color.WithAlpha(alpha);
+        sprite.Color = originalColor.WithAlpha(alpha);
+
+        var oreLayer = GetOreLayer(uid, sprite);
+        var oreColor = oreLayer?.Color ?? Color.White;
+
+        if (oreLayer != null)
+            oreLayer.Color = oreColor.WithAlpha(0f);
+
         sprite.Render(handle, eyeRot, rotation, position: position);
+
+        if (oreLayer != null)
+            oreLayer.Color = oreColor;
+
         sprite.Color = originalColor;
         handle.SetTransform(Vector2.Zero, Angle.Zero);
+    }
+
+    private ISpriteLayer? GetOreLayer(EntityUid uid, SpriteComponent sprite)
+    {
+        if (!_spriteSystem.LayerMapTryGet((uid, sprite), MiningScannerVisualLayers.Overlay, out var index, false))
+            return null;
+
+        return sprite[index];
     }
 }
 
