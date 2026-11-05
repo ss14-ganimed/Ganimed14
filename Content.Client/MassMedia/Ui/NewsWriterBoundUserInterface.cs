@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using Content.Shared._Ganimed.ConsoleKeyboardSound.Systems;
 using Content.Shared.MassMedia.Systems;
 using Content.Shared.MassMedia.Components;
 using Robust.Client.UserInterface;
@@ -13,6 +14,9 @@ public sealed class NewsWriterBoundUserInterface : BoundUserInterface
     [ViewVariables]
     private NewsWriterMenu? _menu;
 
+    // Ganimed-Add: plays the keyboard click while somebody types on this console
+    private ConsoleKeyboardSoundSystem _typingSound = default!;
+
     public NewsWriterBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
 
@@ -22,6 +26,8 @@ public sealed class NewsWriterBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
+        _typingSound = EntMan.System<ConsoleKeyboardSoundSystem>();
+
         _menu = this.CreateWindow<NewsWriterMenu>();
 
         _menu.ArticleEditorPanel.PublishButtonPressed += OnPublishButtonPressed;
@@ -29,6 +35,8 @@ public sealed class NewsWriterBoundUserInterface : BoundUserInterface
 
         _menu.CreateButtonPressed += OnCreateButtonPressed;
         _menu.ArticleEditorPanel.ArticleDraftUpdated += OnArticleDraftUpdated;
+        // Ganimed-Add: notify the keyboard sound system whenever the article text changes
+        _menu.ArticleEditorPanel.TextEdited += () => _typingSound.HandleTextChanged(this);
 
         SendMessage(new NewsWriterArticlesRequestMessage());
     }

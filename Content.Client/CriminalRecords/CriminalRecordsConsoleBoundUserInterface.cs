@@ -1,3 +1,4 @@
+using Content.Shared._Ganimed.ConsoleKeyboardSound.Systems;
 using Content.Shared.Access.Systems;
 using Content.Shared.CriminalRecords;
 using Content.Shared.CriminalRecords.Components;
@@ -16,12 +17,16 @@ public sealed class CriminalRecordsConsoleBoundUserInterface : BoundUserInterfac
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     private readonly AccessReaderSystem _accessReader;
 
+    // Ganimed-Add: plays the keyboard click while somebody types on this console
+    private readonly ConsoleKeyboardSoundSystem _typingSound;
+
     private CriminalRecordsConsoleWindow? _window;
     private CrimeHistoryWindow? _historyWindow;
 
     public CriminalRecordsConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
         _accessReader = EntMan.System<AccessReaderSystem>();
+        _typingSound = EntMan.System<ConsoleKeyboardSoundSystem>();
     }
 
     protected override void Open()
@@ -43,6 +48,8 @@ public sealed class CriminalRecordsConsoleBoundUserInterface : BoundUserInterfac
             SendMessage(new CriminalRecordSetStatusFilter(statusFilter));
         _window.OnHistoryUpdated += UpdateHistory;
         _window.OnHistoryClosed += () => _historyWindow?.Close();
+        // Ganimed-Add: notify the keyboard sound system whenever the filter text changes
+        _window.OnTextChanged += () => _typingSound.HandleTextChanged(this);
         _window.OnClose += Close;
 
         _historyWindow = new(comp.MaxStringLength);

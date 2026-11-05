@@ -29,6 +29,9 @@ namespace Content.Client.Communications.UI
         public event Action<string>? OnAnnounce;
         public event Action<string>? OnBroadcast;
 
+        // Ganimed-Add: forwarded to the console BUI so it can click the keyboard while typing
+        public event Action? OnTextChanged;
+
         public CommunicationsConsoleMenu()
         {
             IoCManager.InjectDependencies(this);
@@ -39,6 +42,9 @@ namespace Content.Client.Communications.UI
             var maxAnnounceLength = _cfg.GetCVar(CCVars.ChatMaxAnnouncementLength);
             MessageInput.OnTextChanged += (args) =>
             {
+                // Ganimed-Add: typing feedback for the console keyboard sound
+                OnTextChanged?.Invoke();
+
                 if (args.Control.TextLength > maxAnnounceLength)
                 {
                     AnnounceButton.Disabled = true;

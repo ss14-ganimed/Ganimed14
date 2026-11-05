@@ -44,6 +44,10 @@ public sealed partial class CriminalRecordsConsoleWindow : FancyWindow
     public Action<SecurityStatus, string>? OnDialogConfirmed;
 
     public Action<SecurityStatus>? OnStatusFilterPressed;
+
+    // Ganimed-Add: forwarded to the console BUI so it can click the keyboard while typing
+    public event Action? OnTextChanged;
+
     private uint _maxLength;
     private bool _access;
     private uint? _selectedKey;
@@ -136,6 +140,9 @@ public sealed partial class CriminalRecordsConsoleWindow : FancyWindow
         {
             FilterListingOfRecords(args.Text);
         };
+
+        // Ganimed-Add: typing feedback for the console keyboard sound
+        FilterText.OnTextChanged += _ => OnTextChanged?.Invoke();
 
         StatusOptionButton.OnItemSelected += args =>
         {

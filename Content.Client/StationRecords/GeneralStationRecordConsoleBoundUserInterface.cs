@@ -1,3 +1,4 @@
+using Content.Shared._Ganimed.ConsoleKeyboardSound.Systems;
 using Content.Shared.StationRecords;
 using Robust.Client.UserInterface;
 
@@ -8,6 +9,9 @@ public sealed class GeneralStationRecordConsoleBoundUserInterface : BoundUserInt
     [ViewVariables]
     private GeneralStationRecordConsoleWindow? _window = default!;
 
+    // Ganimed-Add: plays the keyboard click while somebody types on this console
+    private ConsoleKeyboardSoundSystem _typingSound = default!;
+
     public GeneralStationRecordConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
     }
@@ -16,12 +20,16 @@ public sealed class GeneralStationRecordConsoleBoundUserInterface : BoundUserInt
     {
         base.Open();
 
+        _typingSound = EntMan.System<ConsoleKeyboardSoundSystem>();
+
         _window = this.CreateWindow<GeneralStationRecordConsoleWindow>();
         _window.OnKeySelected += key =>
             SendMessage(new SelectStationRecord(key));
         _window.OnFiltersChanged += (type, filterValue) =>
             SendMessage(new SetStationRecordFilter(type, filterValue));
         _window.OnDeleted += id => SendMessage(new DeleteStationRecord(id));
+        // Ganimed-Add: notify the keyboard sound system whenever the filter text changes
+        _window.OnTextChanged += () => _typingSound.HandleTextChanged(this);
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

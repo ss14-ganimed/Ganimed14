@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Ganimed14 <ganimed14@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: soundCollection
+  id: ConsoleKeyboardType
+  files:
+  - /Audio/_Ganimed/Machines/keyboardconsole.ogg
