@@ -10,11 +10,10 @@ using Robust.Shared.Enums;
 
 namespace Content.Shared.Humanoid;
 
-public sealed class HumanoidProfileSystem : EntitySystem
+public sealed partial class HumanoidProfileSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly GrammarSystem _grammar = default!;
-    [Dependency] private readonly SharedLanguageSystem _language = default!;
+    [Dependency] private GrammarSystem _grammar = default!;
+    [Dependency] private SharedLanguageSystem _language = default!; // ADT-Tweak
 
     public override void Initialize()
     {
@@ -37,7 +36,7 @@ public sealed class HumanoidProfileSystem : EntitySystem
         comp.Sex = newSex;
         Dirty(ent);
 
-        var sexChanged = new SexChangedEvent(oldSex, newSex);
+        var sexChanged = new SexChangedEvent(oldSex, newSex); // ADT-Tweak
         RaiseLocalEvent(ent, ref sexChanged);
     }
     // ADT-Tweak end
@@ -50,19 +49,22 @@ public sealed class HumanoidProfileSystem : EntitySystem
         ent.Comp.Gender = profile.Gender;
         ent.Comp.Age = profile.Age;
         ent.Comp.Species = profile.Species;
-        SetSex(ent, profile.Sex);
+        ent.Comp.Voice = profile.Voice;
+        SetSex(ent, profile.Sex); // ADT-Tweak
         Dirty(ent);
+
+        var voiceChanged = new VoiceChangedEvent(ent.Comp.Voice, profile.Voice);
+        RaiseLocalEvent(ent, ref voiceChanged);
 
         if (TryComp<GrammarComponent>(ent, out var grammar))
         {
             _grammar.SetGender((ent, grammar), profile.Gender);
         }
 
-        // ADT-Tweak-Start
         if (TryComp<SpeechBarksComponent>(ent, out var barks))
         {
             barks.Data = profile.Bark;
-            if (_prototype.TryIndex(barks.Data.Proto, out BarkPrototype? barkProto))
+            if (ProtoMan.TryIndex(barks.Data.Proto, out BarkPrototype? barkProto))
                 barks.Data.Sound = barkProto.Sound;
         }
 
@@ -71,7 +73,7 @@ public sealed class HumanoidProfileSystem : EntitySystem
         foreach (var lang in profile.Languages)
             languageSpeaker.Languages[lang.ToString()] = LanguageKnowledge.Speak;
 
-        if (_prototype.TryIndex(ent.Comp!.Species, out var speciesProto))
+        if (ProtoMan.TryIndex(ent.Comp!.Species, out var speciesProto))
         {
             foreach (var forced in speciesProto.ForceLanguages)
                 languageSpeaker.Languages.TryAdd(forced.ToString(), LanguageKnowledge.Speak);
@@ -84,6 +86,9 @@ public sealed class HumanoidProfileSystem : EntitySystem
 
     private void OnExamined(Entity<HumanoidProfileComponent> ent, ref ExaminedEvent args)
     {
+        if (!ent.Comp.Examinable)
+            return;
+
         var identity = Identity.Entity(ent, EntityManager);
         var species = GetSpeciesRepresentation(ent.Comp.Species).ToLower();
         var age = GetAgeRepresentation(ent.Comp.Species, ent.Comp.Age);
@@ -96,7 +101,7 @@ public sealed class HumanoidProfileSystem : EntitySystem
     /// </summary>
     public string GetSpeciesRepresentation(ProtoId<SpeciesPrototype> species)
     {
-        if (_prototype.TryIndex(species, out var speciesPrototype))
+        if (ProtoMan.TryIndex(species, out var speciesPrototype))
             return Loc.GetString(speciesPrototype.Name);
 
         Log.Error("Tried to get representation of unknown species: {speciesId}");
@@ -108,7 +113,7 @@ public sealed class HumanoidProfileSystem : EntitySystem
     /// </summary>
     public string GetAgeRepresentation(ProtoId<SpeciesPrototype> species, int age)
     {
-        if (!_prototype.TryIndex(species, out var speciesPrototype))
+        if (!ProtoMan.TryIndex(species, out var speciesPrototype))
         {
             Log.Error("Tried to get age representation of species that couldn't be indexed: " + species);
             return Loc.GetString("identity-age-young");

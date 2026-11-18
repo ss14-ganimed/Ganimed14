@@ -3,49 +3,38 @@
   name: job-name-captain
   description: job-description-captain
   playTimeTracker: JobCaptain
-  requireAdminNotify: true # Ganimed Rules Tweak
   requirements:
-#    - !type:DepartmentTimeRequirement
-#      department: Engineering
-#      time: 14400 # 4 hours
-#    - !type:DepartmentTimeRequirement
-#      department: Medical
-#      time: 14400 # 4 hours
-#    - !type:DepartmentTimeRequirement
-#      department: Science
-#      time: 14400 # 4 hours
-    - !type:RoleTimeRequirement
-      role: JobHeadOfPersonnel
-      time: 5h # Ganimed-RoleTime
+    - !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 20h # Corvax-RoleTime 4
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 20h # Corvax-RoleTime 4
+    - !type:DepartmentTimeRequirement
+      department: Science
+      time: 4h
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 20h # Ganimed-RoleTime
-    - !type:DepartmentTimeRequirement
-      department: Command
-      time: 25h # Ganimed-RoleTime
+      time: 4h # ADT-Tweak 4
+#    - !type:DepartmentTimeRequirement
+#      department: Command
+#      time: 4h
     - !type:OverallPlaytimeRequirement
-      time: 100h # Ganimed-RoleTime
-    - !type:TraitsRequirement # Ganimed-MRP: Captain must be proficient in communication
+      time: 140h # Corvax-RoleTime 4
+    - !type:TraitsRequirement #Corvax-TraitsRequirement
       inverted: true
       traits:
-#     - Monolingual
       - Muted
-      - Deaf
-  # ADT Restrict Start
-    - !type:SpeciesRequirement
+    - !type:SpeciesRequirement # ADT-Tweak
       inverted: true
       species:
       - Resomi
       - Vox
   # ADT RESTRICT End
-    - !type:AgeRequirement # Ganimed-MRP
-      requiredAge: 24
-  weight: 20
   startingGear: CaptainGear
   icon: "JobIconCaptain"
   joinNotifyCrew: true
   supervisors: job-supervisors-centcom
-  canBeAntag: false
   accessGroups:
   - ADTAccessCaptain #ADT-tweak - полный доступ ко всем станционным дверям, кроме ЦК и ОСЩ
   special:
@@ -54,15 +43,14 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
-      # - type: PhantomTyranyTarget # ADT Phantom
-      - type: AntagImmune # Ganimed-MRP: Loyalty implant
+      - type: ADTTenCodeKnowledge # ADT-Tweak
 
 - type: startingGear
   id: CaptainGear
   equipment:
-    # shoes: ClothingShoesBootsLaceup # Ganimed-Loadouts-Remove (Loadout choice)
-    # eyes: ClothingEyesGlassesCommand # Ganimed-Loadouts-Remove (Loadout choice)
-    # gloves: ClothingHandsGlovesCaptain # Ganimed-Loadouts-Remove (Loadout choice)
+    shoes: ClothingShoesBootsLaceup
+    eyes: ClothingEyesGlassesCommand
+    gloves: ClothingHandsGlovesCaptain
     id: CaptainPDA
     # ears: ClothingHeadsetAltCommand # ADT tweak
   storage:

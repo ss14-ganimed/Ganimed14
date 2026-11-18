@@ -8,9 +8,7 @@
   requirements:
   - !type:RoleTimeRequirement
     role: JobBorg
-    time: 10h # Ganimed-RoleTime
-  weight: 10
-  canBeAntag: false
+    time: 5h
   icon: JobIconStationAi
   supervisors: job-supervisors-rd
   jobEntity: StationAiBrain
@@ -29,8 +27,7 @@
   playTimeTracker: JobBorg
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 20h # Ganimed-RoleTime
-  canBeAntag: false
+      time: 10h
   icon: JobIconBorg
   supervisors: job-supervisors-rd
   jobEntity: PlayerBorgBattery

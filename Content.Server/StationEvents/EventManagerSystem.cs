@@ -9,29 +9,17 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.EntityTable;
-using Content.Shared.Roles; // Ganimed edit
-using Content.Shared.Mind; // Ganimed edit
-using Content.Shared.Mind.Components; // Ganimed edit
-using Content.Shared.Mobs.Components; // Ganimed edit
-using Content.Shared.Mobs; // Ganimed edit
-using Content.Shared.Roles.Jobs; // Ganimed edit
 
 namespace Content.Server.StationEvents;
 
-public sealed class EventManagerSystem : EntitySystem
+public sealed partial class EventManagerSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly EntityTableSystem _entityTable = default!;
-    [Dependency] public readonly GameTicker GameTicker = default!;
-    [Dependency] private readonly RoundEndSystem _roundEnd = default!;
-
-    // Ganimed edit start
-    [Dependency] private readonly SharedJobSystem _jobs = default!;
-    [Dependency] private readonly SharedMindSystem _minds = default!;
-    // Ganimed edit end
+    [Dependency] private IConfigurationManager _configurationManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private EntityTableSystem _entityTable = default!;
+    [Dependency] public GameTicker GameTicker = default!;
+    [Dependency] private RoundEndSystem _roundEnd = default!;
 
     public bool EventsEnabled { get; private set; }
     private void SetEnabled(bool value) => EventsEnabled = value;
@@ -73,7 +61,7 @@ public sealed class EventManagerSystem : EntitySystem
             return;
         }
 
-        if (!_prototype.Resolve(randomLimitedEvent, out _))
+        if (!ProtoMan.Resolve(randomLimitedEvent, out _))
         {
             Log.Warning("A requested event is not available!");
             return;
@@ -123,13 +111,13 @@ public sealed class EventManagerSystem : EntitySystem
 
         foreach (var (eventId, prob) in selectedEvents)
         {
-            if (!_prototype.Resolve(eventId, out var eventproto))
+            if (!ProtoMan.Resolve(eventId, out var eventproto))
                 continue;
 
             if (eventproto.Abstract)
                 continue;
 
-            if (!eventproto.TryGetComponent<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
+            if (!eventproto.TryComp<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
                 continue;
 
             if (!CanRun(eventproto, stationEvent, playerCount.Value, currentTime.Value))
@@ -174,7 +162,10 @@ public sealed class EventManagerSystem : EntitySystem
 
         foreach (var eventid in selectedEvents)
         {
-            if (!_prototype.Resolve(eventid, out var eventproto))
+            if (GameTicker.IsIgnored(eventid))
+                continue;
+
+            if (!ProtoMan.Resolve(eventid, out var eventproto))
             {
                 Log.Warning("An event ID has no prototype index!");
                 continue;
@@ -186,7 +177,7 @@ public sealed class EventManagerSystem : EntitySystem
             if (eventproto.Abstract)
                 continue;
 
-            if (!eventproto.TryGetComponent<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
+            if (!eventproto.TryComp<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
                 continue;
 
             if (!CanRun(eventproto, stationEvent, playerCount.Value, currentTime.Value))
@@ -289,12 +280,12 @@ public sealed class EventManagerSystem : EntitySystem
     private Dictionary<EntityPrototype, StationEventComponent> GetAllEvents()
     {
         var allEvents = new Dictionary<EntityPrototype, StationEventComponent>();
-        foreach (var prototype in _prototype.EnumeratePrototypes<EntityPrototype>())
+        foreach (var prototype in ProtoMan.EnumeratePrototypes<EntityPrototype>())
         {
             if (prototype.Abstract)
                 continue;
 
-            if (!prototype.TryGetComponent<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
+            if (!prototype.TryComp<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
                 continue;
 
             allEvents.Add(prototype, stationEvent);
@@ -351,61 +342,9 @@ public sealed class EventManagerSystem : EntitySystem
             return false;
         }
 
-        if (_roundEnd.IsRoundEndRequested() && !stationEvent.OccursDuringRoundEnd)
-            return false;
-        // Ganimed edit start
-        // Проверка департаментов
-        if (!CheckDepartmentLimits(stationEvent.DepartmentPlayerLimits))
-            return false;
-
-        return true;
-    }
-
-    // Проверка лимитов департаментов
-    private bool CheckDepartmentLimits(Dictionary<ProtoId<DepartmentPrototype>, int> limits)
-    {
-        if (limits.Count == 0)
-            return true;
-
-        var jobCounts = new Dictionary<string, int>();
-
-        foreach (var sess in _playerManager.Sessions)
+        if (_roundEnd.IsRoundEndRequested() && !stationEvent.OccursDuringRoundEnd && !_roundEnd.CanCallOrRecall())
         {
-            if (sess.AttachedEntity is not { } ent)
-                continue;
-
-            if (!_minds.TryGetMind(ent, out var mindId, out var mind))
-                continue;
-
-            if (mind.OwnedEntity is not { } body)
-                continue;
-
-            if (!TryComp<MobStateComponent>(body, out var mob) || mob.CurrentState != MobState.Alive)
-                continue;
-
-            if (!_jobs.MindTryGetJob(mindId, out var job) || job == null)
-                continue;
-
-            if (!jobCounts.ContainsKey(job.ID))
-                jobCounts[job.ID] = 0;
-            jobCounts[job.ID]++;
-        }
-
-        foreach (var (deptId, need) in limits)
-        {
-            if (!_prototype.TryIndex(deptId, out DepartmentPrototype? dept))
-                continue;
-
-            var have = 0;
-            foreach (var jobId in dept.Roles)
-            {
-                if (jobCounts.TryGetValue(jobId, out var c))
-                    have += c;
-            }
-
-            if (have < need)
-        // Ganimed edit end
-                return false;
+            return false;
         }
 
         return true;

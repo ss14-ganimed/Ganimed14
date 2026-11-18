@@ -3,18 +3,13 @@
   name: job-name-rd
   description: job-description-rd
   playTimeTracker: JobResearchDirector
-  requireAdminNotify: true # Ganimed Rules Tweak
   requirements:
     #- !type:RoleTimeRequirement
     #  role: JobScientist
     #  time: 5h
     - !type:DepartmentTimeRequirement
       department: Science
-      time: 20h # Ganimed-RoleTime
-    - !type:OverallPlaytimeRequirement
-      time: 40h # Ganimed-RoleTime
-    - !type:AgeRequirement # Ganimed-MRP
-       requiredAge: 21
+      time: 10h # ADT-Tweak
     - !type:TraitsRequirement #Corvax-TraitsRequirement
       inverted: true
       traits:
@@ -25,12 +20,9 @@
       species:
       - Vox
     # ADT-Tweak: End
-  weight: 10
   startingGear: ResearchDirectorGear
   icon: "JobIconResearchDirector"
   supervisors: job-supervisors-captain
-  canBeAntag: true # Ganimed-MRP
-  antagAdvantage: 5 # Ganimed-MRP: Heads can be antags
   access:
   - Research
   - Command
@@ -39,8 +31,8 @@
   - Brig
   - Cryogenics
   special:
-#  - !type:AddImplantSpecial # Ganimed-MRP
-#    implants: [ MindShieldImplant ] # Ganimed-MRP
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
@@ -50,6 +42,11 @@
   # equipment: # ADT tweak
  #id: RnDPDA # ADT Tweak
     # ears: ClothingHeadsetRD # ADT tweak
+  storage:
+    back:
+    - Flash
+    - ADTtelescopicBaton #ADT-CustomADTLoadoutStart
+    #- ADTHumanCubeWrapped #ADT-CustomADTLoadoutEnd
 
 - type: chameleonOutfit
   id: ResearchDirectorChameleonOutfit

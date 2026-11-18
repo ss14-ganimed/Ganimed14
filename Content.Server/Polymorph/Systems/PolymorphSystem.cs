@@ -17,9 +17,9 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Nutrition;
 using Content.Shared.Polymorph;
 using Content.Shared.Popups;
+using Content.Shared.Tools.Systems;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
@@ -27,6 +27,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Shared.Forensics.Components; // ADT-Changeling-Tweak
+using Content.Shared.Mindshield; // ADT-Changeling-Tweak
 using Content.Shared.Mindshield.Components; // ADT-Changeling-Tweak
 using Robust.Shared.Serialization.Manager;
 using Content.Shared.DetailExaminable;
@@ -37,28 +38,29 @@ namespace Content.Server.Polymorph.Systems;
 
 public sealed partial class PolymorphSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly ActionsSystem _actions = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly SharedBuckleSystem _buckle = default!;
-    [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
-    [Dependency] private readonly ServerInventorySystem _inventory = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
-    [Dependency] private readonly SharedMindSystem _mindSystem = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly FollowerSystem _follow = default!; // goob edit
-    [Dependency] private readonly SharedEyeSystem _eye = default!; // ADT-Tweak Heretic
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private ActionsSystem _actions = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private SharedBuckleSystem _buckle = default!;
+    [Dependency] private ContainerSystem _container = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private MobThresholdSystem _mobThreshold = default!;
+    [Dependency] private ServerInventorySystem _inventory = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private SharedMindSystem _mindSystem = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private FollowerSystem _follow = default!; // goob edit
+    [Dependency] private SharedEyeSystem _eye = default!; // ADT-Tweak Heretic
+    [Dependency] private ISerializationManager _serialization = default!; // ADT-Changeling-Tweak
+    [Dependency] private MindShieldSystem _mindShield = default!; // ADT-Tweak
 
-    [Dependency] private readonly ISerializationManager _serialization = default!; // ADT-Changeling-Tweak
-    private const string RevertPolymorphId = "ActionRevertPolymorph";
+    private static readonly EntProtoId RevertPolymorphId = "ActionRevertPolymorph";
+    private static readonly EntProtoId RevertPolymorphConfirmId = "ActionRevertPolymorphConfirm";
 
     public override void Initialize()
     {
@@ -68,7 +70,7 @@ public sealed partial class PolymorphSystem : EntitySystem
         SubscribeLocalEvent<PolymorphableComponent, PolymorphActionEvent>(OnPolymorphActionEvent);
         SubscribeLocalEvent<PolymorphedEntityComponent, RevertPolymorphActionEvent>(OnRevertPolymorphActionEvent);
 
-        SubscribeLocalEvent<PolymorphedEntityComponent, BeforeFullySlicedEvent>(OnBeforeFullySliced);
+        SubscribeLocalEvent<PolymorphedEntityComponent, BeforeToolRefinedEvent>(OnBeforeToolRefined);
         SubscribeLocalEvent<PolymorphedEntityComponent, DestructionEventArgs>(OnDestruction);
         SubscribeLocalEvent<PolymorphedEntityComponent, EntityTerminatingEvent>(OnPolymorphedTerminating);
 
@@ -118,16 +120,22 @@ public sealed partial class PolymorphSystem : EntitySystem
         if (component.Configuration.Forced)
             return;
 
-        if (_actions.AddAction(uid, ref component.Action, out var action, RevertPolymorphId))
+        if (!_actions.AddAction(
+            uid,
+            ref component.Action,
+            out var action,
+            component.Configuration.RevertConfirmationPopup ? RevertPolymorphConfirmId : RevertPolymorphId))
         {
-            _actions.SetEntityIcon((component.Action.Value, action), component.Parent);
-            _actions.SetUseDelay(component.Action.Value, TimeSpan.FromSeconds(component.Configuration.Delay));
+            return;
         }
+
+        _actions.SetEntityIcon((component.Action.Value, action), component.Parent);
+        _actions.SetUseDelay(component.Action.Value, TimeSpan.FromSeconds(component.Configuration.Delay));
     }
 
     private void OnPolymorphActionEvent(Entity<PolymorphableComponent> ent, ref PolymorphActionEvent args)
     {
-        if (!_proto.Resolve(args.ProtoId, out var prototype) || args.Handled)
+        if (!ProtoMan.Resolve(args.ProtoId, out var prototype) || args.Handled)
             return;
 
         PolymorphEntity(ent, prototype.Configuration);
@@ -141,12 +149,12 @@ public sealed partial class PolymorphSystem : EntitySystem
         Revert((ent, ent));
     }
 
-    private void OnBeforeFullySliced(Entity<PolymorphedEntityComponent> ent, ref BeforeFullySlicedEvent args)
+    private void OnBeforeToolRefined(Entity<PolymorphedEntityComponent> ent, ref BeforeToolRefinedEvent args)
     {
         if (ent.Comp.Reverted || !ent.Comp.Configuration.RevertOnEat)
             return;
 
-        args.Cancel();
+        args.Cancelled = true;
         Revert((ent, ent));
     }
 
@@ -182,7 +190,7 @@ public sealed partial class PolymorphSystem : EntitySystem
     /// <param name="protoId">The id of the polymorph prototype</param>
     public EntityUid? PolymorphEntity(EntityUid uid, ProtoId<PolymorphPrototype> protoId)
     {
-        var config = _proto.Index(protoId).Configuration;
+        var config = ProtoMan.Index(protoId).Configuration;
         return PolymorphEntity(uid, config);
     }
 
@@ -280,6 +288,104 @@ public sealed partial class PolymorphSystem : EntitySystem
         if (configuration.TransferName && TryComp(uid, out MetaDataComponent? targetMeta))
             _metaData.SetEntityName(child, targetMeta.EntityName);
 
+        // ADT-Geras-Tweak-Start
+        if (configuration.TransferLanguageSpeaker && TryComp<LanguageSpeakerComponent>(uid, out var originalLangComp))
+        {
+            var childLangComp = EnsureComp<LanguageSpeakerComponent>(child);
+            childLangComp.Languages = new Dictionary<string, LanguageKnowledge>(originalLangComp.Languages);
+            childLangComp.CurrentLanguage = originalLangComp.CurrentLanguage;
+        }
+
+        if (configuration.TransferSpeechBarks && TryComp<SpeechBarksComponent>(uid, out var originalBarksComp))
+        {
+            var childBarksComp = EnsureComp<SpeechBarksComponent>(child);
+            childBarksComp.Data = originalBarksComp.Data;
+        }
+
+        if (configuration.TransferAccents)
+        {
+            var accentComponents = new List<Type>
+            {
+                typeof(AccentlessComponent),
+                typeof(BackwardsAccentComponent),
+                typeof(BarkAccentComponent),
+                typeof(BleatingAccentComponent),
+                typeof(DamagedSiliconAccentComponent),
+                typeof(FrenchAccentComponent),
+                typeof(GermanAccentComponent),
+                typeof(GrowlingAccentComponent),
+                typeof(LizardAccentComponent),
+                typeof(MobsterAccentComponent),
+                typeof(MonkeyAccentComponent),
+                typeof(MothAccentComponent),
+                typeof(MumbleAccentComponent),
+                typeof(NyaAccentComponent),
+                typeof(OwOAccentComponent),
+                typeof(ParrotAccentComponent),
+                typeof(PirateAccentComponent),
+                typeof(ReplacementAccentComponent),
+                typeof(ResomiAccentComponent),
+                typeof(RoarAccentComponent),
+                typeof(RussianAccentComponent),
+                typeof(ScrambledAccentComponent),
+                typeof(SkeletonAccentComponent),
+                typeof(SlurredAccentComponent),
+                typeof(SouthernAccentComponent),
+                typeof(SpanishAccentComponent),
+                typeof(StutteringAccentComponent),
+                typeof(VoxAccentComponent),
+                typeof(FrontalLispComponent)
+            };
+
+            foreach (var accentType in accentComponents)
+            {
+                if (HasComp(uid, accentType))
+                {
+                    var originalAccentComp = EntityManager.GetComponent(uid, accentType);
+                    var childAccentComp = (Component)_serialization.CreateCopy(originalAccentComp, notNullableOverride: true);
+                    AddComp(child, childAccentComp);
+                }
+            }
+        }
+
+        if (configuration.TransferQuirks)
+        {
+            var quirkComponents = new List<Type> //Вроде бы все добавил???
+            {
+                typeof(PacifiedComponent),
+                typeof(LightweightDrunkComponent),
+                typeof(SnoringComponent),
+                typeof(BlindableComponent),
+                typeof(PermanentBlindnessComponent),
+                typeof(BlurryVisionComponent),
+                typeof(BlindnessStatusEffectComponent),
+                typeof(UncloneableComponent),
+                typeof(NarcolepsyComponent),
+                typeof(UnrevivableComponent),
+                typeof(ParacusiaComponent),
+                typeof(HemophiliaComponent),
+                typeof(DeafTraitComponent),
+                typeof(MonochromacyComponent),
+                typeof(FrailComponent),
+                typeof(SoftWalkComponent),
+                typeof(FreerunningComponent),
+                typeof(SprinterComponent),
+                typeof(HardThrowerComponent),
+                typeof(FoodConsumptionSpeedModifierComponent),
+                typeof(DrunkenResilienceComponent)
+            };
+
+            foreach (var quirkType in quirkComponents)
+            {
+                if (HasComp(uid, quirkType))
+                {
+                    var originalQuirkComp = EntityManager.GetComponent(uid, quirkType);
+                    var childQuirkComp = (Component)_serialization.CreateCopy(originalQuirkComp, notNullableOverride: true);
+                    AddComp(child, childQuirkComp);
+                }
+            }
+        }
+        // ADT-Geras-Tweak-End
         if (configuration.TransferHumanoidAppearance)
         {
             _visualBody.CopyAppearanceFrom(uid, child);
@@ -444,7 +550,7 @@ public sealed partial class PolymorphSystem : EntitySystem
                 _hands.TryPickupAnyHand(parent, held, checkActionBlocker: false);
             }
         }
-        else if (component.Configuration.Inventory == PolymorphInventoryChange.Drop)
+        else
         {
             if (_inventory.TryGetContainerSlotEnumerator(uid, out var enumerator))
             {
@@ -514,14 +620,20 @@ public sealed partial class PolymorphSystem : EntitySystem
         if (target.Comp.PolymorphActions.ContainsKey(id))
             return;
 
-        if (!_proto.Resolve(id, out var polyProto))
+        if (!ProtoMan.Resolve(id, out var polyProto))
             return;
 
-        var entProto = _proto.Index(polyProto.Configuration.Entity);
+        var entProto = ProtoMan.Index(polyProto.Configuration.Entity);
 
         EntityUid? actionId = default!;
-        if (!_actions.AddAction(target, ref actionId, RevertPolymorphId, target))
+        if (!_actions.AddAction(
+            target,
+            ref actionId,
+            polyProto.Configuration.RevertConfirmationPopup ? RevertPolymorphConfirmId : RevertPolymorphId,
+            target))
+        {
             return;
+        }
 
         target.Comp.PolymorphActions.Add(id, actionId.Value);
 
@@ -586,10 +698,11 @@ public sealed partial class PolymorphSystem : EntitySystem
         var newEntityUid = Spawn(newHumanoidData.EntityPrototype.ID, targetTransformComp.Coordinates);
         var newEntityUidTransformComp = Transform(newEntityUid);
 
-        if (TryComp(source, out MindShieldComponent? mindshieldComp)) // copy over mindshield status
+        _mindShield.GetMindshieldStatus(source, out var isMindshielded, out _);
+        if (isMindshielded)
         {
-            var copiedMindshieldComp = (Component)_serialization.CreateCopy(mindshieldComp, notNullableOverride: true);
-            AddComp(newEntityUid, copiedMindshieldComp);
+            EnsureComp<MindShieldComponent>(newEntityUid);
+            _mindShield.RefreshMindshieldStatus(newEntityUid);
         }
         //ADT-tweak-start
         // if (TryComp<DetailExaminableComponent>(source, out var desc))

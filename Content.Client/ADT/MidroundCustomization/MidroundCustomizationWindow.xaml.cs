@@ -19,8 +19,8 @@ public sealed partial class MidroundCustomizationWindow : DefaultWindow
     public Action<(string Proto, float Pitch, float MinVar, float MaxVar)>? OnBarkChanged;
     public Action<bool>? OnPointLightColorToggled;
 
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     private readonly SpeechBarksSystem _barkSystem;
 

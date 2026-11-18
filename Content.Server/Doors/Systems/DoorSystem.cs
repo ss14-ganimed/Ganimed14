@@ -1,5 +1,4 @@
 using Content.Server.Access;
-using Content.Server.Forensics; // Ganimed edit
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Doors.Components;
@@ -9,10 +8,9 @@ using Robust.Shared.Physics.Components;
 
 namespace Content.Server.Doors.Systems;
 
-public sealed class DoorSystem : SharedDoorSystem
+public sealed partial class DoorSystem : SharedDoorSystem
 {
-    [Dependency] private readonly AirtightSystem _airtightSystem = default!;
-    [Dependency] private readonly ForensicsSystem _forensicsSystem = default!; // Ganimed edit
+    [Dependency] private AirtightSystem _airtightSystem = default!;
 
     public override void Initialize()
     {
@@ -52,22 +50,4 @@ public sealed class DoorSystem : SharedDoorSystem
         Dirty(ent, ent.Comp);
         UpdateBoltLightStatus(ent);
     }
-
-    // Ganimed edit start    
-    public override void StartOpening(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool predicted = false)
-    {
-        base.StartOpening(uid, door, user, predicted);
-
-        if (user.HasValue)
-            _forensicsSystem.ApplyEvidence(user.Value, uid);
-    }
-
-    public override void StartClosing(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool predicted = false)
-    {
-        base.StartClosing(uid, door, user, predicted);
-
-        if (user.HasValue)
-            _forensicsSystem.ApplyEvidence(user.Value, uid);
-    }
-    // Ganimed edit end
 }

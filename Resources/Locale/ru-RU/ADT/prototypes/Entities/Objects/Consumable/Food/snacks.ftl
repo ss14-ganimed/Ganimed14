@@ -131,3 +131,4 @@ ent-ADTFoodPacketHematogenTrash = обёртка от батончика гем�
 
 ent-ADTFoodPacketChocolateTrashMedal = обёртка от шоколадной медали
     .desc = Мусор.
+

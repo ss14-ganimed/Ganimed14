@@ -25,8 +25,7 @@
 #ADT tweak end
   startingGear: IAAGear
   icon: "JobIconIAA"
-  supervisors: job-supervisors-magistrate # Ganimed-Tweak
-  canBeAntag: false
+  supervisors: job-supervisors-centcom
   access:
   - Service
   - Brig
@@ -44,7 +43,7 @@
   equipment:
     # shoes: ClothingShoesColorBlack ADT-Tweak
     id: IAAPDA
-    # eyes: ClothingEyesGlassesSunglasses # Ganimed-Loadouts-Remove (Loadout choice)
+    eyes: ClothingEyesGlassesSunglasses
     ears: ClothingHeadsetIAA
     pocket2: ADTBookSpaceLaw #ADT-WikiBooks
   inhand:

@@ -1,13 +1,9 @@
 name: "Labels: Size"
+# ADT-Tweak-start
 on:
-  pull_request_target:
-    types: [opened, synchronize, reopened]
-
-permissions:
-  pull-requests: write
-  issues: write 
-  contents: read
-
+  workflow_dispatch:
+#on: pull_request_target
+# ADT-Tweak-end
 jobs:
   size-label:
     runs-on: ubuntu-latest
@@ -15,8 +11,9 @@ jobs:
       - name: size-label
         uses: "pascalgn/size-label-action@v0.5.5"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
+          # Custom size configuration
           sizes: >
             {
               "0": "XS",

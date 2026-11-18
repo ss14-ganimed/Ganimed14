@@ -38,6 +38,11 @@
   text: "/ServerInfo/Guidebook/Antagonist/Revolutionaries.xml"
 
 - type: guideEntry
+  id: Changelings
+  name: guide-entry-changelings
+  text: "/ServerInfo/Guidebook/Antagonist/Changelings.xml"
+
+- type: guideEntry
   id: MinorAntagonists
   name: guide-entry-minor-antagonists
   text: "/ServerInfo/Guidebook/Antagonist/MinorAntagonists.xml"

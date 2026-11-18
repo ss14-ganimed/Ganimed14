@@ -22,6 +22,8 @@
   - ADTBottomCMO
   - ADTSocks
   # ADT underwear tweak end
+  - Glasses
+  - AssistiveItems
   - SurvivalMedical
   - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Trinkets
@@ -41,6 +43,7 @@
   - MedicalBackpackExtended # Ganimed-Loadouts-Edit (MedicalBackpack)
   - ADTMedicalBelt # ADT tweak
   - MedicalDoctorOuterClothing
+  - ADTMedicalDoctorNeck # ADT tweak
   - MedicalShoes
   - MedicalDoctorPDA
   - MedicalEyewear
@@ -49,6 +52,8 @@
   - ADTBottom
   - ADTSocks
   # ADT underwear tweak end
+  - Glasses
+  - AssistiveItems
   - SurvivalMedical
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
@@ -70,6 +75,8 @@
   - ADTBottom
   - ADTSocks
   # ADT underwear tweak end
+  - Glasses
+  - AssistiveItems
   - SurvivalMedical
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
@@ -95,6 +102,8 @@
   - ADTBottom
   - ADTSocks
   # ADT underwear tweak end
+  - Glasses
+  - AssistiveItems
   - SurvivalMedical
   - Trinkets
   - ADTSprayPaints # ADT-Tweak
@@ -123,6 +132,8 @@
   - ADTBottom
   - ADTSocks
   # ADT underwear tweak end
+  - Glasses
+  - AssistiveItems
   - SurvivalMedical
   - Trinkets
   - ADTSprayPaints # ADT-Tweak

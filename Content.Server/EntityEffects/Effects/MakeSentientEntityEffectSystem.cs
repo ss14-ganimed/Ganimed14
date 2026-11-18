@@ -1,13 +1,9 @@
 ﻿using Content.Server.Ghost.Roles.Components;
-using Content.Server.Speech.Components;
+using Content.Server.RuntimeFun;
 using Content.Shared.EntityEffects;
 using Content.Shared.EntityEffects.Effects;
 using Content.Shared.Mind.Components;
-using Content.Shared.NPC.Components; // ADT-tweak
-using Content.Shared.NPC.Systems; // ADT-tweak
-using Content.Shared.NPC.Prototypes; // ADT-tweak
-using Content.Shared.ADT.Language; // ADT-tweak
-using Robust.Shared.Prototypes;
+using Content.Shared.Speech.Components;
 
 namespace Content.Server.EntityEffects.Effects;
 
@@ -28,17 +24,8 @@ public sealed partial class MakeSentientEntityEffectSystem : EntityEffectSystem<
             RemComp<ReplacementAccentComponent>(entity);
             // TODO: Make MonkeyAccent a replacement accent and remove MonkeyAccent code-smell.
             RemComp<MonkeyAccentComponent>(entity);
+            RemComp<SpeakOnExceptionComponent>(entity);
         }
-
-        // ADT Languages start
-        var lang = EnsureComp<LanguageSpeakerComponent>(entity);
-        if (!lang.Languages.ContainsKey("GalacticCommon"))
-            lang.Languages.Add("GalacticCommon", LanguageKnowledge.Speak);
-        else
-            lang.Languages["GalacticCommon"] = LanguageKnowledge.Speak;
-        // ADT Languages end
-
-        MakeFriendlyToStation(entity); // ADT-tweak
 
         // Stops from adding a ghost role to things like people who already have a mind
         if (TryComp<MindContainerComponent>(entity, out var mindContainer) && mindContainer.HasMind)
@@ -52,37 +39,6 @@ public sealed partial class MakeSentientEntityEffectSystem : EntityEffectSystem<
         EnsureComp<GhostTakeoverAvailableComponent>(entity);
 
         ghostRole.RoleName = entity.Comp.EntityName;
-        ghostRole.RoleDescription = Loc.GetString(args.Effect.RoleDescription);
+        ghostRole.RoleDescription = Loc.GetString("ghost-role-information-cognizine-description");
     }
-
-    // ADT-tweak start
-    private void MakeFriendlyToStation(Entity<MetaDataComponent> entity)
-    {
-        var factionSystem = EntityManager.System<NpcFactionSystem>();
-        var protoMan = IoCManager.Resolve<IPrototypeManager>();
-
-        if (!TryComp<NpcFactionMemberComponent>(entity, out var factionComp))
-        {
-            factionSystem.AddFaction((entity.Owner, null), "PetsNT");
-            return;
-        }
-
-        bool wasHostile = false;
-
-        foreach (var factionId in factionComp.Factions)
-        {
-            if (protoMan.TryIndex<NpcFactionPrototype>(factionId, out var factionProto) &&
-                factionProto.Hostile.Contains("NanoTrasen"))
-            {
-                factionSystem.RemoveFaction((entity.Owner, factionComp), factionId, false);
-                wasHostile = true;
-            }
-        }
-
-        if (wasHostile)
-            factionSystem.AddFaction((entity.Owner, factionComp), "PetsNT", true);
-        else
-            factionSystem.AddFaction((entity.Owner, factionComp), "SimpleNeutral", true);
-    }
-    // ADT-tweak end
 }

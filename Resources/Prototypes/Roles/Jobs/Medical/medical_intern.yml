@@ -13,7 +13,6 @@
   startingGear: MedicalInternGear
   icon: "JobIconMedicalIntern"
   supervisors: job-supervisors-medicine
-  canBeAntag: true # Ganimed-MRP: Available not only for newbies
   access:
   - Medical
   - Maintenance
@@ -24,7 +23,7 @@
     shoes: ClothingShoesColorWhite
     #id: MedicalInternPDA # ADT: different PDAs in loadouts
     ears: ClothingHeadsetMedical
-    belt: ClothingBeltMedicalFilled # Ganimed-Loadouts-Readd
+#    belt: ClothingBeltMedicalFilled ADT tweak
     pocket2: BookMedicalReferenceBook
 
 - type: chameleonOutfit

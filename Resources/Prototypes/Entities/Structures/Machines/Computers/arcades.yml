@@ -30,6 +30,8 @@
       enum.EdgeConnectionVisuals.ConnectionMask:
         computerLayerBody:
           None: { state: arcade, sprite: Structures/Machines/arcade.rsi }
+  - type: EdgeConnection
+    connectionKey: other
   # ADT-Tweak end
   # Ganimed-Add-Fix-Start
   - type: EdgeConnection
@@ -141,6 +143,8 @@
     - PlushieSharkBlue
     - PlushieVox
     - PlushieXeno
+    - PlushieSpaceSheep
+    - PlushieSheep
     - PlasticBanana
     - RevolverCapGun
     - SnapPopBox

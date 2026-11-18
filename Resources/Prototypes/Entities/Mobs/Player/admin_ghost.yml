@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   parent: [MobObserverBase, InventoryBase]
   id: AdminObserver
   name: admin observer
@@ -12,12 +12,15 @@
     - CanPilot
     - BypassInteractionRangeChecks
     - BypassDropChecks
+    - BypassOpenStorageLimit
     - NoConsoleSound
     - IgnoreBalanceChecks # ADT-Economy-Tweak
     - SilentStorageUser
     - PreventAccessLogging
     - AllowBiomeLoading
     - NotGhostnadoWarpable
+    - AllowPortalTraversal
+    - PreventPortalCollision
   - type: Input
     context: "aghost"
   - type: Ghost
@@ -32,14 +35,11 @@
     # Ganimed-Add-End
   - type: GhostHearing
   - type: Hands
-    hands:
+    startingHands:
       hand_right:
         location: Right
       hand_left:
         location: Left
-    sortedHands:
-    - hand_right
-    - hand_left
   - type: ComplexInteraction
   - type: Puller
     needsHands: false
@@ -76,8 +76,8 @@
         type: RadarConsoleBoundUserInterface
       enum.CargoConsoleUiKey.Orders:
         type: CargoOrderConsoleBoundUserInterface
-      enum.CrewMonitoringUIKey.Key:
-        type: CrewMonitoringBoundUserInterface
+      enum.ADTCrewMonitoringUIKey.Key:
+        type: ADTCrewMonitoringBoundUserInterface
       enum.GeneralStationRecordConsoleKey.Key:
       # who the fuck named this bruh
         type: GeneralStationRecordConsoleBoundUserInterface
@@ -91,7 +91,7 @@
         toggleAction: ActionAGhostShowRadar
       enum.CargoConsoleUiKey.Orders:
         toggleAction: ActionAGhostShowCargo
-      enum.CrewMonitoringUIKey.Key:
+      enum.ADTCrewMonitoringUIKey.Key:
         toggleAction: ActionAGhostShowCrewMonitoring
       enum.GeneralStationRecordConsoleKey.Key:
         toggleAction: ActionAGhostShowStationRecords
@@ -105,7 +105,7 @@
   - type: RadarConsole
     followEntity: true
   - type: CargoOrderConsole
-  - type: CrewMonitoringConsole
+  - type: ADTCrewMonitoringConsole
     suppressCritAlertSound: true #ADT-Tweak: NewMonitor — no beep from aghost intrinsic UI
   - type: GeneralStationRecordConsole
     canDeleteEntries: true
@@ -137,6 +137,8 @@
     baseSprintSpeed: 30 # Ganimed-Tweak
   # Corvax-End
   - type: SupermatterImmune # ADT-Tweak
+  - type: GluedImmune
+  - type: LubedImmune
 
 - type: entity
   abstract: true
@@ -144,10 +146,16 @@
   id: BaseAGhostAction
   components:
   - type: Action
-    icon: { sprite: Structures/Machines/parts.rsi, state: box_0 }
-    iconOn: { sprite: Structures/Machines/parts.rsi, state: box_2 }
     keywords: [ "AI", "console", "interface" ]
     priority: -10
+  - type: Sprite
+    sprite: Structures/Machines/parts.rsi
+    layers:
+    - state: box_0
+      map: ["enum.ActionVisuals.Icon"]
+    - state: box_2
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
 
 - type: entity
   parent: BaseAGhostAction
@@ -156,8 +164,14 @@
   description: View a Solar Control Interface.
   components:
   - type: Action
-    icon: { sprite: Corvax/Interface/adminactions.rsi, state: solar } # Corvax-Resprite
-    iconOn: { sprite: Corvax/Interface/adminactions.rsi, state: solar }
+  - type: Sprite
+    sprite: Corvax/Interface/adminactions.rsi
+    layers:
+    - state: solar
+      map: ["enum.ActionVisuals.Icon"]
+    - state: solar
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ToggleIntrinsicUIEvent { key: enum.SolarControlConsoleUiKey.Key }
 
@@ -168,10 +182,16 @@
   description: View a Communications Interface.
   components:
   - type: Action
-    icon: { sprite: Corvax/Interface/adminactions.rsi, state: comms_console } # Corvax-Resprite
-    iconOn: { sprite: Corvax/Interface/adminactions.rsi, state: comms_console }
     keywords: [ "AI", "console", "interface" ]
     priority: -4
+  - type: Sprite # ADT-Tweak
+    sprite: Corvax/Interface/adminactions.rsi
+    layers:
+    - state: comms_console
+      map: ["enum.ActionVisuals.Icon"]
+    - state: comms_console
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ToggleIntrinsicUIEvent { key: enum.CommunicationsConsoleUiKey.Key }
 
@@ -182,10 +202,16 @@
   description: View a Mass Scanner Interface.
   components:
   - type: Action
-    icon: { sprite: Corvax/Interface/adminactions.rsi, state: mass_scanner } # Corvax-Resprite
-    iconOn: { sprite: Corvax/Interface/adminactions.rsi, state: mass_scanner }
     keywords: [ "AI", "console", "interface" ]
     priority: -6
+  - type: Sprite # ADT-Tweak
+    sprite: Corvax/Interface/adminactions.rsi
+    layers:
+    - state: mass_scanner
+      map: ["enum.ActionVisuals.Icon"]
+    - state: mass_scanner
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ToggleIntrinsicUIEvent { key: enum.RadarConsoleUiKey.Key }
 
@@ -196,8 +222,14 @@
   description: View a Cargo Ordering Interface.
   components:
   - type: Action
-    icon: { sprite: Corvax/Interface/adminactions.rsi, state: cargo } # Corvax-Resprite
-    iconOn: { sprite: Corvax/Interface/adminactions.rsi, state: cargo } # Corvax-Resprite
+  - type: Sprite
+    sprite: Corvax/Interface/adminactions.rsi
+    layers:
+    - state: cargo
+      map: ["enum.ActionVisuals.Icon"]
+    - state: cargo
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ToggleIntrinsicUIEvent { key: enum.CargoConsoleUiKey.Orders }
 
@@ -208,12 +240,18 @@
   description: View a Crew Monitoring Interface.
   components:
   - type: Action
-    icon: { sprite: Corvax/Interface/adminactions.rsi, state: crew_monitor } # Corvax-Resprite
-    iconOn: { sprite: Corvax/Interface/adminactions.rsi, state: crew_monitor }
     keywords: [ "AI", "console", "interface" ]
     priority: -8
+  - type: Sprite # ADT-Tweak
+    sprite: Corvax/Interface/adminactions.rsi
+    layers:
+    - state: crew_monitor
+      map: ["enum.ActionVisuals.Icon"]
+    - state: crew_monitor
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
-    event: !type:ToggleIntrinsicUIEvent { key: enum.CrewMonitoringUIKey.Key }
+    event: !type:ToggleIntrinsicUIEvent { key: enum.ADTCrewMonitoringUIKey.Key }
 
 - type: entity
   parent: BaseAGhostAction
@@ -222,9 +260,15 @@
   description: View a Station Records Interface.
   components:
   - type: Action
-    icon: { sprite: Corvax/Interface/adminactions.rsi, state: station_records } # Corvax-Resprite
-    iconOn: { sprite: Corvax/Interface/adminactions.rsi, state: station_records }
     keywords: [ "AI", "console", "interface" ]
     priority: -7
+  - type: Sprite # ADT-Tweak
+    sprite: Corvax/Interface/adminactions.rsi
+    layers:
+    - state: station_records
+      map: ["enum.ActionVisuals.Icon"]
+    - state: station_records
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ToggleIntrinsicUIEvent { key: enum.GeneralStationRecordConsoleKey.Key }
