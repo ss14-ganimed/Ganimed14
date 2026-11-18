@@ -1,7 +1,6 @@
-﻿using System.Linq;
+using System.Linq;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Storage;
 
@@ -58,11 +57,6 @@ public partial struct EntitySpawnEntry
 
     [DataField] public int Amount = 1;
 
-    // Ganimed edit start
-    [DataField("inheritParentForensics")]
-    public bool InheritParentForensics = true;
-    // Ganimed edit end
-
     /// <summary>
     ///     How many of this can be spawned, in total.
     ///     If this is lesser or equal to <see cref="Amount"/>, it will spawn <see cref="Amount"/> exactly.
@@ -84,12 +78,6 @@ public static class EntitySpawnCollection
     public static List<string> GetSpawns(ProtoId<EntitySpawnEntryPrototype> proto, IPrototypeManager? protoManager = null, IRobustRandom? random = null)
     {
         IoCManager.Resolve(ref protoManager, ref random);
-        return GetSpawns(protoManager.Index(proto).Entries, random);
-    }
-
-    public static List<string?> GetSpawns(ProtoId<EntitySpawnEntryPrototype> proto, System.Random random, IPrototypeManager? protoManager = null)
-    {
-        IoCManager.Resolve(ref protoManager);
         return GetSpawns(protoManager.Index(proto).Entries, random);
     }
 
@@ -121,7 +109,7 @@ public static class EntitySpawnCollection
             if (entry.PrototypeId == null)
                 continue;
 
-            var amount = (int)entry.GetAmount(random);
+            var amount = (int) entry.GetAmount(random);
 
             for (var i = 0; i < amount; i++)
             {
@@ -148,57 +136,6 @@ public static class EntitySpawnCollection
                     break;
 
                 // Dice roll succeeded, add item and break loop
-                var amount = (int)entry.GetAmount(random);
-
-                for (var i = 0; i < amount; i++)
-                {
-                    spawned.Add(entry.PrototypeId);
-                }
-
-                break;
-            }
-        }
-
-        return spawned;
-    }
-
-    public static List<string?> GetSpawns(IEnumerable<EntitySpawnEntry> entries,
-        System.Random random)
-    {
-        var spawned = new List<string?>();
-        var ungrouped = CollectOrGroups(entries, out var orGroupedSpawns);
-
-        foreach (var entry in ungrouped)
-        {
-            // Check random spawn
-            // ReSharper disable once CompareOfFloatsByEqualityOperator
-            if (entry.SpawnProbability != 1f && !random.Prob(entry.SpawnProbability))
-                continue;
-
-            var amount = (int)entry.GetAmount(random);
-
-            for (var i = 0; i < amount; i++)
-            {
-                spawned.Add(entry.PrototypeId);
-            }
-        }
-
-        // Handle OrGroup spawns
-        foreach (var spawnValue in orGroupedSpawns)
-        {
-            // For each group use the added cumulative probability to roll a double in that range
-            var diceRoll = random.NextDouble() * spawnValue.CumulativeProbability;
-
-            // Add the entry's spawn probability to this value, if equals or lower, spawn item, otherwise continue to next item.
-            var cumulative = 0.0;
-
-            foreach (var entry in spawnValue.Entries)
-            {
-                cumulative += entry.SpawnProbability;
-                if (diceRoll > cumulative)
-                    continue;
-
-                // Dice roll succeeded, add item and break loop
                 var amount = (int) entry.GetAmount(random);
 
                 for (var i = 0; i < amount; i++)
@@ -211,20 +148,6 @@ public static class EntitySpawnCollection
         }
 
         return spawned;
-    }
-
-    public static double GetAmount(this EntitySpawnEntry entry, System.Random random, bool getAverage = false)
-    {
-        // Max amount is less or equal than amount, so just return the amount
-        if (entry.MaxAmount <= entry.Amount)
-            return entry.Amount;
-
-        // If we want the average, just calculate the expected amount
-        if (getAverage)
-            return (entry.Amount + entry.MaxAmount) / 2.0;
-
-        // Otherwise get a random value in between
-        return random.Next(entry.Amount, entry.MaxAmount);
     }
 
     /// <summary>

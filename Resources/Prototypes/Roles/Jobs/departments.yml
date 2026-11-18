@@ -32,13 +32,20 @@
   - ServiceWorker
   - ADTBarber # ADT-Tweak
 
+# Please kill this
 - type: department
   id: CentralCommand
   name: department-CentralCommand
   description: department-CentralCommand-description
   color: "#0c344d"
   roles:
-  - CentralCommandOfficial
+  # ADT-Tweak start
+  - ADTCentralCommandOfficial
+  - ADTCentcomInspector
+  - ADTCentcomInquisitor
+  - ADTCentcomOfficer
+  - ADTSODOfficer
+  # ADT-Tweak end
   - CBURN
   - ERTLeader
   - ERTChaplain
@@ -107,6 +114,7 @@
   # ADT-Tweak
   - ADTPathologist
   - ADTSeniorPhysician
+  - ADTVirologist
   # ADT-Tweak
 
 - type: department

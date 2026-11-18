@@ -1,4 +1,4 @@
-name: Build & Test Debug # test
+name: Build & Test Debug Linux # ADT-Tweak
 
 on:
   #push:
@@ -9,18 +9,23 @@ on:
 #    branches: [ master, staging, stable ]
   workflow_dispatch: # ручной запуск ADT Tweak
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'merge_group' }}
+
 jobs:
   build:
-    if: github.actor != 'PJBot' && github.event.pull_request.draft == false && github.actor != 'DeltaV-Bot' && github.actor != 'SimpleStation14'
+    if: github.actor != 'IanComradeBot' && github.event.pull_request.draft == false
     strategy:
       matrix:
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
 
     steps:
     - name: Checkout Master
-      uses: actions/checkout@v3.6.0
+      uses: actions/checkout@v7
 
     - name: Setup Submodule
       run: |
@@ -35,7 +40,7 @@ jobs:
         git submodule update --init --recursive
 
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3.2.0
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 10.0.x
 

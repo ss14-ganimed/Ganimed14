@@ -17,6 +17,7 @@ using Content.Client.IoC;
 using Content.Client.Launcher;
 using Content.Client.Lobby;
 using Content.Client.MainMenu;
+using Content.Client.Overlays;
 using Content.Client.Parallax.Managers;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Playtime;
@@ -49,10 +50,11 @@ using Robust.Shared.Replays;
 using Robust.Shared.Timing;
 using Content.Client.ADT.Export;
 using Content.Client.ADT.Discord;
+using Content.Client.ADT.JoinQueue;
 
 namespace Content.Client.Entry
 {
-    public sealed class EntryPoint : GameClient
+    public sealed partial class EntryPoint : GameClient
     {
         [Dependency] private readonly IBaseClient _baseClient = default!;
         [Dependency] private readonly IGameController _gameController = default!;
@@ -80,7 +82,10 @@ namespace Content.Client.Entry
         [Dependency] private readonly JobRequirementsManager _jobRequirements = default!;
         [Dependency] private readonly ContentLocalizationManager _contentLoc = default!;
         [Dependency] private readonly SponsorsManager _sponsorsManager = default!; // Corvax-Sponsors
+            [Dependency] private readonly Content.Client.ADT.StateDiagnostics.StateDiagnosticsManager _stateDiagnostics = default!; // ADT-Tweak
+            [Dependency] private readonly Content.Client.ADT.Drawing.Sync.CanvasNetManager _canvasNet = default!; // ADT-Tweak
         [Dependency] private readonly JoinQueueManager _queueManager = default!; // Corvax-Queue
+        [Dependency] private readonly QueueGamesManager _queueGamesManager = default!; // ADT-Tweak: queue games
         [Dependency] private readonly DiscordAuthManager _discordAuthManager = default!; // Corvax-DiscordAuth
         [Dependency] private readonly ContentReplayPlaybackManager _playbackMan = default!;
         [Dependency] private readonly IResourceManager _resourceManager = default!;
@@ -121,7 +126,6 @@ namespace Content.Client.Entry
 
             _prototypeManager.RegisterIgnore("utilityQuery");
             _prototypeManager.RegisterIgnore("utilityCurvePreset");
-            _prototypeManager.RegisterIgnore("accent");
             _prototypeManager.RegisterIgnore("gasReaction");
             _prototypeManager.RegisterIgnore("seed"); // Seeds prototypes are server-only.
             _prototypeManager.RegisterIgnore("objective");
@@ -151,6 +155,7 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("sponsorPersonalLoadout"); // ADT-Sponsor-Loadout
             _prototypeManager.RegisterIgnore("sponsorLoadoutTierSetting"); // ADT-Sponsor-Loadout
             _prototypeManager.RegisterIgnore("debugSponsor"); // Ganimed-Debug-Sponsor
+            _prototypeManager.RegisterIgnore("hallucinationsPack"); // ADT-Tweak
 
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();
@@ -199,6 +204,7 @@ namespace Content.Client.Entry
 
             _overlayManager.AddOverlay(new SingularityOverlay());
             _overlayManager.AddOverlay(new RadiationPulseOverlay());
+            _overlayManager.AddOverlay(new ScreechShockWaveOverlay());
             _chatManager.Initialize();
             _clientPreferencesManager.Initialize();
             _euiManager.Initialize();
@@ -206,7 +212,10 @@ namespace Content.Client.Entry
             _userInterfaceManager.SetDefaultTheme("SS14DefaultTheme");
             _userInterfaceManager.SetActiveTheme(_configManager.GetCVar(CVars.InterfaceTheme));
             _sponsorsManager.Initialize(); // Corvax-Sponsors
+            _stateDiagnostics.Initialize(); // ADT-Tweak
+            _canvasNet.Initialize(); // ADT-Tweak
             _queueManager.Initialize(); // Corvax-Queue
+            _queueGamesManager.Initialize(); // ADT-Tweak: queue games
             _discordAuthManager.Initialize(); // Corvax-DiscordAuth
             _discordIdManager.Initialize(); // ADT-Discord
             _exportManager.Initialize();    // ADT Export

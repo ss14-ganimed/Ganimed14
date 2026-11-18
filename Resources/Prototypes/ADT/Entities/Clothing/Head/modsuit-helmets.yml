@@ -44,7 +44,7 @@
     enabled: false
     radius: 6
     energy: 3
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ADTLightMaskCone
     autoRot: true
 
 - type: entity
@@ -77,8 +77,7 @@
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
   - type: TemperatureProtection
-    heatingCoefficient: 0.005
-    coolingCoefficient: 0.005
+    coefficient: 0.005
   - type: FireProtection
     reduction: 0.8
   - type: ShowHealthBars
@@ -131,8 +130,7 @@
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
   - type: TemperatureProtection
-    heatingCoefficient: 0.005
-    coolingCoefficient: 0.005
+    coefficient: 0.005
   - type: FireProtection
     reduction: 0.8
   - type: EyeProtection
@@ -156,6 +154,11 @@
   name: medical MOD helmet
   description: A helmet for a MODsuit.
   components:
+  - type: ADTVirusProtection
+    permeability: 0.6
+    airborne: 0.4
+    zones:
+    - head
   - type: Sprite
     sprite: ADT/Clothing/Head/Modsuit/medical.rsi
     layers:
@@ -424,6 +427,13 @@
   name: CMO MOD helmet
   description: A helmet for a MODsuit.
   components:
+  # ADT-Tweak-Start
+  - type: ADTVirusProtection
+    permeability: 0
+    airborne: 1
+    zones:
+    - head
+  # ADT-Tweak-End
   - type: Sprite
     sprite: ADT/Clothing/Head/Modsuit/cmo.rsi
     layers:
@@ -552,6 +562,11 @@
   name: Brigmedic MOD helmet
   description: A helmet for a MODsuit.
   components:
+  - type: ADTVirusProtection
+    permeability: 0.6
+    airborne: 0.4
+    zones:
+    - head
   - type: Sprite
     sprite: ADT/Clothing/Head/Modsuit/brigmedic.rsi
     layers:
@@ -615,6 +630,13 @@
   name: research MOD helmet "Minerva"
   description: A helmet for a MODsuit.
   components:
+  # ADT-Tweak-Start
+  - type: ADTVirusProtection
+    permeability: 0
+    airborne: 1
+    zones:
+    - head
+  # ADT-Tweak-End
   - type: Sprite
     sprite: ADT/Clothing/Head/Modsuit/minerva.rsi
     layers:
@@ -723,6 +745,11 @@
   name: ERT MOD helmet "Vega"
   description: A helmet for a MODsuit.
   components:
+  - type: ADTVirusProtection
+    permeability: 0.6
+    airborne: 0.4
+    zones:
+    - head
   - type: Sprite
     sprite: ADT/Clothing/Head/Modsuit/responsory.rsi
     layers:
@@ -735,3 +762,18 @@
       - state: equipped-head-unshaded
         shader: unshaded
         color: "#17c9d4"
+
+- type: entity
+  parent: ADTClothingHeadHelmetModsuitSyndicate
+  id: ADTClothingHeadHelmetModsuitSyndicateMedic
+  name: syndicate medic MOD helmet
+  components:
+  - type: ADTVirusProtection
+    permeability: 0.6
+    airborne: 0.4
+    zones:
+    - head
+  - type: Sprite
+    sprite: ADT/Clothing/Head/Modsuit/syndicate_medic.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Head/Modsuit/syndicate_medic.rsi

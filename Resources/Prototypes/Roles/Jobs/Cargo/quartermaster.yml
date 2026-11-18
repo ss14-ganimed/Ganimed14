@@ -3,35 +3,31 @@
   name: job-name-qm
   description: job-description-qm
   playTimeTracker: JobQuartermaster
-  requireAdminNotify: true # Ganimed Rules Tweak
   requirements:
-    - !type:RoleTimeRequirement
-      role: JobCargoTechnician
-      time: 6h # Ganimed-RoleTime
+#    - !type:RoleTimeRequirement
+#      role: JobCargoTechnician
+#      time: 21600 #6 hrs
     - !type:RoleTimeRequirement
       role: JobSalvageSpecialist
-      time: 6h # Ganimed-RoleTime
+      time: 10h # Corvax-RoleTime 2.5
     - !type:DepartmentTimeRequirement
       department: Cargo
-      time: 20h # Ganimed-RoleTime
+      time: 10h
     - !type:OverallPlaytimeRequirement
-      time: 40h # Ganimed-RoleTime
-      # ADT-Tweak start
+      time: 144000 #40 hrs
+     # ADT-Tweak start
     - !type:TraitsRequirement
       inverted: true
       traits:
       - Muted
-#    - !type:SpeciesRequirement
-#      inverted: true
-#      species:
-#      - Vox
+    - !type:SpeciesRequirement
+      inverted: true
+      species:
+      - Vox
       #ADT tweak end
-  weight: 10
   startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"
   supervisors: job-supervisors-captain
-  canBeAntag: true # Ganimed-MRP
-  antagAdvantage: 5 # Ganimed-MRP: Heads can be antags
   access:
   - Cargo
   - Salvage
@@ -42,8 +38,8 @@
   - Brig
   - Cryogenics
   special:
-#  - !type:AddImplantSpecial # Ganimed-MRP
-#    implants: [ MindShieldImplant ] # Ganimed-MRP
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
@@ -53,12 +49,12 @@
   equipment:
     # id: QuartermasterPDA # ADT: different PDAs in loadouts
     # ears: ClothingHeadsetQM # ADT tweak - выдаются через loadout ADTQuartermasterEars
-    # belt: BoxFolderClipboardThreePapers # Ganimed-Loadouts-Remove (Loadout choice)
+    belt: BoxFolderClipboardThreePapers
     pocket1: AppraisalTool
-#  storage: # Ganimed-Loadouts-Remove (Loadout choice)
-#    back:
-#    - Flash
-#    - ADTtelescopicBaton #ADT-CustomADTLoadout
+  storage:
+    back:
+    - Flash
+    - ADTtelescopicBaton #ADT-CustomADTLoadout
 
 - type: chameleonOutfit
   id: QuartermasterChameleonOutfit

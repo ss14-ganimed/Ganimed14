@@ -10,6 +10,18 @@
   id: BaseSpeciesMob
   save: false
   components:
+  # ADT-Tweak start
+  - type: SoftCrit
+    speedModifier: 0.35
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: SoftCritical
+      150: Critical
+      200: Dead
+  - type: ADTLavalandHumanResists
+    reference: MobHuman
+  # ADT-Tweak end
   - type: DamageVisuals
     thresholds: [ 10, 20, 30, 50, 70, 100 ]
     targetLayers:
@@ -79,14 +91,11 @@
     allowed:
     - Stutter
     - Electrocution
-    - RatvarianLanguage
-    - Muted
     - Pacified
     - Flashed
     - Adrenaline
     # ADT-Tweak start
     - Weakness
-    - ADTHallucinations
     - ADTStarvation
     # ADT-Tweak end
   - type: Identity
@@ -154,10 +163,7 @@
     speechSounds: Alto
   - type: DamageForceSay
   - type: Vocal
-    sounds:
-      Male: MaleHuman
-      Female: FemaleHuman
-      Unsexed: MaleHuman
+    emoteSounds: MaleHuman
   - type: Emoting
     chatEmoteCooldown: 1.0 # Ganimed edit
   - type: BodyEmotes
@@ -192,27 +198,62 @@
   - MobAtmosStandard
   - MobFlammable
   - BaseSpeciesMob
+  - BaseMobDestructible
+  - BaseHungerThirstSlowdown
   id: BaseSpeciesMobOrganic
   save: false
   components:
   # ADT-Tweak start
-  - type: Absorbable
+  - type: TryCatchBreath
+    doAfterTime: 6
+    trySound: /Audio/ADT/Alerts/CatchBreath/catch-breath-try.ogg
+    outcomes:
+    - weight: 3
+      popup: catch-breath-blunt-success
+      sound: /Audio/ADT/Alerts/CatchBreath/catch-breath-bluntsuccess.ogg
+      damage:
+        types:
+          Blunt: -2
+          Slash: -2
+          Piercing: -2
+          Asphyxiation: -10
+    - weight: 60
+      popup: catch-breath-success
+      sound: /Audio/ADT/Alerts/CatchBreath/catch-breath-success.ogg
+      damage:
+        types:
+          Asphyxiation: -7
+    - weight: 15
+      popup: catch-breath-failure
+      sound: /Audio/ADT/Alerts/CatchBreath/catch-breath-failure.ogg
+      damage:
+        types:
+          Asphyxiation: 5
+    - weight: 22
+      popup: catch-breath-nothing
+      sound: /Audio/ADT/Alerts/CatchBreath/catch-breath-nothing.ogg
   - type: MobState
   - type: OfferItem
   - type: RadiationPopup
   - type: PickupHumans
+    handsRequired: 1
   - type: BloodCough
     postingSayDamage: blood-cough
   - type: TimeDespawnDamage
   # ADT-Tweak end
-  - type: Hunger
-  - type: Thirst
+  - type: Satiation
+    satiations:
+      Hunger:
+        prototype: NormalSatiationHunger
+      Thirst:
+        prototype: NormalSatiationThirst
   - type: Barotrauma
     damage:
       types:
         Blunt: 0.50
         Heat: 0.1
   - type: PassiveDamage
+    intervalHaltOnDamageTaken: 5s
     allowedStates:
     - Alive
     damage:
@@ -224,11 +265,11 @@
   - type: Fingerprint
   - type: Blindable
   - type: Temperature
-    currentTemperature: 310.15
-    specificHeat: 42
+    specificHeat: 42 # ADT-Tweak
+    thermalConductivity: 100 # ADT-Tweak
   - type: TemperatureDamage
-    heatDamageThreshold: 325
-    coldDamageThreshold: 260
+    heatDamageThreshold: 325 # ADT-Tweak
+    coldDamageThreshold: 260 # ADT-Tweak
     coldDamage:
       types:
         Cold: 0.1 #per second, scales with temperature & other constants
@@ -250,7 +291,6 @@
     thermalRegulationTemperatureThreshold: 2
   - type: Perishable
   - type: Butcherable
-    butcheringType: Spike
     spawned:
     - id: FoodMeat
       amount: 5

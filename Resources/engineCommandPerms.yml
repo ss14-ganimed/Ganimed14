@@ -143,4 +143,5 @@
 
 - Commands:
   - "|"
+  - loglevel
   - oldhelp

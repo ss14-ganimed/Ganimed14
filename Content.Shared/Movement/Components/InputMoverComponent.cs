@@ -1,7 +1,5 @@
 using System.Numerics;
-using Content.Shared.CCVar; // Ganimed Edit
 using Content.Shared.Movement.Systems;
-using Robust.Shared.Configuration; // Ganimed Edit
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
@@ -37,6 +35,7 @@ namespace Content.Shared.Movement.Components
         public Vector2 CurTickWalkMovement;
         public Vector2 CurTickSprintMovement;
 
+        [ViewVariables]
         public MoveButtons HeldMoveButtons = MoveButtons.None;
 
         /// <summary>
@@ -45,12 +44,14 @@ namespace Content.Shared.Movement.Components
         /// <remarks>
         /// This can be useful to filter out input from just pressing the walk button with no directions, for example.
         /// </remarks>
+        [ViewVariables]
         public bool HasDirectionalMovement => (HeldMoveButtons & MoveButtons.AnyDirection) != MoveButtons.None;
 
         // I don't know if we even need this networked? It's mostly so conveyors can calculate properly.
         /// <summary>
         /// Direction to move this tick.
         /// </summary>
+        [ViewVariables]
         public Vector2 WishDir;
 
         /// <summary>
@@ -81,13 +82,8 @@ namespace Content.Shared.Movement.Components
         public const float SprintingSoundModifier = 3.5f;
         public const float WalkingSoundModifier = 1.5f;
 
-
-        /// Ganimed-Start-edit
-        //NOTE I don't think I'm supposed to do this
-        public bool Sprinting => IoCManager.Resolve<IConfigurationManager>().GetCVar(CCVars.GamePressToSprint)
-            ? (HeldMoveButtons & MoveButtons.Walk) != 0x0
-            : (HeldMoveButtons & MoveButtons.Walk) == 0x0;
-        /// Ganimed-End-edit
+        [ViewVariables]
+        public bool Sprinting => (HeldMoveButtons & MoveButtons.Walk) == 0x0;
 
         [ViewVariables(VVAccess.ReadWrite)]
         public bool CanMove = true;

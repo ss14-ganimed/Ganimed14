@@ -17,7 +17,6 @@
     - id: DrinkShaker
     - id: ClothingEyesHudBeer
     - id: HandLabeler
-    - id: ADTMusicDiskVa11Hall #ADT-Tweak
     - id: DrinkBeerBottleFull
       amount: !type:BinomialNumberSelector
         trials: 3
@@ -74,8 +73,8 @@
     - !type:AllSelector
       rolls: 3
       children:
-      - id: FoodCondimentPacketSalt
-      - id: FoodCondimentPacketPepper
+      - id: ReagentContainerSalt
+      - id: ReagentContainerPepper
       # ADT-tweak-start
       #   amount: 3 # Ganimed-Remove (Duplicates)
       # - id: FoodCondimentBottleEnzyme # Ganimed-Remove (Duplicates)
@@ -106,9 +105,10 @@
     children:
     - id: WetFloorSign
       amount: 3
-    - id: LightReplacer
+    - id: LightReplacerFilled
     - id: BoxLightMixed
     - id: Holoprojector
+    - id: WireBrush
     - !type:AllSelector
       rolls: 2
       children:
@@ -118,7 +118,6 @@
       - id: SoapNT
       - id: FlashlightLantern
       - id: Plunger
-      - id: WireBrush
     - id: PlushieLizardJobJanitor
       prob: 0.02
 
@@ -161,7 +160,7 @@
     - id: ClothingHeadBandBotany
     - id: ChemistryBottleRobustHarvest
       prob: 0.3
-    - id: ClothingBeltPlant
+    - id: ClothingBeltPlantFilled
     - id: PlantBag ##Some maps don't have nutrivend
     - id: BoxMouthSwab
     - id: Dropper

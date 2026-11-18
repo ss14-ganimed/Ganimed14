@@ -8,22 +8,18 @@ using Content.Shared.Interaction.Events;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
-using Robust.Shared.Utility; // Ganimed edit
-using Content.Server.Forensics; // Ganimed edit
-using Content.Server.Forensics.Components; // Ganimed edit
 using static Content.Shared.Storage.EntitySpawnCollection;
 
 namespace Content.Server.Storage.EntitySystems
 {
-    public sealed class SpawnItemsOnUseSystem : EntitySystem
+    public sealed partial class SpawnItemsOnUseSystem : EntitySystem
     {
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-        [Dependency] private readonly SharedHandsSystem _hands = default!;
-        [Dependency] private readonly PricingSystem _pricing = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly ForensicsSystem _forensicsSystem = default!; // Ganimed edit
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private IAdminLogManager _adminLogger = default!;
+        [Dependency] private SharedHandsSystem _hands = default!;
+        [Dependency] private PricingSystem _pricing = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
 
         public override void Initialize()
         {
@@ -74,36 +70,19 @@ namespace Content.Server.Storage.EntitySystems
             if (component.Uses <= 0)
                 return;
 
-            var coords = Transform(args.User).Coordinates;
+            var xform = Transform(args.User);
             var spawnEntities = GetSpawns(component.Items, _random);
             EntityUid? entityToPlaceInHands = null;
 
-            // Ganimed edit start
-            for (int i = 0; i < spawnEntities.Count; i++)
+            foreach (var proto in spawnEntities)
             {
-                var proto = spawnEntities[i];
-                entityToPlaceInHands = Spawn(proto, coords);
-
-                if (i < component.Items.Count && component.Items[i].InheritParentForensics)
-                {
-                    if (TryComp<ForensicsComponent>(uid, out var parentForensics))
-                    {
-                        if (!TryComp<ForensicsComponent>(entityToPlaceInHands.Value, out var childForensics))
-                        {
-                            childForensics = EntityManager.AddComponent<ForensicsComponent>(entityToPlaceInHands.Value);
-                        }
-
-                        _forensicsSystem.CopyForensicsFrom(parentForensics, entityToPlaceInHands.Value);
-                    }
-                }
-            // Ganimed edit end
-
+                entityToPlaceInHands = SpawnNextToOrDrop(proto, args.User, xform);
                 _adminLogger.Add(LogType.EntitySpawn, LogImpact.Low, $"{ToPrettyString(args.User)} used {ToPrettyString(uid)} which spawned {ToPrettyString(entityToPlaceInHands.Value)}");
             }
 
             // The entity is often deleted, so play the sound at its position rather than parenting
             if (component.Sound != null)
-                _audio.PlayPvs(component.Sound, coords);
+                _audio.PlayPvs(component.Sound, xform.Coordinates);
 
             component.Uses--;
 
@@ -117,7 +96,7 @@ namespace Content.Server.Storage.EntitySystems
             }
 
             if (entityToPlaceInHands != null)
-                _hands.PickupOrDrop(args.User, entityToPlaceInHands.Value);
+                _hands.TryPickupAnyHand(args.User, entityToPlaceInHands.Value);
 
             args.Handled = true;
         }

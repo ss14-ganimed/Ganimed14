@@ -3,11 +3,10 @@
   id: JobIAA
   groups:
   - Inventory # Corvax-Loadouts
-  - IAANeck # Ganimed-Loadouts-Edit (LawyerNeck)
-  - IAAJumpsuit # Ganimed-Loadouts-Edit (LawyerJumpsuit)
+  - LawyerNeck
+  - LawyerJumpsuit
   - CommonBackpack
-  # - ADTLawyerGloves # ADT-Tweak # Ganimed-Loadouts-Remove (Gloves in spare clothing)
-  - GlassesWithSunglasses # Ganimed-Loadouts-Add
+  - ADTLawyerGloves # ADT-Tweak
   - LawyerShoes # ADT tweak
   - Survival
   # ADT underwear tweak start
@@ -15,10 +14,10 @@
   - ADTBottom
   - ADTSocks
   # ADT underwear tweak end
-  - NonLethalWeaponsCommand # Ganimed-Loadouts-Add
   - Trinkets
   - GroupSpeciesBreathTool
-  - SpareClothing # Ganimed-Loadouts-Add
+  - ADTPersonalLoadoutLawyer
+  - ADTPersonalLoadoutPlushie
 
 # Engineering
 # - type: roleLoadout
@@ -57,10 +56,8 @@
   - Inventory # Corvax-Loadouts
   - PilotHead
   - PilotJumpsuit
-  - PilotNeck # ADT-Loadouts # Ganimed-Loadouts-Edit (SecurityOfficerNeckADT)
   - SecurityBackpack
   - PilotOuterClothing
-  - SecurityGlasses # Ganimed-Loadouts-Add
   - SecurityBelt
   - SecurityShoes
   - SurvivalSecurity # ADT fix
@@ -70,5 +67,6 @@
   - ADTSocks
   # ADT underwear tweak end
   - Trinkets
-  - GroupSpeciesBreathToolSecurity
-  - SpareClothing # Ganimed-Loadouts-Add
+  - GroupSpeciesBreathTool
+  - ADTPersonalLoadoutSecurity
+  - ADTPersonalLoadoutPlushie

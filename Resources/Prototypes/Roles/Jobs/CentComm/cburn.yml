@@ -4,17 +4,15 @@
   description: job-description-cburn
   playTimeTracker: JobCBURN
   setPreference: false
-  requirements: # Ganimed-RoleTime
-  - !type:DepartmentTimeRequirement
-    department: Security
-    time: 18000 # 5 hrs
-  - !type:DepartmentTimeRequirement
-    department: Medical
-    time: 18000 # 5 hrs
   startingGear: ADTCBURNGear # ADT tweak
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-centcom
-  canBeAntag: false
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 50h # ADT-tweak
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 20h # ADT-tweak
   accessGroups:
   - AllAccess
   access:
@@ -22,6 +20,13 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+  # ADT-Tweak-Start
+  - !type:AddComponentSpecial
+    components:
+      - type: ADTTenCodeKnowledge
+      - type: ADTVirusImmune
+        absolute: true
+  # ADT-Tweak-End
 
 - type: startingGear
   id: CBURNGear

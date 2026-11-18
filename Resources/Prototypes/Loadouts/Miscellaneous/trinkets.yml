@@ -6,7 +6,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Command
-      time: 4h # Ganimed-Loadouts-Tweak (1 to 4)
+      time: 1h
 
 # Flowers
 - type: loadout
@@ -50,48 +50,6 @@
     - CandleRed
     - CandleBlue
     - CandleGreenSmall
-
-# Canes
-# The white cane is intentionally not included here. Thats for the blind.
-- type: loadout
-  id: OffsetCane
-  storage:
-    back:
-    - OffsetCane
-  groupBy: "canes"
-
-- type: loadout
-  id: OffsetCaneWood
-  storage:
-    back:
-    - OffsetCaneWood
-  groupBy: "canes"
-
-- type: loadout
-  id: OffsetCaneMime
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobMime
-      time: 3600 # 1hr
-  storage:
-    back:
-    - OffsetCaneMime
-  groupBy: "canes"
-
-- type: loadout
-  id: Cane
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobLibrarian
-      time: 3600 # 1hr same as Jamjar.
-  storage:
-    back:
-    - Cane
-  groupBy: "canes"
 
 # Smokeables
 - type: loadout
@@ -289,31 +247,10 @@
 #     - ClothingNeckGoldAutismPin
 #ADT end
 
-# Canes
-# The white cane is intentionally not included here. Thats for the blind.
-
+# Towels
 - type: loadout
-  id: OffsetCaneClown
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobClown
-      time: 3600 # 1hr
+  id: TowelColorWhite
   storage:
     back:
-    - OffsetCaneClown
-  groupBy: "canes"
-
-- type: loadout
-  id: OffsetCaneNT
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Command
-      time: 18000 # 5hr
-  storage:
-    back:
-    - OffsetCaneNT
-  groupBy: "canes"
+    - TowelColorWhite
+  groupBy: "towels"

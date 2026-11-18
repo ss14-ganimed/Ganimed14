@@ -54,3 +54,13 @@
   id: ADTThermoTech
   recipes:
   - ADTPatchThermo
+
+- type: latheRecipePack
+  id: ADTMedbeamPack
+  recipes:
+  - ADTWeaponMedbeamCivil
+
+- type: latheRecipePack
+  id: ADTVirologyBoards
+  recipes:
+  - ADTPandemicMachineCircuitboard

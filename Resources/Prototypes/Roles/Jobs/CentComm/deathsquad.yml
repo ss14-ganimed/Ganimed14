@@ -4,14 +4,15 @@
   description: job-description-deathsquad
   playTimeTracker: JobDeathSquad
   setPreference: false
-  requirements: # Ganimed-RoleTime
-  - !type:DepartmentTimeRequirement
-    department: Security
-    time: 36000 # 10 hrs
   startingGear: DeathSquadGear
   icon: "ADTJobIconDeathSquad" #ADT-Tweak
   supervisors: job-supervisors-centcom
-  canBeAntag: false
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 75h # adt tweak
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 40h # adt tweak
   accessGroups:
   - AllAccess
   access:
@@ -19,6 +20,11 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+  # ADT-Tweak-Start
+  - !type:AddComponentSpecial
+    components:
+      - type: ADTTenCodeKnowledge
+  # ADT-Tweak-End
 
 - type: startingGear
   id: DeathSquadGear

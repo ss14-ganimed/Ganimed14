@@ -7,7 +7,6 @@ namespace Content.Client.Corvax.Sponsors;
 public sealed class SponsorsManager : ISponsorsManager // Ganimed-Sponsors
 {
     [Dependency] private readonly IClientNetManager _netMgr = default!;
-
     private SponsorInfo? _info;
 
     public void Initialize()
