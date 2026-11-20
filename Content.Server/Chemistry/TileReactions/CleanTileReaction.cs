@@ -1,3 +1,4 @@
+using Content.Shared._Ganimed.Footprints;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reaction;
@@ -59,6 +60,14 @@ public sealed partial class CleanTileReaction : ITileReaction
 
             if (purgeable.Volume <= FixedPoint2.Zero)
                 break;
+        }
+
+        // Ganimed-Add: химия убирает и следы на тайле.
+        var lookupSystem = entityManager.System<EntityLookupSystem>();
+        var footprints = lookupSystem.GetEntitiesInRange<FootprintComponent>(new EntityCoordinates(tile.GridUid, tile.X, tile.Y), 0.5f);
+        foreach (var footprint in footprints)
+        {
+            entityManager.QueueDeleteEntity(footprint);
         }
 
         return (reactVolume / CleanAmountMultiplier - purgeAmount) * CleanAmountMultiplier;

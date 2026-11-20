@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatBeaverHat
   name: beaver hat
@@ -375,7 +375,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadHatFedoraBrown
   id: ClothingHeadHatFedoraGrey
   name: grey fedora
   description: A grey fedora.
@@ -384,10 +384,17 @@
     sprite: Clothing/Head/Hats/greyfedora.rsi
   - type: Clothing
     sprite: Clothing/Head/Hats/greyfedora.rsi
-  - type: Tag
-    tags:
-    - PetWearable
-    - CorgiWearable
+
+- type: entity
+  parent: ClothingHeadHatFedoraBrown
+  id: ClothingHeadHatFedoraPress
+  name: press fedora
+  description: It has a little note stuck in the band saying "PRESS". Practically an all-access pass!
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/presshat.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hats/presshat.rsi
 
 - type: entity
   parent: ClothingHeadBase
@@ -503,6 +510,9 @@
     tags:
     - PetWearable
     - CorgiWearable
+  - type: AddAccentClothing
+    accent: ReplacementAccent
+    replacement: pirate
 
 - type: entity
   parent: ClothingHeadBase
@@ -538,7 +548,6 @@
   - type: Tag
     tags:
     - PetWearable
-    - CorgiWearable
     - ClothMade
     - WhitelistChameleon
 
@@ -597,7 +606,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatSurgcapBlue
-  name: surgical cap
+  name: blue surgical cap
   description: A blue cap surgeons wear during operations. Keeps their hair from tickling your internal organs.
   components:
   - type: Sprite
@@ -619,7 +628,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatSurgcapGreen
-  name: surgical cap
+  name: green surgical cap
   description: A green cap surgeons wear during operations. Keeps their hair from tickling your internal organs.
   components:
   - type: Sprite
@@ -635,7 +644,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatSurgcapPurple
-  name: surgical cap
+  name: purple surgical cap
   description: A purple cap surgeons wear during operations. Keeps their hair from tickling your internal organs.
   components:
   - type: Sprite
@@ -746,7 +755,6 @@
   - type: Tag
     tags:
     - PetWearable
-    - CorgiWearable
     - ClothMade
     - WhitelistChameleon
 
@@ -781,7 +789,6 @@
   - type: Tag
     tags:
     - PetWearable
-    - CorgiWearable
     - WhitelistChameleon
     - ClothMade
     - Recyclable
@@ -1055,6 +1062,9 @@
     sprite: Clothing/Head/Hats/piratetricord.rsi
   - type: Clothing
     sprite: Clothing/Head/Hats/piratetricord.rsi
+  - type: AddAccentClothing
+    accent: ReplacementAccent
+    replacement: pirate
 
 - type: entity
   parent: ClothingHeadBase
@@ -1455,6 +1465,7 @@
         Heat: 1
   - type: Damageable
     damageModifierSet: Wood
+  - type: Injurable
   - type: Appearance
   - type: FireVisuals
     sprite: Effects/fire.rsi
@@ -1539,3 +1550,14 @@
     tags:
     - PetWearable
     - CorgiWearable
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatMitreClown
+  name: honkmother mitre
+  description: It's hard for parishoners to see a banana peel on the floor when they're looking up at your glorious chapeau.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/mitre_clown.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hats/mitre_clown.rsi

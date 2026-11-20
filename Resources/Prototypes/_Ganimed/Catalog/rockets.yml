@@ -1,12 +1,17 @@
+# SPDX-FileCopyrightText: 2025 CrimeMoot <wakeafa@gmail.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Rocket, medium explosion
 - type: entity
   parent: BaseSupplyPodTargetCircle
   id: RocketMediumExplosionCircle
   suffix: Explosion, medium
   components:
-    - type: TimedSpawner
-      prototypes:
-        -  RocketMediumExplosionFallingAnimation
+  - type: TimedSpawner
+    prototypes:
+    -  RocketMediumExplosionFallingAnimation
 
 # Syndicate rocket, medium explosion
 - type: entity
@@ -14,6 +19,6 @@
   id: RocketSyndicateMediumExplosionCircle
   suffix: Explosion, medium
   components:
-    - type: TimedSpawner
-      prototypes:
-        -  RocketSyndicateMediumExplosionFallingAnimation
+  - type: TimedSpawner
+    prototypes:
+    -  RocketSyndicateMediumExplosionFallingAnimation

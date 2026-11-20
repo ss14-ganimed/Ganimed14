@@ -25,6 +25,10 @@ namespace Content.Shared.Fluids.Components
         [DataField]
         public float DefaultSlippery = 5.5f;
 
+        // Ganimed-Add: следы (Footstep/DragMark) - визуальные отпечатки, не должны замедлять ходьбу.
+        [DataField]
+        public bool CanSlow = true;
+
         [ViewVariables]
         public Entity<SolutionComponent>? Solution;
     }

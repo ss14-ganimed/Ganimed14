@@ -24,14 +24,11 @@
     tags:
     - Chapel
   - type: MindContainer
-    showExamineInfo: true
   - type: NpcFactionMember
     factions:
     - PetsNT
   - type: Alerts
   - type: Familiar
-  - type: TTS
-    voice: kleiner
   - type: SpeechBarks
     data:
       proto: Synth3
@@ -63,14 +60,11 @@
     tags:
     - Chapel
   - type: MindContainer
-    showExamineInfo: true
   - type: NpcFactionMember
     factions:
     - PetsNT
   - type: Alerts
   - type: Familiar
-  - type: TTS
-    voice: mossman
   - type: SpeechBarks
     data:
       proto: Toriel
@@ -103,7 +97,6 @@
     tags:
     - Chapel
   - type: MindContainer
-    showExamineInfo: true
   - type: NpcFactionMember
     factions:
     - PetsNT
@@ -114,8 +107,6 @@
       0: Alive
       40: Critical
       100: Dead
-  - type: TTS
-    voice: twitch
   - type: SpeechBarks
     data:
       proto: Flowey
@@ -148,14 +139,11 @@
     tags:
     - Chapel
   - type: MindContainer
-    showExamineInfo: true
   - type: NpcFactionMember
     factions:
     - PetsNT
   - type: Alerts
   - type: Familiar
-  - type: TTS
-    voice: queen_of_pain_dota_2
   - type: SpeechBarks
     data:
       proto: Queen
@@ -187,14 +175,11 @@
     tags:
     - Chapel
   - type: MindContainer
-    showExamineInfo: true
   - type: NpcFactionMember
     factions:
     - PetsNT
   - type: Alerts
   - type: Familiar
-  - type: TTS
-    voice: ziggs
   - type: SpeechBarks
     data:
       proto: Chujin
@@ -227,14 +212,11 @@
     tags:
     - Chapel
   - type: MindContainer
-    showExamineInfo: true
   - type: NpcFactionMember
     factions:
     - PetsNT
   - type: Alerts
   - type: Familiar
-  - type: TTS
-    voice: zenobianoke
   - type: SpeechBarks
     data:
       proto: Noelle
@@ -266,7 +248,6 @@
     tags:
     - Chapel
   - type: MindContainer
-    showExamineInfo: true
   - type: NpcFactionMember
     factions:
     - PetsNT
@@ -275,8 +256,6 @@
   - type: PointLight
     enabled: true
     radius: 2
-  - type: TTS
-    voice: kate_smirnova_tb
   - type: SpeechBarks
     data:
       proto: Ceroba
@@ -308,7 +287,6 @@
     tags:
     - Chapel
   - type: MindContainer
-    showExamineInfo: true
   - type: NpcFactionMember
     factions:
     - PetsNT
@@ -317,8 +295,6 @@
   - type: MovementSpeedModifier
     baseWalkSpeed : 2
     baseSprintSpeed : 2
-  - type: TTS
-    voice: matildaweasley
   - type: SpeechBarks
     data:
       proto: Toriel

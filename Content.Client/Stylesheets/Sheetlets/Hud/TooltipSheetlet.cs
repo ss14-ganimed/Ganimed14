@@ -6,6 +6,7 @@ using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
+using Robust.Shared.Maths;
 using static Content.Client.Stylesheets.StylesheetHelpers;
 
 namespace Content.Client.Stylesheets.Sheetlets.Hud;
@@ -24,6 +25,23 @@ public sealed class TooltipSheetlet<T> : Sheetlet<T> where T: PalettedStylesheet
         var whisperBox = sheet.GetTextureOr(tooltipCfg.WhisperBoxPath, NanotrasenStylesheet.TextureRoot)
             .IntoPatch(StyleBox.Margin.All, 2);
         whisperBox.SetContentMarginOverride(StyleBox.Margin.Horizontal, 7);
+
+        // Ganimed-Edit: separate speech bubbles for emotes (emoteBox) and LOOC (loocBox), issue #283.
+        var emoteBox = new StyleBoxFlat
+        {
+            BackgroundColor = new Color(43, 43, 49, 255),
+            BorderColor = new Color(90, 90, 100, 255),
+            BorderThickness = new Thickness(1),
+        };
+        emoteBox.SetContentMarginOverride(StyleBox.Margin.Horizontal, 7);
+
+        var loocBox = new StyleBoxFlat
+        {
+            BackgroundColor = new Color(27, 27, 31, 255),
+            BorderColor = Color.FromHex("#48d1cc"),
+            BorderThickness = new Thickness(1),
+        };
+        loocBox.SetContentMarginOverride(StyleBox.Margin.Horizontal, 7);
 
         return
         [
@@ -50,6 +68,14 @@ public sealed class TooltipSheetlet<T> : Sheetlet<T> where T: PalettedStylesheet
             E<PanelContainer>()
                 .Class("speechBox", "whisperBox")
                 .Panel(whisperBox),
+
+            // Ganimed-Edit: separate speech bubbles for emotes and LOOC, issue #283.
+            E<PanelContainer>()
+                .Class("speechBox", "emoteBox")
+                .Panel(emoteBox),
+            E<PanelContainer>()
+                .Class("speechBox", "loocBox")
+                .Panel(loocBox),
 
             E<PanelContainer>()
                 .Class("speechBox", "whisperBox")

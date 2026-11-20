@@ -1,0 +1,1 @@
+ghost-gui-character-editor-button = Редактор персонажа

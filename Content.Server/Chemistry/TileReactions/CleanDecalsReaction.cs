@@ -1,4 +1,5 @@
 using Content.Server.Decals;
+using Content.Shared._Ganimed.Footprints;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Decals;
@@ -52,6 +53,13 @@ public sealed partial class CleanDecalsReaction : ITileReaction
 
             decalSystem.RemoveDecal(tile.GridUid, decal.Index, decalGrid);
             amount += CleanCost;
+        }
+
+        // Ganimed-Add: химия убирает и следы на тайле.
+        var footprints = lookupSystem.GetEntitiesInRange<FootprintComponent>(new EntityCoordinates(tile.GridUid, tile.X, tile.Y), 0.5f);
+        foreach (var footprint in footprints)
+        {
+            entityManager.QueueDeleteEntity(footprint);
         }
 
         return amount;

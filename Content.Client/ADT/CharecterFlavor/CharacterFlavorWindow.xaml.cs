@@ -40,7 +40,7 @@ public sealed partial class CharacterFlavorWindow : FancyWindow
         if (!_entityManager.TryGetComponent<MetaDataComponent>(uid, out var metaData))
             return;
 
-        if (_entityManager.TryGetComponent<HumanoidAppearanceComponent>(uid, out var humanoid)
+        if (_entityManager.TryGetComponent<HumanoidProfileComponent>(uid, out var humanoid)
         && _proto.Index(humanoid.Species).ShortDesc != string.Empty)
         {
             CustomSpeciesLabel.Text = Loc.GetString(_proto.Index(humanoid.Species).ShortDesc);
@@ -50,11 +50,11 @@ public sealed partial class CharacterFlavorWindow : FancyWindow
         {
             HeadshotImage.TexturePath = "/Textures/ADT/Interface/headshot-loading.png";
             HeadshotLoadingLabel.Visible = true;
-            HeadshotContainer.Visible = true;
+            SetHeadshotVisible(true);
         }
         else
         {
-            HeadshotContainer.Visible = false;
+            SetHeadshotVisible(false);
         }
 
         Title = metaData.EntityName;
@@ -70,9 +70,15 @@ public sealed partial class CharacterFlavorWindow : FancyWindow
             HeadshotImage.Texture = headshot;
             HeadshotImage.ModulateSelfOverride = null;
             HeadshotLoadingLabel.Visible = false;
-            HeadshotContainer.Visible = true;
+            SetHeadshotVisible(true);
         }
         else
-            HeadshotContainer.Visible = false;
+            SetHeadshotVisible(false);
+    }
+
+    private void SetHeadshotVisible(bool visible)
+    {
+        HeadshotContainer.Visible = visible;
+        HeadshotSpacer.Visible = !visible;
     }
 }

@@ -3,6 +3,7 @@ using Content.Client.Chat.Managers;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Speech;
+using Content.Shared._Ganimed.Chat.Components;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
@@ -66,24 +67,54 @@ namespace Content.Client.Chat.UI
 
         public static SpeechBubble CreateSpeechBubble(SpeechType type, ChatMessage message, EntityUid senderEntity)
         {
+            // Ganimed-Edit: resolve bubble style from the entity's SpeechBubbleStyleComponent,
+            // fall back to the default style for the speech type.
+            var styleClass = GetSpeechBubbleStyleClass(type, message.Channel, senderEntity);
+
             switch (type)
             {
                 case SpeechType.Emote:
-                    return new TextSpeechBubble(message, senderEntity, "emoteBox");
+                    return new TextSpeechBubble(message, senderEntity, styleClass);
 
                 case SpeechType.Say:
-                    return new FancyTextSpeechBubble(message, senderEntity, "sayBox");
+                    return new FancyTextSpeechBubble(message, senderEntity, styleClass);
 
                 case SpeechType.Whisper:
-                    return new FancyTextSpeechBubble(message, senderEntity, "whisperBox");
+                    return new FancyTextSpeechBubble(message, senderEntity, styleClass);
 
                 case SpeechType.Looc:
-                    return new TextSpeechBubble(message, senderEntity, "emoteBox", Color.FromHex("#48d1cc"));
+                    return new TextSpeechBubble(message, senderEntity, styleClass, Color.FromHex("#48d1cc"));
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        /// <summary>
+        /// Ganimed-Add-Start: SpeechBubbleStyleComponent binding
+        /// Resolves the speech bubble style class for a message.
+        /// A style defined on the sender entity via <see cref="SpeechBubbleStyleComponent"/>
+        /// takes precedence over the default style for the chat type.
+        /// </summary>
+        private static string GetSpeechBubbleStyleClass(SpeechType type, ChatChannel channel, EntityUid senderEntity)
+        {
+            if (IoCManager.Resolve<IEntityManager>()
+                    .TryGetComponent<SpeechBubbleStyleComponent>(senderEntity, out var style)
+                && style.Styles.TryGetValue(channel, out var customStyle))
+            {
+                return customStyle;
+            }
+
+            return type switch
+            {
+                SpeechType.Emote => "emoteBox",
+                SpeechType.Say => "sayBox",
+                SpeechType.Whisper => "whisperBox",
+                SpeechType.Looc => "loocBox",
+                _ => "sayBox"
+            };
+        }
+        // Ganimed-Add-End
 
         public SpeechBubble(ChatMessage message, EntityUid senderEntity, string speechStyleClass, Color? fontColor = null)
         {
@@ -216,7 +247,7 @@ namespace Content.Client.Chat.UI
                 MaxWidth = SpeechMaxWidth,
             };
 
-            label.SetMessage(FormatSpeech(message.WrappedMessage, fontColor));
+            label.SetMessage(FormatSpeech(message.WrappedMessage, fontColor), tagsAllowed: null); // ADT-tweak: allow [tfont] tag
 
             var panel = new PanelContainer
             {
@@ -246,7 +277,7 @@ namespace Content.Client.Chat.UI
                     MaxWidth = SpeechMaxWidth
                 };
 
-                label.SetMessage(ExtractAndFormatSpeechSubstring(message, "BubbleContent", fontColor));
+                label.SetMessage(ExtractAndFormatSpeechSubstring(message, "BubbleContent", fontColor), tagsAllowed: null); // ADT-tweak: allow [tfont] tag
 
                 var unfanciedPanel = new PanelContainer
                 {
@@ -272,8 +303,8 @@ namespace Content.Client.Chat.UI
             };
 
             //We'll be honest. *Yes* this is hacky. Doing this in a cleaner way would require a bottom-up refactor of how saycode handles sending chat messages. -Myr
-            bubbleHeader.SetMessage(ExtractAndFormatSpeechSubstring(message, "BubbleHeader", fontColor));
-            bubbleContent.SetMessage(ExtractAndFormatSpeechSubstring(message, "BubbleContent", fontColor));
+            bubbleHeader.SetMessage(ExtractAndFormatSpeechSubstring(message, "BubbleHeader", fontColor), tagsAllowed: null); // ADT-tweak: allow [tfont] tag
+            bubbleContent.SetMessage(ExtractAndFormatSpeechSubstring(message, "BubbleContent", fontColor), tagsAllowed: null); // ADT-tweak: allow [tfont] tag
 
             //As for below: Some day this could probably be converted to xaml. But that is not today. -Myr
             var mainPanel = new PanelContainer

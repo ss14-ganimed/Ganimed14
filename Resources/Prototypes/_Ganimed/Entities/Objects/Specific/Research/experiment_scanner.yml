@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2026 Gorox221 <139872389+Gorox221@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseItem
+  id: ExperimentScanner
+  name: experiment scanner
+  description: A research scanner that issues and tracks field experiments.
+  components:
+  - type: Sprite
+    sprite: _Ganimed/Objects/Specific/Research/experimentscanner.rsi
+    state: icon
+  - type: Item
+    sprite: _Ganimed/Objects/Specific/Research/experimentscanner.rsi
+  - type: ResearchClient
+  - type: ExperimentScanner
+    experimentGroup: Experiments
+    visibleOrders: 7
+  - type: ActivatableUI
+    key: enum.ExperimentScannerUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.ExperimentScannerUiKey.Key:
+        type: ExperimentScannerBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+  - type: GuideHelp
+    guides:
+    - ExperimentScannerGuide

@@ -1,19 +1,24 @@
-- type: entity
-  parent: SeedBase
-  name: packet of cucumber seeds
-  id: CucumberSeeds
-  components:
-    - type: Seed
-      seedId: cucumber
-    - type: Sprite
-      sprite: _Ganimed/Objects/Specific/Hydroponics/cucumber.rsi
+# SPDX-FileCopyrightText: 2024 RedTerror <37833085+RedTerrorDark@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
   parent: SeedBase
-  name: packet of shashamber seeds
-  id: ShashamberSeeds
+  id: CucumberSeeds
+  name: packet of cucumber seeds
   components:
-    - type: Seed
-      seedId: shashamber
-    - type: Sprite
-      sprite: _Ganimed/Objects/Specific/Hydroponics/shashamber.rsi
+  - type: Seed
+    seedId: cucumber
+  - type: Sprite
+    sprite: _Ganimed/Objects/Specific/Hydroponics/cucumber.rsi
+
+- type: entity
+  parent: SeedBase
+  id: ShashamberSeeds
+  name: packet of shashamber seeds
+  components:
+  - type: Seed
+    seedId: shashamber
+  - type: Sprite
+    sprite: _Ganimed/Objects/Specific/Hydroponics/shashamber.rsi

@@ -6,20 +6,24 @@
     ClothingBackpackEngineering: 3
     ClothingUniformJumpsuitEngineering: 3
     ClothingUniformJumpskirtEngineering: 3
-# ADT-Tweak start
+    ClothingUniformJumpsuitEngineeringHazard: 3
+    # ADT-Tweak start
     ADTClothingBeltUtilityWebbing: 5
     ClothingBeltUtility: 5
-# ADT-Tweak end
-    ClothingUniformJumpsuitEngineeringHazard: 3
+    # ADT-Tweak end
+    ClothingHeadsetEngineering: 3
+    ClothingNeckScarfStripedOrange: 3
     ClothingShoesColorBlack: 3
-    ClothingOuterVestHazard: 3
     ClothingShoesBootsWork: 3
+    ClothingShoesBootsWinterEngi: 2
+    ClothingOuterVestHazard: 3
+    ClothingOuterWinterEngi: 2
     ClothingHeadHatHardhatYellow: 3
     ClothingHeadHatHardhatOrange: 3
-    ClothingHeadsetEngineering: 3
-    ClothingOuterWinterEngi: 2
-    ClothingNeckScarfStripedOrange: 3
-    ClothingShoesBootsWinterEngi: 2
+    # ADT tweak start wiki books
+    ADTBookSRPeng: 2
+    ADTBookAtmosSupermatter: 2
+    # ADT tweak end wiki books
   contrabandInventory:
     ToyFigurineEngineer: 1
     ToyFigurineChiefEngineer: 1

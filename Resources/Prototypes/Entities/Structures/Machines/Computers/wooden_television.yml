@@ -22,6 +22,10 @@
           West: { state: television, sprite: Structures/Machines/computers.rsi }
           East, West: { state: television, sprite: Structures/Machines/computers.rsi }
   # ADT-Tweak end
+  # Ganimed-Add-Fix-Start
+  - type: EdgeConnection
+    connectionKey: other
+  # Ganimed-Add-Fix-End
   - type: Computer
     board: ComputerTelevisionCircuitboard
   - type: PointLight

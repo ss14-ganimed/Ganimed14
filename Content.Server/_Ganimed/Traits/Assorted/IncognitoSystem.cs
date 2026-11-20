@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 temporaldarkness <94239354+temporaldarkness@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Mind;
 using Content.Shared._Ganimed.Traits.Assorted;
 

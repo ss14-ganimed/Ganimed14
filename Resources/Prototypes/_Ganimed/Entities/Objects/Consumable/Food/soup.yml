@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2024 RedTerror <37833085+RedTerrorDark@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent: FoodBowlBase
   id: FoodSoupBear
@@ -6,7 +11,7 @@
   components:
   - type: FlavorProfile
     flavors:
-      - beary
+    - beary
   - type: Sprite
     sprite: _Ganimed/Objects/Consumable/Food/bowl.rsi
     layers:
@@ -36,9 +41,9 @@
   components:
   - type: FlavorProfile
     flavors:
-      - sour
-      - salty
-      - meaty
+    - sour
+    - salty
+    - meaty
   - type: Sprite
     sprite: _Ganimed/Objects/Consumable/Food/bowl.rsi
     layers:
@@ -68,9 +73,9 @@
   components:
   - type: FlavorProfile
     flavors:
-      - summery
-      - egg
-      - potatoes
+    - summery
+    - egg
+    - potatoes
   - type: Sprite
     sprite: _Ganimed/Objects/Consumable/Food/bowl.rsi
     layers:
@@ -100,8 +105,8 @@
   components:
   - type: FlavorProfile
     flavors:
-      - holidays
-      - vegetables
+    - holidays
+    - vegetables
   - type: Sprite
     sprite: _Ganimed/Objects/Consumable/Food/bowl.rsi
     layers:

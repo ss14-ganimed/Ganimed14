@@ -5,7 +5,7 @@ meta:
   forkId: SS14_DEV
   forkVersion: 4d1cdfa089a58a4939fe03914e2fcdd911465e3a
   time: 02/14/2026 15:52:44
-  entityCount: 84
+  entityCount: 85
 maps: []
 grids:
 - 1
@@ -430,12 +430,17 @@ entities:
     - type: Transform
       pos: -0.98236084,1.6897793
       parent: 1
-- proto: SpawnMobBehonker
+- proto: SpawnMobSpiderSalvage
   entities:
   - uid: 64
     components:
     - type: Transform
       pos: 0.5,-1.5
+      parent: 1
+  - uid: 85
+    components:
+    - type: Transform
+      pos: 1.5,1.5
       parent: 1
 - proto: StatueBananiumClown
   entities:

@@ -5,9 +5,9 @@ using Content.Client.DebugMon;
 using Content.Client.Corvax.DiscordAuth;
 using Content.Client.Corvax.JoinQueue;
 using Content.Client.Corvax.Sponsors;
-using Content.Client.Corvax.TTS;
 using Content.Client.Options;
 using Content.Client.Eui;
+using Content.Client.FeedbackPopup;
 using Content.Client.Fullscreen;
 using Content.Client.GameTicking.Managers;
 using Content.Client.GhostKick;
@@ -28,15 +28,19 @@ using Content.Client.Stylesheets;
 using Content.Client.UserInterface;
 using Content.Client.Viewport;
 using Content.Client.Voting;
+using Content.Client._Ganimed.Fonts; // Ganimed-Add (Japanese support)
 using Content.Shared.Ame.Components;
+using Content.Shared.FeedbackSystem;
 using Content.Shared.Gravity;
 using Content.Shared.Localizations;
 using Robust.Client;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Replays.Loading;
+using Robust.Client.ResourceManagement; // Ganimed-Add (Japanese support)
 using Robust.Client.State;
 using Robust.Client.UserInterface;
+using Robust.Client.UserInterface.RichText; // Ganimed-Add (Japanese support)
 using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
@@ -80,6 +84,7 @@ namespace Content.Client.Entry
         [Dependency] private readonly DiscordAuthManager _discordAuthManager = default!; // Corvax-DiscordAuth
         [Dependency] private readonly ContentReplayPlaybackManager _playbackMan = default!;
         [Dependency] private readonly IResourceManager _resourceManager = default!;
+        [Dependency] private readonly IResourceCache _resourceCache = default!; // Ganimed-Add (Japanese support)
         [Dependency] private readonly IReplayLoadManager _replayLoad = default!;
         [Dependency] private readonly ILogManager _logManager = default!;
         [Dependency] private readonly DebugMonitorManager _debugMonitorManager = default!;
@@ -88,6 +93,7 @@ namespace Content.Client.Entry
         [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
         [Dependency] private readonly DiscordIdManager _discordIdManager = default!;  // ADT export
         [Dependency] private readonly ClientsidePlaytimeTrackingManager _clientsidePlaytimeManager = default!;
+        [Dependency] private readonly ClientFeedbackManager _feedbackManager = null!;
 
         public override void PreInit()
         {
@@ -124,12 +130,10 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("htnPrimitive");
             _prototypeManager.RegisterIgnore("gameMap");
             _prototypeManager.RegisterIgnore("gameMapPool");
-            _prototypeManager.RegisterIgnore("lobbyBackground");
             _prototypeManager.RegisterIgnore("gamePreset");
             _prototypeManager.RegisterIgnore("noiseChannel");
             _prototypeManager.RegisterIgnore("playerConnectionWhitelist");
             _prototypeManager.RegisterIgnore("spaceBiome");
-            _prototypeManager.RegisterIgnore("worldgenConfig");
             _prototypeManager.RegisterIgnore("gameRule");
             _prototypeManager.RegisterIgnore("worldSpell");
             _prototypeManager.RegisterIgnore("entitySpell");
@@ -174,6 +178,20 @@ namespace Content.Client.Entry
 
             _stylesheetManager.Initialize();
 
+            // Ganimed-Add-Start: Japanese fallback for [font=...] markup fonts
+            // (station names on consoles, cargo manifests, etc.). Without this the
+            // markup font is a plain VectorFont with no CJK glyphs, so Japanese
+            // characters render as tofu boxes.
+            var fontTagHijack = IoCManager.Resolve<FontTagHijackHolder>();
+            fontTagHijack.Hijack = (protoId, size) =>
+            {
+                if (!_prototypeManager.TryIndex(protoId, out FontPrototype? prototype))
+                    return null;
+
+                return GanimedFontStack.WithJapaneseFallback(_resourceCache, prototype, size);
+            };
+            // Ganimed-Add-End
+
             // Setup key contexts
             ContentContexts.SetupContexts(_inputManager.Contexts);
 
@@ -194,6 +212,7 @@ namespace Content.Client.Entry
             _exportManager.Initialize();    // ADT Export
             _documentParsingManager.Initialize();
             _titleWindowManager.Initialize();
+            _feedbackManager.Initialize();
 
             _baseClient.RunLevelChanged += (_, args) =>
             {

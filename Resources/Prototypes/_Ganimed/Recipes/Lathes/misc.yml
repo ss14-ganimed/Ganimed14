@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Gorox221 <139872389+Gorox221@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: ExperimentScanner
+  result: ExperimentScanner
+  materials:
+    Steel: 150
+    Plastic: 100
+    Glass: 50
+    Copper: 100

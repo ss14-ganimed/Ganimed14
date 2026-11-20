@@ -81,13 +81,20 @@ public abstract class SharedTypingIndicatorSystem : EntitySystem
         }
 
         SetTypingIndicatorState(uid.Value, ev.State);
+
+        _appearance.SetData(uid.Value, TypingIndicatorVisuals.Channel, ev.Channel); // Ganimed-Add (Typing indicator color based on chat type)
     }
 
     private void SetTypingIndicatorState(EntityUid uid, TypingIndicatorState state, AppearanceComponent? appearance = null)
     {
         // if (!Resolve(uid, ref appearance, false)) // Corvax-TypingIndicator
         //     return;
+        _appearance.TryGetData<TypingIndicatorState>(uid,   // ADT Tweak start
+            TypingIndicatorVisuals.State, out var oldState, appearance);
+        if (oldState == state)
+            return;                                         // ADT Tweak end
 
         _appearance.SetData(uid, TypingIndicatorVisuals.State, state, appearance);
+        RaiseLocalEvent(uid, new TypingIndicatorStateChangedEvent(oldState, state)); // ADT Tweak
     }
 }

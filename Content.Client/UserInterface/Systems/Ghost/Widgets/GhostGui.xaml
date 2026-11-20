@@ -5,5 +5,6 @@
         <Button Name="ReturnToBodyButton" Text="{Loc ghost-gui-return-to-body-button}" />
         <Button Name="GhostWarpButton" Text="{Loc ghost-gui-ghost-warp-button}" />
         <Button Name="GhostRolesButton" />
+        <Button Name="CharacterEditorButton" Text="{Loc ghost-gui-character-editor-button}" /> <!-- ADT Tweak -->
     </BoxContainer>
 </widgets:GhostGui>

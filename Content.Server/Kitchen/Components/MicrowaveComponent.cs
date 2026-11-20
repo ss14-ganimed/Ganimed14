@@ -17,6 +17,7 @@ namespace Content.Server.Kitchen.Components
     {
         [DataField("cookTimeMultiplier"), ViewVariables(VVAccess.ReadWrite)]
         public float CookTimeMultiplier = 1;
+
         [DataField("cookTimeScalingConstant")]
         public float CookTimeScalingConstant = 0.5f;
         [DataField("baseHeatMultiplier"), ViewVariables(VVAccess.ReadWrite)]
@@ -105,6 +106,17 @@ namespace Content.Server.Kitchen.Components
         [DataField, ViewVariables(VVAccess.ReadWrite)]
         public float ExplosionChance = .1f;
 
+        // ADT-Tweak-Start: machine parts with tiers
+        [DataField]
+        public float UpgradeCookMultiplier = 1f;
+
+        [DataField]
+        public float CapacityMultiplier = 1f;
+
+        [DataField]
+        public float ExplosionChanceMultiplier = 1f;
+        // ADT-Tweak-End
+
         /// <summary>
         /// Chance of lightning occurring when we microwave a metallic object
         [DataField, ViewVariables(VVAccess.ReadWrite)]
@@ -163,29 +175,30 @@ namespace Content.Server.Kitchen.Components
         // End ADT-Tweak
     }
 
-    public sealed class BeingMicrowavedEvent : HandledEntityEventArgs
-    {
-        public EntityUid Microwave;
-        public EntityUid? User;
-        // ADT-Tweak: fields for whether or not the object is actually being heated or irradiated.
-        public bool BeingHeated;
-        public bool BeingIrradiated;
-        // End ADT-Tweak
-
-
-        public BeingMicrowavedEvent(EntityUid microwave, EntityUid? user)
-        {
-            Microwave = microwave;
-            User = user;
-
-        }
-        public BeingMicrowavedEvent(EntityUid microwave, EntityUid? user, bool heating, bool irradiating) // ADT-Tweak: added heating, irradiating
-        {
-            Microwave = microwave;
-            User = user;
-            BeingHeated = heating;
-            BeingIrradiated = irradiating;
-        }
-    }
+    // ADT-Tweak-Commented
+    // public sealed class BeingMicrowavedEvent : HandledEntityEventArgs
+    // {
+    //     public EntityUid Microwave;
+    //     public EntityUid? User;
+    //     // ADT-Tweak: fields for whether or not the object is actually being heated or irradiated.
+    //     public bool BeingHeated;
+    //     public bool BeingIrradiated;
+    //     // End ADT-Tweak
+    //
+    //
+    //     public BeingMicrowavedEvent(EntityUid microwave, EntityUid? user)
+    //     {
+    //         Microwave = microwave;
+    //         User = user;
+    //
+    //     }
+    //     public BeingMicrowavedEvent(EntityUid microwave, EntityUid? user, bool heating, bool irradiating) // ADT-Tweak: added heating, irradiating
+    //     {
+    //         Microwave = microwave;
+    //         User = user;
+    //         BeingHeated = heating;
+    //         BeingIrradiated = irradiating;
+    //     }
+    // }
 }
 

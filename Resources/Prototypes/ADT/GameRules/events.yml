@@ -3,17 +3,18 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 20
     minimumPlayers: 15
     weight: 5
     duration: 60
-  - type: VentCrittersRule
-    entries:
-    - id: ADTMobMiniSpider
-      prob: 0.01
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 4, 8
+      children:
+      - id: ADTMobMiniSpider
 
 - type: entity
   id: Pirates
@@ -35,7 +36,11 @@
     earliestStart: 30
     weight: 2 # Ganimed-Tweak (3 to 2)
     reoccurrenceDelay: 90 # Ganimed-Tweak (30 to 90)
-    maxOccurrences: 2 # Ganimed-Add
+    # Ganimed-Add-Start
+    maxOccurrences: 2
+    departmentPlayerLimits:
+      Command: 1
+    # Ganimed-Add-End
   - type: CentComRandomEvent
 
 - type: entity
@@ -63,7 +68,7 @@
       max: 1
       pickPlayer: false
       mindRoles:
-      - MindRoleMorph
+      - MindRoleGhostRoleNeutral
   - type: DragonRule #чтобы отдельный рул не писать
 
 - type: entity

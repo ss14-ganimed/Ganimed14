@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 CrimeMoot <wakeafa@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Base Rocket
 - type: entity
   parent: BaseStructure
@@ -21,8 +25,9 @@
       map: ["base"]
   - type: InteractionOutline
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Biological
   - type: Destructible
     thresholds:
     - trigger:

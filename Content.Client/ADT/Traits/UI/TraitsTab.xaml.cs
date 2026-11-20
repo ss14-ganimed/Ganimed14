@@ -157,6 +157,25 @@ public sealed partial class TraitsTab : BoxContainer
                 }
             }
 
+            // ADT-Tweak-Start: трайт «Случайная зависимость» нельзя выбрать, если выбраны все три
+            // конкретные зависимости (алкогольная, никотиновая, наркотическая). Обратная блокировка
+            // (конкретные при выбранном рандомном) обеспечивается conflicts у конкретных трайтов.
+            if (selected && traitId == "RandomAddiction")
+            {
+                var concreteAddictions = new[]
+                {
+                    new ProtoId<TraitPrototype>("AlcoholicAddiction"),
+                    new ProtoId<TraitPrototype>("NicotineAddiction"),
+                    new ProtoId<TraitPrototype>("DrugAddiction"),
+                };
+                if (concreteAddictions.All(_selectedTraits.Contains))
+                {
+                    RevertTraitToggle(traitId);
+                    return;
+                }
+            }
+            // ADT-Tweak-End
+
             // Check conflicts
             foreach (var conflict in trait.Conflicts)
             {
@@ -196,10 +215,12 @@ public sealed partial class TraitsTab : BoxContainer
 
     private void RevertTraitToggle(ProtoId<TraitPrototype> traitId)
     {
-        var trait = _prototype.Index(traitId);
+        if (!_prototype.TryIndex(traitId, out var trait))
+            return;
+
         if (_categoryUis.TryGetValue(trait.Category, out var categoryUi))
         {
-            categoryUi.SetTraitSelected(traitId, _selectedTraits.Contains(traitId));
+            categoryUi.SetTraitSelected(traitId, _selectedTraits.Contains(traitId), suppressToggle: true);
         }
     }
 
@@ -335,6 +356,8 @@ public sealed partial class TraitsTab : BoxContainer
 
         try
         {
+            UpdateRequirements(profile, null);
+
             // Clear current selection
             foreach (var (_, categoryUi) in _categoryUis)
             {
@@ -369,6 +392,8 @@ public sealed partial class TraitsTab : BoxContainer
             {
                 UpdateCategoryStats(categoryId);
             }
+
+            RecalculateStats();
         }
         finally
         {

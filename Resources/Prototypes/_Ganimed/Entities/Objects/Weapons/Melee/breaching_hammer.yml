@@ -1,7 +1,12 @@
+# SPDX-FileCopyrightText: 2025 RedSpy <127129838+RedSpyy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
-  name: breaching sledgehammer
   parent: Sledgehammer
   id: SecBreachingHammer
+  name: breaching sledgehammer
   description: Heavy sledgehammer capable of easily knocking down doors and breaking windows. Perfect for "knock-knock" jokes.
   components:
   - type: Sprite

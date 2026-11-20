@@ -1,4 +1,4 @@
-- type: guideEntry
-  id: CorvaxVulpkanin
-  name: species-name-vulpkanin
-  text: "/ServerInfo/Corvax/Guidebook/Mobs/Vulpkanin.xml"
+# - type: guideEntry # Ganimed-Remove (Duplicate)
+#   id: CorvaxVulpkanin
+#   name: species-name-vulpkanin
+#   text: "/ServerInfo/Corvax/Guidebook/Mobs/Vulpkanin.xml"

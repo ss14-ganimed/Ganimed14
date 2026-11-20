@@ -1,6 +1,5 @@
 ﻿using Content.Shared.Clothing.Components;
 using Content.Shared.Damage;
-﻿using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Inventory;
@@ -33,6 +32,17 @@ public abstract class SharedArmorSystem : EntitySystem
     /// </summary>
     /// <param name="ent">The item that's being relayed to</param>
     /// <param name="args">The event, contains the running count of armor percentage as a coefficient</param>
+    /// ADT-Tweak start
+    public void SetArmorModifiers(EntityUid uid, DamageModifierSet modifiers, ArmorComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        component.Modifiers = modifiers;
+        Dirty(uid, component);
+    }
+    ///  ADT-Tweak end
+
     private void OnCoefficientQuery(Entity<ArmorComponent> ent, ref InventoryRelayedEvent<CoefficientQueryEvent> args)
     {
         if (TryComp<MaskComponent>(ent, out var mask) && mask.IsToggled)

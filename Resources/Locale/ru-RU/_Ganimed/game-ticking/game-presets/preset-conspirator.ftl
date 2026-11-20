@@ -1,7 +1,11 @@
+# SPDX-FileCopyrightText: 2026 Hyper B <137433177+HyperB1@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 conspirator-objective-issuer = [color=#724F29]Заговор[/color]
 
-conspirator-role-greeting = 
-    Вы — заговорщик. 
+conspirator-role-greeting =
+    Вы — заговорщик.
     Вы знаете имена других заговорщиков, а также имеете имплант с радиоканалом, чтобы оставаться с ними на связи.
     Работайте сообща и не останавливайтесь ни перед чем, воплощая заговор в жизнь.
 
